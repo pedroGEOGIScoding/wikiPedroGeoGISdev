@@ -24,8 +24,7 @@ execute:
   freeze: auto
 
 filters:
-  - quarto-ext/lightbox
-  - fontawesome
+  - quarto-ext/fontawesome
 lightbox: auto
 
 highlight-style: breezedark

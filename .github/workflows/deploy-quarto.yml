@@ -58,7 +58,7 @@ jobs:
 
     - name: Install Quarto Extensions
       run: |
-        quarto add quarto-ext/lightbox --no-prompt
+        quarto add quarto-ext/fontawesome --no-prompt
 
     - name: Render Quarto Project
       run: |
