@@ -56,6 +56,10 @@ jobs:
         fi
         pip install jupyter matplotlib pandas numpy
 
+    - name: Install Quarto Extensions
+      run: |
+        quarto add quarto-ext/lightbox --no-prompt
+
     - name: Render Quarto Project
       run: |
         quarto render
