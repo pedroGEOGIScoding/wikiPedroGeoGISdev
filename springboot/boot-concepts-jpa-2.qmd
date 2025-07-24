@@ -1,0 +1,92 @@
+---
+title: "Spring Boot: JPA Mappings"
+subtitle: Spring Boot JPA Relationships, Mappings, Inherence and Queries
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot JPA
+categories: [Spring-Boot, JPA]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **JPA Mappings and relationships**
+
+Spring Boot provides an implementation of the Java Persistence ``API`` (``JPA``) to simplify database access: ORM (``Object-Relational Mapping``)
+
+In JPA, entity classes represent tables in the database, and relationships between entities are mapped using annotations.
+
+:::
+
+</br>
+
+## JPA Implementations: ORM
+
+`OpenJPA`, `Hibernate`, and `EclipseLink` are all popular `ORM` (Object-Relational Mapping) frameworks that p**rovide implementations of the Java Persistence API (JPA)**.
+
+These frameworks s**implify database access and management by mapping Java objects to database tables, and they provide features to optimize database performance and reduce the amount of boilerplate code** required to interact with the database.
+
+![ORM implemtations JPA: vendors](/images/springboot/hibernate-jpa-2.png){width="60%"}
+
+- `OpenJPA` is an Apache project that provides a lightweight, high-performance implementation of JPA.
+- `Hibernate` is a popular ORM framework that's widely used in Spring Boot applications. It provides a rich set of features and has excellent community support.
+- `EclipseLink` is an open-source JPA implementation that's known for its performance and flexibility, and it's frequently used in `Java EE` applications.
+
+## ORM: Hibernate
+
+`Hibernate` is a popular ORM (Object-Relational Mapping) framework that provides a powerful implementation of JPA. It's widely used in Spring Boot applications to simplify database access and management.
+
+
+::: {.column-margin}
+![Hibernate JPA](/images/springboot/hibernate-jpa.png){width="50%"}
+:::
+
+
+`Hibernate` uses annotations and XML configurations to map Java objects to database tables, and it provides several features to simplify `CRUD` (Create, Read, Update, and Delete) operations on the database.
+
+`Hibernate` also provides **support for caching**, **lazy loading**, and **transaction** management, which can help you optimize the performance of your application.
+
+![JPA Hibernate stack](/images/springboot/hibernate-jpa-3.png){width="20%"}
+
+::: {.column-margin}
+Spring Boot and `Hibernate` provide a powerful combination of tools for building Java-based web applications that interact with databases.
+
+By using these frameworks together, you can s**implify database access, improve performance**, and focus on building the core functionality of your application.
+:::
+
+When you use `Hibernate` in your Spring Boot application, you can define entity classes using JPA annotations, just like you would with the standard `JPA` implementation provided by Spring Boot. `Hibernate` also provides its own set of annotations that can be used to fine-tune the behavior of the `ORM` framework.
+
+For example, you can use the @GeneratedValue annotation to specify how primary keys are generated, or the @Fetch annotation to specify how data is retrieved from the database.
+
+![JPA Hibernate architecture](/images/springboot/hibernate-jpa-4.png){width="40%"}
+
+In addition to its rich set of features, Hibernate is also known for its excellent documentation and community support. You can find plenty of tutorials, sample code, and forums online to help you get started with Hibernate in your Spring Boot application.
+
+- [JPA](https://huimang2.github.io/java/jpa){.external}
+
+## Annotations
+
+| Annotation | Description |
+| --- | --- |
+| @Entity | Specifies that the class is an entity and will be managed by the EntityManager. |
+| @Table | Specifies the database table name for the entity. |
+| @Id | Specifies the primary key field of the entity. |
+| @GeneratedValue | Specifies how the primary key should be generated. |
+| @Column | Specifies the database column name for a field. |
+| @JoinColumn | Specifies the join column when using a relationship. |
+| @OneToMany | Defines a one-to-many relationship between two entities. |
+| @ManyToOne | Defines a many-to-one relationship between two entities. |
+| @ManyToMany | Defines a many-to-many relationship between two entities. |
+| @JoinTable | Specifies the join table for a many-to-many relationship. |
+| @Embedded | Specifies that the field should be mapped as an embedded object. |
+| @Transient | Specifies that the field should not be persisted to the database. |
+: JPA Annotations {tbl-colwidths="[20,80]"}
+
+
+

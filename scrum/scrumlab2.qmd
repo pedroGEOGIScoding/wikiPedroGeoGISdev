@@ -1,0 +1,57 @@
+---
+title: "SCRUM Lab#SC02: Spaguetti Challenge"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [scrum, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **SCRUM Lab#SC02: Spaguetti Challenge**
+
+<mark>The Agile Spaghetti Challenge Tower is an innovative team-building activity that embodies Agile principles.</mark>
+
+- Participants **work in teams to construct the tallest tower using only spaghetti and marshmallows** within a time constraint.
+
+This exercise mirrors **Agile's iterative approach, encouraging collaboration, adaptability, and quick decision-making.** Teams continuously inspect and adapt their tower, incorporating feedback from short cycles to optimize performance.
+
+The challenge emphasizes Agile values such as flexibility, communication, and incremental progress. It offers a hands-on experience for participants to grasp Agile concepts in a tangible context, fostering a deeper understanding of teamwork and Agile methodologies.
+
+:::
+
+# Introduction
+
+
+![Marshmallow Tower Challenge](/images/scrum/spaguetti.png)
+
+## The Set Up
+
+Students work in teams of four to build the tallest tower they can using only the provided materials.
+
+## Build, Launch (and Fail!)
+
+
+With only 18 minutes to build their towers, teams often follow a similar construction timeline:
+
+- ~3 minutes: Figuring out who is in charge
+- ~10 minutes: Planning
+- ~4 minutes: Taping spaghetti together
+- ~1 minute: Putting their marshmallow on top
+- ~1 second: Watching the tower crumble under the (surprising) weight of the marshmallow
+
+
+# References
+
+- [Marshmallow Tower Challenge](https://www.teachingentrepreneurship.org/marshmallow-spaghetti-tower-building-competition/)
+
+
+<div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/lang/en/tom_wujec_build_a_tower_build_a_team" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe></div></div>
+
+

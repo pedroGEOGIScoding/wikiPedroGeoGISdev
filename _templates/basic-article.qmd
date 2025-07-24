@@ -1,0 +1,64 @@
+---
+title: "Linux: File System"
+subtitle: Linux File System
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: The file system is organized into a hierarchical structure, starting with the root directory
+categories: [linux, file-system]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Linux**
+
+A **pipe** is a command that allows you to **redirect the output of one command as the input to another command**. 
+
+It is represented by the vertical bar symbol ``|``.
+
+:::
+
+---
+
+# Linux
+
+## Introduction
+
+*TODO* Create an example file that demonstrates the formatting and features of your format.
+
+## More Information
+
+You can learn more about controlling the appearance of HTML output here: <https://quarto.org/docs/output-formats/html-basics.html>
+
+
+
+<!--- navLinks -->
+<br><br>
+<div class=row>
+<br>
+<div class='column left previous'>
+<br>
+[{{< fa solid arrow-left >}} Linux: su and sudo](/linux/linux-what-sudo.qmd)
+<br>
+</div>
+<br>
+<div class='column center'>
+<br>
+[{{< fa solid arrow-up >}} top](#top)
+<br>
+</div>
+<br>
+<div class='column right next'>
+<br>
+[Linux: File System  {{< fa solid arrow-right >}}](/linux/linux-what-fsys.qmd)
+<br>
+</div>
+<br>
+</div>
+

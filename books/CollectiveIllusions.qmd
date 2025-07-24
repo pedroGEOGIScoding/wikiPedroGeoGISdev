@@ -1,0 +1,21 @@
+---
+title: "Collective Illusions"
+author: "albertprofe"
+subtitle: "Todd Rose, 2022, Collective Illusions: Conformity, Complicity, and the Science of Why We Make Bad Decisions"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "Drawing on cutting-edge neuroscience and social psychology research, an acclaimed author demonstrates how so much of our thinking is informed by false assumptions—making us dangerously mistrustful as a society and needlessly unhappy as individuals."
+categories: [psychology]
+subcategories: [strategy, mind]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/CollectiveIllusions.jpg)
+
+## More info
+
+- [Collective Illusions](https://www.amazon.es/Collective-Illusions-Conformity-Complicity-Decisions/dp/0306925680){.external}

@@ -1,0 +1,64 @@
+---
+title: "CSS: W3.css"
+subtitle: W3.css
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Introduction to W3.css
+categories: [w3css, introduction]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## W3.css
+
+**W3.CSS is a CSS (Cascading Style Sheets) framework that is designed to make it easier to create modern and responsive web pages**.
+
+It provides a set of pre-defined styles and layouts that can be easily customized and applied to HTML elements, allowing developers to quickly and easily create professional-looking web pages without the need to write complex CSS code.
+
+W3.CSS is lightweight, easy to use, and supports all modern web browsers.
+
+::: {.summary}
+**W3.CSS is Smaller, Faster and Easier to Use**
+
+- W3.CSS is a modern, responsive, mobile first CSS framework.
+- W3.CSS provides equality for all browsers: Chrome. Firefox. Edge. IE. Safari. Opera.
+- W3.CSS provides equality for all devices: Desktop. Laptop. Tablet. Mobile.
+- W3.CSS is standard CSS only (No jQuery or JavaScript library).
+:::
+
+---
+<mark>Reference</mark>: [W3.css](https://www.w3schools.com/w3css/defaulT.asp)
+
+## Example
+
+``` {.html filename="example.css"}
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container w3-teal">
+  <h1>My Car</h1>
+</div>
+
+<img src="img_car.jpg" alt="Car" style="width:100%">
+
+<div class="w3-container">
+  <p>A car is a wheeled, self-powered motor vehicle used for transportation.</p>
+</div>
+
+<div class="w3-container w3-teal">
+  <p>My footer information</p>
+</div>
+
+</body>
+</html> 
+
+```
+

@@ -1,0 +1,108 @@
+---
+title: "Network: gRPC"
+subtitle: Network gRPC
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, gRPC]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview
+
+**gRPC**, which stands for Remote Procedure Call, is an open-source framework developed by Google. It is designed for building efficient and scalable microservices, APIs, and other distributed systems. gRPC uses a binary serialization format called Protocol Buffers (protobuf) for data interchange and supports multiple programming languages.
+
+**Key features** of gRPC include:
+
+1. **RPC Style Communication:** gRPC enables communication between distributed systems using a Remote Procedure Call (RPC) style. This allows methods to be called on a server as if they were local procedures.
+
+2. **Protocol Buffers:** gRPC uses Protocol Buffers as its interface definition language (IDL) for describing the structure of the data being sent between the client and server. Protocol Buffers offer a language-agnostic, efficient, and extensible way to serialize structured data.
+
+3. **HTTP/2 Protocol:** gRPC uses HTTP/2 as its transport protocol. HTTP/2 provides features such as multiplexing, header compression, and flow control, making communication more efficient compared to traditional HTTP/1.x.
+
+4. **Bidirectional Streaming:** gRPC supports bidirectional streaming, allowing both the client and server to send a stream of messages to each other. This is useful for scenarios where continuous communication is required.
+
+5. **Pluggable:** gRPC is designed to be extensible, and it supports authentication, load balancing, retries, and other features through pluggable components.
+
+6. **Code Generation:** gRPC generates client and server code in various programming languages based on the service definition specified in Protocol Buffers. This helps developers focus on business logic rather than dealing with low-level networking details.
+
+7. **Language Support:** gRPC supports a variety of programming languages, including but not limited to C++, Java, Python, Go, Ruby, C#, and more.
+
+<mark>gRPC is commonly used in microservices architectures, where it facilitates communication between different services in a scalable and efficient manner</mark>.
+
+It has gained popularity for its performance, language-agnostic support, and features suitable for modern distributed systems.
+
+# Introduction
+
+![](/images/devops/grpc.svg)
+
+- **New to gRPC?** Start with the following pages:
+
+  - [Introduction to gRPC](https://grpc.io/docs/what-is-grpc/introduction/)
+  - [Core concepts, architecture and lifecycle](https://grpc.io/docs/what-is-grpc/core-concepts/)
+  - [FAQ](https://grpc.io/docs/what-is-grpc/faq/)
+
+# Working with Protocol Buffers
+
+By default, **gRPC uses [Protocol Buffers](https://protobuf.dev/overview/){.external}, Google’s mature open source mechanism for serializing structured data (although it can be used with other data formats such as JSON).**
+
+The first step when working with protocol buffers is to define the structure
+for the data you want to serialize in a *proto file*: this is an ordinary text
+file with a `.proto` extension.
+
+**Protocol buffer** data is structured as *messages*, where each message is a small logical record of information containing a series of name-value pairs called *fields*.
+
+Here's a simple example:
+
+```proto
+message Person {
+  string name = 1;
+  int32 id = 2;
+  bool has_ponycopter = 3;
+}
+```
+
+Then, once you've specified your data structures, you use the protocol buffer
+compiler `protoc` to generate data access classes in your preferred language(s)
+from your proto definition. These provide simple accessors for each field,
+like `name()` and `set_name()`, as well as methods to serialize/parse
+the whole structure to/from raw bytes. So, for instance, if your chosen
+language is C++, running the compiler on the example above will generate a
+class called `Person`. You can then use this class in your application to
+populate, serialize, and retrieve `Person` protocol buffer messages.
+
+You define gRPC services in ordinary proto files, with RPC method parameters and return types specified as protocol buffer messages:
+
+```proto
+// The greeter service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+```
+
+**gRPC** uses `protoc` with a special gRPC plugin to generate code from your proto file: you get generated gRPC client and server code, as well as the regular protocol buffer code for populating, serializing, and retrieving your message types.
+
+
+# References
+
+- [gRPC in java](https://grpc.io/docs/languages/java/quickstart/){.external}
+
+
+
+

@@ -1,0 +1,508 @@
+---
+title: "Lab#SB00-2: CRUD User"
+subtitle: Spring Boot controllerView CRUD User (and Librarian)
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Spring Boot Lab#SB00-2: CRUD User (and Librarian)**
+
+``CRUD`` stands for ``Create``, ``Read``, ``Update``, and ``Delete`` - the four basic operations for persistent storage of data.
+
+In the context of a ``LibraryMangement``, ``CRUD`` operations would allow us to create new users, retrieve information about existing users, update user information, and delete users from the system.
+
+:::
+
+</br>
+
+::: {.callout-note}
+## We should implement it in **several domains.**
+
+- First, we'll create our User class and annotate it with @Data, @NoArgsConstructor, and @AllArgsConstructor.
+- Next, we'll create our ``UserService`` class and annotate it with ``@Service``. This class will use a ``HashMap`` to **store user data**, and will expose methods to create, read, update, and delete users.
+- Next, we'll create our ``UserController`` class and annotate it with ``@Controller``. This class will handle requests to view, create, update, and delete users. We'll inject the ``UserService`` into the **controller** using ``@Autowired``.
+- Finally, we'll create our ``Thymeleaf`` ``HTML`` **templates**. We'll create an ``index.html`` or ``home.html`` template to display a list of users, a ``createUser.html`` template to allow users to create new users, and an`` editUser.html`` template to allow users to edit existing users.
+
+:::
+
+
+## Overview
+
+We'll be using a Java class called ``User`` to represent **user data**.
+
+::: {.column-margin}
+
+The ``@Data`` annotation is used to generate getters, setters, equals, hashCode, and toString methods for the class. The ``@NoArgsConstructor`` and ``@AllArgsConstructor`` annotations are used to generate constructors with no arguments and all arguments, respectively.
+
+:::
+
+We'll also be using a ``HashMap`` to **store user data**, with ``userId`` as the key. This will allow us to quickly retrieve user data using the user ID as a **lookup key**.
+
+```java
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+// generates getters, setters, equals, 
+// hashCode, and toString methods
+@Data
+@NoArgsConstructor // generates a no-args constructor
+@AllArgsConstructor // generates a constructor with all arguments
+public class User {
+    private String userId;
+    private String name;
+    private String address;
+    private int age;
+}
+```
+We might implement the ``CRUD`` operations for our ``LibraryMangement`` system:
+
+- ``Create``: To create a new user, we'll need to generate a unique user ID and create a new User object with the provided user data. We can then add the new User object to our HashMap using the generated user ID as the key.
+- ``Read``: To retrieve information about an existing user, we'll need to look up the User object in our HashMap using the user ID as the key.
+- ``Update``: To update user information, we'll need to retrieve the User object from our HashMap using the user ID as the key, and then update the relevant properties of the User object.
+- ``Delete``: To delete a user from the system, we'll need to remove the User object from our HashMap using the user ID as the key.
+
+## References 
+
+### Library5
+
+#### Repos
+
+- [Lab#SB02-Library5 Code](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library5){.external}
+- [Lab#SB02-Library5 Docs](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library5:-ThymeLeaf-Web-Project){.external}
+
+#### Java Classes
+
+- [Book Entity](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/java/io/company/library/Book.java){.external}
+- [Book Service](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/java/io/company/library/BookService.java){.external}
+- [Book Controller](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/java/io/company/library/LibraryWebController.java){.external}
+
+#### Templates Thynmeleaf
+
+- [detailBook](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/resources/templates/detailBook.html){.external}
+- [newBook](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/resources/templates/newBook.html){.external}
+- [notfound](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/resources/templates/notfound.html){.external}
+- [showBooks](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/resources/templates/showBooks.html){.external}
+- [updateBook](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/resources/templates/updateBook.html){.external}
+
+### LibraryManagement: controllerView
+
+- [controllerView code github](https://github.com/AlbertProfe/CifoJava2023/tree/master/controllerView){.external}
+
+## controllerView
+
+### folder-tree project & domains
+
+![Folder-tree `controllerView` Project just with `Read` feature](/images/springboot/controllerView_read.png){width="60%"}
+
+### Home
+
+This cycle defines a `@Controller` class that handles requests to the `URL` `"/home"`. When a `request` is made, it adds the current date and time to the `model` object, and then `returns` **the name of the view to be rendered.** 
+
+The view will have access to the "todayDate" attribute and can use it to display the current date and time.
+
+```java
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.Date;
+
+@Controller
+public class HomeController {
+    @RequestMapping("/home")
+    public String gethome(Model model){
+
+        model.addAttribute("todayDate", new Date().toString());
+        return "home";
+    }
+
+}
+```
+:::{.column-margin}
+
+![render html chrome: /home](/images/springboot/viewController1.png){width="60%"}
+:::
+
+## CRUD: read
+
+### Users
+
+The cycle request-response relies in the `@Controller` class called `UserController`, which `maps` `requests` to the `"/user/users" URL`. 
+
+It uses an `@Autowired` `UserService` to `fetch` a **list of users and adds them to the `model`**, before returning a view called `"user/users".`
+
+
+``` java
+package com.example.myFirstSpring.controller;
+
+import com.example.myFirstSpring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+
+    @Autowired
+    UserService userService;
+
+    @RequestMapping("/users")
+    public String getAllUsers(Model model){
+        // fetch all users, add to model
+        model.addAttribute("users", userService.getAllUsers());
+        return "user/users";
+    }
+}
+
+```
+:::{.column-margin}
+![render html chrome: /user/users](/images/springboot/viewController2.png){width="60%"}
+:::
+
+Here we will define the @Service class, called `UserService` with a method called `getAllUsers`, which returns a `HashMap` of `user` objects.
+
+The `HashMap` is populated **with 20 fake user objects using a utility** method called `populateFakeUsers`.
+
+```java
+package com.example.myFirstSpring.service;
+
+import com.example.myFirstSpring.model.User;
+import com.example.myFirstSpring.utils.Utils;
+import org.springframework.stereotype.Service;
+import java.util.HashMap;
+
+@Service
+public class UserService {
+    public static HashMap<String, User> users = new HashMap<>();
+
+    static {
+        Utils.populateFakeUsers(20, users);
+    }
+
+    public HashMap<String, User> getAllUsers (){
+
+        return users;
+    }
+}
+```
+
+#### Code source 
+
+- [controllerView Project](https://github.com/AlbertProfe/CifoJava2023/tree/master/controllerView){.external}
+- [Home Controller](https://github.com/AlbertProfe/CifoJava2023/blob/0a821cc862d142f213b13f65586de09236699ee9/controllerView/src/main/java/com/example/myFirstSpring/controller/HomeController.java){.external}
+- [User Controller](https://github.com/AlbertProfe/CifoJava2023/blob/0a821cc862d142f213b13f65586de09236699ee9/controllerView/src/main/java/com/example/myFirstSpring/controller/UserController.java){.external}
+- [Users html](https://github.com/AlbertProfe/CifoJava2023/blob/0a821cc862d142f213b13f65586de09236699ee9/controllerView/src/main/resources/templates/user/users.html){.external}
+- [Home html](https://github.com/AlbertProfe/CifoJava2023/blob/0a821cc862d142f213b13f65586de09236699ee9/controllerView/src/main/resources/templates/home.html){.external}
+
+### Librarians
+
+Like `User request-response cyle read` feature (user-case and user-story) we will code the `Librarian`.
+
+::: {.callout-note}
+The `Librarian cycle request-response` would function similarly to the User cycle request-response, but with different URLs, controller methods, and service methods tailored to the Librarian entity.
+:::
+
+1. The `LibrarianController` would `map` requests to the appropriate URLs, such as `"/librarian/librarians"`.
+
+2. These `requests` would be handled by methods in the `LibrarianController`, which would call methods from the `LibrarianService` to fetch or manipulate data.
+
+::: {.column-margin}
+The `LibrarianService` would contain methods for fetching and manipulating data from the Librarian entity, similar to the UserService for the User entity.
+:::
+
+3. Templates would also be created for rendering views related to the Librarian entity, using `Thymeleaf` or a similar templating engine.
+
+#### Code source 
+
+- [controllerView Project](https://github.com/AlbertProfe/CifoJava2023/tree/master/controllerView){.external}
+- [Librarian controller](https://github.com/AlbertProfe/CifoJava2023/blob/master/controllerView/src/main/java/com/example/myFirstSpring/controller/LibrarianController.java){.external}
+
+:::{.column-margin}
+![render html chrome: /librarian/librarians](/images/springboot/viewController3.png){width="60%"}
+:::
+
+## CRUD: create
+
+### Create book (reference)
+
+![CRUD: create book](/images/springboot/crud-create.png)
+
+- [The Form element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form){.external}
+
+::: {.callout-note}
+## HTML Form: name/id
+
+In ``HTML`` forms, the ``name`` and ``id`` **attributes** serve different purposes for form elements:
+
+- ``name`` **attribute**: This attribute defines the ``name`` of the input element, which is used to identify the **form data in the request that is sent to the server** when the form is **submitted**. The name attribute is required for all form controls and must be unique within the form.
+
+- ``id`` **attribute**: This attribute is used to **uniquely identify an HTML element**. It can be used to **target** the element with ``CSS`` or ``JavaScript``, and can also be used to associate a label with an input element using the for attribute.
+:::
+
+::: {.callout-note}
+## HTML Form: action
+The ``action`` attribute is used to **specify the URL of the server-side script or class/method that will process the form data when the form is submitted**.
+
+This attribute is required for all forms and **specifies the location where the form data will be sent.**
+
+The method attribute is also used to specify the ``HTTP`` method that will be used to submit the form data, such as ``GET`` or ``POST``.
+
+:::
+
+::: {.callout-note}
+## HTML Form: for
+
+The ``for`` attribute is used **to associate a label with an input element.**
+
+The ``for`` attribute specifies which input element **the label belongs to by referring to the ``id`` attribute** of the input element.
+
+:::
+### Create user
+
+1. The client sends a ``request`` to server-controller by an ``endpoint`` to get the create-user form: [Users template](https://github.com/AlbertProfe/CifoJava2023/blob/dea67f25d24bcc89a6141762d5ed17085660349b/controllerView/src/main/resources/templates/user/users.html#L27){.external}
+
+```html
+<p>
+    <a th:href="@{/user/emptyForm}">Add new user to HashMap</a>
+</p>
+```
+::: {.column-margin}
+![](/images/springboot/createUser-01.png)
+:::
+
+2. The server-controller method handles the ``request`` and sends a ``response`` with the create-user form: [UserController](https://github.com/AlbertProfe/CifoJava2023/blob/dea67f25d24bcc89a6141762d5ed17085660349b/controllerView/src/main/java/com/example/myFirstSpring/controller/UserController.java#L36){.external}
+
+```java
+@RequestMapping("/emptyForm")
+public String sendUserForm(){
+    return "user/userForm";
+}
+```
+
+
+3. The client renders the create-user form received from server-controller: [userForm](https://github.com/AlbertProfe/CifoJava2023/blob/dea67f25d24bcc89a6141762d5ed17085660349b/controllerView/src/main/resources/templates/user/userForm.html){.external}
+
+```html
+<form action="/user/createUser" >
+    <p>
+        <label for="name">Name</label>
+        <input  type="text" name="name"  id="name"></p>
+    <p>
+        <label for="address">address</label>
+        <input  type="text" name="address"  id="address"></p>
+    <p>
+        <label for="age">age</label>
+        <input type="number" name="age"  id="age" ></p>
+    <p>
+        <input type="submit" value="Add new user" />
+</form>
+```
+
+::: {.column-margin}
+![](/images/springboot/createUser-02.png)
+:::
+
+
+4. The client sends a ``request`` to add this new ``user`` to ``HashMap``: [userForm](https://github.com/AlbertProfe/CifoJava2023/blob/dea67f25d24bcc89a6141762d5ed17085660349b/controllerView/src/main/resources/templates/user/userForm.html#L24){.external} 
+
+```html
+<form action="/user/createUser" >
+    <input type="submit" value="Add new user" />
+</form>
+```
+::: {.column-margin}
+![](/images/springboot/createUser-03.png)
+:::
+
+
+5. The sever-controller method handles the ``request``, saves the ``user`` object in a ``HashMap`` and redirects the reponse: [UserController](https://github.com/AlbertProfe/CifoJava2023/blob/dea67f25d24bcc89a6141762d5ed17085660349b/controllerView/src/main/java/com/example/myFirstSpring/controller/UserController.java#L27){.external}
+
+```java
+@RequestMapping("/createUser")
+public String createUser(User user){
+    userService.createUser(user);
+    return "redirect:users";
+    //return "user/userCreationResult";
+}
+```
+::: {.column-margin}
+
+![](/images/springboot/createUser-04.png)
+:::
+
+## CRUD: update
+
+### Update book (reference)
+
+![CRUD: update book](/images/springboot/crud-update.png)
+
+### Update user
+
+1. The client sends a ``request`` to server-controller by an ``endpoint`` to get the update-user form: [Update user template](https://github.com/AlbertProfe/CifoJava2023/blob/e4c046a70dba18dc3fcc9515cac269dec7523374/controllerView/src/main/resources/templates/user/users.html#L19){.external}
+
+```html
+<td>
+     <a th:href=
+     "@{packedUserForm(idFromView=${user.value.userId})}"
+     >Update</a>
+</td>
+```
+::: {.column-margin}
+![](/images/springboot/updateCrud-1.png)
+:::
+
+2. The server-controller method handles the ``request`` and sends a response with the update-user form: [UserController](https://github.com/AlbertProfe/CifoJava2023/blob/e4c046a70dba18dc3fcc9515cac269dec7523374/controllerView/src/main/java/com/example/myFirstSpring/controller/UserController.java#L42){.external}
+
+```java
+@RequestMapping("/packedUserForm")
+public String packedUserForm(@RequestParam("idFromView") String id ,
+                                Model model){
+
+    User userFound = userService.findUserById(id);
+
+    if (userFound != null){
+        model.addAttribute("userFromController", userFound);
+        model.addAttribute("message", "User  found");}
+    else
+        model.addAttribute("message", "User not found");
+
+    return "user/userToUpdateForm";
+}
+```
+
+
+3. The client renders the update-user form received from server-controller: [userForm](https://github.com/AlbertProfe/CifoJava2023/blob/e4c046a70dba18dc3fcc9515cac269dec7523374/controllerView/src/main/resources/templates/user/userToUpdateForm.html){.external}
+
+```html
+<form th:action=
+        "@{updateUser/{idFromView}
+        (idFromView=${userFromController.idUser})}"
+      th:object=
+        "${userFromController}"
+      method=
+        "post">
+    <p>
+        <label for="userId">User Id</label>
+        <input  type="number" name="userId" id="userId" 
+                th:field="*{userId}" readonly></p>
+    <p>
+    <p>
+        <label for="name">Name</label>
+        <input  type="text" name="name" id="name"
+                th:field="*{name}"></p>
+    <p>
+        <label for="address">Address</label>
+        <input  type="text" name="address" id="address"
+                th:field="*{address}"></p>
+    <p>
+        <label for="Age">Age</label>
+        <input type="number" name="age" id="age"
+                th:field="*{age}" ></p>
+    
+        <input type="submit" value="Update user"/>
+    </div>
+</form>
+```
+
+::: {.column-margin}
+![](/images/springboot/updateCrud-2.png)
+:::
+
+
+4. The client sends a request to update this ``user`` to ``HashMap``: [userForm](https://github.com/AlbertProfe/CifoJava2023/blob/e4c046a70dba18dc3fcc9515cac269dec7523374/controllerView/src/main/resources/templates/user/userToUpdateForm.html#L13){.external} 
+
+```html
+<form th:action=
+        "@{updateUser/{idFromView}
+        (idFromView=${userFromController.idUser})}"
+      th:object=
+        "${userFromController}"
+      method=
+        "post">
+</form>
+```
+::: {.column-margin}
+![From age 50 to 51](/images/springboot/updateCrud-3.png)
+:::
+
+
+5. The sever-controller method handles the request, updates the ``user`` object in a ``HashMap`` and redirects the reponse: [UserController](https://github.com/AlbertProfe/CifoJava2023/blob/e4c046a70dba18dc3fcc9515cac269dec7523374/controllerView/src/main/java/com/example/myFirstSpring/controller/UserController.java#L57){.external} and [UserService](hhttps://github.com/AlbertProfe/CifoJava2023/blob/e4c046a70dba18dc3fcc9515cac269dec7523374/controllerView/src/main/java/com/example/myFirstSpring/service/UserService.java#L41){.external}
+
+```java
+@PostMapping("/updateUser/{idFromView}")
+public String updateUser(@PathVariable("idFromView") String id,
+                            User updatedUser) {
+
+    User userFound = userService.findUserById(id);
+
+    if (userFound != null) {
+        userService.updateUserByUser(updatedUser);
+        return "redirect:/user/users";
+    } else return "user/userNotFound";
+}
+```
+::: {.column-margin}
+
+![](/images/springboot/updateCrud-4.png)
+:::
+
+
+## CRUD: delete
+
+
+
+1. The client sends a ``request`` to server-controller by an ``endpoint`` to delete a user: [Users template](https://github.com/AlbertProfe/CifoJava2023/blob/6cb9830203dd3376e98bd0c1b0483dc2a5f16751/controllerView/src/main/resources/templates/user/users.html#L19){.external}
+
+::: {.column-margin}
+
+![We are going to delete one user: Antoine](/images/springboot/crudDelete-1.png)
+:::
+
+2. The server-controller method handles the ``request`` and sends a response with the result. It could be success (user deleted) or fail (the deletion operation could not be done): [UserController](https://github.com/AlbertProfe/CifoJava2023/blob/6cb9830203dd3376e98bd0c1b0483dc2a5f16751/controllerView/src/main/java/com/example/myFirstSpring/controller/UserController.java#L72){.external}
+
+
+
+```java
+@RequestMapping("/deleteUser")
+public String deleteUser(@RequestParam("idFromView") String id) {
+
+    User userFound = userService.findUserById(id);
+
+    if (userFound != null) {
+        userService.deleteUserById(id);
+        return "redirect:/user/users";
+    } else return "user/userNotFound";
+
+
+}
+```
+
+::: {.column-margin}
+
+![User Antoine deleted](/images/springboot/deleteUser-2.png)
+:::
+
+The `@Controller` uses **userService** to call `@Service`: `deleteUserById`:
+
+```java
+public void deleteUserById(String id) {
+    users.remove(id);
+}
+
+```
+
+3. The server-controller method after handled the request sends the response: redirects the reponse to users: [UserController redirect](https://github.com/AlbertProfe/CifoJava2023/blob/6cb9830203dd3376e98bd0c1b0483dc2a5f16751/controllerView/src/main/java/com/example/myFirstSpring/controller/UserController.java#L79){.external}
+
+
+

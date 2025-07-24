@@ -1,0 +1,328 @@
+---
+title: "Lab#SE00-2: Maven Clinic"
+subtitle: Java SE Lab 00
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 00, part 2
+categories: [javase, lab, model, composition]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#SE00-2: Maven Clinic**
+
+
+1. **Create** a ``Maven/Gradle`` Java SE Project with the ``UML`` and classes defined below.
+
+2. **Add** ``Lombok``, ``JUnit`` and ``Faker`` dependencies
+
+3. **Refactor**: remove *boilerplate* code (getters, setters and so on) and work with ``Lombok`` from ``Person``, ``MyDate`` and ``Clinic``
+
+4. **Create** ``Junit`` tests to test objects. Use ``Faker`` to create objects:
+
+    1. Test ``createPerson``: check weather the object ``Person`` creation works properly. 
+    2. Test ``createMyDate``: check weather the object ``Car`` creation works properly.
+    3. Test ``createClinic``: check weather the object ``Book`` creation works properly.
+  
+5. **Complete these mehtods within** ``Clinic`` class:
+
+    1. ``public boolean isAccepted(Person person) {}``: return true when weightIndex() < **lowestWeightIndex**
+    2. ``public void addAsMember(Person person) {}``: add as a member if member ``isAccepted(Person person)`` 
+    3. ``public Person personWithHighestWeightIndex() {}``: return ``Person`` object with the highest ``WeightIndex()``  
+
+6. Create ``Junit`` tests to test the previous three new methods created at ``Clinic`` class.
+
+:::
+
+---
+
+## UML
+
+- The class diagram represents three classes, ``Person``, ``MyDate``, and ``Clinic``.
+  - The ``Person`` class has four private fields name, age, height, and weight and one field birthMyDate of type MyDate .
+  - The ``MyDate`` class has three private fields day, month, and year.
+  - The ``Clinic`` class has two private fields lowestWeightIndex and name, and a field members which is an ArrayList of ``Person`` objects.
+- The relationship between ``Person`` and ``MyDate`` is a **Composition** relationship, where as the relationship between ``Clinic`` and ``Person`` is also a **Composition** relationship but trough an ArraList.
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+class Person {
+  -name: String
+  -age: int
+  -height: int
+  -weight: int
+  -birthMyDate: MyDate
+}
+
+class MyDate {
+  -day: int
+  -month: int
+  -year: int
+}
+
+class Clinic {
+  -lowestWeightIndex: double
+  -name: String
+  -members: ArrayList~Person~
+}
+
+Person *-- MyDate: Composition
+Clinic *-- Person: Composition
+```
+</div>
+
+## Base Classes
+
+### Person Class
+
+Here, the `Person` class represents a **person** with a name, address and others. 
+
+<div class='indent'><details>
+<summary>Code Person</summary>
+
+``` {.java .code-overflow-wrap filename="Person.java"}
+
+  package exemple3;
+
+public class Person {
+
+	private String name;
+	private int age;
+	private int height;
+	private int weight;
+	//composition relationship
+	private MyDate birthMyDate;
+
+	public Person(String name) {
+		this(name, 0); // run here the other constructor's code and set the age parameter to 0
+	}
+
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+		this.weight = 0;
+		this.height = 0;
+	}
+	
+	public Person(String name, int height, int weigth) {
+		this.name = name;
+		this.age = 0;
+		this.weight = weigth;
+		this.height = height;
+	}
+
+	public Person(String name, int day, int month, int year) {
+		this.name = name;
+		this.weight = 0;
+		this.height = 0;
+		this.birthMyDate = new MyDate(day, month, year);
+	}
+	
+	public Person(String name, int age, int day, int month, int year) {
+		this.name = name;
+		this.age = age;
+		this.weight = 0;
+		this.height = 0;
+		this.birthMyDate = new MyDate(day, month, year);
+	}
+
+	public void printPerson() {
+		System.out.println(this.name + " I am " + this.age + " years old");
+	}
+
+	public void becomeOlder() {
+		this.age++;
+	}
+
+	public void becomeOlder(int years) {
+		this.age = this.age + years;
+	}
+
+	public boolean isAdult() {
+		if (this.age < 18) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public double weightIndex() {
+		double heightInMeters = this.height / 100.0;
+
+		return this.weight / (heightInMeters * heightInMeters);
+	}
+	
+	public boolean olderThan(Person compared) {
+		if (this.age > compared.getAge()) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public String toString() {
+		return this.name + " I am " + this.age + " years old, my weight index is " + this.weightIndex() + ", born "
+				+ this.birthMyDate;
+	}
+
+	//setters and getters
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getHeight() {
+		return this.height;
+	}
+
+	public int getWeight() {
+		return this.weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getAge() {
+		return this.age;
+	}
+}
+```
+</details></div>
+
+### MyDate Class
+
+Here, the `MyDate` class represents a **date** with a day, month and year. 
+
+<div class='indent'><details>
+<summary>Code MyDate</summary>
+
+``` {.java .code-overflow-wrap filename="MyDate.java"}
+
+package exemple3;
+
+public class MyDate {
+	private int day;
+	private int month;
+	private int year;
+
+	public MyDate(int day, int month, int year) {
+		this.day = day;
+		this.month = month;
+		this.year = year;
+	}
+
+	public String toString() {
+		return this.day + "." + this.month + "." + this.year;
+	}
+
+	public boolean earlier(MyDate compared) {
+		// first we'll compare years
+		if (this.year < compared.year) {
+			return true;
+		}
+
+		// if the years are the same, we'll compare the months
+		if (this.year == compared.year && this.month < compared.month) {
+			return true;
+		}
+
+		// years and months the same, we'll compare the days
+		if (this.year == compared.year && this.month == compared.month && this.day < compared.day) {
+			return true;
+		}
+
+		return false;
+	}
+}
+```
+</details></div>
+
+### Clinic Class
+
+Here, the `Clinic` class represents a **clinic** with a name, lowestWeightIndex and members. 
+
+<div class='indent'><details>
+<summary>Code Clinic</summary>
+
+``` {.java .code-overflow-wrap filename="Clinic.java"}
+
+package exemple3;
+
+import java.util.ArrayList;
+
+public class Clinic {
+
+	private double lowestWeightIndex;
+	private String name;
+	private ArrayList<Person> members;
+
+	public Clinic(String name, double lowestWeightIndex) {
+		this.lowestWeightIndex = lowestWeightIndex;
+		this.name = name;
+		this.members = new ArrayList<Person>();
+	}
+
+	public boolean isAccepted(Person person) {
+		// to-do
+	}
+
+	public void addAsMember(Person person) {
+		// to-do
+	}
+
+	public Person personWithHighestWeightIndex() {
+		// to-do
+	}
+
+	public String toString() {
+		String membersAsString = "";
+
+		for (Person member : this.members) {
+			membersAsString += "  " + member + "\n";
+		}
+
+		return "Clinic:\n " + this.name + " (" + this.lowestWeightIndex +  ") " + "  \n members: \n" + membersAsString;
+	}
+
+	//getters and setters
+	public double getLowestWeightIndex() {
+		return lowestWeightIndex;
+	}
+
+	public void setLowestWeightIndex(double lowestWeightIndex) {
+		this.lowestWeightIndex = lowestWeightIndex;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ArrayList<Person> getMembers() {
+		return members;
+	}
+
+	public void setMembers(ArrayList<Person> members) {
+		this.members = members;
+	}
+
+}
+
+```
+</details></div>
+
+

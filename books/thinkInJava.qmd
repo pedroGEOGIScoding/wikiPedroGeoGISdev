@@ -1,0 +1,30 @@
+---
+title: "Thinking in Java"
+author: "albertprofe"
+subtitle: " Eckel Bruce, 2006, Scrum: The Art of Doing Twice the Work in Half the Time"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "Thinking in Java has earned raves from programmers worldwide for its extraordinary clarity, careful organization, and small, direct programming examples. From the fundamentals of Java syntax to its most advanced features, Thinking in Java is designed to teach, one simple step at a time."
+categories: [java]
+subcategories: [programming, java]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/thinkInJava.jpeg)
+
+## More info
+
+- [Thinking in Java](http://www.dblab.ntua.gr/~gtsat/collection/Java%20books/Bruce.Eckel.Thinking.In.Java.4th.Edition.Dec.2007.eBook-BBL.pdf){.external}
+
+
+Bruce Eckel is president of MindView, Inc. (www.MindView.net), which provides public and private training seminars, consulting, mentoring, and design reviews in object-oriented technology and design patterns. He is the author of several books, has written more than fifty articles, and has given lectures and seminars throughout the world for more than twenty years. Bruce has served as a voting member of the C++ Standards Committee. He holds a B.S. in applied physics and an M.S. in computer engineering.
+
+2003 Java Developer’s Journal Reader’s Choice Award for Best Book
+2001 JavaWorld Editor’s Choice Award for Best Book
+2000 JavaWorld Reader’s Choice Award for Best Book
+1999 Software Development Magazine Productivity Award
+1998 Java Developer’s Journal Editor’s Choice Award for Best Book

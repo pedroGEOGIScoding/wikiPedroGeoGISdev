@@ -1,0 +1,153 @@
+---
+title: "Quarto Markdown: basics"
+subtitle: Introudction (1/7)
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Introduction to Quarto web
+categories: [markup, qmd, quarto, introduction]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+Quarto is a *publishing system/engine* based on [**Pandoc**](https://pandoc.org/) and uses its variation of markdown as its underlying document syntax. Pandoc markdown is an extended and slightly revised version of <mark>John Gruber’s Markdown syntax</mark>.
+
+Markdown is a <mark>plain text format</mark> that *is designed to be easy to write, and, even more importantly, easy to read*:
+
+> A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. – John Gruber
+
+This document provides examples of the most commonly used markdown syntax. See the full documentation of Pandoc’s Markdown for more in-depth documentation.
+
+## Syntax
+
+::: {.callout-tip collapse="false"  layout-ncol=2  icon=false}
+## Markdown Basics
+[Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html){#Markdown-Basics}
+
+Text Formatting
+Headings
+Links & Images
+Lists
+Tables
+Source Code
+Equations
+Diagrams
+Videos
+Page Breaks
+Divs and Spans
+Callout Blocks
+Other Blocks 
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2 icon=false}
+## Figures
+[Figures](https://quarto.org/docs/authoring/markdown-basics.html){#Figures}
+
+Figure Basics
+Linked Figures
+Figure Alignment
+Alt Text
+Multiformat Figures
+Subfigures
+Figure Panels
+Figure Divs
+LaTeX Figures
+Caption Locations
+Custom Layouts
+Computations
+Block Layout
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Tables
+[Tables](https://quarto.org/docs/authoring/Tables.html){#Tables}
+
+Markdown Tables
+Column Widths
+Cross References
+Caption Location
+Computations
+Grid Tables
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Diagrams
+[Diagrams](https://quarto.org/docs/authoring/Diagrams.html){#Diagrams}
+
+Mermaid
+Graphviz
+Authoring
+Figures
+File Include
+Sizing
+Mermaid Formats
+Code Echo
+Chrome Install
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Videos
+[Videos](https://quarto.org/docs/authoring/Diagrams.html){#Videos}
+
+Video URL
+Options
+Revealjs
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Callout Types
+[Callout Types](https://quarto.org/docs/authoring/Callouts.html){#Callout-Types}
+
+Markdown Syntax
+Customizing Appearance
+Format Support
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Cross References
+[Cross References](https://quarto.org/docs/authoring/Cross-References.html){#Cross-References}
+
+Figures
+Tables
+Equations
+Sections
+Code Listings
+Theorems and Proofs
+References
+Chapter Numbering
+Lists
+Options
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Title Blocks
+[Title Blocks](https://quarto.org/docs/authoring/Title-Blocks.html){#Title-Blocks}
+
+Title Banners
+Date
+Metadata Labels
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Article Layout
+[Article Layout](https://quarto.org/docs/authoring/Article-Layout.html){#Article-Layout}
+
+Markdown Syntax
+Customizing Appearance
+Format Support
+:::
+
+::: {.callout-tip collapse="false" layout-ncol=2  icon=false}
+## Presentations
+[Presentations](https://quarto.org/docs/Presentations.html){#APresentations}
+
+Creating Slides
+Incremental Lists
+Multiple Columns
+Learning More
+:::
+

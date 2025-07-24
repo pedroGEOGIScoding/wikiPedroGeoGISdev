@@ -1,0 +1,477 @@
+---
+title: "Lab#SE03-1: Library/Book, Core-Model"
+subtitle: "Java SE Lab 03 part 1"
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: "Java SE Lab 03, part 1 work on the Core-Model"
+categories: [javase, lab, composition, model]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+
+::: {.labs}
+📘 **Linux Lab#SE03-1: Library/Book**
+
+1. Create a Maven/Gradle `Java SE Project`. 
+    
+    - And from [Lab SE#00-3](/javase/selab0-3.qmd) use the relationship between ``User`` and ``Book``.
+
+2. Add the needed dependencies:
+
+    - Lombok
+    - Junit
+    - Java Faker
+
+3. Create three `Java` classes to define the **Model**.
+Java SE Classes:
+
+    - Person: User, Worker, Staf, Freelancer, Author
+    - Publication: Book, BooItem, Multimedia, MultimediaItem
+
+4. With `Junit` dependency create **unitary test** to test objects and operations, and then **integration tests**.
+
+5. From here you should add new features **once all the test are passed.**
+
+    - Operations, you could think in a Manager Class o similar
+    - New fields/attributes and new classes
+    - New compositions and inherence: expand your model
+    - Use Factory design pattern to create new objects
+
+:::
+
+---
+
+## Core classes and dependencies
+
+You could then use these classes as follows:
+
+``` {.java .code-overflow-wrap filename="moviemodel.java"}
+import lombok.Data;
+
+@Data
+class Person {
+    private String name;
+    private int age;
+}
+
+class User extends Person {
+    private String username;
+    private String password;
+}
+
+class Staff extends Person {
+    private String department;
+}
+
+class Freelancer extends Person {
+    private String skills;
+}
+
+interface Publication {
+    void publish();
+}
+
+class Author extends Person {
+    private String authorName;
+}
+
+interface Publication {
+    void publish();
+}
+
+class Book implements Publication {
+    private String title;
+    private int pages;
+    private Author author;
+
+    @Override
+    public void publish() {
+        System.out.println("Publishing book: " + title);
+    }
+}
+
+class BookItem extends Book {
+    private int ISBN;
+}
+
+class Multimedia extends Publication {
+    private String title;
+    private String format;
+}
+
+class MultimediaItem extends Multimedia {
+    private int itemId;
+}
+
+```
+### Dependency: Lombok
+
+Use ``Lombok``, [link](https://projectlombok.org/){.external}:
+
+- The **@Data** annotation is a ``Lombok`` annotation that generates getters and setters for the fields of a class, as well as equals, hashCode, and toString methods based on the fields.
+
+- The **@AllArgsConstructor** annotation is a ``Lombok`` annotation that generates a constructor with all of the class's fields as arguments.
+
+- The **@NoArgsConstructor** annotation is a ``Lombok`` annotation that generates a no-argument constructor for a class.
+
+[**@Data**](https://projectlombok.org/features/Data){.external} All together now: A shortcut for **@ToString**, **@EqualsAndHashCode**, **@Getter** on all fields, **@Setter** on all non-final fields, and **@RequiredArgsConstructor**.
+
+Adding lombok to your pom file: to include lombok as a provided dependency, add it to your <dependencies>In your Java code: block like so:
+
+``` {.java .code-overflow-wrap filename="pom.xml"}
+<dependencies>
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.24</version>
+		<scope>provided</scope>
+	</dependency>
+</dependencies>
+```
+### Dependency: Java Faker
+
+Use [Java Faker](https://github.com/DiUS/java-faker){.external}:
+
+In `pom.xml`, add the following xml **dependency** between <dependencies> ... </dependencies>
+
+```{.java .code-overflow-wrap filename="pom.xml"}
+<dependencies>
+  <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+  </dependency>
+</dependencies>
+```
+In your Java code:
+
+``` {.java .code-overflow-wrap filename="testfaker.java"}
+import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Test;
+
+Faker faker = new Faker();
+
+String name = faker.name().fullName(); // Miss Samanta Schmidt
+String firstName = faker.name().firstName(); // Emory
+String lastName = faker.name().lastName(); // Barton
+
+String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
+```
+
+### Dependency: JUnit 5
+
+To configure support for **JUnit Jupiter based tests**, configure test scoped dependencies on the [JUnit Jupiter API and the JUnit Jupiter TestEngine](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-engines-configure){.external} implementation similar to the following.
+
+more on [Java SE TDD](/javase/se-concepts-tdd.qmd)
+
+```{.java .code-overflow-wrap filename="pom.xml"}
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.1</version>
+      <scope>test</scope>
+    </dependency>
+```
+
+
+## Solving discussion: UMLs
+
+### Core features: borrow and issue
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class Publication {
+  -title: String
+  -year: int
+  -author: String
+  -statusPublication: enum
+}
+
+class Borrow {
+    +fromDate
+    +toDate
+    +borrowStatus
+}
+
+class Issue {
+    +publishDate
+    +unpublishDate
+    +manageDate
+    -issueStatus
+}
+
+class Member {
+    -idMember: String
+    +checkOutPublication()
+    +returnPublication()
+    +holdOnPublication()
+}
+
+class Librarian {
+    -idLibrarian
+    +addPublication()
+    +removePublication()
+    +holdPublication()
+  
+}
+
+class Person {
+    -name: String
+    -surname: String
+    -address: String
+    -age:int
+    +getPublications()
+}
+
+Person --> Member
+Person --> Librarian
+Member --> Borrow
+Borrow --> Publication
+Librarian --> Issue
+Issue --> Publication
+```
+
+</div>
+
+
+::: {.callout-note}
+:::
+
+### Core features: publications and books
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class Person {
+    -name: String
+    -dob: date
+    -id: String
+}
+class Author {
+    -authorName: String
+}
+
+
+class Publication {
+    <<interface>>
+    +publish()
+}
+
+
+class Book {
+    -title: String
+    -pages: int
+    -author: Author
+}
+
+class BookItem {
+    -ISBN: int
+}
+
+class Multimedia {
+    -title: String
+    -format: String
+}
+
+class MultimediaItem {
+    -itemId: int
+}
+
+
+Person --> Author
+Book *-- Author
+Multimedia *-- Author
+Publication --> Book
+Publication --> Multimedia
+Book --> BookItem
+Multimedia --> MultimediaItem
+
+```
+
+</div>
+
+
+::: {.callout-note}
+:::
+
+
+### Core features: user and librarian (staf)
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+class Person {
+    -name: String
+    -dob: date
+    -id: String
+}
+
+class User {
+    -username: String
+    -password: String
+}
+
+class Worker {
+    -basePayment: double
+}
+
+class Staff {
+    -department: String
+    -category: String
+    -salary: double
+}
+
+class Librarian {
+    -idLibrarian
+    +addPublication()
+    +removePublication()
+    +holdPublication()
+  
+}
+
+class Freelancer {
+    -skills: String
+    -variablePayment: double
+}
+
+class Author {
+    -authorName: String
+}
+
+
+Person --> User
+Person --> Worker
+Worker --> Staff
+Staff --> Librarian
+Worker --> Freelancer
+Person --> Author
+Book *-- Author
+Multimedia *-- Author
+```
+
+</div>
+
+### Core features
+
+::: {.column-page-right}
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+class Person {
+    -name: String
+    -dob: date
+    -id: String
+}
+
+class User {
+    -username: String
+    -password: String
+}
+
+class Worker {
+    -basePayment: double
+}
+
+class Staff {
+    -department: String
+    -category: String
+    -salary: double
+}
+
+class Freelancer {
+    -skills: String
+    -variablePayment: double
+}
+
+class Author {
+    -authorName: String
+}
+
+class Librarian {
+    -idLibrarian
+    +addPublication()
+    +removePublication()
+    +holdPublication()
+  
+}
+
+class Publication {
+    <<interface>>
+    +publish()
+}
+
+
+class Book {
+    -title: String
+    -pages: int
+    -author: Author
+}
+
+class BookItem {
+    -ISBN: int
+}
+
+class Multimedia {
+    -title: String
+    -format: String
+}
+
+class MultimediaItem {
+    -itemId: int
+}
+
+class Borrow {
+    +fromDate
+    +toDate
+    +borrowStatus
+}
+
+class Issue {
+    +publishDate
+    +unpublishDate
+    +manageDate
+    -issueStatus
+}
+
+User --> Borrow
+Borrow --> Publication
+Librarian --> Issue
+Issue --> Publication
+
+Person --> User
+Person --> Worker
+Worker --> Staff
+Staff --> Librarian
+Worker --> Freelancer
+Person --> Author
+
+Book *-- Author
+Multimedia *-- Author
+Publication --> Book
+Publication --> Multimedia
+Book --> BookItem
+Multimedia --> MultimediaItem
+
+
+
+```
+
+</div>
+
+:::
+

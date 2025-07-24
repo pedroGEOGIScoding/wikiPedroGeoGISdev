@@ -1,0 +1,66 @@
+---
+title: "Expert One-on-One J2EE™ Design and Development"
+author: "albertprofe"
+subtitle: "Rod Johnson, 2002, Expert One-on-One J2EE™ Design and Development"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "The results of using J2EE in practice are often disappointing: applications are often slow, unduly complex, and take too long to develop. Rod Johnson believes that the problem lies not in J2EE itself, but in that it is often used badly. Many J2EE publications advocate approaches that, while fine in theory, often fail in reality, or deliver no real business value."
+categories: [java]
+subcategories: [programming, j2ee, spring]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/j2ee.jpeg)
+
+## What is this book about?
+
+<mark>The results of using J2EE in practice are often disappointing: applications are often slow, unduly complex, and take too long to develop. Rod Johnson believes that the problem lies not in J2EE itself, but in that it is often used badly. Many J2EE publications advocate approaches that, while fine in theory, often fail in reality, or deliver no real business value.<mark>
+
+**Expert One-on-One: J2EE Design and Development aims to demystify J2EE development. Using a practical focus, it shows how to use J2EE technologies to reduce, rather than increase, complexity**. Rod draws on his experience of designing successful high-volume J2EE applications and salvaging failing projects, as well as intimate knowledge of the J2EE specifications, to offer a real-world, how-to guide on how you too can make J2EE work in practice.
+
+> It will help you to solve common problems with J2EE and avoid the expensive mistakes often made in J2EE projects. It will guide you through the complexity of the J2EE services and APIs to enable you to build the simplest possible solution, on time and on budget. Rod takes a practical, pragmatic approach, questioning J2EE orthodoxy where it has failed to deliver results in practice and instead suggesting effective, proven approaches.
+
+## What does this book cover?
+
+In this book, you will learn
+
+- <mark>When to use a distributed architecture</mark>
+- When and how to use EJB
+- How to develop an efficient data access strategy
+- How to design a **clean and maintainable web interface**
+- How to design J2EE applications for performance
+
+
+## Who is this book for?
+
+This book would be of value **to most enterprise developers**.
+
+Although some of the discussion (for example, on performance and scalability) would be most relevant **to architects and lead developers, the practical focus would make it useful to anyone with some familiarity with J2EE.**
+
+Because of the **complete design-deployment** coverage, a less advanced developer could work through the book along with a more introductory text, and successfully build and understand the sample application.
+
+This comprehensive coverage would also **be useful to developers in smaller organisations**, who might be called upon to fill several normally distinct roles.
+
+## What is special about this book?
+
+Wondering what differentiates this book from others like it in the market? Take a look:
+
+- <mark>It does not just discuss technology, but stress its practical application. The book is driven from the need to solve common tasks, rather than by the elements of J2EE.</mark>
+- It discuss risks in J2EE development
+- It takes the reader through the entire design, development and build process of a non-trivial application. This wouldn't be compressed into one or two chapters, like the Java Pet Store, but would be a realistic example comparable to the complexity of applications readers would need to build.
+- At each point in the design, alternative choices would be discussed. This would be important both where there's a real problem with the obvious alternative, and where the obvious alternatives are perhaps equally valid.
+- It emphasizes the use of OO design and design patterns in J2EE, without becoming a theoretical book
+
+
+
+## References
+
+- [Rod Johnson (programmer)](https://en.wikipedia.org/wiki/Rod_Johnson_(programmer)){.external target='_blank'}
+- [Expert One-on-One J2EE Design and Development.pdf](https://github.com/gg-daddy/ebooks/blob/master/Expert%20One-on-One%20J2EE%20Design%20and%20Development.pdf){.external target='_blank'}
+- [Expert One-on-One™ J2EE™ Development without EJB™Expert One-on-One™ J2EE™ Development without EJB™](https://www.oreilly.com/library/view/expert-one-on-onetm-j2eetm/9780764558313/){.external target='_blank'}
+
+

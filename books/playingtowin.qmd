@@ -1,0 +1,68 @@
+---
+title: "Playing to win"
+author: "albertprofe"
+subtitle: "Roger Martin, 2014, Playing to Win - How to make strategy work"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "The Playing to Win Strategy Toolkit is based on a proven framework used by leading companies around the world. These tools guide you through the process with step-by-step advice to help ensure you achieve a successful outcome."
+categories: [strategy]
+subcategories: [questions, win]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/playingtowin.png){width="60%"}
+
+## Playing to Win: How Strategy Really Works
+
+**Are you just playing--or playing to win? Strategy is not complex. But it is hard. It's hard because it forces people and organizations to make specific choices about their future--something that doesn't happen in most companies.**
+
+Now two of today's best-known business thinkers get to the heart of strategy--explaining what it's for, how to think about it, why you need it, and how to get it done. And they use one of the most successful corporate turnarounds of the past century, which they achieved together, to prove their point. 
+
+> **A.G. Lafley**, former CEO of Procter & Gamble, in close partnership with strategic adviser **Roger Martin**, doubled P&G's sales, quadrupled its profits, and increased its market value by more than $100 billion in just ten years. Now, drawn from their years of experience at P&G and the **Rotman School of Management**, where Martin is dean, this book shows how leaders in organizations of all sizes can guide everyday actions with larger strategic goals built around the clear, essential elements that determine business success--where to play and how to win.
+
+The result is a playbook for winning.
+
+**Lafley and Martin** have created a set of five essential strategic choices that, when addressed in an integrated way, will move you ahead of your competitors.
+
+They are:
+
+- What is our winning aspiration? 
+- Where will we play?
+- How will we win?
+- What capabilities must we have in place to win?
+- What management systems are required to support our choices?
+  
+The stories of how P&G repeatedly won by applying this method to iconic brands such as Olay, Bounty, Gillette, Swiffer, and Febreze clearly illustrate how deciding on a strategic approach--and then making the right choices to support it--makes the difference between just playing the game and actually winning.
+
+## Five essential strategic choices
+
+The result is a playbook for winning. Lafley and Martin have created <mark>a set of five essential strategic choices that, when addressed in an integrated way</mark>, will move you ahead of your competitors. They are:
+
+- What is our **winning aspiration**?
+- **Where** will we play?
+- **How** will we win?
+- What **capabilities** must we have in place to win?
+- What **management systems are required** to support our choices?
+
+![](/books/playingtowin-questions.jpg){width="60%"}
+
+## More info
+
+### Links
+
+- [HBR’s Playing to Win Strategy Toolkit](https://hbr.org/resources/pdfs/P2WST_Product_Preview.pdf){.external target='_blank'}
+- [Playing to Win: How Strategy Really Works](https://www.goodreads.com/book/show/13586928-playing-to-win){.external target='_blank'}
+- [Roger Martin. Playing to Win - How to make strategy work](https://www.slideshare.net/ImplementConsultingGroup/roger-martin-playing-to-win-how-to-make-strategy-work#1){.external target='_blank'}
+- [Playing to Win: How Strategy Really Works](https://youexec.com/book-summaries/playing-to-win-how-strategy-really-works){.external target='_blank'}
+
+### Other resources
+
+![](/books/playingtowin-get-markets.gif)
+
+
+
+{{< video  https://youtu.be/I_JnjK8sGNU?feature=shared >}}

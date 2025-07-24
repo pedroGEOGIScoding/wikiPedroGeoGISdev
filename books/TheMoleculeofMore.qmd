@@ -1,0 +1,31 @@
+---
+title: "The Molecule of More"
+author: "Daniel Z. Lieberman and Michael E. Long"
+subtitle: "The Molecule of More: How a Single Chemical in Your Brain Drives Love, Sex, and Creativity―and Will Determine the Fate of the Human"
+date: ""
+date-modified: ""
+date-format: full
+description: "The answer is found in a single chemical in your brain: dopamine. Dopamine ensured the survival of early man. Thousands of years later, it is the source of our most basic behaviors and cultural ideas―and progress itself. "
+categories: [neuroscience]
+subcategories: []
+format:
+  html
+---
+
+## Book Image
+
+![](/books/TheMoleculeofMore.jpg)
+
+## More info
+
+Why are we obsessed with the things we want only to be bored when we get them? 
+
+Why is addiction perfectly logical to an addict? 
+
+Why does love change so quickly from passion to indifference? 
+
+Why are some people die-hard liberals and others hardcore conservatives? 
+
+Why are we always hopeful for solutions even in the darkest times―and so good at figuring them out? 
+
+- [The Molecule of More](https://www.amazon.es/Molecule-More-Chemical-Creativity-Determine/dp/1946885118){.external}

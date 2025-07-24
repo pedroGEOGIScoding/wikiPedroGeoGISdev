@@ -1,0 +1,67 @@
+---
+title: "Lab#RE06-1-PR: create a pull request"
+subtitle: ReactJS labs
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: labs
+categories: [reactjs, lab, Lab#RE06]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Pull Request: `ordersMapping` to `master`
+
+## General approach
+
+1. Navigate to the **repository** on GitHub.
+2. Switch to the "`ordersMapping`" branch.
+3. Click on the "Pull Request" tab.
+4. Ensure "base" is set to "`master`" and "compare" is set to "`ordersMapping`".
+5. Review the changes.
+6. Click on "**Create Pull Request**".
+7. Provide a descriptive title and additional context if necessary.
+8. Review the summary.
+9. Click on "**Create Pull Request**" again to submit.
+10. Verify the pull request is created successfully.
+
+
+## Step by step
+
+
+![Create a pull request step#1](/images/reactjs/how-to-pull-request-1.png){width="80%"}
+
+![Create a pull request step#2](/images/reactjs/how-to-pull-request-2.png){width="80%"}
+
+![Create a pull request step#3](/images/reactjs/how-to-pull-request-3.png){width="80%"}
+
+![Create a pull request step#4](/images/reactjs/how-to-pull-request-4.png){width="80%"}
+
+![Create a pull request step#5](/images/reactjs/how-to-pull-request-5.png){width="80%"}
+
+![Create a pull request step#6](/images/reactjs/how-to-pull-request-6.png){width="80%"}
+
+![Create a pull request step#7](/images/reactjs/how-to-pull-request-7.png){width="80%"}
+
+![Create a pull request step#8](/images/reactjs/how-to-pull-request-8.png){width="80%"}
+
+![Create a pull request step#9](/images/reactjs/how-to-pull-request-9.png){width="80%"}
+
+![Create a pull request step#10](/images/reactjs/how-to-pull-request-10.png){width="80%"}
+
+## Ways to Finish a Pull Request
+
+1. **Merger Commit:** Combines all branch changes into a single commit on master, retaining individual commit history.
+
+2. **Merge Squash:** Condenses all branch commits into a single commit on master, simplifying commit history.
+
+3. **Merge Rebase:** Integrates branch changes by replaying commits on top of master, resulting in a linear commit history.
+
+Each method offers distinct advantages: merger commit maintains detailed history, merge squash keeps history cleaner, while merge rebase provides a linear timeline. Choose based on project requirements, considering readability, collaboration, and potential conflicts when merging branches into master.
+
+
+
+

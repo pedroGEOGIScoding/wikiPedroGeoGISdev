@@ -1,0 +1,99 @@
+---
+title: "Strategy"
+subtitle: Java Fundamentals and Patterns
+author: Carla Velasco
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Strategy Behavioral Design-Pattern
+categories: [javase,strategy, design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+The strategy pattern is a behavioral design pattern that **allows for flexible behavior by encapsulating algorithms into separate classes for interchangeability and modularity**.
+:::
+
+---
+
+The Strategy design pattern is a behavioral design pattern that allows for flexible behavior implementation by encapsulating algorithms into separate classes. This pattern is based on the principle of "composition over inheritance," which means that it's better to use composition and interfaces rather than inheritance to achieve flexibility and modularity.
+
+In a typical implementation of the Strategy pattern, an interface or abstract class defines a set of methods that encapsulate a specific behavior or algorithm. Concrete classes implement these methods with their own specific implementation of the behavior. The context object that needs to use the behavior holds a reference to the abstract class or interface, and at runtime, the concrete implementation is chosen based on the current context.
+
+The advantage of using the Strategy pattern is that it allows for interchangeable behavior implementation. By encapsulating the algorithms into separate classes, it's easy to swap out one implementation for another at runtime, without changing the code of the context object. This makes the code more flexible, maintainable, and extensible.
+
+
+## Example: ``Sorting``
+
+Here's an example of implementing the Strategy design pattern in Java step by step:
+
+1. Define the Strategy Interface:
+
+``` java 
+public interface SortingStrategy {
+    public void sort(int[] data);
+}
+```
+
+This interface defines the behavior for the sorting strategy, which can be implemented by multiple concrete classes.
+
+
+2. Implement the Concrete Strategies 
+
+``` java 
+public class BubbleSort implements SortingStrategy {
+    public void sort(int[] data) {
+        // Implement the bubble sort algorithm here
+    }
+}
+
+public class QuickSort implements SortingStrategy {
+    public void sort(int[] data) {
+        // Implement the quick sort algorithm here
+    }
+}
+
+```
+
+These classes implement the SortingStrategy interface and provide specific implementations of the sorting algorithms.
+
+
+3. Implement the Context Class:
+
+``` java 
+public class Sorter {
+    private SortingStrategy sortingStrategy;
+    
+    public Sorter(SortingStrategy sortingStrategy) {
+        this.sortingStrategy = sortingStrategy;
+    }
+    
+    public void sort(int[] data) {
+        sortingStrategy.sort(data);
+    }
+}
+
+```
+This class represents the context in which the sorting behavior will be used. It holds a reference to a SortingStrategy object and delegates the sorting operation to it.
+
+
+4. Use the Context Class with Different Strategies
+
+``` java 
+int[] data = {4, 2, 1, 5, 3};
+Sorter sorter = new Sorter(new BubbleSort());
+sorter.sort(data); // Sort using bubble sort
+
+Sorter sorter2 = new Sorter(new QuickSort());
+sorter2.sort(data); // Sort using quick sort
+
+```
+
+This code creates two instances of the Sorter class, one with a BubbleSort object and another with a QuickSort object. It then calls the sort() method on each instance, which delegates the sorting operation to the respective strategy object.
+
+By using the Strategy pattern in this way, the behavior of the sorting operation can be easily changed by creating a new concrete strategy object and passing it to the Sorter object. This makes the code more flexible and easy to maintain, as changes to the sorting behavior can be made without modifying the Sorter class itself.
+
+

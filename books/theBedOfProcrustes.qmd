@@ -1,0 +1,21 @@
+---
+title: "The Bed of Procrustes"
+author: "albertprofe"
+subtitle: "Nassim Nicholas Taleb, 2010, The Bed of Procrustes: Philosophical and Practical Aphorisms (Incerto)"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A collection of witty and thought-provoking aphorisms on topics ranging from uncertainty to philosophy to personal growth."
+categories: [assay]
+subcategories: [wisdom, personal growth, decision-making]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/theBedOfProcrustes.jpeg)
+
+## More info
+
+- [The Bed of Procrustes: Philosophical and Practical Aphorisms (Incerto)](https://www.goodreads.com/book/show/9791505-the-bed-of-procrustes){.extenal}

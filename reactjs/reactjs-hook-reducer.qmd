@@ -1,0 +1,264 @@
+---
+title: "React JS: useReducer"
+subtitle: ReactJS hooks
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [reactjs, hooks, useReducer]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **useReducer**
+
+``useReducer`` is a React Hook that lets you add a reducer to your component.
+
+``const [state, dispatch] = useReducer(reducer, initialArg, init?)``
+
+:::
+
+---
+
+A **reducer** is a function that *takes in the current state of an application and an action, and returns a new state*. Reducers are often used in conjunction with a state management library like ``Redux``, which helps manage the state of a React application.
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+function reducer(state, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+```
+
+::: {.column-margin}
+Reducers are a powerful tool for managing the state of a React application, and are often used in conjunction with actions and a state management library like ``Redux`` or ``useReducer`` hook.
+:::
+
+In this example, the **reducer** function takes *in a state object and an action object*, and returns a *new state based on the action type*.
+
+- If the action type is ``INCREMENT``, the **reducer** increments the count property of the state and returns the new state.
+- If the action type is ``DECREMENT``, the **reducer** decrements the count property and returns the new state.
+- If the action type is not recognized, the **reducer** returns the current state without making any changes.
+
+::: {.callout-note collapse="true"}
+## Why are reducers called this way?
+Although ``reducers`` can *reduce* the amount of code inside your component, they are actually named after the ``reduce()`` operation that you can perform on arrays.
+
+The ``reduce()`` operation lets you take an array and **accumulate** a single value out of many:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const arr = [1, 2, 3, 4, 5];
+const sum = arr.reduce(
+  (result, number) => result + number
+); // 1 + 2 + 3 + 4 + 5
+```
+
+The function you pass to reduce is known as a ``reducer``.
+
+It takes the result so far and the current item, then it returns the next result. React ``reducers`` are an example of the same idea: they take the state so far and the action, and return the next state.
+
+**In this way, they accumulate actions over time into state**.
+:::
+
+
+## ``useReducer(init)``
+
+> ``useReducer(reducer, initialArg, init?)``
+
+Call ``useReducer`` at the top level of your component to manage its state with a [reducer](https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer){.external}.
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  // ...
+}
+
+function MyComponent() {
+  const [state, dispatch] = useReducer(reducer, { age: 42 });
+  // ...
+```
+
+::: {.column-margin}
+![Consolidate state logic with a ``reducer``: a ``reducer`` function is where you will put your state logic.](/images/reactjs/reducer.png){width=100%}
+:::
+
+### Parameters
+
+- ``reducer``: The ``reducer`` function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types.
+- ``initialArg``: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next ``init`` argument.
+- ``optional init``: The initializer function that specifies how the initial state is calculated. If it’s not specified, the initial state is set to ``initialArg``. Otherwise, the initial state is set to the result of calling ``init``(``initialArg``).
+
+
+## ``dispatch`` function
+
+``useReducer`` returns an array with exactly two values:
+
+1. The current state. During the first render, it’s set to ``init(initialArg)`` or ``initialArg`` (if there’s no init).
+2. The ``dispatch`` function that lets you **update the state to a different value and trigger a re-render.**
+
+
+The ``dispatch`` function returned by ``useReducer`` lets you update the state to a different value and trigger a re-render.
+
+You need to pass the action as the only argument to the ``dispatch`` function:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const [state, dispatch] = useReducer(reducer, { age: 42 });
+
+function handleClick() {
+  dispatch({ type: 'incremented_age' });
+  // ...
+```
+
+::: {.column-margin}
+![``useReducer`` returns an array with exactly two values: the current state and the ``dispatch`` function](/images/reactjs/reducer.png){width=100%}
+:::
+
+::: {.callout-warning}
+``dispatch`` functions do not have a return value.
+:::
+
+## Example 1
+
+In this example, the ``reducer`` manages a state object with one field: ``age``.
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  if (action.type === 'incremented_age') {
+    return {
+      age: state.age + 1
+    };
+  }
+  throw Error('Unknown action.');
+}
+
+export default function Counter() {
+  const [state, dispatch] = useReducer(reducer, { age: 42 });
+
+  return (
+    <>
+      <button onClick={() => {
+        dispatch({ type: 'incremented_age' })
+      }}>
+        Increment age
+      </button>
+      <p>Hello! You are {state.age}.</p>
+    </>
+  );
+}
+```
+
+::: {.column-margin}
+![``useReducer`` inital render](/images/reactjs/ex18.png){width=100%}
+:::
+
+::: {.column-margin}
+![``useReducer``: handler > dispatcher > useRducer > reducer > update state > render new state](/images/reactjs/reducer-flow.png){width=100%}
+:::
+
+Be careful with that: **how to update the new state:**
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+// ..
+    return {
+      age: state.age + 1
+    };
+
+// ...
+```
+
+::: {.column-margin}
+This will be a **mistake**:
+
+``age = state.age + 1`` 
+
+``state.age = state.age + 1`` 
+
+``age = age + 1`` 
+
+State is **read-only**. Don’t modify any objects or arrays in state: instead, always **return new objects from your reducer.**
+:::
+
+``useReducer`` is very similar to ``useState``, but it lets you move the state update logic from event handlers into a single function outside of your component.
+Read more about [choosing between useState and useReducer](https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer){.external}.
+
+## Example 2
+
+In this example, the ``reducer`` manages a state object with two fields: ``name`` and ``age``.
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'incremented_age': {
+      return {
+        name: state.name,
+        age: state.age + 1
+      };
+    }
+    case 'changed_name': {
+      return {
+        name: action.nextName,
+        age: state.age
+      };
+    }
+  }
+  throw Error('Unknown action: ' + action.type);
+}
+
+const initialState = { name: 'Taylor', age: 42 };
+
+export default function Form() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  function handleButtonClick() {
+    dispatch({ type: 'incremented_age' });
+  }
+
+  function handleInputChange(e) {
+    dispatch({
+      type: 'changed_name',
+      nextName: e.target.value
+    }); 
+  }
+
+  return (
+    <>
+      <input
+        value={state.name}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleButtonClick}>
+        Increment age
+      </button>
+      <p>Hello, {state.name}. You are {state.age}.</p>
+    </>
+  );
+}
+
+```
+
+::: {.column-margin}
+![``useReducer``inital render](/images/reactjs/ex19.png){width=100%}
+:::
+
+::: {.column-margin}
+![``useReducer``new render](/images/reactjs/ex20.png){width=100%}
+:::
+
+
+
+

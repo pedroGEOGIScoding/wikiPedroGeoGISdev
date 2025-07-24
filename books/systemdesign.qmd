@@ -1,0 +1,42 @@
+---
+title: "System Design"
+author: "albertprofe"
+subtitle: "Alex Xu, 2022, System Design: the big archive"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "System Design"
+categories: [design]
+subcategories: [system-design, devops]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/systemdesign.png){width="60%"}
+
+## More info
+
+- [bytebytego.com](https://blog.bytebytego.com/){.external}
+
+A little background: I’ve been consistently posting on LinkedIn for 7 months now. With so many people on LinkedIn reading my posts, I’m extremely grateful.
+
+Here are some sample topics:
+
+- Why is Redis fast?
+- How to scale a website to support millions of users?
+- How does HTTPs work?
+- What happens when you type a URL into your browser?
+- How to avoid double charge?
+- Why is Kafka fast?
+  
+
+
+Follow me (**Alex Xu**) on LinkedIn or Twitter, or subscribe to my newsletter to receive updates: https://bit.ly/3FEGliw
+
+## Book
+
+
+
+- [Book .pdf](/books/systemdesign.pdf){width="60%"}

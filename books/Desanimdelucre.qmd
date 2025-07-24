@@ -1,0 +1,28 @@
+---
+title: "Desànim de lucre"
+author: "albertprofe"
+subtitle: "Abel Cutillas, 2022, Desànim de lucre"
+date: "1/1/2019"
+date-modified: "5/5/2023"
+date-format: full
+description: "A book about the negative impacts of profit-oriented thinking on society and individuals."
+categories: [assay]
+subcategories: [economics, ethics]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/Desanimdelucre.jpg){width="60%"}
+
+## More info
+
+En aquest assaig de perspectiva europea, **Abel Cutillas** explica com des de la Segona Guerra Mundial tots els discursos a Occident estan pensats per explotar la feblesa i frenar la història.
+
+Gairebé un segle després de **la profecia d’Adorno segons la qual la cultura quedaria subjugada al mercat**, **la indústria cultural governa i la banalitat regna**.
+
+Les idees, però, es mantenen intactes, i les biblioteques segueixen obertes: “Els homes continuen pensant. La vida continua”.
+
+- [Desànim de lucre](https://www.bonport.cat/ebooks/p/desnim-de-lucre){.external}
+

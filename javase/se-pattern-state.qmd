@@ -1,0 +1,138 @@
+---
+title: "State"
+subtitle: Java Fundamentals and Patterns
+author: Carla Velasco
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the State Behavioral Design-Pattern
+categories: [javase,state, design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+The state pattern is a behavioral design pattern that **allows objects to dynamically alter their behavior based on internal state changes**.
+:::
+
+---
+
+The State design pattern is a behavioral design pattern that allows an object to change its behavior when its internal state changes. It provides a way to define a set of states and behaviors for a particular object, and **allows the object to change its state at runtime**. The State pattern is based on the idea of separating the behavior of an object from its state, which results in a more modular and flexible design.
+
+The State pattern involves two main components: a Context and a State. The Context is the object whose behavior changes based on its internal state. The State is an interface or abstract class that defines the behavior associated with a particular state of the Context. The State objects are concrete classes that implement the State interface or extend the State abstract class, and define the behavior associated with each state.
+
+The State pattern enables the Context object to change its behavior dynamically by delegating to the appropriate State object. When the internal state of the Context changes, the Context delegates to a different State object to handle the behavior associated with the new state. This allows the Context to appear to change its behavior at runtime, without changing its class or modifying its existing behavior.
+
+The State pattern provides a way to encapsulate state-specific behavior into separate classes, which can be easily added, removed, or modified as needed. This makes it easier to add new states and behaviors to the object, and can result in a more maintainable and extensible codebase.
+
+Overall, the State pattern is useful in situations where the behavior of an object needs to change based on its internal state, and where it's impractical to have a single class with conditional statements for each possible state. By encapsulating state-specific behavior into separate classes, the State pattern provides a flexible and modular way to handle state changes.
+
+
+![State Pattern UML](../images/javase/state-pattern-uml.png){width=90%}
+
+## Example: ``Vending machine``
+
+Here's an example step by step implementation of the State pattern:
+
+1. Define the Context class: This is the class whose behavior changes depending on its internal state. In this example, we'll create a vending machine class that dispenses different items based on its current state:
+
+``` java 
+public class VendingMachine {
+    private State currentState;
+
+    public VendingMachine() {
+        // initialize the vending machine to the out of stock state
+        currentState = new OutOfStockState();
+    }
+
+    public void setCurrentState(State state) {
+        currentState = state;
+    }
+
+    public void dispenseItem() {
+        currentState.dispenseItem(this);
+    }
+}
+```
+
+
+2. Define the State interface: This is the interface that defines the behavior associated with a particular state of the Context. In this example, we'll create a ` `State`` interface with a method for dispensing an item from the vending machine:
+
+``` java 
+public interface State {
+    void dispenseItem(VendingMachine vendingMachine);
+}
+```
+
+3. Create concrete state classes: These are the classes that implement the ``State`` interface or extend the ``State`` abstract class, and define the behavior associated with each state. In this example, we'll create three concrete state classes: ``OutOfStockState``, ``PaymentReceivedState``, and ``ItemDispensedState``:
+
+``` java 
+public class OutOfStockState implements State {
+    public void dispenseItem(VendingMachine vendingMachine) {
+        System.out.println("Out of stock, please come back later");
+    }
+}
+
+public class PaymentReceivedState implements State {
+    public void dispenseItem(VendingMachine vendingMachine) {
+        System.out.println("Item dispensed");
+        vendingMachine.setCurrentState(new ItemDispensedState());
+    }
+}
+
+public class ItemDispensedState implements State {
+    public void dispenseItem(VendingMachine vendingMachine) {
+        System.out.println("Item already dispensed");
+    }
+}
+```
+
+
+4. Use the State pattern in the Context class: In the VendingMachine class, we'll use the State pattern to change the behavior of the vending machine based on its internal state.
+
+``` java 
+public class VendingMachine {
+    private State currentState;
+
+    public VendingMachine() {
+        // initialize the vending machine to the out of stock state
+        currentState = new OutOfStockState();
+    }
+
+    public void setCurrentState(State state) {
+        currentState = state;
+    }
+
+    public void dispenseItem() {
+        currentState.dispenseItem(this);
+    }
+
+    // other methods for handling payment, restocking items, etc.
+}
+```
+
+
+5. Test the State pattern implementation: In the main method, we'll create a new vending machine and test its behavior in different states:
+
+``` java 
+public static void main(String[] args) {
+    VendingMachine vendingMachine = new VendingMachine();
+
+    // test the out of stock state
+    vendingMachine.dispenseItem(); // should print "Out of stock, please come back later"
+
+    // test the payment received state
+    vendingMachine.setCurrentState(new PaymentReceivedState());
+    vendingMachine.dispenseItem(); // should print "Item dispensed"
+
+    // test the item dispensed state
+    vendingMachine.dispenseItem(); // should print "Item already dispensed"
+}
+
+```
+
+That's a basic example of how to implement the State pattern in Java. In a real-world application, there would likely be more states and behaviors to handle, but the basic principles of the pattern would remain the same.
+
+

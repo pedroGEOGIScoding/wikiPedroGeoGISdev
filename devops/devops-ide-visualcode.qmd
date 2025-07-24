@@ -1,0 +1,165 @@
+---
+title: "IDE: Visual Code"
+subtitle: "Visual Code IDE"
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  "Visual Code IDE"
+categories: [devops,visual-code,ide]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![Visual Code User Interface](https://code.visualstudio.com/assets/docs/getstarted/userinterface/hero.png)
+
+At its heart, Visual Studio Code is a code editor. Like many other code editors, VS Code adopts a common user interface and layout of an explorer on the left, showing all of the files and folders you have access to, and an editor on the right, showing the content of the files you have opened.
+
+[User Interface](https://code.visualstudio.com/docs/getstarted/userinterface){#visualcode-User-Interface}
+
+## React
+
+![Using React in Visual Studio Code](https://code.visualstudio.com/assets/docs/nodejs/reactjs/welcome-to-react.png)
+
+[React](https://reactjs.org/) is a popular JavaScript library developed by Facebook for building user interfaces. The Visual Studio Code editor supports React.js IntelliSense and code navigation out of the box
+
+[React in visual code](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial){#visualcode-react}
+
+## IntelliSense
+
+![IntelliSense](https://code.visualstudio.com/assets/docs/editor/intellisense/intellisense.gif)
+
+IntelliSense is a general term for various code editing features including: code completion, parameter info, quick info, and member lists. IntelliSense features are sometimes called by other names such as "code completion", "content assist", and "code hinting."
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense){#IntelliSense}
+
+
+## Quick file navigation
+
+![Alt text](https://code.visualstudio.com/assets/docs/editor/editingevolved/quicknav.png)
+
+:::{.callout-note}
+**Tip:** You can open any file by its name when you type ``Ctrl+P`` (Quick Open).
+:::
+
+[Quick file navigation](https://code.visualstudio.com/docs/editor/editingevolved#_quick-file-navigation){#visualcode-Quick-file-navigation}
+
+## Refactoring
+
+![refactoring](https://code.visualstudio.com/assets/docs/editor/refactoring/refactoring-hero.png)
+
+[Refactoring](https://code.visualstudio.com/docs/editor/refactoring){#visualcode-Refactoring}
+
+## Using Git source control in VS Code
+
+![Using Git source control in VS Code](/images/devops/git-intro.png)
+
+[Using Git source control in VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview)
+
+## Keyboard Shortcuts Reference
+
+![Keyboard Shortcuts Reference](https://code.visualstudio.com/assets/docs/getstarted/keybinding/show-conflicts-menu.png)
+
+[Keyboard Shortcuts Reference](https://code.visualstudio.com/docs/getstarted/
+keybindings#_keyboard-shortcuts-reference){#visualcode-shortcuts}
+
+## Auto Close Tag
+
+![Auto Close Tag](/images/devops/autoclosetags.gif)
+
+[Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag){#Auto-Close-Tag}
+
+## Settings Sync
+
+![Settings Sync](https://shanalikhan.github.io/img/login-with-github.png)
+
+Type ``Sync`` in command Palette in order to view all commands.
+
+[Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync){#Settings-Sync}
+
+
+## Prettier – Code formatter
+
+![Prettier](https://geekflare.com/wp-content/uploads/2022/07/Prettier-Code-formatter-a-VS-Code-Extension.jpeg)
+
+[Prettier](https://prettier.io/) is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
+
+[https://prettier.io/](https://prettier.io/){#prettier-site}
+
+[Prettier – Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode){#prettier}
+
+
+## CSS Peek
+
+![CSS Peek](https://github.com/pranaygp/vscode-css-peek/raw/master/readme/working.gif)
+
+[CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek){#CSS-Peek}
+
+## Polacode
+
+![Polacode](https://github.com/octref/polacode/raw/master/demo/usage.gif)
+
+You have spent countless hours finding the perfect [JavaScript grammar](https://marketplace.visualstudio.com/search?term=javascript%20grammar&target=VSCode&category=All%20categories&sortBy=Relevance), matching it with a [sleek-looking VS Code theme](https://marketplace.visualstudio.com/search?target=VSCode&category=Themes&sortBy=Downloads), trying out all the [best programming fonts](https://www.slant.co/topics/67/~best-programming-fonts).
+
+[Polacode](https://marketplace.visualstudio.com/items?itemName=pnp.polacode){#Polacode}
+
+## GitLens
+
+![GitLens](https://raw.githubusercontent.com/gitkraken/vscode-gitlens/main/images/docs/commit-graph-illustrated.png)
+
+GitLens **supercharges** Git inside VS Code and unlocks **untapped knowledge** within each repository. It helps you to **visualize code authorship** at a glance via Git blame annotations and CodeLens, **seamlessly navigate and explore** Git repositories, **gain valuable insights** via rich visualizations and powerful comparison commands, and so much more.
+
+[GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens){#GitLens}
+
+## Import cost
+
+![Import cost](/images/devops/importcost.gif)
+
+This extension will display inline in the editor the size of the imported package. The extension utilizes webpack in order to detect the imported size.
+
+[Import cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost){#Import-cost}
+
+## ESLint
+
+![ESLint](/images/devops/eslint.gif)
+
+The extension uses the ESLint library installed in the opened workspace folder. If the folder doesn't provide one the extension looks for a global install version. If you haven't installed ESLint either locally or globally do so by running `npm install eslint` in the workspace folder for a local install or `npm install -g eslint` for a global install.
+
+[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint){#ESLint}
+
+## Github Copilot
+
+![Github Copilot](/images/devops/copilor.gif)
+
+[GitHub Codespaces](https://github.com/features/codespaces) provides cloud-hosted development environments for any activity - whether it's a long-term project, or a short-term task like reviewing a pull request. You can connect to Codespaces from Visual Studio Code or a browser-based editor that's accessible anywhere.
+
+[Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces){#Github-Copilot}
+
+
+## Live share
+
+![Live share](/images/devops/liveshare.gif)
+
+Visual Studio Live Share enables you to collaboratively edit and debug with others in real time, regardless what [programming languages](https://docs.microsoft.com/en-us/visualstudio/liveshare/reference/platform-support#visual-studio-code) you're using or app types you're building. It allows you to instantly (and [securely](https://docs.microsoft.com/en-us/visualstudio/liveshare/reference/security)) share your current project, and then as needed, share [debugging sessions](https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode#co-debugging), [terminal instances](https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode#share-a-terminal), [localhost web apps](https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode#share-a-server), [voice calls](https://aka.ms/vsls-audio), and more! Developers that join your sessions receive all of their editor context from your environment (e.g. language services, debugging), which ensures they can start productively collaborating immediately, without needing to clone any repos or install any SDKs.
+
+[Live share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare){#Live-share}
+
+## Thunder Client
+
+![Thunder Client](/images/devops/thunderclient.png)
+
+[Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client){#Thunder-Client}
+
+## Path Intellisense
+
+![Path Intellisense](https://i.giphy.com/iaHeUiDeTUZuo.gif)
+
+[Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense){#Path-Intellisense}
+
+## Quokka
+
+![Quokka](https://quokkajs.com/assets/img/main-video.gif)
+

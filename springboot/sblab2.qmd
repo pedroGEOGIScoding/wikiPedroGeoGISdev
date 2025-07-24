@@ -1,0 +1,138 @@
+---
+title: "Lab#SB02-1: `JPA` Relationships"
+subtitle: Spring Boot JPA Relationships
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+Welcome to the cifojava2022-3 wiki!
+
+# Spring Boot Projects
+
+
+::: {.column-page-right}
+
+| Name | Type | Description | Link |
+| ------------- | ------------- | ------------- | -------------
+|  [Library0](#basic-spring-boot-project)  | Server | Basic Spring Boot Project | [Link Repo](https://github.com/AlbertProfe/cifojava2022-3/wiki#0-basic-spring-boot-project) |
+|  [Library1](#api-rest-book-crud-with-postmanswagger)  | Server-Rest | API Rest Book `CRUD` with Postman/Swagger| [Link Repo](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library1:-API-Rest-Book-CRUD-with-Postman-Swagger) |
+|  [Library2](#api-rest-author-book-onetomany-crud-with-swagger)  | Server-Rest | API Rest Author-Book `@OneToMany` `@ManyToOne` `CRUD` with Swagger  | [Link Repo](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library2:-API-Rest-Author-Book-@OneToMany-CRUD-with-Swagger) |
+|  [Library3](#library-book-manytomany-and-onetoone-crud)  | Server | Library-Book `@ManyToMany` `@OneToOne` `CRUD` | [Link Repo](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library3:-API-Rest-Library-Book-@ManyToMany-@OneToOne-CRUD-with-Swagger) |
+|  [Library4](#api-rest-library-book-author-manytomany-onetomany-crud-with-swagger-and-inherence)  | Server-Rest | API Rest Library-Book-Author `@ManyToMany` `@OneToMany` `CRUD` with Swagger and Inherence | [Link Repo]() |
+|  [Library5](#thymeleaf-web-project)  | Server-Web | `ThymeLeaf` Web Project | [Link Repo](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library5) |
+|  [Library6](#pagination-thymeleaf-rest-web-project)  | Server-Web |  API Rest Book `CRUD` with Postman/Swagger and `Pageable` | [Link Repo](https://github.com/AlbertProfe/cifojava2022-3/tree/90d819e54ebbd95d85243ef74040638798bb1b62/library6) |
+
+:::
+
+## Basic Spring Boot project
+
+* Preliminary works:
+  * Create project on [Spring Init](https://start.spring.io/)
+  * [Images](https://drive.google.com/drive/folders/1H054CjFFY5EIHlBP7T08s2HilS8RnnHR?usp=sharing), step-by-step to create project
+  * [Lombok](https://projectlombok.org/) to make entities simplier
+  * [Java-Faker](https://github.com/DiUS/java-faker) to create _entities_
+  * Be careful with **devtools**!!
+    `You must go to settings and mark it, CTRL+ALT+S
+     on Advanced Settings: Allow Auto-make`
+  * Very simple project: **no database**, `@BookService` with an `ArrayList<Book> books` where _books_ are stored
+  * `@RestController` and `@Controller` to publish JSON data and an HTML web with _Thymeleaf_
+
+* [version 1.0](https://github.com/AlbertProfe/cifojava2022-3/tree/d9af131064c4c47ef9797c09e53cbc6b48023746) : spring boot executions, api REST and web
+* [version 2.0](https://github.com/AlbertProfe/cifojava2022-3/tree/33ab432930f3cb8f9aa66a4d6335b90eaea82e31) : just some little modifications to explain what `th:` is
+
+[Projects Table](#spring-boot-projects)
+
+## API Rest Book `CRUD` with Postman/Swagger
+
+
+* Base project:
+  * POM
+  * API REST **Read** CRUD
+  * DataBase H2
+  * Application.properties
+  * Command Line Runner with methods to test
+  * Postman to test API REST, [Postman web](https://www.postman.com/)
+  * @Entity, @RestController, @Service, @CrudRepository JPA 2.0, @Component
+
+
+- [Repo Code GitHub](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library1){.external} 
+- [Library1 Documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library1:-API-Rest-Book-CRUD-with-Postman-Swagger){.external} 
+
+
+[Projects Table](#spring-boot-projects)
+
+## API Rest Author-Book `@OneToMany` `CRUD` with Swagger
+
+
+* Base project:
+  * Library1
+  * Two entities related `@OneToMany`, that is, `1:n`
+
+- [Library2 Documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library2:-API-Rest-Author-Book-@OneToMany-CRUD-with-Swagger){.external} 
+- [Repo](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library2){.external} 
+
+[Projects Table](#spring-boot-projects)
+
+## Library-Book `@ManyToMany` and `@OneToOne` `CRUD`
+
+
+* Base project:
+  * Library2
+  * Two/Three entities related `@ManyToMany`, that is, `n:m` and `@OneToOne` `1:1`
+
+- [Library3 Documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library3:-API-Rest-Library-Book-@ManyToMany-@OneToOne-CRUD-with-Swagger){.external} 
+- [Repo GitHub Code](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library3){.external} 
+
+[Projects Table](#spring-boot-projects)
+
+## API Rest Library-Book-Author `@ManyToMany` `@OneToMany` `CRUD` with Swagger and Inherence
+
+
+* Base project:
+  * Library2 and Library3
+  * Inherence and Interficies
+  * Audit and JavaFaker
+  * JPQL  
+  * Batch operations and Pagination
+
+ - [Library4 Documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library4:-API-Rest-Library-Book-Author-@ManyToMany-@OneToMany-CRUD-with-Swagger-and-Inherence){.external} 
+- [Repo GitHub Code](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library3){.external}  
+
+[Projects Table](#spring-boot-projects)
+
+## `ThymeLeaf` Web Project
+
+* Base project:
+  * Library
+  * Templates **HTML** Thymeleaf, `Templates Engine`
+  * @Controller instead of @RestController
+
+- [Library5 Documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library5:-ThymeLeaf-Web-Project){.external} 
+- [Repo GitHub Code](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library3){.external} 
+
+[Projects Table](#spring-boot-projects)
+
+## `Pagination` ThymeLeaf-Rest Web Project
+
+* Base project:
+  * Library
+  * Templates **HTML** Thymeleaf, `Templates Engine`
+  * @RestController
+  * Pagination and Sorting
+
+ - [Library6 Documentation](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library6:-API-Rest-Book-CRUD-with-Postman-Swagger-and-Pageable){.external} 
+- [Repo GitHub Code](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library3){.external} 
+
+[Projects Table](#spring-boot-projects)
+
+
+
+

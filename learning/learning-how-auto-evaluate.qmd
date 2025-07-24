@@ -1,0 +1,57 @@
+---
+title: "Auto-Evaluate"
+subtitle: About how to auto-evaluate
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: About how to auto-evaluate
+categories: [about, writing]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Peer Evaluation
+
+::: {.callout-note}
+
+Peer evaluation is an <mark>effective collaborative learning strategy that asks students to reflect on contributions made by colleagues in group work.</mark>
+:::
+## Peer evaluation
+Related to self-assessment, peer evaluation **encourages students to critically examine the work of peers, and reflect on the meaning of quality work in general**, especially when consulting a detailed rubric or checklist as a guide. 
+
+
+## Purpose
+
+Students themselves provide feedback to one another, while the instructor focuses on more targeted guidance toward a learning outcome. The key for successful peer feedback is a constructive, honest environment in which students feel safe to share honest, yet helpful criticism. Through peer evaluation, students ultimately learn to better self-assess themselves, a skill which pay dividends throughout their academic and professional career. As additional benefits of peer evaluation, students learn to: 
+
+- apply course concepts and skills to solving problems
+- collaborate with others towards a common goal
+- examine diverse perspectives and ideas
+- assume greater responsibility in the learning process 
+- apply (and possibly create) objective criteria to judge the quality of a task or performance 
+
+Peer evaluations **also resolve the "free rider" problem with group work, that is, the tendency of students to rely on team members to take the initiative in completing group assignments or tasks**.
+
+
+By adding an element of **accountability and critical review, students will more likely exert effort to ensure a positive review** from their peers (and create a good impression). 
+
+  
+
+## Tips to Implement Effectively 
+
+- To implement an effective peer evaluation, students must fully understand expectations in advance. Set clear goals and expectations for the process. 
+- A detailed rubric or checklist is critical to ensure evaluations are respectful, constructive and helpful. 
+- To avoid emotional complications and hurt feelings, provide examples of effective evaluations/reviews. Be sure to emphasize as required characteristics that evaluations be respectful, constructive and helpful. 
+- To encourage self-direction and responsibility, allow students to create their own rubrics or checklists (though you should still approve prior to use as an actual assessment tool). 
+- Allow students to practice peer evaluations, preferably in the form of a self-assessment or a peer review for a low-stakes activity (e.g. class or online discussion).
+
+
+
+# References
+
+- [Using Student-to-Student Peer Assessment](https://www.celt.iastate.edu/instructional-strategies/evaluating-teaching/peer-assessment/){.external}
+- [Peer assessment](https://teaching.cornell.edu/teaching-resources/assessment-evaluation/peer-assessment){.external}
+- [Peer Evaluation and Peer Review](https://www.uwlax.edu/catl/guides/teaching-improvement-guide/how-can-i-improve/peer-evaluation/){.external}
+

@@ -1,0 +1,386 @@
+---
+title: "Lab#SE02-1: Movie/Review, Model"
+subtitle: Java SE Lab 02 part 1
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 02, part 1 work on the Model
+categories: [javase, lab, composition, model]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#SE02-1: Movie Review and Rating**
+
+1. Create a Maven/Gradle `Java SE Project`.
+2. Add the needed dependencies:
+
+    - Lombok
+    - Junit
+    - Java Faker
+
+3. Create three `Java` classes to define the **Model**.
+Java SE Classes:
+
+    - ``Movie``: The ``Movie`` class represents a movie that is being reviewed. It has the following attributes:
+
+      - ``title``: a **String** representing the title of the movie
+      - ``reviews``: a **Set** of ``Review`` **objects** representing the reviews that have been written for this movie
+      - ``Critic``: The ``Critic`` **class** represents a critic who writes reviews. 
+
+    - The ``Critic`` **class** has the following attributes:
+
+      - ``name``: a **String** representing the name of the critic
+      - ``Review``: The ``Review`` **class** represents a review of a movie written by a critic.
+
+    - The ``Review`` **class** has the following attributes:
+
+      - ``movie``: a ``Movie`` **object** representing the movie being reviewed
+      - ``critic``: a ``Critic`` **object** representing the critic who wrote the review
+      - ``rating``: an **int** representing the ``rating`` given by the critic (on a scale of 1 to 5)
+      - ``comment``: a **String** representing the ``comment`` written by the critic about the movie
+
+4. With `Junit` dependency create **unitary test** to test objects and operations.
+5. From here you should add new features **once all the test are passed.**
+
+    - Operations, you could think in a Manager Class o similar
+    - New fields/attributes and new classes
+    - New compositions and inherence: expand your model
+    - Use Factory design pattern to create new objects
+
+:::
+
+---
+
+## Core classes and dependencies
+
+You could then use these classes as follows:
+
+``` {.java .code-overflow-wrap filename="moviemodel.java"}
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Movie {
+  private String title;
+  private int year;
+  private Filmmaker filmmaker;
+  private Set<Actor> crew;
+  private Set<Review> reviews;
+}
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Critic {
+  private String name;
+}
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Actor {
+  private String name;
+}
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Filmmaker {
+  private String name;
+}
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Review {
+  private Movie movie;
+  private Critic critic;
+  private int rating;
+  private String comment;
+}
+
+```
+### Dependency: Lombok
+
+Use ``Lombok``, [link](https://projectlombok.org/){.external}:
+
+- The **@Data** annotation is a ``Lombok`` annotation that generates getters and setters for the fields of a class, as well as equals, hashCode, and toString methods based on the fields.
+
+- The **@AllArgsConstructor** annotation is a ``Lombok`` annotation that generates a constructor with all of the class's fields as arguments.
+
+- The **@NoArgsConstructor** annotation is a ``Lombok`` annotation that generates a no-argument constructor for a class.
+
+[**@Data**](https://projectlombok.org/features/Data){.external} All together now: A shortcut for **@ToString**, **@EqualsAndHashCode**, **@Getter** on all fields, **@Setter** on all non-final fields, and **@RequiredArgsConstructor**.
+
+Adding lombok to your pom file: to include lombok as a provided dependency, add it to your <dependencies>In your Java code: block like so:
+
+``` {.java .code-overflow-wrap filename="pom.xml"}
+<dependencies>
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.24</version>
+		<scope>provided</scope>
+	</dependency>
+</dependencies>
+```
+### Dependency: Java Faker
+
+Use [Java Faker](https://github.com/DiUS/java-faker){.external}:
+
+In `pom.xml`, add the following xml **dependency** between <dependencies> ... </dependencies>
+
+```{.java .code-overflow-wrap filename="pom.xml"}
+<dependencies>
+  <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+  </dependency>
+</dependencies>
+```
+In your Java code:
+
+``` {.java .code-overflow-wrap filename="testfaker.java"}
+import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Test;
+
+Faker faker = new Faker();
+
+String name = faker.name().fullName(); // Miss Samanta Schmidt
+String firstName = faker.name().firstName(); // Emory
+String lastName = faker.name().lastName(); // Barton
+
+String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
+```
+
+### Dependency: JUnit 5
+
+To configure support for **JUnit Jupiter based tests**, configure test scoped dependencies on the [JUnit Jupiter API and the JUnit Jupiter TestEngine](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-engines-configure){.external} implementation similar to the following.
+
+more on [Java SE TDD](/javase/se-concepts-tdd.qmd)
+
+```{.java .code-overflow-wrap filename="pom.xml"}
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.1</version>
+      <scope>test</scope>
+    </dependency>
+```
+
+
+## Solving discussion
+
+### UMLs
+
+This first UML diagram for the ``Movie`` class represents a design <mark>where a movie has many critics, and a critic has many reviews of movies.</mark>
+
+This is reflected in the multiplicity of the associations between the classes: the Movie class has a ``many`` multiplicity with the ``Critic`` class, indicating that a movie can have zero or more critics, and the ``Critic`` class has a ``many`` multiplicity with the ``Review`` class, **indicating that a critic can have zero or more reviews.**
+
+<div class="mermaidContent">
+
+``` {mermaid}
+classDiagram
+  class Movie {
+    -title: String
+    -critics: Set<Critic>
+  }
+  class Critic {
+    -name: String
+    -reviews: Set<Review>
+  }
+  class Review {
+    -movie: Movie
+    -critic: Critic
+    -rating: int
+    -comment: String
+  }
+  Movie *-- Critic
+  Critic *-- Review
+  Review o-- Movie
+```
+
+</div>
+
+---
+
+This second UML diagram for the ``Movie`` class represents a design <mark>where a movie has ``many`` reviews, and each review is written by a critic.</mark>
+
+This is reflected in the multiplicity of the associations between the classes: the ``Movie`` class has a ``many`` multiplicity with the ``Review`` class, indicating that a movie can have zero or more reviews, and the ``Review`` class has a **1 multiplicity** with the ``Critic`` class, indicating that a review is written **by exactly one critic.**
+
+<div class="mermaidContent">
+
+```{mermaid}
+
+classDiagram
+  class Movie {
+    -title: String
+    -reviews: Set<Review>
+  }
+  class Critic {
+    -name: String
+  }
+  class Review {
+    -movie: Movie
+    -critic: Critic
+    -rating: int
+    -comment: String
+  }
+  Movie *-- Review
+  Review o-- Critic
+
+```
+
+</div>
+
+---
+
+### Basic tests
+
+```{.java .code-overflow-wrap filename="Generaltest.java"}
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Test;
+
+@Test
+public void testCreateMovie() {
+  // create a movie
+  Movie movie = new Movie("The Shawshank Redemption");
+  
+  // check that the movie was created correctly
+  assertEquals("The Shawshank Redemption", movie.getTitle());
+  assertNotNull(movie.getReviews());
+  assertTrue(movie.getReviews().isEmpty());
+}
+
+@Test
+public void testCreateCritic() {
+  // create a critic
+  Critic critic = new Critic("Roger Ebert");
+  pom.xmlte a movie and a critic
+  Movie movie = new Movie("The Shawshank Redemption");
+  Critic critic = new Critic("Roger Ebert");
+  
+  // create a review
+  Review review = new Review(movie, critic, 5, "One of the greatest films ever made");
+  
+  // check that the review was created correctly
+  assertEquals(movie, review.getMovie());
+  assertEquals(critic, review.getCritic());
+  assertEquals(5, review.getRating());
+  assertEquals("One of the greatest films ever made", review.getComment());
+}
+
+```
+### Create a superclass Person
+
+The ``Critic``, ``Filmmaker``, and ``Actor`` classes **all extend** the ``Person`` class, meaning **they inherit its fields and methods.** In addition, they each have their own field:
+
+- The ``Critic`` class has a reviews field, a **Set** of Review objects representing the reviews written by the critic.
+- The ``Filmmaker`` class has a movies field, a **Set** of Movie objects representing the movies made by the filmmaker.
+- The ``Actor`` class has a movies field, a **Set** of Movie objects representing the movies in which the actor has appeared.
+
+```{.java .code-overflow-wrap filename="personmodel.java"}
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Person {
+  private String name;
+  private Date birthDate;
+}
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Critic extends Person {
+  private Set<Review> reviews;
+}
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Filmmaker extends Person {
+  private Set<Movie> movies;
+}
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Actor extends Person {
+  private Set<Movie> movies;
+}
+
+
+```
+<div class="mermaidContent">
+
+```{mermaid}
+
+classDiagram
+
+  class Person {
+    -name: String
+    -birthDate: Date
+  }
+```
+
+</div>
+
+---
+
+<div class="mermaidContent">
+
+```{mermaid}
+
+classDiagram
+  class Critic extends Person {
+    -reviews: Set<Review>
+  }
+
+  class Filmmaker extends Person {
+    -movies: Set<Movie>
+  }
+
+  class Actor extends Person {
+    -movies: Set<Movie>
+  }
+
+```
+
+</div>
+
+---
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+  class Person {
+    -name: String
+    -birthDate: Date
+  }
+
+  Person <|-- Critic
+  Person <|-- Filmmaker
+  Person <|-- Actor
+
+```
+</div>
+
+

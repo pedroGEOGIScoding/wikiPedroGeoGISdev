@@ -1,0 +1,34 @@
+---
+title: "DataBase Vocabulary"
+subtitle: Technical terms and definitions
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [vocabulary, database]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Technical terms and definitions](/images/home/frontimagealbertprofeweb-vocabulary.png){width=60%}
+
+## Vocabulary 
+
+| Term | Definition |
+|:---|:---|
+| SQL               | Structured Query Language used for managing and manipulating relational databases. It provides a standardized way to interact with databases, defining, querying, and modifying data.|
+| MySQL             | An open-source relational database management system, widely used for its performance, reliability, and ease of use. Supports SQL queries, transactions, and ACID properties for data integrity.|
+| NoSQL             | A category of databases that do not use traditional SQL and are designed for flexible and scalable data storage, supporting various data models like document, key-value, or graph.|
+| One-to-One (O2O) | A relationship between two tables where each record in the first table is linked to a single record in the second, and vice versa.|
+| One-to-Many (O2M) | A relationship between two tables where each record in the first table can be linked to multiple records in the second, but each record in the second table is linked to only one record in the first.|
+| Many-to-Many (M2M)| A relationship between two tables where each record in one table can be associated with multiple records in another, and vice versa, creating a many-to-many mapping.|
+| ACID              | An acronym for Atomicity, Consistency, Isolation, and Durability, defining properties ensuring the reliability of database transactions, maintaining data integrity even in the event of failures.|
+| Cloud Database    | A database hosted and managed in a cloud computing environment, providing scalability, flexibility, and accessibility. Commonly utilized for efficient data storage and retrieval in distributed systems.|
+| Volume            | The amount of data in a database, measured in terms of the quantity of records and the overall storage space required. Managing data volume is crucial for optimizing database performance.|
+| Query             | A request for information from a database using SQL or other query languages. Queries retrieve, filter, and manipulate data to meet specific requirements, facilitating data analysis and reporting.|
+: DataBase vocabulary {tbl-colwidths="[20,80]"}
+
+

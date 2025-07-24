@@ -1,0 +1,23 @@
+---
+title: "Dive Into DESIGN PATTERNS"
+author: "albertprofe"
+subtitle: "Alexander Shvets, 2022, Dive Into DESIGN PATTERNS: An ebook on design patterns and the principles behind them"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "Design patterns help you solve commonly-occurring problems in software design. But you can’t just find a pattern and copy it into your program, the way you can with off-the-shelf functions or libraries. A pattern is not a specific piece of code, but a general concept for solving a particular problem. They are like pre-made blueprints that you can customize to solve a recurring design problem in your code."
+categories: [design]
+subcategories:  [programming, patterns]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/diveIntoDesignPatterns.png)
+
+## More info
+
+- [Alexander Shvets, 2022, Dive Into DESIGN PATTERNS: An ebook on design patterns and the principles behind them](https://refactoring.guru/design-patterns/book){.external}
+- [Alexander Shvets Design Patterns Explained Simply.pdf](https://github.com/andjelatodorovich/DesignPatterns/blob/master/Alexander%20Shvets%20Design%20Patterns%20Explained%20Simply.pdf){.external}
+- [Patterns github](https://github.com/andjelatodorovich/DesignPatterns){.external}

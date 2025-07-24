@@ -1,0 +1,43 @@
+---
+title: "Linux Lab#LI04-3: Distribute the terminal app"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, bash, app-distribution]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI04-2: Distribute the terminal app**
+
+To create a terminal app using bash scripts, you will need to (from [Lab#LI04-1](lilab04-1.qmd) and [Lab#LI04-2](lilab04-2.qmd)):
+
+1.  Make the app available for others to use, either by distributing it as a package (such as a .deb or .rpm file) or by hosting it on a website or repository.
+2.  Provide documentation and usage instructions for the app, so that users know how to use it effectively.
+  
+:::
+
+---
+
+## Solving discussion
+
+There are several ways to distribute a Linux bash script, including using apt-get, snap, and zipping the script and distributing it that way. Here are some options:
+
+1. **apt-get**: This is a package manager for Debian-based systems. You can create a package with your bash script and distribute it using apt-get. This option is suitable if you want to distribute your script to a large number of users.
+2.  **snap**: Snap is a universal Linux package manager that allows you to distribute your bash script as a snap package. This option is suitable if you want to distribute your script to users on different Linux distributions.
+3.  **Zip file**: You can zip your bash script and distribute it as a zip file. This is a simple option that is suitable for distributing your script to a small number of users.
+4.  **Github**: You can host your bash script on Github and share the link with your users. This option is suitable if you want to allow your users to easily download and update your script.
+5.  **Website**: You can host your bash script on a website and provide a link for users to download it. This option is suitable if you want to make your script easily accessible to a large number of users.
+6.  **Visual Code Extension**: you can [create an extension for Visual Code](https://code.visualstudio.com/api/get-started/your-first-extension) from your Linux bash script and upload to the marketplace. once your extension is [published](https://code.visualstudio.com/api/working-with-extensions/publishing-extension), users can install it by searching for it in the Visual Studio Code Extension Marketplace or by using the code --install-extension ext-name command in the terminal.
+
+![from gitHub actions we may publish](/images/linux/qtool-000010.png)
+
+
+
+

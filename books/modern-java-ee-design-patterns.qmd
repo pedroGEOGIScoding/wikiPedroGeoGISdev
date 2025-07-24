@@ -1,0 +1,39 @@
+---
+title: "Modern Java EE Design Patterns"
+author: "albertprofe"
+subtitle: "Markus Eisele, 2016, Modern Java EE Design Patterns: Building Scalable Architecture for Sustainable Enterprise Development"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "With the ascent of DevOps, microservices, containers, and cloud-based development platforms, the gap between state-of-the-art solutions and the technology that enterprises typically support has greatly increased. But as Markus Eisele explains in this O’Reilly report, some enterprises are now looking to bridge that gap by building microservice-based architectures on top of Java EE."
+categories: [design]
+subcategories:  [programming, java, springboot, microservices, jee]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/modern-java-ee-design-patterns.png)
+
+## More info
+
+- [Modern Java EE Design Patterns PDF](https://github.com/ffisk/books/blob/master/modern-java-ee-design-patterns.pdf){.external}
+- [Modern Java EE Design Patterns](https://developers.redhat.com/promotions/distributed-javaee-architecture){.external}
+
+### Creating Distributed Java EE Architecture
+
+With the ascent of DevOps, microservices, containers, and cloud-based development platforms, the gap between state-of-the-art solutions and the technology that enterprises typically support has greatly increased.
+
+
+**Can it be done? Is it even a good idea?** This report thoroughly explores the possibility and provides savvy advice for enterprises that want to move ahead.
+
+> The issue is **complex**: Java EE wasn’t built with the distributed application approach in mind, but rather as one monolithic server runtime or cluster hosting many different applications.
+
+If you’re part of an enterprise development team investigating the use of microservices with Java EE, there are several items to consider:
+
+- Understand the challenges of starting a greenfield development vs tearing apart an existing brownfield application into services
+- Examine your business domain to see if microservices would be a good fit
+- Explore best practices for automation, high availability, data separation, and performance
+- Align your development teams around business capabilities and responsibilities
+- Inspect design patterns such as aggregator, proxy, pipeline, or shared resources to model service interactions

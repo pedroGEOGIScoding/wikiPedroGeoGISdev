@@ -1,0 +1,112 @@
+---
+title: "Lab#SB06-1: `employeeCourse`"
+subtitle: Spring Boot
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+## employeeCourse overview
+
+JPA @Entity Employee and Images uploading/downloading:
+
+- Spring Boot JPA @RestController without View and Thymeleaf
+- Rest Controller with image `public class EmployeeImageController` and Swagger
+- Application.properties
+- Classes: JPA @Entity Employee and CrudRepository Interface
+- Database: H2 (local or in Memory) and ddl.auto **for data**
+- MongoDB connection and db **for images**
+- IDE: Eclipse Mars
+
+## employeeCourse (java-EE spring)
+
+### github repo
+
+[AlbertProfe/employeecourse](https://github.com/AlbertProfe/employeecourse){.external}
+
+### Project Tree init:
+
+![employeeCourse (java-EE spring): main tree](https://raw.githubusercontent.com/AlbertProfe/images/main/cifospring2021/2021-07-MongoDB-000041.png){width="50%"}
+
+![employeeCourse (java-EE spring): java classes](https://raw.githubusercontent.com/AlbertProfe/images/main/cifospring2021/2021-07-MongoDB-000040.png){width="50%"}
+
+![employeeCourse (java-EE spring): templates html](https://raw.githubusercontent.com/AlbertProfe/images/main/cifospring2021/2021-07-MongoDB-000042.png){width="50%"}
+
+
+
+
+### deploy and screens
+
+**deprecated NOV-2022** Deployed on `Heroku`: <s>[Heroky deploy](https://employeecourse.herokuapp.com/){.external}</s>
+
+screenshoots from app: [screenshots](https://github.com/AlbertProfe/images/tree/main/cifospring2021/mockup){.external}
+
+
+### JPA relationships
+
+![Employee JPA relationships](https://raw.githubusercontent.com/AlbertProfe/images/main/cifospring2021/employeeCourse.png){width="80%"}
+
+
+
+## Detail
+
+- Application.properties: mongoDB and H2
+- Layout and fragment
+  - layout.html
+  - layout_login.html
+  - layout_detail.html
+- Java classes JPAHow layout works
+  - n:m TA as two @Entity and `1:n` `n:1` `1:n`
+  - Employee <> Expense (@Entity H2) `1:n` bidirectional
+  - Employee <> Holidays (@Entity H2) `1:n` unidirectional
+  - Employee <> Enrollment <> Course <> Certificate (@Entity H2)  `n:m`
+  - Employee <> EmployeeImage (@Document MongoDB) `1:1` birectional
+- Rest Controller (Employee and EmployeeImage)
+- CommandLineRunner
+    - HomeController Fill in entities in H2 and assign them
+    - Employee @entity
+      - `setEmployeeImageId` with `employeeImageId` string id from mongodb **to-do**
+- Employee (Items detail)
+  - Empployee Detail
+    - Path (th:scr) to mognodb image from `getEmployeeImageId`  via rest controller **to-do**
+  - Courses
+    - Add couse to employee (insert date and status *to-do*)
+    - Update status
+  - Expenses
+    - Create expense
+    - Delete expense (afer deleting return to Expenses or crete new detail *to-do*)
+    - Update expense
+  - Holidays
+    - Add holidays date
+    - Delete  holidays dates
+    - Create holidays (rejects to create an existing year)
+  - Upload Image
+    - Rest Controller via Postman
+    - Add Image:
+      - upload image option (EmployeImage to mongoDB)
+      -  `1:1 - bidirectional`  (EmployeImage <> Employee)
+- Enrollments **to-do**
+- Courses and filters **to-do**Advanced
+- Thymeleaf pagination **to-do**
+- Thymeleaf validation **to-do**
+- Abstract class and inhrence with audit and DTO **to-do**
+- Java 8 and H2 in memory to `DEPLOY: upload to Heroku`
+
+## How layout works
+
+
+![How layout works](https://raw.githubusercontent.com/AlbertProfe/images/main/cifospring2021/layout/layout_0.png){width="80%"}
+
+
+
+
+

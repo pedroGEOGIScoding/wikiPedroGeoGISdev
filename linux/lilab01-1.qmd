@@ -1,0 +1,26 @@
+---
+title: "Linux Lab#LI01-1: Choose Linux"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, distro]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI01-1: Choose Linux**
+
+This lab may serve many purposes, and you need some idea of **what you want to use your lab to achieve**.
+
+- If you're just exploring what's possible on Linux, installing `Linux Mint`,  `CentOS` or `Ubuntu` offers you a flexible and basic environment.
+- You may install `OpenSuse` for more concrete purposes and test these distributions on a spare computer, a Raspberry Pi, or as a **virtual machine (VM) or container**.
+- If you want your journey to begin at its destination, you can install **Red Hat Enterprise Linux (RHEL)** on a supported platform. This gets you started with **enterprise-quality Linux**, which means that once you perfect your setup, it's ready to migrate into **production**.
+:::
+
+

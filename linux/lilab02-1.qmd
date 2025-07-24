@@ -1,0 +1,124 @@
+---
+title: "Linux Lab#LI02-1: Export env user with grep and pipe"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, bash, pipe]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI02-1: Export env user with grep and pipe**
+
+Export the environment of a **user linux account** from user's account with root privileges on ``OpenSUSE`` bash (or Linux Mint).
+:::
+
+## CLI tools
+
+#### sudo: `su - root -c`
+
+To run a **single command as the root user**. The `-c` option is used with the su command to specify a command that should be **run as the target user**.
+
+``` bash
+su - root -c 'command'
+su - root -c 'apt update && apt upgrade -y'
+su - root -c 'bash /path/to/script.sh'
+su - root -c 'bash /usr/local/bin/install-web-server.sh'
+```
+
+#### redirect: `>>` 
+
+The `>` symbol is used for output **redirection**. Here the output of command ls -al is re-directed to file `listings` instead of your screen.
+
+``` bash
+ls -al > listings
+```
+
+The `>>` operator is used to **redirect the output of a command to a file**, and **append the output** to the end of the file.
+
+``` bash
+command >> file
+ls >> alex.txt
+```
+
+`iconfig /all > networksettings.txt`
+![iconfig /all > networksettings.txt](/images/linux/redirect.png)
+
+`ping 8.8.8.8 > 'C:\Users\devops\Desktop\PingResults.txt'`
+!["ping 8.8.8.8 > 'C:\Users\devops\Desktop\PingResults.txt'"](/images/linux/redirect2.png)
+
+
+
+#### grep: `grep -v` 
+
+The `-v` option is used with the `grep` command to **invert the sense of matching**. When used, grep will display lines that do not match the given pattern.
+
+``` bash
+grep -v pipe_jenkins devops.txt
+```
+
+### environment: `env`
+
+The `env` command is a **built-in command in Linux and Unix-like operating systems** that is used to **display or set environment variables**.
+
+Environment variables are **named values that can be used to store information about the system or the user**. They are used to configure the shell and to set options that affect the behavior of the system and programs.
+
+``` bash
+envexport VARIABLE_NAME=value
+```
+
+`env`
+![env](/images/linux/env.png)
+
+
+
+### set: `set +a`
+
+The `set` builtin command is used to **set options and/or positional parameters**. The -a option is used to enable the `export` attribute for each name, which means that the corresponding variable will be exported with the export command to the environment of subsequently executed commands.
+
+The `+ sign` before the a option toggles the attribute off. This means that `set +a` disables the `export` attribute for the specified variables, and `set -a` enables it.
+
+``` bash
+VARIABLE_NAME=value
+set -a
+export VARIABLE_NAME
+
+```
+
+## Solving discussion
+
+We could do this:
+
+``` bash
+su - root -c 'env | grep -v "^USER_VARIABLE=" >> /etc/environment'
+```
+
+This will run a **subshell** as the **root user**, source the current user's `.bashrc` file to set up the environment, and then export the environment variables to `/etc/environment`.
+In Bash, the set builtin command is used to set options and/or positional parameters. The -a option is used to enable the "export" attribute for each name, which means that the corresponding variable will be exported with the export command to the environment of subsequently executed commands.
+
+The + sign before the a option toggles the attribute off. This means that set +a disables the "export" attribute for the specified variables, and set -a enables it.
+
+
+```  {.bash .code-overflow-wrap}
+su - root -c 'bash -c "set -a; source ~/.bashrc; set +a; env | grep -v \"^USER_VARIABLE=\" >> /etc/environment"'
+```
+
+- ``su - root -c``: This will allow you to run a command as the root user while preserving the environment of the current user.
+- `grep` and `>>`: **You will pipe the output** to `grep` to filter out the `USER_VARIABLE` variable. The resulting output is then **redirected** to `/etc/environment` using `>>`.
+- This will add **all of the environment variables** from the current user's environment to the `/etc/environment` file, <mark>which is used to set the environment for all users on the system.<mark>
+
+
+If you want to **preserve the entire environment**, including aliases, functions, and shell options, you can use the `bash -c` command instead:
+
+```  {.bash .code-overflow-wrap}
+su - root -c 'bash -c "set -a; source ~/.bashrc; set +a; env | grep -v \"^LS_COLORS=\" >> /etc/environment"'
+```
+
+
+

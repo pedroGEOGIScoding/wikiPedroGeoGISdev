@@ -1,0 +1,102 @@
+---
+title: "Getting Things Done"
+author: "albertprofe"
+subtitle: "David Allen, 2015, etting Things Done: The Art of Stress-Free Productivity"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "Since it was first published almost fifteen years ago, David Allen’s Getting Things Done has become one of the most influential business books of its era, and the ultimate book on personal organization. “GTD” is now shorthand for an entire way of approaching professional and personal tasks, and has spawned an entire culture of websites, organizational tools, seminars, and offshoots."
+categories: [agile]
+subcategories: [agile, execution]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/gettingthingsdone.jpg)
+
+## More info
+
+In today's world, yesterday's methods just don't work. In `Getting Things Done`, veteran coach and management consultant **David Allen** shares the breakthrough methods for **stress-free performance.**
+
+::: {.callout-note}
+## Please, relax
+Allen's premise is simple: **our productivity is directly proportional to our ability to relax.** 
+
+Only when our minds are ``clear`` and our ``thoughts`` are organized can we achieve **effective productivity and unleash our creative potential.**
+:::
+
+The primary reason for organizing is to reduce cognitive load: to eliminate the need to constantly be thinking, `What do I need to do about this?`
+
+## Overview
+
+
+- If we don’t appropriately manage the ``open loops`` in our life, **our attention will get pulled.**
+- ``Overwhelm`` comes from:
+    - not **clarifying** what your intended **outcome** is,
+    - not **deciding** what the very next action is, and
+    - not  being **aware** of your outcome and next-previous-action.
+- You need to transform all the ``stuff`` you attract and accumulate into a **clear inventory**.
+
+## Structure
+
+Getting things done requires **two basic components:**
+
+- `Outcome`: Defining what “done” means
+- `Action`: What “doing” looks like
+
+::: {.callout-note}
+## Relevance of metrics
+We need some `real metrics` to feed our decision-making and be aware to where we are going.
+:::
+
+You need to **control commitments, projects, and actions** in two ways:
+
+- `Horizontally`. Maintaining coherence across all the activities in which you are involved
+- `Vertically`. Managing thinking, development, and coordination of individual topics and projects.
+
+## Five tips
+
+Here are a few takeaways and tactics:
+
+###  Done
+Getting things done requires defining what ``done`` means and what ``doing`` looks like.
+
+> What is ``done``? What is ``doing``?
+
+> We need to transform all the ‘stuff’ we attract and accumulate into a **clear inventory of meaningful actions, projects, and usable information.**
+
+### Attention
+
+Mastering your workflow involves capturing **what has your attention**, clarifying what it means, putting it where it belongs, reviewing it frequently, and engaging with it.
+
+> How de you see the world? What is your `narrative`?
+
+> You must use your mind to **get things off your mind** and focus, if not: **confussion** and with confussion comes very bad decision-making.
+
+> Until your thoughts **have been clarified and decisions have been made** (and create a `pointer`) your brain can’t give up the job.
+
+::: {.column-margin}
+`pointer`: decision, processes, targets, outocmes are data, information. The resulting data must be stored in a system that you absolutely know you will access and think about when you need to.
+:::
+ 
+### Now!
+
+If an action will **take less than two minutes**, it should be done at the moment it is defined.
+
+> Save energy, do it now!
+
+### Anxiety
+
+``Anxiety`` and ``guilt`` don’t come from having too much to do; it comes from **breaking agreements with yourself.**
+
+> Your mind is for having ideas, not for holding them.
+
+> It’s a waste of time and energy to keep thinking **about something that you make no progress on.**
+
+## More info
+
+- [Getting Things Done Summary](https://www.samuelthomasdavies.com/book-summaries/business/getting-things-done/){.external}
+
+![Getting Things Done Workflow Chart](/books/gettingthingsdone-chart.png)

@@ -1,0 +1,412 @@
+---
+title: "Spring Boot: H2 DB and Thymeleaf"
+subtitle: Spring Boot
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, project, maven, thymeleaf, db, h2]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **Create a Spring Boot Project**
+
+1. Create a [Maven Spring Project](/springboot/boot-what-create.qmd)
+2. Install `H2 DB`
+3. Define **Application.properties**
+4. Create Model: @Entity `Book` and JPA @Repository
+5. Create @Controller and @Service
+6. Create `HTML` template with Thymeleaf
+
+:::
+
+---
+
+# Maven Project
+
+Be careful with [this](https://hibernate.org/orm/releases/){.external}.
+
+![Compatibility matrix Java / JPA / ORM Hibernate / Jakarta](/images/springboot/ormjava_comp_matrix.png)
+
+## POM.xml and dependencies
+
+Check the base project, [Library5](/springboot/boot-what-create-th-h2.qmd#example-library5).
+
+[POM.xml and dependencies](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/pom.xml){.external}: The POM.xml file manages the dependencies of a project in Maven.
+
+- The first two dependencies, `spring-boot-starter-thymeleaf` and `spring-boot-starter-web`, are **starter dependencies for Spring Boot** and include libraries for building **web applications** using the **Thymeleaf template engine**.
+- The `spring-boot-devtools` dependency provides **development-time tools to improve the development experience**, such as automatic application restarts and enhanced debugging capabilities.
+- `javafaker` is a library used to generate **random data for testing purposes**, and `lombok` is a library that simplifies Java code **by reducing boilerplate code**.
+- The `spring-boot-starter-test` dependency includes the necessary libraries for testing Spring Boot applications, and the `junit-jupiter-api` dependency provides the `JUnit 5 testing framework`.
+- The `spring-boot-starter-jdbc` and `spring-boot-starter-data-jpa` dependencies provide libraries for accessing and manipulating **databases** in a Spring Boot application.
+- Finally, the `h2 dependency` is a **lightweight in-memory database used for testing** and development purposes.
+
+::: {.column-margin}
+The `groupId` and `artifactId` attributes uniquely identify each dependency, while the version attribute specifies the version of the library to use.
+:::
+
+::: {.column-margin}
+The `scope attribute` defines the visibility of the dependency at different stages of the **application's lifecycle**, and the optional attribute indicates that the dependency is not strictly required for the application to function.
+:::
+
+
+# Model
+
+## `@Entity` book
+
+- [Book entity](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/java/io/company/library/Book.java){.external}
+
+A ``persistence entity`` is a **lightweight Java class with its state typically persisted to a table in a relational database.** 
+
+::: {.callout-tip}
+## Entity definition
+- Instances of such an entity correspond to **individual rows** in the table. 
+
+- Entities typically have relationships with other entities, and these relationships are expressed through **object/relational mapping** (ORM) metadata. 
+
+- This metadata may be specified directly in the entity class file by using **annotations** *(or in a separate XML descriptor file distributed with the application).*
+:::
+
+``` {.java .code-overflow-wrap filename="DemoApplication.java"}
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Entity(name="Book")
+@Table(name="BOOK_TABLE")
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="BOOK_ID")
+    private long bookId;
+    @Column(name="BOOK_TITLE")
+    private String title;
+    @Column(name="AUTHOR")
+    private String author;
+    private int pages;
+    @Column(name="PUBLISHED_YEAR")
+    private int publishedYear;
+    @Column(name="ISBN")
+    private String isbn;
+}
+```
+
+::: {.callout-warning}
+## Historical note
+
+``Spring MVC`` was [the original web framework](/spring/spring-mvc.qmd) in the **Spring ecosystem**, and it relied heavily on **XML-based configuration**.
+
+Over time, Spring MVC **evolved to become more annotation-driven**, which made it simpler and more concise to work with.
+
+With the advent of Spring Boot, the Spring ecosystem became even more streamlined, with convention-over-configuration and a focus on out-of-the-box features that made **it easier to build and deploy Spring-based applications.**
+
+In the domian of database access, **Spring evolved from using plain JDBC to providing support for Object-Relational Mapping (ORM) frameworks such as Hibernate and JPA.**
+
+Spring also provides transaction management capabilities through the Spring Transaction module, which allows developers to define transaction boundaries declaratively using annotations or XML configuration.
+
+By using Spring, developers can build robust, scalable, and maintainable web applications that leverage modern technologies and best practices.
+:::
+
+::: {.column-margin}
+- [Object Relational Mapping (ORM) data access](https://docs.spring.io/spring-framework/docs/2.0.x/reference/orm.html){.external}
+- [Spring ORM example - JPA, Hibernate, Transaction](https://www.digitalocean.com/community/tutorials/spring-orm-example-jpa-hibernate-transaction){.external}
+:::
+
+## H2 DB creation: step-by-step
+
+1. Download the `H2 database`: Go to the `H2 database` website at [H2 DB](http://www.h2database.com){external} and download **the latest version of the H2 database for Linux**. You can download either the ZIP or the TAR package.
+
+2. Extract the downloaded file: Open the terminal and navigate to the folder where you downloaded the `H2 database. `Extract the contents of the downloaded file using the following command:
+
+``` {.bash .code-overflow-wrap filename="linux.sh"}
+tar -zxvf h2-*.tar.gz
+```
+
+3. **Start the H2 database server**: Navigate to the `H2 database` directory and start the `H2 database` server by running the following command:
+
+``` {.bash .code-overflow-wrap filename="linux.sh"}
+java -jar h2*.jar
+```
+
+``` {.bash .code-overflow-wrap filename="linux.sh"}
+cd <download directory>
+unzip h2*.zip
+cd h2/bin
+chmod +x h2.sh
+```
+This will **start** the `H2 database` server and display the **URL** where the `H2 database` can be accessed.
+
+
+4. Connect to the `H2 database`: Open a web browser and enter the URL displayed in the terminal. The H2 database web interface will open in the browser.
+
+    - Other option is to execute the app and then clik "Create a new database" from the H2 Icon
+
+![](/images/springboot/h2Icon.png){width="40%"}
+
+![](/images/springboot/h2Icon-2.png){width="40%"}
+
+![](/images/springboot/h2Icon-3.png){width="40%"}
+
+5. Create a new database: In the `H2 database` web interface, click on the "Create a new database" button and follow the prompts to create a new database.
+
+![Create H2 DataBase: define parameters](/images/springboot/createH2.png){width="80%"}
+
+![Create H2 DataBase: DB created](/images/springboot/createH2-2.png){width="80%"}
+
+![Create H2 DataBase: check it has been created](/images/springboot/createH2-3.png){width="80%"}
+
+![Create H2 DataBase: connect to DB](/images/springboot/createH2-4.png){width="80%"}
+
+Name your database: jdbc:h2:/home/albert/MyProjects/MyDBs/h2DBs/**myDB**
+
+6. Connect to the new database: Once the new database is created, click on the "Connect" button in the `H2 database` web interface and introduce the right parameters.
+
+::: {.callout-important}
+
+Saved Settings: **Generic H2 (Server)**</br>
+Setting Name: Generic H2 (Server)</br>
+  
+Driver Class: **org.h2.Driver**</br>
+JDBC URL: **jdbc:h2:/home/albert/MyProjects/MyDBs/h2DBs/myDB**</br>
+
+User Name: albert</br>
+Password: ••••</br>
+
+:::
+
+![Create H2 DataBase](/images/springboot/createH2-5.png){width="80%"}
+
+7. Use the `H2 database`: Now you can start using the `H2 database`. You can create tables, insert data, and perform queries using SQL commands.
+
+## JPA
+
+- [Spring Data JPA - Reference Documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/){.external}
+
+::: {.column-margin}
+**JPA**: Jakarta Persistence, formerly Java Persistence API
+:::
+
+::: {.callout-tip}
+## JPA definiton
+
+``JPA`` is a application programming interface specification that describes the **management of relational data**.
+:::
+
+</br>
+
+
+``` {.java .code-overflow-wrap filename="DemoApplication.java"}
+public interface BookRepository extends CrudRepository<Book, Long> {}
+
+```
+
+This code is defining a Java interface named `BookRepository` that extends the `CrudRepository` interface.
+
+::: {.callout-note}
+## Crud Repository
+
+The `CrudRepository` interface is a built-in interface in the Spring Framework that provides generic CRUD (Create, Read, Update, Delete) operations for working with entities in a database.
+:::
+
+
+The `BookRepository` interface is being used to define a repository for managing `Book` entities, where `Book` is likely a Java class representing a **book object in the application**.
+
+
+The ``Long`` parameter in `CrudRepository`<Book, Long> specifies the type of the **primary key** for the Book entity. In this case, the **primary key** is a ``Long`` type.
+
+By extending `CrudRepository`, the `BookRepository` interface will inherit methods such as `save()`, `findById()`, `findAll()`, and `deleteById()`, among others, which can be used to perform database operations on `Book` entities.
+
+This allows for efficient and standardized **data access** and management within the application. Otherwise, we should use a [DAO](https://en.wikipedia.org/wiki/Data_access_object){.external}:
+
+- [Example DAO MongoDB](https://github.com/AlbertProfe/JAVA_2020/blob/addIO/DAOtoMongo/src/main/java/dao/AuthorDAO.java){.external}
+- [Example SQL execution in Java](https://github.com/AlbertProfe/cifojava2022-4/blob/master/demoMavenH2/src/main/java/MavenH2.java){.external}
+
+
+::: {.column-margin}
+The public keyword specifies that the interface can be accessed from other classes, and the interface name should be in camelCase to follow Java naming conventions.
+:::
+
+
+## `Application.Properties`
+
+[Application.Properties](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/resources/application.properties){.external}: the `application.properties` file contains configuration properties for a **Spring Boot application.**
+
+```js
+#H2 DATASOURCE
+spring.datasource.url=jdbc:h2:tcp://localhost/~/dataBaseH2/library5
+spring.datasource.username=albert
+spring.datasource.password=1234
+spring.datasource.driver-class-name=org.h2.Driver
+
+#JPA
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+```
+
+# Controller
+
+## `@Controller` Web
+
+``` {.java .code-overflow-wrap filename="DemoApplication.java"}
+@Controller
+@RequestMapping("/library")
+public class LibraryWebController {
+
+    @Autowired
+    BookService bookService;
+
+    @RequestMapping("/books")
+    public String getWeb(Model containerToView) {
+        //
+        containerToView.addAttribute("booksfromController",
+                bookService.getAllBooks());
+        
+
+        return "showBooks";
+    }
+}
+```
+</br>
+The method `getWeb()` is handling a **GET request** to the "`/library/books`" **URL path** and adding a list of books retrieved from the `BookService` to the `Model` attribute "`booksfromController`".
+
+![@controller and View are connected by HTML/ViewResolver/TH](/images/springboot/view.png){width="80%"}
+
+Finally, it **returns** the name of the view that will be used **to render the response.**
+
+![getWeb method](/images/springboot/controller.png){width="80%"}
+
+1. Java Class and annotations:
+    - `@Controller`: This is an annotation that identifies the class as a **Spring MVC controller.**
+    - `@RequestMapping("/library")`: This annotation maps the controller to the URL path `"/library"`.
+
+2. `@Autowired BookService bookService;`:  This annotation injects an instance of the BookService into the controller.
+3. `@RequestMapping("/books")`: This annotation **maps the method to the URL** path `"/library/books"`.
+4. `public String getWeb(Model containerToView)`: This is the method declaration for the **GET request handler.**
+5. `containerToView.addAttribute("booksfromController", bookService.getAllBooks());`: This adds a list of books retrieved from the **BookService** to the model attribute `"booksfromController"`.
+6. `return "showBooks;`: This returns the name of the view that **will be used to render the response**.
+
+
+# View: Thymeleaf
+
+In Spring Boot, the `@Controller` returns the name of the **HTML file** (also known as the `view`) that should be rendered to display the response. 
+
+::: {.column-margin}
+The view is then resolved by the `ViewResolver` and the corresponding HTML template file is located.
+:::
+
+
+The data that the `@Controller` wants to send to the view **is stored in a Model object**. The Model object is passed to the view **as a parameter** and **can be accessed** from the HTML template.
+
+::: {.callout-tip}
+## Thymeleaf
+
+Using **template engines like Thymeleaf**, the view can then use expressions and tags **to inject the data from the Model** object into the HTML file.
+:::
+
+:::{.column-margin}
+[FreeMarker](https://freemarker.apache.org/){.external}. Apache FreeMarker™ is a template engine: a Java library to generate text output (HTML web pages, e-mails, configuration files, source code, etc.) based on templates and changing data.
+:::
+
+Finally, the rendered HTML file with the **injected data** is sent as the response to the client's request.
+
+- [showBooks.html on src/mian/resources/templates/](https://github.com/AlbertProfe/cifojava2022-3/blob/0b15d01c098821f07cf4c8f7a10828ef5080bdb7/library5/src/main/resources/templates/showBooks.html#L29){.external}
+
+
+``Thyemeleaf`` builds the HTML table injecting data from ``Model object``. This ``model objects`` comes from ``@Controller``.
+
+It builds a ``<table></table>`` with a header and multiple rows `<tr></tr>`
+
+![](/images/springboot/thymeleaf.png)
+
+[1] A java **forEach** wirtten in ``Thymeleaf`` iterates over a list of books `booksfromController` using the tr`th:each` attribute.
+
+::: {.callout-note}
+## Scope in Thymeleaf
+The `th:each` attribute on `<tr>` scope starts in `<tr>` and finishes in  `</tr>`
+:::
+
+[2] For each book, it creates a `table cell` `<td>` and displays different attributes of the book, such as bookId, title, isbn, pages, publishedYear, and author.
+
+There are also **three links in the row**, each represented by an `anchor` `<a>` tag. 
+
+These links use **Thymeleaf's URL** syntax `@{...}` to generate URLs that invoke **Spring MVC `@Controller` methods**.
+
+[3] [4] [5] The `deleteBook()`, `updateBook()`, and `detailBook()` methods will be called with the bookId parameter set to the `book.bookId` value of the cu Open a web browser and enter the URL dirrent iteration.
+
+The links are styled using `CSS` classes from the **W3.CSS framework.**
+
+
+# Example: Library5
+
+- [Lab#SB02-Library5 Code](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library5){.external}
+- [Lab#SB02-Library5 Docs](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library5:-ThymeLeaf-Web-Project){.external}
+
+### Tree-folder Project root
+
+Collapsed tree-folder:
+
+![](/images/springboot/Library5-tree-2.png)
+
+1. `scr/main`: This directory contains two subdirectories - java and resources - which respectively hold the **Java source code** and **resource files for the application.**
+    - java
+    - resources
+2. `scr/test`: This directory contains **unit test code** and resources that can be used to test the application.
+3. `target` and `files`:
+      - `target`: This directory is the **output directory where compiled classes and artifacts are stored.**
+      - `files` on root: This directory holds any additional files or resources needed by the application that are not directly related to the code or tests: **POM.xml is the most important.**
+
+### Tree-folder Project 
+
+All files in our tree-folder:
+
+![](/images/springboot/Library5-tree.png)
+
+
+The **Spring Boot tree-folder structure** includes various components such as POM.xml, Git, Java classes, application.properties, and HTML templates that help manage dependencies, version control, database access, configuration, and dynamic content generation.
+
+1. [POM.xml and dependencies](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/pom.xml){.external}: The POM.xml file manages the dependencies of a project in Maven.
+2. [Git and .gitignore](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/.gitignore){.external}: Git is a version control system that helps manage code changes, while .gitignore is a file that specifies which files and directories should be excluded from version control.
+3. [Main](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/java/io/company/library/LibraryApplication.java#L9){.external}: The main method is the entry point for a Java application, where the program starts execution.
+4. [Java Classes](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library5/src/main/java/io/company/library){.external}:
+    - `@Entity`: A Java class annotated with `@Entity` is mapped to a database table.
+    - `@Controller`: A Java class annotated with `@Controller` handles incoming web requests and returns a response.
+    - `@Repository`: A Java class annotated with `@Repository` provides database access to other classes in the application.
+5. [Application.Properties](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library5/src/main/resources/application.properties){.external}: The application.properties file contains configuration properties for a Spring Boot application.
+6. [Templates HTML](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library5/src/main/resources/templates){.external}: HTML templates are used in a web application to generate dynamic content on the server-side.
+
+# Execution
+
+![Web client from Chrome web browser makes a request to Spring Boot Server](/images/springboot/execution-1.png)
+
+
+![Spring Boot Server gets the request and manages to create a Response to client in HTML file format](/images/springboot/execution-2.png)
+
+## Auto-reload compiler
+
+`Spring Boot Dev Tools`
+
+
+Any changes to views or resources can be seen in the browser directly, no need restarts, just refresh the browser. As wwll, any changes to the code that will restart the Spring container automatically.
+
+``` xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <scope>runtime</scope>
+    <optional>true</optional>
+</dependency>
+```
+
+![Auto-reload compiler: Advanced Settings](/images/springboot/compiler.png){width="70%"}
+
+![Auto-reload compiler: build project automatically](/images/springboot/compiller2.png){width="70%"}
+
+![Enable this option: `compiler.automake.allow.when.app.running`](/images/springboot/devtools_registry.png){width="70%"}
+
+> In Menu -> Build -> Build Project `CTRL + F9`
+

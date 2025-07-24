@@ -1,0 +1,97 @@
+---
+title: "Brain Energy"
+author: "albertprofe"
+subtitle: "Brain Energy: A Revolutionary Breakthrough in Understanding Mental Health--and Improving Treatment for Anxiety, Depression, OCD, PTSD, and More, 2023, Christopher M. Palmer"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "The book that will forever change the way we understand and treat mental health."
+categories: [neuropsychology]
+subcategories: [health, psychology, brain]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/brainEnergy.jpeg)
+
+## Overview
+
+This is the book that will forever change the way we understand and treat mental health.
+
+If you or someone you love is affected by mental illness, it might change your life.
+
+::: {.callout-note}
+We are in the midst of a global mental health crisis, and mental illnesses are on the rise.
+
+**But what causes mental illness?**
+
+And why are mental health problems so hard to treat?
+
+:::
+
+Drawing on decades of research, **Harvard psychiatrist Dr. Chris Palmer** outlines a revolutionary new understanding that for the first time <mark>unites our existing knowledge about mental illness within a single framework: Mental disorders are metabolic disorders of the brain.</mark>
+
+
+
+**Brain Energy** explains this new understanding of mental illness in detail, from symptoms and risk factors to what is happening in brain cells. **Palmer** also sheds light on the new treatment pathways this theory opens up—which apply to all mental disorders, including anxiety, depression, ADHD, alcoholism, eating disorders, bipolar disorder, autism, and even schizophrenia. **Brain Energy** pairs cutting-edge science with practical advice and strategies to help people reclaim their mental health.
+
+This groundbreaking book reveals:
+
+- Why classifying mental disorders as “separate” conditions is misleading
+- The <mark>clear connections between mental illness and disorders linked to metabolism, including diabetes, heart attacks, strokes, pain disorders, obesity, Alzheimer’s disease, and epilepsy</mark>
+- The <mark>link between metabolism and every factor known to play a role in mental health, including genetics, inflammation, hormones, neurotransmitters, sleep, stress, and trauma</mark> 
+- The evidence that current mental health treatments, including both medications and therapies, likely work by affecting metabolism
+- New treatments available today that readers can use to promote long-term healing
+
+**Palmer** puts together the pieces of the mental illness puzzle to provide answers and offer hope. Brain Energy will transform the field of mental health, and the lives of countless people around the world.
+
+## Brain Energy, Mitochondria, and Mental Health with Dr. Chris Palmer
+
+{{< video https://youtu.be/oC-sQogfh3Q?feature=shared >}}
+
+## Thesis
+
+![Paying the brain's energy [bill](https://www.sciencedirect.com/science/article/pii/S0959438822001623){.external}](/books/brainenergy-mass.jpg)
+
+> The brain is the single most metabolically demanding organ in the body. It uses about 30% of all the caloric energy consumed by the body.
+>
+> Imagine that for a minute.
+>
+> If about one third of our metabolism is dedicated just to powering our thoughts, does it make sense that thinking can make us tired? Or that we can’t think as well when we’re hungry or fatigued? Or that metabolic stimulants (e.g., caffeine, sugar) have powerful cognitive effects?
+>
+>It makes sense.
+
+{{< video https://youtu.be/rPLjSY00JlE >}}
+
+When the body ingests **more carbs than it burns**, two things happen:
+
+- **fat gain**, and
+- **insulin [resistance](https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/prediabetes-insulin-resistance){.external}**.
+  
+The later is a condition in which **insulin** in the bloodstream -responsible for shuttling glucose across the cell membrane- becomes increasingly less effective.
+
+That is, <mark>the cells resist the action of insulin, resulting in higher concentrations of glucose (sugar) in the blood</mark>.
+
+::: {.column-margin} 
+Although the evolutionary reasons for [insulin resistance](/books/brainenenegy-inulin.png){.external} are unknown, it may be that lower concentrations of glucose within the cell walls give the mitochondria inside more time to process the carbohydrate without production of excess reactive oxygen species.
+:::
+
+Overworked mitochondria can be more prone to damage by ROS, and <mark>damaged mitochondria in the brain are less effective for powering essential cognitive processes.</mark>
+
+
+::: {#fig-insulin layout-ncol=3}
+![Inuslin-gluocose balance](/books/insulin1.png)
+
+![Inuslin Diabetes Type I](/books/insulin2.png)
+
+![Inuslin Diabetes Type II](/books/insulin3.png)
+
+:::
+
+## More info
+
+- ['Brain Energy' by Chris Palmer, MD (review)](https://seagertp.substack.com/p/brain-energy-book-review-chris-palmer){.external}
+- [Chris Palmer web](https://www.chrispalmermd.com/){.external}
+- [Brain Energy: A Revolutionary Breakthrough in Understanding Mental Health--and Improving Treatment for Anxiety, Depression, OCD, PTSD, and More](https://www.goodreads.com/book/show/61129785-brain-energy){.external}

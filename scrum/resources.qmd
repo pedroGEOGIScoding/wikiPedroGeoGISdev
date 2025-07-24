@@ -1,0 +1,37 @@
+---
+title: "SCRUM Resources"
+subtitle: Resources and Readings
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [scrum, resources, readings]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![MarkUp Resources](/images/home/frontimagealbertprofeweb-readings.png){width=50%}
+
+# Resources
+
+## Web
+
+- [Resource Center](https://www.scrum.org/resource-center)
+- [The Scrum Framework by Scrum Inc.](https://www.thinglink.com/scene/535528547733733377){.external}.
+- [Suggested Reading for Professional Scrum Master](https://www.scrum.org/resources/suggested-reading-professional-scrum-master){.external}
+- [Guia rápida implementar SCRUM](https://docs.google.com/presentation/d/e/2PACX-1vSRksLX681ZSipA3F7O92B0T4q7mfN9JMpNbdGKP72EkWMKWfUwPsfPNjcWTMKk2VmVjeWhr2Nv_WH1/pub?start=false&loop=false&delayms=3000&slide=id.p){.external}
+- [Suggested Reading for Professional Scrum Master](https://www.scrum.org/resources/suggested-reading-professional-scrum-master){.external}
+
+## Books
+
+- [Scrum success stories](https://blog.crisp.se/2008/01/03/henrikkniberg/1199379900000){.external}
+- [Scrum: the art of doing twice in half time](/books/scrum.qmd)
+
+## Power-Point
+
+- [where do I start](https://docs.google.com/presentation/d/e/2PACX-1vSRksLX681ZSipA3F7O92B0T4q7mfN9JMpNbdGKP72EkWMKWfUwPsfPNjcWTMKk2VmVjeWhr2Nv_WH1/pub?start=false&loop=false&delayms=3000&slide=id.g6c4b7ca8fc_1_6){.external}
+
+

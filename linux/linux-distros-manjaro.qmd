@@ -1,0 +1,59 @@
+---
+title: "Linux Distros: Manjaro"
+subtitle: Manjaro
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Manjaro
+categories: [linux, manjaro, distro]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![](/images/devops/logo-manjaro.png){width=40%}
+
+# Introduction 
+
+
+[Manjaro](https://manjaro.org/){.external} is a versatile, free, and open-source Linux operating system designed with a strong focus on safeguarding user privacy and offering extensive control over hardware.
+
+This user-friendly OS is an excellent choice for those who seek a fresh computing experience, as it can be seamlessly installed on a diverse array of devices.
+
+<mark>With support for both x86-64 and ARM architectures, Manjaro stands as an ideal option for any device or computing environment.</mark>
+
+Furthermore, Manjaro provides an array of customization options and a rich selection of applications, all while prioritizing security and privacy features. To cater to a wide audience.
+
+![Manjaro KDE Plasma 20](/images/linux/manjaro-desktop.jpeg){width=60%}
+
+# Application Access
+
+Effortlessly install a plethora of applications via the **Pamac software center, which seamlessly accommodates an array of package formats such as Flatpaks, Snaps and native packages.**
+
+Alternatively, you have the option to create your own packages, leveraging the Arch User Repository as a foundational resource for customization.
+
+## Software Experience: branches
+
+The inclusion of multiple branches empowers you to tailor your software experience. By default, you're positioned on the stable branch, yet the flexibility exists to shift to the testing or unstable branches, providing access to diverse software versions.
+
+#  Strengths of Manjaro Linux
+
+1. **User-Friendly Installation:**
+   - Manjaro Linux excels in providing a *user-friendly* installation process. Its intuitive graphical installer allows both beginners and experienced users to set up the system effortlessly. The installation process is streamlined and includes options for desktop environments, making it accessible to a wide range of users.
+
+2. **Rolling Release Model:**
+   - Manjaro follows a *rolling release* model, ensuring users have access to the latest software updates and features without the need for periodic reinstallations. This approach provides a more dynamic and up-to-date computing experience, with continuous access to the latest software releases and improvements.
+
+3. **Arch Base with Accessibility:**
+   - Built upon *Arch Linux*, Manjaro inherits the powerful and flexible Arch base while mitigating its complexity. Manjaro simplifies the Arch experience, making it more accessible to users who seek a balance between cutting-edge software and ease of use. This allows users to enjoy the benefits of Arch without the steep learning curve.
+
+4. **Extensive Software Management:**
+   - Manjaro uses the *Pacman* package manager, which combines the simplicity of package management with the power of Arch Linux's repositories. The Arch User Repository (AUR) is seamlessly integrated, allowing users to access a vast collection of community-maintained packages. This comprehensive software management system ensures users can easily install and update software, enhancing the overall flexibility of the system.
+
+
+::: {.callout-note}
+*Manjaro Linux* stands out for its user-friendly installation, rolling release model, Arch base with accessibility, and extensive software management, providing a robust and adaptable operating system for a diverse user base.
+:::
+

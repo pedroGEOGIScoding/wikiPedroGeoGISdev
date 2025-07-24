@@ -1,0 +1,23 @@
+---
+title: "The Creative Habit"
+author: "albertprofe"
+subtitle: "Twyla Tharp, 2007, The Creative Habit: Learn It and Use It for Life"
+date: "12/27/2005"
+date-modified: "9/9/2022"
+date-format: full
+description: "Provides insights and strategies to cultivate creativity as a habit, offering guidance for artists, writers, and anyone seeking to unlock their creative potential."
+categories: [self-management]
+subcategories: [creativity, neuroscience]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/TheCreativeHabit.jpg)
+
+## More info
+
+What makes someone creative? How does someone face the empty page, the empty stage and making something where nothing existed before? Not just a dilemma for the artist, it is something everyone faces everyday. What will I cook that isn't boring? How can I make that memo persuasive? What sales pitch will increase the order, get me the job, lock in that bonus? These too, are creative acts, and they all share a common need: proper preparation. For Twyla Tharp, creativity is no mystery; it's the product of hard work and preparation, of knowing one's aims and one's subject, of learning from approaches taken in the past. It's a process undertaken every day. It's a habit. The Creative Habit is not merely a look inside the mind of a remarkable woman with remarkable skills, but a programmatic, inspiring, encouraging guide to help each of us achieve our fullest creative potential.
+
+- [The Creative Habit: Learn It](https://www.amazon.es/Creative-Habit-Learn-Use-Life/dp/0743235274)

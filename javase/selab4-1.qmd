@@ -1,0 +1,644 @@
+---
+title: "Lab#SE04-1: healthyFood Restaurant, Core Model"
+subtitle: "Java SE Lab 04 part 1"
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: "Java SE Lab 04, part 1 work on the Core-Model"
+categories: [javase, lab, composition, model]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+
+::: {.labs}
+📘 **Linux Lab#SE04-1: healthyFood Restaurant**
+
+1. Create a Maven/Gradle `Java SE Project`. 
+    
+    - Crete from [wizard](/javase/se-concepts-createproject.qmd) the Maven Java SE Project and then work with [git](/javase/se-concepts-projectgit.qmd) version control, local and remote (GitHub.com).
+
+2. Add the needed dependencies:
+
+    - Lombok
+    - Junit
+    - Java Faker
+
+3. Create three `Java` classes to define the **Model**. Java SE Classes:
+
+    - Core Model: Table, Order and Menu
+    - Managers and Controller: use a fake DataBase like `ArrayList` or `HashMaps`
+
+4. With `Junit` dependency create **unitary test** to test objects and operations, and then **integration tests**.
+
+5. From here you should add new features **once all the test are passed.**
+
+    - Operations, you could think in a Manager Class o similar
+    - New fields/attributes and new classes
+    - New compositions and inherence: expand your model
+    - Use Factory design pattern to create new objects
+
+Project Overview
+
+- **Technology Stack:**
+  - Front-End: React
+  - Back-End: Spring Boot
+
+- **System Design:**
+  - The UML diagram, designed as part of Lab#SE04-1, lays the groundwork for essential entities such as Orders, Tables, and Menus.
+
+Integration with Spring Boot with API Rest
+
+This Java Maven SE backe-end seamlessly integrates with the React front-end via API Rest, creating a efficient restaurant management.
+
+<mark>The UML design acts as a guide, ensuring a cohesive flow between the front-end and back-end components.</mark>
+
+- [Lab#SE06-1](/reactjs/rjslab6-1.qmd)
+
+
+:::
+
+---
+
+# General approach
+
+<mark>Welcome to our Java SE project, where we code a culinary app from a quaint little van restaurant to a thriving establishment with over 100 employees. Our approach is simple yet ambitious: **start small, dream big**.</mark>
+
+- In the initial phase, our focus is on building the core structure of our restaurant management system. At the heart of our project, we will design a **Unified Modeling Language (UML) that includes essential classes such as Orders, Tables, and Menus.** 
+  - These classes will form the <mark>backbone of our application</mark>, facilitating efficient management of customer orders, table assignments, and menu items.
+- To orchestrate the flow of our restaurant operations, we introduce a **Controller class that acts as the central hub for handling user interactions and managing the overall system logic**.
+- To simulate a real-world database without the complexities of a full-fledged database system, **we implement a DataBase class utilizing HashMaps.** 
+  - This enables us to <mark>store and retrieve crucial information seamlessly, ensuring the smooth functioning of our restaurant.</mark>
+- For user interaction, we incorporate an **Input/Output (I/O) class that leverages the Command Line Interface (CLI)**.
+  - This ensures a user-friendly and interactive experience, allowing customers and restaurant staff to engage effortlessly with the application.
+- To guarantee the reliability and functionality of our codebase, we integrate **JUnit for testing**.
+  - This not only validates the correctness of our code but also ensures that any future modifications maintain the integrity of our system.
+  - Additionally, we incorporate **Java Faker to generate realistic test data**, saving time and effort in the testing phase.
+- Simplifying development and enhancing code readability, we include **Lombok** as a dependency.
+  - Lombok streamlines the <mark>creation of boilerplate code</mark>, enabling us to focus on the core functionality of our application.
+- Lastly, to manage project dependencies and facilitate easy builds, we structure our project as a **Maven project**.
+  - <mark>Maven simplifies the build process<mark>, making it more efficient and maintaining a clean and organized codebase.
+
+::: {.callout-note}
+
+As we embark on this Java SE project, our journey begins with simplicity, but the vision is grand.
+
+We aim **to transform a humble van restaurant with one person and five tables into a bustling establishment with over 100 employees**, embracing scalability and innovation every step of the way.
+
+Get ready to witness the evolution of our restaurant management system from a small-scale dream to a thriving reality.
+:::
+
+# Core classes and dependencies
+
+## EcoSystem: tech stack, system design and architecture
+
+
+(1) Software Core tools: framework/engine/publishing system, Code language, SDK (software development kit)
+(2) Development tools: Configuration system and format (.xml, .json, .yml ), Dependencies & packages management
+(3) Developer tools: IDE, debugger, collaborative & version control, documentation (Mermaid UML)
+(4) DevOps & App LifeCycle: test, deployment, OS, agile management
+
+::: {.column-page-right}
+| (1) Software Core tools | (2) Development tools | (3) Developer tools | (4) DevOps |  #version |
+| -- | -- | -- | -- | -- |
+| Java SE </br> JDK: open JDK 21 </br>    |  Maven: pom.xml </br>Lombok, JUnit 4.11/5, JavaFaker</br>  | IDE: IntelliJ IDEA 2023.3.3 (Community Edition)</br> Doc: Quarto, markdown</br>Version Control: git & gitHub</br> mermaid UML   | Phase: Sandbox </br> Linux 21.3 Virginia </br> Agile: SCRUM</br>  |  v.0.x | 
+:::
+
+
+## Dependencies `pom.xml`
+
+<mark>The `pom.xml` file in a Java SE Maven project is crucial as it serves as the Project Object Model configuration.</mark>
+
+::: {.column-margin}
+The `pom.xml` and dependencies enhance project maintainability, collaboration, and adherence to best practices, making them indispensable components for Java developers leveraging Maven for efficient project management and streamlined workflows.
+:::
+
+It defines project **metadata, dependencies, plugins, and build configurations, ensuring consistent builds**. Dependencies are vital as they specify external libraries required for the project, facilitating easy management and version control. Maven leverages these elements to automate project builds, simplifying development, testing, and deployment.
+
+
+
+## Dependency: Lombok
+
+Use ``Lombok``, [link](https://projectlombok.org/){.external}:
+
+- The **@Data** annotation is a ``Lombok`` annotation that generates getters and setters for the fields of a class, as well as equals, hashCode, and toString methods based on the fields.
+
+- The **@AllArgsConstructor** annotation is a ``Lombok`` annotation that generates a constructor with all of the class's fields as arguments.
+
+- The **@NoArgsConstructor** annotation is a ``Lombok`` annotation that generates a no-argument constructor for a class.
+
+[**@Data**](https://projectlombok.org/features/Data){.external} All together now: A shortcut for **@ToString**, **@EqualsAndHashCode**, **@Getter** on all fields, **@Setter** on all non-final fields, and **@RequiredArgsConstructor**.
+
+Adding lombok to your pom file: to include lombok as a provided dependency, add it to your <dependencies>In your Java code: block like so:
+
+``` {.java .code-overflow-wrap filename="pom.xml"}
+<dependencies>
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.24</version>
+		<scope>provided</scope>
+	</dependency>
+</dependencies>
+```
+::: {.callout-important}
+The version `<version>1.18.24</version>` crashes. Use **1.18.30**
+:::
+
+
+You could then use these classes as follows:
+
+
+
+``` {.java .code-overflow-wrap filename="table.java"}
+import lombok.Data;
+
+@Data
+
+// define your class
+```
+
+### Dependency: Java Faker
+
+Use [Java Faker](https://github.com/DiUS/java-faker){.external}:
+
+In `pom.xml`, add the following xml **dependency** between <dependencies> ... </dependencies>
+
+```{.java .code-overflow-wrap filename="pom.xml"}
+<dependencies>
+  <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+  </dependency>
+</dependencies>
+```
+In your Java code:
+
+``` {.java .code-overflow-wrap filename="testfaker.java"}
+import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Test;
+
+Faker faker = new Faker();
+
+String name = faker.name().fullName(); // Miss Samanta Schmidt
+String firstName = faker.name().firstName(); // Emory
+String lastName = faker.name().lastName(); // Barton
+
+String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
+```
+
+### Dependency: JUnit 5
+
+To configure support for **JUnit Jupiter based tests**, configure test scoped dependencies on the [JUnit Jupiter API and the JUnit Jupiter TestEngine](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-engines-configure){.external} implementation similar to the following.
+
+more on [Java SE TDD](/javase/se-concepts-tdd.qmd)
+
+```{.java .code-overflow-wrap filename="pom.xml"}
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.1</version>
+      <scope>test</scope>
+    </dependency>
+```
+
+
+## Core classes: table, order and menu
+
+### Solving discussion: UMLs
+
+``` {mermaid}
+
+classDiagram
+
+
+
+class Table{
+
+  +String name
+  +String description
+  +int qty
+
+}
+
+class Order{
+
+  +date date
+  +String orderNumber
+  +String waiter
+  +int peopleqty
+  +int totalPayment
+  +bool paid
+  +Table table
+  +Menu[] menus
+
+}
+
+class Menu{
+
+  +String name
+  +String price
+  +int price
+  +string conntent
+
+}
+
+  Table "1" --* "n" Order
+  Menu "1" --* "n" Order
+
+```
+
+
+
+# Core user-case mockup CLI
+
+
+```bash
+Welcome to healtyFood Mananger v0.0
+Table number?
+2
+People?
+6
+Menu qty?
+3
+Menu #1?
+5
+Menu #2?
+3
+Menu #3?
+5
+Total to pay: 80€ (3 items)
+Paid?
+true
+```
+
+# Fake DataBase: HashMaps
+
+To start and test our UML we are goint to use HashMaps as a fake database.
+
+![](/images/javase/hashmap-orders.jpg)
+
+``` java
+HashMap<String, Order> orders
+ = new HashMap<String, Order>();
+
+```
+::: {.column-margin}
+Keep in mind that in more recent versions of Java, you can use the diamond operator (<>) to infer the generic types, making the declaration more concise:
+
+`HashMap<String, Order> orders = new HashMap<>();`
+
+:::
+
+Here's what each part of the code means:
+
+- `HashMap<String, Order>`: This declares a new `HashMap` with keys of type `String` and values of type `Order`. In other words, it's a mapping from strings to `Order` objects.
+
+- `orders`: This is the name of the variable that will reference the `HashMap`. You can choose any valid identifier as the variable name.
+
+- `= new HashMap<String, Order>();`: This part of the code creates a new instance of `HashMap` and assigns it to the variable `orders`. The `new` keyword is used to allocate memory for the `HashMap`, and the `<>` syntax specifies the types of keys and values for the `HashMap`. In this case, keys are of type `String`, and values are of type `Order`.
+
+## Entities Manager
+
+**MenuManager**
+
+::: {.column-margin}
+![menuManger object](/images/javase/menuManager-object.png)
+:::
+
+```{mermaid}
+classDiagram
+
+class MenuManager {
+  - menus: HashMap<String, Menu>
+  - qty: int
+  - size: double
+  - lastModified: Date
+  + addMenu(menu: Menu, data: String): void
+  + updateMenu(): void
+  + deleteMenu(title: String): void
+  + getMenu(title: String): Menu
+  + getMenus(): List<>
+  + rateMenu(rate: int, menu: Menu): void
+  + saveToCSV(): void
+  + deleteCSV(): void
+}
+```
+
+
+::: {.column-margin}
+Overall, the **MenuManager** acts as a central hub for menu-related operations, promoting efficient management and systematic handling of menu entities in Java applications.
+:::
+
+
+- [menuManager java class v0.2](https://github.com/AlbertProfe/hello11/blob/45bd308fa196a3ead3c271f1bd63981ef693d55f/src/main/java/org/example/MenuManager.java){.external target='_blank'}
+
+
+A ``MenuManager`` class is essential for managing **entities** like ``Menu`` for several reasons:
+
+- First, it encapsulates the complexity of menu handling by maintaining a ``HashMap<String, Menu>`` to efficiently store and retrieve menus based on their titles.
+  - This abstraction enhances code organization and readability.
+- Second, the ``MenuManager`` includes methods like addMenu, updateMenu, and deleteMenu to provide a clear and controlled interface for manipulating menus, promoting a modular and maintainable codebase.
+- The class also **tracks additional metadata** such as quantity, size, and last modification date, offering valuable insights into the menu collection.
+- It facilitates data persistence with methods like saveToCSV and deleteCSV, allowing menus to be stored in a CSV format. 
+
+
+## References
+
+- [Java HashMap](https://www.w3schools.com/java/java_hashmap.asp)
+- [HashMap (Java Platform SE 8 )](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
+- [Java HashMap (With Examples)](https://www.programiz.com/java-programming/hashmap)
+- [What is a Java Hashmap?](https://www.freecodecamp.org/news/what-is-a-java-hashmap/)
+
+## Definition
+
+In Java, you use a HashMap to store items in **key/value pairs**. You can access items stored in a `HashMap` using the item's key, which is unique for each item.
+
+## What Are the Features of a HashMap in Java?
+
+Before working with HashMaps, it is important to understand how they work.
+
+Here are some of the features of a `HashMap`:
+
+- Items are stored in **key/value pairs.**
+- Items do not maintain **any order when added.** The data is unordered.
+- In a case where there are duplicate keys, the last one will override the other(s).
+- Data types are specified using **wrapper classes instead of primitive data types.**
+
+## How to Create a HashMap in Java
+
+In order to create and use a HashMap, you must first import the `java.util.HashMap` package. That is:
+
+```java
+import java.util.HashMap;
+```
+
+Here's what the syntax looks like for creating a new `HashMap`:
+
+```java
+HashMap<KeyDataType, ValueDataType> HashMapName = new HashMap<>();
+```
+
+## Example
+
+Create a `HashMap` object called **capitalCities** that will store `String` **keys** and `String` **values**:
+
+```java
+import java.util.HashMap; // import the HashMap class
+
+HashMap<String, String> capitalCities = new HashMap<String, String>();
+```
+
+Create a `HashMap` object called **capitalCities** that will store `String` **keys** and `String` **values**:
+
+```java
+import java.util.HashMap; // import the HashMap class
+
+HashMap<String, String> capitalCities = new HashMap<String, String>();javase/selab4-1.qmdjavase/selab4-1.qmd
+```
+
+
+# View: user menus and I/O
+
+**Main menu**
+
+```js
+Welcome to healtyFood Mananger v0.0
+Main options list
+
+Choose an option:
+
+0 - Quit
+1 - Create Menu
+2 - Create table
+3 - Create Order
+
+Option?
+
+
+```
+
+**Create order**
+
+Interactivity to create a new `order`: 
+
+```js
+Welcome to create new Order
+Date 2024-02-19 10:36
+
+Waiter? Joan
+Qty? 4
+Available tables:
+0 - Take away
+1 - Table3
+2 - Table5
+3 - Table6
+Table? 1
+Menus
+0 - Quit
+1 - Menu Lisboa
+2 - Menu New York
+3 - Menu Girona
+Menu? 1
+Menus
+0 - Quit
+1 - Menu Lisboa
+2 - Menu New York
+3 - Menu Girona
+Menu? 1
+Menus
+0 - Quit
+1 - Menu Lisboa
+2 - Menu New York
+3 - Menu Girona
+Menu? 3
+Menus
+0 - Quit
+1 - Menu Lisboa
+2 - Menu New York
+3 - Menu Girona
+Menu? 0
+
+Order #154VD4
+Total to pay: 32.50 EUROS
+Date: 2024-02-19 10:36
+Waiter: Joan
+Qty people: 4
+Table: Table3
+Menus: Total Menus 3, Lisboa 2, Girona 1
+
+Paid? Yes
+
+```
+
+## Java User Input (Scanner)
+
+The ``Scanner`` class is used to get user input, and it is found in the ``java.util package.``
+
+To use the ``Scanner`` class, create an object of the class and use any of the available methods found in the ``Scanner`` class documentation.
+
+```java
+Scanner readerObject = new Scanner(System.in);  // Create a Scanner object
+String userName = readerObject.nextLine();  // Read user input
+```
+
+In the example above, we used the ``nextLine()`` method, which is used to read ``Strings``. To read other types, look at the table below:
+
+
+![[Input Types](https://www.w3schools.com/java/java_user_input.asp){.external}](/images/javase/inputTypes.png){width="80%"}
+
+## Try/Catch for wrong inputs
+
+[When executing Java code](https://www.w3schools.com/java/java_try_catch.asp){.external}, **different errors may occur**: coding errors made by the programmer, **errors due to wrong input**, or other unforeseeable things.
+
+::: {.callout-note}
+## Definition Exception
+When an error occurs, Java will normally **stop** and **generate an error message**. The technical term for this is: Java will throw an exception (throw an error).
+:::
+
+The ``try`` and ``catch`` keywords come in pairs:
+
+- The ``try`` statement a**llows you to define a block of code to be tested for errors while it is being executed.**
+- The ``catch`` statement allows you to define a block of code to be executed, if an error occurs in the try block.
+
+```java
+try {
+  //  Block of code to try
+}
+catch(Exception e) {
+  //  Block of code to handle errors
+}
+```
+### Example
+
+The ``finally`` statement lets you execute code, after`` try...catch``, regardless of the result 
+
+```java
+public class Main {
+  public static void main(String[] args) {
+   System.out.println("Hi");
+    try {
+      int[] myNumbers = {1, 2, 3};
+      // this code will crash: there is NO positin 10 in this array myNumbers
+      System.out.println(myNumbers[10]);
+    } catch (Exception e) {
+      System.out.println("Something went wrong.");
+    } finally {
+      System.out.println("The 'try catch' is finished.");
+    }
+     System.out.println("Bye");
+  }
+}
+
+// Output:
+// Hi
+// Something went wrong.
+// The 'try catch' is finished.
+// Bye
+```
+[Execute this code on w3schools](https://www.w3schools.com/java/tryjava.asp?filename=demo_try_catch_finally){.external}
+
+# Business Logic & Controller
+
+The **sequence diagram** illustrates the creation of a ``Menu`` object.
+
+ It begins with the ``Main`` initiating the process. The ``Controller`` requests **Main options,** and the ``View`` responds. After selecting an option, the ``Controller`` communicates with ``MenuManager`` to create and store the object, ultimately informing the ``Controller`` of the completion before ending the process with Main quitting.
+
+::: {.column-margin}
+![](/images/ifcd0210-24/healthyFood_v.1.jpg)
+:::
+
+```{mermaid}
+sequenceDiagram
+autonumber
+    Note right of Main: useCase create Menu object
+    Main->>+Controller: start
+    Controller-->>-View: call Main options list
+    View-->>Controller: send Main options list
+    Note right of Controller: select option 1
+    Controller->>+menuManager: create Menu object and store at HashMap menus<br/>menuManager.add(menu)
+    menuManager-->>+Menu: uses Menu entity class
+    Menu-->>+menuManager: uses Menu entity class
+    menuManager->>+Controller: object created and stored
+    Controller-->>-Main: quit
+```
+
+**References:**
+
+- [Sequence diagrams](https://mermaid.js.org/syntax/sequenceDiagram.html){.external}
+- [create Menu object use case sequence diagram](https://mermaid.live/view#pako:eNp9Uj1PwzAQ_SsnT6A2INYIdSkDS1iQGFCWq31tjZxz6g-hqup_55xEtKWAJ_vuPb93HwelvSFVq0i7TKzpyeImYNcy5uQ5dysKLYOcF58Igt1sE_g1NGi5hhxpiZFAB0LJNsQZ_OqDdBo5BVUtFrOl5xS8cxRqiAnDlD6FK0FVb5Y-a9Do3EAE3yfrOYKzcSIURIFe_Eds_sJfer5kOXE5UeDhyo-Y7qSaBhk3BX9dIaDoxuQDASZ4xrhtsIdCio-rcL84o9-hMTflfTvqnKVKNbPy69DMOAoQJ5v2oB3GODVSwtWVqf8Y5xo_JjD5H0sypzrMr1MZJ73LVno6AFpWc9VR6NAaWZxDCbYqbamjVtVyNbTG7FKrWj4KtCzS6561qtfoIs1V7o0IT4v2He2R370_vclYMdWM2zks6fEL2MrsJg){.external}
+- [mermaid live editor: create Menu object use case sequence diagram](https://mermaid.live/edit#pako:eNp9Uj1PwzAQ_SsnT6A2INYIdSkDS1iQGFCWq31tjZxz6g-hqup_55xEtKWAJ_vuPb93HwelvSFVq0i7TKzpyeImYNcy5uQ5dysKLYOcF58Igt1sE_g1NGi5hhxpiZFAB0LJNsQZ_OqDdBo5BVUtFrOl5xS8cxRqiAnDlD6FK0FVb5Y-a9Do3EAE3yfrOYKzcSIURIFe_Eds_sJfer5kOXE5UeDhyo-Y7qSaBhk3BX9dIaDoxuQDASZ4xrhtsIdCio-rcL84o9-hMTflfTvqnKVKNbPy69DMOAoQJ5v2oB3GODVSwtWVqf8Y5xo_JjD5H0sypzrMr1MZJ73LVno6AFpWc9VR6NAaWZxDCbYqbamjVtVyNbTG7FKrWj4KtCzS6561qtfoIs1V7o0IT4v2He2R370_vclYMdWM2zks6fEL2MrsJg){.external}
+
+## Implementation v0.2
+
+- [GitHub code v0.2](https://github.com/AlbertProfe/hello11/tree/45bd308fa196a3ead3c271f1bd63981ef693d55f){.external} 
+
+The **use case** implemented in Java Maven SE is a console-based application is **the creation of a new menu**. 
+
+At its core, the ``HealthyController`` class <mark>orchestrates the application's execution, featuring a perpetual loop for user interaction.</mark>
+
+> The main menu options are displayed, prompting users for input. Based on the selection, the program either initiates menu creation through the ``createMenu()`` method or lists existing menus stored in the ``MenuManager``.
+
+Within the ``MenuManager`` class, menus are managed using a HashMap, allowing for the storage and retrieval of menus. Additionally, auxiliary methods such as ``ask()`` facilitate user input and ``toString()`` aids in menu listing.
+
+**Execution flow begins with the ``start()`` method**, initializing necessary objects, followed by continuous interaction until the user opts to exit the application. This setup streamlines user engagement, guiding them through menu creation and retrieval seamlessly.
+
+![healthyFood Restaurant use case create a new menu from CLI by user](/images/javase/healthyFood-createMenu-fluxExecution-v0.2.png)
+
+::: {.column-margin}
+![healthyFood Restaurant use case create a new menu from CLI by user -numbered-](/images/javase/healthyFood-createMenu-fluxExecution-v0.2-steps%20.png)
+:::
+
+# Exploring Domain-Driven Design: a Practical Approach
+
+Here, we'll break down DDD concepts into simple, understandable components:
+
+- `Controllers` manage user interactions, while `Managers` handle business logic.
+- `Models` represent domain entities.
+- `Repositories` manage data, and
+- `Utils` streamline common tasks.
+  
+Using practical examples like `Orders` and `Menus`, we'll see how these concepts play out in real `Java SE applications`.
+
+By the end, you'll grasp how **DDD principles seamlessly integrate with Java SE**, you will build clearer, more maintainable software.
+
+**Code:**
+
+- [GitHub code v0.4](https://github.com/AlbertProfe/hello11/tree/6678eef933a92298b04b74bb78aae76eedc753cd){.external} 
+
+::: {.column-page-right}
+| Name         | Description                                                                                                                   | Why                                                                                               | Example                              |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------|
+| Controller   | Controls the flow of the application, handling user input and invoking appropriate manager methods.                           | Separates user interaction from business logic, promoting modularity and easier maintenance.     | `HealthyController.java`            |
+| Manager      | Contains the business logic of the application, coordinating operations between different components and enforcing rules.     | Centralizes and encapsulates business rules, ensuring consistency and facilitating testing.     | `TableManager.java`, `MenuManager.java` |
+| Model        | Represents domain entities and data structures used within the application, encapsulating their state and behavior.           | Provides a clear representation of the application's domain, promoting understanding and reuse. | `Order.java`, `Menu.java`, `Table.java` |
+| Repository   | Manages the persistence of domain objects, abstracting data storage and retrieval details, providing a clean data access layer. | Separates data access concerns from business logic, enabling flexibility and testability.       | `TableRepository.java`, `MenuRepository.java` |
+| Utils        | Contains utility classes and methods providing common functionalities required across the application.                        | Encourages code reuse, reduces redundancy, and enhances maintainability.                        | `CommonUtilities.java`               |
+| View         | Represents the user interface components of the application, presenting data to the user and capturing user interactions.    | Separates presentation logic from other components, improving maintainability and flexibility. | `MenuOptions.java`  |
+
+:::
+
+# Code & project Management
+
+
+| Code Version | Commit | Folder-Tree | Output |
+| -- | -- | -- | -- |
+| [GitHub code v0.0](https://github.com/AlbertProfe/hello11/tree/59000f69fc5ab0d42390c3a9f8a28f0b55cc48c3){.external}  | create project, core UML classes and fast-test Hashmaps in main| [Basic Structure](/images/javase/restaurant-tree-folder-v0.0.png){width="80%"} |[output v0.0 cli](/images/javase/ouputs/output-labse04-1-v0-0.pdf) |
+| [GitHub code v0.0 - testFaker](https://github.com/AlbertProfe/hello11/tree/51496acc2d4e3ef0ab87529d21238fb2244612cd){.external}  |  test new dependencies: JUnit, javaFaker, lombok  | - |  [Check version dependencies](https://github.com/AlbertProfe/hello11/blob/51496acc2d4e3ef0ab87529d21238fb2244612cd/pom.xml#L21){.external}  |
+| [GitHub code v0.1](https://github.com/AlbertProfe/hello11/tree/b4342d0c872dbcf8a45747b73613614ac1eb5ce2){.external}  |  basic MVC structure Java SE  | - |  -  |
+| [GitHub code v0.2](https://github.com/AlbertProfe/hello11/tree/45bd308fa196a3ead3c271f1bd63981ef693d55f){.external}  |   create and save `Menu` on HashMap `menus` from UI cli to `MenuManager`  | [Classes Structure](/images/javase/restaurant-tree-folder-v0.2.png){width="80%"} |  [output v0.2 cli](/images/javase/ouputs/output-healthyFood-v0.2.pdf)  |
+| [GitHub code v0.3](https://github.com/AlbertProfe/hello11/tree/0bd253bf88ee5ac2aaa150fe04754ac9ae5b408c){.external}  |  refactoring to DDD and `tableManager` with `createTable`   | [Classes Structure](/images/javase/restaurant-tree-folder-v0.3.png){width="80%"} |  [output v0.3 cli](/images/javase/ouputs/output-healthyFood-v0.3.pdf)  |
+| [GitHub code v0.4](https://github.com/AlbertProfe/hello11/tree/6678eef933a92298b04b74bb78aae76eedc753cd){.external}  |  refactoring to DDD **first non-tentative approach**  | [Classes Structure](/images/javase/restaurant-tree-folder-v0.4.png){width="80%"} |  [output v0.4 cli](/images/javase/ouputs/output-healthyFood-v0.4.pdf)  |
+| [GitHub code v0.5](https://github.com/AlbertProfe/hello11/tree/3f930d10340dca2ca756fdecaa58ff287bff0fea){.external}  |  create new `order`, static method `createOrder` | - |  [output v0.5 cli](/images/javase/ouputs/output-healthyFood-v0.5.pdf)  |
+
+
+
+
+

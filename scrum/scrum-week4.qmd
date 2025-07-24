@@ -1,0 +1,224 @@
+---
+title: "Week 4: ScrumMaster, how it works"
+subtitle: SCRUM Week 4
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: The role of a ScrumMaster stands out as crucial for success in Agile methodologies.
+categories: [scrum, scrum-week4, scrummaster]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 4 - ScrumMaster, how it works**
+
+
+The role of a ScrumMaster stands out as crucial for success in Agile methodologies. Acting as a **linchpin between stakeholders, product owners, and development teams**, a ScrumMaster takes on **multifaceted responsibilities.**
+
+They ensure **cohesion, motivation, and adherence to timelines within budget constraints. Akin to a servant-leader, a ScrumMaster coaches, facilitates, and removes impediments, steering teams towards high-value increments and adherence to the Definition of Done.**
+
+Contrary to traditional leadership, a ScrumMaster shares power, prioritizing the team's growth and well-being. **They do not engage in traditional managerial tasks** but focus on help teams to self-manage and excel.
+
+The ScrumMaster **serves the Scrum Team, Product Owner, and the organization at large**, playing a pivotal role in Scrum adoption and implementation.
+
+
+:::
+
+</br>
+
+::: {.keywords}
+
+**Summary: SCRUM Week 4 - ScrumMaster, how it works**
+
+ScrumMaster, Servant-Leader, Multifaceted Responsibilities, Traditional Leadership, Scrum Team, Product Owner, Organization, Teaching, Facilitating, Empirical Approach.
+
+:::
+
+</br></br>
+
+![ScrumMaster](/images/scrum/scrum-master-responsible-for-process-success.png){width="70%"}
+
+# ScrumMaster, overview
+
+
+> Organizations across all industries globally are hiring **Scrum masters** because they are experts in handling challenging tasks.
+>
+> They address complex issues during the lifecycle of a project, ranging from motivating, leading, and training the team to respect the timelines; coordinating with the stakeholders, product owners, managers, and developers; and onboarding project teams.
+
+
+A **Scrum master** acts as a bridge between a product/business owner to facilitate accountability at every level. 
+<mark>They ensure that everyone is **on the same page** and help the team meet deadlines and deliverables within **budget.**</mark>
+
+![ScrumMaster quote](/images/scrum/scrummaster2.png){width="60%"}
+
+Changes as a **Scrum Master**:
+
+- Product vision
+- More ownership
+- Better quality
+- Less centralised management
+- Better planning
+- Better product
+
+
+# What a Scrum Master does
+
+Some examples of what a Scrum Master should do include:
+
+- A Scrum Master might be teaching people about Agility and the Scrum Framework. You could therefore see the Scrum Master as a teacher;
+- A Scrum Master might be having some coaching conversations with the Product Owner, managers, customers, Development Teams and other people or stakeholders in the organization, in order to help them gain a better understanding of Scrum. You could therefore see the Scrum Master as a coach for the Product Owner, Development Team(s) and the organization;
+- A Scrum Master might be facilitating some of the Scrum Events, such as the Sprint Planning, Sprint Review or Sprint Retrospective. This doesn't mean booking (conference) rooms. It means gathering observations, preparing the Event, coaching and facilitating people during the Event, etc. You could therefore see the Scrum Master as a facilitator;
+- A Scrum Master might be leading an Agile or Scrum implementation in the organization, working with all the different stakeholders (employees, managers, customers, the board of directors and others) in order to plan and manage the Agile implementation. A Scrum Master is therefore a (servant) leader;
+
+
+# What a Scrum Master does not do
+
+So, what a Scrum Master should not (ever) do is creating, managing or communicating:
+
+- Creating and managing the business case;
+- Managing changes and change requests (to Scope, Time and Budget);
+- Creating and managing project plans, including the Project Initiation Document, Project Plan, Gantt Charts and others;
+- Tracking and measuring project/team progress;
+- The project results and/or output;
+- The Product Backlog and/or the Product Backlog Items. The Scrum Master has no role regarding the business requirements;
+- Project Risks & Opportunities (unless scrum implementation related);
+- Team Performance and HR-processes (including Performance Management);
+- And many others… (Including the accountabilities/ responsibilities of a Project Manager…);
+
+
+# How ScrumMaster relates to others
+
+![ScrumMaster](/images/scrum/scrummaster1.png){width="60%"}
+
+The Scrum Master serves the **Scrum Team in several ways**, including:
+
+- Coaching the team members in self-management and cross-functionality;
+- Helping the Scrum Team focus on creating high-value Increments that meet the Definition of Done;
+- Causing the removal of impediments to the Scrum Team’s progress; and,
+- Ensuring that all Scrum events take place and are positive, productive, and kept within the timebox.
+
+The Scrum Master serves the **Product Owner in several ways,** including:
+
+- Helping find techniques for effective Product Goal definition and Product Backlog management;
+- Helping the Scrum Team understand the need for clear and concise Product Backlog items;
+- Helping establish empirical product planning for a complex environment; and,
+- Facilitating stakeholder collaboration as requested or needed.
+
+The Scrum Master serves **the organization in several ways**, including:
+
+- [Leading, training, and coaching the organization in its Scrum adoption](https://www.scrum.org/resources/blog/scrum-master-works-three-levels);
+- Planning and advising Scrum implementations within the organization;
+- Helping employees and stakeholders understand and enact an empirical approach for complex work; and,
+- Removing barriers between stakeholders and Scrum Teams.
+
+# Servant-leader
+
+[Servant leadership](https://www.investopedia.com/terms/s/servant-leadership.asp) and traditional leadership employ different techniques and offer vastly different outcomes.
+
+::: {.column-margin}
+![Servant Leadership](/images/scrum/servantleader.png){width="60%"}
+:::
+
+::: {.callout-important}
+With a **traditional leadership approach**, the leader encourages people to do their jobs by providing them with **guidance, direction and motivation**.
+
+The main focus of a traditional leader is to improve the business position of the company or the organization in the market.
+:::
+
+<mark>A servant leader shares power, puts the needs of the employees first and helps people develop and perform as highly as possible</mark>. 
+
+Instead of the people working to serve the leader, **the leader exists to serve the people**. As stated by its founder, **Robert K. Greenleaf**, a Servant Leader should be focused on:
+
+> "Do those served grow as persons? Do they, while being served, become healthier, wiser, freer, more autonomous, more likely themselves to become servants?"
+
+::: {.callout-tip}
+Servant leadership occurs when t**he leader's main goal and responsibility is to provide service to their people**.
+
+A servant leader focuses on the people that are directly below them, rather than the company as a whole. In servant leadership, the leader ensures that the followers are growing in all areas — their profession, knowledge, autonomy and even their health and physical development.
+:::
+
+## Team Leader vs Scrum Master
+
+The [Scrum Master role is definitely not a “manager” role](https://extremeuncertainty.com/scrum-master-vs-team-leader/), and <mark>the Scrum Master is not directly in charge of any person or piece of work.</mark>
+
+::: {.column-margin}
+**Team Leader is an old and established role**. Its real meaning varies from context to context. And from what type of team and what type of specialist.
+:::
+
+Earlier versions of the Scrum Guide emphasised this and referred to the role as a **servant leader role**.
+
+While they are not a manager, and definitely **not** a project manager, <mark>a good Scrum Master is in fact a leader</mark>.
+
+They are meant to challenge the team and push them out of their comfort zone. They are not meant to be a passive listener and just a meeting organizer or facilitator. 
+
+
+# On the same page
+
+When using the idiomatic phrase **on the same page**, <mark>you are referring to a situation where two or more people generally agree or understand the same situation.</mark> This can be related to a specific event or given information.
+
+Despite its very literal inception of two or more people being on the same physical book page, when used figuratively, it creates an analogy to help explain that the [parties involved have the same understanding of something.](https://www.scrum.org/resources/its-important-be-same-page)
+
+## Team canvas
+
+![[Team canvas](https://theteamcanvas.com/) is Business Model Canvas](/images/scrum/team-canvas.png){width="80%"}
+
+::: {.column-margin}
+![Business Model Generation](/images/scrum/1200px-Business_Model_Canvas.png){width="70%"}
+
+Business Model Generation teaches you how to systematically understand, design and differentiate your business model.
+:::
+
+
+The [Team canvas](https://theteamcanvas.com/) is <mark>Business Model Canvas for teamwork. It is a free tool for leaders, facilitators and consultants to organize [team alignment](http://masterfacilitator.com/wp-content/uploads/2016/12/Team-Canvas-v.-0.8.pdf){.external} meetings and **bring members on the same page**</mark>, resolve conflicts and build productive culture, fast. 
+
+
+# What is a WorkTeam
+
+A team (or a work team) is a group of people with complementary skills who work **in alignment** to achieve a specific goal.
+
+::: {.callout-note}
+**Alignment, in the context of the workplace**, implies a:
+
+- <mark>commonality of purpose,an intense teamfocus, improved efficiency and cohesion;synchronized and coordinated effort; 
+- an almost intuitive understanding of how to complement one another’s efforts, as seen in fast-moving team sports like hockey or basketball;
+-  and integrating one’s personal interests with those of the team or organization.</mark>
+
+In other words, it is that group state where members are:
+
+- ‘on the same page’,
+- ‘rowing in the same direction’, and
+- ‘fighting the same battles’.
+:::
+
+## The 5 Stages of Team Development
+
+Understanding the [five stages of team development](https://www.teamwork.com/blog/the-5-stages-of-team-development-what-you-need-to-know/) enables you to get teams started, resolve conflicts more smoothly, share information effectively, achieve top results, and then review outcomes to keep finding ways to improve.
+
+![Stages Team](/images/scrum/stages_team.png){width="80%"}
+
+- **Forming**: This is where team members first meet. It’s important for team leaders to facilitate the introductions and highlight each person’s skills and background. Team members are also given project details and the opportunity to organize their responsibilities.
+- **Storming**: At this stage, team members openly share ideas and use this as an opportunity to stand out and be accepted by their peers. Team leaders help teams in this stage by having a plan in place to manage competition among team members, make communication easier, and make sure projects stay on track.
+- **Norming**: By now, teams have figured out how to work together. There’s no more internal competition, and responsibilities and goals are clear. Each person works more efficiently because he or she has learned how to share their ideas and listen to feedback while working toward a common goal.
+- **Performing**: There’s a high level of cohesion and trust between team members. Teams are functioning at peak efficiency with less oversight from team leaders. Issues still come up, but at this point, teams have strategies for resolving problems without compromising timelines and progress.
+- **Adjourning**: Teams complete their project and debrief on what went well and what could be improved for future projects. Afterwards, team members move on to new projects. Now let’s look at how to use this model to amplify 
+
+# References
+
+- [‘Getting on the Same Page’: Creating Team Alignment for Team Success](https://silverconsultinginc.com/getting-on-the-same-page-creating-teamalignmentfor-team-success/){.external}
+- [Week 4: ScrumMaster, how it works](https://sites.google.com/view/gestioprojectes/llegir/setmana4){.external}
+- [7 Industries That Look for Scrum Master Certification in 2021](https://www.greycampus.com/blog/agile-and-scrum/industries-hiring-scrum-masters){.external}
+- [Business Model Generation](https://www.strategyzer.com/library/business-model-generation){.external}
+- [Master the practice of innovation](https://www.strategyzer.com/){.external}
+- [The Business Model Canvas](https://www.strategyzer.com/library/the-business-model-canvas){.external}
+- [Teamwork Skills: Definition and Examples](https://hk.indeed.com/career-advice/career-development/teamwork-skills){.external}
+- [Global Culture Report](https://www.octanner.com/global-culture-report){.external}
+- [Scrum Master vs Project Manager — An Overview of the Differences](https://www.scrum.org/resources/blog/scrum-master-vs-project-manager-overview-differences){.external}
+- [People are called a team in Scrum, but are they really a team?](https://www.scrum.org/resources/blog/people-are-called-team-scrum-are-they-really-team)
+

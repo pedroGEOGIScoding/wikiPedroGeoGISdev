@@ -1,0 +1,21 @@
+---
+title: "Descartes' Error"
+author: "Antonio Damasio"
+subtitle: "Antonio Damasio, 2006, Descartes' Error: Emotion, Reason, and the Human Brain"
+date: "8/27/2005"
+date-modified: "4/12/2022"
+date-format: full
+description: "Explores the relationship between emotions, reason, and decision-making, presenting a new perspective on the crucial role of emotions in human cognition and behavior."
+categories: [neuroscience]
+subcategories: [emotions, cognitive science, psychology]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/descartesError.jpg)
+
+## More info
+
+- [Descartes' Error: Emotion, Reason, and the Human Brain](https://www.amazon.es/Descartes-Error-Emotion-Reason-Human/dp/0099501643){.external}

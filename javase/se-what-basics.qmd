@@ -1,0 +1,72 @@
+---
+title: "Java Standard Edition: Basics"
+subtitle: Java Fundamentals
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Java Polymorphism OOP paradigm
+categories: [javase, basics, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Introduction
+
+::: {.summary #java-definition}
+📘 **Java SE**
+
+Java is a high-level, class-based, object-oriented and  general-purpose programming language and computing platform intended to let programmers **write once, run anywhere (WORA)**. The type system is static, strong and safe.
+
+It is [widely used](https://www.tiobe.com/tiobe-index/) for developing applications for web, mobile, and desktop environments. Java is known for its reliability and security, making it a perfect choice for developing enterprise-level applications, that is JEE (Java Enterprise Edition).
+:::
+
+## Java SE
+
+**Java SE (Java Platform, Standard Edition) is a set of libraries, tools, and technologies** that [provide](https://www.oracle.com/java/technologies/downloads/) a complete environment for developing and deploying Java-based applications. Java SE includes the:
+
+- **Java Development Kit (JDK)**, which contains the tools and libraries necessary <mark>for developing and running Java programs</mark>,
+- as well as the **Java Runtime Environment (JRE)**, which is used <mark>to run Java programs</mark> on a computer.
+
+::: {.column-margin}
+![Java SE and Java EE - <a href="https://commons.wikimedia.org/wiki/File:Java_Platforms.PNG">Sergelucas</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/e/e1/Java_Platforms.PNG){width="80%"}
+:::
+
+
+Java SE is <mark>the core platform for Java-based software development</mark>, and is used by millions of developers around the world to create a wide variety of applications, from desktop and mobile applications to enterprise-level systems.
+
+- [The Java Version Almanac](https://javaalmanac.io/){.external}
+
+::: {.column-margin}
+Java SE also includes a set of standard libraries, which provide a wide range of functionality, including basic input/output, networking, security, and graphical user interface (GUI) components. 
+:::
+
+## Programming steps
+![Java Programming Steps](/images/javase/ProgrammingSteps.png){width="60%"}
+
+he steps in writing a Java program is illustrated as above:
+
+1. Write the source code `Person.java`.
+2. Compile the source code `Person.java` into <mark>Java portable bytecode</mark> (or machine code) `Person.class` using the **JDK's Java compiler** by issuing the command  `javac Person.java`.
+3. Run the compiled bytecode `Person.class`, using the **JDK's Java Runtime** by issuing the command `java Person`..
+
+## Type system
+
+- **Safe**: Java's type system helps to prevent errors by ensuring that values stored in variables are always of the correct type. This helps to avoid type-related runtime errors and makes Java programs more reliable.
+- **Static**: Java is a statically-typed language, which means that the type of a variable is determined at compile time, rather than at runtime. This allows the Java compiler to catch type errors before the program is executed, making it easier to find and fix errors in your code.
+- **Strong**: Java has a strong type system, which means that type conversions (also known as typecasting) between different types are not allowed unless they are explicitly specified by the programmer. This helps to prevent unintended type errors and makes Java programs more predictable and easier to understand.
+
+## And .. what is JEE?
+
+:::{.callout-note}
+## Java EE
+JEE (Java Platform, Enterprise Edition) is a collection of technologies and standards for building **enterprise-level** applications using the Java programming language.
+:::
+EE provides a set of APIs and tools for developing distributed, transactional, and secure Java applications that can run on a variety of devices and environments, including web and mobile.
+
+JEE is often used for **building large-scale, complex, and mission-critical applications** in industries such as finance, healthcare, and e-commerce.
+
+[Java Vocabulary](/learning/learning-vocab-java-se.qmd)
+

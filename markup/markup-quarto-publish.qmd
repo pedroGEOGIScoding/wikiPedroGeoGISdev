@@ -1,0 +1,211 @@
+---
+title: "Quarto Markdown: publishing"
+subtitle: Publish (3/7)
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Publish your Quarto web
+categories: [markup, publish, quarto, qmd]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+# Overview
+
+[GitHub Pages](https://pages.github.com/) is a website hosting service that enables you to [publish content based on source code](https://quarto.org/docs/publishing/github-pages.html#ignoring-output) managed within a **GitHub repository**.
+
+Use the `quarto publish` **command** to <mark>publish content rendered</mark> on your local machine.
+
+`quarto publish` will make several operations with [GitHub Pages](https://pages.github.com/):
+
+- provision,
+- create pipeline,
+- create branch with HTML source
+- parse .qmd to .html
+- render (or build)
+- deploy,
+- hosting,
+- publish
+
+![gh-pages build and deployment #17: example of Actions triggered by Quarto publish](/images/markup/gh-pages_build.png){#gh-pages-build}
+
+
+The most important for us will be to make a branch `gh-pages` the first time **where the output HTML will be deployed** with  `quarto publish gh-pages`.
+
+::: {.callout-note collapse="true" icon=false}
+## (0) Files On Repository with TOKEN
+
+Your need to create a repository on GitHub with the Quarto pages ``.qmd`` pushed there.
+
+**Create repository, commit and push** files to repository with <mark>Sync tool</mark>. To write our repository you need to:
+
+1. Create Token on GitHub.com: [Creating a personal access token](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+2. Use this token on your Visual Code - Git, [link](https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git):
+
+``` bash
+$git config --global user.name "Mona Lisa"
+$git config --global user.mail "monalisa@davinci.com"
+$git config --global user.password "4WTVEG43_Q34WG435GAWER4_Q4vsrsrggr_3D44"
+```
+
+:::
+
+
+::: {.callout-tip collapse="true" icon=false}
+## (1) gh-pages service from GitHub 
+
+You can modify these options in Settings : Pages for your repository. 
+
+:::{.callout-note  collapse="true" }
+
+## gh-pages service from `github.com`
+
+![fig 13](../images/markup/publish_quarto_gh-pages/publish_quarto_website_gh-pages%20(13).png)
+:::
+:::{.callout-note  collapse="true" }
+
+## at first gh-pages branch doesn't exist: don't worry, quarto will create later
+
+![fig 14](../images/markup/publish_quarto_gh-pages/publish_quarto_website_gh-pages%20(14).png)
+:::
+:::{.callout-note  collapse="true" }
+
+## master/main is our branch: root
+
+![fig 15](../images/markup/publish_quarto_gh-pages/publish_quarto_website_gh-pages%20(15).png)
+:::
+
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (2) Define Ignoring Output
+It’s important to note that you don’t need to check your _site or _book directory into version control (if you have done this in the past you know it makes for very messy diffs!). Before proceeding you should add the output directory of your project to .gitignore. For example:
+
+```bash
+## .gitignore
+
+/.quarto/
+/_site/
+```
+If you’ve already checked these files into source control you may need to remove them explicitly:
+
+```bash
+## Terminal
+
+git rm -r _site
+```
+
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (3) Publish on branch gh-pages
+Once you have configured the source branch and updated your .gitignore, navigate to the directory where your project / git repository is located, make sure you are not on the gh-pages branch, and execute the quarto publish command for GitHub Pages:
+
+
+```bash
+## Terminal
+
+quarto publish gh-pages
+```
+
+The publish command will confirm that you want to publish, render your content, copy the output to a special gh-pages branch, push that branch to GitHub, and then open a browser to view your site once it is deployed.
+
+After this first time it will be no necessary to call gh-pages brach, once it has been defined as default:
+
+```bash
+##Terminal
+
+quarto publish 
+```
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (4) Website published
+Your Quarto website will be published by GitHub pages on:
+
+<p class="indent">`userName.github.io\repositoryName`</p>
+
+:::
+
+
+# Publishing quarto website 2024
+
+::: {.callout-note collapse="true" icon=false}
+## (0) set up tools
+
+You need to set up these tools:
+
+- `git` & `gh` CLI tools installed
+- ``github.com`` account created and user logged in
+- ``gh auth login`` (our machine connected to Github.com) executed
+  - **auth wil be done by web browser code**
+- Visual Code [with user logged](https://learn.microsoft.com/en-us/visualstudio/ide/signing-in-to-visual-studio?view=vs-2022){.external}
+- quarto [engine](https://quarto.org/docs/download/){.external} installed
+- quarto extension [in Visual Code](https://quarto.org/docs/tools/vscode.html){.external} installed
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (1) create local and remote repositories
+
+![Once the web in rendered you should ``Publish to GitHub`` by the visual tool Git on VisualCode](/images/markup/quarto-publishing-2024-1.png){width="60%"}
+
+![Create the public repository on remote](/images/markup/quarto-publishing-2024-2.png){width="60%"}
+
+![Select the files your do not want to push to remote repository](/images/markup/quarto-publishing-2024-3.png){width="60%"}
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (2) first commit and push
+
+![Once remote repository created, you may commit and push the quarto project](/images/markup/quarto-publishing-2024-4.png){width="60%"}
+
+![Before commit & push you must identify the user name and email](/images/markup/quarto-publishing-2024-5.png){width="60%"}
+
+![The commit/push and first-time definition of remote repository on local can be done by CLI](/images/markup/quarto-publishing-2024-6.png){width="60%"}
+
+``` bash
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/AlbertProfe/SpeedMan.git
+git push -u origin main
+
+```
+
+![You could rename master to main creating the branch ``main`` ](/images/markup/quarto-publishing-2024-7.png){width="60%"}
+
+![We execute the commands: ``commit``, ``branch``, ``remote add``, ``push`` ](/images/markup/quarto-publishing-2024-8.png){width="60%"}
+
+![Commands executed properly](/images/markup/quarto-publishing-2024-9.png){width="60%"}
+
+![We check the remote repository on ``github.com``](/images/markup/quarto-publishing-2024-10.png){width="60%"}
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (3) publish on gh-pages
+
+![Now is time to publish our quarto project to ``gh-pages``](/images/markup/quarto-publishing-2024-11.png){width="60%"}
+
+![](/images/markup/quarto-publishing-2024-12.png){width="60%"}
+
+![``gh-pages`` will publish the branch ``gh-pages`` created by quarto](/images/markup/quarto-publishing-2024-13.png){width="60%"}
+
+![The quarto engine is finishing the jobs from ``quarto publish gh-pages``](/images/markup/quarto-publishing-2024-14.png){width="60%"}
+
+:::
+
+
+
+::: {.callout-tip collapse="true" icon=false}
+## (4) quarto website published
+
+![quarto project finally published on the internet](/images/markup/quarto-publishing-2024-15.png){width="60%"}
+
+![quarto project finally published on the internet by ``gh-pages``](/images/markup/quarto-publishing-2024-16.png){width="60%"}
+:::
+
+
+

@@ -1,0 +1,33 @@
+---
+title: "The Righteous Mind"
+author: "albertprofe"
+subtitle: "Jonathan Haidt, 2013, The Righteous Mind: Why Good People are Divided by Politics and Religion"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A groundbreaking exploration of the roots of human morality. The Righteous Mind, written by social psychologist Jonathan Haidt, provides insights into the ways in which moral values and beliefs influence our political and religious views."
+categories: [psychology]
+subcategories: [agile, decision-making, self-help, zoology, behavioral science]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/theRighteousMind.jpeg)
+
+## More info
+
+[The Righteous Mind](https://righteousmind.com/){.external}
+
+The Righteous Mind is about one of the hottest topics in the sciences: morality. It’s about how we evolved to live in moral “matrices,” which bind us together around sacred values and then blind us to the truth. It’s about righteousness, moral diversity, politics and religion.
+
+## Book Introduction
+
+“Can we all get along?” That appeal was made famous on May 1, 1992, by Rodney King, a black man who had been beaten nearly to death by four Los Angeles police officers a year earlier. The entire nation had seen a videotape of the beating, so when a jury failed to convict the officers, their acquittal triggered widespread outrage and six days of rioting in Los Angeles. Fifty three people were killed and more than seven thousand buildings were torched. Much of the mayhem was carried live by news cameras from helicopters circling overhead. After a particularly horrific act of violence against a white truck driver, King was moved to make his appeal for peace.
+
+King’s appeal is now so overused that it has become cultural kitsch, a catch phrase more often said for laughs then as a serious plea for mutual understanding. I therefore hesitated to use King’s words as the opening line of this book, but I decided to go ahead, for two reasons. First, because most Americans nowadays are asking King’s question, not about race relations but about political relations and the collapse of cooperation across party lines. Many Americans feel as though the nightly news from Washington is sent to us from helicopters circling over the city–dispatches from the war zone.
+
+The second reason I decided to open this book with an overused phrase is because King followed it up with something lovely, something rarely quoted. As he stumbled through his television interview, fighting back tears and often repeating himself, he found these words: “Please, we can get along here. We all can get along. I mean, we’re all stuck here for a while. Let’s try to work it out.”
+
+This book is about why it’s so hard for us to get along. We are indeed all stuck here for a while, so while we’re waiting, let’s at least try to understand why we are so easily divided into hostile groups, each one certain of its righteousness.

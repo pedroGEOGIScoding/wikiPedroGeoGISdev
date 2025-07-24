@@ -1,0 +1,33 @@
+---
+title: "Lab 3: Spring Boot and AWS S3 publisher"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Lab
+categories: [devops, lab]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![Spring Boot deploy](/images/devops/springboot-deploy.png)
+
+Spring Boot app  build with Jenkins via Github and deployed to AWS:
+
+1. create ``Spring Boot``s projects
+2. commit && push to ``GitHub``
+3. create ``.jar executable from Github with Jenkins``
+4. **Upload** ``.jar to AWS S3 with s3publisher``
+5. connect ``AWS S3 to AWS AEB``
+6. AWS AEB ``deploy`` and ``publish``
+
+# References
+
+
+- [Spring Boot AWS S3](https://sites.google.com/view/devopscifo/labs/3-springb-books-s3){.external target0='_blank'}
+
+

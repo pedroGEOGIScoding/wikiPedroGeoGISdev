@@ -1,0 +1,204 @@
+---
+title: "Week 11: Team Dynamics"
+subtitle: SCRUM Week 11
+author: Albert R.
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Team Dynamics of SCRUM explores the intricate dynamics of team interactions
+categories: [scrum, scrum-week9, team-dynamics]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 11 - Team Dynamics**
+
+**Team Dynamics of SCRUM explores the intricate dynamics of team interactions, drawing parallels from chimpanzee politics and human behavior**.
+
+**Frans de Waal**'s insights into chimp colonies reveal underlying power struggles reminiscent of human political maneuvering. The discussion on **social hierarchies introduces the Status Game**, encompassing **Virtue**, **Competition**, and **Dominance** games as strategies for securing social standing. The **Minority Rules** concept emphasizes the impact of determined minorities on societal norms. **Milgram's Experiments** shed light on blind obedience to authority, exposing the perils of moral compromise.
+
+The introduction of the **Sociogram** as a tool for mapping group relationships enhances leaders' understanding of team dynamics. **Behavioral Economics**, exemplified by R**ichard H. Thaler**'s work, challenges traditional economic models, emphasizing **the role of emotions in decision-making**.
+
+:::
+
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 11 - Team Dynamics**
+
+Team Dynamics, Frans de Waal, Social Hierarchies, Virtue Game, Competition Game, Dominance Game, Minority Rules, Nassim Nicholas Taleb, Milgram's Experiments, Sociogram, Behavioral Economics, Richard H. Thaler, Nudges, Incentives
+
+:::
+
+</br></br>
+
+
+# Origins
+
+## Social Organization
+
+![Frans de Waal](/images/scrum/fransdeWaal.jpg)
+
+> An incredible insight into the takeovers and **social organization of a chimp colony** in the Netherlands. "The behavior of our closest relatives provides clues about human nature. Apart from political maneuvering, chimpanzees show many behaviors that parallel those of humans, from tool technology to intercommunity warfare. In fact, our place among the primates is increasingly a backdrop of substantial similarity. Our uniqueness breaks down as we study our relatives.
+
+
+Every country has its **Dick Cheneys** and **Ted Kennedys** operating behind the scenes.
+
+**Being over the hill themselves**, these experienced men often exploit the intense rivalries among younger politicians, gaining tremendous power as a result. I also did not draw explicit parallels between how rival chimpanzees curry favor with females by grooming and tickling their young and the way human politicians hold up and kiss babies, something they rarely do outside the election season.
+
+<mark>There are tons of such parallels, also in nonverbal communication (the swaggering, the lowering of voices), but I stayed away from all these. To me, they were so obvious I am happy to leave them to my readers...The social dynamics are essentially the same. The game of probing and challenging, of forming coalitions, of undermining others' coalitions, and of slapping the table to reinforce a point is right there for any observer to see</mark>.
+
+The will to power is a human universal. Our species has been engaged in Machiavellian tactics since the dawn of time, which is why no one should be surprised about the evolutionary connection pointed out in the present book."
+
+- [Frans de Waal](https://www.goodreads.com/author/show/112082.Frans_de_Waal){.external}
+- [Chimpanzee Politics: Power and Sex among Apes](https://www.goodreads.com/book/show/389530.Chimpanzee_Politics){.external}
+- [Are We Smart Enough to Know How Smart Animals Are?](https://www.goodreads.com/book/show/30231743-are-we-smart-enough-to-know-how-smart-animals-are){.external}
+- [Chimpanzee Politics: Power and Sex Among Apes Summary](https://blas.com/chimpanzee-politics/){.external}
+
+## Cultural Negotiation
+
+- [Cultural Negotation Formulas](https://drive.google.com/drive/folders/1aCpDFulr7pjPdtHynODWmhpgxW8UCIDh){.external}
+
+# Social dynamics
+
+## The status game
+
+- [The status game](/books/statusGame.qmd)
+
+### The Status Game roots
+
+**The Status Game** often involves social interactions where individuals seek to establish and maintain their position within a **social hierarchy**. Key concepts within this realm include:
+
+- **Social Hierarchies**: Understanding societies' hierarchical structures and navigating to secure one's position.
+  
+- **Symbolic Capital**: Accumulating resources, attributes, or achievements that confer status within a social context.
+
+- **Social Comparison**: Constant assessment of one's status relative to others, driving behaviors and choices.
+
+
+### Understanding Status Games: Virtue, Competition, and Dominance
+
+In the realm of status games, three prominent games often come to the forefront:
+
+- **Virtue Game**: In the Virtue Game, individuals seek status through moral and ethical excellence. Displaying qualities such as honesty, integrity, and altruism becomes a means to elevate one's standing in social hierarchies.
+
+- **Competition Game**: The Competition Game revolves around outperforming peers in various domains, including career achievements, skills, or talents. Success in this game is often measured by surpassing others in a competitive environment.
+
+- **Dominance Game**: The Dominance Game involves asserting power and control to secure a higher status. Individuals may employ tactics such as influence, authority, or manipulation to establish dominance and command respect within social structures.
+
+<mark>These three games collectively illustrate the diverse strategies individuals employ to navigate social hierarchies and gain recognition within their communities</mark>.
+
+Each game reflects different values, priorities, and approaches to achieving status in a given context.
+
+
+## Minority Rules: the super-pareto
+
+::: {.callout-important}
+The **Minority Rules concept**, popularized by **Nassim Nicholas Taleb**, suggests that a small, committed minority can have a disproportionate impact on a larger population. Taleb argues that throughout history, transformative ideas or behaviors often originated from a determined minority, influencing the majority.
+
+This phenomenon contrasts with traditional democratic views. Taleb emphasizes the power of persistence and conviction, positing that even a small group with strong beliefs can shape societal norms. The Minority Rules principle underscores the nonlinear nature of influence, where committed outliers, rather than conformist majorities, drive significant societal changes.
+:::
+
+<mark>The main idea behind complex systems is that the ensemble behaves in ways not predicted by the components. The interactions matter more than the nature of the units.</mark>
+
+> Studying individual ants will never (one can safely say never for most such situations), never give us an idea on how the ant colony operates. For that, one needs to understand an ant colony as an ant colony, no less, no more, not a collection of ants.
+
+This is called an “emergent” property of the whole, by which parts and whole differ because what matters is the interactions between such parts. And interactions can obey very simple rules.
+
+The rule we discuss in this chapter is the **minority rule**.
+
+<mark>The minority rule will show us how it all it takes is a small number of intolerant virtuous people with skin in the game, in the form of courage, for society to function properly.</mark>
+
+- [The Most Intolerant Wins: The Dictatorship of the Small Minority](https://nassimtaleb.org/tag/minority-rule/){.external}
+
+## Milgram's Experiments and the Perils of Obedience
+
+::: {.callout-important}
+Milgram's Experiments, conducted by psychologist **Stanley Milgram in the 1960s**, aimed to study obedience to authority figures. Participants were instructed to administer increasingly severe electric shocks to a person (a confederate) in another room, even when protests were heard.
+
+<mark>The shocks were simulated, but the study revealed the alarming extent to which people would comply with authority, even when it conflicted with their moral beliefs.</mark>
+
+This highlighted the perils of blind obedience, illustrating the potential for individuals to engage in harmful actions under authoritative influence. Milgram's work raised ethical concerns but significantly contributed to our <mark>understanding of human behavior in social contexts</mark>.
+:::
+
+
+# Social tool: Sociogram
+
+![Sociogram example](/images/scrum/sociogram.png)
+
+A **sociogram is a tool for charting the relationships within a group**. It’s a visual representation of the social links and preferences that each person has – valuable data for leaders.
+
+- [Create a sociogram in a flash](https://www.sometics.com/en/sociogram){.external}
+- [What Is Sociogram](https://www.edrawmax.com/article/what-is-sociogram.html){.external}
+- [Understanding the Sociogram:A Tool for Mapping Social Dynamics](https://www.6seconds.org/2017/07/03/sociogram-definition/){.external}
+
+
+# Behavioral Economics
+
+Behavioral Economics merges insights from psychology and economics to understand how individuals deviate from rational decision-making. It explores cognitive biases, emotional influences, and social factors, providing a more realistic framework for analyzing economic behavior. Researchers like Richard H. Thaler have contributed significantly to this field, challenging traditional economic models.
+
+##  From Cashews to Nudges: The Evolution of Behavioral Economics
+
+- [From Cashews to Nudges:The Evolution of Behavioral Economics](https://www.nobelprize.org/uploads/2018/01/thaler-lecture.pdf){.external}
+
+::: {.column-margin}
+![Misbehaving: The Making of Behavioral Economics](/images/scrum/Misbehaving.jpg){width="60%"}
+
+:::
+
+**Richard H. Thaler's** "From Cashews to Nudges: The Evolution of Behavioral Economics" Prize Lecture, delivered on December 8, 2017, at the University of Chicago Booth School of Business, explores the progression of behavioral economics.
+
+Thaler, a pioneer in the field, traces its evolution from early anomalies like cashew consumption patterns to the development of behavioral insights that underpin "nudges" – <mark>subtle interventions designed to influence decision-making</mark>. 
+
+The lecture likely delves into how these insights challenge traditional economic models and reshape our <mark>understanding of how individuals make choices, offering a nuanced perspective on the intersection of psychology and economics in decision science.</mark>
+
+::: {.callout-note}
+Richard H. Thaler's insights in behavioral economics challenge traditional economic assumptions. He introduces concepts like bounded rationality and loss aversion, demonstrating that decision-making is influenced by cognitive limitations and emotional factors.
+
+Thaler's work includes the popularized idea of "nudging," subtle interventions guiding individuals toward better choices. By recognizing these behavioral patterns, policymakers can design effective strategies for public policy and individuals can make more informed economic decisions.
+:::
+
+### Regarding Thaler: How Do We Make Economic Decisions?
+
+Richard H. Thaler, a prominent figure in behavioral economics, has reshaped our understanding of how individuals make economic decisions. His work challenges the traditional assumption of perfect rationality, introducing insights from psychology and behavioral science. Key concepts include:
+
+1. **Bounded Rationality:**
+   - Acknowledges limited cognitive resources, leading to heuristics and systematic biases.
+
+2. **Loss Aversion:**
+   - Highlights the tendency to weigh potential losses more heavily than equivalent gains, influencing decision-making and risk-taking.
+
+3. **Nudging:**
+   - Introduces the concept that subtle changes in choice presentation ("nudges") can impact decisions and guide individuals toward better outcomes.
+
+4. **Behavioral Economics and Policy:**
+   - Examines the implications for public policy, using insights to design interventions that encourage better choices.
+
+5. **Endowment Effect:**
+   - Explores how individuals assign higher value to owned items, affecting economic decisions.
+
+Thaler's contributions emphasize that economic decision-making is influenced by cognitive limitations, emotions, and social context. Recognizing these behavioral patterns allows for a more realistic understanding and the design of strategies to improve decision outcomes.
+
+
+## Incentives
+
+- [RSA Animate: Drive: The surprising truth about what motivates us](https://www.youtube.com/watch?v=u6XAPnuFjJc&feature=youtu.be){.external}
+
+
+
+# References
+
+- [SCRUM: week2](https://sites.google.com/view/gestioprojectes/llegir/setmana2)
+- [The Dark side of Science: The Milgram Experiment (1963) (Short Documentary)](https://www.youtube.com/watch?v=8bbVFeTIIg8){.external}
+- [Induction: Processes of Inference, Learning, and Discovery](https://www.google.com/search?kgmid=/g/1ydwn3qgc&hl=en-ES&kgs=e5ef35219b8759db&q=Induction:+Processes+of+Inference,+Learning,+and+Discovery+John+Henry+Holland&shndl=0&source=sh/x/kp&entrypoint=sh/x/kp){.external}
+- [ What Was the Milgram Experiment? Milgram's Famous and Controversial Studies of Obedience](https://www.verywellmind.com/the-milgram-obedience-experiment-2795243){.external}
+- [RSA Animate: Drive: The surprising truth about what motivates us](https://www.youtube.com/watch?v=u6XAPnuFjJc&feature=youtu.be){.external}
+

@@ -1,0 +1,149 @@
+---
+title: "Spring Boot: cycle"
+subtitle: Spring Boot
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, project, maven, thymeleaf, db, h2]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **Request-Response Cycle**
+
+The flux of data between the client and server is called the ``request-response cycle``.
+
+This cycle involves the client making a **request** to the server for some data or action, the server processing the **request** and generating a **response**, and then sending that **response** back to the client.
+
+This process can involve multiple layers of abstraction, such as the controller, service, and repository layers in Spring Boot, and can involve interactions with a database or other external systems.
+
+The ``request-response cycle`` is fundamental to the functioning of web applications and is critical to understanding how data is exchanged between clients and servers in this context.
+
+:::
+
+---
+
+## Spring Boot Request-Response Cycle
+
+![](/images/springmvc/mvc.png){width="80%"}
+
+1. The user enters the URL in the address bar of Chrome and presses Enter.
+2. Chrome parses the URL and initiates a request to the Spring Boot server.
+3. The request is received by the web server and passed to the DispatcherServlet, which is the front controller for Spring MVC.
+4. The DispatcherServlet consults the HandlerMapping to determine the appropriate controller for the request.
+5. The selected controller processes the request, interacting with the service layer and the repository layer as necessary.
+6. The controller generates a model object that contains the data to be displayed on the page.
+7. The model is passed to the ViewResolver, which determines the appropriate view to render the response.
+8. The Thymeleaf engine for templates renders the HTML based on the model and returns it to the controller.
+9. The controller sends the HTML response back to the DispatcherServlet, which packages it into an HTTP response and sends it back to Chrome.
+10. Chrome receives the response and renders the HTML, displaying the web page to the user.
+
+![](/images/springboot/request-response-cycle.png){width="80%"}
+
+> The steps 5-8 may occur multiple times, depending on the complexity of the application and the number of views that need to be rendered. Additionally, the H2 database may be used by the repository layer to retrieve or store data as needed.
+
+## Underlying Request-Response Cycle
+
+![](/images/springmvc/request-response-cycle.jpg){width="80%"}
+
+
+Sure, here is the complete process of handling a request from Chrome to rendering HTML using Spring Boot with a controller, service, and repository, JPA, H2 database, and Thymeleaf engine for templates:
+
+1. The user enters a URL in the address bar of Chrome and presses Enter.
+2. Chrome parses the URL and initiates an HTTP request to the Spring Boot server.
+3. The request is received by the web server and passed to the DispatcherServlet, which is the front controller for Spring MVC.
+4. The DispatcherServlet consults the HandlerMapping to determine the appropriate controller for the request.
+5. The selected controller calls the appropriate service method to handle the request.
+6. The service layer performs any necessary business logic and data validation and uses the repository layer to access the database.
+7. The repository layer uses JPA to interact with the H2 database, performing CRUD operations as needed to retrieve or store data.
+8. The service layer receives the data from the repository layer and formats it into a model object that can be rendered by the view.
+9. The model object is passed to the view resolver, which selects the appropriate view to render the response using the Thymeleaf engine for templates.
+10. The Thymeleaf engine for templates renders the HTML based on the model object and returns it to the controller.
+11. The controller packages the HTML response into an HTTP response and sends it back to the client, which in this case is Chrome.
+12. Chrome receives the response and renders the HTML, displaying the web page to the user.
+
+### Handling errors
+
+If an error occurs during any of the above steps, the following additional steps may be taken:
+
+13. The error is caught by the appropriate exception handler in the controller.
+14. The exception handler generates an error response, which may include a user-friendly error message.
+15. The error response is sent back to the client.
+
+### Auth
+
+If authentication or authorization is required for the request, the following additional steps may be taken:
+
+16. The request is intercepted by a security filter, which verifies that the user is authenticated and authorized to access the requested resource.
+17. If the user is not authenticated, they are redirected to a login page.
+18. If the user is not authorized, they are shown an access denied message.
+
+### File uploads
+
+If the request involves file uploads, the following additional steps may be taken:
+
+19. The uploaded file(s) are received by the web server and passed to a file upload handler.
+20. The file upload handler saves the uploaded file(s) to the file system or a database, as appropriate.
+21. The service layer processes the uploaded file(s) as needed and updates the database.
+
+### Catching
+
+If the application uses caching, the following additional steps may be taken:
+
+22. The request is intercepted by a caching filter, which checks if the response is already cached.
+23. If the response is cached, it is returned to the client without further processing.
+24. If the response is not cached, it is processed as described above, and then cached for future requests.
+25. The cached response is returned to the client in response to future requests, until the cache expires or is invalidated.
+
+
+Note that the exact sequence and number of steps may vary depending on the specific implementation of the Spring Boot application and the requirements of the web application.
+
+## More scenarios
+
+
+Additional scenarios that may be encountered when processing a request using Spring Boot with a controller, service, and repository, JPA, H2 database, and Thymeleaf engine for templates:
+
+### Handling AJAX requests
+
+1. The user initiates an AJAX request by clicking a button or link on the web page.
+2. The request is received by the controller and passed to the appropriate service method.
+3. The service layer performs any necessary business logic and data validation, and uses the repository layer to access the database.
+4. The repository layer uses JPA to interact with the H2 database, performing CRUD operations as needed to retrieve or store data.
+5. The service layer receives the data from the repository layer and formats it into a JSON object.
+6. The JSON object is returned to the client and processed by the JavaScript code.
+
+
+### Handling file downloads
+
+1. The user initiates a file download request by clicking a button or link on the web page.
+2. The request is received by the controller and passed to the appropriate service method.
+3. The service layer performs any necessary business logic and data validation, and uses the repository layer to access the database.
+4. The repository layer uses JPA to interact with the H2 database, retrieving the requested file(s).
+5. The file(s) are sent back to the client in the response body with appropriate headers, such as Content-Type and Content-Disposition.
+
+
+### Handling long-running requests
+
+1. The user initiates a request that may take a long time to complete, such as generating a report or processing a large dataset.
+2. The request is received by the controller and passed to the appropriate service method.
+3. The service layer spawns a background thread to perform the long-running task, and returns a response to the client immediately.
+4. The client periodically polls the server for updates on the status of the task.
+5. When the background task completes, the result is stored in the database or sent back to the client in a response.
+
+
+### Handling complex database queries
+
+1. The user initiates a request that requires complex database queries, such as aggregations, subqueries, or joins.
+2. The request is received by the controller and passed to the appropriate service method.
+3. The service layer uses JPA Criteria API or Querydsl to construct complex database queries.
+4. The repository layer uses JPA to execute the queries and retrieve the requested data.
+5. The service layer formats the data into a model object that can be rendered by the view.
+
+

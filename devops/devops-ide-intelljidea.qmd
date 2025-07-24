@@ -1,0 +1,94 @@
+---
+title: "IDE: IntellJIdea"
+subtitle: IntellJIdea
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Visual Code IDE
+categories: [devops, IntellJIdea, ide]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+link: [Check out the most useful and popular topics to get you started with IntelliJ IDEA.](https://www.jetbrains.com/help/idea/getting-started.html)
+
+[![User interface](https://resources.jetbrains.com/help/img/idea/2022.3/ij_mainWindow_default.png)](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html)
+
+1. [Navigation bar](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html#navigation-bar)
+
+2. Project [tool window](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html#tool-windows)
+
+3. [Editor](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html#editor)
+4. [Popup menu](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html#popup-menus)
+
+5. [Context menu](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html#context-menus)
+
+6. [Status bar](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html#status-bar)
+
+## Create your first Java application
+
+![In IntelliJ IDEA, a project helps you organize your source code, tests, libraries that you use, build instructions, and your personal settings in a single unit.](https://resources.jetbrains.com/help/img/idea/2022.3/java-tutorial-new-project.png)
+
+[Create your first Java application](https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html){#Create-your-first-Java-application}
+
+
+## Projects
+
+![In IntelliJ IDEA, projects help you to organize your source code, tests, libraries that you use, build instructions, and your personal settings in a single unit.](https://resources.jetbrains.com/help/img/idea/2022.3/project-overview.png)
+
+[Projects](https://www.jetbrains.com/help/idea/creating-and-managing-projects.html){#Projects}
+
+
+## Code Completion
+
+[Call the println() method using code completion](https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#call-println)
+
+
+## Pro tips
+
+![Alt text](https://resources.jetbrains.com/help/img/idea/2022.3/code_completion.png)
+
+[Pro tips](https://www.jetbrains.com/help/idea/pro-tips.html){#pro-tips}
+
+
+## IntelliJ IDEA keyboard shortcuts
+
+[IntelliJ IDEA keyboard shortcuts](https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html){#intellijidea-shorcuts}
+
+| Shortcut | Action |
+| --- |  --- |
+| Double `Shift` | [Search Everywhere](https://www.jetbrains.com/help/idea/searching-everywhere.html)Quickly find any file, action, symbol, tool window, or setting in IntelliJ IDEA, in your project, and in the current Git repository. |
+| --- |  --- |
+| `Ctrl+Shift+A` | [Find Action](https://www.jetbrains.com/help/idea/searching-everywhere.html#find_action)Find a command and execute it, open a tool window, or search for a setting. |
+| `Alt+Enter` | [Show Context Actions](https://www.jetbrains.com/help/idea/intention-actions.html)Quick-fixes for highlighted errors and warnings, intention actions for improving and optimizing your code. |
+| `F2``Shift+F2` | [Navigate between code issues](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#navigate-errors-warnings)Jump to the next or previous highlighted error. |
+| `Ctrl+E` | [View recent files](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#recent_files)Select a recently opened file from the list. |
+| `Ctrl+Shift+Enter` | [Complete Current Statement](https://www.jetbrains.com/help/idea/working-with-source-code.html#editor_statement_select)Insert any necessary trailing symbols and put the caret where you can start typing the next statement. |
+| `Ctrl+Alt+L` | [Reformat Code](https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html#reformat_code)Reformat the whole file or the selected fragment according to the current code style settings. |
+| `Ctrl+Alt+Shift+T` | [Invoke refactoring](https://www.jetbrains.com/help/idea/refactoring-source-code.html)Refactor the element under the caret, for example, safe delete, copy, move, rename, and so on. |
+| `Ctrl+W``Ctrl+Shift+W` | [Extend or shrink selection](https://www.jetbrains.com/help/idea/working-with-source-code.html)Increase or decrease the scope of selection according to specific code constructs. |
+| `Ctrl+/``Ctrl+Shift+/` | [Add/remove line or block comment](https://www.jetbrains.com/help/idea/working-with-source-code.html#editor_lines_code_blocks)Comment out a line or block of code. |
+| `Ctrl+B` | [Go To Declaration](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#go_to_declaration)Navigate to the initial declaration of the instantiated class, called method, or field. |
+| `Alt+F7` | [Find Usages](https://www.jetbrains.com/help/idea/find-highlight-usages.html#find-usages)Show all places where a code element is used across your project. |
+| `Alt+1` | Focus the Project tool window |
+| `Escape` | Focus the editor |
+
+## Maven Helper
+
+![Maven Helper](/images/devops/mavenhelper.png)
+
+A must have plugin for working with Maven.
+- easy way for **analyzing and excluding conflicting dependencies**
+- actions to run/debug maven goals for a module that contains the current file or on the root module
+- action to open terminal at the current maven module path
+- actions to run/debug the current test file.
+
+[Maven Helper](https://plugins.jetbrains.com/plugin/7179-maven-helper){#Maven-Helper}
+
+## Top 10 Plugins for IntelliJ IDEA You Don’t Want to Miss
+
+[Top 10 Plugins for IntelliJ IDEA You Don’t Want to Miss](https://blog.jetbrains.com/idea/2021/05/top-10-plugins-for-intellij-idea/)

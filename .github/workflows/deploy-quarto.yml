@@ -1,0 +1,65 @@
+name: Deploy Quarto Website
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        version: pre-release
+
+    - name: Setup R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: '4.3.0'
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install R dependencies
+      run: |
+        if [ -f renv.lock ]; then
+          R -e "install.packages('renv'); renv::restore()"
+        else
+          R -e "install.packages(c('rmarkdown', 'knitr'))"
+        fi
+
+    - name: Install Python dependencies
+      run: |
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        fi
+        pip install jupyter matplotlib pandas numpy
+
+    - name: Render Quarto Project
+      run: |
+        quarto render
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: ./_site
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2

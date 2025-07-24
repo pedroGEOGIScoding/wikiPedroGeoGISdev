@@ -1,0 +1,154 @@
+---
+title: "React JS ES6: spread operator"
+subtitle: ReactJS spread operator
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [reactjs, es6, spread, operator]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **spread operator**
+
+The ``JavaScript spread operator`` ``...`` allows us to quickly copy all or part of an existing array or object into another array or object.
+
+:::
+
+---
+
+The [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals){.external} is a useful tool for working with arrays and can make your code more concise and easier to read.
+
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const numbersOne = [1, 2, 3];
+const numbersTwo = [4, 5, 6];
+const numbersCombined = [...numbersOne, ...numbersTwo];
+```
+
+The spread operator is often used in combination with destructuring.
+
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const [one, two, ...rest] = numbers;
+```
+
+The spread operator can also be used to spread the elements of an array into the arguments of a function:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+function add(a, b, c) {
+  return a + b + c;
+}
+
+const arr = [1, 2, 3];
+console.log(add(...arr)); // 6
+```
+
+## Copying objects with the spread syntax 
+
+::: {.callout-important}
+We need to use spread operator **to quickly copy part of the existing Person object** (``state variable``) into another new object (``state variable``).
+:::
+
+Note that the ... spread syntax is “shallow”—it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you’ll have to use it more than once.
+
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+import { useState } from 'react';
+
+export default function Form() {
+  const [person, setPerson] = useState({
+    firstName: 'Barbara',
+    lastName: 'Hepworth',
+    email: 'bhepworth@sculpture.com'
+  });
+
+  function handleChange(e) {
+    setPerson({
+      ...person,
+      [e.target.name]: e.target.value
+    });
+  }
+
+  return (
+    <>
+      <label>
+        First name:
+        <input
+          name="firstName"
+          value={person.firstName}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Last name:
+        <input
+          name="lastName"
+          value={person.lastName}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          name="email"
+          value={person.email}
+          onChange={handleChange}
+        />
+      </label>
+      <p>
+        {person.firstName}{' '}
+        {person.lastName}{' '}
+        ({person.email})
+      </p>
+    </>
+  );
+}
+
+```
+
+::: {.column-margin}
+![Initial render](/images/reactjs/ex51.png){width=100%}
+:::
+
+::: {.column-margin}
+![Re-render with ``handleChange(e)``](/images/reactjs/ex52.png){width=100%}
+:::
+
+Here, you want to also copy the existing data **into the new object to be rendered next render** (that is ``lastName`` and ``email``) because only one of the fields has changed: ``firstName`` from ``input`` and  ``e.target.value`` to **trigger** ``setPerson``.
+
+> So with big objects we must use spread operator.
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+setPerson({
+  firstName: e.target.value, // New first name from the input
+  lastName: person.lastName,
+  email: person.email
+  // ..
+  // imagine a big object with 50 fields
+  // ..
+});
+``` 
+
+Use ``spread operator`` to create a new object and pass it to ``setPerson``.
+
+> You can use the ... object spread syntax so that you don’t need to copy every property separately.
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+setPerson({
+  ...person, // Copy the old fields
+  firstName: e.target.value // But override this one
+});
+```
+
+

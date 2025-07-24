@@ -1,0 +1,52 @@
+---
+title: "Spring MVC"
+subtitle: Spring MVC
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Spring MVC
+categories: [spring, MVC]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview
+
+::: {.callout-note}
+**MVC (Model-View-Controller)** is a pattern in software design commonly used to implement user interfaces, data, and controlling logic.
+
+It emphasizes a separation between the software's business logic and display.
+
+<mark>This "separation of concerns" provides for a better division of labor and improved maintenance.</mark> Some other design patterns are based on MVC, such as MVVM (Model-View-Viewmodel), MVP (Model-View-Presenter), and MVW (Model-View-Whatever).
+
+:::
+
+![Model View Controller example](/images/springmvc/model-view-controller-light-blue.png){width="60%"}
+
+
+The three parts of the MVC software-design pattern can be described as follows:
+
+- Model: Manages data and business logic.
+- View: Handles layout and display.
+- Controller: Routes commands to the model and view parts.
+
+# Spring MVC
+
+![Spring MVC](/images/springmvc/mvc.png){width="80%"}
+
+![Spring MVC Numbered](/images/springmvc/mvc2.png){#spring-mvc-diagram}
+
+The [Spring Web](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/mvc.html) model-view-controller (MVC) framework is designed around a **DispatcherServlet** that dispatches requests to handlers, with configurable handler mappings, view resolution, locale and theme resolution as well as support for uploading files.
+
+The default handler is based on the @Controller and @RequestMapping annotations, offering a wide range of flexible handling methods.
+
+With the introduction of Spring 3.0, the @Controller mechanism also allows you to create RESTful Web sites and applications, through the @PathVariable annotation and other features.
+
+# References
+
+- [MVC](https://developer.mozilla.org/en-US/docs/Glossary/MVC){.external}
+
+

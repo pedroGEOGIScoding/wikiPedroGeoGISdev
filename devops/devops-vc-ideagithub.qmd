@@ -1,0 +1,324 @@
+---
+title: "Idea and GitHub 2023"
+subtitle: Software code version control
+author: albertprofe
+date: "10/16/2023"
+date-modified: last-modified
+date-format: full
+description: GitHub is a software development platform in the cloud. It's used for storing, tracking, and collaborating on software projects.
+categories: [devops, github]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+
+
+
+## Overview: how to connect local IntelJIdea with remote repository on GitHub
+
+In the fast-paced world of software development, <mark>collaborating with remote teams and utilizing version control systems like GitHub has become an indispensable part of the process of software devolopment</mark>.
+
+> Connecting your local IntelliJ IDEA, a popular integrated development environment (IDE), with a remote repository on GitHub is a fundamental skill for developers looking to streamline their workflow and contribute to open-source projects or work with distributed teams.
+
+
+
+## Set up tools
+
+
+- GitHub [account](https://github.com/)
+- Install [IntellJIdea](/devops/devops-ide-intelljidea.qmd) local
+- Install [git](/devops/devops-vc-git.qmd)local
+- [Permssion](/devops/devops-vc-github.qmd) IntellJIdea to write GitHub
+- CLI [gh](https://cli.github.com/)
+  
+
+## Create local/remote repos and first commit/push
+
+Open Idea IDE and an empty project
+
+![](/images/devops/ghIdea-1.png)
+
+Create a new file
+
+![](/images/devops/ghIdea-2.png)
+
+File created
+
+![](/images/devops/ghIdea-3.png)
+
+Create a local repository with the visual tool Idea git
+
+![](/images/devops/ghIdea-4.png)
+
+
+A **local repository created by the visual tool "Idea git" (or IntelliJ IDEA's built-in Git integration) refers to a version control system repository that exists on your local development machine within the IntelliJ IDEA IDE**.
+
+It is a <mark>dedicated space where you can store and manage your project's source code</mark>, track changes, and work on your codebase while benefiting from Git's version control capabilities.
+
+Here are some key features and attributes of a local repository created by the Idea Git tool:
+
+- **Version Control**: The local repository allows you to track changes made to your project's source code over time. You can create commits to record modifications, revert to previous states, and manage your project's history effectively.
+
+- **Isolation**: It's a self-contained workspace where you can work on your project independently without affecting the code in the remote repository or the work of other collaborators.
+
+- **Branching**: Local repositories support the creation and management of branches. You can develop new features or fix issues in separate branches without altering the main codebase.
+
+- **Commit History**: Idea Git provides a visual representation of your commit history, making it easy to see the changes made to your project and who made them. This is crucial for tracking progress and debugging.
+
+- **Conflict Resolution**: If you're collaborating with others, you can resolve merge conflicts within the local repository before pushing changes to the remote repository. Idea Git offers tools to help with conflict resolution.
+
+- **Offline Work**: You can continue working on your project and making commits even when you don't have an internet connection. Once you're online, you can synchronize your local repository with the remote one.
+
+- **Security and Backup**: Your code is stored securely on your local machine. You can back it up independently from the remote repository, ensuring data safety.
+
+In summary, a local repository created by the visual tool Idea Git in IntelliJ IDEA serves as a critical component in the Git workflow. It allows you to manage your codebase efficiently, experiment with new features, and collaborate with a level of control and isolation that is essential for software development. When you're satisfied with your changes and ready to share them with others, you can then push your commits to the remote repository on platforms like GitHub, GitLab, or Bitbucket.
+
+Local repository created
+
+![](/images/devops/ghIdea-5.png)
+
+Create a remote repository on GitHub
+
+![](/images/devops/ghIdea-6.png)
+
+Make it public and save the **URL https**
+
+![](/images/devops/ghIdea-7.png)
+
+URL new remote repository on GitHub created:
+
+-https://github.com/AlbertProfe/gitIdea.git
+
+![](/images/devops/ghIdea-8.png)
+
+Be careful with **unversioned files**, all this information is in the **Idea Commit Tool.**
+
+![](/images/devops/ghIdea-10.png)
+
+**Changes files** are not the same as **unversioned files**
+
+![](/images/devops/ghIdea-14.png)
+
+Write down the text for the first commit and the tool will ask you for a <mark>remote repository, created before!</mark>
+
+> A "commit"
+> in Git is like taking a snapshot of your code at a specific point in time. It records the changes you've made to your code, along with a message describing what those changes are. Each commit represents a discrete set of changes and creates a new point in your project's history. Committing is a way to save your work and create a clear, organized timeline of your project's development.
+
+![](/images/devops/ghIdea-11.png)
+
+Write dwon (or copy-paste) the remote repository url
+
+![](/images/devops/ghIdea-12.png)
+
+
+Now you can **push** the commit to remote repository.
+
+![](/images/devops/ghIdea-13.png)
+
+Overall screen a all controls
+
+![](/images/devops/ghIdea-15.png)
+
+Commit **pushed** to **remote repository**
+
+![](/images/devops/ghIdea-16.png)
+
+Let's chechk on github if the commit is threre:
+
+![](/images/devops/ghIdea-17.png)
+
+
+
+## Second commit/push and beyond
+
+Write second commit
+
+![](/images/devops/ghIdea-18.png)
+
+Select the changes
+
+![](/images/devops/ghIdea-19.png)
+
+Commit and push
+
+![](/images/devops/ghIdea-20.png)
+
+Pushed
+
+![](/images/devops/ghIdea-21.png)
+
+Check out the commit on github
+
+![](/images/devops/ghIdea-22.png)
+
+Watch out the two commits
+
+![](/images/devops/ghIdea-23.png)
+
+
+## Manage commits IntellJIdea
+
+
+![](/images/devops/idea-mange-commits.png)
+
+
+
+#### 1. Cherry-pick
+
+**Cherry-picking** in Git allows you to apply a specific commit from one branch to another. 
+
+*Usage*: `git cherry-pick <commit-hash>`
+
+This is useful when you want to bring a specific change from one branch into your current branch without merging the entire branch.
+
+#### 2. Create patch
+
+**Creating a patch** generates a file containing the changes introduced by a specific commit.
+
+*Usage*: `git format-patch -1 <commit-hash>`
+
+Patches are useful for sharing specific changes with others or applying changes to a different repository.
+
+#### 3. Create tag
+
+**Tags** in Git are references to specific points in Git history, typically used to mark release points.
+
+*Usage*: `git tag -a <tag-name> -m "Tag message"`
+
+Tags provide an easy way to reference and checkout specific versions of your codebase.
+
+#### 4. Revert commit
+
+**Reverting a commit** creates a new commit that undoes the changes introduced by a specific commit.
+
+*Usage*: `git revert <commit-hash>`
+
+This is useful when you want to undo changes that have already been pushed to a shared repository.
+
+#### 5. Reset current branch
+
+**Resetting** moves the current branch pointer to a specific commit, optionally modifying the staging area and working directory.
+
+*Usage*: `git reset [--soft | --mixed | --hard] <commit-hash>`
+
+This command is used to undo local commits or change the state of your working directory.
+
+#### 6. Copy revision number
+
+In Git, each commit has a unique identifier called a **hash** or **revision number**.
+
+*Usage*: `git rev-parse HEAD` (to get the current commit hash)
+
+The full hash ensures unambiguous identification of a commit.
+
+#### 7. Copy commit message
+
+**Commit messages** provide a description of the changes introduced in a commit.
+
+*Usage*: `git log -1 --pretty=%B` (to get the last commit message)
+
+Good commit messages are crucial for understanding the history and purpose of changes in a project.
+
+#### 8. Show commit details
+
+Viewing **commit details** shows you the full information about a specific commit.
+
+*Usage*: `git show <commit-hash>`
+
+This command displays the commit message, author information, date, and a diff of all changes introduced by the commit.
+
+#### 9. Compare with current
+
+**Comparing** allows you to see the differences between two states of your repository.
+
+*Usage*: `git diff <commit-hash>`
+
+This is useful for understanding how your codebase has changed since a specific commit.
+
+#### 10. Show history for selected
+
+Viewing the **history** shows you the sequence of commits for a file or directory.
+
+*Usage*: `git log -- <file-path>`
+
+This helps in tracking the evolution of a specific part of your project over time.
+
+#### 11. Checkout revision
+
+**Checking out** a revision switches your working directory to the state it was in at a specific commit.
+
+*Usage*: `git checkout <commit-hash>`
+
+This is useful for inspecting old versions of your code or starting a new branch from a historical point.
+
+#### 12. Go to Child Commit
+
+Moving to a **child commit** means navigating to the next commit in the branch's history.
+
+*Usage*: `git log --reverse --ancestry-path <commit-hash>..HEAD | head -n 1`
+
+This helps in exploring how code changes evolved over time.
+
+#### 13. Go to Parent Commit
+
+Moving to a **parent commit** means navigating to the previous commit in the history.
+
+*Usage*: `git log --pretty=%P -n 1 <commit-hash>`
+
+This is useful for understanding the origin of certain code changes.
+
+#### 14. Open in GitHub
+
+While not a Git command itself, many Git tools provide integration with GitHub, allowing you to quickly view a commit, file, or project on GitHub's web interface.
+
+This bridges the gap between local development and online code hosting, facilitating collaboration and code review.
+
+
+### Manage commits (2024)
+
+1. **Cherry-pick:**
+In 2024, IntelliJ IDEA enhanced its cherry-pick functionality with improved conflict resolution. The IDE now offers more intuitive visual diff tools for handling conflicts during cherry-picking. It also introduced the ability to cherry-pick multiple commits at once, streamlining the process of selectively applying changes from one branch to another. Additionally, IntelliJ IDEA now provides better integration with issue tracking systems, allowing developers to link cherry-picked commits to relevant issues or tasks automatically.
+
+2. **Create patch:**
+By 2024, IntelliJ IDEA expanded its patch creation capabilities. The IDE now supports creating cumulative patches that include changes from multiple commits. It also introduced an option to create patches in various formats, including the unified diff format and Git's own patch format. The patch creation dialog now includes a preview feature, allowing developers to review and refine the patch before saving it. IntelliJ IDEA also added the ability to directly email patches from within the IDE, facilitating easier code sharing and review processes.
+
+3. **Create tag:**
+In 2024, IntelliJ IDEA's tag creation feature became more robust. The IDE now offers templated tag messages, making it easier to maintain consistent tagging practices across a project. It also introduced the concept of "smart tags" that can automatically include relevant metadata such as build numbers or version information. The tag creation dialog now integrates with CI/CD pipelines, allowing developers to trigger specific workflows upon tag creation. Additionally, IntelliJ IDEA now supports signing tags with GPG keys directly from the IDE for enhanced security.
+
+4. **Revert commit:**
+By 2024, IntelliJ IDEA significantly improved its commit reversion process. The IDE now provides a more detailed preview of the revert operation, showing exactly which changes will be undone. It also introduced the ability to revert multiple commits in a single operation, with smart handling of potential conflicts. IntelliJ IDEA now offers the option to automatically create a new branch for the revert operation, helping to isolate the reverted changes. The IDE also improved its integration with code review tools, allowing developers to easily share and discuss reverted changes.
+
+5. **Reset current branch to here:**
+In 2024, IntelliJ IDEA enhanced its branch reset functionality with additional safety features. The IDE now provides a comprehensive preview of the reset operation, clearly showing which commits will be affected and what will happen to the working directory. It introduced a "soft reset with backup" option, which creates a temporary branch with the discarded commits before performing the reset. IntelliJ IDEA also improved its explanation of the different reset modes (soft, mixed, hard), helping developers choose the appropriate option for their needs.
+
+6. **Copy revision number:**
+By 2024, IntelliJ IDEA expanded this feature to include more flexible copy options. In addition to copying the full SHA-1 hash, developers can now choose to copy shortened hashes of various lengths. The IDE also introduced the ability to copy the revision number in different formats, such as with a preceding "r" for some version control systems. IntelliJ IDEA now allows customizing the default copy behavior in the settings, catering to different team conventions or personal preferences.
+
+7. **Copy commit message:**
+In 2024, IntelliJ IDEA enhanced the commit message copying feature. The IDE now offers options to copy just the subject line, the full message, or a customized format that includes metadata like author and date. It also introduced a "smart copy" feature that can automatically format the copied message for different contexts, such as for use in commit messages, issue trackers, or markdown documents. Additionally, IntelliJ IDEA now provides a commit message template system, allowing teams to enforce consistent message structures.
+
+8. **Show commit details:**
+By 2024, IntelliJ IDEA's commit details view became more interactive and informative. The IDE now provides code intelligence features within the diff view, such as quick documentation and go-to-definition. It introduced a "commit impact" feature that shows which tests are affected by the commit and any potential performance implications. The commit details view now also includes a visualization of the commit's place in the branch history, helping developers understand the context of the change better.
+
+9. **Compare with current:**
+In 2024, IntelliJ IDEA significantly improved its comparison capabilities. The IDE now offers a three-way merge view, allowing developers to compare the selected commit, the current state, and a common ancestor. It introduced "smart comparison" features that can ignore certain types of changes (like formatting) based on user preferences. IntelliJ IDEA also added the ability to compare across branches or even across different repositories, facilitating easier code review and integration processes.
+
+10. **Show history for selected:**
+By 2024, IntelliJ IDEA's history view became more powerful and customizable. The IDE now offers advanced filtering and search capabilities within the history view, allowing developers to quickly find specific changes. It introduced a "history impact" feature that shows how each commit in the history has influenced code metrics over time. IntelliJ IDEA also added support for visualizing branching and merging patterns within the history view, helping developers understand complex project histories more easily.
+
+11. **Checkout revision:**
+In 2024, IntelliJ IDEA enhanced its checkout functionality with more options and safeguards. The IDE now provides a "virtual checkout" feature that allows developers to browse and search code at a specific revision without actually changing their working directory. It introduced smarter handling of the "detached HEAD" state, with clear warnings and easy options to create a new branch if needed. IntelliJ IDEA also added the ability to automatically stash uncommitted changes before checkout and reapply them afterwards, streamlining the workflow when switching between revisions.
+
+1.  **Go to Child Commit:**
+Introduced in IntelliJ IDEA 2024.2, this feature allows developers to quickly navigate to the next commit in the branch's history. It's particularly useful when exploring the evolution of code changes over time. This option enables developers to move forward in the commit history, making it easier to track how a particular change propagated through subsequent commits. It complements the existing history navigation tools, providing a more fluid way to traverse the commit graph.
+
+1.  **Go to Parent Commit:**
+Also new in the 2024.2 version, this option lets developers navigate to the previous commit in the history. It's the counterpart to "Go to Child Commit" and allows for easy backward navigation in the commit history. This feature is invaluable when trying to understand the origin of certain code changes or when backtracking through a series of commits to find where a specific change was introduced. Together with "Go to Child Commit," it provides a comprehensive way to move through the commit history in both directions.
+
+1.  **Open in GitHub:**
+This new feature in IntelliJ IDEA 2024.2 provides seamless integration with GitHub. When selected, it opens the current commit, file, or project in the GitHub web interface directly from the IDE. This functionality bridges the gap between local development and online code hosting, making it easier to share code, create pull requests, or reference specific commits in discussions. It's particularly useful for teams that heavily rely on GitHub for collaboration, code review, and project management.
+
+

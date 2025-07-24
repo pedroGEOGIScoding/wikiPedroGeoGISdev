@@ -1,0 +1,21 @@
+---
+title: "Commander"
+subtitle: Java Fundamentals and Patterns
+author: Rafa C.
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the State Behavioral Design-Pattern
+categories: [javase,commander, design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+:::
+
+---
+

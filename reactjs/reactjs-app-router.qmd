@@ -1,0 +1,147 @@
+---
+title: "React JS App: router"
+subtitle: ReactJS router
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [reactjs, router]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **router**
+``Create React App`` doesn't include **page routing**. ``React Router`` is the most popular solution. It allows you to **define routes for different parts of your application** and to programmatically **navigate** between them.
+
+:::
+
+---
+
+## Install
+
+``` {.bash .code-overflow-wrap filename="reactrouter.sh"}
+npm i -D react-router-dom
+```
+
+## Folder tree
+
+To create an application [with multiple page routes](https://www.w3schools.com/REACT/react_router.asp){.external}, let's first start with the **file structure**.
+
+Within the ``src`` folder, we'll create a folder named ``pages`` with several files:
+
+
+``` {.bash .code-overflow-wrap filename="reactrouter.sh"}
+src\pages\:
+└── src\pages\
+    └── Layout.js
+        Home.js
+        Blogs.js
+        Contact.js
+        NoPage.js
+```
+
+``` {.jsx .code-overflow-wrap filename="index.js"}
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+::: {.column-margin}
+![Use React Router to route to pages based on URL: index.js:](/images/reactjs/ex11.png){width=100%}
+:::
+
+The **Layout component has ``<Outlet>`` and ``<Link>`` elements. The ``<Outlet>`` renders the current route selected. ``<Link>`` is used to set the URL and keep track of browsing history.**
+
+Anytime we link to an internal path, we will use ``<Link>`` instead of ``<a href="">``. The **layout route** is a shared component that inserts common content on all pages, such as a **navigation menu**.
+
+
+``` {.jsx .code-overflow-wrap filename="Layout.js"}
+import { Outlet, Link } from "react-router-dom";
+
+const Layout = () => {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/blogs">Blogs</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Outlet />
+    </>
+  )
+};
+
+export default Layout;
+```
+
+``` {.jsx .code-overflow-wrap filename="Home.js"}
+const Home = () => {
+  return <h1>Home</h1>;
+};
+
+export default Home;
+```
+
+``` {.jsx .code-overflow-wrap filename="Blog.js"}
+const Blogs = () => {
+  return <h1>Blog Articles</h1>;
+};
+
+export default Blogs;
+```
+
+``` {.jsx .code-overflow-wrap filename="Contact.js"}
+const Contact = () => {
+  return <h1>Contact Me</h1>;
+};
+
+export default Contact;
+```
+
+``` {.jsx .code-overflow-wrap filename="NoPagejs"}
+const NoPage = () => {
+  return <h1>404</h1>;
+};
+
+export default NoPage;
+```
+
+

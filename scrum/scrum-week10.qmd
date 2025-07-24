@@ -1,0 +1,179 @@
+---
+title: "Week 10: Before SCRUM"
+subtitle: SCRUM Week 10
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Before SCRUM, software development primarily followed methodologies like Waterfall, V-Model
+categories: [scrum, scrum-week10, before-scrum]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 10 - Before SCRUM**
+
+Before SCRUM, software development primarily followed methodologies like Waterfall, V-Model, Incremental Model, and Spiral Model, which had their advantages but **lacked flexibility and early adaptability**.
+
+The **Project Management Office (PMO)** provided organizational standards.
+
+**Agile principles evolved from Toyota's manufacturing principles**, Lean Manufacturing, Crystal Clear, and Refactoring. In the 1990s, **Jeff Sutherland and Ken Schwaber independently developed SCRUM,** formalizing roles and events.
+
+The **Agile Manifesto in 2001 marked a pivotal moment**. SCRUM's integration with Toyota Production System at Toyota Connected exemplifies its effectiveness in Lean Production. Embracing SCRUM requires understanding complexity, teamwork, and continual improvement. Agile isn't a goal; it's an outcome.
+
+:::
+
+
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 10 - Before SCRUM**
+
+Waterfall Model, V-Model, Incremental Model, Spiral Model, Project Management Office (PMO), Agile Principles, Toyota Production System (TPS), Lean Manufacturing, Crystal Clear, Refactoring, Toyota Connected, Lean Production, Taiichi Ohno.
+
+
+:::
+
+</br></br>
+
+# Agile and Managment history
+
+## Agile and Managment 1945-2000
+
+Before SCRUM, software development primarily followed methodologies like Waterfall, V-Model, Incremental Model, and Spiral Model:
+
+::: {.column-page-right}
+
+| Methodology               | Description                                                                                                      | Characteristics                                                                                                              | Advantages                                          | Disadvantages                                       | Year Created | Decades Most Used                            |
+|---------------------------|------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|--------------|----------------------------------------------|
+| Waterfall Model            | Linear and sequential approach to software development.                                                           | Sequential phases: requirements, design, implementation, testing, deployment, and maintenance.                              | Easy to understand, well-suited for small projects. | Lack of flexibility, late detection of errors.       | 1950s        | 1960s-1980s                                  |
+| V-Model                   | Extension of the Waterfall model emphasizing verification and validation at each stage.                           | Testing phase corresponds to each development stage, forming a V-shape.                                                     | Early detection of issues, specific deliverables.   | Similar inflexibility as the Waterfall model.        | 1980s        | 1990s-2000s                                  |
+| Incremental Model          | Divides system functionality into small, manageable modules or increments.                                        | Each increment builds on the functionality of the previous one, with the final product formed by integrating all increments. | Partial implementation, early delivery, easier testing. | Requires careful planning, potential integration issues. | 1970s        | 1980s-1990s                                  |
+| Spiral Model               | Combines iterative development with aspects of the Waterfall model, incorporating risk assessment and mitigation. | Involves cycles with planning, risk analysis, engineering, testing, and evaluation.                                          | Better risk management, accommodates changes.       | Complex, extensive documentation, not suitable for small projects. | 1988         | 1990s-2000s                                  |
+| PMO (Project Management Office) | Organizational structure defining and maintaining project management standards and practices.               | Provides governance, establishes best practices, ensures alignment with business goals, and offers support to project managers. | Standardization, support, alignment with goals.      | May not directly manage projects, requires proper implementation. | 20th Century  | 1990s-Present                               |
+
+:::
+
+
+
+# Agile milestones
+
+![Agile history from Toyota, Crystal, Refactorin to SCRUM](/images/scrum/agilehistory-11.png)
+
+<mark>From **Toyota's manufacturing principles** to the **Agile Manifesto and Scrum**, agile methodologies have continually adapted, fostering collaboration, adaptability, and customer-centricity in software development processes.</mark>
+
+Agile methodologies have evolved over decades, with roots tracing back to post-World War II Japan. In 1945, Toyota implemented concepts influenced by **W. Edwards Deming's Total Quality Management**, shaping the **Toyota Production System (TPS)**. TPS emphasized continuous improvement, flexibility, and customer value.
+
+In the 1980s, Toyota engineer **Taiichi Ohno** introduced Lean Manufacturing, influencing agile practices by emphasizing efficiency and eliminating waste.
+
+**Crystal Clear**, an agile methodology developed by **Alistair Cockburn** in the 1990s, emphasized communication and teamwork. Concurrently, **Martin Fowler's "Refactoring"** book highlighted iterative code improvement.
+
+In the 1990s and early 2000s, **Jeff Sutherland and Ken Schwaber independently developed Scrum**. Rooted in empirical process control theory, Scrum formalized roles (Scrum Master, Product Owner, and Development Team) and events (Sprints) to enhance software development agility.
+
+The software development industry began adopting agile principles in the 1990s. A seminal moment was the publication of the **Agile Manifesto in 2001**, where software developers articulated values such as individuals and interactions over processes and tools.
+
+# Toyota SCRUM
+
+[Toyota Connected uses Scrum combined with the Toyota Production System to deliver Lean Production](https://www.infoq.com/articles/scrum-the-toyota-way/), enabling teams to deliver rapid PDCA cycles. Scrum of Scrums, Meta Scrum, and the chief product owner, are some of the approaches used to scale Scrum for multiple teams and products. Agility is not the goal. It’s a result, an outcome. 
+
+::: {.callout-note}
+
+- There is no one-size-fits-all approach to being agile, or to scaling Scrum
+- Lean and Agile are different things, but are great partners
+- You can be lean without being agile, and you can be agile without being lean
+- Executives must be fully engaged and part of the process
+- Understanding complexity and multi-team systems is critical for success  
+
+:::
+## Taiichi Ohno
+
+![Taiichi Ohno](/images/scrum/taiichiOhno.jpg){width="40%"}
+
+**Taiichi Ohno philosophy:**
+
+- You are a cost >>> First reduce waste.
+- First say, "I can do it." >>>  And try before everything.
+- The workplace is a teacher >>> You can find answers only in the workplace.
+- Do anything immediately  >>> Starting something right now is the only way to win.
+- Once you start something, persevere with it >>> Do not give up until you finish it.
+- Explain difficult things in an easy-to-understand manner >>> Repeat things that are easy to understand.
+- Waste is hidden. Do not hide it >>>  Make problems visible.
+- Valueless motions are equal to shortening one's life.
+- Re-improve what was improved for further improvement.
+- Wisdom is given equally to everybody. The point is whether one can exercise it.
+
+# SCRUM experiences
+
+## Why Do Managers Hate Agile?
+
+- [Why Do Managers Hate Agile?](https://www.forbes.com/sites/stevedenning/2015/01/26/why-do-managers-hate-agile/?sh=6c301c1a3a57){.external}
+
+> Why don’t Agile and management get along?
+>  In a poll last Wednesday of some 400 people working in many different firms where the practices known as Agile and Scrum are being implemented,
+> 
+> **88% reported tension** between the way Agile/Scrum teams are managed in their organization and the way the rest of the organization is managed.
+> 
+> Only **8% reported "no tension."**
+
+
+![The vertical world of hierachical bureaucracy](/images/scrum/vertical-world-of-hierarchical-bureaucracy.png){width="50%"}
+
+As **Gary Hamel** has noted, hierarchical bureaucracy solved two essential problems:
+
+- getting **semiskilled employees to perform repetitive activities** competently and efficiently;
+- **coordinating those efforts** so that products could be produced in large quantities.
+
+In a stable environment, these liabilities didn’t matter much.
+
+Change wasn’t important. (...) With semi-skilled employees performing repetitive tasks, **collaboration wasn’t important**. And who really cared if the workers were dispirited? It was enough that they had their job and their paycheck.
+
+<mark>Then the world became turbulent</mark>
+
+But the world changed and the marketplace became turbulent. There were a number of factors: Globalization, deregulation, and new technology, particularly the Internet. The Internet changed everything.
+
+<mark>The answer was, collaboration, teamwork, Agile.</mark>
+
+![The horizontal world of Agile](/images/scrum/horitzontal-world-of-Agile.png){width="50%"}
+
+
+## Banc de Sabadell & British bank TSB
+
+[What broke the bank](https://increment.com/testing/what-broke-the-bank/){.external}
+![](/images/scrum/tsb.png)
+
+## Delta and Northwest merger 
+
+[How to Merge Two Airlines](https://archive.nytimes.com/www.nytimes.com/interactive/2011/05/18/business/delta-northwest-merger-graphic.html){.external}
+![](/images/scrum/2airlines.gif)
+
+
+## How Cisco IT Uses Agile Development
+
+[How Cisco IT Uses Agile Development with Distributed Teams and Complex Projects](https://www.cisco.com/c/en/us/solutions/collateral/enterprise/cisco-on-cisco/cs-boit-06172016-agile-development.html){.external}
+![](/images/scrum/cisco-agile-development_1.png)
+
+## Microsoft
+
+- [Surprise: Microsoft Is Agile](https://www.forbes.com/sites/stevedenning/2015/10/27/surprise-microsoft-is-agile/?sh=78b0178f2867){.external}
+- [Microsoft's 16 Keys To Being Agile At Scale](https://www.forbes.com/sites/stevedenning/2015/10/29/microsofts-sixteen-keys-to-becoming-agile-at-scale/?sh=1ad018e315ce){.external}
+- [What is Scrum?](https://learn.microsoft.com/en-us/devops/plan/what-is-scrum){.external}
+- [Azure Boards](https://azure.microsoft.com/en-us/products/devops/boards/){.external}
+
+![](/images/scrum/Microsoft-BeforeSiteVisit.png){width="80%"}
+![](/images/scrum/Microsoft-AfterSiteVisit-r1.jpg){width="82%"}
+
+# References
+
+- [SCRUM: Week3](https://sites.google.com/view/gestioprojectes/llegir/setmana3)
+- [A Brief History of Scrum (Time)](https://medium.com/serious-scrum/scrum-a-walk-down-history-lane-b180fb19288f){.external}
+- [Toyota Mejora continua](http://scrumizate.com/post/45/los-14-principios-del-modelo-toyota-para-la-mejora-continua-en-scrum){.external}
+- [10 companies killing it at scaling agile](https://techbeacon.com/app-dev-testing/10-companies-killing-it-scaling-agile){.external}
+
+
+

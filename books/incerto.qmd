@@ -1,0 +1,29 @@
+---
+title: "Incerto"
+author: "albertprofe"
+subtitle: "Nicholas Taleb, 2020, Incerto: Navigating Uncertainty and the Four Traps of Success"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A comprehensive guide to navigating uncertainty and the traps of success. Incerto, written by renowned author Nicholas Taleb, explores the intricacies of decision-making and how to avoid the traps that often lead to failure."
+categories: [assay]
+subcategories:  [agile, decision-making, self-help]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/incerto.jpg)
+
+## More info
+
+
+**Incerto** 4-Book Bundle: 
+
+- Antifragile,
+- The Black Swan,
+- Fooled by Randomness,
+- The Bed of Procrustes
+
+[Nassim Nicholas Taleb’s landmark Incerto](https://www.goodreads.com/book/show/28185864-incerto-4-book-bundle){.external} series is an investigation of luck, uncertainty, probability, opacity, human error, risk, disorder, and decision-making in a world we don’t understand, in nonoverlapping and standalone books. All four volumes—Antifragile, The Black Swan, Fooled by Randomness, and the special expanded edition of The Bed of Procrustes, updated with more than 50 percent new material—are now together in one ebook bundle.

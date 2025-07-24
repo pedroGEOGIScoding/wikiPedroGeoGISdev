@@ -1,0 +1,21 @@
+---
+title: "Chimpanzee Politics"
+author: "albertprofe"
+subtitle: "Frans de Waal, 1982, Chimpanzee Politics: Power and Sex among Apes"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "An groundbreaking book on primate behavior and social dynamics. Frans de Waal provides a deep insight into the complex relationships between chimpanzees and how they influence their political power structures."
+categories: [assay]
+subcategories: [assay, gile, behavioral science, zoology]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/chimpanzeePolitics.jpg)
+
+## More info
+
+

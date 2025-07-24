@@ -1,0 +1,43 @@
+---
+title: "Network: Ping"
+subtitle: Networking Ping
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, ping]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview
+
+
+
+<mark>Ping, a network utility, is used to test the reachability of a host on an Internet Protocol (IP) network. It also measures the round-trip time for messages sent from the originating host to a destination computer. </mark>
+
+The name "ping" comes from **the sonar sound used by submarines to detect other objects in the water.** 
+
+In the context of networking, "ping" is analogous to sending a signal to determine if a remote host is responsive.
+
+The basic syntax of the ping command is as follows:
+
+```bash
+ping [options] destination
+```
+
+Here, "destination" can be an IP address or a domain name. The command sends **Internet Control Message Protocol (ICMP)** Echo Request messages to the destination and waits for Echo Reply messages. The round-trip time and other statistics are displayed as output.
+
+Ping is a valuable tool for network troubleshooting and diagnostics, providing insights into network connectivity and latency.
+
+![](/images/devops/ping-test.png)
+
+
+# Reference
+
+- [What is a ping?](https://www.techtarget.com/searchnetworking/definition/ping){.external}
+
+

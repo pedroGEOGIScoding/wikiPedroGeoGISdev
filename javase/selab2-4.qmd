@@ -1,0 +1,366 @@
+---
+title: "Lab#SE02-4: Movie/Review, interactivity and coupling"
+subtitle: Java SE Lab 02
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 02 part 4
+categories: [javase, lab, interativity, coupling, controller]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI02-4: interactivity and coupling**
+
+After having a good approach with the labs done previously and from that point, having in mind the ``core-entity model`` and some`` management/controller``, let's step up.
+
+Add some **interactivity** through console with the user **building on** these new features and classes:
+
+1. Import class Scanner: ``Scanner scanner = new Scanner(System.in);``
+
+2. A `` while (true) `` **loop** with the ``CRUD`` options would be a nice idea.
+
+3. Work as simple as possible, just 3 classes, let s try to understand the problem:
+
+    - ``MovieManager``
+    - ``Movie`` and
+    - ``MovieController``
+
+4. Propose some improvements.
+
+5. What about coupling? Is tight or loose coupled, this code?
+
+:::
+
+## Java User Input (Scanner)
+
+The ``Scanner`` class is used to get user input, and it is found in the ``java.util package.``
+
+To use the ``Scanner`` class, create an object of the class and use any of the available methods found in the ``Scanner`` class documentation.
+
+```java
+Scanner readerObject = new Scanner(System.in);  // Create a Scanner object
+String userName = readerObject.nextLine();  // Read user input
+```
+
+In the example above, we used the ``nextLine()`` method, which is used to read ``Strings``. To read other types, look at the table below:
+
+
+![[Input Types](https://www.w3schools.com/java/java_user_input.asp){.external}](/images/javase/inputTypes.png){width="80%"}
+
+## Birding
+
+Before coding, study this very basic example and [check how it could grow](/javase/selab2-4.qmd#grow-your-code):
+
+  - First Version: [Birding 1.0](https://github.com/AlbertProfe/cifojava2022-1/tree/branch2test/Birding){.external}
+ 
+
+## Core classes
+
+You could then use these:
+
+``` {.java .code-overflow-wrap filename="MovieController.java"}
+import java.util.Scanner;
+
+public class MovieController {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Please select an option:");
+            System.out.println("1. Add a movie");
+            System.out.println("2. Update a movie");
+            System.out.println("3. Delete a movie");
+            System.out.println("4. Get a movie by title");
+            System.out.println("5. Exit");
+            int option = scanner.nextInt();
+
+            if (option == 1) {
+
+              System.out.println("Enter the movie title:");
+              String title = scanner.next();
+              System.out.println("Enter the movie director:");
+              String director = scanner.next();
+              System.out.println("Enter the movie genre:");
+              String genre = scanner.next();
+              System.out.println("Enter the movie size:");
+              double size = scanner.nextDouble();
+
+              MovieManager.addMovie(title, director, genre, size);
+              System.out.println("Movie added successfully!");
+
+            } else if (option == 2) {
+
+              System.out.println("Enter the movie title:");
+              String title = scanner.next();
+              System.out.println("Enter the new movie director:");
+              String director = scanner.next();
+              System.out.println("Enter the new movie genre:");
+              String genre = scanner.next();
+              System.out.println("Enter the new movie size:");
+              double size = scanner.nextDouble();
+
+              MovieManager.updateMovie(title, director, genre,size);
+              System.out.println("Movie updated successfully!");
+
+            } else if (option == 3) {
+
+              System.out.println("Enter the movie title:");
+              String title = scanner.next();
+
+              MovieManager.deleteMovie(title);
+              System.out.println("Movie deleted successfully!");
+
+            } else if (option == 4) {
+
+              System.out.println("Enter the movie title:");
+              String title = scanner.next();
+
+              Movie movie = MovieManager.getMovie(title);
+
+              if (movie != null) {
+                  
+                System.out.println("Title: " + movie.getTitle());
+                System.out.println("Director: " + movie.getDirector());
+                System.out.println("Genre: " + movie.getGenre());
+                System.out.println("Size: " + movie.getSize());
+              
+              } else { System.out.println("Movie not found!");}
+
+            } else if (option == 5) {
+                break;
+            } else {
+                System.out.println("Invalid option!");
+            }
+        }
+    scanner.close();
+    }
+}
+```
+
+In this diagram, the ``Movie`` class has the following properties: ``title``, ``director``, ``genre``, and ``size``, each with corresponding getters and setters. It also has a constructor that takes 4 parameters.
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+class Movie {
+  - title: String
+  - director: String
+  - genre: String
+  - size: double
+  + Movie(title: String, director: String, genre: String, size: double)
+  + getTitle(): String
+  + getDirector(): String
+  + getGenre(): String
+  + getSize(): double
+  + setDirector(director: String)
+  + setGenre(genre: String)
+  + setSize(size: double)
+}
+```
+</div>
+
+---
+
+The ``MovieManager`` class has a HashMap of movies that stores ``Movie`` objects, an int variable qty that holds the number of movies stored in the manager, a double variable size that holds the total size of all the movies, a variable lastModified of type Date that holds the last date when a movie is added or deleted, and has several ``static`` methods which are ``addMovie``, ``updateMovie``, ``deleteMovie``, ``getMovie``, ``saveToCSV``, ``deleteCSV`` which are CRUD operation over movies.
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class MovieManager {
+  - movies: HashMap<String, Movie>
+  - qty: int
+  - size: double
+  - lastModified: Date
+  + addMovie(title: String, director: String, genre: String, size: double): void
+  + updateMovie(title: String, director: String, genre: String, size: double): void
+  + deleteMovie(title: String): void
+  + getMovie(title: String): Movie
+  + saveToCSV(): void
+  + deleteCSV(): void
+}
+```
+
+</div>
+
+---
+
+The ``MovieController`` class has a main method which contains a loop that interacts with the user to perform CRUD operations on the Movie class using the static methods in the MovieManager class.
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class MovieController {
+  + main(args: String[]): void
+}
+```
+
+
+</div>
+
+## Create `static` methods
+
+```{.java .code-overflow-wrap filename="MovieController.java"}
+
+import java.util.Scanner;
+
+public class MovieController {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        MovieManager movieManager = new MovieManager();
+
+        while (true) {
+            String command = ask(scanner, "Option?");
+            if (command.equals("Quit")) {
+                break;
+            } else if (command.equals("Add")) {
+                add(scanner,movieManager);
+            } else if (command.equals("Delete")) {
+                delete(scanner,movieManager);
+            } else if (command.equals("Get")) {
+                get(scanner,movieManager);
+            } else if (command.equals("Update")) {
+                update(scanner,movieManager);
+            } else if (command.equals("Showall")) {
+                showall(scanner,movieManager);
+            } else {
+                System.out.println("Unknown command!");
+            }
+        }
+    }
+
+    public static String ask(Scanner input, String option) {
+        return null;
+    }
+
+    public static void add(Scanner input, MovieManager movieManager) {
+
+    }
+
+    public static void delete(Scanner input, MovieManager movieManager) {
+
+    }
+
+    public static void get(Scanner input, MovieManager movieManager) {
+
+    }
+
+    public static void update(Scanner input, MovieManager movieManager) {
+
+
+
+    public static void showall(Scanner input, MovieManager movieManager) {
+
+    }
+
+  }
+}
+```
+
+## Grow your code
+
+![Hope is not a strategy](/images/javase/hopeIsNotAStrategy.png){width="80%"}
+
+> [Hope is not a strategy](https://sre.google/sre-book/introduction/){.external}
+
+  - **Zero** Sprint/Version:
+    - Meeting rules
+    - Roles: ScrumMaster, Product Owner, Specialist, Team
+    - Tech fundamentals: os, git
+    - Mockup: figma
+    - Documentation: obsidian, quarto
+    - Digital tools: github, gitlab, openProject, nextCloud
+    - UML: use-case, clas diagram, sequencial
+    - Core Project classes
+    - Product draft definition
+    - User stories, epics, tasks
+    - Product Backlog, Sprint 1 Backlog
+    - Sprint/Versions calendar
+    - [Never, never, ever use Sprint Zero notation: it is a sin](https://mdalmijn.com/p/why-using-sprint-0-is-a-cardinal-sin-for-all-scrum-masters){.external}
+  - **First** Sprint/Version:
+    - Just basic **Core** classes, Model: [Birding v1.0](https://github.com/AlbertProfe/cifojava2022-1/tree/branch2test/Birding){.external}
+  - **Second** Sprint/Version:
+    - Starting to work in ``main`` and thinking (that is, create some new classes) in **Domains**
+  - **Third** Sprint/Version:
+    - Some improvements in organize clases, ``Menu``, ``MenuOptions``, ``Utils``: [Birding v3.0](https://github.com/AlbertProfe/JAVA_pqtm2019/tree/master/Birding/src){.external}
+  - **Fourth** Sprint/Version:
+    - Start with MVC pattern: problems with ``coupling``
+  - **Fifth** Sprint/Version:
+    - MVC implemented: [Birding v5.0](https://github.com/AlbertProfe/JAVA_2020/tree/main/BirdingCloud){.external}
+  - **Sixth** Sprint/Version:
+    - Add singleton and factory pattern
+  - **Seventh** Sprint/Version:
+    - Check security in/within code
+  - **Eight** Sprint/Version:
+    - Implement CRUD operation in local JSON or create mySQL DB o similar 
+  - **Nineth** Sprint/Version:
+    - Go to **web** (`Spring Boot` & `React`)
+    - Go to **desktop** [Java FX](https://openjfx.io/){.external}
+  - **Tenth** Sprint/Version:
+    - Create extensions and [publish](/linux/lilab04-3.qmd)
+
+## Try/Catch for wrong inputs
+
+[When executing Java code](https://www.w3schools.com/java/java_try_catch.asp){.external}, **different errors may occur**: coding errors made by the programmer, **errors due to wrong input**, or other unforeseeable things.
+
+::: {.callout-note}
+## Definition Exception
+When an error occurs, Java will normally **stop** and **generate an error message**. The technical term for this is: Java will throw an exception (throw an error).
+:::
+
+The ``try`` and ``catch`` keywords come in pairs:
+
+- The ``try`` statement a**llows you to define a block of code to be tested for errors while it is being executed.**
+- The ``catch`` statement allows you to define a block of code to be executed, if an error occurs in the try block.
+
+```java
+try {
+  //  Block of code to try
+}
+catch(Exception e) {
+  //  Block of code to handle errors
+}
+```
+### Example
+
+The ``finally`` statement lets you execute code, after`` try...catch``, regardless of the result 
+
+```java
+public class Main {
+  public static void main(String[] args) {
+   System.out.println("Hi");
+    try {
+      int[] myNumbers = {1, 2, 3};
+      // this code will crash: there is NO positin 10 in this array myNumbers
+      System.out.println(myNumbers[10]);
+    } catch (Exception e) {
+      System.out.println("Something went wrong.");
+    } finally {
+      System.out.println("The 'try catch' is finished.");
+    }
+     System.out.println("Bye");
+  }
+}
+
+// Output:
+// Hi
+// Something went wrong.
+// The 'try catch' is finished.
+// Bye
+```
+[Execute this code on w3schools](https://www.w3schools.com/java/tryjava.asp?filename=demo_try_catch_finally){.external}
+
+
+

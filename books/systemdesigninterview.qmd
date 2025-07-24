@@ -1,0 +1,28 @@
+---
+title: "System Design Interview"
+author: "albertprofe"
+subtitle: "Alex Xu, 2022, System Design Interview:  An insider's guide"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "System Design Interview"
+categories: [design]
+subcategories: [system-design, devops]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/systemdesigninterview.png){width="60%"}
+
+## More info
+
+- [bytebytego.com](https://blog.bytebytego.com/){.external}
+
+
+
+## Book
+
+
+- [Book .pdf](/books/System%20Design%20Interview%20An%20Insider%E2%80%99s%20Guide%20by%20Alex%20Xu%20(z-lib.org).pdf){width="60%"}

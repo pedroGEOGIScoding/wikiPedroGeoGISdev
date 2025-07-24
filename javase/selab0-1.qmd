@@ -1,0 +1,436 @@
+---
+title: "Lab#SE00-1: Maven Person"
+subtitle: Java SE Lab 00
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 00 - Part 1
+categories: [javase, lab, model, composition, inherence]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#SE00-1: Person**
+
+1. Create a ``Maven/Gradle`` Java SE Project with the ``UML`` and classes defined below.
+
+2. Add ``Lombok``, ``JUnit`` and ``Faker`` dependencies
+
+3. Refactor: remove *boilerplate* code (getters, setters and so on) and work with ``Lombok``
+
+4. Create ``Junit`` tests to test objects. Use ``Faker`` to create objects:
+
+    1. Test ``createPerson``: check whether the object ``Person`` creation works properly. 
+    2. Test ``createCar``: check whether the object ``Car`` creation works properly.
+    3. Test ``createBook``: check whether the object ``Book`` creation works properly.
+    4. Test ``createStudent``: check whether the object ``Student`` creation works properly
+      1. Without **composition**: a ``Student`` object without car and books.
+      1. With **composition**: a ``Student`` object with ``Car`` object and ``Book`` **List** objects
+
+5. Create ``Junit`` tests to test operations:
+
+    1. Test ``methodsPerson``: check that ``Person`` methods work properly: ``becomeOlder()``, ``killVampire()``, ``withFirstName()``
+
+6. Improve ``Car``, ``Book`` and ``Author`` classes with two methods each.
+:::
+
+---
+
+## UML
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+class Person {
+  -firstname: String
+  -lastname: String
+  -age: int
+}
+
+class Student {
+  -university: String
+}
+
+class Author {
+  -genre: String
+}
+
+
+Person --|> Student: Inheritance
+Person --|> Author: Inheritance
+```
+
+</div>
+
+---
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class Student {
+  -university: String
+  -car: Car
+  -books: ArrayList~Book~
+}
+
+class Author {
+  -genre: String
+  -book: Book
+}
+
+class Book {
+  -title: String
+  -ISBN: String
+  -pages: int
+  -author: Author
+}
+
+class Car {
+	 -places: int
+	 -color: String
+}
+
+Student *-- Book: Composition
+Book *-- Author: Composition
+Student *-- Car: Composition
+Author *-- Book: Composition
+```
+
+</div>
+
+---
+
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+class Person {
+  -firstname: String
+  -lastname: String
+  -age: int
+}
+
+class Student {
+  -university: String
+  -car: Car
+  -books: ArrayList~Book~
+}
+
+class Author {
+  -genre: String
+  -book: Book
+}
+
+class Book {
+  -title: String
+  -ISBN: String
+  -pages: int
+  -author: Author
+}
+
+class Car {
+	 -places: int
+	 -color: String
+}
+
+Person --|> Student: Inheritance
+Person --|> Author: Inheritance
+
+Student *-- Book: Composition
+Book *-- Author: Composition
+Student *-- Car: Composition
+Author *-- Book: Composition
+```
+
+</div>
+
+
+
+
+
+## Base Classes
+
+### Person Class
+
+Here, the `Person` class represents a **person** with a name, address and others. 
+
+<div class='indent'><details>
+<summary>Code Person</summary>
+
+``` {.java .code-overflow-wrap filename="Person.java"}
+
+  package exemple1;
+
+  public class Person {
+    private String firstName;
+    private String lastName;
+    private int age;
+
+    //private boolean vampireState= true;
+
+    public Person(String firstName, String lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.age = 189;
+
+    }
+
+    public Person(String firstName, String lastName, int newAge) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.age = newAge;
+
+    }
+
+    public void becomeOlder() {
+      age = age + 5;
+
+    }
+    
+    public void killVampire () {
+      
+      age = -150;
+    }
+   
+    public String getFirstName() {
+      return firstName;
+    }
+
+    public String getLastName() {
+      return lastName;
+    }
+
+    public Person withFirstName(String firstName) {
+      return new Person(firstName, lastName);
+    }
+
+    public Person withLastName(String lastName) {
+      return new Person(firstName, lastName);
+    }
+
+    public boolean equals(Object o) {
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+      Person person = (Person) o;
+      if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) {
+        return false;
+      }
+      if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) {
+        return false;
+      }
+      return true;
+    }
+
+    public int hashCode() {
+      int result = firstName != null ? firstName.hashCode() : 0;
+      result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+      return result;
+    }
+
+    
+}
+```
+
+</details></div>
+
+### Book Class
+
+Here, the `Book` class represents a **book** with a title, pages and others. 
+
+<div class='indent'><details>
+<summary>Code Book</summary>
+
+``` {.java .code-overflow-wrap filename="Book.java"}
+
+  package exemple1;
+
+public class Book {
+
+	private String title;
+	private int pages;
+	private String ISBN;
+	private Author author;
+
+	public Book(String title, int pages, String iSBN, Author author) {
+		// super();
+		this.title = title;
+		this.pages = pages;
+		ISBN = iSBN;
+		this.author = author;
+	}
+
+	public int getPages() {
+		return pages;
+	}
+
+	public void setPages(int pages) {
+		this.pages = pages;
+	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [title=" + title + ", pages=" + pages + ", ISBN=" + ISBN + "]";
+	}
+
+}
+
+```
+
+</details></div>
+
+### Student Class
+
+Here, the `Student` class represents a **student** with a name, age and others. 
+
+<div class='indent'><details>
+<summary>Code Student</summary>
+
+``` {.java .code-overflow-wrap filename="Student.java"}
+package exemple1;
+
+import java.util.ArrayList;
+
+public class Student extends Person {
+
+	public String university;
+	public Car car;
+	public ArrayList<Book> books;
+	//1
+	//public ArrayList<Book> books = new ArrayList<Book>();
+	public Student(String firstName, String lastName, int age, String university) {
+		super(firstName, lastName, age);
+		this.books = new ArrayList<Book>();
+	}
+
+	public void addBook (Book booktoaddtoarray) {
+		this.books.add(booktoaddtoarray);		
+	}
+
+
+	public ArrayList<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(ArrayList<Book> books) {
+		this.books = books;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	@Override@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (age != other.age)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+		result = prime * result + age;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+}
+
+```
+
+</details></div>
+
+### Car Class
+
+Here, the `Car` class represents a **car** with doors, places and other attributes. 
+
+<div class='indent'><details>
+<summary>Code Car</summary>
+
+``` {.java .code-overflow-wrap filename="Car.java"}
+package exemple1;
+
+public class Car {
+	
+	public int doors;
+	public int seats;
+	public String color;
+		
+	public Car(int doors, int places, String color) {
+		this.doors = doors;
+		this.seats = seats;
+		this.color = color;
+	}
+
+	@Override
+	public String toString() {
+		//return "Car [toString()=" + super.toString() + "]";
+		return "Car [doors=" + this.doors + ", seats=" + this.seats + ", color=" + this.color + "]"
+	}
+}
+
+```
+
+</details></div>
+
+### Author Class
+
+Here, the `Author` class represents an **author** with a ... and others. 
+
+<div class='indent'><details>
+<summary>Code Author</summary>
+
+``` {.java .code-overflow-wrap filename="Author.java"}
+
+package exemple1;
+
+public class Author extends Person {
+
+	public Author(String firstName, String lastName, int age, String genre) {
+		super(firstName, lastName, age);
+		public String genre;
+		// TODO Auto-generated constructor stub
+	}
+
+}
+
+```
+
+</details></div>
+
+## Eclipse IDE UML
+
+![UML Person - Student - Author and Car](/images/javase/person.jpg){width="80%"}
+

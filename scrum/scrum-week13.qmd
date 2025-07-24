@@ -1,0 +1,241 @@
+---
+title: "Week 13: Decision Making and Intuition"
+subtitle: SCRUM Week 13
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Decision-making involves reliable information, a holistic context, and the right mental state.
+categories: [scrum, scrum-week12, Decision-Making]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 13 - Decision Making**
+
+Week 13 of SCRUM explores the **nuanced dynamics of decision-making, emphasizing the multifaceted process that involves reliable information, a holistic context, and the right mental state**.
+
+A **good decision emerges from a well-informed mind operating within a balanced and energized mental state, harmonizing emotions and thoughts within a clear purpose and understanding.**
+
+The discussion delves into intuition, highlighting its quick and beneficial nature, rooted in deep-seated knowledge.
+
+Notably, **the subconscious brain utilizes prior experience to make fast, often high-quality decisions**. Drawing on insights from Daniel Kahneman, the distinction between slow, deliberate thinking and fast, intuitive thinking is explored. The latter, often hidden, plays a significant role in daily decisions but can lead to mistakes when handling tasks better suited for the former.
+
+**Cognitive biases**, systematic patterns of deviation from rationality, are introduced, emphasizing their impact on decision-making. The Halo Effect, a cognitive bias where initial positive judgments influence overall perceptions, is discussed, showcasing how first impressions can shape subsequent evaluations.
+
+:::
+
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 13 - Decision Making**
+
+Decision Making, Intuition, Daniel Kahneman, Slow Thinking, Fast Thinking, Cognitive Bias, Halo Effect, Context, Mental State, Emotions, Thoughts.
+
+:::
+
+</br> </br>
+
+{{< video https://youtu.be/K6Ds8X5olpk >}}
+
+**The Killer (2023) David Fincher, Michael Fassbender**
+
+<div style="text-align:center">
+Stick to your plan.</br>
+Anticipate, don't improvise.</br>
+Trust no one.</br>
+Never yield an advantage.</br>
+Fight only the battle you're paid to fight.</br>
+</div> 
+
+# How to make a good decision
+
+Making a sound decision is a multifaceted process that hinges on several crucial factors:
+
+::: {.column-margin}
+
+[Decision-making](https://www.umassd.edu/fycm/decision-making/process/){.external}, is the process of making choices by identifying a decision, gathering information, and [assessing alternative resolutions](https://www.umassd.edu/media/umassdartmouth/fycm/decision_making_process.pdf).
+
+![Decision-making process](/images/scrum/decisionmaking-1.png){width="80%"}
+
+:::
+
+- Firstly, **access to reliable, valuable, and diverse information** is paramount. A comprehensive understanding requires a thorough exploration of various perspectives and angles.
+- It's **essential to consider the 'why' behind the decision and understand the broader context** in which it unfolds. This ensures that decisions are not made in isolation but are informed by a holistic view of the situation.
+- Equally critical is the **right mental state**.
+  - A well-rested and energized brain is more adept at processing information and engaging in thoughtful analysis.
+  - Managing emotions is pivotal; decisions should not be clouded by impulsive reactions but grounded in a balanced emotional state. Embracing a spectrum of thoughts, from creative ideation to critical evaluation, facilitates a comprehensive decision-making process.
+  - Moreover, cultivating mindfulness and self-awareness contributes to a stable mental state, enabling individuals to navigate decision-making with clarity and focus.
+
+In essence, <mark>a good decision is the product of a well-informed mind, fueled by valuable insights and diverse perspectives, operating within a balanced and energized mental state that harmonizes emotions and thoughts within the context of a purpose, clear goal and understanding</mark>. This holistic approach ensures thoughtful, informed, and effective decision-making in both personal and professional spheres.
+
+
+
+# Types of thinking
+
+Prof **Daniel Kahneman**, from Princeton University, started a revolution in our understanding of the human mind. It's a revolution that led to him winning a Nobel Prize.
+
+::: {.column-margin}
+
+[Noise: A Flaw in Human Judgment](https://www.goodreads.com/en/book/show/55339408){.external}, From the bestselling author of Thinking, Fast and Slow and the co-author of Nudge, a groundbreaking exploration of why most people make bad judgments, and how to control for that noise.​
+
+![Noise: A Flaw in Human Judgment](/images/scrum/noise.jpg){width="40%"}
+
+:::
+
+His insight into the way our minds work springs from the mistakes that we make. Not random mistakes, but systematic errors that we all make, all the time, without realising.
+
+
+Prof Kahneman and his late colleague Amos Tversky, who worked at the Hebrew University of Jerusalem and Stanford University, **realised that we actually have two systems of thinking**:
+
+- there's the **deliberate, logical part of your mind** that is capable of analysing a problem and coming up with a rational answer.
+- But then there is another system in your mind that is **intuitive, fast and automatic.**
+
+## Deliberate thinking
+
+This is the part of your mind that you are aware of. It's expert at solving problems, but it is slow, requires a great deal of energy, and is extremely lazy.
+
+Even the act of walking is enough to occupy most of your attentive mind.
+
+## Automatic thinking
+
+But then there is another system in your mind that is intuitive, fast and automatic. This fast way of thinking is **incredibly powerful, but totally hidden**.
+
+<mark>It is so powerful, it is actually responsible for most of the things that you say, do, think and believe</mark>.
+
+And yet you have no idea this is happening. This system is your **hidden auto-pilot, and it has a mind of its own.** It is sometimes known as the stranger within.
+
+Most of the time, our fast, intuitive mind is in control, efficiently taking charge of all the thousands of decisions we make each day. The problem comes when we allow our fast, intuitive system to make decisions that we really should pass over to our slow, logical system. This is where the mistakes creep in.
+
+# Networked thinking
+
+- [The second brain](/books/TheSecondBrain.qmd)
+
+[Networked thinking: a quiet cognitive revolution](https://nesslabs.com/networked-thinking) is an explorative approach to problem-solving, whose aim is to consider the complex interactions between nodes and connections in a given problem space. <mark>Instead of considering a particular problem in isolation to discover a pre-existing solution, networked thinking encourages non-linear, second-order reflection in order to let a new idea emerge.</mark>
+
+::: {.column-margin}
+
+[Range: Why Generalists Triumph in a Specialized World](https://www.goodreads.com/ca/book/show/41795733){.external}. Plenty of experts argue that anyone who wants to develop a skill, play an instrument, or lead their field should start early, focus intensely, and rack up as many hours of deliberate practice as possible. If you dabble or delay, you’ll never catch up to the people who got a head start. But a closer look at research on the world’s top performers, from professional athletes to Nobel laureates, shows that early specialization is the exception, not the rule.
+
+![Range: Why Generalists Triumph in a Specialized World](/images/scrum/range.png){width="40%"}
+
+:::
+
+## Create your tree of knowledge
+
+![[Create](https://medium.com/dare-to-be-better/create-and-manage-your-knowledge-base-with-obsidian-de7688dc0790){.external} and Manage Your Knowledge Base With [Obsidian](https://obsidian.md/){.external}](/images/scrum/obs-net.png)
+
+**Elon Musk**'s two rules for learning anything faster are the following:
+
+- **Rule #1** — Make sure you’re building a tree of knowledge
+- **Rule #2** — You can’t remember what you can’t connect
+
+[Networked Thinking: Build Your Tree of Knowledge](https://www.linkedin.com/pulse/networked-thinking-build-your-tree-knowledge-andrew-c-yu){.external} by connecting and interlinking all the different information nodes to uncover new insights and accelerate your  learning path.
+
+
+
+# Intuition
+
+::: {.callout-note}
+Intuition is not logical. It is not the result of a set of considered steps that can be shared or explained. Instead, while based on deep-seated knowledge, the process feels natural, almost instinctual.
+:::
+
+
+And yet, while intuition is **quick and usually beneficial,** it is not always entirely accurate. The **subconscious brain attempts to recognize, process, and use patterns of thinking based on prior experience and a best guess.**
+
+Paradoxically, intuition feels unknowable. After all, you cannot explain the thinking behind **a snap decision that appears out of nowhere.**
+
+*It just happens.*
+
+While intuition occurs in your day-to-day life, it is sometimes most apparent in the decisions of experts. The specialist draws on years of experience, held in unconscious frameworks, to make fast, high-quality decisions, [Nalliah, 2016](https://pubmed.ncbi.nlm.nih.gov/27981996/){.exteranl}
+
+# Cognitive bias
+
+A <mark>cognitive bias is a systematic pattern of deviation from norm or rationality in judgment</mark>.
+
+::: {.column-margin}
+![](/images/scrum/bias-cheatsheet.jpg)
+:::
+
+[Individuals create their own "subjective reality"](https://en.wikipedia.org/wiki/Cognitive_bias) from their perception of the input. An individual's construction of reality, not the objective input, may dictate their behavior in the world.
+
+![Cognitive bias codex](/images/scrum/cognitive_bias.jpg)
+
+## List & codex
+
+- [List of cognitive biases](https://en.wikipedia.org/wiki/List_of_cognitive_biases)
+- [Codex](https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg)
+
+## Halo effect
+
+::: {.callout-note}
+The **halo effect** is a **cognitive bias** that occurs when an initial positive judgment about a person unconsciously colors the perception of the individual as a whole.
+:::
+
+When forming a first impression, observing an initial attractive feature—perhaps beauty or strength—can make the person appealing, **making it difficult to revise that impression based on new or opposing information**. For example, an attractive individual may also be perceived as interesting, ambitious, or funny, whether or not that assessment is warranted.
+
+
+
+# Strategic Thinking
+
+## Purpose, Intuition, Decision-Making and Mindset
+
+
+![](/images/scrum/mindset-decsionMaking.png)
+
+::: {.callout-note title="Strategic Thinking: Navigating Purposeful Decisions"}
+
+
+**Strategic thinking** transcends the immediate and involves purposefully integrating key elements — purpose, intuition, decision-making, and mindset.
+
+- **Purpose:**
+  - A guiding force that aligns decisions with overarching goals.
+  - Provides clarity on values and contributes to meaningful outcomes.
+  
+- **Intuition:**
+  - Acts as a silent partner, drawing on accumulated knowledge and experiences.
+  - Guides decision-makers in navigating uncertainty and complexity.
+  
+- **Decision-Making:**
+  - Informed by both purpose and intuition for optimal outcomes.
+  - Considers potential consequences and aligns with long-term objectives.
+  
+- **Mindset:**
+  - A right mindset -survival and growth- creates the context for purposeful thinking.
+  - Shapes the approach to decision-making, it is key to success.
+
+
+
+:::
+
+
+In the domain of <mark>strategic thinking and mindset-driven decision-making, intuition plays a pivotal role alongside purpose</mark>.
+
+
+- **Intuition**, often considered the **silent partner in the decision-making process**, draws on accumulated knowledge, experiences, and a deep understanding of the context. It acts as an internal compass, guiding decision-makers when faced with uncertainty or compl**exity.
+- **Strategic thinking, when coupled with a **purpose-driven mindset**, allows individuals to tap into their intuitive insights. This fusion enables decision-makers to navigate through ambiguity with a sense of confidence, as their intuition becomes a valuable tool for quick and informed choices.
+- **Intuition complements strategic thinking** by providing a nuanced understanding of the situation, often offering unconventional perspectives that align with the overarching purpose.
+
+In essence, a **purpose-driven mindset** enhances the reliability of intuition, ensuring that intuitive insights align with the broader mission and values.
+
+This synergy results in decisions that not only contribute to immediate objectives but also resonate with the greater purpose, fostering a strategic and intuitive approach that is both effective and meaningful.
+
+
+
+# References
+
+
+- [Halo effed](https://www.psychologytoday.com/intl/basics/halo-effect) / [First idea](https://www.strategyzer.com/library/dont-fall-in-love-with-your-first-idea)
+- [How do we really make decisions?](https://www.bbc.com/news/science-environment-26258662){.external}
+- [How You Really Make Decisions](https://www.bbc.co.uk/programmes/b03wyr3c){.external}
+- [What Is Intuition and Why Is It Important? 5 Examples](https://positivepsychology.com/intuition/){.external}
+- [How to Develop Your Intuitive Decision Making](https://www.globalcognition.org/intuitive-decision-making/){.external}
+- [What are some examples of successful leaders who rely on intuition in decision-making?](https://www.linkedin.com/advice/1/what-some-examples-successful-leaders-who-rely){.external}
+
+

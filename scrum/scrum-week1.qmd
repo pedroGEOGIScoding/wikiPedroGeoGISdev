@@ -1,0 +1,261 @@
+---
+title: "Week 1: Meetings, Impediments and Iterations"
+subtitle: SCRUM Week 1
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Effective and well-organized meetings are fundamental to SCRUM Agile
+categories: [scrum, scrum-week1, meetings, impediments]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 1 - Meetings, Impediments and Iterations**
+
+
+**Effective and well-organized meetings are fundamental to SCRUM Agile, playing a pivotal role in collaboration, decision-making, and achieving organizational goals**. The key to productive meetings lies in clear goal-setting, defined roles, and an optimal number of participants. Time management is crucial, ensuring discussions remain focused and purposeful. Common issues like late arrivals and multitasking can hinder productivity and should be addressed proactively.
+
+**Impediments, in the SCRUM framework, are viewed through a negative logic perspective, considering them as opportunities for improvement rather than obstacles**. This approach promotes transparency, early issue identification, continuous improvement, collaboration, adaptability to change, and a culture of accountability within the team.
+
+**Iterations are essential in SCRUM**, aligning with the "keep it simple" concept, the Lindy effect, and path dependence. **By breaking down complex tasks into manageable units, SCRUM teams ensure incremental progress, frequent feedback loops, and adaptive evolution.** Time-boxing activities in SCRUM, based on cognitive load and focus principles, enhances efficiency, promotes simplicity, and facilitates continuous improvement through clear differentiation of activities and follow-through.
+
+
+:::
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 1 - Meetings, Impediments and Iterations**
+
+Meetings, Impediments, Iterations, Agile, Collaboration, Decision-making, Productivity, Time management, Cognitive load, Continuous improvement, Negative logic, Transparency, Lindy effect, Path dependence.
+
+:::
+
+# Meetings
+
+![Meetings](/images/scrum/effective-meetings-1.jpg){width="30%"}
+
+**Effective and productive meetings are crucial for collaboration, decision-making, and achieving organizational goals.**
+
+::: {.callout-important}
+A well-organized meeting not only enhances productivity but also fosters a positive work culture. To ensure a productive meeting, it's essential to focus on time management, clearly defined roles, the right number of participants, established goals, and meaningful conclusions.
+:::
+
+There are five main types of meetings:
+
+- Brainstorming or innovation meetings
+- Planning meetings
+- Kick-off meetings
+- Retrospective or post-mortem meetings
+- Decision-making or problem-solving meetings
+
+
+## Goal Meeting
+
+- **Clearly defined goals give purpose to a meeting and help participants understand the expected outcomes.** Begin by stating the meeting's objectives at the outset, ensuring that they align with the organization's overall mission.
+  
+- **Break down larger goals into manageable tasks and prioritize them**. This approach keeps discussions on track and ensures that participants leave with a sense of accomplishment.
+
+## Roles & Number of Participants
+
+Having clearly defined roles helps streamline the meeting process and ensures that each aspect is adequately addressed.
+
+- Assigning **specific roles ensures that everyone contributes to the meeting's success**.
+  
+- Designate a **facilitator to guide the discussion**, a note-taker to record key points, and a timekeeper to manage the schedule. 
+
+- **Determining the appropriate number of participants is crucial**. Too many attendees can lead to a lack of focus and increased likelihood of off-topic discussions. On the other hand, too few participants may result in a limited range of perspectives. Aim for a balance that allows for diverse input without sacrificing efficiency.
+  
+- <mark>Consider inviting only those individuals whose presence is essential to achieving the meeting's goals.</mark>
+
+## Time Management
+
+- **Time is a precious resource, and effective time management is key to a successful meeting**. Begin by setting a realistic agenda with specific time allocations for each agenda item.
+  
+- Stick to the schedule to avoid **wasting time** and ensure that discussions remain focused and purposeful. Assign a timekeeper to help monitor the clock and remind participants of time constraints.
+
+
+
+## Common Boycotts
+
+- Meetings are susceptible to various behaviors that can **hinder productivity**. <mark>Common issues include late arrivals, multitasking, and disengagement. Encourage punctuality by starting and ending on time, implement a no-device policy to minimize distractions, and actively involve all participants to maintain engagement</mark>. Addressing these issues head-on fosters a more respectful and focused meeting environment.
+
+## Next to
+
+A well-concluded meeting not only ensures that goals are met but also sets the stage for future productive collaborations.
+
+- Conclude the meeting by summarizing **key takeaways and action items**.
+  
+- **Assign responsibilities for follow-up tasks and set deadlines**.
+  
+- Provide a **forum for participants to share feedback on the meeting process, allowing for continuous improvement**.
+
+
+# Impediments
+
+::: {.callout-important}
+In the Scrum framework, the question **"What is your impediment?"** is significant because it aligns with the core principles of transparency, inspection, and adaptation. Scrum is an agile project management framework that emphasizes collaboration, flexibility, continuous improvement and [user-story driven-aproach](/scrum/scrum-week2.qmd).
+:::
+
+The concept of <mark>impediments plays a crucial role in fostering an environment where teams can identify and overcome obstacles to their productivity</mark>. The question encourages a **negative logic**, where **impediments are seen as opportunities for improvement** rather than just [problems](https://www.youtube.com/watch?v=MauMiCL7G9Y).
+
+![Impediment to action advances ation, what stands in the way becomes the way](/images/scrum/impediment.jpg){width="30%"}
+
+[Impediments](https://www.youtube.com/watch?v=JgN5fgQxE-E) are essential with a **negative logic perspective**:
+
+- **Promotes Transparency**: By asking about impediments, Scrum emphasizes the importance of transparency within the team. Team members are encouraged to openly discuss and share any challenges or roadblocks they are facing. This transparency allows for a clear understanding of the current state of the project.
+
+- **Identifies Issues Early**: Addressing impediments requires teams to actively identify potential issues before they escalate. By regularly discussing impediments, teams can catch problems early on, preventing them from becoming more significant obstacles that could impact the project's success.
+
+
+- **Encourages Continuous Improvement**: The negative logic in this question is rooted in the idea that impediments are not just hindrances but opportunities for improvement. It shifts the focus from blame to finding solutions. By addressing impediments, teams can continuously adapt and refine their processes, leading to increased efficiency and effectiveness over time.
+
+
+- **Facilitates Collaboration**: When team members openly discuss impediments, it promotes a collaborative environment. Team members can work together to find solutions, leveraging the diverse skills and perspectives within the team. This collaboration is vital for overcoming challenges and achieving the team's goals.
+
+- **Adapts to Change**: Scrum acknowledges that change is inevitable, and impediments may arise due to changes in requirements, technology, or other factors. The negative logic in addressing impediments aligns with the agile principle of embracing change. It encourages teams to be adaptable and responsive to emerging challenges.
+
+- **Fosters a Culture of Accountability**: The question encourages team members to take ownership of the challenges they face. By openly discussing impediments, individuals become more accountable for finding and implementing solutions. This sense of responsibility contributes to a more empowered and self-organizing team.
+
+> The question "What is your impediment?" with a negative logic perspective is crucial for promoting transparency, identifying issues early, encouraging continuous improvement, facilitating collaboration, adapting to change, and fostering a culture of accountability. It reflects the agile mindset of viewing obstacles as opportunities for growth and improvement, ultimately contributing to the success of the Scrum team and the projects they undertake.
+
+# Iteration
+
+:::{.callout-note}
+In Scrum, **iteration is crucial due to the "keep it simple" concept and the principles of the Lindy effect, as described by Nassim Nicholas Taleb, and the idea of path dependence**.
+
+All these concepts are building the [user-story driven-aproach](/scrum/scrum-week2.qmd) that enhances **productivity**.
+:::
+
+Let's explore each of these concepts and understand their relevance in the context of **Scrum**.
+
+## Less Wrong
+
+![Less Wrong](/images/scrum/lessWrong.png)
+
+In human behavior and **decision-making**, being [less wrong](https://www.lesswrong.com/) involves <mark>acknowledging the uncertainty inherent in complex situations. Instead of seeking absolute certainty, individuals focus on minimizing errors and learning from mistakes.</mark>
+
+It emphasizes a humble approach to decision-making, recognizing that perfection is elusive, and <mark>continuous improvement comes from adapting based on feedback and experience</mark>.
+
+## Keep It Simple
+
+![Kiss](/images/scrum/keep-it-simple-stupid.jpg){width="40%"}
+
+The "keep it simple" concept is a fundamental principle in agile methodologies, including Scrum. By breaking down complex tasks into smaller, more manageable units, Scrum teams can maintain focus and clarity. Iteration, in the form of sprints in Scrum, embodies this simplicity principle.
+
+- **Incremental Progress**: Scrum emphasizes short, time-boxed iterations (sprints) where the team delivers a potentially shippable product increment. This incremental approach allows for continuous improvement and simplifies the development process.
+- **Feedback Loops**: Frequent iterations provide opportunities for regular feedback from stakeholders. This ensures that the product aligns with evolving requirements, promoting simplicity by addressing issues early in the development process.
+
+## Lindy Effect & Turkey Parable
+
+![Turkey *pavoland*](/images/scrum/Nassim%20Taleb's%20Black%20Swan%20Thanksgiving%20Turkey.png){width="60%"}
+
+[Nassim Nicholas Taleb's Turkey Parable](https://www.forbes.com/sites/hillennevins/2021/11/24/the-parable-of-the-turkey/) illustrates the idea of the [Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect), suggesting that the longer something survives, the longer its life expectancy. Sometimes a [dramatic event](https://www.businessinsider.com/nassim-talebs-black-swan-thanksgiving-turkey-2014-11) and *unexpected* terminates the expectatives and lifecycle of the product.  
+
+- The problem that **Taleb** is really attacking in his book is forecasting, particularly economic forecasting, and the practice of using past events to predict the future. 
+
+In the context of Scrum:
+
+- **Incremental Learning**: Each iteration in Scrum is an opportunity for the team to learn and adapt. The Lindy effect supports the idea that the longer a project survives and adapts through iterations, the more likely it is to continue thriving and improving.
+- **Risk Mitigation**: The Turkey Parable serves as a cautionary tale about avoiding assumptions. In Scrum, regular iterations provide opportunities to reassess assumptions, identify risks early, and adapt plans accordingly, reducing the likelihood of unwarranted assumptions leading to project failure.
+
+## Path Dependence
+
+![[Start-Ups Are Path Dependent](https://www.linkedin.com/pulse/week-1-start-ups-path-dependent-jonah-mcintire){.external}](/images/scrum/pathdependence.jpeg){width="70%"}
+
+<mark>[Path dependence](https://thecomplexityproject.com/path-dependency-and-your-life-path/) refers to the idea that the current state and future developments are influenced by historical factors and decisions.</mark>
+
+::: {.callout-important}
+**What Is Path Dependency?**
+
+[Path dependency](https://www.wallstreetmojo.com/path-dependency/) in economics refers to the **tendency to rely on past practices, decisions, and actions for the outcome rather than current conditions.**
+
+Thus, those who repeat the same strategies will almost certainly get the same results.
+
+As a result, it can greatly impact economic or market development.
+:::
+
+In the context of **Scrum iterations**:
+
+- **Adaptive Evolution**: Scrum's iterative nature acknowledges that the development path is not always predictable. Path dependence suggests that the current state of the project is influenced by past decisions. Scrum embraces this reality by allowing teams to adapt and change direction as needed during each iteration.
+- **Continuous Improvement**: Each iteration builds on the progress of the previous ones. The path taken by the team is influenced by past decisions and learning experiences. Scrum's focus on inspecting and adapting allows the team to continuously improve their path based on feedback and changing circumstances.
+
+> The iteration is crucial in Scrum because it aligns with the "keep it simple" concept, embodies the Lindy effect by promoting incremental learning and risk mitigation, and acknowledges the influence of past decisions through the concept of path dependence. Embracing these principles helps Scrum teams navigate complexity, manage risk, and achieve continuous improvement in a dynamic and ever-changing environment.
+
+
+# Time-boxing in SCRUM
+
+::: {.callout-note}
+The timing aspect in Scrum is highly relevant due to the cognitive load associated with different phases of the development process, including planning, execution, review, and reflection.
+:::
+
+Scrum recognizes the **importance of time-boxing these activities to enhance focus, differentiation, and follow-through**.
+
+::: {.column-margin}
+**In neuroscience, the brain undergoes distinct processes when planning, executing, and thinking.** (1) Planning engages prefrontal regions, involving complex decision-making.
+(2) Execution activates motor areas, translating plans into actions.
+(3) Thinking, a broad cognitive process, engages diverse brain regions depending on the nature of thought.
+:::
+
+::: {.column-margin}
+These activities **demand unique neural networks, with planning requiring executive functions, execution involving motor control, and thinking engaging various cognitive areas**.
+
+Understanding these neurological differences sheds light on the intricate interplay between cognition and action, providing insights into how the brain navigates diverse mental processes.
+:::
+
+![plan-execute-review-reflexion](/images/scrum/wintheday.jpg){width="30%"}
+
+
+## Managing cognitive load and focus
+
+In Scrum Agile, successful teamwork <mark>involves managing cognitive load and maintaining focus during time-boxed iterations<mark>.
+
+- **Cognitive load** refers to the mental effort needed for tasks. Teams benefit from breaking work into clear, differentiated activities, aiding understanding.
+- **Follow-through** ensures that planned tasks are completed within each iteration, promoting efficiency.
+- **Adaptation** is key; teams adjust strategies based on feedback.
+  
+These principles emphasize simplicity, focus, and responsiveness, making Agile iterations effective for iterative development.
+ 
+::: {.callout-tip} 
+By balancing cognitive load, clear tasks, follow-through, and adaptability, teams optimize their performance within the time constraints of each iteration, fostering continuous improvement.
+:::
+
+
+### Cognitive Load and Focus
+
+- **Planning Phas**e: During the planning phase, the team engages in activities such as backlog refinement and sprint planning. The cognitive load is high as team members need to understand the requirements, estimate effort, and plan tasks. Time-boxing these activities ensures focused attention on defining the work for the upcoming sprint.
+- **Execution Phase**: Once the planning is complete, the team enters the execution phase where they concentrate on implementing the planned work. Time-boxing this phase allows for sustained focus on coding, testing, and delivering the product increment.
+- **Review and Reflection Phase**: The end of each sprint involves a review and reflection period. This time-boxed session provides an opportunity to assess the increment against the Definition of Done, gather feedback, and reflect on what went well and what could be improved. Managing cognitive load during this phase supports effective learning and adaptation.
+
+### Differentiation of Activities
+
+- **Sprint Planning**: Allocating a specific time for sprint planning helps the team differentiate this strategic activity from the more tactical execution. This ensures that the team is clear about what needs to be achieved in the upcoming sprint.
+- **Daily Stand-ups**: The daily stand-up meetings are short and focused, providing a platform for quick updates on progress, potential impediments, and coordination. By time-boxing these daily interactions, the team ensures that communication remains concise, relevant, and doesn't add unnecessary cognitive load.
+- **Retrospective**: The retrospective is a dedicated time for the team to reflect on their processes and collaboration. Time-boxing this phase allows the team to delve into constructive discussions without overwhelming cognitive load, promoting a more effective and focused retrospective.
+
+### Follow-Through and Adaptation
+
+- **Time-Boxed Sprints**: Scrum works on the principle of time-boxed iterations, typically lasting two to four weeks. This ensures that the team can focus on delivering a potentially shippable product increment within a set timeframe. The time-boxing helps manage the cognitive load associated with longer planning and execution cycles.
+- **Continuous Improvement**: By having regular retrospectives and adapting processes incrementally, Scrum allows the team to manage the cognitive load associated with learning and improvement. This avoids the overwhelming prospect of making drastic changes all at once.
+
+> In essence, **Scrum's approach to timing, with its emphasis on time-boxing key activities, helps manage the cognitive load associated with different phases of development**. This approach allows the team to maintain focus, differentiate between planning and execution, and follow through on iterative cycles of improvement, ultimately contributing to a more effective and adaptive development process.
+
+# References
+
+- [Week 1: Meetings and impediments](https://sites.google.com/view/gestioprojectes/llegir/setmana1){.external}
+- [These 12 Meeting Mistakes Cost Companies $37 Billion A Year In Lost Productivity](https://www.businessinsider.com/common-meeting-mistakes-2014-11?IR=T)
+- [The 16 best ways to sabotage your organization's productivity, from a CIA manual published in 1944](https://www.businessinsider.com/oss-manual-sabotage-productivity-2015-11?IR=T)
+- [Simple Sabottage Manual -strategic Services-](https://drive.google.com/file/d/1xXsLu2TXqbkuL_QIFKAOkofi8eVS12Lk/view)
+- [Meetings Types](https://meetingnotes.com/blog/types-of-meetings)
+
+
+
+
+
+

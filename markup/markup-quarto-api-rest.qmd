@@ -1,0 +1,184 @@
+---
+title: "Quarto Markdown: api rest call"
+subtitle: Code (5/7)
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Code API Rest call on your Quarto web
+categories: [markup, qmd, quarto, rest, api]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+**REST (Representational State Transfer)** 
+
+``Rest`` is an architectural style for building web services.
+
+It is based on a **client-server** model, where a client sends a ``request`` to a server and the server sends a ``response``.
+
+RESTful APIs use HTTP requests to POST (create), PUT (update), GET (read), and DELETE (delete) data.
+
+A RESTful API is a simple, consistent, and easy-to-use way for applications to communicate with each other over the internet.
+
+:::
+
+
+## What is API Rest
+
+![](/images/javase/apirest.png){width="80%"}
+
+::: {.column-margin}
+In other words, if you want to interact with a computer or system to retrieve information or perform a function, an API helps you communicate what you want to that system so it can understand and fulfill the request.
+:::
+
+::: {.column-margin}
+Image from: [Why is RESTful API so popular?](https://blog.bytebytego.com/p/why-is-restful-api-so-popular){.external}
+:::
+
+
+[An API is a set of definitions and protocols](https://www.redhat.com/en/topics/api/what-is-a-rest-api){.external} for building and integrating application software.
+
+It’s sometimes referred to as a **contract** between an **information provider** and an **information user**.
+
+This contract (API Rest *style*) establishing the content required from the consumer (the call) and the content required by the producer (the response).
+
+::: {.callout-note}
+For example, the API design for a weather service could specify that the user supply a zip code and that the producer reply with a 2-part answer, the first being the high temperature, and the second being the low.  
+:::
+
+
+### API Rest examples
+
+There are many examples of APIs, but here are a few common ones:
+
+- **Google Maps API**: allows developers to integrate Google Maps functionality into their own applications, such as displaying maps, getting directions, and searching for places.
+
+- **Twitter API**: allows developers to access and interact with tweets, as well as post new tweets, through their own applications.
+
+- **Facebook API**: allows developers to access and interact with user data, such as posts, photos, and friends, as well as post new content, through their own applications.
+
+- **Stripe API**: allows developers to integrate Stripe's payment functionality into their own applications, such as processing payments and managing subscriptions.
+
+- **OpenWeather API**: allows developers to access current weather data, as well as forecast, historical data and more for any location on Earth.
+
+- **NASA API**: allows developers to access and interact with various datasets from NASA, such as images, videos, and information about space missions and celestial bodies.
+
+
+
+### Example: open weather map London
+
+One example of a public API with a URL that can be used to access data is the **OpenWeather API.**
+
+
+``` html
+http://api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
+
+```
+
+::: {.column-margin}
+You can access current weather data for a specific location by making a GET request to the following URL:
+:::
+
+
+You need to replace ``{city name}`` with the name of the city you want to get weather data for and ``{your api key}`` with **your own API key**, which you **can get by signing up for a free account on the OpenWeather website.**
+
+For example, if you want to get the current weather data for **London**, you would make a ``GET`` ``request`` to the following URL:
+
+``` html
+http://api.openweathermap.org/data/2.5/weather?q=London&appid={your api key}
+```
+
+It will return a ``JSON`` object with various information such as temperature, humidity, wind, etc.
+
+### Example: Nasa Mars
+
+**NASA** has several APIs available for developers to access and interact with various datasets, such as images, videos, and information about space missions and celestial bodies.
+
+::: {.callout-tip}
+One example of a NASA API is the NASA Image and Video Library API, which allows you to access NASA's media assets, including images, videos, and audio files.
+:::
+
+
+``` html
+https://images-api.nasa.gov/search?q={your search term}
+
+```
+
+::: {.column-margin}
+You can access the NASA Image and Video Library API by making a GET request to the following URL:
+:::
+
+For example, if you want to search for **images of the planet Mars**, you would make a GET request to the following URL:
+
+[Nasa API for Mars](https://images-api.nasa.gov/search?q=mars){.external}
+
+
+This will return a ``JSON`` object with a list of assets, including links to the images and other information such as title and description.
+
+### Free Open APIs
+
+- [Big List of Free Open APIs](https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/){.external}
+- To create integrations, retpythoncom/collection/list-of-free-apis){.external}
+- This is a collection of different REST APIs that are completley public and do not require any authentication, making it easier for consumers to play with and understand what APIs are all about by seeing the many different ways in which APIs can be used: [Public REST APIs](https://documenter.getpostman.com/view/8854915/Szf7znEe){.external}
+- Get a list of universities in a specified country: [Universities List](http://universities.hipolabs.com/search?country=United+States){.external}
+- Free API – Huge List of Public APIs For Testing [No Key]: [Free APIs You Can Use for Testing](https://apipheny.io/free-api/){.external}
+
+
+## Quarto web API
+
+[Web APIs Quarto with d3.json and Observable JavaScript](https://quarto.org/docs/interactive/ojs/data-sources.html#web-apis){.external}
+
+- You can use the [d3.json](https://github.com/d3/d3-fetch/blob/v3.0.1/README.md#json){.external} function to read JSON data from web services and data sources. 
+- We are using the [Observable JavaScript](https://observablehq.com/@observablehq/observable-javascript){.external} / [Explore, analyze, and explain data. As a team](https://observablehq.com/){.external} to run script cells 
+
+::: {.column-margin}
+[Quarto: Observable JS](https://quarto.org/docs/interactive/ojs/){.external}
+:::
+
+Here we **query** the **GitHub API** for data on contributions to the albertprofe wiki:
+
+```{ojs}
+d3 = require('d3')
+
+contributors = await d3.json(
+  "https://api.github.com/repos/albertprofe/wiki/stats/contributors"
+)
+
+commits = contributors.map(contributor => {
+  const author = contributor.author;
+  return {
+    name: author.login,
+    title: author.login,
+    group: author.type,
+    value: contributor.total
+  }
+})
+
+
+Inputs.table(commits, { sort: "value", reverse: true })
+
+```
+
+::: {.column-margin}
+JavaScript on Observable is almost — but not entirely — vanilla. This is intentional: by building on the native language of the web, Observable is familiar. And you can use the libraries you know and love, such as D3, Lodash, and Apache Arrow.
+:::
+
+</br>
+
+> See the [GitHub API](https://quarto.org/docs/interactive/ojs/examples/github.html){.externaL} example for the full source code.
+
+### Screenshoots
+
+
+#### Success
+![Quarto Api Rest call to github Rest API](/images/javase/quarto_api_rest_github.png)
+
+#### Error
+
+![Quarto Api Rest call to github Rest API ERROR](/images/javase/quarto_api_rest_github_error.png)
+

@@ -1,0 +1,139 @@
+---
+title: "Java SE: Inherence"
+subtitle: Java Fundamentals and Principles
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Java inherence OOP paradigm
+categories: [javase, inherence , oop, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **Inheritance**
+
+**Inheritance** is a fundamental concept in object-oriented programming. It is the process of **creating new classes from existing classes**.
+
+In other words, it is the process of deriving new classes from existing classes, which allows developers to reuse and extend the functionality of existing classes.
+
+:::
+---
+
+In Java, ``inheritance`` is achieved through the use of the `extends` keyword. A class that extends another class is called a subclass, and the class it extends is called the superclass.
+
+The ``subclass`` inherits all of the methods and fields of the superclass, and can also define its own methods and fields.
+
+![Java SE Basic Principles OOP Inherence](/images/javase/oop-in.png){width="50%"}
+
+
+## Inherence Reserved words
+
+- ``extends`` is used to indicate that a **class is a subclass of another class**.
+
+- ``super`` is used to refer **to the immediate parent class of the current class**. It is commonly used to access methods or fields of the parent class that have been overridden in the current class.
+
+### Final
+
+- ``final`` is a keyword in Java that can be used to indicate that a ``class``, ``method``, or **variable cannot be overridden or modified**. A ``final class`` **cannot be extended**, a final method cannot be overridden and a final variable is a constant and its value cannot be modified.
+
+## Example1
+
+Here is an example of inheritance in Java:
+
+``` java
+public class Animal {
+    // Private instance variable
+    private String name;
+
+    // Constructor
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    // Getter method for the name variable
+    public String getName() {
+        return name;
+    }
+
+    // Method for making the animal make a noise
+    public void makeNoise() {
+        // Code for making the animal make a noise
+    }
+}
+```
+
+``` java
+
+public class Dog extends Animal {
+    // Private instance variable
+    private int age;
+
+    // Constructor
+    public Dog(String name, int age) {
+        super(name);
+        this.age = age;
+    }
+
+    // Getter method for the age variable
+    public int getAge() {
+        return age;
+    }
+
+    // Method for making the dog bark
+    @Override
+    public void makeNoise() {
+        System.out.println("Woof!");
+    }
+}
+
+```
+::: {.column-margin}
+Tthis example shows how to use ``inheritance`` in Java. By extending the `Animal` class, the `Dog` class is able to reuse and extend the functionality of the `Animal` class, and define its own methods and fields. This allows the `Dog` class to inherit the characteristics of the `Animal` class, and add its own unique characteristics as well.
+:::
+
+
+In this example, the `Animal` class is a superclass, and the `Dog` class is a subclass that extends the `Animal` class. The `Dog` class inherits all of the methods and fields of the `Animal` class, including the `name` field and the `makeNoise()` method.
+
+The `Dog` class also has its own `age` field, which is not defined in the `Animal` class. It also provides its own implementation of the `makeNoise()` method, which overrides the implementation in the `Animal` class. This allows the `Dog` class to define its own behavior for the `makeNoise()` method, based on its specific characteristics.
+
+
+## Example2 
+
+Here is an example of how to create a `Cat` class in Java that extends the `Animal` class from the previous example:
+
+``` java
+public class Cat extends Animal {
+    // Private instance variable
+    private int age;
+
+    // Constructor
+    public Cat(String name, int age) {
+        super(name);
+        this.age = age;
+    }
+
+    // Getter method for the age variable
+    public int getAge() {
+        return age;
+    }
+
+    // Method for making the cat meow
+    @Override
+    public void makeNoise() {
+        System.out.println("Meow!");
+    }
+}
+
+```
+
+The `Cat` class also has its own `age` field, which is not defined in the `Animal` class. It also provides its own implementation of the `makeNoise()` method, which overrides the implementation in the `Animal` class. This allows the `Cat` class to define its own behavior for the `makeNoise()` method, based on its specific characteristics.
+
+
+

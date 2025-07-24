@@ -1,0 +1,37 @@
+---
+title: "Create Project"
+author: "Maven IntellJ Idea"
+format: revealjs
+---
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_0.png)
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_1.png)
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_2.png)
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_3.png)
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_4.png)
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_5.png)
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_6.png)
+
+## {background-color="grey"}
+
+![](createprojectMavenIntellJI_7.png)

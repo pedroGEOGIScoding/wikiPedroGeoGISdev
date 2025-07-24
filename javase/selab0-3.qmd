@@ -1,0 +1,270 @@
+---
+title: "Lab#SE00-3: Library Model"
+subtitle: Java SE Lab 00
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 00, Part 3
+categories: [javase, lab, model, composition, inherence]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#SE00-3: Library Model**
+
+1. Create **two new feature for a library management system**:
+
+	1. to track the library's inventory of periodicals such as newspapers, newsletters, and magazines.
+	2. that allows the librarian to add, remove, and update the periodicals in the inventory, and also show all the periodicals in the inventory.
+
+2. Create **five new classes:** ``Periodical``, ``Newspaper``, ``Newsletter``, ``Magazine``, and ``Edition``.
+
+	1. In the ``Periodical`` class, define fields such as title, publisher, publicationDate and methods such as getTitle(), getPublisher(), getPublicationDate()
+	2. In the ``Newspaper`` class, define fields such as edition, section and methods such as getEdition(), getSection() and also inherit fields and methods from the Periodical class.
+	3. In the ``Newsletter`` class, define fields such as frequency and methods such as getFrequency() and also inherit fields and methods from the Periodical class.
+	4. In the ``Magazine`` class, define fields such as category and methods such as getCategory() and also inherit fields and methods from the Periodical class.
+	5. In the ``Edition`` class, define fields such as issueNumber, volume and methods such as getIssueNumber(), getVolume()
+
+3. **Define the relationships between the classes**, such as ``inheritance``, ``composition``, and ``use``.
+	
+	1. The ``Newspaper``, ``Newsletter``, and ``Magazine`` classes **inherit** fields and methods from the ``Periodical`` class. The ``Periodical`` class `**uses**` the ``Edition`` class.
+
+:::
+
+---
+
+## Basic UML
+
+This **Mermaid class diagram** describes the classes and their relationships in a **library management system.**
+
+It shows the classes involved in the process of a **library member checking out a book and a librarian helping him.**
+
+1. The ``Member`` class has a method checkOutPublication() which represents the action of a library member checking out a book.
+	- The ``Borrow`` class is associated with the Member class, it has fields such as fromDate, toDate and borrowStatus which describes the borrowing time and the borrow status.
+
+2. The ``Librarian`` class has a method addPublication(), removePublication(), holdPublication() which represents the action of a librarian adding, removing and holding a publication. 
+	- The ``Issue`` class is associated with the Librarian class, it has fields such as publishDate, unpublishDate and manageDate and issueStatus which describes the publishing and unpublishing of the publication.
+
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class Publication {
+  -title: String
+  -year: int
+  -author: String
+  -statusPublication: enum
+}
+
+class Borrow {
+    +fromDate
+    +toDate
+    +borrowStatus
+}
+
+class Issue {
+    +publishDate
+    +unpublishDate
+    +manageDate
+    -issueStatus
+}
+
+class Member {
+    -idMember: String
+    +checkOutPublication()
+    +returnPublication()
+    +holdOnPublication()
+}
+
+class Librarian {
+    -idLibrarian
+    +addPublication()
+    +removePublication()
+    +holdPublication
+  
+}
+
+class Person {
+    -name: String
+    -surname: String
+    -address: String
+    -age:int
+    +getPublications()
+}
+
+Person --> Member
+Person --> Librarian
+Member --> Borrow
+Borrow --> Publication
+Librarian --> Issue
+Issue --> Publication
+```
+
+</div>
+
+::: {.column-margin}
+The Publication class is the superclass for all types of publications, it has fields such as title, year, author, statusPublication which represents the properties of the book.
+:::
+
+In summary in this class diagram:
+
+- the ``Member`` class is checking out a book: the Borrow class helps to the member class,** it keeps track of the borrowing time and the borrow status.**
+- the ``Librarian`` class is helping the member **by adding, removing and holding a publication**: the Issue class is associated with the librarian class, it keeps track of the publishing and unpublishing of the publication
+- the ``Publication`` class is the superclass **for all types of publications**, it has properties such as ``title``, ``year``, ``author``, ``statusPublication``.
+
+## Large UML
+
+This mermaid UML is a **class diagram** that describes the classes and their relationships in a **library management system.**
+
+The ``Interface`` class represents the user interface that allows the user to manage the library, search for publications, check out and check in publications, add, remove and update publications.
+
+- The ``Publication`` class is the superclass for all types of publications, which includes:
+	-  ``Book``, ``Journal``, ``Magazine``, ``ReferenceBook``, ``HandBook``, and ``Movie``.
+		- ``Book`` class has a method ``getAuthor()`` and ``getISBN()``,
+		- ``Journal`` class has ``getISSN()`` and ``getAuthors()``,
+		- ``Magazine`` class has ``getIssue()`` and ``getAuthors()``,
+		- ``ReferenceBook`` class has ``getEdition()`` and ``getAuthors()``,
+		- ``HandBook`` class has ``getSubject()`` and ``getAuthors()``,
+		- ``Movie`` class has ``getDirector()``, ``getReleaseDate()`` and ``getAuthors()``.
+
+- The ``Borrow`` class has properties fromDate, toDate and borrowStatus which describes the borrowing time and the borrow status.
+
+- The ``Issue`` class has methods publish, unpublish and manage which describes the management of the publications.
+
+- The ``Person`` class is the superclass for Author, Member, and Librarian. 
+	- The ``Author`` class has getBooks() method,
+	- ``Member`` class has getBorrowings() method,
+	- ``Librarian`` class has add(), remove(), and getPublications() method.
+	- The ``Student`` class has getID() method,
+	- ``Teacher`` class has getDepartment() method,
+	- ``Faculty`` class has getPosition() method.
+
+
+![Library System Mananger](/images/javase/library.png){width="100%"}
+
+```{.java .code-overflow-wrap filename="Person.java"}
+classDiagram
+class Interface {
+  +manage()
+  +search()
+  +checkOut()
+  +checkIn()
+  +add()
+  +remove()
+  +update()
+}
+
+class Publication {
+  +getTitle()
+  +getPublisher()
+  +getPublicationDate()
+}
+
+class Book {
+  +getAuthor()
+  +getISBN()
+}
+
+class Journal {
+  +getISSN()
+  +getAuthors()
+}
+
+class Magazine {
+  +getIssue()
+  +getAuthors()
+}
+
+class ReferenceBook {
+  +getEdition()
+  +getAuthors()
+}
+
+
+class HandBook {
+  +getSubject()
+  +getAuthors()
+}
+
+class Movie {
+  +getDirector()
+  +getReleaseDate()
+  +getAuthors()
+}
+
+class Borrow {
+    +fromDate
+    +toDate
+    +borrowStatus
+}
+
+class Issue {
+    +publish
+    +unpublish
+    +manage
+}
+
+class Person {
+  +getName()
+}
+
+class Author {
+  +getBooks()
+}
+
+class Member {
+  +getBorrowings()
+}
+
+class Librarian {
+  +add()
+  +remove()
+  +getPublications()
+}
+
+class Student {
+  +getID()
+}
+
+class Teacher {
+  +getDepartment()
+}
+
+class Faculty {
+  +getPosition()
+}
+
+class Catalog {
+  
+}
+
+Catalog --> Publication
+Publication --> Book
+Publication --> Journal
+Publication --> Magazine
+Publication --> ReferenceBook
+Publication --> HandBook
+Publication --> Movie
+Person --> Author
+Person --> Member
+Person --> Librarian
+Member --> Student
+Member --> Teacher
+Member --> Faculty
+Publication --> Author
+Member --> Borrow
+Borrow --> Publication
+Librarian --> Issue
+Issue --> Publication
+```
+
+
+
+
+

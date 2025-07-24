@@ -1,0 +1,35 @@
+---
+title: "Linux Lab#LI01-2: Install at least three distributions"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, distro, install]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI01-2: Install at least three distributions**
+
+-   Create separate boot, var, home, swap, and filesystem root partitions (five partitions total). Leave at least 100MB of empty, unused, unpartitioned hard disk space for a future task.
+-   Choose whatever desktop graphical user interfaces (GUIs) are available for your selected distributions.
+-   Create a user during installation, and make that user the administrator. This grants the user `sudo` permissions.
+-   Once installation is complete, explore the built-in help features:
+    -   Use man pages to research the `fstab` file.
+    -   What are the differences between the various man page sections? Admins primarily use sections 1, 5, and 8---why?
+    -   How can you do a keyword search within man pages?
+    -   What can be found at `/usr/share/doc`?
+    -   Explore whatever GUI help files might be available.
+-   Complete the Vim tutorial (the command is `vimtutor`) to get comfortable with [Vim](https://www.redhat.com/sysadmin/four-things-vim). You can use [Nano](https://www.redhat.com/sysadmin/four-things-nano) if you prefer. Be *certain* you can create, open, edit, save, and close configuration files before proceeding any further with these activities.
+-   Try configuring the installations for a specific time zone by using the `tzselect` command.
+-   Select one installation as your primary lab computer. Designate it as the "server" and select a second installation as a "client." You will use these two systems in the remaining activities.This lab may serve many purposes, and you need some idea of **what you want to use your lab to achieve**.
+:::
+
+
+
+

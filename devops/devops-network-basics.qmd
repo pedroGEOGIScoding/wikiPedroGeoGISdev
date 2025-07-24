@@ -1,0 +1,67 @@
+---
+title: "Network: Basics"
+subtitle: Networking basics
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, networking, basics]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# What is a Network?
+
+A network is defined as a two or more independent devices or computers that are linked to share resources (such as printers and CDs), exchange files, or allow electronic communications.
+
+For example, the computers on a network may be linked through telephone lines, cables, satellites, radio waves, or infrared light beams.
+
+The two very common types of network include:
+
+- Local Area Network (LAN)
+- Wide Area Network (WAN)
+
+
+From OSI reference model, the layer 3, i.e., Network layer is involved in networking. This layer is responsible for packet forwarding, routing through intermediate routers, recognizing and forwarding local host domain messages to transport layer (layer 4), etc.
+
+The network operates by connecting computers and peripherals using two pieces of equipment include routing and switches. If two devices or computers are connected on the same link, then there is no need for a network layer.
+
+# Internet working Devices used on a network
+
+![Network Devices (Hub, Repeater, Bridge, Switch, Router, Gateways and Brouter)](/images/devops/Network_devices.jpg)
+
+For connecting internet, we require various internetworking devices. Some of the common devices used in building up Internet are.
+
+- **NIC**: Network Interface Card or NIC are printed circuit boards that are installed in workstations. It represents the physical connection between the workstation and network cable. Although NIC operates at the physical layer of the OSI model, it is also considered as a data link layer device. Part of the NIC’s is to facilitate information between the workstation and the network. It also controls the transmission of data onto the wire
+
+- **Hubs**: A hub helps to extend the length of a network cabling system by amplifying the signal and then re-transmitting it. They are basically multiport repeaters and not concerned about the data at all. The hub connects workstations and sends a transmission to all the connected workstations.
+
+- **Bridges**: As network grow larger, they often get difficult to handle. To manage these growing network, they are often divided into smaller LANs. These smaller LANS are connected to each other through bridges. This helps not only to reduce traffic drain on the network but also monitors packets as they move between segments. It keeps the track of the MAC address that is associated with various ports.
+
+- **Switches**: Switches are used in the option to bridges. It is becoming the more common way to connect network as they are simply faster and more intelligent than bridges. It is capable of transmitting information to specific workstations. Switches enable each workstation to transmit information over the network independent of the other workstations. It is like a modern phone line, where several private conversation takes place at one time.
+
+- **Routers**: The aim of using a router is to direct data along the most efficient and economical route to the destination device. They operate at Network layer 3, which means they communicate through IP address and not physical (MAC) address. Routers connect two or more different networks together, such as an Internet Protocol network. Routers can link different network types such as Ethernet, FDDI, and Token Ring.
+
+- **Brouters**: It is a combination of both routers and bridge. Brouter act as a filter that enables some data into the local network and redirects unknown data to the other network.
+
+- **Modems**: It is a device that converts the computer-generated digital signals of a computer into analog signals, traveling via phone lines.
+
+# Understanding TCP/IP layers
+
+![What is OSI Model](/images/devops/OSI.png)
+
+TCP/IP stands for Transmission Control Protocol/ Internet Protocol. It determines how a computer should be connected to the Internet and how data should be transmitted between them.
+
+- TCP: It is responsible for breaking data down into small packets before they can be sent on the network. Also, for assembling the packets again when they arrive.
+- IP (Internet Protocol): It is responsible for addressing, sending and receiving the data packets over the internet.
+
+
+# References
+
+- [CCNA Tutorial: Learn Networking Basics](https://www.guru99.com/introduction-ccna.html){.external}
+- [CCNA certification](https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html){.external}
+- [Cisco Packet Tracer](https://www.netacad.com/courses/packet-tracer){.external}
+

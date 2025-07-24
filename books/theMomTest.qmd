@@ -1,0 +1,22 @@
+---
+title: "The mom test"
+author: "Rob Fitzpatrick"
+subtitle: "How to talk to customers & learn if your business is a good idea when everyone is lying to you."
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "The Mom Test is a simple, practical guide to talking to your customers without annoying them."
+categories: [communication]
+subcategories: [startups, entrepreneurship]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/theMomTest.jpeg)
+
+## More info
+
+- [El Mom Test](https://www.amazon.com/Mom-Test-customers-business-everyone/dp/1492180742){.external}
+- [The Mom Test](https://www.momtestbook.com/)

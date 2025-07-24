@@ -1,0 +1,23 @@
+---
+title: "The Intelligence Trap"
+author: "David Robson"
+subtitle: "The Intelligence Trap, 2019, The Intelligence Trap: Why Smart People Make Dumb Decisions"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "An exploration of why even the smartest people can make poor decisions. The Intelligence Trap, written by science journalist David Robson, reveals the cognitive biases and traps that can lead us astray, and provides practical strategies for overcoming them."
+categories: [psychology]
+subcategories: [agile, decision-making, self-help]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/theIntellingenceTrap.jpg)
+
+## More info
+
+A “startling, provocative and potently useful” (James McConnachie, Times UK) examination of the stupid things intelligent people do.
+
+The Intelligence Trap explores cutting-edge ideas in our understanding of intelligence and expertise, including “motivated reasoning,” “meta-forgetfulness,” and “functional stupidity.” David Robson reveals the surprising ways that even the brightest minds and most talented organizations can go wrong?from some of Thomas Edison’s worst ideas to failures at NASA—while offering practical advice to avoid mistakes based on the timeless lessons of Benjamin Franklin, Richard Feynman, and Daniel Kahneman.

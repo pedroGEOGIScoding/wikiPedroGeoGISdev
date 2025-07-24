@@ -1,0 +1,127 @@
+---
+title: "Java SE: Create Maven Project"
+subtitle: Maven and Java
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: How to create a Maven Project
+categories: [javase, maven, code, project]
+toc: true
+number-sections: true
+format:
+  html
+---
+## Create Maven Project
+
+To create a Maven project with a **standard directory structure using IntelliJ IDEA**, you can follow these steps:
+
+1. Install the Maven plugin in **IntelliJ IDEA**.
+   1. Open IntelliJ IDEA and navigate to the `Plugins` settings.
+   2. Search for `Maven` and install the plugin.
+2. In IntelliJ IDEA, click `Create New Project`.
+   1. In the `New Project` dialog, select `Maven Archetype` from the list of Generators.
+   2. Select the **`maven-archetype-quickstart` archetype**. This archetype creates a <mark>standard Maven project with a directory structure for source code and unit tests.<mark>
+   3. Remember to use `apache` archetype (template).
+3. Choose from system or download the **JDK** to use
+4. Click `Advanced Settings` and enter the `GroupId` and `ArtifactId` for your project. These are used to identify your project uniquely across all projects.
+5. Click `Create` to create the project.
+
+
+
+- [Creating a Maven project](https://www.jetbrains.com/guide/java/tutorials/working-with-maven/creating-a-project/){.external}
+- [Create a new Maven project](https://www.jetbrains.com/help/idea/maven-support.html){.external}
+
+::: {.column-margin}
+**Catalog**
+
+specify which Maven repository you want to use in your project.
+
+The internal Maven catalog is a default one. You can also select the local repository that is located in the `.m2 directory`, or you can select **Maven central repository**.
+
+:::
+
+Your project will be created with the following **directory structure**:
+
+  ``` java
+    my-project
+    ├── pom.xml
+    └── src
+        ├── main
+        │   └── Person.java
+        │       Account.java
+        │       AccountManager.java    
+        └── test
+            └── AccountManagerTest.java
+            
+  ``` 
+
+The `src/main/java` directory is where you should put your Java source code, and the `src/test/java` directory is where you should put your **unit tests**.
+
+![Maven project folder-tree](/images/javase/se-createproject/createprojectMavenIntellJI_3.png)
+
+To specify the version of Maven to use, you can edit the `pom.xml` file and add a `<version>` element to the `<project>` element. For example:
+
+``` xml
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>my-project</artifactId>
+  <version>3.6.3</version>
+  ...
+</project>
+```
+This will use **version 3.6.3 of Maven** for the project.
+
+## Step-by-step screenshots
+
+**2022-12-14**
+
+[Slider-presentation Create project Java SE Maven](/images/javase/se-createproject/se-presentation-createproject.qmd)
+
+**2024-01-14**
+
+::: {#fig-createMavenProject layout-ncol=2}
+![Create Maven JavaSE Project Idea 2024: New Project wizard](/images/javase/createMavenProject-2024.png)
+
+
+![Create Maven JavaSE Project Idea 2024: Project structure](/images/javase/createProject_2024.png)
+
+Create Maven JavaSE Project Idea 2024
+:::
+
+
+> **IntelliJ IDEA 2023.3.2 (Community Edition)**
+> 
+> Build #IC-233.13135.103, built on December 20, 2023
+Runtime version: 17.0.9+7-b1087.9 amd64
+VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
+Linux 5.15.0-91-generic
+
+
+## Idea configurations
+
+![Create Maven JavaSE Project Idea 2024: Idea configurations, File](/images/javase/idea-files-menu--2024png.png){width="60%"}
+
+![Create Maven JavaSE Project Idea 2024: Project structure,SDK and lenguage level](/images/javase/createProject_2024-1.png){width="60%"}
+
+
+![Create Maven JavaSE Project Idea 2024: modules and sources](/images/javase/createProject_2024-2.png){width="60%"}
+
+
+![Create Maven JavaSE Project Idea 2024: modules and dependencies](/images/javase/createProject_2024-3.png){width="60%"}
+
+
+
+
+## What did we create?
+
+
+![Anatomy of our first Class](/images/javase/classMain.png){width="60%"}
+
+This Java code defines a class named "HelloWorld" with a main method. When executed, it prints "Hello World!" to the console using the `System.out.println` statement.
+
+The **main method serves as the entry point for the program**.
+
+This simple program is a common introductory example, demonstrating the basic structure of a Java application and how to output text to the console.
+

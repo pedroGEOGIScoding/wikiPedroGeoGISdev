@@ -1,0 +1,21 @@
+---
+title: "Design Patterns"
+author: "albertprofe"
+subtitle: "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994, Design Patterns: Elements of Reusable Object-Oriented Software"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A seminal book in software engineering that has become an essential reference for developers. The authors describe 23 design patterns that provide solutions to recurring problems in software design, making it easier to write maintainable and scalable code."
+categories: [design]
+subcategories: [programming, architecture, design]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/designPatterns.jpeg)
+
+## More info
+
+

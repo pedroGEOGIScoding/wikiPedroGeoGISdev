@@ -1,0 +1,220 @@
+---
+title: "Spring Boot: JPA & DI"
+subtitle: Spring Boot JPA and Dependence Injection
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot JPA
+categories: [Spring-Boot, JPA]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **JPA**
+
+JPA stands for `Java Persistence API`.
+
+It is a Java specification for **managing, persisting, and accessing relational data** in Java applications. 
+
+JPA is a **standard API for ORM (Object-Relational Mapping)** and provides a way to map Java objects to relational databases.
+:::
+
+</br>
+
+![Spring Boot Request-Response Cycle](/images/springboot/springboot-architecture-8.png){width="80%"}
+
+
+- [Spring Data JPA](https://spring.io/projects/spring-data-jpa){.external}
+- [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/){.external}
+
+## Overall
+
+In Spring Boot, ``JPA`` is used to interact with databases. It provides a convenient and powerful way to **perform CRUD operations on database tables** and provides a lot of useful features such as caching, lazy loading, and automatic management of transaction.
+
+Spring Boot provides a number of **auto-configuration options for JPA**, so you don't have to set up everything from scratch.
+
+![Spring Boot JPA](/images/springboot/spring-boot-jpa3.png){width="50%"}
+
+The **spring-boot-starter-data-jpa** is a starter for using Spring Data ``JPA`` with Hibernate. It provides a convenient way to create ``JPA`` repositories, which can be used to perform CRUD operations on the database.
+
+``` xml
+<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+<dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-jpa</artifactId>
+    <version>3.0.4</version>
+</dependency>
+```
+When using ``JPA`` in Spring Boot, you can use the @Entity annotation to define a class as a ``JPA`` entity, and the @Repository annotation to define a class as a ``JPA`` repository. This allows you to use the ``JPA`` repository to perform CRUD operations on the corresponding database table.
+
+::: {.column-margin}
+Spring Data JPA, part of the larger Spring Data family, makes it easy to easily implement JPA based repositories. This module deals with enhanced support for JPA based data access layers. It makes it easier to build Spring-powered applications that use data access technologies.
+:::
+
+Features:
+
+- **Sophisticated support to build repositories based on Spring** and ``JPA``
+- Support for Querydsl predicates and thus type-safe ``JPA`` queries
+- Transparent auditing of domain class
+- Pagination support, dynamic query execution, ability to integrate custom data access code
+- Validation of ``@Query`` annotated queries at bootstrap time
+- Support for XML based entity mapping
+- JavaConfig based repository configuration by introducing ``@EnableJpaRepositories``.
+
+| Acronym | Definition |
+| --- | --- |
+| ORM | Object-Relational Mapping, a programming technique for converting data between incompatible type systems in object-oriented programming languages and relational databases. |
+| DAO | Data Access Object, a design pattern that provides an abstract interface to access data from a database or other persistent storage mechanism. |
+| JPA | Java Persistence API, a specification for object-relational mapping in Java that provides a standard way to map Java objects to relational databases. |
+: Basic Vocabulary {tbl-colwidths="[20,80]"}
+
+
+## Spring Data Repositories
+
+::: {.callout-note}
+## pring Data Repositories
+``Spring Data Repositories`` provide a high-level, generic abstraction for data access that allows developers to work with data from various data sources, including relational databases, NoSQL databases, and other data stores, using a consistent and simplified API. 
+:::
+
+
+```java
+import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
+//@Repository
+public interface BookRepository extends CrudRepository <Book, Long> {
+    // custom query methods defined here
+    Optional<Book> findBookByTitle(String title);
+    Optional<Book> deleteBookByTitle(String title);
+}
+```
+
+The [repositories](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html){.external} eliminate the need for boilerplate code and allow developers to define query methods and dynamic queries in a straightforward manner.
+
+![Spring Boot Repositories - [Core concepts](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.core-concepts){.external} ](/images/springboot/SpringDataRepositories.png){width="50%"}
+
+Spring Data Repositories also provide support for pagination, sorting, and auditing, as well as integration with other Spring technologies, such as Spring MVC and Spring Security. 
+ 
+:::{.column-margin}
+Spring Data Repositories **simplify** data access and enable rapid development of data-driven applications.
+:::
+
+
+## Using ``CrudRepository``
+
+``CrudRepository`` is an **interface provided by Spring Data that defines a standard set of methods for performing CRUD (Create, Read, Update, and Delete) operations on entities.**
+
+The interface provides basic data access functionality and can be extended to provide additional functionality as needed.
+
+BookRepository:
+
+```java
+import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
+//@Repository
+public interface BookRepository extends CrudRepository <Book, Long> {
+    // custom query methods defined here
+    Optional<Book> findBookByTitle(String title);
+    Optional<Book> deleteBookByTitle(String title);
+}
+```
+
+We use the ``@Autowired`` annotation **to inject an instance of ``BookRepository`` into our Spring application,** Spring's dependency injection container will automatically instantiate a concrete implementation of the ``BookRepository`` interface and inject it into our application's ``bookRepository`` object.
+
+This implementation is typically a **proxy object** that provides the required functionality for data access.
+
+
+BookService:
+
+```java
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class BookService {
+
+    @Autowired
+    BookRepository bookRepository;
+
+    public Iterable<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+```
+
+With this object, we can use the methods defined in the ``CrudRepository`` interface, such as ``save()``, ``findOne()``, ``findAll()``, and ``delete()``, to perform CRUD operations on Book entities.
+
+
+
+## JPA, Dependency Injection and Repository
+
+![Spring Boot Overview](/images/springboot/spring-overview.png){width="50%"}
+
+- [Introduction to Spring Framework](https://docs.spring.io/spring-framework/docs/3.2.0.RC2/reference/html/overview.html){.external}
+
+
+The Java Persistence API (JPA) is a popular Java framework used for **Object-Relational Mapping (ORM)**. The JPA framework provides the ``@Repository`` annotation to identify the ``DAO`` **(Data Access Object)** layer of an application. 
+
+
+
+::: {.column-margin}
+The`` @Repository`` annotation is a good example of the terms Dependency Inversion Principle (DIP), Dependency Injection (DI), and Inversion of Control (IoC) container.
+:::
+
+The **Dependency Inversion Principle (DIP)** is a software design principle that states high-level modules should not depend on low-level modules, but both should depend on abstractions.
+
+
+::: {.callout-note}
+## ``@Repository``
+The ``@Repository`` **annotation** follows this principle by allowing the **DAO layer to depend on an interface (abstraction)** instead of directly depending on a concrete implementation.
+
+This allows for easier maintenance, testing, and flexibility in changing the implementation of the ``DAO`` layer.
+:::
+
+
+``Dependency Injection`` (DI) is a design pattern that **implements the DIP by injecting dependencies (objects or interfaces) into a class at runtime.**
+
+In the case of the @Repository annotation, the dependency is the EntityManager object, which is injected into the ``DAO`` class using the @PersistenceContext annotation. 
+
+This allows the ``DAO`` to be decoupled from the EntityManager implementation and provides flexibility to use different implementations of the EntityManager.
+
+![DIP - [Dependency Inversion Principle](https://www.tutorialsteacher.com/ioc/dependency-inversion-principle){.external}](/images/springboot/dip.png){width="70%"}
+
+
+::: {.column-margin}
+Inversion of Control (IoC) container is a pattern used to manage the lifecycle of objects and their dependencies. It allows the framework to control the creation, configuration, and destruction of objects, rather than having the application manage them directly. 
+:::
+
+
+The @Repository annotation is an example of an IoC container because it is managed by the Spring framework. The framework handles the instantiation and injection of dependencies, such as the EntityManager, into the DAO classes.
+
+In this case, the high order modules are the business logic layer and the low order modules are the data access layer. The business logic layer depends on the data access layer through an abstraction, and the data access layer depends on the EntityManager implementation through injection by the IoC container. This allows for a separation of concerns and easier maintenance and testing of each layer independently.
+
+## Annotations
+
+| Annotation | Description |
+| --- | --- |
+| @Entity | Specifies that the class is an entity and will be managed by the EntityManager. |
+| @Table | Specifies the database table name for the entity. |
+| @Id | Specifies the primary key field of the entity. |
+| @GeneratedValue | Specifies how the primary key should be generated. |
+| @Column | Specifies the database column name for a field. |
+| @JoinColumn | Specifies the join column when using a relationship. |
+| @OneToMany | Defines a one-to-many relationship between two entities. |
+| @ManyToOne | Defines a many-to-one relationship between two entities. |
+| @ManyToMany | Defines a many-to-many relationship between two entities. |
+| @JoinTable | Specifies the join table for a many-to-many relationship. |
+| @Embedded | Specifies that the field should be mapped as an embedded object. |
+| @Transient | Specifies that the field should not be persisted to the database. |
+: JPA Annotations {tbl-colwidths="[20,80]"}
+
+## Example
+
+- [Library1 code github](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library1/src/main/java/io/company/library){.external}
+- [Library1 docs](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library1:-API-Rest-Book-CRUD-with-Postman-Swagger){.external}
+

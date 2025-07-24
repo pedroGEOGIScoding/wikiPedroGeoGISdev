@@ -1,0 +1,110 @@
+---
+title: "Execution"
+author: "albertprofe"
+subtitle: "Larry Bossidy, Ram Charan,Charles Burck (with), 2006, Execution: The Discipline of Getting Things Done"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "#1 NEW YORK TIMES BESTSELLER - More than two million copies in print! The premier resource for how to deliver results in an uncertain world, whether you're running an entire company or in your first management job. A must-read for anyone who cares about business.--The New York Times"
+categories: [strategy]
+subcategories:  [assay, execution]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/execution.jpg)
+
+## More info
+
+When Execution was first published, it changed the way we did our jobs by focusing on the critical importance of ``the discipline of execution`` the ability to make the final leap to success by actually getting things done. 
+
+**Larry Bossidy and Ram Charan** now reframe their message for a world in which the old rules have been shattered, radical change is becoming routine, and the ability to execute is more important than ever. Now and for the foreseeable future:
+
+- ``Growth will be slower``. But the company that executes well will have the confidence, speed, and resources to move fast as new opportunities emerge.
+- ``Competition will be fiercer``, with companies searching for any possible advantage in every area from products and technologies to location and management.
+- ``Governments will take on new roles in their national economies``, some as partners to business, others imposing constraints. Companies that execute well will be more attractive to government entities as partners and suppliers and better prepared to adapt to a new wave of regulation.
+- ``Risk management will become a top priority for every leader.`` Execution gives you an edge in detecting new internal and external threats and in weathering crises that can never be fully predicted.
+
+Execution shows how to link together people, strategy, and operations, the three core processes of every business. **Leading these processes is the real job of running a business, not formulating a "vision" and leaving the work of carrying it out to others.** 
+
+Bossidy and Charan show **the importance of being deeply and passionately engaged in an organization and why robust dialogues about people, strategy, and operations result in a business based on intellectual honesty and realism.**
+
+
+## Execution
+
+``Execution`` is often thought about as doing things more effectively, more carefully, or with more attention to the details:
+
+- ``Execution`` is a discipline, and integral to strategy.
+- ``Execution`` is the major job of the business leader.
+- ``Execution`` must be a core element of an organization’s culture.
+
+The **core processes are tightly linked together** and need to be **connected** to the **everyday realitie**s of the business by creating a discipline of execution around:
+
+- People
+- Strategy
+- Budgeting/Operations
+
+## Key elements of core processes
+
+The leader must be in charge of getting things done by running the three core processes: 1) by picking other leaders, 2) setting the strategic direction, and 3) conducting operations. Businesses that execute prosecute these core processes with rigor, intensity, and depth. But leading for execution is not about micromanaging or being “hands on,” it’s about active involvement and doing the things that leaders should be doing.
+
+
+### People
+
+- **Defines who’s going to achieve the strategy**. If you don’t get the people process right, you will never fulfill the potential of your business. `roles`
+- Use leadership messaging to guide the culture, **clarify the goals and issues, and to change employees’ attitudes**. `scrumMaster` and `productOwner`
+- Behaviors are beliefs turned into action, and behaviors deliver the results. `habits`
+- Focus on **how people execute**, not merely the outcomes. `metrics` 
+- Coach others and help them learn how to execute. `scrumMaster`
+- Hold people** accountable and provide constant feedback** on progress. `dailyScrum`
+- A big shortcoming is to be backward-looking; focused on evaluating the jobs people are doing today. Instead, focus on whether individuals can handle the jobs of tomorrow. `who-will-you-be-5yfn`
+
+### Strategy
+
+- **Defines** where the business wants to go. `productBacklog`
+- Corporate-level strategy is the vehicle for allocating resources among all of the business units. `time` and `mental-energy`
+- In shaping the plan, **involve all of the people** who are responsible for the strategic plan’s outcome. `scrum`
+- Set goals based on the organization’s capabilities for delivering results. An astonishing number of strategies fail because leaders don’t make a **realistic assessment** of whether the organization can execute the plan. `sprint`
+- Set milestones for the progress of the plan (they bring reality to the plan). `sprint-goal`
+
+
+### Budgeting/Operations
+
+- The operating plan provides the** path for people to execute** the plan. `kanban`
+- Set c**ontingency plans** to deal with the unexpected. `pavo-land`
+- Budgets often **have little to do with the reality** of execution because they’re merely numbers and gaming exercises. `spaceX-rule1`
+- Debating the assumptions is one of the most critical parts of any operation plan and review. `spaceX-rule1`
+
+
+If you have **leaders with the right behavior**, a culture that rewards execution, and a consistent system for getting the right people in the right jobs, the foundation is in place for operating and managing each of the core processes effectively. `leadership-by-action`
+
+## 7 essential behaviors
+
+
+1. **Know your people and your business**
+    - Leaders have to “live” their businesses and be in touch with the day-to-day realities.
+    - Search for people with an enormous drive for winning; with energy and enthusiasm for execution. These people get their satisfaction from getting things done.
+2. **Insist on realism**
+    - Realism is the heart of execution but many organizations are full of people who are trying to avoid or shade reality.
+    - You cannot have an execution culture without robust dialogue, which starts when people go in with open minds.
+    - Harmony can be the enemy of truth. A good motto is to observe “Truth over harmony.”
+3. **Set clear goals and priorities**
+    - Leaders who execute focus on very few clear priorities; ones that everyone can grasp.
+    - Getting things done through others is a fundamental leadership skill.
+4. **Follow through**
+    - The failure to follow through is widespread in business and a major cause of poor execution.
+    - Follow-through is a cornerstone of execution; ensuring that people are doing the things they committed to do.
+5. **Reward the doers**
+    - Many companies do such as poor job of linking rewards to performance that there’s little correlation at all.
+    - Reward not just strong achievements on numbers but also the desirable behaviors that people actually adopt.
+6. **Expand people’s capabilities**
+    - Coaching is the single most important part of expanding others’ capabilities, and the most effective way to coach is to observe a person in action and then provide specific useful feedback.
+7. **Know yourself**
+    - It takes emotional fortitude to be open to whatever information you need, whether it’s what you like to hear or not. The four core qualities that make up emotional fortitude are authenticity, self-awareness, self-mastery, and humility.
+
+## Links
+
+- [Book summary: Exection The Discipline of Getting Things Done by BOSSIDY, CHARAN](https://www.jfdperfsolutions.com/book-summary-execution-the-discipline-of-getting-things-done-by-bossidy-charan/){.external}
+- [Execution — The Discipline of Getting Things Done — Book Summary](https://medium.com/swlh/execution-the-discipline-of-getting-things-done-book-summary-7529cae05982){.external}

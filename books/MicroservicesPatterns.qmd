@@ -1,0 +1,31 @@
+---
+title: "Microservices Patterns"
+author: "albertprofe"
+subtitle: "Chris Richardson, 2020, Microservices Patterns: With examples in Java"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A comprehensive guide to designing and building microservices. Chris Richardson provides a wealth of practical patterns and best practices for building scalable and resilient microservices, with examples in Java."
+categories: [java]
+subcategories:  [programming, java, springboot, microservices, architecture]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/MicrosserivcesPatterns.png)
+
+## More info
+
+![Microservices Example ftgo](/images/springboot/Ftgo.png){width="80%"}
+
+- [Microservices Patterns](https://microservices.io/book){.external}
+- [Microservices Patterns GitHub](https://github.com/microservices-patterns/ftgo-application){.external}
+- [Microservices Patterns e-book](https://livebook.manning.com/book/microservices-patterns/chapter-1){.external}
+
+This book teaches enterprise developers and architects how to build applications with the microservice architecture. Rather than simply advocating for the use the microservice architecture, this clearly-written guide takes a balanced, pragmatic approach, exploring both the benefits and drawbacks.
+
+Microservices.io is brought to you by Chris Richardson. Experienced software architect, author of POJOs in Action, the creator of the original CloudFoundry.com, and the author of Microservices patterns.
+
+Chris helps clients around the world adopt the microservice architecture through consulting engagements, and training workshops.

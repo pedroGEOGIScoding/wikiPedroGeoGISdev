@@ -1,0 +1,203 @@
+---
+title: "Week 14: Beyond SCRUM"
+subtitle: SCRUM Week 14
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Beyond SCRUM delves into unconventional yet effective approaches to project management
+categories: [scrum, scrum-week14, beyond-scrum]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 14 - Beyond SCRUM**
+
+
+The article "Beyond SCRUM" delves into unconventional yet effective approaches to project management, drawing insights from **SpaceX and Big Tech**.
+
+SpaceX initially adopted **Lean Startup practices, engaging in unorthodox strategies like purchasing rocket spares from regular stores**.This departure from traditional aerospace norms allowed them to outcompete industry giants. **Elon Musk's Agile 5 steps** emphasize making requirements smarter, constantly refining processes, simplifying, accelerating cycle time, and automating. The accompanying video presentations provide a deeper understanding of these principles.
+
+In contrast, the exploration of how Big Tech manages projects reveals a diverse landscape where success varies based on company size and industry focus. Notably, **the absence of dedicated Project Managers or Product Owners in Big Tech emphasizes the role of Product Managers in defining strategy and execution steps**.
+
+Additionally, the mention of **LeSS (Large-Scale Scrum)** underscores the application of Scrum principles to multiple teams working collaboratively on a single product.
+
+:::
+
+
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 14 - Beyond SCRUM**
+
+SpaceX, Lean Startup, Unorthodox Strategies, Elon Musk's Agile 5 Steps, Product Managers, LeSS (Large-Scale Scrum), Project Management, Big Tech, Requirements, Simplify, Accelerate Cycle Time, Automate, Strategy, Execution, Kaizen, The Toyota Way, Scrum of Scrum, LeSS Framework.
+
+
+:::
+
+</br> </br>
+
+# Beyond SCRUM examples
+
+## SpaceX
+
+- [Is SpaceX using Scrum?](https://www.quora.com/Is-SpaceX-using-Scrum){.external}
+
+**Elevator Pitch**
+
+![](/images/scrum/elomusk_pitch_serchingrockets.png)
+
+## Approach
+
+![SpaceX is currently using a methodologies pool](/images/scrum/spacex.png){width=70%}
+
+At the very beginning, when they were just a startup, they used all **Lean Startup** tips to achieve the success. They did **unscalable things**, bought some spares for rockets in usual computer shops, made some spares by themselves, etc.
+
+::: {.column-margin}
+All of these were a total craziness for classical aerospace companies. But it was the key benefit how they competed mastodons, like **Lockheed** and **Boeing**.
+:::
+
+<mark>Testing of hypotheses, tight budgets, and continuous innovations made the appreciable contribution to company success.</mark>
+
+> All Elon’s companies use **Silicon Valley startup approach** to achieve success. And this is what distinguishes them among all other classical companies from the industry
+
+Perhaps, it’s [not a classical](https://www.nextbigfuture.com/2018/12/reverse-engineering-spacex-to-learn-how-to-speed-up-technological-development.html) ``Scrum`` approach like software companies use, but it’s from the field of **Kaizen and The Toyota Way**. This is how startups should behave.
+
+## Difficulties
+
+![](/images/scrum/spacex-anyone-eng.png)
+
+## Elon Musk SpaceX Agile 5 steps
+
+::: {.column-margin}
+
+![](/images/scrum/eng_design_princiles_elon_min-768x1024.png)
+:::
+
+- **Make requirements less dumb**
+
+  - Your requirements are dumb especially if a smart person gives them to you because you may not question them enough. Everyone is wrong sometimes.
+  - People will put you in an unnecessarily small box. Make your box bigger.
+  - Requirements must have an owner (a person not a department) who is responsible for maintaining information about the need to continue.
+
+- Always be **deleting** part of the process
+
+  - If you are not occasionally adding things back in, you are not deleting enough.
+  - The bias tends to be adding things to processes which are “in case we need it”.
+  - This is how processes get out of control and lengthier than truly needed
+
+
+- **Simplify** or optimize
+
+  - It is very common for smart people to optimize processes that should not exist.
+  - We are trained to answer questions and solve problems… don’t be afraid to say that this problem is dumb
+
+- **Accelerate cycle time**
+
+  - Go faster through each process.
+  - Don’t do this before you get through the first 3 steps
+
+
+- **Automate**
+
+  - Find ways to achieve process steps with little or no human intervention or cycle time.
+  - Create automated feedback and process controls
+
+## Presentation
+
+{{< video https://youtu.be/t705r8ICkRw >}}
+
+{{< video https://youtu.be/SA8ZBJWo73E >}}
+
+
+# How Big Tech Runs Tech Projects (2022)
+
+- [How Big Tech Runs Tech Projects and the Curious Absence of Scrum](https://blog.pragmaticengineer.com/project-management-at-big-tech/){.external}
+
+The summary of how companies manage projects is “it depends”. And this should not be very surprising. <mark>A newly founded startup with five people will see success in different ways from a 1,000-person, slowly growing non-tech company</mark>. Even within the group of large non-tech companies, some experiment with novel approaches, while others stick to doing the same thing that has been working well enough for years.
+
+## How Big Tech Runs Projects
+
+![Project Management Approaches in the Industry](/images/scrum/big_tech_management.png)
+
+Big Tech differ in how they approach executing tech projects, compared to the rest of the industry. I gathered data by talking with people at well-known publicly traded tech companies. Here is how they typically get things done:
+
+![Project Management Approaches in the Industry](/images/scrum/big_tech_management2.png)
+
+## Product Managers: Yes, Project Managers: No
+
+Another curious difference between **Big Tech and everyone else is the role of Product Managers, and the lack of Project Managers or Product Owners** who are dedicated to teams.
+
+The role of product managers at these companies is defining <mark>the strategy at the team – the “why” – and the steps to execute this strategy – the “how”</mark>. As **Facebook product manager Will Lawrence** [phrases this](https://productlife.to/p/-execution-at-facebook?ref=blog.pragmaticengineer.com){.external}:
+
+> “The role of a product manager is to figure out what game we're playing and how we're going to play it. Strategy is choosing the game we're playing. It’s finding worthwhile areas to invest in and creating a compelling vision for how we can succeed in this game. (...) Execution is how we play the game. It’s the day-to-day processes, decisions and actions we take to make progress towards our mission.”
+
+![Ben Erez post, PM facebook](/images/scrum/PM_Facebook.png){width="60%"}
+
+<a href="https://twitter.com/intent/tweet?button_hashtag=1420495389770145795&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #1420495389770145795</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+# Scrum of scrum: Less
+
+- [Less](https://less.works/)
+
+![Why Less framework](/images/scrum/why-less-framework.png)
+
+<mark>LeSS is Scrum applied to many teams working together on one product.</mark>
+
+`LeSS is Scrum—Large-Scale Scrum (LeSS)` isn’t new and improved Scrum. And it’s not Scrum at the bottom for each team, and something different layered on top. Rather, it’s about figuring out how to apply the principles, purpose, elements, and elegance of Scrum in a large-scale context, as simply as possible.
+
+Like Scrum and other truly agile frameworks, LeSS is *“barely sufficient methodology”* for **high-impact reasons**.
+
+> Scaled Scrum is not a special scaling framework that happens to include Scrum only at the team level. Truly scaled Scrum is Scrum scaled.
+
+- …applied **to many teams—Cross-functional**, cross-component, full-stack feature teams of 3–9 learning-focused people that do it all—from UX to code to videos—to create done items and a shippable product.
+- …working **together**—The teams are working together because they have a common goal to deliver one common shippable product at the end of a common Sprint, and each team cares about this because they are a feature team responsible for the whole, not a part.
+- …on **one product**—What product? A broad complete end-to-end customer-centric solution that real customers use. It’s not a component, platform, layer, or library.
+
+# The Scrum and Agile Identity Crisis 2025
+
+{{< video https://youtu.be/jzFMUCN1OLo >}}
+
+The podcast episode titled **"The Scrum and Agile Identity Crisis"** hosted by `Maria Chec` explores the <mark>current challenges and transformations within the Agile framework as it approaches 2025</mark>.
+
+::: {.column-margin}
+
+![](/images/scrum/beyond-scrum-2025.jpg)
+:::
+
+Key points discussed include:
+
+- **Agile's Stagnation**: Although Agile is not failing, it is experiencing stagnation due to an over-reliance on certifications and rigid frameworks. Teams are encouraged to adopt a more flexible, context-driven approach to foster true collaboration and innovation.
+
+- **Role of Product Ops**: The perception of Product Operations has declined, yet its value remains crucial for managing metrics and workflows at an organizational level. Clear responsibilities and alignment with strategic goals are essential for maximizing its effectiveness.
+
+- **SAFe Framework**: The Scaled Agile Framework (SAFe) is debated among practitioners. While it can enhance alignment in large teams, it risks becoming bureaucratic. Organizations should customize frameworks to suit their needs rather than rigidly follow them.
+
+- **Kanban's Potential**: Kanban is highlighted as an often-overlooked tool that offers a flexible, flow-based approach to workflow management, helping teams reduce bottlenecks and maintain focus on delivering value.
+
+- **Future of Agile**: The episode advocates for a shift towards "Collaboration 2.0," emphasizing the importance of psychological safety, open communication, and shared understanding over traditional rigid frameworks. This approach aims to create high-performing teams that adapt practices to their unique needs.
+
+<div class="substack-post-embed"><p lang="en">The Scrum and Agile Identity Crisis with Maria Chec, Host of Agile State of Mind by Aakash Gupta</p><p>From mastering the basics of Scrum and Agile roles to addressing their evolving place in large firms, we explored advanced scaling frameworks, user story mapping, and the delicate collaboration</p><a data-post-link href="https://www.news.aakashg.com/p/the-scrum-and-agile-identity-crisis">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+
+Citations: [The Scrum and Agile Identity Crisis with Maria Chec, Host of Agile State of Mind](https://www.news.aakashg.com/p/the-scrum-and-agile-identity-crisis){.external target='_blank'}
+
+
+# References
+
+- [SCRUM: week3](https://sites.google.com/view/gestioprojectes/llegir/setmana3){.external}
+- [Omelek island](https://www.google.com/maps/place/Omelek/@39.2365592,156.1759816,15214886m/data=!3m1!1e3!4m6!3m5!1s0x65ac1cca85935f45:0xf70d55b30051cef!8m2!3d9.0480678!4d167.7428834!16zL20vMDgxcTMw?entry=ttu){.external}
+- [Inside the eight desperate weeks that saved SpaceX from ruin](https://arstechnica.com/science/2018/09/inside-the-eight-desperate-weeks-that-saved-spacex-from-ruin/){.external}
+- [Scrum Beyond](https://scrum.academy/beyond/){.external}
+- [Beyond Scrum — What Happens after you have Mastered Scrum?](hhttps://medium.com/serious-scrum/beyond-scrum-what-happens-after-you-have-mastered-scrum-5e5631b64f39){.external}
+- [Beyond Scrum : Why implementing scrum isn’t the magic bullet to your business woes](https://www.adaptovate.com/agile/scrum/why-implementing-scrum-isnt-the-magic-bullet/){.external}
+
+
+

@@ -1,0 +1,325 @@
+---
+title: "Lab#SE03-3: Library/Book, Expand Model"
+subtitle: "Java SE Lab 03 part 3"
+author: [albertprofe, Marc P.]
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: "Java SE Lab 03, part 3 Expand Model"
+categories: [javase, lab, inherence]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#SE03-3: LibraryProject Expand Model**
+
+In ``LibraryProject``, the ``User`` and ``Staff`` classes could have different ``operations`` that they are **authorize/able to perform.**
+
+The ``User`` class could have the following operations:
+
+- Search for books
+- Borrow a book
+- Return a book
+- Check the status of borrowed books
+- Update personal information
+
+
+The ``Staff`` class could have the following operations:
+
+- Add a new book
+- Remove a book
+- Update the book details
+- Register a new user
+- Remove a user
+- Update the user details
+- Generate reports on library operations
+
+To ``implement`` these operations, we could define three separate ``interfaces``: 
+
+- UserOperations
+- StaffOperations
+- GeneralOpeations
+
+:::
+
+---
+
+
+## Interfaces
+
+
+The three interfaces ``GeneralOperations``, ``UserOperations``, and ``StaffOperations`` provide a clear separation of concerns and responsibilities within the library management system.
+
+::: {.column-margin}
+In a library project, having separate interfaces for different types of operations **will help to keep the code organized and maintainable**.
+:::
+
+> ``GeneralOperations`` ``interface`` provides methods that are commonly used by both users and staff, such as searching for books and creating an account.
+
+> ``UserOperations`` ``interface`` includes methods that are specific to users, such as updating personal information, borrowing and returning books, and checking their borrowed books.
+
+> ``StaffOperations`` ``interface`` includes methods that are specific to staff members, such as adding, removing, and updating book details, as well as registering and updating user details and generating reports.
+
+By separating these different functionalities into interfaces, **it becomes easier to implement and maintain the system.**
+
+::: {.column-margin}
+For example, a developer could create different classes that implement the UserOperations interface, such as Student or Faculty, which will all have their own implementation of the methods defined in the interface.
+:::
+
+## Abstract class
+
+
+Finally, the ``LibraryMember`` abstract class is a parent class for users and staff members, which includes common fields such as id, address, and phoneNumber.
+
+By defining these fields in an ``abstract`` class, it allows for different types of users and staff members to inherit them and **avoid duplication of code.**
+
+
+
+```java
+public interface GeneralOperations {
+    public void searchBooks(String query);
+    public void createAccount();
+    
+}
+
+public interface UserOperations {
+    public void updatePersonalInformation();
+    public void borrowBook(Book booLab#SE00-3: Library Modelk);
+    public void returnBook(Book book);
+    public void checkBorrowedBooks();
+}
+
+public interface StaffOperations {
+    public void addBook(Book book);
+    public void removeBook(Book book);
+    public void updateBookDetails(Book book);
+    public void registerUser(User user);
+    public void removeUser(User user);
+    public void updateUserDetails(User user);
+    public void generateReports();
+}
+
+```
+
+::: {.column-margin}
+
+Using ``interfaces`` and ``abstract`` classes in this way can make the code more modular and easier to maintain, as it allows for `greater flexibility and extensibility.`
+:::
+
+## UML
+
+### Previous UML proposals
+
+The **two UML diagrams** describe the **core features** of a libraryProject, specifically the **use cases** for borrowing and issuing books, as well as the roles and responsibilities of users and librarians/staff members.
+
+> The first diagram, ``Core features: borrow and issue``, depicts the **interaction** between the user and the system, as well as the system and the librarian:
+
+
+- [Core features: borrow and issue](/javase/selab3-1.qmd#core-features-borrow-and-issue)
+
+> The second diagram, ``Core features: user and librarian (staff)``, expands on the **roles** and **responsibilities** of users and librarians/staff members.
+
+- [Core features: user and librarian (staf)](/javase/selab3-1.qmd#core-features-user-and-librarian-(staf))
+
+### Solving discussion: actors UML
+
+THE UML diagram describes our LibraryProject that includes three interfaces: GeneralOperations, UserOperations, and StaffOperations.
+
+- ``GeneralOperations`` provides two methods, createAccount() and searchBooks(String query), that allow users to create an account and search for books.
+- ``UserOperations`` provides four methods that allow users to update their personal information, borrow and return books, and check the books they have borrowed.
+- ``StaffOperations`` provides several methods that allow staff to add, remove, and update books, as well as register, remove, and update user details and generate reports.
+
+
+
+::: {.column-page-right}
+
+<div class="mermaidContent">
+
+
+```{mermaid}
+classDiagram
+
+ class GeneralOperations {
+   <<interface>>
+    +createAccount(): void
+    +searchBooks(query: String): void 
+  }
+
+   class UserOperations {
+     <<interface>>
+    +borrowBook(book: Book): void
+    +returnBook(book: Book): void
+    +checkBorrowedBooks(): void
+  }
+
+  class LibraryMember {
+    <<abstract>>
+    +id: String
+    +address: String
+    +phoneNumber: String
+  }
+
+  class Member {
+    <<abstract>>
+    +name: String
+    +surname: String
+    nationality: String
+    +birthdate: Date
+  
+  }
+
+ class StaffOperations {
+     <<interface>>
+    +addBook(book: Book): void
+    +removeBook(book: Book): void
+    +updateBookDetails(book: Book): void
+    +registerUser(user: User): void
+    +removeUser(user: User): void
+    +updateUserDetails(user: User): void
+    +generateReports(): void
+  }
+
+  class User {
+    -libraryCardNumber: String
+    -borrowedBooks: ArrayList<Book>
+    +User()
+  }
+
+   class Author {
+    -deathdate: Date
+    -books: Book
+    +author()
+  }
+  
+  
+  class Staff {
+    -staffId: String
+    -position: String
+    -registeredUsers: ArrayList<User>
+    -libraryBooks: ArrayList<Book>
+    +Staff()
+  }
+
+  class Book {
+    -title: String
+    -author: Author
+    -publisher: String
+    -year: int
+    -isbn: String
+    -status: String
+    +Book()
+    +getStatus(): String
+  }
+  
+  Author *-- Book
+  UserOperations <|..  User 
+  GeneralOperations <|..  LibraryMember  
+  LibraryMember <|.. User
+  LibraryMember <|.. Staff
+  Member <|.. Author
+  Member <|.. LibraryMember
+  StaffOperations  <|.. Staff
+
+```
+
+</div>
+
+:::
+
+
+### Solving discussion: actors UML & core-model
+
+
+![Actors and core-model UML](/images/javase/actorsuml-issuing.png){width="100%"}
+
+::: {.column-margin}
+The diagram also includes four classes: ``User``, ``Author``, ``Staff``, and ``Book``.
+:::
+
+::: {.column-margin}
+**User represents a library member with a library card number** and a list of borrowed books. Author represents the author of a book, with details including their name, nationality, and birth and death dates.
+:::
+
+::: {.column-margin}
+**Staff represents a staff member with a staff ID**, position, and lists of registered users and library books. Book represents a book with details including its title, author, publisher, publication year, ISBN, and status.
+:::
+
+![Actors and core-model UML](/images/javase/actorsuml-borrowing.png){width="100%"}
+
+
+
+::: {.column-page-right}
+
+<div class="mermaidContent">
+
+
+```{mermaid}
+classDiagram
+
+
+   class UserOperations {
+     <<interface>>
+    +borrowBook(book: Book): void
+    +returnBook(book: Book): void
+    +checkBorrowedBooks(): void
+  }
+
+  class Member {
+    <<abstract>>
+    +name: String
+    +surname: String
+    +nationality: String
+    +birthdate: Date
+    +abstract printData(): void
+    +calculateAge(): int
+  }
+
+  class User {
+    -email: String
+    -libraryCardNumber: String
+    -borrowedBooks: ArrayList<Book>
+    +user()
+  }
+
+
+ class GeneralOperations {
+   <<interface>>
+    +createAccount(): void
+    +searchBooks(query: String): void 
+  }
+
+   class Author {
+    -deathdate: Date
+    -books: List~Book~
+    +author()
+  }
+  
+  class Librarian {
+    -staffId: String
+    -position: String
+    -address: String
+    -phoneNumber: String
+    -salary: double
+    +librarian()
+  }
+
+
+    UserOperations <|..  User
+    Member <|.. User
+    Member <|.. Author
+    Member <|.. Librarian
+    GeneralOperations <|..  User
+    GeneralOperations <|..  Librarian 
+
+
+```
+</div>
+
+:::
+
+
+
+

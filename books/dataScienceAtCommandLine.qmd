@@ -1,0 +1,21 @@
+---
+title: "Data Science at the Command Line"
+author: "albertprofe"
+subtitle: "Jeroen Janssens, 2014, Data Science at the Command Line: Facing the Future with Time-Tested Tools"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "An innovative book that teaches how to perform data science tasks at the command line, streamlining workflows and making them more efficient. Jeroen Janssens provides a comprehensive guide for data scientists who want to work smarter, not harder."
+categories: [devops]
+subcategories: [programming, data analysis, bash, linux, devops]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/dataScienceAtCommandLine.jpeg)
+
+## More info
+
+

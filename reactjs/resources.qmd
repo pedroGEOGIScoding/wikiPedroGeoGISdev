@@ -1,0 +1,25 @@
+---
+title: "ReactJS Resources"
+subtitle: Readings
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: ReactJs Resources and Readings
+categories: [reactjs, resources, readings]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![MarkUp Resources](/images/home/frontimagealbertprofeweb-readings.png){width=50%}
+
+## Webs
+
+- [Awesome React](https://github.com/enaqx/awesome-react){.external}
+- [React From The Inside Out](https://developmentarc.gitbooks.io/react-indepth/content/react_basics/introduction.html){.external}
+- [React Docs BETA Official](https://beta.reactjs.org/){.external}
+- [React Tutorial w3 schools](https://www.w3schools.com/react/default.asp){.external}
+- [React Hooks in Action, With Suspense and Concurrent Mode](https://livebook.manning.com/book/react-hooks-in-action/chapter-1/3){.external}
+

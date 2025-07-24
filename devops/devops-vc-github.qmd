@@ -1,0 +1,85 @@
+---
+title: "GitHub"
+subtitle: Software code version control
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: GitHub is a software development platform in the cloud. It's used for storing, tracking, and collaborating on software projects.
+categories: [devops, github]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![GitHub logo](/images/devops/GitHub-Emblem.png){width=60%}
+
+## Overview
+
+[GitHub](https://github.com/) is a software development platform in the cloud. It's used for storing, tracking, and collaborating on software projects.
+
+GitHub users create accounts, upload files, and create coding projects. But the real work of GitHub happens when users begin to collaborate.
+
+## Install CLI gh
+
+[Installing gh on Linux and BSD](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
+
+``` {.bash .code-overflow-wrap} 
+type -p curl >/dev/null || sudo apt install curl -y
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+&& sudo apt update \
+&& sudo apt install gh -y
+```
+
+if for some reasson `gh` does not install, try it another time: 
+
+``` bash
+sudo apt update
+sudo apt install gh
+```
+
+[GitHub CLI manual](https://cli.github.com/manual/)
+
+## Login and logout to GitHub.com from CLI gh on linux
+
+### Global variables
+
+[Creating global credential, if working in a VM](/markup/mulab1.qmd)
+
+GitHub tasks:
+
+**Create repository, commit and push** files to repository with <mark>Sync tool</mark>. To write our repository you need to:
+
+- Create Token on GitHub.com: [Creating a personal access token](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+- Use this token on your Visual Code - Git, [link](https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git):
+
+    ```bash
+    $git config --global user.name "Mona Lisa
+    $git config --global user.mail "monalisa@davinci.com"
+    $git config --global user.paasword "4WTVEG43_Q34WG435GAWER4_Q4vsrsrggr_3D44"
+
+    ```
+
+### CLI gh
+
+![Log in CLI set-up](/images/devops/gh-linux-to-cloud-1.png){width=100%}
+
+![Redirection to browser and input code](/images/devops/gh-linux-to-cloud-2.png){width=100%}
+
+![Login succesfull](/images/devops/gh-linux-to-cloud-3.png){width=100%}
+
+![Log out](/images/devops/gh-linux-to-cloud-4.png){width=1000%}
+
+---
+
+[more info on](https://sites.google.com/view/devopscifo/git/github)
+
+### Register an existing account with a token with IntelliJ IDEA 2022.3
+
+IntelliJ IDEA lets you manage [Git](https://www.jetbrains.com/help/idea/2022.3/using-git-integration.html) projects hosted on [GitHub](https://github.com/) directly from the IDE: [clone repositories](https://www.jetbrains.com/help/idea/2022.3/manage-projects-hosted-on-github.html#clone-from-GitHub), [share your projects](https://www.jetbrains.com/help/idea/2022.3/manage-projects-hosted-on-github.html#share-on-GitHub), [create forks](https://www.jetbrains.com/help/idea/2022.3/fork-github-projects.html#fork), [share code through gists](https://www.jetbrains.com/help/idea/2022.3/share-code-with-gists.html), [create pull requests](https://www.jetbrains.com/help/idea/2022.3/work-with-github-pull-requests.html#create-pull-request) and [review incoming pull requests](https://www.jetbrains.com/help/idea/2022.3/work-with-github-pull-requests.html#incoming_pull_requests).
+
+[Register an existing account with a token](https://www.jetbrains.com/help/idea/2022.3/github.html)

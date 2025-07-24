@@ -1,0 +1,36 @@
+---
+title: "Java SE Vocabulay"
+subtitle: Technical terms and definitions
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [vocabulary, javase]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Technical terms and definitions](/images/home/frontimagealbertprofeweb-vocabulary.png){width=60%}
+
+## Vocabulary 
+
+| Term | Definition |
+|:---|:---|
+| comments | A multi-line comment begins with /*and ends with*/, and may span multiple lines. An end-of-line (single-line) comment begins with // and lasts till the end of the current line. Comments are NOT executable statements and are ignored by the compiler. But they provide useful explanation and documentation. I strongly suggest that you write comments liberally to explain your thought and logic. |
+| statement | A programming statement performs a single piece of programming action. It is terminated by a semi-colon (;), just like an English sentence is ended with a period, as in Lines 6. |
+| block |  A block is a group of programming statements enclosed by a pair of braces {}. This group of statements is treated as one single unit. There are two blocks in the above program. One contains the body of the class Hello. The other contains the body of the main() method. There is no need to put a semi-colon after the closing brace. |
+| whitespaces | Blank, tab, and newline are collectively called whitespace. Extra whitespaces are ignored, i.e., only one whitespace is needed to separate the tokens. Nonetheless, extra whitespaces improve the readability, and I strongly suggest you use extra spaces and newlines to improve the readability of your code. |
+| case sensitivity |  Java is case sensitive - a ROSE is NOT a Rose, and is NOT a rose. The filename, which is the same as the class name, is also case-sensitive. |
+|  [java se](/javase/se-what-basics)          | A platform for developing and running Java apps.  |
+| Design Patterns   | Reusable solutions to common software challenges.|
+| [java OOP](/javase/sse-what-principles)          | Object-oriented programming in the Java language.|
+|  [java object](/javase/se-concepts-objects)      | Instances of classes in the Java programming lang.|
+| Coupling          | Degree of dependency between different components.|
+
+
+
+: Java SE vocabulary {tbl-colwidths="[20,80]"}
+

@@ -1,0 +1,23 @@
+---
+title: "My Life as Quant"
+author: "albertprofe"
+subtitle: "Emanuel Derman, 2007, My life as a quant "
+date: "11/5/2004"
+date-modified: "3/22/2023"
+date-format: full
+description: "A memoir by Emanuel Derman, providing insights into the world of quantitative finance and the author's experiences as a physicist-turned-Wall-Street-quant."
+categories: [finance]
+subcategories: [biography]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/MyLifeasQuant.jpg)
+
+## More info
+
+In My Life as a Quant, Emanuel Derman relives his exciting journey as one of the first high-energy particle physicists to migrate to Wall Street. Page by page, Derman details his adventures in this field--analyzing the incompatible personas of traders and quants, and discussing the dissimilar nature of knowledge in physics and finance. Throughout this tale, he also reflects on the appropriate way to apply the refined methods of physics to the hurly-burly world of markets.
+
+- [My Life as Quant](https://www.goodreads.com/en/book/show/41397){.external}

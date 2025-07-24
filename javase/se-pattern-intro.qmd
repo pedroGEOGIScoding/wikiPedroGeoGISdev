@@ -1,0 +1,100 @@
+---
+title: "Java Patterns: Types"
+subtitle: Java Fundamentals and Patterns
+author: [albertprofe, carla velasco]
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Abstract Facotory
+categories: [javase, design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+📘 **Design-patterns**
+
+In Java, a design pattern is a **general repeatable solution to a commonly occurring problem in software design**.
+
+A design pattern is <mark>not a finished design</mark> that can be transformed directly into code, but rather it is a description or template that can be used to solve a problem that is commonly encountered in software development.
+
+:::
+
+---
+
+## Design Patterns 
+
+There are many different design patterns that have been identified and documented, and each pattern provides a different solution to a specific problem.
+
+Some of the most important design patterns in Java include:
+
+- the singleton,
+- the factory,
+- the abstract factory
+- the observer,
+- and the builder.
+
+These patterns are commonly used in Java because they **provide solutions to common problems that are encountered in software development,** and they can help to make your code more efficient, reusable, and maintainable.
+
+::: {.callout-important}
+## Patterns are NOT a gurantee
+Design patterns **do not guarantee an absolute solution to a problem**.  
+They provide clarity to the system architecture and the **possibility** of building a better system.
+:::
+
+
+## Design Pattern Classification
+
+We have 3 main types of Design Patterns:
+
+### Creational
+
+It deals with the **creation of objects and classes**. They provide a way **to create objects while hiding the complexity of the actual creation process**. Some creational design patterns are:
+
+  - [Singleton](/javase/se-pattern-singleton.qmd)
+  - [Factory](/javase/se-pattern-factory.qmd)
+  - [Abstract Factory](/javase/se-pattern-abstractfactory.qmd)
+  - [Builder](/javase/se-pattern-builder.qmd) 
+
+### Structural
+
+It deals with object **composition**. They provide a way **to compose objects and classes in a way that is flexible and efficient**. Some structural design patterns are:
+
+  - [Facade](/javase/se-pattern-facade.qmd)
+  - [Bridge](/javase/se-pattern-bridge.qmd)
+  - [Decorator](/javase/se-pattern-decorator.qmd)
+  - [Composite](/javase/se-pattern-composite.qmd)
+
+### Behavioral
+
+It deals with **communication between objects and classes**. They provide a way to define the **communication between objects in a way that is decoupled from the actual objects that are communicating**. Some examples of behavioural patterns are:
+
+  - [Observer](/javase/se-pattern-observer.qmd)
+  - [Strategy](/javase/se-pattern-strategy.qmd)
+  - [State](/javase/se-pattern-state.qmd)
+  - [Commander](/javase/se-pattern-commander.qmd)
+
+## Advantage of design patterns
+
+- They are **reusable** in multiple projects.
+- They provide the solutions that help to **define** the system **architecture**.
+- They capture the software engineering **experiences**.
+- They provide **transparency** to the design of an application.
+- They are **well-proved and testified solutions** since they have been built upon the knowledge and experience of expert software developers.
+
+
+::: {.callout-note}
+## When should we use the design patterns?
+We **must use the design patterns during the analysis and requirement** phase of SDLC(Software Development Life Cycle).
+
+Design patterns ease the analysis and requirement phase of SDLC by providing information based on prior hands-on experiences.
+:::
+
+
+## Design Patterns Cheat-sheet
+
+![Design Patterns Cheat-sheet](../images/javase/design-patterns.png){width=70%}

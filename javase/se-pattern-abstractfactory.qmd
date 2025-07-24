@@ -1,0 +1,18 @@
+---
+title: "Abstract Factory"
+subtitle: Java Fundamentals and Patterns
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Abstract Factory Creational Design-Pattern
+categories: [javase, abstract-factory, design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+About this site
+
+

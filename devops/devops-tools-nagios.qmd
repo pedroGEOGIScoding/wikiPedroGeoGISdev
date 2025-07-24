@@ -1,0 +1,70 @@
+---
+title: "Nagios"
+subtitle: Nagios
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Maven
+categories: [devops, nagios]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **What is Nagios**
+
+**Nagios** is one of the top **DevOps tools used for monitoring purposes**.
+
+It monitors the entire infrastructure that includes the system, servers, applications, networking protocols, etc. It is an open-source tool that is used by most of big companies. 
+
+:::
+
+# Overview
+
+Nagios Add-on Products extend Core’s functionality with Nagios agents. You can retrieve the code for any of these agents from our [GitHub](https://github.com/NagiosEnterprises){.external target='_blank'}.
+
+
+- **Nagios Cross Platform Agent (NCPA)**
+  - A cross-platform monitoring agent that can be installed on Windows, Linux/Unix, and Mac OS/X machines. NCPA features active and passive checks, remote management, and a local monitoring interface. 
+- **Nagios Remote Plugin Executor (NRPE)**
+  - An agent that allows you to remotely execute Nagios plugins on Linux/Unix machines and  monitor remote machine metrics (disk usage, CPU load, etc.). NRPE can also communicate with Windows agent add-ons like NSClient++, so you can check metrics on remote Windows machines. 
+- **Nagios Remote Data Processor (NRDP)**
+  - NRDP is a flexible data transport mechanism and processor for Nagios that uses standard port protocols (HTTP(S) and XML) and can be implemented as a replacement for NSCA. Designed with a simple and robust architecture, NRDP can be easily extended and customized to fit individual users’ needs.  
+- **Nagios Data Output Utilities (NDOUtils)**
+  - NDOUtils is an add-on that lets you store current and historical status and event information from one or more Nagios instances on a MySQL/MariaDB database. Several community add-ons use this as one of their data sources. 
+- **Nagios Service Check Acceptor (NSCA)**
+  - NSCA allows you to integrate passive alerts and checks from remote machines and applications with Nagios. This agent is useful for processing security alerts as well as deploying redundant and distributed Nagios setups. 
+
+
+# Why Nagios is so popular
+
+**Nagios** is a popular choice among **DevOps professionals** due to several factors.
+
+Firstly, <mark>it offers comprehensive monitoring capabilities, allowing users to monitor their entire IT infrastructure, including servers, applications, services, and network devices.</mark>
+
+::: {.column-margin}
+**Nagios**' combination of comprehensive monitoring, customization, alerting, and scalability contributes to its popularity among DevOps professionals.
+:::
+
+Secondly, <mark>**Nagios**' flexible and customizable nature enables users to define their own monitoring checks and thresholds, tailored to their specific needs.</mark>
+
+Additionally, **Nagios** provides real-time alerting and notifications, allowing users to quickly respond to incidents and outages. The platform also offers robust reporting and visualization features, helping users gain insights into their infrastructure's performance and trends over time. Its active [community](https://support.nagios.com/forum/) and extensive [documentation](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/) further support users in troubleshooting and learning.
+
+Moreover, **Nagios' modular architecture allows for easy integration with third-party tools and extensions**, extending its functionality and adaptability.
+
+Lastly, **Nagios**' scalability and support for distributed monitoring make it suitable for organizations of all sizes, from small businesses to large enterprises.
+
+
+
+
+# References
+
+- [The Open Source Standard In Monitoring](https://www.nagios.org/){.external target='_blank'}
+
+
+

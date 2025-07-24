@@ -1,0 +1,122 @@
+---
+title: "Git"
+subtitle: Software code version control
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Git is a version control system 
+categories: [devops, git]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![Git logo](/images/devops/gitlogo.png){width=60%}
+
+## What is Git
+
+- **what?** git is a version control system [(The git official repo)](https://git-scm.com/)
+- **for what?** git is used for source code management  
+- **how?** commits are snapshots, not diffs! [(The Git Object Model)](http://shafiul.github.io/gitbook/1_the_git_object_model.html) and [(Git Internals - Git Objects)](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
+- **where?** git is a key-value store  [(Key Value Store Concept)](https://www.bytefusion.de/2019/07/14/how-git-uses-key-value-store/)
+
+::: {.callout-note}
+## Linux Torwalds
+
+In many ways you can just see git as a **filesystem**—it's content-addressable, and it has a notion of versioning, but I really designed it coming at the problem from the viewpoint of a **filesystem** person (hey, kernels is what I do), and I actually have absolutely **zero interest in creating a traditional SCM system**.
+:::
+
+::: {.summary}
+📘 **Git**
+Git is a **version control system (also called a source control system)** that allows programmers and other people working with text files to coordinate changes while working independently.
+
+Git also supports binary assets such as pictures, but those formats don’t support the line-by-line version management that makes version control really powerful.
+:::
+
+## Key-ideas
+
+- Git [stores](https://batmat.github.io/presentations/git-next-level/prez.html)  unique content and no duplicates
+- Each key-value pair [entry](https://github.blog/2020-12-17-commits-are-snapshots-not-diffs/) contains a unique hash as a key: SHA-ID.
+- There are only three types of values:
+    1. blobs for files
+    2. tree for directories
+    3. commit for commit messages
+        1. [ commit message](https://blog.git-init.com/immutable-snapshot-in-git/)
+        2. author, including a timestamp
+        3. committer, including a timestamp
+        4. reference to parent commit
+
+[more info on ](https://sites.google.com/view/devopscifo/git)
+
+## git is immutable
+
+![In short, immutable means: unchanging over time or unable to change](/images/devops/dictionary-immutable.png)
+
+> **Immutable object**
+> In object-oriented and functional programming, an immutable object is an object whose state cannot be modified after it is created. This is in contrast to a mutable object, which can be modified after it is created (from [Wikipedia](https://en.wikipedia.org/wiki/Immutable_object?ref=blog.git-init.com)).
+
+![Commits can never be tampered with or modified once they are created!](/images/devops/commit-snapshots.001.jpeg)
+
+So, what does immutable snapshots refer to? In Git, **all commits are immutable snapshots of your project (ignored files excluded) at a specific point in time**.
+
+This means that each and <mark>every commit contains a unique representation of your entire project, not just the modified or added files (deltas)</mark>, at the time the commit was created. Apart from the actual files, each commit is also infused with relevant metadata; all of which is immutable!
+
+check oot this article for more [info](https://blog.git-init.com/immutable-snapshot-in-git/) about immutability
+
+## Install git linux
+
+**Debian / Ubuntu / Mint ``apt-get``**
+
+Git packages are available via apt, go to terminal and from your shell, install Git using ``apt-get``:
+
+``` bash
+$ sudo apt-get update
+$ sudo apt-get install git
+```
+
+Verify the installation was successful by typing git --version:
+
+``` bash
+$ git --version
+git version 2.9.2
+```
+
+Configure your Git username and email using the following commands, replacing Emma's name with your own. These details will be associated with any commits that you create:
+
+``` bash
+$ git config --global user.name "Emma Paris"
+$ git config --global user.email "eparis@atlassian.com"
+```
+
+## Git use
+
+![Diagram showing some common Git operations by [Daniel Kinzler wikicommons](https://commons.wikimedia.org/wiki/User:Duesentrieb "User:Duesentrieb")](https://upload.wikimedia.org/wikipedia/commons/d/d8/Git_operations.svg){width=70%}
+
+- ``git init``: creates or converts an existing into a new Git repository.
+- ``git pull``: fetches remote changes into the local clone, and merges them into the current working files.
+- ``git checkout``: replaces the current working files with files from a branch.
+- ``git checkout --track``: creates a local branch from a remote branch, links them, and replaces the current working files with files from that branch.
+- ``git fetch``: downloads changes from a remote repository into the local clone
+- ``git reset``: makes the current branch point to some specific revision or branch.
+- ``git reset --hard``: makes the current branch point to some specific revision or branch, and replaces the current working files with the files from that branch.
+- ``git merge``: merges files from a given branch into the current branch.
+- ``git push``: uploads changes from local branches to the respective remote repositories.
+- ``git add``: puts current working files into the stage (aka index or cache)
+- ``git commit``: commits staged changes to a local branch
+- ``git commit -a``: commits all modified files to a local branch (shorthand for "git add" and "git commit")
+
+## Git cheat-sheet
+
+[Git-cheat-sheet-Red-Hat-Developer](/images/devops/Git-cheat-sheet-Red-Hat-Developer.pdf)
+
+
+[Download Git Cheat-sheet Altassian](/images/devops/SWTM-2088_Atlassian-Git-Cheatsheet%20(1).pdf)
+
+![Git Cheat-sheet](/images/devops/git-cheat-sehhet.png)
+
+
+
+

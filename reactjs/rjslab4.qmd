@@ -1,0 +1,308 @@
+---
+title: "Lab#RE04-1: todo & server"
+subtitle: ReactJS labs
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: labs
+categories: [reactjs, lab, Lab#RE04]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **React JS Lab#RE04-1: Feathers JS / Java Spring Boot / AWS**
+
+In this lab, we will be using these server frameworks to feed our React `Todo` app through API Rest.
+
+For many reasons described below the use of a React App with a Spring Boot/Feathers/AWS server is a very good option:
+
+- [feathers](https://feathersjs.com/){.external}, the API and Real-time light Application Framework over [Express](https://expressjs.com/){.external}.
+- [Spring Boot](/spring/spring-basics.qmd): [Spring Boot](https://spring.io/projects/spring-boot){.external} makes it easy to create **stand-alone, production-grade** Spring based Applications that you can "just run".
+- [AWS](https://aws.amazon.com/){.external} services to create a **serveless in the cloud.**
+  
+:::
+
+</br>
+
+
+## Overall
+
+Creating a server for a React `Todo` application is essential for several reasons:
+
+- `Data Persistence`: A server allows you to **store and retrieve data from a database or a file system.**
+  - In the case of a `todo` application, you need to store the `todo` items, their status, and any other relevant information.
+  - A server enables you to save this data and retrieve it whenever necessary, ensuring that the `todos` remain persistent even if the user **refreshes** the page or closes the application.
+- `User Authentication`: If you want to add **user accounts and authentication** to your todo application, a server is required.
+  - It allows you to handle user registration, login, and session management.
+  - With a server, you can securely authenticate users and restrict access to certain features or data based on user permissions.
+- `API Integration`: In many cases, `todo` applications need to **integrate with external services or APIs**.
+  - For example, you may want to sync todos with a cloud storage service or send notifications to users.
+  - A server acts as an intermediary between your React application and these external APIs, handling the necessary requests and responses.
+- `Server-side Operations`: Some operations are better suited to be performed on the server side.
+  - For instance, if you need to **calculate statistics or generate reports based on the `todos`**, it's more efficient to offload these tasks to the server rather than executing them in the client's browser.
+- `Scalability and Performance`: As your `todo` application grows and handles more users and data, a server **allows you to scale your infrastructure to meet the demand.**
+  - You can distribute the load across multiple servers or utilize cloud services that provide auto-scaling capabilities, ensuring optimal performance and responsiveness.
+
+
+
+The `Todo` React code can be deployed and **served using various frameworks and platforms**, depending on your specific requirements and preferences. Here are some options:
+
+1. **Spring Boot**: [Spring Boot](https://spring.io/projects/spring-boot) is a popular Java-based framework for building web applications. It provides a robust server-side environment for running React code.
+
+2. **Feathers.js**: [Feathers.js](https://feathersjs.com/) is a lightweight and flexible Node.js framework that enables the creation of real-time applications. It can serve React code effectively.
+
+3. **PHP Laravel**: [Laravel](https://laravel.com/) is a powerful PHP framework known for its elegant syntax and expressive features. It can be used to serve React code alongside server-side logic.
+
+4. **.NET C# Razor**: [Razor](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-5.0) is a view engine that integrates with ASP.NET Core, a framework for building web applications with C#. It provides seamless integration of React code with server-side rendering.
+
+5. **AWS**: [Amazon Web Services (AWS)](https://aws.amazon.com/) offers a range of services for deploying React applications. You can use AWS Amplify, AWS Elastic Beanstalk, or AWS Lambda, depending on your specific needs.
+
+
+Let's study three of them as a model of server implementation to our `React Todo`:
+
+- a lighter weight one with `NodeJS`, `FeathersJS`,
+-  a natural leader `Java EE`, `Spring Boot`,
+-   and a seveless cloud option, `AWS`
+
+
+## API REST Server with Feathers
+
+- [Quick start](https://feathersjs.com/guides/basics/starting.html){.external}
+- [Node.js CRUD App Using React and FeathersJS](https://www.sitepoint.com/crud-app-node-react-feathersjs/){.external}
+
+Let's outline a few strategies we can employ to achieve our objective. 
+
+First, you need to create a new ``Feathers`` application by running
+
+```js
+ npm create feathers <name>
+```
+Once the ``Feathers`` CLI is installed you may keep with the project.
+
+::: {.column-margin}
+Since the generated application is using modern features like **ES modules**, the ``Feathers`` CLI requires ``Node 16`` or newer.
+:::
+
+
+You need to define your project.
+
+- choose if you want to use ````JavaScript```` or TypeScript.
+- When presented with the ``project name``, just hit enter, or enter a name (no spaces).
+- Next, write a short ``description`` for your application.
+- Confirm the next questions with the default selection by pressing Enter.
+- If you choose a database other than ``SQLite``, make sure it is reachable at the connection string.
+- using ``MongoDB`` is nice, so, you should change the database selection.
+
+Once you confirm the last prompt, the final selection should look similar to this:
+
+![Prompt feathers](/images/reactjs/lab-re-4-1.png){}
+
+### Creating a project
+
+``Install``
+
+```js
+npm install @feathersjs/feathers --save
+npm install -g @feathersjs/cli
+```
+
+``Help``
+
+```js
+feathers --help
+```
+
+``Creation``
+
+```js
+albert@albert-virtual-machine:~/MyProjects/MyFeathers/TodoRest$ feathers -V
+5.0.5
+
+feathers g app
+albert@albert-virtual-machine:~/MyProjects/MyFeathers/TodoRest$ feathers g app
+? Do you want to use JavaScript or TypeScript? JavaScript
+? What is the name of your application? TodoRest
+? Write a short description Backend API Rest for ReactJS Todo
+? Which HTTP framework do you want to use? KoaJS (recommended)
+? What APIs do you want to offer? HTTP (REST), Real-time
+? Which package manager are you using? npm
+? Generate client? Can be used with React, Angular, Vue, React Native, Node.js 
+etc. No
+? What is your preferred schema (model) definition format? Schemas allow to 
+type, validate, secure and populate your data and configuration TypeBox 
+(recommended)
+? Which database are you connecting to? Databases can be added at any time 
+MongoDB
+? Enter your database connection string 
+mongodb+srv://cifo:1234@clustertest.0h5f7.mongodb.net/todo
+```
+
+
+``Create Service``
+
+```js
+albert@albert-virtual-machine:~/MyProjects/MyFeathers/TodoRest$ feathers generate service
+? What is the name of your service? todoapirest
+? Which path should the service be registered on? todo
+? Does this service require authentication? No
+? What database is the service using? MongoDB
+? Which schema definition format do you want to use? Schemas allow to type, 
+validate, secure and populate data TypeBox  (recommended)
+    Wrote file src/services/todo/todo.schema.js
+    Wrote file src/services/todo/todo.js
+    Updated src/services/index.js
+    Wrote file test/services/todo/todo.test.js
+    Wrote file src/services/todo/todo.class.js
+
+
+```
+
+#### Initial render feathers project
+
+
+After install and create, we could execute the project `npm start` and check the **endpoint**.
+
+At browser, `http://localhost:3030/` (it is the base URL for a `Feathers` server) we will consume the data. 
+
+By making HTTP requests to this `endpoint` using different methods (GET, POST, PUT, DELETE), along with appropriate paths and parameters, we can perform CRUD (Create, Read, Update, Delete) operations on the corresponding resources exposed by the ``Feathers`` server, thus interacting with the API and manipulating data.
+
+After check all CRUD operations are working we will use this endopont to serve our [React todo app](/reactjs/rjslab3-3.qmd)
+
+::: {.column-margin}
+![initial render on `http://localhost:3030/`](/images/reactjs/lab-re-4-2.png){width="60%"}
+:::
+
+
+## API REST Server with Spring Boot
+
+We could create a Spring Boot server. It will publish our todo API Rest with a `command-line runner` that interacts with a `Todo` model.
+
+Let's draw some ideas to approach this solution.
+
+- Create a new `Spring Boot` project using your preferred IDE or the [Spring Initializr](https://start.spring.io/){.external}. Include the necessary dependencies for RESTful web services and JPA (Java Persistence API).
+- Create a `Todo` `entity` class to represent our `Todo` model. This class will have the properties id, text, completed, author, and due.
+
+```{.java .code-overflow-wrap filename="Todo.java"}
+import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.Date;
+
+@Data
+@Entity
+public class Todo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
+    private String text;
+    private boolean completed;
+    private String author;
+    private Date due;
+
+    // Constructors, getters, and setters
+}
+```
+
+
+- Create a `repository` `interface` `TodoRepository` that extends `CurdRepository` to handle CRUD operations for the `Todo` `entity`.
+
+
+```{.java .code-overflow-wrap filename="TodoRepository.java"}
+import org.springframework.data.jpa.repository.CrudRepository;
+
+public interface TodoRepository extends CrudRepository<Todo, String> {
+}
+```
+
+- Create a REST `controller` `TodoController` to handle the HTTP requests related to the `Todo` model.
+
+```{.java .code-overflow-wrap filename="TodoController.java"}
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.List;
+
+@RestController
+@RequestMapping("/todo")
+@RequiredArgsConstructor
+public class TodoController implements CommandLineRunner {
+
+    private final TodoRepository todoRepository;
+
+    @GetMapping
+    public ResponseEntity<List<Todo>> getAllTodos() {
+        List<Todo> todos = todoRepository.findAll();
+        return new ResponseEntity<>(todos, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Todo> createTodo(@RequestBody Todo todo) {
+        Todo createdTodo = todoRepository.save(todo);
+        return new ResponseEntity<>(createdTodo, HttpStatus.CREATED);
+    }
+
+    @Override
+    public void run(String... args) {
+        // Optional: You can add some initial Todos here if needed
+        Todo todo1 = new Todo();
+        todo1.setText("Example Todo 1");
+        todo1.setCompleted(false);
+        todo1.setAuthor("John");
+        todo1.setDue(new Date());
+        todoRepository.save(todo1);
+    }
+}
+
+```
+
+- Run the `Spring Boot application`, and the RESTful API for managing Todos will be available at `http://localhost:8080/todo`
+- The `command-line runner` is implemented in the `run` method of the `TodoController` class. You can use it to pre-populate the database with some initial `Todos` if needed.
+
+
+
+## API REST Server with AWS
+
+![AWS Architecture](/images/reactjs/lab-re-4-3.png){width="80%"}
+
+``AWS API Gateway``, ``AWS Lambda``, and ``Amazon DynamoDB`` are indeed <mark>a great combination for building a serverless backend for a Todo React app<mark>.
+
+Let's explore some options for addressing this issue.
+
+::: {.column-margin}
+By combining these AWS services, we can create a scalable and cost-effective serverless backend for our Todo React app.
+:::
+::: {.column-margin}
+The architecture eliminates the need for managing servers, allows for automatic scaling based on demand, and provides flexibility in terms of code organization and maintenance.
+:::
+::: {.column-margin}
+Additionally, AWS provides monitoring, logging, and security features, ensuring the reliability and security of your application.
+:::
+
+Here's how each component could play a role in this architecture:
+
+1. ``AWS API Gateway``: API Gateway acts as a **front-end to your backend services**. 
+   1. It allows you to create a **RESTful** API that can receive requests from your `Todo` React app and route them to the appropriate backend services.
+   2. With API Gateway, you can define API **endpoints**, set up **authentication** and **authorization**, perform request validation, and handle rate limiting.
+   3. It also integrates well with other AWS services, making it easy to connect with Lambda and DynamoDB.
+2. ``AWS Lambda``: Lambda is a serverless compute service that allows you to run code without provisioning or managing servers.
+   1. In the context of a `Todo` React app, you can write your **backend logic as individual Lambda functions**. Each function can handle a specific task, such as creating a new task, updating a task, or retrieving a list of tasks.
+   2. Lambda functions can be written in various programming languages, including JavaScript, which makes it convenient for integration with your React app.
+   3. API Gateway can be configured to trigger the appropriate Lambda function based on the incoming request, and the function can then process the request and return a response.
+3. ``Amazon DynamoDb``: DynamoDB is a **fully managed NoSQL database service offered by AWS.**
+   1.  It provides high scalability, low latency, and automatic scaling, making it a great choice for storing and retrieving task data for a `Todo` app.
+   2.  DynamoDB organizes data in **tables**, and each table consists of items (representing tasks in this case) and attributes (representing properties of each task).
+   3.  You can store and retrieve task data using DynamoDB APIs, and Lambda functions can interact with DynamoDB to perform CRUD operations on the tasks.
+
+
+

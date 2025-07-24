@@ -1,0 +1,862 @@
+---
+title: "Lab#RE04-2: Spring Boot & ReactJS"
+subtitle: ReactJS labs
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: labs
+categories: [reactjs, lab, Lab#RE04]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **React JS Lab#RE04-1: Spring Boot and ReactJS**
+
+In this lab, we will be using Spring Boot server to feed our React `Todo` app through API Rest.
+
+For many reasons described [in the previous article](/reactjs/rjslab4.qmd) the use of a React App with a Spring Boot is a very good option:
+
+- [Spring Boot](/spring/spring-basics.qmd): [Spring Boot](https://spring.io/projects/spring-boot){.external} makes it easy to create **stand-alone, production-grade** Spring based Applications that you can "just run".
+- [React](https://react.dev/){.external}, the library for web and native user interfaces.
+  
+:::
+
+</br>
+
+## user-story and mock-up
+
+![Basic architecture Spring Boot and ReactJS todo](/images/reactjs/SpringBoot-ReactJS-Todo.png){width="60%"}
+
+::: {.column-margin}
+![Mock-up Spring Boot and ReactJS todo](/images/reactjs/spring-react.jpg){width="80%"}
+:::
+
+### Adding a task to the Todo List
+
+>As a user,
+>I want to be able to add a task to my todo list,
+>So that I can keep track of what I need to do.
+
+#### Acceptance Criteria
+
+1. When I visit the todo web application, I should see an input field where I can enter a task description.
+2. After entering the task description, I should be able to submit it by pressing the "Add" button or hitting the Enter key.
+3. Once I add a task, it should appear as a new item on my todo list.
+4. If I enter an empty task description, the system should not allow me to add it and display an error message.
+5. After successfully adding a task, the input field should be cleared and ready for me to enter another task.
+
+
+### Deleting a Task from the Todo List
+
+>As a user,
+>I want to be able to delete a task from my todo list,
+>So that I can remove completed or unnecessary tasks.
+
+#### Acceptance Criteria
+
+1. When I view the todo list, each task should have a delete button or an option to mark it for deletion.
+2. When I click on the delete button or mark a task for deletion, the system should remove the task from the todo list.
+3. If I accidentally mark a task for deletion, there should be an option to undo the deletion and restore the task to the todo list.
+4. The system should provide a confirmation prompt before permanently deleting a task.
+5. After deleting a task, the todo list should update automatically to reflect the changes.
+6. If the todo list is empty after deleting a task, the system should display a message indicating that there are no tasks remaining.
+
+
+## general step-by-step
+
+To create an architecture using `Spring Boot`, `MongoDB`, and `React` for managing a `Todo` object, you can follow the steps outlined below:
+
+### Backend Architecture (Spring Boot and MongoDB):
+
+1. **Set up** the `Spring Boot` project:
+   - Create a new `Spring Boot` project using your preferred IDE or use the [Spring Initializr](https://start.spring.io/){.external}.
+   - Include the necessary **dependencies**, such as `Spring Web`, `Spring Data MongoDB`, and any additional libraries you might need.
+
+2. Create the `Todo` **model**:
+   - Define a `Todo` class with the required fields (e.g., id, title, description, status, etc.).
+   - Annotate the class with `@Document` to map it to a `MongoDB` collection.
+   - Use appropriate annotations like `@Id`, `@Field`, etc., to define the mapping of the fields.
+
+3. Create a **CRUD** `repository`:
+   - Create an interface that extends `MongoRepository<Todo, String>`.
+   - This `repository` will provide the basic CRUD operations (create, read, update, delete) for the Todo `model`.
+   - Customize the repository with additional methods if needed.
+
+4. Create a **REST** `controller`:
+   - Create a controller class annotated with `@RestController`.
+   - Inject the Todo repository into the controller using `@Autowired`.
+   - Define REST endpoints using `@GetMapping`, `@PostMapping`, `@PutMapping`, `@DeleteMapping`, etc., for CRUD operations.
+   - Implement the necessary request mappings for each operation using the repository methods.
+
+### Frontend Architecture (React with Axios and Context):
+
+1. **Set up** the `React` project:
+   - Create a new React project using create-react-app or your preferred method.
+   - Set up any additional configurations or dependencies required.
+
+2. **Create a data access layer**:
+   - Create a file for making `HTTP` requests using Axios (e.g., api.js).
+   - Define functions for each CRUD operation, making the corresponding API calls to the backend.
+   - Handle responses and errors as needed.
+
+3. Set up a `context`:
+   - Create a context file (e.g., `TodoContext.js`) to manage the state and actions related to the `Todo` object.
+   - Define the necessary context provider component, which will wrap the root component.
+   - Implement state management functions (e.g., addTodo, deleteTodo, updateTodo) within the context provider.
+
+4. **Create** `React` `components`:
+   - Create React components for displaying Todo objects (e.g., `TodoList`, `TodoItem`, `TodoAdd`).
+   - Use the context to access and modify the `Todo` **state** and perform CRUD operations.
+   - Render the Todo components within your application's layout.
+
+With this architecture in place, your Spring Boot backend will expose RESTful endpoints for CRUD operations on the Todo object, while the React frontend can consume those APIs using Axios for data retrieval, creation, updating, and deletion.
+
+The **context-axios** layer in React will handle state management and provide access to the `Todo` data throughout the application.
+
+
+## API rest documentation
+
+This documentation provides an overview of the REST API endpoints implemented using Spring Boot's Rest Controller, which will be consumed by a React JS frontend. The API endpoints allow CRUD (Create, Read, Update, Delete) operations on a "todo" resource.
+
+[Published docs](https://documenter.getpostman.com/view/7473960/2s93mATzRb){.external} by **Postman**.
+
+![Published docs API Rest](/images/reactjs/lab-re-4-7.png){width="40%"}
+
+- Base URL : `http://localhost:9898`
+- Port: 9898
+- Path: `/todo`
+
+Operation | Query | JSON | Description |
+| -- | -- | -- | -- |
+| GET | `/` |  {`todo items`} | Retrieves a list of all todo items. |
+| POST | `/createTodo` | {`todo item`} **body/raw/JSON** | Creates a new todo item. |
+| DELETE | `/?id=4` | `id` as a **param** | Deletes all todo items. |
+| PUT | `updateTodo/6` | `id` as a pathvariable {`todo item`} **body/raw/JSON** | Updates an existing todo item. |
+
+
+
+## step-by-step code
+
+### UML: Spring Boot - ReactJS todo
+
+
+![[UML Spring Boot ReactJS](https://viewer.diagrams.net/?target=blank&highlight=0000ff&edit=_blank&nav=1&title=Copia%20de%20SpringBoot-ReactJS-Todo.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1736H1eQoV8XwtieR0mkLv0yemiLpx0vy%26export%3Ddownload), viewer draw.io by Ruben B.](/images/reactjs/springboot-react-uml.png){width="80%"}
+
+### MongoDB
+
+[To connect a Spring Boot project](/springboot/sblab0-6.qmd) to [MongoDB](/springboot/boot-concepts-data.qmd), you can configure the **connection string** in the `application.properties` file. 
+
+Here's a **short intro and very general** on how to do that:
+
+First, make sure you have added the necessary dependencies for MongoDB in your pom.xml file. Include the following dependencies:
+
+```js
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-mongodb</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>mongo-java-driver</artifactId>
+</dependency>
+```
+
+Next, open the `application.properties` file located in the `src/main/resources` directory of your `Spring Boot` project.
+
+Add the following properties to the file to configure the `MongoDB` **connection**:
+
+```js
+spring.data.mongodb.host=your-mongodb-host
+spring.data.mongodb.port=your-mongodb-port
+spring.data.mongodb.database=your-mongodb-database
+```
+
+
+Replace the placeholders (your-mongodb-host, your-mongodb-port, and your-mongodb-database) with the appropriate values for your MongoDB instance.
+
+Optionally, if your MongoDB server requires authentication, you can add the following properties to the application.properties file:
+
+```js
+spring.data.mongodb.username=your-mongodb-username
+spring.data.mongodb.password=your-mongodb-password
+```
+
+Replace your-mongodb-username and your-mongodb-password with the appropriate credentials for your MongoDB instance.
+
+
+![mongoDB](/images/reactjs/lab-re-4-5.png){width="80%"}
+
+MongoDB will store this kind of object:
+
+```json
+{
+   "_id":"4",
+   "text":"test rafa 3",   
+   "author":"rafa",
+   "due":{"$date":{"$numberLong":"1685311200000"}},
+   "completed":true,
+   "_class":"com.example.myFirstSpring.model.Todo"}
+```
+
+
+
+
+### Backend: Spring Boot todo
+
+First, create and install dependencies (pom.xml) `Spring Boot`:
+
+![folder-tree Spring Boot, [IntellIJIdea](/devops/devops-ide-intelljidea.qmd), todo](/images/reactjs/lab-re-4-6.png){width="40%"}
+
+You may read about Spring Boot creation [here](/springboot/boot-what-create-th-h2.qmd)
+
+#### `pom.xml`
+
+
+```{.java .code-overflow-wrap filename="Todo.java"}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>LibraryManagement</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>controllerView</name>
+	<description>Demo project for Spring Boot Composition and TH</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+		</plugins>
+	</build>
+
+</project>
+```
+
+#### Java classes
+
+Model:
+
+```{.java .code-overflow-wrap filename="Todo.java"}
+package com.example.myFirstSpring.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.time.LocalDate;
+import org.bson.types.Binary;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Document(collection = "todo")
+public class Todo {
+
+    @Id
+    private String id;
+    private String text;
+    private String author;
+    private LocalDate due;
+    private boolean completed;
+    //private Binary image;
+}
+
+```
+
+#### `@CrossOrigin`
+
+By default, <mark>web browsers enforce the same-origin policy, which means that a web page can only make requests to the same origin (domain, protocol, and port) from which it was loaded.<mark>
+
+ However, in the case of a React.js app consuming a Spring Boot API running on a different origin (such as `http://localhost:3000` for the React.js development server), the **same-origin** policy would block the **API requests.**
+
+The `@CrossOrigin(origins = "http://localhost:3000")` annotation in the Spring Boot controller allows the API to respond to requests from the specified origin, in this case, `http://localhost:3000`, which is where the React.js app is hosted during development.
+
+This enables the React.js app to successfully consume the API's endpoints and access the necessary data.
+
+```{.java .code-overflow-wrap filename="Todo.java"}
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
+@Document(collection = "todo")
+public class Todo {
+   //...
+}
+```
+
+`TodoRepository`
+
+
+```{.java .code-overflow-wrap filename="TodoRepository.java"}
+package com.example.myFirstSpring.repository;
+
+import com.example.myFirstSpring.model.Todo;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import java.util.Optional;
+
+public interface TodoRepository extends MongoRepository<Todo, String> {
+    Optional<Todo> findTodoById(String id);
+    void deleteTodoById(String id);
+}
+```
+
+`TodoRestController`
+
+
+```{.java .code-overflow-wrap filename="TodoRestController.java"}
+package com.example.myFirstSpring.restcontroller;
+
+import com.example.myFirstSpring.model.Todo;
+import com.example.myFirstSpring.repository.TodoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/todo")
+public class TodoRestController {
+    //here we are creating our end-point rest API
+    @Autowired
+    TodoRepository todoRepository;
+
+
+    //CRUD: read
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping
+    public ResponseEntity<Iterable<Todo>> getAllTodos() {
+        //
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("operation", "findAll");
+        headers.add("version", "api 1.0");
+        headers.add("statusOperation", "success");
+
+        return ResponseEntity.accepted()
+         .headers(headers)
+         .body(todoRepository
+         .findAll());
+    }
+```
+
+```{.java .code-overflow-wrap filename="TodoRestController.java"}
+
+  @DeleteMapping
+   public ResponseEntity<Todo> deleteTodo(@RequestParam String id) {
+      //
+      HttpHeaders headers = new HttpHeaders();
+      headers.add("operation", "deleteBook");
+      headers.add("version", "api 1.0");
+
+      Optional<Todo> todoFound = todoRepository.findTodoById(id);
+      boolean isTodo = todoFound.isPresent();
+      if (isTodo) {
+         //Optional<Book> deletedBook = 
+         //bookservice.deleteBookById(id);
+         todoRepository.deleteTodoById(id);
+         headers.add("operationStatus", "deleted");
+         return ResponseEntity.accepted()
+            .headers(headers)
+            .body(todoFound
+            .get());
+      } else {
+         headers.add("operationStatus", "not found");
+         return ResponseEntity.accepted().body(null);
+      }
+   }
+```
+
+```{.java .code-overflow-wrap filename="TodoRestController.java"}
+
+   @PostMapping(path = "createTodo", consumes = "application/JSON")
+   public ResponseEntity<Todo> addTodo(@RequestBody Todo todo) {
+      //
+      HttpHeaders headers = new HttpHeaders();
+      headers.add("operation", "createTodo");
+      headers.add("version", "api 1.0");
+      headers.add("statusOperation", "success");
+
+      Todo todoCreated = todoRepository.save(todo);
+
+      if (todoCreated != null) {
+         headers.add("statusOperation", "success");
+         return ResponseEntity.accepted()
+            .headers(headers)
+            .body(todoCreated);
+      } else {
+         headers.add("statusOperation", "not created");
+         return ResponseEntity.accepted().body(null);
+      }
+   }
+```
+
+`updateTodo`, we could update just the `completed` field but to test the method we updated all the whole object.
+
+```{.java .code-overflow-wrap filename="TodoRestController.java"}
+@PutMapping("/updateTodo/{id}")
+    public ResponseEntity<Todo> 
+      updateTodo(@PathVariable String id, @RequestBody Todo dataTodo) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("operation", "completeTodo");
+        headers.add("version", "api 1.0");
+
+        Optional<Todo> todoFound = todoRepository.findTodoById(id);
+
+
+        if (todoFound.isPresent()){
+            //System.out.println(todoFound.get() 
+            //+ " -- " +  dataTodo);
+            todoRepository.save(dataTodo);
+            headers.add("operationStatus","updated");
+            return  ResponseEntity.accepted()
+               .headers(headers)
+               .body(todoFound
+               .get());
+        } else {
+            headers.add("operationStatus","not found");
+            return ResponseEntity.accepted()
+               .headers(headers)
+                  .body(null);}
+
+
+    }
+
+```
+
+### FrontEnd: ReactJS todo
+
+![folder-tree ReactJS, [Visual Code](/devops/devops-ide-visualcode.qmd), todo](/images/reactjs/lab-re-4-4.png){width="40%"}
+
+
+#### UI
+
+First, the UI React .jsx components: 
+
+- TodoDomainsApp
+- TodoDomainsAdd
+- TodoDomainsList
+
+```{.js .code-overflow-wrap filename="TodoDomainsApp.jsx"}
+import React, { useContext } from "react";
+import TodoDomainsAdd from "../components/TodoDomainsAdd";
+//import TodoList from "./TodoList";
+import { TodoContext, TodoProvider } from "../service/TodoContext.js";
+import {
+  Container,Divider
+} from "semantic-ui-react";
+import TodoDomainsList from "./TodoDomainsList";
+
+const TodoDomains = () => {
+  const { createTodo} = useContext(TodoContext);
+
+  const handleCreateTodo = (todo) => {
+    createTodo(todo);
+  };
+
+  
+  return (
+    <Container>
+      <br />
+      <h1>Todo App</h1>
+      <p>
+        A todo grid/cards with API Rest mockapi.io, with a useSate, semantic and
+        a service layer: axios and context. High decoupled version.
+      </p>
+      <TodoDomainsAdd onCreate={handleCreateTodo} />
+      <Divider />
+
+      <TodoDomainsList />
+    </Container>
+  );
+};
+
+const TodoDomainsApp = () => {
+  return (
+    <TodoProvider>
+      <TodoDomains />
+    </TodoProvider>
+  );
+};
+
+export default TodoDomainsApp; 
+```
+
+```{.js .code-overflow-wrap filename="TodoDomainsAdd.jsx"}
+import React from "react";
+import {
+  Card,
+  Checkbox,
+  Button,
+  Form,
+  Divider,
+  Icon,
+} from "semantic-ui-react";
+import { v4 as uuidv4 } from "uuid";
+
+// CRUD: create
+const TodoDomainsAdd = ({ onCreate }) => {
+  const [text, setText] = React.useState("");
+  const [author, setAuthor] = React.useState("");
+  const [due, setDue] = React.useState("");
+
+  const handleSubmit = () => {
+    onCreate({
+      id: uuidv4(),
+      text: text,
+      author: author,
+      due: due,
+      completed: false,
+    });
+  };
+
+  return (
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Card>
+            <Card.Content>
+              <Card.Header>Create Todo</Card.Header>
+              <Card.Meta>
+               
+              </Card.Meta>
+              <br />
+              <Form.Field>
+                <label>Text</label>
+                <input
+                  type="text"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  placeholder="Enter todo text"
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Author</label>
+                <input
+                  type="text"
+                  value={author}
+                  onChange={(e) => setAuthor(e.target.value)}
+                  placeholder="Enter author name"
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Date</label>
+                <input
+                  type="date"
+                  value={due}
+                  onChange={(e) => setDue(e.target.value)}
+                  placeholder="Enter date to handle"
+                />
+              </Form.Field>
+              <Divider />
+              <Form.Field>
+                <Checkbox label="use fetch/axios" />
+              </Form.Field>
+
+              <Divider />
+
+              <Button>Add Todo</Button>
+            </Card.Content>
+            <Card.Content extra>
+              <a>
+                <Icon name="time" />
+                UTC Central
+              </a>
+            </Card.Content>
+          </Card>
+        </Form.Group>
+      </Form>
+    </>
+  );
+};
+
+export default TodoDomainsAdd;
+```
+
+
+```{.js .code-overflow-wrap filename="TodoDomainsList.jsx"}
+import {
+  Card,
+  Checkbox,
+  Button
+} from "semantic-ui-react";
+// CRUD: read and create list
+import { TodoContext } from "../service/TodoContext.js";
+import React, { useContext } from "react";
+// UpdateTodo Component
+
+
+const UpdateTodo = ({ todo }) => {
+    const { updateTodo } = useContext(TodoContext);
+
+    const handleUpdateTodo = () => {
+        updateTodo(todo);
+    };
+
+    return (
+        <Checkbox toggle checked={todo.completed} onChange={handleUpdateTodo} />
+    );
+};
+
+
+// DeleteTodo Component
+const DeleteTodo = ({ todo }) => {
+    const { deleteTodo } = useContext(TodoContext);
+
+    const handleDeleteTodo = () => {
+        deleteTodo(todo.id);
+    };
+
+    return <Button onClick={handleDeleteTodo}>Delete</Button>;
+};
+
+
+const TodoDomainsList = () => {
+  const { todos } = useContext(TodoContext);
+
+  //console.log("todos list", todos);
+  if (todos === null) {
+    return <p>Loading...</p>;
+  }
+
+  return (
+    <>
+      <h2>Todos List</h2>
+      <hr />
+      <Card.Group>
+        {todos.map((todo) => (
+          <Card key={todo.id}>
+            <Card.Content>
+              <Card.Description>id: {todo.id}</Card.Description>
+              <Card.Header>{todo.text}</Card.Header>
+              <Card.Meta>Author: {todo.author}</Card.Meta>
+              <Card.Description>Due: {todo.due}</Card.Description>
+              <br />
+              <UpdateTodo todo={todo} />
+            </Card.Content>
+            <Card.Content extra>
+              <DeleteTodo todo={todo}  />
+            </Card.Content>
+          </Card>
+        ))}
+      </Card.Group>
+    </>
+  );
+};
+
+export default TodoDomainsList;
+```
+#### Service
+
+Second, the Data Access Layer with `TodoService.js` and `TodoContex.js`:
+
+```{.js .code-overflow-wrap filename="TodoService.js"}
+import axios from "axios";
+
+///`${API_URL}/todo`
+// https://github.com/mockapi-io/docs/wiki/Quick-start-guide
+// API_URL mockapi.io
+//const API_BASE_URL = "https://645fbe78ca2d89f7e74cf4c9.mockapi.io/v1";
+
+const API_BASE_URL = "http://localhost:9898";
+
+const TodoService = {
+  getAllTodos: async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/todo`);
+      //console.log("retrieving todos:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Error retrieving todos:", error);
+      throw error;
+    }
+  },
+
+  createTodo: async (todo) => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/todo/createTodo`, todo);
+      console.error("Data:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Error creating todo:", error);
+      throw error;
+    }
+  },
+
+  updateTodo: async (todo) => {
+    try {
+      const response = await axios.put(`${API_BASE_URL}/todo/updateTodo/${todo.id}`, todo);
+      return response.data;
+    } catch (error) {
+      console.error("Error updating todo:", error);
+      throw error;
+    }
+  },
+
+  deleteTodo: async (todoId) => {
+    try {
+      const response = await axios.delete(`${API_BASE_URL}/todo?id=${todoId}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error deleting todo:", error);
+      throw error;
+    }
+  },
+};
+
+export default TodoService;
+```
+
+
+```{.js .code-overflow-wrap filename="TodoContext.js"}
+import React, { createContext, useState, useEffect } from "react";
+import TodoService from "./TodoService";
+
+const TodoContext = createContext();
+
+const TodoProvider = ({ children }) => {
+  const [todos, setTodos] = useState([]);
+
+  //
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  //
+  const fetchTodos = async () => {
+    try {
+      const todos = await TodoService.getAllTodos();
+      setTodos(todos);
+      //console.log("todos:", todos);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+    }
+  };
+
+  //
+  const createTodo = async (todo) => {
+    try {
+      const createdTodo = await TodoService.createTodo(todo);
+      setTodos((prevTodos) => [...prevTodos, createdTodo]);
+    } catch (error) {
+      console.error("Error creating todo:", error);
+    }
+  };
+
+ const updateTodo = async (todoToUpdate) => {
+   try {
+     const updatedTodo = {
+       ...todoToUpdate,
+       completed: !todoToUpdate.completed,
+     };
+     await TodoService.updateTodo(updatedTodo);
+     setTodos((prevTodos) => {
+       const updatedTodos = [...prevTodos];
+       const todoIndex = updatedTodos.findIndex(
+         (todo) => todo.id === updatedTodo.id
+       );
+       updatedTodos[todoIndex] = updatedTodo;
+       return updatedTodos;
+     });
+   } catch (error) {
+     console.error("Error updating todo:", error);
+   }
+ };
+
+  //
+  const deleteTodo = async (todoId) => {
+    try {
+      await TodoService.deleteTodo(todoId);
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
+    } catch (error) {
+      console.error("Error deleting todo:", error);
+    }
+  };
+
+  //
+  return (
+    <TodoContext.Provider value={{ todos, createTodo, updateTodo, deleteTodo }}>
+      {children}
+    </TodoContext.Provider>
+  );
+};
+
+export { TodoContext, TodoProvider };
+
+
+```
+
+
+
+## Versions
+
+Code Version | Commit | Folder-Tree | Screeshoots |
+| -- | -- | -- | -- |
+| todoApp-server 0.1 | ToDo: Just a refactored draft, only findAll works - [todoApp-Back 0.1](https://github.com/AlbertProfe/CifoJava2023-3/tree/51db9e4c2f06af47ef017ba98ca29906c07f3449/todoapp-back){.external} |  [folder-tree Spring Boot, IntellIJIdea](/images/reactjs/lab-re-4-6.png){width="40%"}  | - |
+| todoApp-front 0.1 |  ToDo: Just a refactored draft, only findAll works - [todoApp-Front 0.1](https://github.com/AlbertProfe/CifoJava2023-3/tree/51db9e4c2f06af47ef017ba98ca29906c07f3449/todoapp-front){.external} | [folder-tree ReactJS, Visual Code](/images/reactjs/lab-re-4-4.png){width="40%"} | - 
+| todoApp-server 0.2 | ToDo: all operations CRUD working [todoApp-Back 0.2](https://github.com/AlbertProfe/CifoJava2023-3/tree/eac93b9dbf80155430ea03dcebb886d83c7afcd4/todoapp-back){.external} | - | - |
+| todoApp-front 0.2 | ToDo: all operations CRUD working  [todoApp-Front 0.2](https://github.com/AlbertProfe/CifoJava2023-3/tree/09b5264b8039b399f712727da9bb37ef19cb1eaa/todoapp-front){.external} | - | [1](/images/reactjs/lab-re-4-8.png){width="40%"} - [2](/images/reactjs/lab-re-4-9.png){width="40%"} - [3](/images/reactjs/lab-re-4-10.png){width="40%"} - [4](/images/reactjs/lab-re-4-11.png){width="40%"} - [5](/images/reactjs/lab-re-4-12.png){width="40%"} - [6](/images/reactjs/lab-re-4-13.png){width="40%"} - [7](/images/reactjs/lab-re-4-14.png){width="40%"} - [8](/images/reactjs/lab-re-4-15.png){width="40%"} - [9](/images/reactjs/lab-re-4-16.png){width="40%"} - [10](/images/reactjs/lab-re-4-17.png){width="40%"} - [11](/images/reactjs/lab-re-4-18.png){width="40%"}|
+| todoApp 0.3 | Pending task: create .jsx/.js component/context/axios to **upload images**, spring boot @RestController done: `TodoImageRepository`, `TodoImage`, `TodoImageRestController` | - | - |
+
+
+

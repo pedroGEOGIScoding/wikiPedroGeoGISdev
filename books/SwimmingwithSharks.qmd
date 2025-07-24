@@ -1,0 +1,21 @@
+---
+title: "Swimming with Sharks"
+author: "albertprofe"
+subtitle: "Joris Luyendijk, 2015, Swimming with Sharks: My Journey into the World of the Bankers"
+date: "9/4/2014"
+date-modified: "6/30/2022"
+date-format: full
+description: "An insider's account of the culture and practices within the banking industry, based on interviews with bankers during the global financial crisis."
+categories: [finance]
+subcategories: [banking, money]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/SwimmingwithSharks.jpg)
+
+## More info
+
+- [Swimming with Sharks: My Journey into the World of the Bankers](https://www.amazon.com/Swimming-Sharks-Joris-Luyendijk/dp/1783350644){.external}

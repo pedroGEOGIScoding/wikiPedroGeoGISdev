@@ -1,0 +1,80 @@
+---
+title: "Spring Boot: Model"
+subtitle: Spring Boot Model
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot Model
+categories: [Spring-Boot, model]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+In Spring Boot, the **Model-View-Controller (MVC)** pattern is used to separate the application logic into three layers: Model - View -Controller
+
+::: {.summary}
+
+📘 **Model**
+
+The ``model`` represents the **data and the business logic of the application.**
+
+It is responsible for managing the **state of the application and communicating with other components**, such as the **database** or external services.
+
+:::
+
+</br>
+
+![Spring Boot Request-Response Cycle](/images/springboot/springboot-architecture-5.png){width="80%"}
+
+
+## Overview
+
+In Spring Boot, a model is simply a ``Java class`` that holds ``data`` and **defines the structure of the data that will be passed between different layers of the application.**
+
+Typically, these classes are annotated with ``@Entity`` or ``@Data`` to indicate that they are part of the data model.
+
+Here's an example of a simple model class in Spring Boot:
+
+``` java
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity // Indicates that this class is an entity in the data model
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String description;
+    private double price;
+    
+    // Constructors, getters, setters, and other methods omitted for brevity
+}
+
+```
+
+::: {.column-margin}
+In this example, the ``Product`` class represents a product in an e-commerce application. It is annotated with ``@Entity`` to indicate that it is **part of the data model**, and it has four fields (id, name, description, and price) that define the structure of a product.
+:::
+
+## Example MVC
+
+- [Model View Controller example by MDN Web Docs Glossary](https://developer.mozilla.org/en-US/docs/Glossary/MVC#model_view_controller_example){.external}
+
+Imagine a simple shopping list app. All we want is a list of the name, quantity and price of each item we need to buy this week. Below we'll describe how we could implement some of this functionality using MVC.
+
+![Model View Controller example](/images/springboot/model-view-controller-light-blue%20(1).png)
+
+::: {.callout-note}
+## The Model
+The model defines what data the app should contain. If the state of this data changes, then the model will usually notify the view (so the display can change as needed) and sometimes the controller (if different logic is needed to control the updated view).
+
+Going back to our shopping list app, the model would specify what data the list items should contain — item, price, etc. — and what list items are already present.
+
+:::
+

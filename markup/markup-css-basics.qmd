@@ -1,0 +1,90 @@
+---
+title: "Cascade Style Sheet"
+subtitle: CSS
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Introduction to CSS
+categories: [CSS, introduction]
+toc: true
+number-sections: true
+format:
+  html
+---
+## CSS: Cascading Style Sheets
+**Cascading Style Sheets** (**CSS**) is a [stylesheet](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet) language used to describe the presentation of a document written in [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) or [XML](https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction) (including XML dialects such as [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG), [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) or [XHTML](https://developer.mozilla.org/en-US/docs/Glossary/XHTML)). CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.
+
+CSS is among the core languages of the **open web** and is standardized across Web browsers according to [W3C specifications](https://www.w3.org/Style/CSS/#specs). Previously, the development of various parts of CSS specification was done synchronously, which allowed the versioning of the latest recommendations. You might have heard about CSS1, CSS2.1, or even CSS3\. There will never be a CSS3 or a CSS4; rather, everything is now CSS without a version number.
+
+After CSS 2.1, the scope of the specification increased significantly and the progress on different CSS modules started to differ so much, that it became more effective to [develop and release recommendations separately per module](https://www.w3.org/Style/CSS/current-work). Instead of versioning the CSS specification, W3C now periodically takes a snapshot of [the latest stable state of the CSS specification](https://www.w3.org/TR/css/) and individual modules progress. CSS modules now have version numbers, or levels, such as [CSS Color Module Level 5](https://drafts.csswg.org/css-color-5/).
+
+<mark>reference</mark>: [CSS: Cascading Style Sheets](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+## Starting with some HTML
+
+Our starting point is an HTML document. You can copy the code from below if you want to work on your own computer. Save the code below as `index.html` in a folder on your machine.
+
+<mark>Reference</mark>: [Starting with some HTML](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started#starting_with_some_html)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting started with CSS</title>
+  </head>
+
+  <body>
+    <h1>I am a level one heading</h1>
+
+    <p>
+      This is a paragraph of text. In the text is a
+      <span>span element</span> and also a
+      <a href="https://example.com">link</a>.
+    </p>
+
+    <p>
+      This is the second paragraph. It contains an <em>emphasized</em> element.
+    </p>
+
+    <ul>
+      <li>Item <span>one</span></li>
+      <li>Item two</li>
+      <li>Item <em>three</em></li>
+    </ul>
+  </body>
+</html></code>
+```
+
+## Adding CSS to our document
+
+To link `styles.css` to `index.html`, add the following line somewhere inside the [`<head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head) of the HTML document:
+
+``` html
+<link rel="stylesheet" href="styles.css" />
+```
+
+This [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) element tells the browser that we have a stylesheet, using the `rel` attribute, and the location of that stylesheet as the value of the `href` attribute. You can test that the CSS works by adding a rule to `styles.css`. Using your code editor, add the following to your CSS file:
+
+``` html
+<link rel="stylesheet" href="styles.css" />
+```
+
+To target all paragraphs in the document, you would use the selector p. To turn all paragraphs green, you would use:
+
+``` css
+p {
+  color: green;
+}
+```
+
+You can target multiple selectors at the same time by separating the selectors with a comma. If you want all paragraphs and all list items to be green, your rule would look like this:
+
+``` css
+p,
+li {
+  color: green;
+}
+```
+

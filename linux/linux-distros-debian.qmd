@@ -1,0 +1,180 @@
+---
+title: "Linux Distros: Debian"
+subtitle: Debian
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Debian
+categories: [linux, debian, distro]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![](/images/devops/debian-log.png){width="60%"}
+
+
+# Introduction
+
+[Debian](https://www.debian.org/index.en.html){.external}, often referred to as the "universal operating system," stands as a stalwart in the **open-source community.**
+
+<mark>As one of the oldest and most respected Linux distributions, Debian serves as a foundation for numerous other distributions and remains a favorite among users seeking stability, security, and a commitment to free and open-source software.</mark>
+
+::: {.callout-note}
+## Our Philosophy: Why we do it and how we do it
+
+**Our Mission: Creating a Free Operating System**
+
+The Debian Project is an association of individuals, sharing a common goal: We want to create a free operating system, freely available for everyone.
+
+Now, when we use the word "free", we're not talking about money, instead, we are referring to [software freedom.](https://www.debian.org/intro/philosophy){.external}
+
+:::
+
+## The Debian Ecosystem
+
+![](/images/devops/Debian_12_Bookworm_GNOME_Desktop_English.png){width="40%"}
+
+The Debian ecosystem is vast and diverse, catering to a wide range of user preferences. In this section, we delve into the different Debian releases, understanding the characteristics of each branch, including Stable, Testing, and Unstable.
+
+- [People: Who we are and what we do](https://www.debian.org/intro/people){.external}
+
+## Reasons to use Debian
+
+
+There are a lot of reasons to choose Debian as your operating system – as a user, as a developer, and even in enterprise environments.
+
+<mark>Most users appreciate the stability, and the smooth upgrade processes of both packages and the entire distribution.</mark>
+
+Debian is also widely used by software and hardware developers because it runs on numerous architectures and devices, offers a public bug tracker and other tools for developers. If you plan to use Debian in a professional environment, there are additional benefits like LTS versions and cloud images.
+
+::: {.column-margin}
+For me it's the perfect level of ease of use and stability. I've used various different distributions over the years but Debian is the only one that just works.
+
+  NorhamsFinest on Reddit*
+:::
+
+
+**Debian is Free Software.**
+
+Debian is made of free and open source software and will always be 100% free. Free for anyone to use, modify, and distribute. This is our main promise to our users. It's also free of cost.
+
+**Debian is stable and secure.**
+
+Debian is a Linux-based operating system for a wide range of devices including laptops, desktops and servers. We provide a reasonable default configuration for every package as well as regular security updates during the packages' lifetimes.
+
+**Debian has extensive Hardware Support.**
+
+Most hardware is supported by the Linux kernel which means that Debian will support it as well. Proprietary drivers for hardware are available if necessary.
+
+**Debian offers a flexible Installer.**
+
+Our Live CD is for everyone who wants to give Debian a try before installing it. It also includes the Calamares installer which makes it easy to install Debian from the live system. More experienced users can use the Debian installer with more options for fine-tuning, including the possibility to use an automated network installation tool.
+
+**Debian provides smooth Upgrades.**
+
+It's easy to keep our operating system up-to-date, whether you want to upgrade to a completely new release or just update a single package.
+
+**Debian is the Base for many other Distributions.**
+
+Many popular Linux distributions, like Ubuntu, Knoppix, PureOS or Tails, are based on Debian. We provide all the tools so that everyone can extend the software packages from the Debian archive with their own packages if needed.
+
+**The Debian Project is a Community.**
+
+Everyone can be a part of our community; you don't have to be a developer or sysadmin. Debian has a democratic governance structure. Since all members of the Debian project have equal rights, Debian cannot be controlled by a single company. Our developers are from more than 60 different countries, and Debian itself is translated into more than 80 languages.
+
+# The Debian Installation Process: Step-by-Step Guide
+
+Installing Debian might seem intimidating to newcomers, but fear not – our step-by-step guide makes the process a breeze.
+
+From [downloading](https://www.debian.org/distrib/){.external} the installation image to configuring the system, we break down each step to ensure a smooth installation experience. We discuss the different installation options, such as the graphical and text-based installers, and provide tips on partitioning and selecting software packages.
+
+
+- [Guia d'instal·lació de Debian GNU/Linux](https://www.debian.org/releases/stable/amd64/){.external}
+
+
+
+**Step 1: Download Debian Installation Image**
+
+Visit the [official Debian website](https://www.debian.org/) and navigate to the "Download" section. Choose the appropriate Debian version (Stable, Testing, or Unstable) and download the installation image for your architecture (e.g., amd64, i386).
+
+**Step 2: Create a Bootable USB Drive**
+
+Use a tool like [Rufus](https://rufus.ie/) on Windows or [dd](https://linux.die.net/man/1/dd) command on Linux to create a bootable USB drive with the Debian installation image.
+
+Example using dd on Linux:
+```bash
+sudo dd bs=4M if=/path/to/debian.iso of=/dev/sdX status=progress && sync
+```
+Replace `/path/to/debian.iso` with the actual path to your Debian ISO file and `/dev/sdX` with your USB drive identifier.
+
+**Step 3: Boot from USB**
+
+- Insert the bootable USB drive into the target system and restart it.
+- Enter the BIOS or UEFI settings to set the USB drive as the primary boot device.
+
+**Step 4: Start Debian Installer**
+
+- Boot from the USB drive, and you'll be greeted by the Debian Installer.
+- Choose the installation option, such as "Graphical Install" for a user-friendly interface or "Install" for a text-based installation.
+
+**Step 5: Language and Location**
+
+- Select your preferred language, country, and keyboard layout when prompted by the installer.
+
+**Step 6: Network Configuration**
+
+- Configure your network settings. Choose DHCP for automatic configuration or manually enter network details if needed.
+
+**Step 7: Disk Partitioning**
+
+
+- Choose the disk on which to install Debian. You can either use the entire disk or manually partition it.
+- Follow the prompts to set up partitions and file systems.
+
+**Step 8: Install the Base System**
+
+- The installer will download the base system and prompt you to set up a root password and create a user account.
+- Follow the instructions to complete this step.
+
+**Step 9: Package Installation**
+
+- Select the software packages you want to install. You can choose a predefined set or customize your selection.
+
+**Step 10: GRUB Boot Loader Installation**
+
+- Install the GRUB boot loader to the master boot record (MBR) or the EFI partition, depending on your system's architecture.
+
+**Step 11: Complete Installation**
+
+- Once the installation is complete, remove the installation media (USB drive) and press "Continue" to reboot your system into the newly installed Debian system.
+
+Congratulations! You have successfully installed Debian on your system.
+
+
+
+# Advanced Topics 
+
+## Package Management Tools
+
+- [PackageManagementTools](https://wiki.debian.org/PackageManagementTools){.external}
+
+Many tools available on a Debian system can be used for PackageManagement. Commonly used ones include:
+
+**command-line:**
+
+- *apt* - The main command-line package management tool
+- *aptitude* - command-line and text-based interface (ncurses) for Apt
+
+**graphical:**
+
+- *Synaptic* - Graphical package manager
+- *gdebi* - Graphical installer for standalone DebianPackages
+- *gnome-software* - Software Center for GNOME
+
+## Command Line Interface
+
+- [CommandLineInterface](https://www.debian.org/doc/manuals/debian-reference/ch01.en.html){.external}
+

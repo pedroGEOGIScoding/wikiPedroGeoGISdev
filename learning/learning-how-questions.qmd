@@ -1,0 +1,43 @@
+---
+title: "Useful Questions"
+subtitle: About fundamental questions
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Must questions
+categories: [about, questions]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Decison making is far to be a easy task, on the contrary, it is a complex one ...](/images/home/decisionmaking.png){width=50%}
+
+## Answering the useful (right?) questions
+Questions that begin with the words **why, who, what, and how** are necessary and paramount because they help to **clarify information, to seek additional details, and to better understand a situation**. Besides, they play a crucial role in **facilitating communication** and understanding.
+
+These words are often used to ask **open-ended questions**, which are questions that cannot be answered with a simple yes or no. Asking open-ended questions allows for more **in-depth conversation and debate** and can help to uncover important information or insights.
+
+For example,
+
+- asking **"Why did this happen?"** can help to identify the underlying causes of a particular event,
+- while asking **"What are the consequences of this decision?"** can help to anticipate and evaluate the potential impacts of a choice. 
+
+Overall, asking why, who, what, and how can help to **improve communication**, to **facilitate decision-making**, and to **deepen understanding**.
+
+<div class="mermaidContent">
+
+```{mermaid}
+flowchart TD
+  A(Why: programming) --> |Very personal question\n and it must be answered| B{Who: profiles}
+  B--> C(You love it) 
+  B--> D(You need it)
+  C--> E(What: sylabus)
+  H["Here you need some\n kind of guidence"]--> |teacher?senior? \nif not a 'picar pedra'| E(What: sylabus)
+  D--> E(What: sylabus)
+  E--> |The what is helpless\n if you don't know the for| F(For What: skills)
+  F--> |The most second most importat step\n after the why, the how\n a bad how may destroy your why| G(How: \nlearning techniques)
+```
+
+</div>

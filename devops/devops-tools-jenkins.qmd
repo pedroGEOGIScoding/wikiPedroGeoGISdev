@@ -1,0 +1,144 @@
+---
+title: "Jenkins pipelines"
+subtitle: pipelines
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: k8s
+categories: [devops, pipelines]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **What is a Jenkins**
+
+<mark>Jenkins is an  self-contained & open source continuous **integration/continuous delivery and deployment (CI/CD**) automation software DevOps tool written in the Java programming language</mark>. Jenkins can be used to automate all sorts of tasks related to *building, testing, and delivering or deploying software*
+
+It is used to implement CI/CD [workflows](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/){.external .target='_blank'}, called **pipelines** (by configuration files called Jenkinsfile or web ui).
+
+The need for **Jenkins** becomes especially acute when deploying to a **microservices architecture**.
+Since one of the goals of microservices is to frequently update applications and services, the ability to do so is relevant and significant. 
+:::
+
+# Install
+
+**Jenkins** can be installed through native system packages, Docker, or even run standalone by any machine with a Java Runtime Environment (JRE) installed. **Jenkins** is a highly extensible product whose functionality can be extended through the installation of plugins.
+
+**Jenkins** is typically run as a standalone application in its own process.
+
+The **Jenkins** WAR file bundles ``Winstone``, a Jetty ``servlet`` container wrapper, and can be started on any operating system or platform with a version of Java supported by Jenkins.
+
+::: {.column-margin}
+Theoretically, Jenkins can also be run as a ``servlet`` in a traditional ``servlet`` container like Apache Tomcat or WildFly, but in practice this is largely untested and there are many caveats. In particular, support for WebSocket agents is only implemented for the Jetty ``servlet`` container.
+:::
+
+- [Installing Jenkins](https://www.jenkins.io/doc/book/installing/){.external target='_blank'}
+- [How to Install Jenkins](https://sites.google.com/view/devopscifo/devops-tools/install-jenkins){.external target='_blank'}
+
+## Debian Ubuntu
+
+![](/images/devops/jenkins-1.png)
+
+**Prerequisites**
+
+Minimum *hardware* requirements:
+
+- 256 MB of RAM
+- 1 GB of drive space (although 10 GB is a recommended minimum if running Jenkins as a Docker container)
+
+Recommended hardware *configuration* for a small team:
+
+- 4 GB+ of RAM
+- 50 GB+ of drive space
+
+*Software* requirements:
+
+- Java: [see the Java Requirements page](https://www.jenkins.io/doc/book/platform-information/support-policy-java/){.external target='_blank'}
+
+On **Debian** and [Debian-based](https://www.jenkins.io/doc/book/installing/linux/)[.external target='_blank'] distributions like Ubuntu you can install Jenkins through ``apt``.
+
+``` {.bash .code-overflow-wrap filename="App.bash"}
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+```
+
+# Pipelines
+
+**Jenkins pipelines** can be defined using a text file called [JenkinsFile](https://docs.cloudbees.com/docs/cloudbees-ci/latest/automating-with-jenkinsfile/creating-jenkinsfile){.external target='_blank'}.
+
+You can implement **pipeline** as code using [JenkinsFile](https://www.jenkins.io/doc/book/pipeline/syntax/){.external target='_blank'}, and this can be defined by using a <mark>domain specific language ([DSL](https://en.wikipedia.org/wiki/Domain-specific_language){.external target='_blank'}).</mark> 
+
+With **JenkinsFile**, you can write the steps needed for running a Jenkins pipeline in [Groovy](https://groovy-lang.org/){.external target='_blank'}: a (declarative and/or scripting) multi-faceted language for the ``Java`` platform very similar to [yaml](https://yaml.org/){.external target='_blank'} (declarative o more declarative).
+
+
+
+::: {.callout-note}
+A **continuous delivery (CD) pipeline is an automated expression** of your process for getting software from version control right through to your users and customers.
+
+Every ``change`` to your software (*committed in source control*) goes through a complex process on its way to being released. This process involves building the software in a reliable and repeatable manner, as well as progressing the built software (called a ``build``) through multiple stages of testing and deployment.
+:::
+
+Creating a **Jenkinsfile** and committing it to source control provides a number of immediate benefits:
+
+- **Automatically** creates a Pipeline ``build`` process for all ``branches`` and ``pull requests``.
+- **Code review/iteration** on the Pipeline (along with the remaining source code).
+- **Audit trail** for the Pipeline.
+- [Single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth){.external target='_blank'} for the **Pipeline**, which can be viewed and edited by multiple members of the project.
+
+{{< video https://youtu.be/IOUm1lw7F58?feature=shared >}}
+
+## Declarative Pipeline fundamentals
+
+In Declarative **Pipeline** syntax, the pipeline block defines all the work done throughout your entire Pipeline.
+
+
+![Jenkinsfile (Declarative Pipeline)](/images/devops/jenkins-2.png)
+
+1. Execute this Pipeline or any of its stages, on any available agent.
+2. Defines the ``Build`` stage.
+3. Perform some steps related to the ``Build`` stage.
+4. Defines the ``Test`` stage.
+5. Perform some steps related to the ``Test`` stage.
+6. Defines the ``Deploy`` stage.
+7. Perform some steps related to the ``Deploy`` stage.
+
+## Creating your first Pipeline 
+
+{{< video https://youtu.be/TiTrcFEsj7A?feature=shared >}}
+
+1. Install the **Docker Pipeline plugin** through the ``Manage Jenkins > Plugins page``
+2. After installing the plugin, restart Jenkins so that the plugin is ready to use
+3. Copy one of the [examples](https://www.jenkins.io/doc/pipeline/tour/hello-world/#examples){.external target='_blank'} into your repository and name it ``Jenkinsfile``
+4. Click the ``New Item`` menu within Jenkins
+
+![Click the ``New Item`` menu within Jenkins](/images/devops/jenkins-3.png){width="30%"}
+
+5. Provide a name for your new item (e.g. My-Pipeline) and select ``Multibranch Pipeline``
+6. Click the ``Add Source`` button, choose the type of repository you want to use and fill in the details
+7. Click the ``Save`` button and watch your **first Pipeline run**
+## On windows
+
+- [Jenkins app creating pipeline](https://sites.google.com/view/devopscifo/devops-tools/jenkins){.external target='_blank'}
+
+# Reference
+
+- [Jenkins](https://sites.google.com/view/devopscifo/devops-tools/jenkins){.external target='_blank'}
+- [Pipeline Steps Reference](https://www.jenkins.io/doc/pipeline/steps/){.external target='_blank'}
+- [Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/){.external target='_blank'}
+- [Pipeline](https://www.jenkins.io/doc/book/pipeline/#_footnotedef_3){.external target='_blank'}
+
+  
+
+
+

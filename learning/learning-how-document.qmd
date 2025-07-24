@@ -1,0 +1,51 @@
+---
+title: "Document"
+subtitle: About how to make good documentation
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: About how to take notes properly
+categories: [about, writing]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![**Dilbert**, by [Scott Adams](https://linktr.ee/scottadams){.external}](/images/home/documentation.png){width="80%"}
+
+
+## Write
+
+Before starting, [write](/learning/learning-how-writing.qmd).
+
+## Some ideas about documentation
+
+### Start
+
+`Start`: always start. No matter what. Start small, if necessary. Start bad, if necessary. Start in a piece of paper, if necessary. But **start**.
+
+### Document is paramount
+
+`Good documentation is key`: always apply pareto. Good documentation is the basis for everything: learning, coding, communicating and growing. No make a mistake: **document is paramout.**
+
+### Make documenting easy
+
+Choose the right documentation tools: [quarto](https://quarto.org/){.external} 
+
+### It is an habit
+
+`It is an habit`: make it a part of your culture, part of your code, part of your habits. **So code and document. Document and code**:
+
+  - `Timing`: learn the `when`. Document the right things at the right time is very relevant: it allow you to get in the documenting flow.
+  - `When` you hare happy with a nice solution: explain it to yourserlf and document.
+  - `When` you think it is a relevant knowledge: explain it to yourserlf and document.
+  - Explain the decision-making to get to that solution: explain the `why`. And `how` do you get there.
+  - Regarding that solution, that note, that writing with your context. Remember: [Lateralization](/books/TheMatterWithThings.qmd#the-matter-with-things). **Iterate**.
+  - `Keep it simple`
+
+
+
+
+
+

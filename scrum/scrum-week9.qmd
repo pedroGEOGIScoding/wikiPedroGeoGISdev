@@ -1,0 +1,200 @@
+---
+title: "Week 9: Albertus' Dilemma"
+subtitle: SCRUM Week 9
+author: Albert R.
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Albertus' Dilemma explores the mental challenges faced by programmers throughout the workweek
+categories: [scrum, scrum-week9, albertusDilemma]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 9 - Albertus' Dilemma**
+
+Albertus' Dilemma explores **the mental challenges faced by programmers throughout the workweek**, symbolized by a **diminishing canteen of creative energy**.
+
+The dilemma arises from the misconception that working harder will replenish this energy, **leading to exhaustion and a productivity trap: the well**.
+
+To **break free**, programmers **must strategically pause, reflect, and make informed decisions**.
+
+Embracing intermittent coding preserves mental energy, ensuring a successful journey from code to relaxation.
+
+Albertus' Dilemma serves as a **guiding philosophy for maintaining balance**, resulting in a clear-minded, stress-free programmer celebrating a job well done by week's end.
+
+:::
+
+</br>
+
+::: {.keywords}
+
+**Keywords: Week 9 - Albertus' Dilemma**
+
+Albertus' Dilemma, Mental Challenges, Creative-Mind-Brain Energy, Productivity Trap, Strategic Pause, Informed Decisions, Intermittent Coding, Balance, Clear-minded, Stress-free, Coding Desert, Journey, Programmer's Oasis, Reflection, Decision-making, Desert Wisdom, Coding Legacy
+
+:::
+
+
+</br></br>
+
+![Programming means choosing a path where there is no path and few resources and each decision conditions the next and drains resources](/images/scrum/sahara-desert-morroco-800x800.jpg){width="80%"}
+
+# What is a dilemma?
+
+![[Dictionary dilemma](https://dictionary.cambridge.org/dictionary/english/dilemma#google_vignette){.external}](/images/scrum/dilemma.png){width="60%"}
+
+# Albertus' Dilemma: The Comic
+
+::: {.callout-tip title="Albertus' Dilemma - Navigating the Programmer's Oasis" icon=false}
+
+</br>
+
+![In the vast landscape of the workweek](/images/scrum/albertus1.jpg){width="60%"}
+
+In the vast landscape of the workweek, each programmer embarks with a <mark>canteen full of precious water, symbolizing their mental energy</mark>. Monday marks the beginning of the journey, the oasis brimming with potential. But as the relentless sun of tasks beats down, the water supply diminishes.
+
+By Tuesday, the once-full canteen is distressingly dry—a programmer stranded in the midweek desert, parched for creativity and focus. <mark>The Albertus Dilemma unfolds as a dilemma rooted in the illusion that **working harder and longer** will miraculously refill the canteen.</mark>
+
+The paradox arises: **the more they toil in the arid landscape, the deeper they dig themselves into a well of exhaustion**. The coding well, ever-expanding with each line of code, becomes a **trap**. Blind to their own depletion, programmers find themselves ensnared, the oasis of productivity slipping further away.
+
+![To break free from Albertus Dilemma](/images/scrum/albertus2.jpg){width="60%"}
+
+To break free from Albertus Dilemma, programmers must recognize the futility of digging deeper. Instead, they must **pause**, survey the desert, and conserve the remaining droplets of mental energy. The oasis can only be replenished through strategic reflection and intelligent **decision-making**.
+
+![Coding without a clear path forward is akin to stumbling into the well](/images/scrum/albertus5.jpg){width="60%"}
+
+<mark>Coding without a clear path forward is akin to stumbling into the well—a descent into a **labyrinth of confusion**</mark>. The remedy lies in restraint, in knowing when to pause and when to resume. The oasis is not lost, merely obscured by the mirage of perpetual productivity.
+
+![The trap well of ignorance and bad decision-making](/images/scrum/albertus6.jpg){width="60%"}
+
+Thus, the sage programmer embraces the art of **intermittent coding**, preserving **mental water in the vast desert**. They understand that productivity is not a bottomless well, but a <mark>delicate oasis to be nurtured</mark>. Albertus' Dilemma teaches the profound lesson that the journey from coding to completion requires a balance of diligence, strategic thinking, and the wisdom to discern when to rest and when to forge ahead.
+
+![The code produced throughout the week reflects the clarity of their mind](/images/scrum/albertus3.jpg){width="60%"}
+
+As the week unfolds, the sage programmer, having embraced the lessons of Albertus Dilemma, emerges unscathed by the pitfalls of the coding desert. By judiciously **preserving mental energy**, they reach Friday with a canteen still brimming with vitality. Instead of succumbing to exhaustion, they find themselves relaxed and content, basking in the success of their strategic approach.
+
+![The unwise code of Friday's night working hard](/images/scrum/albertus7.jpg){width="60%"}
+
+<mark>Friday becomes a celebration, not just the end of the workweek, but a culmination of intelligent choices</mark>. The sage programmer, **stress-free** and clear-minded, revels in the satisfaction of **a job well done**. With a fully replenished canteen, they embark on the weekend with **boundless energy to share with friends, enjoying leisure without the burden of unwise coding decisions**.
+
+![Friday becomes a celebration](/images/scrum/albertus4.jpg){width="60%"}
+
+The code produced throughout the week reflects the clarity of their mind—a clean and elegant manifestation of thoughtful problem-solving. The sage programmer, having navigated the desert wisely, not only secures their own well-being but crafts a legacy of efficient and mindful coding. <mark>Albertus Dilemma becomes not just a dilemma to overcome but a guiding philosophy, ensuring that the oasis of productivity is always within reach, and the journey from code to relaxation is a harmonious and successful one.</mark>
+
+:::
+
+# Overview
+
+```{mermaid}
+
+flowchart LR
+
+A[Problem] --> B(Let's code & See what happens...)
+C[The Pitt]
+D(Optimal Solution)
+C --> B
+B --> C
+C --> A
+
+
+```
+# Introduction
+
+As a future developer I want to relate the struggles and reflect the mentality that you, my fellow reader and potential developer, should avoid.
+
+My purpose is to stablish some patterns of productive thinking to help you to get out from the *Valley of Despair* a.k.a. (and from now on) **The Pitt** that most likely you would fall into.
+Trust me, I've been there...Actually I AM constantly there, that's why I want to reflect that in this kind of journal.
+
+::: {.callout-caution collapse="true"}
+## Anyway
+That's the tricky part, I don't know how as of today (01/19/2023). But hopefully I will.
+First of all you need to understand the concept of [iteration](https://en.wikipedia.org/wiki/Iteration#Education), my friend. 
+With that in mind, we just need to start.
+:::
+
+# Albertus' Dilemma... What are we talking about?
+
+You surely noticed the flowchart above. It's such a common pattern for us who just started programming. Have you ever feel identified with it?
+
+
+As you keep progressing in your coding lessons, problems are going to be slightly more difficult and complex every time. Until you reach to a point when you can't completely see the solution in your mind.  
+You'll probably see straight how to get from A to B, but from B to C you see it blurry... Well, then you just have to get to B so you can see more clear how to get to C better, right?  
+Yes, I always trick to myself like that...
+
+::: {.callout-note}
+## When we talk about **Albertus' Dilemma**:   
+It is that moment when you either need to stop, take two steps back and think what led you into this **or** keep hitting the wall (and the keyboard with your pointless code).
+:::
+
+
+I'm going to try to develop that idea on some exercises **based on this lab:**
+
+::: {.callout appearance="minimal"}
+📘 Linux Lab#SE02-1: Movie Review and Rating
+
+    Create a Maven/Gradle Java SE Project.
+
+    Add the needed dependencies:
+        Lombok
+        Junit
+        Java Faker
+
+    Create three Java classes to define the Model. Java SE Classes:
+
+        Movie: The Movie class represents a movie that is being reviewed. It has the following attributes:
+            title: a String representing the title of the movie
+            reviews: a Set of Review objects representing the reviews that have been written for this movie
+            Critic: The Critic class represents a critic who writes reviews.
+
+        The Critic class has the following attributes:
+            name: a String representing the name of the critic
+            Review: The Review class represents a review of a movie written by a critic.
+
+        The Review class has the following attributes:
+            movie: a Movie object representing the movie being reviewed
+            critic: a Critic object representing the critic who wrote the review
+            rating: an int representing the rating given by the critic (on a scale of 1 to 5)
+            comment: a String representing the comment written by the critic about the movie
+
+:::
+So I have this requirement:
+
+* Make a program that can manage information about movies such as:
+    + Movie name.
+    + Its director (e.g. so I can plan a themed marathon with my friends.)
+        - Director's prestige: I want to know how many Oscars has the director won through his career.
+    + It also needs to include its critics made by the best professionals and to know how well or poorly rated it is.
+
+**User Story #1** - The easiest and certain way to hit the wall.
+
+Let's just start coding:
+
+```
+
+public Class MovieManager  {
+    public static void main(String[])
+}
+
+```
+
+
+```{mermaid}
+
+flowchart LR
+A[Problema] --> B[Decision]
+B --> C(Code & See)
+B --> D(Piensa)
+D --> E[Sabes lo que haces?]
+C --> G[El Pozo]
+D --> F[Te enamoraste de tu primera idea?]
+G --> A
+
+
+```
+
+

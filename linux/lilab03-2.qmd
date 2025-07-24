@@ -1,0 +1,44 @@
+---
+title: "Linux Lab#LI03-2: Manage files"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, file-system]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI03-2: Manage files**
+
+-   Create directories for each department (sales, marketing, human resources, IT, engineering) at the root of the filesystem.
+-   [Configure standard Linux permissions and ownership](https://www.redhat.com/sysadmin/manage-permissions) such that each group only has access to its own departmental directories. For example, the sales group has access to the `/sales` directory but not to other departments' directories.
+    -   After completing and testing the previous step, [configure ACL permissions](https://opensource.com/article/20/3/external-drives-linux) to permit the marketing department to have read access to the `/sales` directory.
+    -   Use ACL permissions to permit one user account to have read permission to the `/IT` directory.
+    -   Configure [SGID and the sticky bit](https://www.redhat.com/sysadmin/suid-sgid-sticky-bit) on the `/marketing` directory.
+-   Ensure that two of your existing user accounts are now members of the marketing group.
+    -   Use each account to create one file in the `/marketing` directory.
+    -   Test whether one of those accounts can delete the file created by the other account (they should not be able to, due to the sticky bit).
+-   Create a file called `unchangeable.txt`, set the immutable attribute on it, and then delete the file.
+-   Configure [file links](https://www.redhat.com/sysadmin/linking-linux-explained).
+    -   Create a file named `LinksTest.txt` in the `/opt` directory, and then create a hard link to it in the `/tmp` directory. Use Vim to add a line of text to the file through the `/opt/LinksTest.txt` path, and then display the file's contents by using the `/tmp/LinksTest.txt` file path.
+    -   Create a symlink to `/tmp/LinksTest.txt` in the root user's home directory and view the file's contents.
+    -   Delete the `/tmp/LinksTest.txt` file, and then attempt to view the file's contents through the `/root/LinksTest.txt` symlink.
+-   Create 10 files in the `/tmp` directory, and then use `tar` and `gzip` to bundle and compress the files.
+    -   Delete the 10 original files and then restore them from your tarball.
+-   Use the `find` command to search for the test files in the department directories. Do this task first as the root user, then as a user who is a member of the group that owns the directory, and finally as a user who is not a member of the group that owns the directory.
+-   At the command line only, practice mounting and unmounting ISO images.
+-   Copy a file from the ISO to a directory on the Linux installation.
+-   Configure [LVM](https://www.redhat.com/sysadmin/creating-logical-volumes):
+    -   Designate two sections of 50MB each of your remaining empty hard disk drive space to be physical volumes (PVs) used by LVM.
+    -   Combine those to PVs into a single volume group, and then configure a single logical volume (LV) that is 100MB.
+    -   Create a directory to serve as a mount point for this LV and add an entry to the `/etc/fstab` so that it is mounted during the system bootup.
+:::
+
+
+

@@ -1,0 +1,21 @@
+---
+title: "The Joy of Living"
+author: "albertprofe"
+subtitle: "Yongey Mingyur Rinpoche, 2008, The Joy of Living: Unlocking the Secret and Science of Happiness"
+date: "3/6/2007"
+date-modified: "2/14/2023"
+date-format: full
+description: "Blends the ancient wisdom of Tibetan Buddhism with modern scientific insights, offering guidance on finding lasting happiness and peace."
+categories: [mindset]
+subcategories: [buddhism, psychology, neuroscience, self-management]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/TheJoyofLiving.jpeg)
+
+## More info
+
+- [The Joy of Living: Unlocking the Secret and Science of Happiness][(https://www.example.com/book/the-joy-of-living](https://www.amazon.es/Joy-Living-Unlocking-Science-Happiness/dp/0307347311){.external}

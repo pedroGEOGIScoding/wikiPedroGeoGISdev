@@ -1,0 +1,38 @@
+---
+title: "Blitzscaling"
+author: "albertprofe"
+subtitle: "Blitzscaling: The Lightning-Fast Path to Building Massively Valuable companies, 2022, Reid Hoffman and Chris Yeh"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "The new book by Reid Hoffman and Chris Yeh, co-authors of the New York Times Bestseller The Alliance"
+categories: [strategy]
+subcategories: [companies, agile]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/blitzscaling.png){width="40%"}
+
+## About the book
+
+**What is the secret to starting and scaling massively valuable companies?**
+
+For most of the world, the terms "Silicon Valley" and "startup" are synonymous. Indeed, Silicon Valley is home to a disproportionate number of companies that have grown from garage startups into global giants.
+
+<mark>But what is the secret to these startups' extraordinary success? Contrary to the popular narrative, it's not their superhuman founders or savvy venture capitalists. Rather, it's that they have learned how to blitzscale.</mark> 
+
+Blitzscaling is a specific set of practices for igniting and managing dizzying growth; an accelerated path to the stage in a **startup's life-cycle where the most value is created.**
+
+<mark>It prioritizes speed over efficiency in an environment of uncertainty, and allows a company to go from "startup" to "scaleup" at a furious pace that captures the market.</mark>
+
+Drawing on their experiences scaling startups into billion-dollar businesses, **Hoffman** and **Yeh** offer a framework for **blitzscaling** that can be replicated in any region or industry. Readers will learn how to design business models that support lightning-fast growth, navigate necessary shifts in strategy at each level of scale, and weather the management challenges that arise as their company grows.
+
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/oavlplpm7ErfpQ" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/reidhoffman/blitzscaling-book-trailer-118631898" title="Blitzscaling: Book Trailer" target="_blank">Blitzscaling: Book Trailer</a> </strong> from <strong><a href="//www.slideshare.net/reidhoffman" target="_blank">Reid Hoffman</a></strong> </div>
+
+## More info
+
+- [Blitzscaling: The Lightning-Fast Path to Building Massively Valuable Companies](https://www.blitzscaling.com/){.external}

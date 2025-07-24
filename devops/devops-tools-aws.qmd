@@ -1,0 +1,99 @@
+---
+title: "Amazon Web Services AWS"
+subtitle: AWS
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: AWS
+categories: [devops, aws]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![Amazon Web Services](/images/devops/aws.png){width="40%"}
+
+# Introduction to AWS
+
+<mark>[Amazon Web Services (AWS)](https://aws.amazon.com/) is a comprehensive cloud computing platform that has become integral to modern software development and infrastructure management.</mark>
+
+::: {.column-margin}
+**AWS is an indispensable part of the modern programming landscape**, offering a versatile and scalable cloud platform. By mastering AWS services like DynamoDB, Lambda, Amplify, and S3, programmers can unlock a world of possibilities for building efficient, secure, and innovative applications in today's technology-driven world.
+:::
+
+![Web Application with Amazon S3, Lambda, DynamoDB and API Gateway, [Connor Leech](https://medium.com/employbl/tutorial-for-building-a-web-application-with-amazon-s3-lambda-dynamodb-and-api-gateway-6d3ddf77f15a){.external}](/images/devops/aws-architecture-basic.png){width="50%"}
+
+> For example, it is very easy to create and deploy a website that utilizes S3 for hosting, DynamoDB for a database, API Gateway for RESTful endpoints and Lambda functions as the backend server processing.
+
+As a programmer, understanding AWS is crucial for several reasons, as it significantly impacts the way applications are developed, deployed, and maintained in the industry.
+
+## Importance for Programmers
+
+**Scalability and Flexibility**
+AWS provides a scalable and flexible cloud infrastructure, allowing developers to dynamically scale resources based on demand. This elasticity ensures that applications can handle varying workloads efficiently, optimizing performance and cost-effectiveness.
+
+**Cost Efficiency**
+By leveraging AWS services, developers can avoid the high upfront costs associated with traditional infrastructure. AWS's pay-as-you-go pricing model allows programmers to pay only for the resources they use, promoting cost efficiency and enabling startups and enterprises alike to scale without major capital investments.
+
+**Global Reach**
+AWS operates in multiple geographic regions worldwide, enabling developers to deploy applications closer to end-users for improved latency and responsiveness. This global reach is particularly beneficial for building international applications with a broad user base.
+
+**Robust Security Measures**
+AWS prioritizes security, offering a variety of tools and features to secure applications and data. These include identity and access management, encryption, and compliance certifications, instilling confidence in both developers and businesses to handle sensitive information.
+
+## Industry Adoption
+
+**Standardization**
+AWS has set industry standards for cloud computing, making it a preferred choice for developers and enterprises. Familiarity with AWS services facilitates collaboration and interoperability, as many organizations rely on similar cloud architectures.
+
+**Ecosystem and Community**
+The extensive AWS ecosystem encompasses a vast array of services, tools, and integrations. A large and active community, along with ample documentation and resources, makes it easier for programmers to learn and troubleshoot, contributing to its widespread adoption.
+
+**Innovation and Agility**
+AWS continually introduces new services and updates existing ones, fostering innovation and enabling developers to stay at the forefront of technology. This agility aligns with the fast-paced nature of the industry, allowing programmers to adopt the latest advancements seamlessly.
+
+# Main AWS Services
+
+![AWS main services](/images/devops/AWS_Services_for_Data_Engineering.png){width="60%"}
+
+[Amazon DynamoDB](https://aws.amazon.com/dynamodb/)
+DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance at any scale. Its seamless scalability, low-latency responses, and automatic data replication make it ideal for handling dynamic and high-traffic applications.
+
+[AWS Lambda](https://aws.amazon.com/lambda/)
+Lambda is a serverless compute service, allowing developers to run code without provisioning or managing servers. With Lambda, programmers can build scalable and event-driven applications, executing code in response to events like changes in data, user actions, or system events.
+
+[AWS Amplify](https://aws.amazon.com/amplify/)
+Amplify simplifies the development of scalable and secure web and mobile applications. It provides a set of tools for frontend development, incorporating features like authentication, storage, and APIs. Amplify streamlines the deployment process, making it easier for developers to deliver robust applications.
+
+[Amazon S3](https://aws.amazon.com/s3/)
+Amazon S3, or Simple Storage Service, is an object storage service offering scalable and secure storage for data. It is widely used for storing and retrieving any amount of data from anywhere on the web, making it a fundamental component for building scalable and reliable applications.
+
+# Examples
+
+- [Who's Using Amazon Web Services? [2020 Update]](https://www.contino.io/insights/whos-using-aws){.external}
+
+1. **Netflix**
+   - **Industry:** Entertainment/Media
+   - **Usage:** Netflix relies on AWS for its global streaming service, utilizing AWS's scalable infrastructure to handle vast amounts of video content delivery to millions of subscribers worldwide.
+
+2. **Airbnb**
+   - **Industry:** Hospitality/Travel
+   - **Usage:** Airbnb utilizes AWS to support its online marketplace for lodging, managing various services such as database storage, user authentication, and dynamic content delivery for a seamless user experience.
+
+3. **General Electric (GE)**
+   - **Industry:** Industrial/Manufacturing
+   - **Usage:** GE, a global conglomerate, leverages AWS for its digital initiatives, including industrial internet applications. AWS enables GE to analyze and process large volumes of data from industrial equipment for improved efficiency and maintenance.
+
+4. **Samsung**
+   - **Industry:** Technology/Electronics
+   - **Usage:** Samsung, a multinational electronics company, utilizes AWS to power its digital services and applications. AWS provides the necessary infrastructure and scalability for Samsung's diverse range of products and services.
+
+> Who is using **AWS**
+>
+> `
+Aon, Adobe, Airbnb, Alcatel-Lucent, AOL, Acquia, AdRoll, AEG, Alert Logic, Autodesk, Bitdefender, BMW, British Gas, Baidu, Bristol-Myers Squibb, Canon, Capital One, Channel 4, Chef, Citrix, Coinbase, Comcast, Coursera, Disney, Docker, Dow Jones, European Space Agency, ESPN, Expedia, Financial Times, FINRA, General Electric, GoSquared, Guardian News & Media, Harvard Medical School, Hearst Corporation, Hitachi, HTC, IMDb, International Centre for Radio Astronomy Research, International Civil Aviation Organization, ITV, iZettle, Johnson & Johnson, JustGiving, JWT, Kaplan, Kellogg’s, Lamborghini, Lonely Planet, Lyft, Made.com, McDonalds, NASA, NASDAQ OMX, National Rail Enquiries, National Trust, Netflix, News International, News UK, Nokia, Nordstrom, Novartis, Pfizer, Philips, Pinterest, Quantas, Reddit, Sage, Samsung, SAP, Schneider Electric, Scribd, Securitas Direct, Siemens, Slack, Sony, SoundCloud, Spotify, Square Enix, Tata Motors, The Weather Company, Twitch, Turner Broadcasting,Ticketmaster, Time Inc., Trainline, Ubisoft, UCAS, Unilever, US Department of State, USDA Food and Nutrition Service, UK Ministry of Justice, Vodafone Italy, WeTransfer, WIX, Xiaomi, Yelp, Zynga and Zillow.
+`
+

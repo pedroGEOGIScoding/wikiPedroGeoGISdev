@@ -1,0 +1,39 @@
+---
+title: "Lab 1: chat App"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Lab
+categories: [devops, lab]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![](/images/devops/AWS-Lambda-and-DynamoDB-Architecture.png)
+
+# References
+
+- [Overview lab](https://sites.google.com/view/devopscifo/labs/1-chat-app){.external target='_blank'}
+- [Backend AWS](https://sites.google.com/view/devopscifo/labs/1-chat-app/aws-chat-back){.external target='_blank'}
+- [Backend AWS: gateway](https://sites.google.com/view/devopscifo/labs/1-chat-app/aws-chat-back/api-gateway-chat){.external target='_blank'}
+- [Backend AWS: dynamoDB](https://sites.google.com/view/devopscifo/labs/1-chat-app/aws-chat-back/dynamodb){.external target='_blank'}
+- [FrontEnd React](https://sites.google.com/view/devopscifo/labs/1-chat-app/react-chat-front){.external target='_blank'}
+- [Deploy Heroku](https://sites.google.com/view/devopscifo/labs/1-chat-app/react-chat-front/react-chat-heroku){.external target='_blank'}
+- [Deploy Amplify](https://sites.google.com/view/devopscifo/labs/1-chat-app/react-chat-front/react-chat-amplify){.external target='_blank'}
+  
+
+
+
+
+
+
+
+
+
+
+

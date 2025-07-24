@@ -1,0 +1,492 @@
+---
+title: "Java MOOC Helsinki Syllabus"
+subtitle: Java Training
+author: nicolas o.
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Java SE training by MOOC Helsinki Programming Java Syllabus
+categories: [javase, training, helsinki, mooc]
+toc: true
+number-sections: false
+format:
+  html
+---
+
+
+
+# Summary
+
+### Java Programming I
+
+
+- **Part 1**: Printing, input, Variables, Calculating with numbers, Conditional statements
+- **Part 2**: Recurring problems and patterns, Repeating functionality, More loops, **Methods**
+- **Part 3**: Discovering errors, Lists, Arrays, Using strings
+- **Part 4**: Introduction to object-oriented, Programming Objects in a list, Files and reading data
+- **Part 5**: Learning object-oriented programming, overloading methods and constructors, Primitive and reference variables, **Objects and references**
+- **Part 6**: Objects on a list and a list as part of an object, Separating the user interface from program logic, Introduction to testing
+- **Part 7**: Programming paradigms, Algorithms, Larger programming exercises
+
+
+### Java Programming II
+
+- **Part 8**: **Hashmaps**, fetching and grouping information
+- **Part 9**: Class inheritance, **Interfaces**, Interfaces, Object polymorphism
+- **Part 10**: Handling collections as streams, The Comparable Interface, Other useful techniques
+- **Part 11**: **Class diagrams**, Packages, Exceptions, Processing files
+- **Part 12**: Type parameters, ArrayList and hash table, Randomness, Multidimensional data
+- **Part 13**: Graphical user interfaces, UI components and their layout, Event handling, Application's launch parameters, Multiple views
+- **Part 14**: Data visualization, Multimedia in programs, Larger application: Asteroids, **Maven and third-party libraries**
+
+
+::: {.column-margin}
+![](/images/javase/helsikikisyllabus.png)
+:::
+
+# Detailed Syllabus
+
+## Java Programming I
+
+
+### Part 1
+
+> The first part focuses on taking the plunge with programming and getting familiar with all the required tools.
+
+**1. Printing:**
+
+- Learn to write a program that prints text.
+- Become familiar with executing programs.
+- Know what the term "parameter" means.
+
+**2. Reading input:**
+
+- Learn to write a program that reads text written by a user.
+- Know what a "string" refers to in programming.
+- Know how to join (i.e., "concatenate") strings together.
+
+**3. Variables:**
+
+- Understand the concept of a variable. You know what variable types, names, and values are.
+- Know how to create and use string, integer, floating-point, and boolean variables.
+
+**4. Calculating with numbers:**
+
+- Learn to perform calculations with the help of variables.
+- Know how to form printable statements including both calculations (expressions) and strings.
+
+**5. Conditional statements and conditional operation:**
+
+- Become familiar with the idea of a conditional statement and know how to create a program containing optional operations through the use of conditional statements.
+- Become familiar with comparison and logical operators commonly used in conditional statements.
+- Know how to compare both numbers and strings, remembering the equals-command for strings.
+- Become familiar with the order of execution for a conditional statement, and know that the parsing of a conditional statement stops at the first condition whose statement evaluates to true.
+
+::: {.callout-note title="Programming in our society"}
+
+Context introduction to coding now a days.
+
+:::
+
+### Part 2
+
+> The second part focuses on repetition in programs and on how to divide functionality into distinct units.
+
+**1. Recurring problems and patterns to solve them:**
+
+- You recognize that certain sub-problems, such as reading input or calculations, recur in programs.
+- You're aware of solution models to certain sub-problems.
+- You practice combining solution patterns used on sub-problems to solve broader ones.
+
+**2. Repeating functionality:**
+
+- You are familiar with loops and know how to create a program that contains one.
+- You know how to use the `break` command to end a loop's execution.
+- You know how to use `continue` command to return to the beginning of a loop.
+- You are able to create a program that reads inputs from a user until a specific input is given. For example, the number 0 or the string "end", after which the program prints something about the provided inputs (e.g., the input count, and in the case of numbers their sum and average).
+
+**3. More loops:**
+
+- You're familiar with the condition of the `while` loop condition.
+- You know how to use the `for` loop.
+- You recognize situations where a `while` loop should be used and those where a `for` loop is more appropriate.
+
+**4. Methods and dividing the program into smaller parts:**
+
+- You are familiar with the concepts of a method parameter, a method's return value, and a program's call stack.
+- You know how to create methods and how to call them from both the main program (the `main` method) as well as from inside other methods.
+- You can create parameterized and non-parameterized methods, and you can create methods that return a value.
+
+::: {.callout-note title="Conclusion"}
+
+- We took our first steps towards managing program complexity: loop structures can be used to execute program code time and again and custom methods allow for dividing a program into smaller, more manageable parts.
+
+:::
+
+
+### Part 3
+
+> The main themes in the third part are adding information to list and array data structures, and handling information in string form.
+
+**1. Discovering errors:**
+
+- Know the term perceptual blindness, and can learn to recognize essential (and non-essential) information with practice.
+- Know ways to comment code, and understand the importance of variable names on readability of your code.
+- Know the concept print-debugging, and know how to search for errors in the source code by printing.
+
+**2. Lists:**
+
+- You are familiar with the list structure and know how to use a list in a program.
+- You are familiar with the concept of an index, you can add values to a list, and you know how to retrieve information from a list's indices.
+- You know how to iterate over a list with multiple different loop types.
+- You know how to check if a value exists in a list, and also know how to remove values from a list.
+- You are aware of the list being a reference-type variable, and become familiar with using lists as method parameters.
+
+**3. Arrays:**
+
+- You know what an Array is and how to use it.
+- You can create an Array, assign a value to a given index and iterate over it.
+- You recognize that an Array is a reference type and know how to use an array as a parameter of a method.
+
+**4. Using strings:**
+
+- Revising reading, printing and comparing Strings.
+- Knowing how to split a string into several pieces.
+
+::: {.callout-note title="Conclusion"}
+
+- In this part we have taken the first steps towards effective data management: by using lists and arrays we can store almost unlimited amounts of data for the duration of program execution.
+- We have also practiced string handling and splitting strings into smaller substrings.
+:::
+
+### Part 4
+
+> The main theme of the fourth part is object-oriented programming. You will learn to read data from files and to represent and handle information with the help of objects.
+
+**1. Introduction to object-oriented programming:**
+
+- You're familiar with the concepts of class, object, constructor, object methods, and object variables.
+- You understand that a class defines an object's methods and that the values of instance (object) variables are object-specific.
+- You know how to create classes and objects, and know how to use objects in your programs.
+
+**2. Objects in a list:**
+
+- You can add objects to a list.
+- You can go through objects in a list.
+
+**3. Files and reading data:**
+
+- You'll review reading keyboard input.
+- You know what a file and a filesystem are, and are able to add an empty text file into the filesystem.
+- You know how to create and write a program that reads data from a file.
+
+::: {.callout-note title="Conclusion"}
+
+- We learned classes and objects to suit our programming needs.
+- We defined constructors, methods, and object variables for the classes, and grew used to printing object-related information with their toString method. We also practised handling objects on a list.
+:::
+
+### Part 5
+
+> The fifth part continues with object-oriented programming, which was introduced in the fourth part.
+
+**1. Learning object-oriented programming:**
+
+- To revise the concepts of class and object.
+- To realize that a program that has been written without objects can also be written using objects.
+- To realize that the use of objects can make a program more understandable.
+
+**2. Removing repetitive code (overloading methods and constructors):**
+
+- Becoming familiar with the term overloading.
+- Creating multiple constructors for a class.
+- Creating multiple methods with the same name in a class.
+
+**3. Primitive and reference variables:**
+
+- You understand the terms primitive and reference variable.
+- You know the types of primitive variables in Java, and also that there can be practically an infinite number of different reference variables.
+- You know the differences in behavior between primitive and reference variables when values are assigned to them, or when they're used as method parameters.
+
+**4. Objects and references:**
+
+- You will brush up on using classes and objects.
+- You know what a `null` reference is, and what causes the `NullPointerException error`.
+- You can use an object as an object variable and a method parameter.
+- You can create a method that returns an object.
+- You can create the method equals, which can be used to check if two objects of the same type have the same contents or state.
+
+::: {.callout-note title="Conclusion"}
+
+- We took a deep dive into the world of objects.
+- We examined the differences between primitive and reference variables.
+- We learned to overload methods and constructors, and we practiced using objects as object variables, method parameters, and method return values.
+- We created methods that compare objects with each other, and we saw how objects are handled with objects in them.
+:::
+
+### Part 6
+
+> The sixth part handles objects consisting of objects, and we'll take a look at separating the text user interface and the program logic.
+
+**1. Objects on a list and a list as part of an object:**
+
+- You review the use of lists.
+- You know how to use a list as an instance variable.
+
+**2. Separating the user interface from program logic:**
+
+- Understand creating programs so that the user interface and the application logic are separated
+- Can create a textual user interface, which takes program specific application logic and a Scanner object as parameters.
+
+**3. Introduction to testing:**
+
+- Can tell about some issues caused by software bugs.
+- You know what a stack trace is, the steps taken in troubleshooting, and can give textual test inputs to a Scanner.
+- You know what unit testing is all about and you can write unit tests.
+- You know about test-driven software development.
+
+
+::: {.callout-note title="Complex programs"}
+
+- When you learn programming, you also develop a better eye for reading code (yours and others). In this part we understood the use of lists and practiced separating the UI from the program logic.
+:::
+
+### Part 7
+
+> In the seventh part we'll focus on general programming paradigms and algorithms.
+
+**1. Programming paradigms:**
+
+- You know the concept of a programming paradigm.
+- You know what is meant by procedural and object-oriented programming.
+
+**2. Algorithms:**
+
+- You understand the concept of algorithms and you are familiar with a few algorithms.
+- You can explain how selection sort works.
+- You can explain how the linear search and binary search algorithms work.
+
+**3. Larger programming exercises:**
+
+- Some extensive exercises. There is no predefined structure for these tasks — think about the classes and objects that will help you complete the task while you're completing it.
+
+::: {.callout-note title="Conclusion"}
+
+- During the first seven parts you've become familiar with the basics of programming and produced many functioning program.
+- You now know how to use variables, conditionals, loops and methods.
+- You know that the naming of variables and methods affects the understandability of your programs.
+- You've also dived deeper into the world of object-oriented programming, and structuring your programs in an object-oriented fashion.
+:::
+
+## Java Programming II
+
+
+### Part 8
+
+> Recap parts 1 - 7, Hashmaps, fetching and grouping information.
+
+**1. Short recap:**
+
+- You will brush up on the contents of the parts 1-7
+
+
+### Part 9
+
+> The ninth part focuses on two essential concepts of object oriented programming, namely inheritance and interfaces. You will learn to create classes that inherit another classes, and also classes that implement one or more interfaces. You are also going to notice that an object can be represented by any of its actual types.
+
+**1. Class inheritance:**
+
+- You know that in the Java programming language every class inherits the Object class, and you understand why every object has methods toString, equals, and hashCode.
+- You are familiar with the concepts of inheritance, superclass, and subclass.
+- You can create classes that inherit some of their properties from another class.
+- You can call a constructor or method that is defined in a superclass.
+- You know how an object's executed method is determined, and you are familiar with the concept of polymorphism.
+- You can assess when to use inheritance, and you can come up with an example that is ill-suited for inheritance.
+
+**2. Interfaces:**
+
+- You're familiar with the concept of an interface, can define your own interfaces, and implement an interface in a class.
+- You know how to use interfaces as variable types, method parameters and method return values.
+- You're aware of some of the interfaces that come with Java.
+
+**2. Object polymorphism:**
+
+- You are familiar with the concept of inheritance hierarchy.
+- You understand that an object can be represented through all of its actual types.
+
+::: {.callout-note title="Conclusion"}
+
+- You learned some of the properties of object-oriented programming.
+- Programmers can expect all objects to have the methods `toString`, `hashCode` and `equals` because each object is of type `Object` in addition to their own type.
+- Inheritance and interfaces allow use to implement methods and constructors that handle many kinds of objects. This enables us to easily extend programs and it helps with solving problems with classes and objects.
+:::
+
+### Part 10
+
+> In the tenth part we introduce handling collections with streams. You'll learn how to create a stream from a collection, filter the values of a stream, transform the values of a stream, and collect values of a stream to another collection. We introduce the concept lambda expression, and you'll learn to use it in your programs. You will also learn how to order objects using the Java Comparable interface, and some other useful techniques like regular expressions, enumerate type and iterator.
+
+**1. Handling collections as streams:**
+
+- You can handle collections using streams.
+- You know what a lambda-statement means.
+- You know the most common stream methods and are able to categorize them into intermediate and terminal operations.
+
+
+**2. The Comparable Interface:**
+
+- You're aware of Java's Comparable class and now how to implement it in your own classes.
+- You know how to use Java's tools for sorting lists and stream elements.
+- You know how to sort list elements using multiple criteria (e.g., you know how to sort a person based on name and age).
+
+**3. Other useful techniques:**
+
+- You understand the traditional for-loop.
+- You understand the issues related to string concatenation and know how to avoid them with the StringBuilder class.
+- You understand regular expressions and can write your own ones.
+- You understand enumerated (enum) types and know when to use them.
+- You know how to use an iterator to go through collections of data.
+
+
+
+
+### Part 11
+
+> In the eleventh part you'll learn to decypher simple class diagrams. You'll become familiar with packages in Java and learn what the different parts of an `import` statement mean. You'll practise using exceptions in Java: how to throw and handle them. You'll take another look at reading data from a file, and learn to write data to a file.
+
+**1. Class diagrams:**
+
+- Know how to draw class diagrams and how to describe classes and their attributes, constructors, and methods.
+- Know how to describe connections between classes and describe inheritance and interface implementation.
+- Can implement a class based on a class diagram
+
+**2. Packages:**
+
+- You know what packages are and can place classes in them.
+- You know what the `import` statement used in Java is composed of.
+
+**3. Exceptions:**
+
+- Know what exceptions are and how to handle them.
+- Can throw exceptions.
+- Know that some exceptions have to be handled and that some exceptions do not have to be handled.
+
+**4. Processing files:**
+
+- You will refresh your memories of reading from files.
+- You will be able to write to a file.
+
+::: {.callout-note title="Conclusion"}
+
+- Self-reflexion on learning goals.
+:::
+
+### Part 12
+
+> In the twelfth part we will introduce type parameters and you will learn what `ArrayList<String>;` actually means. You will learn to implement classes that use type parameters. You will get to understand how ArrayList and HashMap are implemented, and you will implement your own versions as well. You will learn how to create random numbers, and practice using some Java tools to create random numbers. You will learn how multidimensional data can be presented, and how to use multidimensional arrays.
+
+**1. Type parameters:**
+
+- You know what is meant with the concept of a generic type parameter.
+- You are familiar with already existing Java classes that make use of generic type parameters.
+- You can create classes of your own that make use of generic type parameters.
+
+**2. ArrayList and hash table:**
+
+- You know how to implement a generic list that has changing size.
+- You know of one possible method to implement a class like Java's ArrayList.
+- You know how to implement a hash table.
+- You are aware of one possible method to implement a class like Java's HashMap.
+
+**3. Randomness:**
+
+- Know how to generate random numbers, and know some situations where random numbers are needed.
+- Can use Java `Random` class to generate random numbers.
+
+**4. Multidimensional data:**
+
+- Know ways to represent multidimensional data.
+- Can create and use multidimensional arrays.
+
+::: {.callout-note title="Conclusion"}
+
+- Lists and hashmap are the most commonly used datastructures in programming.
+- Understanding and using these datastructures are a part of every computers scientists (and programmers) basic knowledge.
+- In this part we looked into the implementation of hashmaps and lists and got introduced to generics in java.
+- We also touched on randomness and multidimensional data.
+:::
+
+### Part 13
+
+> The thirteenth part introduces the topics of creating graphical user interfaces and the kinds of components that are used in them. You will learn to handle different events that occur in graphical user interfaces, and practise creating applications that contain multiple views.
+
+**1. Graphical user interfaces:**
+
+- You know what user interfaces (UIs) consist of and know how to launch a graphical user interfaces (GUIs).
+
+**2. UI components and their layout:**
+
+- You are aware of some interface components and know how to add them to a user interface.
+- You're familiar with methods for configuring user interface components.
+
+**3. Event handling:**
+
+- You're familiar with the concept of an event handler and are able to handle user interface events.
+
+**4. Application's launch parameters:**
+
+- You know how to pass parameters to a graphical user interface.
+
+**5. Multiple views:**
+
+- You practice adding multiple views to a graphical interface.
+- You know methods for changing the view.
+- You know methods for separating the application logic and the user interface logic.
+
+::: {.callout-note title="Conclusion"}
+
+- We took our first steps towards creating a graphical user interface.
+- We learned to use program windows, add UI components and event handling.
+- Altough we used the JavaFX library the principles of graphical user interfaces are the same in other libraris.
+- We also learned event based programming.
+
+:::
+
+### Part 14
+
+> In the fourteenth part you will learn methods for data visualization and acquaint yourself with Java's existing charts (line chart, bar chart). You will learn to make simple drawings and take a look at image processing. You will also learn to play audio files.
+
+**1. Data visualization:**
+
+- You are aware of data visualizations methods.
+- You know how to use Java's ready-made data visualization interface components.
+- You know a way to visualize information that changes dynamically.
+
+**2. Multimedia in programs:**
+
+- Know ways to use multimedia as a part of graphical UI.
+- Can draw a graphical UI.
+- Can display images on a graphical UI.
+- Can play sound from a graphical UI.
+
+**3. Larger application: Asteroids:**
+
+- You know a way of implementing an interactive game.
+- You are able to picture how a larger application is built on step by step.
+- You practice following step by step instructions for building a larger application.
+
+**4. Maven and third-party libraries:**
+
+- Know the term library and know some third party libraries.
+- Know where to search for libraries.
+- Can implement an application which uses a third party library.
+- Know that an application can be packaged and shared with others, and that applications shared this way do not require a development environment to work.
+
+::: {.callout-note title="Conclusion"}
+
+- We looked into data visualization, displaying media programmatically and some third party libraries.
+- With the knowledge from this course you should be able to create your own programs with some research and it's in fact recommended to hone your programming skills with small projects.
+- Some of the things left out of this course are: test and deployment automation, build systems, web server programming and much more.
+
+:::
+
+

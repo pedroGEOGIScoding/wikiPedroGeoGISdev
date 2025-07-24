@@ -1,0 +1,219 @@
+---
+title: "Java SE: Project push GitHub"
+subtitle: Java Fundamentals
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Sync maven project to github cloud
+categories: [javase, git, github, project, cloud]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+4 ways to sync local project on local repo to remote repo on GitHub:
+
+1. [Maven Project push to GitHub: **CLI gh & clone**](/javase/se-concepts-projectgit.qmd#maven-project-push-to-github-cli-gh)
+2. [Maven Project push to GitHub: from **IntelliJ IDEA VCS**](/javase/se-concepts-projectgit.qmd#maven-project-push-to-github-from-intellij-idea-vcs)
+3. [Maven Project shortest way: from **IntelliJ IDEA git init**](/javase/se-concepts-projectgit.qmd#maven-project-shortest-way-from-intellij-idea-git-init)
+4. [Maven Project push to GitHub: **CLI git**](/javase/se-concepts-projectgit.qmd#maven-project-push-to-github-cli-git)
+:::
+
+
+## Maven Project push to GitHub: **CLI gh & clone**
+
+To connect a local project on **IntelliJ IDEA** to GitHub.com, you will need to create a repository on GitHub and then push your local project to the repository. Here's a step-by-step guide:
+
+From ``CLI gh``:
+
+1. Go to browser and create an **account** on GitHub.com
+2. Open on your terminal and **install** ``git``: [install git](/devops/devops-vc-git.qmd) 
+3. Open your terminal and **install** ``cli gh``: [install CLI gh](/devops/devops-vc-github.qmd#install-cli-gh) and **log in to GitHub.com**
+4. **Create** repository on GitHub.com: [Create a repo](https://docs.github.com/en/get-started/quickstart/create-a-repo)
+5. At the top of your GitHub repository's Quick Setup page, click the clipboard icon to copy **clone GitHub CLI**: ``gh repo clone AlbertProfe/wiki``. This will initialize the local directory as a Git repository with a copy of remote repository.
+6. Create Maven Project within that directory/repository local git: [create Maven Project](/javase/se-concepts-createproject.qmd)
+7. **Upload/sync/push**: ``git commit and push`` from CLI or from **IntelliJ IDEA**: [Commit and push changes to Git repository](https://www.jetbrains.com/help/idea/2022.3/commit-and-push-changes.html#commit)
+
+### Screen-shoots step-by-step after installing git and github (2022-12-19)
+
+First, install ``git`` and ``CLI gh`` and create a GitHub.con account.
+
+![Log in via CLI gh to GitHub.com, in this case using a browser where you are logged in GitHub.com](/images/javase/se-projectgit/login_cli_gh_createrepo.png)
+
+![Create a repo at GitHub.com: button new](/images/javase/se-projectgit/newrepo.png)
+
+![Create a repo at GitHub.com: name and configuration](/images/javase/se-projectgit/newrepo2.png)
+
+![Create a repo at GitHub.com: created](/images/javase/se-projectgit/newrepo3.png)
+
+![Get the code to clone the repo: copy](/images/javase/se-projectgit/newrepo4.png)
+
+![Create/select a folder where the repo will be created](/images/javase/se-projectgit/createproject1.png)
+
+![Go to the terminal and paste it](/images/javase/se-projectgit/clone_repo.png)
+
+![Create maven project: create](/images/javase/se-projectgit/createproject2.png)
+
+![Create maven project: created and structure checked](/images/javase/se-projectgit/createproject3.png)
+
+![Let's add and commit this project](/images/javase/se-projectgit/push1.png)
+
+![8 added files](/images/javase/se-projectgit/push2.png)
+
+![Now it is time to commit, first write it](/images/javase/se-projectgit/push3.png)
+
+![Visual Code and git making the commit](/images/javase/se-projectgit/push4.png)
+
+![Commit done, now, the push to remote repo](/images/javase/se-projectgit/push5.png)
+
+![After push button Visual Code demands confirmation](/images/javase/se-projectgit/push6.png)
+
+![Pushing .... and pushed](/images/javase/se-projectgit/push7.png)
+
+![Check GitHub.com repo has got the project pushed](/images/javase/se-projectgit/push8.png)
+
+## Maven Project push to GitHub: from **IntelliJ IDEA VCS**
+
+![IntellJIdea Main Menu](/images/javase/se-projectgit2/maventogit2-1.png)
+
+![IntellJIdea Main Menu](/images/javase/se-projectgit3/mavenToGit3.png)
+
+1. Open your **IntelliJ IDEA** project.
+2. In the ``VCS`` menu, select the option to **enable** version control integration.
+3. Select ``Git`` as the version control system.
+4. **Add** the files in your new local repository. This stages them for the first commit.
+5. **Commit** the files that you've staged in your local repository.
+6. In the `VCS` menu, select the option to create a ``new repository``.
+7. Choose the location for the repository and click the ``Create`` button.
+8. In the ``VCS`` menu, select the option to push changes.
+9. Enter your ``GitHub login credentials`` and click the ``Push`` button.
+
+Now your local project is connected to the repository on GitHub and any changes you make locally will be reflected in the repository on GitHub.
+
+## Maven Project shortest way: from **IntelliJ IDEA git init**
+
+1. Version Control > Create Git Repository
+
+![Version Control > Create Git Repository](/images/javase/se-projectgit3/mavenToGit1.png)
+
+![Select local directory to git init](/images/javase/se-projectgit3/mavenToGit2.png)
+
+![Local Directory Maven Project](/images/javase/se-projectgit3/mavenToGit5.png)
+
+2. Create Remote Repo on [GitHub.com](https://github.com/AlbertProfe){.external} and **copy HHTPS direction**
+
+![IntellJIdea Main Menu](/images/javase/se-projectgit3/mavenToGit4.png)
+
+![copy HHTPS direction 1/2](/images/javase/se-projectgit3/mavenToGit6.png)
+
+![copy HHTPS direction 2/2](/images/javase/se-projectgit3/mavenToGit7.png)
+
+3. **Commit and Push** and when IntellJIdea ask for **Remote Repo Direcion** paste it
+
+![Select all files: git add. and Commit and push 1/2](/images/javase/se-projectgit3/mavenToGit8.png)
+
+![Commit and push 2/2](/images/javase/se-projectgit3/mavenToGit9.png)
+
+![Push Command to MovieManager: master > define remote](/images/javase/se-projectgit3/mavenToGit10.png)
+
+![paste URL 1/2](/images/javase/se-projectgit3/mavenToGit11.png)
+
+![paste URL 2/2](/images/javase/se-projectgit3/mavenToGit12.png)
+
+## Maven Project push to GitHub: **CLI git**
+
+Once the ``Maven Project Java SE`` is created, **we are going to control its versions with git and upload to GitHub.com by CLI git/gh.**
+
+- [How to create a remote repo](https://cli.github.com/manual/gh_repo_create){.external}
+- [How to log in with gh browser auth](https://albertprofe.dev/images/javase/se-projectgit/login_cli_gh_createrepo.png){.external}
+
+We need:
+
+- ``Github.com`` account created and logged in
+- ``git`` and ``gh`` installed
+- ``gh`` logged to ``GitHub.com``
+- Maven Project Java SE created
+
+
+![The Maven Project Java SE `Hello11` is already created and ready to work with git](/images/javase/mavenGitCLI-gh-1.png)
+
+![Let's create the git local repository with `git init`](/images/javase/mavenGitCLI-gh-2.png)
+
+![Now this folder is `git local repository`](/images/javase/mavenGitCLI-gh-3.png)
+
+
+![Let's identify the user, and then we track the files and commit them](/images/javase/mavenGitCLI-gh-4.png)
+
+![With the gh CLI we create a `remote repo` called `Hello11`](/images/javase/mavenGitCLI-gh-5.png)
+
+![Remote repository created](/images/javase/mavenGitCLI-gh-6.png)
+
+
+![Now it is time to add our remote repository Hello11 to our local repository. It will names as `origin`](/images/javase/mavenGitCLI-gh-7.png)
+
+![Let's `push` the project](/images/javase/mavenGitCLI-gh-8.png)
+
+![Project pushed](/images/javase/mavenGitCLI-gh-9.png)
+
+
+::: {.column-page-right}
+
+<details>
+<summary>Code bash linux git/gh</summary>
+
+
+``` bash
+
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/albert/MyProjects/Sandbox/Hello11/.git/
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ git config user.name "albert"
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ git config user.email "albertprofe@gmail.com"
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ git add .
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ git commit -m "crete project"
+[master (root-commit) 4cd7009] crete project
+ 7 files changed, 171 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 .idea/.gitignore
+ create mode 100644 .idea/encodings.xml
+ create mode 100644 .idea/misc.xml
+ create mode 100644 pom.xml
+ create mode 100644 src/main/java/org/example/App.java
+ create mode 100644 src/test/java/org/example/AppTest.java
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ gh repo create hello11 --public
+✓ Created repository AlbertProfe/hello11 on GitHub
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ git remote add origin https://github.com/AlbertProfe/hello11.git
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$ git push -u origin master
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (19/19), 2.64 KiB | 675.00 KiB/s, done.
+Total 19 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/AlbertProfe/hello11.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+albert@albert-VirtualBox:~/MyProjects/Sandbox/Hello11$
+
+
+```
+
+
+</details>
+
+:::
+
+
+

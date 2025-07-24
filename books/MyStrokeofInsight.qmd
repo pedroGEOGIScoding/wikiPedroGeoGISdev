@@ -1,0 +1,28 @@
+---
+title: "My Stroke of Insight"
+author: "albertprofe"
+subtitle: "Jill Bolte Taylor, 2009, My Stroke of Insight: A Brain Scientist's Personal Journey"
+date: "1/1/2019"
+date-modified: "5/5/2023"
+date-format: full
+description: "Transformative...[Taylor's] experience...will shatter [your] own perception of the world."
+categories: [neuroscience]
+subcategories: [economics, ethics]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/MyStrokeofInsight.jpg)
+
+## More info
+
+On December 10, 1996, Jill Bolte Taylor, a thirty-seven- year-old Harvard-trained brain scientist experienced a massive stroke in the left hemisphere of her brain.
+
+As she observed her mind deteriorate to the point that she could not walk, talk, read, write, or recall any of her life-all within four hours-Taylor alternated between the euphoria of the intuitive and kinesthetic right brain, in which she felt a sense of complete well-being and peace, and the logical, sequential left brain, which recognized she was having a stroke and enabled her to seek help before she was completely lost.
+
+It would take her eight years to fully recover.
+
+- [My Stroke of Insight: A Brain Scientist's Personal Journey](https://www.amazon.com/My-Stroke-Insight-Scientists-Personal/dp/0452295548){.external}
+

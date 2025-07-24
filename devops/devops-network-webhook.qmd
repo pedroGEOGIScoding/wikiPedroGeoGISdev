@@ -1,0 +1,102 @@
+---
+title: "Network: webhook"
+subtitle: Network webhook
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, webhook]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+# What is a webhook?
+
+
+<mark>A webhook is a mechanism for automating the delivery of real-time data from one application to another. It allows applications to communicate with each other by sending HTTP POST requests containing data payloads to a specified URL. Webhooks are commonly used to enable event-driven architectures, where actions in one system trigger responses in another.</mark>
+
+Key characteristics of webhooks include:
+
+- **Event-Driven:** Webhooks are triggered by specific events or updates in an originating system. When the predefined event occurs, a POST request containing relevant data is sent to the configured webhook URL.
+
+- **HTTP Callbacks:** Webhooks rely on HTTP callbacks to deliver data. The receiving system, often referred to as the webhook endpoint, listens for incoming HTTP POST requests and processes the data payload.
+
+- **Asynchronous:** Webhooks facilitate asynchronous communication between applications. The sender of the webhook doesn't wait for a response; it simply sends the data and continues its operations.
+
+- **Configurability:** Users can configure webhooks to respond to specific events of interest. This flexibility allows for the customization of integrations between different services.
+
+
+
+Consider a scenario where a webhook is used in an e-commerce application. A webhook could be set up to notify an inventory management system whenever a new order is placed. The e-commerce application triggers the webhook by sending a POST request to the specified URL with details about the new order, such as product information and customer details.
+
+
+**Webhook Example:**
+
+When a new order is placed:
+
+- Webhook URL: `https://example.com/webhook/inventory`
+- HTTP Method: POST
+- Payload: 
+  ```json
+  {
+    "event": "new_order",
+    "order_id": "12345",
+    "products": [
+      {
+        "id": "A001",
+        "name": "Product A",
+        "quantity": 2
+      },
+      {
+        "id": "B002",
+        "name": "Product B",
+        "quantity": 1
+      }
+    ],
+    "customer": {
+      "id": "C567",
+      "name": "John Doe",
+      "email": "john@example.com"
+    }
+  }
+  ```
+In this example, the inventory management system, listening at the specified webhook URL, receives the data payload and processes it to update the inventory based on the new order.
+
+# Webhook & polling
+
+![](/images/devops/wehhook-polling.png){width="60%"}
+
+Assume we run an eCommerce website. The clients send orders to the order service via the API gateway, which goes to the payment service for payment transactions. The payment service then talks to an external payment service provider (PSP) to complete the transactions.
+
+There are two ways to handle communications with the external PSP.
+
+1. Short polling
+After sending the payment request to the PSP, the payment service keeps asking the PSP about the payment status. After several rounds, the PSP finally returns with the status.
+
+Short polling has two drawbacks:
+
+- Constant polling of the status requires resources from the payment service.
+- The External service communicates directly with the payment service, creating security vulnerabilities.
+
+2. Webhook
+We can register a webhook with the external service. It means: call me back at a certain URL when you have updates on the request. When the PSP has completed the processing, it will invoke the HTTP request to update the payment status.
+
+In this way, the programming paradigm is changed, and the payment service doesn’t need to waste resources to poll the payment status anymore.
+
+What if the PSP never calls back? We can set up a housekeeping job to check payment status every hour.
+
+Webhooks are often referred to as reverse APIs or push APIs because the server sends HTTP requests to the client. We need to pay attention to 3 things when using a webhook:
+
+- We need to design a proper API for the external service to call.
+- We need to set up proper rules in the API gateway for security reasons.
+- We need to register the correct URL at the external service.
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+---
+title: "Don't Believe Everything You Think"
+author: "albertprofe "
+subtitle: "Joseph Nguyen, 2022, Don't Believe Everything You Think: Why Your Thinking Is The Beginning & End Of Suffering (Beyond Suffering)"
+date: "7/1/2022"
+date-modified: "4/5/2023"
+date-format: full
+description: "Explores the connection between thoughts, beliefs, and suffering, offering insights and techniques to challenge and transform limiting thoughts for personal growth and well-being."
+categories: [mindset]
+subcategories: [psychology, neuroscience, spirituality, self-management]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/DoNotBelieveEverythingYouThink.jpeg){width="60%"}
+
+## More info
+
+- [Don't Believe Everything You Think: Why Your Thinking Is The Beginning & End Of Suffering (Beyond Suffering)](https://www.amazon.es/Dont-Believe-Everything-You-Think/dp/B09WPP7R6S){.external}

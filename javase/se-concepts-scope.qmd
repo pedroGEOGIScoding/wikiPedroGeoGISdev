@@ -1,0 +1,117 @@
+---
+title: "Java SE: Scope"
+subtitle: Java Fundamentals
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the scope in Java
+categories: [javase,scope]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+In Java, **the scope of a variable refers to the parts of the program where the variable is accessible**. A variable has a <mark>certain scope based on where it is declared</mark>, and the scope of a variable determines where in the program the variable can be used and accessed.
+
+![Scope and Access](/images/javase/scopeDiagram.png){width=80%}
+
+There are *three main types of scope* in Java:
+
+- **Class scope**: A variable that is declared within a class, but outside of any method, has class scope, which means that it can be accessed and used by any method within the class.
+
+- **Method scope**: A variable that is declared within a method has method scope, which means that it can only be accessed and used within that method.
+
+- **Local scope**: A variable that is declared within a block of code, such as within a loop or an if statement, has local scope, which means that it can only be accessed and used within that block of code.
+
+## Global scope in Java?
+
+In Java, **there is no concept of global variable, and the idea of global scope differs   from the traditional sense**.
+
+In other programming languages, global variables are variables that are declared outside of any function or class, and are accessible and usable by any part of the program.
+
+In Java, however, there is no way to declare a variable outside of a class or method, **so there are no global variables in the strict sense of the term**.
+
+Here is an example of class scope in Java:
+
+``` {.java .code-overflow-wrap filename="Example.java"}
+public class Example {
+    // Class variable
+    static int classVariable = 1;
+
+    public static void main(String[] args) {
+        // Print class variable
+        System.out.println(classVariable); // Output: 1
+
+        // Call method
+        someMethod();
+    }
+
+    public static void someMethod() {
+        // Print class variable
+        System.out.println(classVariable); // Output: 1
+    }
+}
+
+```
+::: {.column-margin}
+Instead, in Java, the closest equivalent to global scope is class scope. In Java, a variable that is declared within a class, but outside of any method, has class scope, which means that it can be accessed and used by any method within the class.
+:::
+
+In this example, the `classVariable` variable is declared within the `Example` class, but outside of any method, so it has class scope. This means that the `classVariable` variable can be accessed and used by any method within the `Example` class, including the `main` method and the `someMethod` method.
+
+While Java **doesn't have a concept of global scope in the traditional sense, class scope provides a similar level of accessibility and usability for variables**. By declaring variables within a class, but outside of any method, you can make those variables accessible and usable by any method within the class, which can be useful for sharing data and state between different parts of your program.
+
+## Key-concept: curly brackets
+
+::: {.summary}
+📘 **Curly brackets are the key**
+
+In Java, the scope of a variable is determined by the **position of the variable's declaration within the code**, and specifically by the presence or absence of curly braces ``{}``.
+
+:::
+
+---
+
+- A variable that is <mark>declared **outside** of any curly braces has global or class scope, depending on where it is declared<mark>. 
+- A variable that is <mark>declared **within** a pair of curly braces has local scope, which means that it can only be accessed and used within those curly braces<mark>.
+
+Here is an example of how scope works in Java based on the position of the variable's declaration within curly braces:
+
+
+``` {.java .code-overflow-wrap filename="Example.java"}
+public class Example {
+    // Global or class scope
+    static int globalOrClassVariable = 1;
+
+    public static void main(String[] args) {
+        // Local scope
+        {
+            int localVariable = 2;
+
+            // Print local variable
+            System.out.println(localVariable); // Output: 2
+        }
+
+        // Print global or class variable
+        System.out.println(globalOrClassVariable); // Output: 1
+
+        // Print local variable (not accessible outside of curly braces)
+        // System.out.println(localVariable); // Error: localVariable cannot be resolved
+    }
+}
+
+```
+
+In this example, the `globalOrClassVariable` variable is declared outside of any curly braces, so it has global or class scope, depending on where it is declared. The `localVariable` variable, on the other hand, is declared within a pair of curly braces, so it has local scope and can only be accessed and used within those curly braces.
+
+As this example illustrates, <mark>the position of a variable's declaration within curly braces is a key factor in determining the variable's scope in Java</mark>.
+
+## Conclusion
+
+By understanding how scope works in Java, **you can effectively manage the visibility and accessibility of your variables, and avoid common pitfalls** such as variable shadowing and scope-related errors.
+
+

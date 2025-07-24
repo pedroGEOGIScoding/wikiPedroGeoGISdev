@@ -1,0 +1,58 @@
+---
+title: "Burnout"
+author: "albertprofe"
+subtitle: "Herbert Freudenberger, 1980, Burnout: The High Cost of High Achievement"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "An early and influential work on the topic of burnout. Herbert Freudenberger explores the causes and symptoms of burnout and provides practical tips for avoiding and overcoming it."
+categories: [self-management]
+subcategories:  [agile, psychology, stress]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/burnout.jpg)
+
+## More info
+
+
+Herbert Freudenberger's **Burnout: The High Cost of High Achievement** was published in 1980 and explores the concept of burnout, a state of physical, emotional, and mental exhaustion that results from **chronic stress.**
+
+::: {.callout-note}
+In the book, Freudenberger identifies several key characteristics of burnout, including feelings of cynicism and detachment, decreased personal accomplishment, and increased physical symptoms such as fatigue, headaches, and insomnia.
+:::
+
+He also highlights the importance of **recognizing the signs of burnout** and taking steps to prevent or overcome it.
+
+Some of the key vocabulary used in the book include:
+
+- ``Burnout``: A state of physical, emotional, and mental exhaustion caused by chronic stress
+- ``Cynicism``: A distrustful attitude towards others or the world in general
+- ``Detachment``: A feeling of emotional distance or disconnection
+- ``Personal accomplishment``: A sense of achievement or satisfaction in one's work or life
+- ``Fatigue``: A state of exhaustion or tiredness
+- ``Headaches``: Pain in the head or upper neck
+- ``Insomnia``: Difficulty sleeping or staying asleep
+
+> **Burnout: The High Cost of High Achievement** serves as an important reminder of the negative effects of chronic stress and the importance of maintaining balance and self-care in order to prevent burnout.
+
+## Descision-Making
+
+In **Burnout: The High Cost of High Achievement**, Herbert Freudenberger explains that people often get burned out without realizing it. This is because burnout can develop **gradually** over time as a result of chronic stress.
+
+> People may start to feel overwhelmed and exhausted, **but they often attribute these feelings to other factors** such as a demanding job or family responsibilities.
+
+Freudenberger also emphasizes the importance of** decision-making in stopping stress and preventing burnout. He notes that people who are at risk of burnout are often those **who are highly driven, work-focused, and driven by their desire to achieve.**
+
+However, **they may also be prone to neglecting their own well-being** and **making decisions that increase their stress levels.**
+
+## Prevent
+
+In order to prevent burnout, it is important for individuals to take an active role in managing their stress levels and making decisions that prioritize their physical, emotional, and mental well-being.
+
+This may include **setting boundaries and learning to say no to additional demands,** taking time for self-care, and seeking support from friends, family, or a mental health professional.
+
+> The prevent in the decision-making process is critical in preventing burnout. **By making conscious choices** that support their well-being, individuals can avoid the high cost of high achievement and maintain a healthy work-life balance.

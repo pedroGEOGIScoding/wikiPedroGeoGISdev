@@ -1,0 +1,159 @@
+---
+title: "Network: Client-server"
+subtitle: Networking client-sever architecture
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, server-client]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+![](/images/devops/clientservers.png)
+
+
+::: {.callout-note}
+
+**Client-server architecture** is a fundamental concept in computer networking, forming the backbone of most distributed systems. This architectural model divides the processing tasks between two types of entities: clients and servers.
+
+In this article, we'll delve into the key components, benefits, and challenges associated with client-server architecture.
+
+:::
+
+Client-server architecture has become the cornerstone of modern computing, facilitating efficient communication and resource management. Understanding its components, benefits, and challenges is crucial for designing and maintaining robust and scalable distributed systems.
+
+As technology continues to evolve, client-server architecture remains a versatile and reliable model for various applications across different industries.
+
+# Components of Client-Server Architecture
+
+
+- **Clients** are devices or applications that request services or resources from the server. They can range from simple web browsers to complex mobile applications. Clients initiate communication with servers, send requests for specific functions, and await responses. The primary responsibility of a client is to present the user interface and handle user input.
+
+
+- **Servers**, on the other hand, are powerful machines or software applications responsible for processing client requests and providing the requested services or resources. They manage data, perform computations, and facilitate communication between clients. Servers can be categorized based on their roles, such as web servers, database servers, or application servers.
+
+
+- **Communication** between clients and servers is established through **protocols**. Commonly used protocols include HTTP/HTTPS for web applications, SMTP/IMAP for email services, and SQL for database communication. These protocols define the rules and conventions for data exchange, ensuring a seamless flow of information between clients and servers.
+
+# Benefits
+
+![Overview of a three-tier application](/images/devops/Overview_of_a_three-tier_application_vectorVersion.svg.png){width="60%"}
+
+**Scalability**
+
+One of the key advantages of client-server architecture is scalability. As the number of clients increases, servers can be scaled up or distributed to handle the growing demand. This allows for efficient resource utilization and ensures that the system remains responsive even under heavy loads.
+
+**Centralized Management**
+
+Client-server architecture enables centralized management of resources and data. Servers act as control points, facilitating easier maintenance, updates, and security implementations. This centralized approach enhances data consistency and reduces the complexity of managing a distributed system.
+
+**Improved Security**
+
+Security is a critical aspect of any system, and client-server architecture provides a robust foundation for implementing security measures. Access control, authentication, and encryption can be enforced on the server, safeguarding sensitive information and mitigating potential security threats.
+
+**Enhanced Reliability**
+
+By separating client and server functionalities, client-server architecture enhances system reliability. If a client fails, it does not impact the entire system, allowing other clients to continue functioning. Similarly, server failures can be isolated, minimizing the impact on clients and ensuring a more reliable overall system.
+
+# Challenges and Considerations
+
+**Latency**
+
+One of the challenges in client-server architecture is latency, the delay between a client's request and the server's response. Factors such as network congestion, server load, and data processing time contribute to latency. Mitigating latency requires optimizing network infrastructure and implementing efficient data processing mechanisms.
+
+**Dependency on Network**
+
+Client-server systems heavily rely on network connectivity. Any disruptions in the network can affect communication between clients and servers, leading to service interruptions. Implementing redundancy, load balancing, and failover mechanisms can help address network-related challenges and enhance system resilience.
+
+**Cost and Complexity**
+
+While client-server architecture offers numerous benefits, implementing and maintaining such systems can be costly and complex. Organizations need to invest in robust server infrastructure, network equipment, and skilled personnel to ensure optimal performance and reliability. Balancing the cost and complexity with the desired system capabilities is crucial.
+
+**Scalability Planning**
+
+While scalability is a strength of client-server architecture, proper planning is essential. Organizations must anticipate future growth and design their systems to scale seamlessly. Failure to plan for scalability can lead to performance bottlenecks and hinder the system's ability to handle increased user loads.
+
+# What’s 3-Tier Client-Server Architecture?
+
+The three-tier client-server architecture consists of a presentation tier known as the User Interface layer, an application tier called the Service layer, and a data tier comprising the database server. Three-tier architecture can be divided into three parts:
+
+- Presentation layer (or Client Tier): This layer takes care of the User Interface.
+- Application layer (or Business Tier): This layer handles the detailed processing.
+- Database layer (or Data Tier): This layer stores the information.
+
+
+![](/images/devops/Three-Tier-architecture.png){width="60%"}
+
+The Client system controls the Presentation layer; the Application server looks after the Application layer, and the Server system supervises the Database layer.
+
+## Tier vs. Layer
+
+In software architecture, tiers and layers play crucial roles in organizing and optimizing the functionality of applications.
+
+::: {.callout-tip}
+Tiers refer to the physical organization of components, while layers denote the logical separation within an application. Tiers enable scalable and efficient deployment, running on distinct servers, while layers facilitate a structured approach to application design.
+:::
+
+The need for tiers and layers arises from the necessity to enhance scalability, maintainability, and overall system organization, providing a foundation for robust, modular, and easily maintainable software systems.
+
+
+
+| Tier                                               | Layer                                               |
+| -------------------------------------------------- | ---------------------------------------------------- |
+| Tier refers to the physical operation of components | Layer refers to the logical separation of an application |
+| Tiers are physically separated and run on different machines or servers | Layers are logically separated but run on the same servers or machines |
+| Scalability of an application is very high         | Scalability of an application is medium               |
+| Common tiers in a multi-tier architecture include the presentation tier (user interface), application tier (business logic), and data tier (database) | Each layer focuses on specific responsibilities, such as presentation, business logic, and data access, within a single tier |
+
+
+# Comparison with peer-to-peer architecture
+
+In addition to the client-server model, distributed computing applications often use the peer-to-peer (P2P) application architecture.
+
+::: {.column-margin}
+In the client-server model, the server is often designed to operate as a centralized system that serves many clients. The computing power, memory and storage requirements of a server must be scaled appropriately to the expected workload. Load-balancing and failover systems are often employed to scale the server beyond a single physical machine.
+:::
+
+
+**Load balancing** is defined as the methodical and efficient distribution of network or application traffic across multiple servers in a server farm. Each load balancer sits between client devices and backend servers, receiving and then distributing incoming requests to any available server capable of fulfilling them.
+
+In a peer-to-peer network, two or more computers (peers) pool their resources and communicate in a decentralized system. Peers are coequal, or equipotent nodes in a non-hierarchical network. Unlike clients in a client-server or client-queue-client network, peers communicate with each other directly.
+
+<mark>In peer-to-peer networking, an algorithm in the peer-to-peer communications protocol balances load</mark>, and even peers with modest resources can help to share the load.[citation needed] If a node becomes unavailable, its shared resources remain available as long as other peers offer it.
+
+Ideally, a peer does not need to achieve high availability because other, redundant peers make up for any resource downtime; as the availability and load capacity of peers change, the protocol reroutes requests.
+
+Both client-server and master-slave are regarded as sub-categories of distributed peer-to-peer systems.
+
+
+# N-Tier Architecture
+
+**N-Tier Architecture**, also known as **Multi-Tier Architecture** it divides the application into various number of tiers based on there complexity and requirements. 
+
+Some examples of the tiers included in the architecture:
+
+- Presentation Tier (Client Tier)
+- Application Tier (Middle Tier or Business Logic Tier)
+- Data Tier (Data Storage Tier or Database Tier)
+- Services Tier (Business Services or Application Services)
+- Integration Tier (Integration Services).
+
+![[Scaling RStudio/Shiny using Serverless Architecture and AWS Fargate](https://aws.amazon.com/blogs/architecture/scaling-rstudio-shiny-using-serverless-architecture-and-aws-fargate/){.external}](/images/devops/RStudio-Shiny-Open-Source-Deployment-on-AWS-Serverless-Infrastructure.png){width="60%"}
+
+- [Top 5 Architecture Blog Posts for Q2 2021](https://aws.amazon.com/blogs/architecture/top-5-architecture-blog-posts-for-q2-2021/){.external}
+
+# References
+
+- [Client–server model](https://en.wikipedia.org/wiki/Client%E2%80%93server_model){.external}
+- [What is three-tier architecture?](https://www.ibm.com/topics/three-tier-architecture){.external}
+- [Three-Tier Client Server Architecture in Distributed System](https://www.geeksforgeeks.org/three-tier-client-server-architecture-in-distributed-system/){.external}
+- [Multitier architecture](https://en.wikipedia.org/wiki/Multitier_architecture){.external}
+
+
+

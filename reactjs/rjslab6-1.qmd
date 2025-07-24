@@ -1,0 +1,653 @@
+---
+title: "Lab#RE06-1: healthyFood Restaurant"
+subtitle: ReactJS labs
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: labs
+categories: [reactjs, lab, Lab#RE06]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘  **React JS Lab#RE06-1: healthyFood Restaurant**
+
+In this lab, we will be using:
+
+- the ``create-react-app`` with **npx**
+- w3.css framework for css
+  - install css on React: `npm install w3-css`
+  - w3 css: `cards`, `button`, `container`
+- JSX components 
+- array of `JSON`: **data** as model
+
+
+This React project serves as the front-end for a robust Spring Boot back-end, complemented by a well-designed UML. The UML is meticulously crafted in the context of [Lab#SE04-1](/javase/selab4-1.qmd), ensuring a structured foundation for the restaurant management system.
+
+Project Overview
+
+- **Technology Stack:**
+  - Front-End: React
+  - Back-End: Spring Boot
+
+- **System Design:**
+  - The UML diagram, designed as part of Lab#SE04-1, lays the groundwork for essential entities such as Orders, Tables, and Menus.
+
+Integration with Spring Boot with API Rest
+
+This React front-end seamlessly integrates with the Spring Boot back-end via API Rest, creating a efficient restaurant management.
+
+The UML design acts as a guide, ensuring a cohesive flow between the front-end and back-end components.
+
+- [Lab#SE04-1](/javase/selab4-1.qmd)
+
+
+:::
+
+</br>
+
+# General approach
+
+<mark>To craft the React front end for our restaurant management system, we begin by comprehending the UML diagram and backend functionalities.</mark>
+
+- **Initiating a new React project using tools like** `Create React App` establishes the foundational structure.
+- Component design follows, with **entities from the UML diagram mapped to distinct React components**, such as Orders, Tables, Menus, and a centralized Controller.
+  - Connecting to the Spring Boot backend is facilitated through React's `fetch` or similar HTTP libraries.
+- `Routing` is implemented using React Router, establishing distinct paths for functionalities like orders, tables, and menus. State management, accomplished through Redux or React Context API, ensures efficient handling of dynamic data.
+- **UI components** are designed and implemented, integrating component libraries for consistency. User input is managed via forms with input validation for an enhanced user experience.
+- **Unit tests using Jest and React Testing Library** validate the correctness of React components.
+  - Integration with design tools maintains a cohesive look, and responsiveness is prioritized for varying screen sizes.
+- Ultimately, the **React app is deployed** independently using platforms like Netlify or Vercel, ensuring seamless communication with the Spring Boot backend API.
+  
+
+This systematic approach guarantees the development of a scalable and user-friendly front end, aligning with our grand vision for the restaurant management system's evolution.
+
+# Install `nvm` & `create-react-app`
+
+- [React JS: Create a React project](/reactjs/reactjs-what-create.qmd)
+
+![create-react-app](/images/reactjs/createproject.svg)
+
+# Mock-up
+
+![healthyFood restaurant mockup](/images/reactjs/healthyfood-mockup.png){width="40%"}
+
+
+# Step-by-step code
+
+Reference:
+
+- [Your first component](https://react.dev/learn/describing-the-ui#your-first-component){.external}
+- [W3.CSS Tutorial](https://www.w3schools.com/w3css/defaulT.asp){.external}
+- [npm: W3.CSS is a modern CSS framework with built-in responsiveness](https://www.npmjs.com/package/w3-css){.external}
+
+## React functions
+
+```{.js .code-overflow-wrap filename="index.js"}
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = 
+ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+```
+## React Application
+
+React application is defined with three instances of the `MenuList` component and one instance of the `MenuData` component. The application imports external components and a **CSS framework ("w3-css/w3.css").**
+
+
+The `App` function returns a JSX structure representing the main application. The outermost element is a `div` with the class "w3-container," containing three instances of the `MenuList` component arranged side by side using the "w3-cell" class. Each `MenuList` component represents a section or module in the application.
+
+
+The code uses the `<>` (fragment) syntax to group multiple elements without introducing an additional parent node.
+
+::: {.column-margin}
+There's a repetition of the `MenuList` component, and the application structure isa **placeholder**.
+
+Depending on the actual requirements, you may want to dynamically render components based on the data or user interactions for a more dynamic and scalable application.
+:::
+
+
+
+
+```{.js .code-overflow-wrap filename="App.jsx"}
+import MenuList from "./MenuList.jsx";
+import Order from "./Order.jsx";;
+import "w3-css/w3.css";
+
+
+
+export default function App() {
+  return (
+    <>
+      <div class="w3-container">
+        <h1>healthy food</h1>
+        <div class="w3-container w3-cell">
+          <MenuList />
+        </div>
+        <div class="w3-container w3-cell">
+          <MenuList />
+        </div>
+        <div class="w3-container w3-cell">
+          <MenuList />
+        </div>
+        <MenuList />
+      </div>
+      <div class="w3-container w3-cell">
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </div>
+      <br />
+      <Order />
+      <br />
+    </>
+  );
+}
+
+
+```
+
+
+
+```{.js .code-overflow-wrap filename="MenuList.jss"}
+import "w3-css/w3.css";
+
+export default function MenuList() {
+  return (
+    <>
+      <div class="w3-container">
+        <h2>Menu</h2>
+
+        <div class="w3-panel w3-card w3-sand">
+         
+            <h3>Lisboa</h3>
+
+            <h5>Gluten Free</h5>
+            <ul>
+              <li>Meat Balls with portuguese sauce</li>
+              <li>Fresh Tuna</li>
+              <li>Onion and rice</li>
+
+              <h2>Price: 80€</h2>
+            </ul>
+
+      
+              <button class="w3-button w3-pink">Accept</button>
+            </div>
+          </div>
+  
+     
+    </>
+  );
+}
+
+```
+## Add JSON data as model
+
+A **static array** named `menus` represents different restaurant menus, each containing an:
+
+- id,
+- name,
+- list of contents (foods),
+- price, 
+- and flags indicating whether the menu is
+  -  active and
+  -  includes water.
+
+
+
+```{.json .code-overflow-wrap filename="Data.json"}
+const menus = [
+  {
+    "id": "M001",
+    "name": "Menu Lisboa",
+    "contents": [
+      "Meat Balls",
+      "Salad with tomato",
+      "Onion and carrot",
+      "Fresh Tuna",
+    ],
+    "price": 80.0,
+    "active": true,
+    "water": true
+  },
+  {
+    "id": "M002",
+    "name": "Menu New York",
+    "contents": [
+      "Meat Balls with Pulled Steak",
+      "Salad with tomato",
+      "Brown Rice",
+      "Fresh Salmon"
+    ],
+    "price": 85.0,
+    "active": true,
+    "water": true,
+  },
+  {
+    "id": "M003",
+    "name": "Menu Santiago",
+    "contents": [
+      "Meat Chicken Curry",
+      "Salad with tomato",
+      "Carrot with edamame",
+      "Fresh Tuna"
+    ],
+    "price": 82.0,
+    "active": true,
+    "water": true,
+  }
+];
+```
+
+In App we may call the component:
+
+```{.js .code-overflow-wrap filename="App.jsx"}
+
+import MenuList from "./MenuList.jsx";
+import Order from "./Order.jsx";;
+import "w3-css/w3.css";
+
+//  const menus = []; 
+
+
+export default function App() {
+  return (
+    <>
+      
+      ...
+      ...
+
+
+      <CreateOrder menu = {menus[0]}>
+
+      <br />
+      <Order />
+      <br />
+    </CreateOrder>
+  );
+}
+
+
+```
+
+Below the three `MenuList` components, a `MenuData` component is rendered with the `menu` prop set to the first menu item from the `menus` array (`menus[0]`).
+
+This implies that the initial data displayed in the `MenuData` component corresponds to the "Menu Lisboa."
+
+```{.js .code-overflow-wrap filename="MenuData.jsx"}
+import "w3-css/w3.css";
+
+
+export default function MenuData({menu}) {
+
+//console.log(menu);
+
+  return (
+    <>
+      
+       <div class="w3-panel w3-card w3-teal">
+        <h1> {menu.name} </h1>
+        <span class="w3-sand">{menu.id}</span>
+        <p></p>
+        <p>
+          {menu.contents[0]}, 
+          {menu.contents[1]}, 
+          {menu.contents[2]} 
+        </p>
+
+        <p>{menu.price} euros</p>
+
+        <p>Water is {menu.water ? '' : 'not'} 
+        <span>included </span></p>
+        
+      </div>
+    </>
+  );
+}
+
+```
+
+## Rendering `order` list
+
+Our restaurant will have in this version three *entities*:
+
+- `menu`
+- `table`
+- `order`, it joins menus and tables
+
+First at all, import the **data from JSON** into an array of literal object JS:
+
+- [ordersDataJSON](https://github.com/AlbertProfe/healthyfoodFront/blob/ordersMapping/src/ordersDataJSON.js){.external target='_blank'}
+  
+```{.jsx .code-overflow-wrap filename="OrderList.jsx"}
+import { ordersDataJSON } from "./ordersDataJSON.js";
+```
+```{.bash}
+ {
+    "id": "O505",
+    "date": "03/12/2022",
+    "waiter": "Pere",
+    "qtyPeople": 8,
+    "totalPayment": 90.33,
+    "paid": true,
+    "table": "table6",
+    "menus": [
+      {
+        "menu": "Girona",
+        "qty": 9
+      },
+      {
+        "menu": "Santiago",
+        "qty": 1
+      }
+    ]
+  },
+```
+
+Then, **map** the orders into a new array of JSX nodes, for exemple a list for `renderData` ids:
+
+```{.jsx .code-overflow-wrap filename="OrderList.jsx"}
+
+export default function OrdersList() {
+
+
+const renderData = ordersDataJSON.map(order => 
+                    <li>{order.id}</li>);
+
+
+return <ul>{renderData}</ul>;
+
+}
+
+```
+
+And eventually render `<ul>{renderData}</ul>`
+
+::: {.column-margin}
+**Array.prototype.map()**
+The [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map){.external target='_blank'} method of Array instances creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+:::
+
+::: {.callout-note}
+
+The <mark>map()</mark> method is an **iterative** method. <mark>map()</mark>:
+
+- creates a new array from calling a function for every array element.
+- does not execute the function for empty elements.
+- does not change the original array.
+
+It calls a provided **callbackFn** function once for each element in an array and constructs a new array from the results.
+
+:::
+
+
+- [Sandbox w3shcool map()](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_map3){.external target='_blank'}
+
+::: {.column-page-right}
+```{.jsx .code-overflow-wrap filename="OrderList.jsx"}
+import "w3-css/w3.css";
+import { ordersDataJSON } from "./ordersDataJSON.js";
+
+export default function OrdersList() {
+  const renderData = ordersDataJSON.map((order) => (
+    <>
+      <div class="w3-card-4" style={{ width: "50%" }}>
+        <header class="w3-container w3-sand">
+          <h3>Id: {order.id}</h3>
+        </header>
+        <br />
+        <div class="w3-container">
+          Waiter: {order.waiter}, qtyPeople: {order.qtyPeople}, To pay:{" "}
+          {order.paid ? " ✔" : "X"} {order.totalPayment} $
+        </div>
+        <div class="w3-container">Date: {order.date}</div>
+        <div class="w3-container">Table: {order.table}</div>
+        <div class="w3-container">Menus:<br/>
+         {order.menus.map ( (menu) => ( <><span>{menu.menu}:{menu.qty}, </span></>))  }</div>
+        <br />
+        <footer class="w3-container w3-black">
+          <h5>healthyFood restaurant</h5>
+        </footer>
+      </div>
+      <br />
+    </>
+  ));
+
+  //console.log(ordersDataJSON);
+  console.log("renderdata", renderData);
+
+
+  return (
+    <>
+      <div class="w3-container">
+        <h1>Orders List</h1>
+        <div class="w3-container">{renderData}</div>
+      </div>
+    </>
+  );
+}
+
+```
+:::
+
+## Adding DDD
+
+- [ReactJs Project Structure](/reactjs/reactjs-what-create.qmd#reactjs-project-structure)
+- [DDD: Domain-driven Design](/javase/se-concepts-coupling.qmd)
+
+
+
+![DDD React project](/images/reactjs/react-directory-structure.png)
+
+
+
+
+::: {.column-page-right}
+
+| Name         | Description                                                                                                                   | Why                                                                                               | Example                              |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------|
+| Middleware   | Provides intermediate processing logic, intercepting requests and responses, and performing tasks such as authentication, logging, api calls, etc. | Separates cross-cutting concerns from the main application logic, enhancing modularity and reusability. | `AuthMiddleware.js`, `LoggerMiddleware.js`, , `ApiMiddleware.js` |
+| Pages        | Represents the main views or screens of the application, each typically corresponding to a specific URL route.               | Organizes the user interface into distinct sections, improving navigation and usability.         | `Home.jsx`, `Orders.jsx`, , `Menus.jsx` |
+| Components   | Encapsulates reusable UI elements or functional units, promoting modularization and facilitating composition.               | Enhances maintainability by breaking down the UI into smaller, reusable pieces.                   | `Button.jsx`, `Modal.jsx`, `Avatar.jsx` |
+| Utils        | Contains utility functions and helper classes providing common functionalities needed throughout the application.             | Reduces code duplication, improves readability, and promotes consistency.                        | `apiUtils.js`, `dateUtils.js`        |
+| Assets       | Stores static files such as images, fonts, or CSS files used within the application.                                        | Centralizes and manages static resources, simplifying asset management and deployment.            | `logo.png`, `font.ttf`, `styles.css` |
+| Layout       | Defines the overall structure and arrangement of UI elements on the page, including headers, footers, sidebars, etc.        | Promotes consistency in the visual presentation of the application and improves user experience. | `MainLayout.jsx`, `SidebarLayout.jsx` |
+| Routes       | Handles the mapping between URLs and corresponding components or views, defining the navigation paths within the application. | Facilitates navigation between different sections of the application and ensures proper routing.  | `AppRoutes.jsx`, `PrivateRoutes.jsx` |
+:::
+
+## Adding CSS
+
+- [w3.css templates](https://www.w3schools.com/w3css/w3css_templates.asp){.external target='_blank'}
+- [Gourment and catering template](https://www.w3schools.com/w3css/tryw3css_templates_gourmet_catering.htm#about){.external target='_blank'}
+- [Gourment and catering  sandbox](https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_gourmet_catering&stacked=h){.external target='_blank'}
+- [GitHub code v0.5 - branch ordersMapping](https://github.com/AlbertProfe/healthyfoodFront/tree/220e0f3604fb205f0fade6f54219aed3d575a7dd){.external} 
+
+
+To add **W3.CSS** to a React project, first, include the** W3.CSS CDN link** in the ``<head>`` section of your ``public/index.html file`` or install the dependency: ``mpm install w3-css``
+
+Then, utilize ``W3.CSS`` classes directly within your React components' JSX code. Import the ``W3.CSS`` stylesheet in your main component or global stylesheet. Now, you can apply ``W3.CSS`` styles to your React components by adding the appropriate class names. Ensure compatibility and avoid conflicts with existing styles. Finally, leverage ``W3.CSS``'s extensive documentation for guidance on styling your React project efficiently.
+
+## Deploying the React Project
+
+![](/images/devops/react-deploy-2.png)
+
+- [AWS Amplify](https://aws.amazon.com/amplify/){.external target='_blank'}
+
+**Upload project to GitHub**
+
+- [Git and GitHub 2023 CLI](/devops/devops-vc-gitgh.qmd)
+
+**What is Amplify?**
+
+
+Amplify is everything you need to build full-stack web and mobile apps on AWS. Build and host your frontend, add features like auth and storage, connect to real-time data sources, deploy, and scale to millions of users.
+
+
+![Host your web app on AWS Amplify](/images/devops/react-deploy-1.png){width="60%"}
+
+![Host your web app on AWS Amplify](/images/devops/react-deploy-6.png){width="60%"}
+
+![Host your web app on AWS Amplify step-by-step](/images/devops/react-deploy-3.png){width="60%"}
+
+![Host your web app on AWS Amplify step-by-step](/images/devops/react-deploy-7.png){width="60%"}
+
+![Authorize AWS Amplify on GitHub](/images/devops/react-deploy-4.png){width="60%"}
+
+![App Information](/images/devops/react-deploy-5.png){width="60%"}
+
+This tab lists all connected branches, select a branch to view build details: ``ordersMapping``
+<mark>Continuous deploys set up</mark>
+
+![healthyfoodFront deployed](/images/devops/react-deploy-8.png){width="60%"}
+
+- [healthyfoodFront url aws](https://ordersmapping.dg5sulzkp1wxf.amplifyapp.com/){.external target='_blank'}
+
+
+## pull request: `ordersMapping` & `createOrder` into `master`
+
+
+
+[Pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests){.external target='_blank'} let you tell others about changes you've pushed to a branch in a repository on GitHub.
+
+Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
+
+
+### Initial code: master and two branches
+
+Branch `ordersMapping` was created from `master`, and they apparently seem the same branch, but there are two `heads`, they are, in fact, two branches.
+
+- GitHub code `ordersMapping` [**220e0f3**](https://github.com/AlbertProfe/healthyfoodFront/tree/220e0f3604fb205f0fade6f54219aed3d575a7dd){.external}
+- GitHub code `master` [**117e56a**](https://github.com/AlbertProfe/healthyfoodFront/tree/117e56ae48f41302b05d516b8d47a8f2daaadf5b){.external}
+- GitHub code `createOrder` [**72db4f7**](https://github.com/AlbertProfe/healthyfoodFront/tree/72db4f7e094e12e20d781620df3f00f7c6e9b6c4){.external}
+
+At this moment we have three `heads`: 220e0f3, 117e56a and 72db4f7
+
+![we have three branches/heads: `ordersMapping`, `createOrder`,`master` ](/images/reactjs/healthyfood-pullrequest-v0-5-1.png){width="60%"}
+
+::: {.column-margin}
+![we have three branches/heads: `ordersMapping`, `createOrder`,`master` ](/images/reactjs/healthyfood-pullrequest-v0-5-1-1.png)
+
+:::
+
+<mark>With a new commit on `master`it is clear that there are three branches.</mark>
+
+
+![we create a commmit on `master`  ](/images/reactjs/healthyfood-pullrequest-v0-5-2.png){width="60%"}
+
+::: {.column-margin}
+![we create a commmit on `master`  ](/images/reactjs/healthyfood-pullrequest-v0-5-2-1.png)
+
+:::
+
+### pull request and `merge`
+
+<mark>To **merge** two branches into `master`</mark> we are going to:
+
+- first, review and merge pull request #1, "`Orders mapping` #1," containing 8 commits from the "`ordersMapping`" branch
+- Then, address conflicts in pull request #2, "`Master` #2," which integrated 4 commits from "`createOrder`" into `master`.
+  - **Resolve** these conflicts, commit changes, and merge pull request #2.
+  - **ensure** all changes align with project standards.
+- Finally, we need to verify the merged master branch for stability and functionality (<mark>review the final output project structure</mark>).
+
+::: {.callout-note} 
+Efficiently managing conflicts and adhering to project guidelines ensures smooth integration of features into the master branch, maintaining code integrity and project continuity.
+:::
+
+Let's do the first pull request step-by-step:
+
+[Step-by-step pull request](/reactjs/rjslab6-1-PR.qmd)
+
+This is the output documentation on Github.com:
+
+![](/images/reactjs/healthyfood-pullrequest-v0-5-3-2.png){width="60%"}
+
+**pull request #1: `Orders mapping #1`**
+
+
+AlbertProfe *merged* **8 commits** into `master` from `ordersMapping`
+
+- [Orders mapping #1](https://github.com/AlbertProfe/healthyfoodFront/pull/1){.external target='_blank'}
+- [files changed](https://github.com/AlbertProfe/healthyfoodFront/pull/1/files){.external target='_blank'}
+- [8 commits into master](https://github.com/AlbertProfe/healthyfoodFront/pull/1/commits){.external target='_blank'}
+
+**pull request #2: `Master #2`**
+
+
+AlbertProfe *merged* **4 commits** into `master` from `createOrder`
+
+- [Master #2](https://github.com/AlbertProfe/healthyfoodFront/pull/2){.external target='_blank'}
+- [files changed](https://github.com/AlbertProfe/healthyfoodFront/pull/2/files){.external target='_blank'}
+- [4 commits into master](https://github.com/AlbertProfe/healthyfoodFront/pull/2/commits){.external target='_blank'}
+
+Since the pull request #2, `Master #2`, have **conflicts** we must resolve them and then commit and merge before the pull request.
+
+![we merge **twice**: `ordersMapping` to `master` and then `createOrder`to`master`](/images/reactjs/healthyfood-pullrequest-v0-5-3.png){width="60%"}
+
+
+
+
+::: {.column-margin}
+![we merge **twice**: `ordersMapping` to `master` and then `createOrder`to`master`](/images/reactjs/healthyfood-pullrequest-v0-5-3-1.png)
+
+:::
+
+### Final state: just master
+
+![commit on `master` to move `createOrder` component from root project  to its domain](/images/reactjs/healthyfood-pullrequest-v0-5-4.png){width="60%"}
+
+
+**Final code**
+
+After the two pull requests, the `master` branch incorporates all commits from the two branches due to the process of merging. 
+
+<mark>When a pull request is accepted and merged into the master branch, all the changes (commits) from the respective branches are integrated into the master branch.</mark>
+
+In the first pull request (#1: Orders mapping #1), 8 commits from the "`ordersMapping`" branch were merged into master. Similarly, in the second pull request (#2: Master #2), 4 commits from the "`createOrder`" branch were merged into master.
+
+As a result, **the master branch now includes all changes from both branches**, ensuring that the latest developments from each branch are consolidated into the main codebase.
+
+- [GitHub code v0.6 ](https://github.com/AlbertProfe/healthyfoodFront/tree/445ef389766db843757b4a0573e14e5cfd93ca25){.external}
+
+Now, the `master` has all the commits:
+
+- [GitHub code v0.6: commits ](https://github.com/AlbertProfe/healthyfoodFront/commits/master){.external}
+
+## API Rest
+
+- [React Axios](/reactjs/rjslab1.qmd)
+
+# Code
+
+::: {.column-page-right}
+
+| Code Version | Commit | Folder-Tree | Output |
+| -- | -- | -- | -- |
+| [GitHub code v0.0](https://github.com/AlbertProfe/healthyfoodFront/tree/99df8047f57acbae1bf53c9dd777a4d7cdd1b597){.external}  | create project, test to basic cards components | [Basic Structure](/images/reactjs/healthyfood-project-v0-0.png){width="80%"} | [render v0.0 render](/images/reactjs/healthyfood-render-v0-0.png) |
+| [GitHub code v0.1](https://github.com/AlbertProfe/healthyfoodFront/tree/5fdd2426c239f75de0fcaf4dc681b32d44a8bd99){.external}  | create JSON array for data, props, createOrder component |  -  |  [render v0.1 render (1)](/images/reactjs/healthyfood-render-v0-1.png), [render v0.1 render (2)](/images/reactjs/healthyfood-render-v0-1-2.png) | 
+| [GitHub code v0.2 - branch ordersMapping](https://github.com/AlbertProfe/healthyfoodFront/tree/af20283430d97732362b67f9323fedb89ae14c0d){.external}  |  create function dataFaker, JSON data file, useState hook, refactoring, conditional render SPA in root-App   | - | [render v0.2 render (1)](/images/reactjs/healthyfood-render-v0-2-1.png), [render v0.2 render (2)](/images/reactjs/healthyfood-render-v0-2-2.png) |
+| [GitHub code v0.3 - branch ordersMapping](https://github.com/AlbertProfe/healthyfoodFront/tree/e6ec2bc280cf5745e46e3417477d3efec9ede828){.external}  |  create component orderTable  | - | [render v0.3 render (1)](/images/reactjs/healthyfood-render-v0-3-1.png) |
+| [GitHub code v0.4 - branch ordersMapping ](https://github.com/AlbertProfe/healthyfoodFront/tree/c18fa76f3a551eb9364c8007b87f079e0ba10027){.external}  |  create domains & routes  | [Router Structure](/images/reactjs/healthyfood-project-v0-4.png){width="80%"} | [render v0.4 render (1)](/images/reactjs/healthyfood-render-v0-4-1.png),  [render v0.4 render (2)](/images/reactjs/healthyfood-render-v0-4-2.png) , [render v0.4 render (3)](/images/reactjs/healthyfood-render-v0-4-3.png) , [render v0.4 render (4)](/images/reactjs/healthyfood-render-v0-4-4.png),  [render v0.4 render (5)](/images/reactjs/healthyfood-render-v0-4-5.png) ,  [render v0.4 render (6)](/images/reactjs/healthyfood-render-v0-4-6.png)   |
+| [GitHub code v0.5 - branch ordersMapping](https://github.com/AlbertProfe/healthyfoodFront/tree/220e0f3604fb205f0fade6f54219aed3d575a7dd){.external}  |  adding `w3.css` and `Team` page  | [Router Structure (1)](/images/reactjs/healthyfood-project-v0-5-1.png){width="80%"}, [Router Structure (2)](/images/reactjs/healthyfood-project-v0-5-2.png){width="80%"} | [render v0.5 render (1)](/images/reactjs/healthyfood-render-v0-5-1.png), [render v0.5 render (2)](/images/reactjs/healthyfood-render-v0-5-2.png), [render v0.5 render (3)](/images/reactjs/healthyfood-render-v0-5-3.png), [render v0.5 render (4)](/images/reactjs/healthyfood-render-v0-5-4.png), [render v0.5 render (5)](/images/reactjs/healthyfood-render-v0-5-5.png), [render v0.5 render (6)](/images/reactjs/healthyfood-render-v0-5-6.png), [render v0.5 render (7)](/images/reactjs/healthyfood-render-v0-5-7.png)  |
+|   | depoy branch `ordersMapping` to `AWS Amplify`| [pull request `ordersMapping` to `master`](/images/reactjs/healthyfood-pullrequest-v0-5.png) | [healthyfoodFront url aws](https://ordersmapping.dg5sulzkp1wxf.amplifyapp.com/){.external target='_blank'} |
+|  [GitHub code v0.6 ](https://github.com/AlbertProfe/healthyfoodFront/tree/445ef389766db843757b4a0573e14e5cfd93ca25){.external}   | pull request: `ordersMapping` & `createOrder` to `master`: modify `readme`  | [project v0.6](/images/reactjs/healthyfood-project-v0-6-1.png) | [render v0.6 render (1)](/images/reactjs/healthyfood-render-v0-6-1.png) |
+|  [GitHub code v0.7 ](){.external}   |   | [project v0.7]() | [render v0.7 render (1)]() |
+
+:::
+
+
+
+

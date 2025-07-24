@@ -1,0 +1,150 @@
+---
+title: "Week 6: Product Owner, how it works"
+subtitle: SCRUM Week 6
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  The Product Owner is a crucial team member responsible for understanding customer needs and the business value
+categories: [scrum, scrum-week6, product-owner]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 6 - Product Owner, how it works**
+
+
+In SCRUM Agile, the Product Owner is a crucial team member **responsible for understanding customer needs and the business value associated with those needs**.
+
+The Product Owner **translates customer requirements to the Scrum team, ensuring the correct implementation of the product vision.**
+
+Key responsibilities include **maximizing product value, effective Product Backlog management, and clear communication of the Product Goal**.
+
+The Product Owner must possess **entrepreneurial qualities, a clear vision, and decisiveness**. Importantly, they have the authority to make project-critical decisions. However, a Product Owner should avoid roles such as being a clerk, story writer, project manager, subject matter expert, gatekeeper, or manager.
+
+The **Product Backlog**, representing all necessary work, is a dynamic, ordered list crucial for decision-making within the Scrum Team.
+
+
+:::
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 6 - Product Owner, how it works**
+
+Product Owner, Business Value, Product Vision, Entrepreneurial, Product Backlog, Product Goal, Stakeholder Management, Maximizing Product Value, Return on Investment, Budget, Total Cost of Ownership, Visionary.
+
+:::
+
+</br></br> 
+
+# Product Owner, overview
+
+::: {.callout-note}
+The **Product Owner** is the Team member who knows **what the customer wants and the relative business value of those wants**. He or she can then translate the customer's wants and values back to the Scrum team.
+:::
+
+![Product Owner Role](/images/scrum/product-owner-relationships.png){width="70%"}
+
+The **Product Owner** <mark>**must know** the business case for the product and what features the customers wants</mark>. He must be available to consult with the team to make sure they are correctly implementing the product vision.
+
+<mark>Most importantly, he must have the authority to make all decisions nessary to complete the project</mark>.
+
+## How it works
+
+According to the Scrum Guide, **Product Owners** have a vital role in the value creation process of the Scrum team.
+
+
+::: {.callout-tip}
+The **Product Owner is accountable** for:
+
+- <mark>for maximizing the value of the product resulting from the work of the **Scrum Team**</mark>. How this is done may vary widely across organizations, Scrum Teams, and individuals.
+- <mark>effective Product Backlog management</mark>, which includes developing and explicitly communicating the <mark>**Product Goal**</mark>.
+- effective Product Backlog management, which includes <mark>creating and clearly communicating Product Backlog items</mark>.
+- effective Product Backlog management, which includes <mark>ordering **Product Backlog items**.</mark>
+:::
+
+
+# What a Product Owner does
+
+Some examples of what a **Product Owner** should do include:
+
+- To be accountable for the success or failure of the product;
+- To provide unified direction to the product;
+- To provide the resources and authorize the funds for the product;
+- To provide visible and sustained support for the product;
+- Maximizing the Value of the Product for customers, users and the organization. This means that a **Product Owner** actually owns the product. The **Product Owner** is the person who is responsible for making sure that the product delivers as much value as possible. This also means being responsible for the Return on Investment, Budget, Total Cost of Ownership and the defining, maintaining and sharing of the Product vision for example.
+- The **Product Owner** is also responsible for Product Backlog Management. This includes activities such as clearly expressing Product Backlog Items, ordering the items in the Product Backlog to best achieve goals and missions and ensuring the Product Backlog is visible, transparent, and clear to all, and shows what the Scrum Team will work on next.
+- The **Product Owner** is responsible for Stakeholder Management, in order to align everybody around the product vision and (business) goals and objectives to achieve. This also includes inviting the right (key) stakeholders to the Sprint Review, discussing the current status of the Product Backlog, next targets and objectives, likely delivery dates and progress made, during the Sprint - Review as well as tracking the total work remaining (at least every Sprint Review) for the Product, creating forecasts and making this information transparent for the stakeholders.
+
+
+
+# Characteristics or skills of a Product Owner
+
+There are many relevant skills and characteristics that **great Product Owners** have. In order to not create an exhaustive list, we’ll share just our <mark>top-3 skills/characteristics</mark>:
+
+::: {.callout-important}
+**Entrepreneurial**
+
+**Product Owners**’ at their best are entrepreneurs. <mark>They’re full of ideas</mark>, see plenty of opportunities, take responsibility and ownership and take conscious decisions in order to minimize risks and to seize opportunities.
+:::
+
+::: {.callout-important}
+**Visionary**
+
+Great **Product Owners** have a <mark>clear vision</mark>. They know what they want for their customers and users and more importantly, why they want it! They’re focussed on the Products’ success and the longer term vision of the Product.
+:::
+
+
+::: {.callout-important}
+**Decisive**
+
+**Product Owners** need to be decisive. <mark>They have to make lots of choices</mark>, often including saying ‘no’ to people thereby disappointing them. They have to make sure to do the most important, most valuable things for the Product.
+:::
+
+# What a Product Owner does not do
+
+So, what a **Product Owner** should not do is:
+
+- Being a Clerk. Meaning that a **Product Owner** is not somebody who visits all the stakeholders, and asks everyone of them what they want. A **Product Owner** shouldn’t collect stakeholder orders. A **Product Owner** should have clear vision and gather feedback on that vision. Not collecting orders.
+- Being a Story Writer (all the time). Meaning that it is not the **Product Owner**’s day-job to write User Stories, acceptance criteria or Product Backlog Item (PBI) details all day long. Of course, coming up with PBIs is part of the job, but a **Product Owner** is not a Backlog secretary!
+- Being a Project Manager. Meaning that a **Product Owner** is not an Agile Project Manager. The **Product Owner** doesn’t create and manage (extensive) project plans such as the Project Initiation Document, Project Plan, Gantt Charts or others. The **Product Owner** also shouldn’t track and measure team progress. And the **Product Owner** shouldn’t manage people and resources or Development Team capacity for example. A **Product Owner** cares that a team has a velocity, yet he doesn’t care about the actual number or about “optimizing” it.
+- Being a Subject Matter Expert. Meaning that a **Product Owner** is not the most experienced, knowledgable proces or system expert in the company. A **Product Owner** is most of all an entrepreneur. Somebody who dares to take risks, make mistakes and take ownership. Having product, market, customer and domain knowledge is valuable, of course. But you don’t have to be the expert, knowing all the tiny details. And so, a **Product Owner** should not be concerned too much with all the tiny little details. That’s why a **Product Owner** works with experts, called the Development Team!
+- Being a Gatekeeper. Meaning that a **Product Owner** is not the single point of contact between the Development Team and the outside world. It benefits the development of products and services when Development Teams interact with customers and users directly. There is no need to a person “in between” them. So, a **Product Owner** should not be a single point of contact. A **Product Owner** is not a pigeon carrier.
+- Being a Manager. Meaning that a **Product Owner** is not responsible for team performance or HR-processes, such as performance management. Of course, a **Product Owner** can share feedback with team members, just like every other person in the company could. But a **Product Owner** is not a “team boss”, not a “manager” and not “HR-responsible”.
+
+
+# Product backlog
+
+::: {.callout-note}
+The **Product Backlog**’s purpose is to represent all of the work the Scrum Team knows it needs to do in order to deliver the product. Teams can use the Product Backlog to make decisions about what they should do next. 
+:::
+
+![](/images/scrum/ScrumBoard-1024x431.jpg)
+
+
+The Product Backlog consists of:
+
+- **Product Backlog items (PBIs)** - each of which represents something that needs to be done. 
+- A **Product Goal** - that describes the Scrum Team’s current long-term objective for the product.
+
+
+Product Backlogs are a single, transparent way to find the Scrum Team’s current knowledge of all work that must be done. They are kept as an ordered list.
+
+- **Single**: There should be only one Product Backlog per product. This means that there are no separate backlogs for different types of PBIs, for example no backlog for defect reports or for UX work. - **Everything** lives in the same Product Backlog. Additionally, if multiple Scrum Teams are working on the same product, they use the same backlog.
+- **Transparent**: it should be easily accessible and used to drive a shared understanding of the PBIs among the Scrum Team and stakeholders.
+- **Current**: The Product Backlog is “emergent” meaning that it grows, shrinks and evolves over time. It is not a static artifact, it is updated frequently based on information uncovered during development as well as from stakeholders, customers and the market.
+- **Ordered**: The order of the PBIs is decided by the Product Owner. The order may be based on factors such as business value, risk, return on investment or dependencies.
+
+# References
+
+- [Less: Product Owner](https://less.works/less/framework/product-owner){.external}
+- [Product Owner vs Project Manager](https://www.scrum.org/resources/blog/product-owner-vs-project-manager){.external}
+

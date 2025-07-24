@@ -1,0 +1,21 @@
+---
+title: "Write Tight"
+author: "albertprofe"
+subtitle: "William Brohaugh, 2007, Write Tight: Say Exactly What You Mean with Precision and Power"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "This book provides writers with the tools and techniques to write clear, concise, and compelling prose."
+categories: [communication]
+subcategories: [writing, language]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/writetight.jpg)
+
+## More info
+
+- [Write Tight: Say Exactly What You Mean with Precision and Power](https://www.amazon.com/Write-Tight-Exactly-Precision-Power/dp/1402210518){.external}

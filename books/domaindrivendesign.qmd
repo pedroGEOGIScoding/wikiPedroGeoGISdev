@@ -1,0 +1,21 @@
+---
+title: "Domain Driven Design"
+author: "albertprofe"
+subtitle: "Eric Evans, 2003, Domain Driven Design: Tackling Complexity in the Heart of Software"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A groundbreaking book on software design that focuses on modeling complex software systems in a way that aligns with business goals. Eric Evans provides a practical and insightful approach to software design that helps teams build systems that are scalable, maintainable, and easily adaptable to changing business needs."
+categories: [design]
+subcategories:  [programming, design, architecture]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/domaindrivendesign.jpeg)
+
+## More info
+
+

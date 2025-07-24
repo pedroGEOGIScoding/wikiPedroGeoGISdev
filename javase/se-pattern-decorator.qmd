@@ -1,0 +1,180 @@
+---
+title: "Decorator"
+subtitle: Java Fundamentals and Patterns
+author: Carla Velasco
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Decorator Structural Design-Pattern
+categories: [javase, decorator, design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+The decoartor pattern is a structural design pattern that lets you **attach new functionality to the object** by wrapping these objects inside special wrapper objects that contain the behaviours.
+:::
+
+---
+
+The Decorator design pattern is a structural pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. This provides a flexible alternative to using inheritance to modify behavior.
+
+In the decorator pattern, a decorator class is used to wrap concrete components. The decorator class implements the same interface as the components it decorates and adds additional behavior by invoking the component methods. The result is that the client code can work with the decorated objects in the same way as it would work with the original components.
+
+
+![Decorator Pattern UML](../images/javase/decorator-pattern-uml.png){width=90%}
+
+## Example: ``Coffee shop``
+
+Here's an example of how the Decorator pattern can be used:
+
+1. Create the Component Interface: First, create an interface ``Beverage`` that defines the methods that all beverages must have.:
+
+``` java 
+public interface Beverage {
+  double cost();
+  String getDescription();
+}
+```
+
+2. Create Concrete Components: Next, create concrete components that implement the ``Beverage`` interface. In this case, ``Espresso``, ``DarkRoast``, ``HouseBlend``, etc.:
+
+``` java 
+public class Espresso implements Beverage {
+  @Override
+  public double cost() {
+    return 1.99;
+  }
+
+  @Override
+  public String getDescription() {
+    return "Espresso";
+  }
+}
+
+public class DarkRoast implements Beverage {
+  @Override
+  public double cost() {
+    return 2.99;
+  }
+
+  @Override
+  public String getDescription() {
+    return "Dark Roast";
+  }
+}
+
+public class HouseBlend implements Beverage {
+  @Override
+  public double cost() {
+    return 3.49;
+  }
+
+  @Override
+  public String getDescription() {
+    return "House Blend";
+  }
+}
+
+```
+
+3. Create the Decorator Class: Create a ``CondimentDecorator`` abstract class that implements the ``Beverage`` interface and has a reference to a ``Beverage`` object:
+
+``` java 
+public abstract class CondimentDecorator implements Beverage {
+  protected Beverage beverage;
+
+  public CondimentDecorator(Beverage beverage) {
+    this.beverage = beverage;
+  }
+
+  public abstract double cost();
+  public abstract String getDescription();
+}
+
+```
+
+4. Create Concrete Decorators: Create concrete decorator classes that add behavior to the components. In this case, ``Milk``, ``Sugar``, and ``Syrup`` decorators.
+
+``` java 
+public class Milk extends CondimentDecorator {
+  public Milk(Beverage beverage) {
+    super(beverage);
+  }
+
+  @Override
+  public double cost() {
+    return 0.10 + beverage.cost();
+  }
+
+  @Override
+  public String getDescription() {
+    return beverage.getDescription() + ", Milk";
+  }
+}
+
+public class Sugar extends CondimentDecorator {
+  public Sugar(Beverage beverage) {
+    super(beverage);
+  }
+
+  @Override
+  public double cost() {
+    return 0.15 + beverage.cost();
+  }
+
+  @Override
+  public String getDescription() {
+    return beverage.getDescription() + ", Sugar";
+  }
+}
+
+public class Syrup extends CondimentDecorator {
+  public Syrup(Beverage beverage) {
+    super(beverage);
+  }
+
+  @Override
+  public double cost() {
+    return 0.25 + beverage.cost();
+  }
+
+  @Override
+  public String getDescription() {
+    return beverage.getDescription() + ", Syrup";
+```
+
+5. Use the Decorator: In the client code, create a ``Beverage`` object and wrap it with multiple decorators to add desired ingredients.
+
+``` java 
+Beverage espresso = new Espresso();
+System.out.println(espresso.getDescription() + " $" + espresso.cost());
+
+Beverage darkRoast = new DarkRoast();
+darkRoast = new Milk(darkRoast);
+darkRoast = new Sugar(darkRoast);
+System.out.println(darkRoast.getDescription() + " $" + darkRoast.cost());
+
+Beverage houseBlend = new HouseBlend();
+houseBlend = new Syrup(houseBlend);
+houseBlend = new Milk(houseBlend);
+System.out.println(houseBlend.getDescription() + " $" + houseBlend.cost());
+```
+
+6. Output: The output of the above code will show the description and cost of the beverages, including the added ingredients.
+
+``` java
+Espresso $1.99
+Dark Roast, Milk, Sugar $3.74
+House Blend, Syrup, Milk $4.24
+
+```
+
+This example demonstrates how the Decorator pattern can be used to add behavior to objects dynamically, without affecting the behavior of other objects from the same class.
+
+
+>>>>>>> e3f6b450685662abb959fe6dc77071b7dc9be0c2
+
+

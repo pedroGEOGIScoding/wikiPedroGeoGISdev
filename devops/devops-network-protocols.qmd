@@ -1,0 +1,105 @@
+---
+title: "Network Protocols"
+subtitle: Relevant and popular Network Protocols
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, protocols]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview
+
+::: {.callout-note}
+The client-server architecture serves as a cornerstone, providing a structured framework for distributed systems.
+
+Network protocols serve as the linchpin in facilitating data exchange, ensuring standardized communication across diverse systems. 
+:::
+
+
+From the ubiquitous HTTP/HTTPS governing web applications to the specialized protocols like SQL for database communication, each plays a crucial role in orchestrating the flow of information.
+
+![API-protocols](/images/devops/api-protocls.png){width="60%"}
+
+This article is about the significance of these protocols in maintaining efficiency, security, and standardization in client-server systems.
+
+Understanding these protocols is imperative for professionals and students alike, as they form the bedrock upon which modern distributed systems are built.
+
+## API vs. Protocol
+
+**API (Application Programming Interface)**
+
+<mark>An Application Programming Interface (API) is a set of protocols, routines, and tools that allows different software applications to communicate with each other.</mark>
+
+Serving as an intermediary, an API abstracts the underlying complexity of software components, providing a standardized and simplified interface for developers to access the functionality or data of a particular service or application. APIs define the methods, data formats, and conventions through which applications can request and exchange information, facilitating seamless integration and interaction between disparate systems.
+
+::: {.column-margin}
+They play a crucial role in promoting interoperability and collaboration by enabling developers to leverage functionalities without delving into the intricacies of the underlying codebase. APIs are pivotal in modern software development, empowering the creation of robust and modular applications that can interact with a diverse range of services.
+:::
+
+> An API is like a menu in a restaurant. It provides a list of dishes (functions or features) you can order, along with a description of how to ask for them. The waiter (API) takes your order, communicates with the chef (software), and brings back the result to your table. APIs define how different software parts interact, making it easier for developers to use certain functionalities without dealing with the complex inner workings.
+
+**Protocol**
+
+<mark>A protocol in the context of computing is a set of rules or standards that governs the way in which data is transmitted and communicated over a network. These rules ensure consistent and efficient communication between devices or software systems.</mark>
+
+Protocols define the format and structure of data, the procedures for establishing and terminating connections, and the handling of errors during transmission.
+
+::: {.column-margin}
+They are essential for enabling devices from different manufacturers or software applications written in different programming languages to understand each other and communicate effectively. Protocols operate at various layers of the OSI model, such as the transport layer (e.g., TCP, UDP) or the application layer (e.g., HTTP, FTP), playing a foundational role in establishing the guidelines for seamless and reliable data exchange in networked environments.
+:::
+
+> A protocol is like a recipe for baking a cake. It specifies the exact ingredients, their measurements, and the steps to follow. Everyone following the same recipe can bake the same cake. Similarly, in the digital world, protocols are rules that ensure devices or software communicate effectively. They define how data is packaged, sent, and received. Different systems, like different chefs, can follow the same protocol to understand and exchange information.
+
+
+
+# Relevant Network Protocols & APIs
+
+1. **DNS (Domain Name Service) & HTTP(Hypertext Transfer Protocol)**
+[HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview){.external} is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is reconstructed from the different sub-documents fetched, for instance, text, layout description, images, videos, scripts, and more.
+   - When we type a URL (Uniform Resource Locator) in a web browser, a DNS resolver translates the hostname of the URL to an IP address. This helps us locate the web resources. The DNS resolver communicates with a hierarchy of name servers to retrieve this mapping. More details will follow.
+
+1. **API Rest**
+The user interacts with the website via a REST API, which leverages HTTP to manage request methods. When a user decides to purchase an iPhone, an order is created on the website.
+   - Representational State Transfer, an architectural style for designing networked applications, using standard HTTP methods (GET, POST, PUT, DELETE) to manipulate resources.
+
+1. **gRPC (HTTP/2)**
+The order service talks to the payment service to create a payment transaction. In a microservice architecture, this is usually done via gRPC, which is based on HTTP/2.
+
+   - A high-performance, language-agnostic remote procedure call (RPC) framework for efficient communication between distributed systems, often used in microservices architectures.
+
+1. **WebSocket**
+The client-side applications establish a WebSocket with the backend. This results in a full-duplex communication channel over a single TCP connection. This way, client-side applications can receive push notifications. For example, the success of a payment transaction can be pushed to the user’s device.
+
+   - A protocol that enables bidirectional, real-time communication between a client and server over a single, long-lived connection, ideal for applications requiring low-latency updates, such as chat or gaming.
+
+1. **SMTP**
+The email notification service sends an official email to the user’s email address using SMTP (Simple Mail Transfer Protocol).
+
+1. **Ping (ICMP)**
+The SRE (Site Reliability Engineering) engineer notices a slowdown in one of the payment service instances and uses the ping command to check the availability of the server.
+
+1. **Video call (UDP)**
+The SRE engineer needs assistance from an on-call developer. They hold a video call via Zoom, which uses UDP instead of TCP.
+
+1. **SOAP** A protocol for exchanging structured information in the implementation of web services, known for its strict standards and XML-based message format.
+
+2. **GraphQL** A query language and runtime for APIs that allows clients to request only the data they need, reducing over-fetching and under-fetching of data.
+
+3.  **Webhook** A mechanism for real-time communication where an application sends HTTP POST requests to a predefined URL to notify and trigger actions in another system.
+
+# RoadMap APIs
+
+![](/images/devops/api-protocls-roadmap.jpg){fig-align="center" width="70%"}
+
+# References
+
+- [A guide to the different types of APIs](https://blog.postman.com/different-types-of-apis/){.external}
+
+
+

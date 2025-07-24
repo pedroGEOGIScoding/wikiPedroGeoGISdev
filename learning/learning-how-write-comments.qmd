@@ -1,0 +1,87 @@
+---
+title: "Comments"
+subtitle: About how to write comments properly
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: About how to write comments properly
+categories: [about, writing]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# How to write a comment
+
+## Overview
+
+For each line, block of code, method, class, **answer in a DIRECT, CLEAR style, no more than 3/5/10 words these three questions:**
+
+- What does this code do?
+- For what use/need/feature/operation is this code?
+- How does this code work, expression by expression?
+
+## Example
+
+```java
+// find a comment within movie
+// to test a review: test Movie object creation
+// from movie object get Reviews list position 0 and get comment from Review
+String findMyComment = movie.getReviews().get(0).getComment();
+```
+
+# How to commit / pull-request
+
+## Commit
+
+### The commit type can include the following:
+
+-   `feat` – a new feature is introduced with the changes
+-   `fix` – a bug fix has occurred
+-   `chore` – changes that do not relate to a fix or feature and don't modify source or test files (for example updating dependencies)
+-   `refactor` – refactored code that neither fixes a bug nor adds a feature
+-   `docs` – updates to documentation such as a the README or other markdown files
+-   `style` – changes that do not affect the meaning of the code, likely related to code formatting such as white-space, missing semi-colons, and so on.
+-   `test` – including new or correcting previous tests
+-   `perf` – performance improvements
+-   `ci` – continuous integration related
+-   `build` – changes that affect the build system or external dependencies
+-   `revert` – reverts a previous commit
+
+### Style
+Answer this questions in a DIRECT, CLEAR style, no more than 60 words. No ending in POINT, "."
+
+### Example commits
+
+- `#1 #feat: new css class to restyle`
+- `#12 #chore: minor mistakes typos checked`
+- `#33 #refactor: change components grid and names variables`
+
+#### add BREAKING CHANGE OR MINOR CHANGE
+
+> **BREAKING CHANGE:** a commit that has a `BREAKING CHANGE:`, or appends a `!` after the type/scope, introduces a breaking API change (correlating with [`MAJOR`](http://semver.org/#summary) in Semantic Versioning). A BREAKING CHANGE can be part of commits of any _type_.
+
+### references
+
+> url: https://semver.org/
+title: "Semantic Versioning 2.0.0"
+description: "Semantic Versioning spec and website"
+host: semver.org
+
+> url: https://commitizen-tools.github.io/commitizen
+title: "Commitizen"
+description: "commit rules, semantic version, conventional commits"
+host: commitizen-tools.github.io
+favicon: assets/images/favicon.png
+
+> url: https://www.conventionalcommits.org/en/v1.0.0/
+title: "Conventional Commits"
+description: "A specification for adding human and machine readable meaning to commit messages"
+host: www.conventionalcommits.org
+
+## Pull-request
+
+
+
+

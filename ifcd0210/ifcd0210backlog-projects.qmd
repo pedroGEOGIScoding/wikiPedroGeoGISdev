@@ -1,0 +1,38 @@
+---
+title: "IFCD0210 Projects Backlog"
+categories: [ifcd0210, backlog]
+---
+
+![Backlog course](/images/home/backlog.jpg){width="30%"}
+
+## Projects 
+
+Work-in-progress
+
+| #Project | Author | Site | MF01 | MF02 | MF03 |
+| -- | -- | -- |-- |-- |-- |
+| #1 | Marc | [CIFO - Web Applications](https://protossgp32.github.io/CIFO-Web-Applications/){.external}, [DevOps Training Projects](https://protossgp32.github.io/DevOps-training-projects/){.external} | ++ | - | - |
+| #2 | Rafa | [App with web tecnologies](https://rarmero.github.io/appwebcifolavioleta/){.external} | ++ | - | - |
+| #3 | Lis | [Wikilis](https://lisdev90.github.io/wikilis/){.external} | ++ | - | - |
+| #4 | Cruz | [Blog Fabrizio](https://leonpurple.github.io/blog/){.external}, [Welcome ComboBackend](https://leonpurple.github.io/combobackend/){.external} | ++ | - | - |
+| #5 | Aitor | [Aitor wiki](https://aitorforradelles.github.io/Wiki-Aitor/){.external} | - | - | - |
+| #6 | Victor | [mywebsite](https://vcalvache.github.io/mywebsite/){.external} | ++ | - | - |
+| #7 | Albertus | [Curso Cifo DAW](https://vallvicity.github.io/CursoDAW/){.external} | ++ | - | - |
+| #8 | Ruben | [miweb](https://rudevops.github.io/miweb/about.html){.external} | ++ | - | - |
+| #9 | Albert | [Wiki](https://albertmbu.github.io/wiki/){.external} | ++ | - | - |
+| #10 | Carla | [Labs Carla](https://carla-velasco7e4.github.io/){.external} - [Carla Velasco Portfoli](https://carlavelasco.com/){.external} | ++ | - | - |
+| #11 | Pomodoro | [David Pomodoro, el hacher](https://davidmaqueda.github.io/testtest3/){.external} | ++ | - | - |
+| #12 | David | [Documentacion](https://daviddevops96.github.io/Documentation/){.external} | ++ | - | - |
+| #13 | Alex | [Alex quarto project](){.external} | - | - | - |
+| #14 | Sergi | [aznale_docs](https://aznale.github.io/){.external} | - | - | - |
+: Backlog Projects {tbl-colwidths="[3,17, 68, 4,4,4]"}
+
+::: {.callout-note}
+- `-` delivery pending
+- `+` delivery done
+- `++` delivery pass
+- `--` need to re-delivery
+:::
+
+
+

@@ -1,0 +1,61 @@
+---
+title: "Site Reliability Engineering"
+author: "albertprofe"
+subtitle: "Betsy Beyer, Chris Jones, Jennifer Petoff and Niall Richard Murphy, 2016, How Google runs production systems"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "Members of the SRE team explain how their engagement with the entire software lifecycle has enabled Google to build, deploy, monitor, and maintain some of the largest software systems in the world."
+categories: [devops]
+subcategories: [programming, devops, sre]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/sre.jpg)
+
+## More info
+
+- [SRE site: books](https://sre.google/books/){.external}
+- [SRE site: Site Reliability Engineering: How Google Runs Production Systems](https://sre.google/sre-book/table-of-contents/){.external}
+- [Google books: Site Reliability Engineering: How Google Runs Production Systems](https://books.google.es/books?id=81UrjwEACAAJ&redir_esc=y){.external}
+
+> Hope is not a strategy. - Traditional SRE saying
+
+> If a human operator needs to touch your system during normal operations, you have a bug. The definition of normal changes as your systems grow. - Carla Geisser, Google SRE
+
+> The price of reliability is the pursuit of the utmost simplicity. - C.A.R. Hoare, Turing Award lecture
+
+## DevOps or SRE?
+
+The term “DevOps” emerged in industry in late 2008 and as of this writing (early 2016) is still in a state of flux. Its core principles—involvement of the IT function in each phase of a system’s design and development, heavy reliance on automation versus human effort, the application of engineering practices and tools to operations tasks—are consistent with many of SRE’s principles and practices. One could view DevOps as a generalization of several core SRE principles to a wider range of organizations, management structures, and personnel. One could equivalently view SRE as a specific implementation of DevOps with some idiosyncratic extensions.
+
+SRE and DevOps ask two different but equally valuable questions:
+
+- ``DevOps`` asks what needs to be done.
+- ``SRE`` asks how that can be done.
+
+## Site reliability engineers day to day
+
+Site reliability engineers measure service level indicators (SLIs) and service level objectives (SLOs), while DevOps teams measure the failure rate plus the success rate over time. SREs share responsibilities related to the following DevOps pillars of infrastructural improvement:
+
+> **Reduce organizational silos**
+SREs don't discuss how many silos exist in company, but they encourage everyone else to discuss the issue. This discussion is accomplished by using the tools and techniques across the company, helping to spread ownership across all employees.
+
+> **Accept failure as normal**
+SREs need to make sure that there aren’t too many errors or failures. To do so, they use a formula composed of SLI and SLO scores. SLIs count failures per request, by calculating request latency, throughput of requests per second, or failures per request per time. SLOs are derived from threshold and percentage, and represent the success of SLIs over a certain amount of time.
+
+> **Implement gradual change**
+SREs are all in for change, but in a slow, methodical way. Because companies want to move faster, they demand frequent releases, continually updating the product. So DevOps and SREs must respond quickly but maintain a steady, controlled pace.
+
+> **Leverage tooling and automation**
+Automate as long as it provides value to developers and operations by removing manual tasks.
+
+> **Measure everything**
+SRE teams need to know that everything is moving in the right direction. This can be accomplished by setting up alerts for various scenarios, embracing peer code review, and/or using unit tests.
+
+## References
+
+- [What is site reliability engineering (SRE)?](https://www.netapp.com/devops-solutions/what-is-site-reliability-engineering/){.external}

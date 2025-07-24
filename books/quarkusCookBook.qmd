@@ -1,0 +1,23 @@
+---
+title: "Quarkus Cookbook"
+author: "albertprofe"
+subtitle: "Alex Soto Bueno, Jason Porter, February 9, 2021, Quarkus Cookbook: Developing Cloud-Native Applications with Java"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "Optimized for Kubernetes, Quarkus is designed to help you create Java applications that are cloud-first, container-native, and serverless capable. With this cookbook, authors Alex Soto Bueno and Jason Porter from Red Hat provide detailed solutions for installing, interacting with, and using Quarkus in the development and production of microservices"
+categories: [java]
+subcategories: [programming, java, devops, Quarkus, openshift, microservices]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/quarkusCookBook.jpeg)
+
+## More info
+
+The recipes in this book show mid-level to senior developers familiar with Java enterprise application development how to get started with Quarkus quickly. You'll become familiar with how Quarkus works with the wider Java ecosystem and discover ways to adapt this framework to your particular needs.
+
+> We said that Quarkus is meant to run within Kubernetes. That sounds great, but we know lots of things can run within Kubernetes. Throw your application in a Docker container, and it will run on Kubernetes. While this is true, there are a number of things that traditionally have to be done to properly tune, size, and configure your application to run efficiently within Kubernetes. You also have to pull out your text editor of choice and craft multiple YAML files—and let’s be honest, no one really enjoys doing all that.

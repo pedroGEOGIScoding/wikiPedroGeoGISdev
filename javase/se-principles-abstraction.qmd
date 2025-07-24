@@ -1,0 +1,160 @@
+---
+title: "Java SE: Abstraction"
+subtitle: Java Fundamentals and Principles
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Java abstraction OOP paradigm
+categories: [javase, abstraction , oop,  concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **Abstraction**
+
+**Abstraction** is the process of focusing on the essential characteristics of an object, while ignoring the non-essential details.
+
+:::
+
+---
+
+**One of the OOP concepts in Java is abstraction**, which is the **act of representing key features without including supporting information**.
+
+It is a method for developing a brand-new data type appropriate for a particular application.
+
+It avoids providing extraneous or pointless facts and only displays the precise portion the user has requested. It is crucial since it **prevents you from performing the same task more than once.**
+
+![Java SE Basic Principles OOP Abstraction](/images/javase/oop-abs.png){width="50%"}
+
+Here is an example of abstraction in Java:
+
+``` java
+public abstract class Account {
+    // This is an abstract class because it has an abstract method
+
+    public abstract void withdraw(double amount);
+
+    // Non-abstract methods
+    public void deposit(double amount) {
+        // Code for depositing money
+    }
+
+    public void checkBalance() {
+        // Code for checking account balance
+    }
+}
+```
+
+In this example, the `Account` class is an abstract class because it contains an abstract method called `withdraw()`. An abstract method is a method that is declared but not implemented. This means that subclasses of the `Account` class must implement the `withdraw()` method in order to use it.
+
+## Abstract class and  Interface
+
+**Abstraction** is an important concept in object-oriented programming because it allows developers to *create complex systems by building upon simpler components*. 
+
+This makes it possible to manage large and complex code bases **without becoming overwhelmed by the details**.
+
+In other words, **abstraction** means <mark>representing the essential features of an object without including the non-essential details</mark>. In Java, **abstraction** is achieved through <mark>the use of abstract classes and interfaces</mark>.
+
+::: {.callout-note}
+
+📘 **How abstraction is done**
+
+In Java, abstraction is achieved through the use of ``abstract`` classes and ``interfaces``.
+
+:::
+
+---
+
+An ``abstract`` class is a class that contains one or more ``abstract`` methods. An ``abstract`` method is a method that is **declared but not implemented**. This means that subclasses of the abstract class must implement the abstract methods in order to use them.
+
+Here is an example of an ``abstract`` class in Java:
+
+``` java
+public abstract class Shape {
+    // This is an abstract class because it has an abstract method
+
+    public abstract double getArea();
+
+    // Non-abstract methods
+    public void draw() {
+        // Code for drawing the shape
+    }
+
+    public void move(int x, int y) {
+        // Code for moving the shape
+    }
+}
+```
+
+In this example, the `Shape` class is an abstract class because it contains an abstract method called `getArea()`. Subclasses of the `Shape` class, such as `Circle` or `Rectangle`, must implement the `getArea()` method in order to use it. This allows each subclass to provide its own implementation of the `getArea()` method, based on its specific characteristics.
+
+``Interfaces`` are another way to achieve abstraction in Java. An ``interface`` is a **collection of abstract methods and constant variables**. A class that implements an ``interface`` must implement all of the abstract methods and constant variables defined in the ``interface``.
+
+Here is an example of an ``interface`` in Java:
+
+``` java
+public interface Shape {
+    // This is an interface because it has only abstract methods
+
+    double getArea();
+
+    void draw();
+
+    void move(int x, int y);
+
+    // Constant variable
+    int MAX_SIZE = 100;
+}
+```
+
+In this example, the `Shape` interface defines three abstract methods and one constant variable. Any class that implements the `Shape` interface must implement all of the ``abstract`` methods and provide a value for the constant variable. This allows the class to define its own implementation of the ``abstract`` methods, based on its specific characteristics.
+
+Here is an example of how to implement the Shape interface in Java with Circle class:
+
+``` java
+public class Circle implements Shape {
+    // Private instance variable
+    private double radius;
+
+    // Constructor
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Implementation of abstract method from Shape interface
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    // Implementation of abstract method from Shape interface
+    @Override
+    public void draw() {
+        // Code for drawing the circle
+    }
+
+    // Implementation of abstract method from Shape interface
+    @Override
+    public void move(int x, int y) {
+        // Code for moving the circle
+    }
+}
+```
+
+In this example, the `Circle` class implements the `Shape` interface. This means that the `Circle` class must implement all of the abstract methods defined in the `Shape` interface. The `Circle` class also has a private instance variable called `radius`, which is used to store the radius of the circle.
+
+The `Circle` class provides its own implementation of the `getArea()` method, which calculates the area of the circle based on its radius. It also provides its own implementation of the `draw()` and `move()` methods, which are used to draw and move the circle on the screen.
+
+Overall, this example shows how to implement an interface in Java. By implementing the `Shape` interface, the `Circle` class can provide its own implementation of the abstract methods defined in the interface, based on its specific characteristics.
+
+## Conclusion
+
+Overall, ``abstraction`` is a powerful concept that allows developers to create complex systems by building upon simpler components. It helps to manage the complexity of large code bases by focusing on the essential features of objects, while ignoring the non-essential details.
+

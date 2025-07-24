@@ -1,0 +1,76 @@
+---
+title: "Lab 6: Spring Boot AWS codecommit"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Lab
+categories: [devops, lab]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+
+
+# Why the codecommit AWS pipeline is so popular
+
+**AWS CodeCommit** is a popular choice among **DevOps professionals** for managing source code repositories securely in the cloud.
+
+<mark>It offers a fully-managed Git-based version control service that scales seamlessly to meet the needs of development teams. With **CodeCommit**, developers can store their Spring Boot project's source code securely and collaborate with team members efficiently.</mark>
+
+When it comes to deploying a Spring Boot project using AWS services, **AWS CodePipeline** plays a crucial role. CodePipeline is a continuous integration and continuous delivery (CI/CD) service that automates the build, test, and deployment phases of your application.
+
+Here's how you can set up a pipeline to deploy a Spring Boot project:
+
+1. **Source Stage (CodeCommit)**: Configure your pipeline to pull the source code from your CodeCommit repository. This stage triggers the pipeline whenever changes are pushed to the repository.
+
+2. **Build Stage (CodeBuild)**: Use CodeBuild to compile your Spring Boot application, run tests, and package it into an executable JAR file. You can define a buildspec.yml file to specify the build commands and environment settings required for your project.
+
+3. **Deploy Stage (AWS Elastic Beanstalk or AWS ECS)**: Depending on your deployment strategy, you can choose either AWS Elastic Beanstalk, AWS ECS, or AWS Fargate to deploy your Spring Boot application.
+
+   - **AWS Elastic Beanstalk**: If you prefer a fully-managed platform for deploying web applications, Elastic Beanstalk is a suitable option. You can create an Elastic Beanstalk environment configured with the appropriate runtime for running Spring Boot applications (e.g., Java with Tomcat). Configure your pipeline to deploy the generated JAR file to Elastic Beanstalk.
+
+   - **AWS ECS**: For containerized deployments, AWS ECS provides a scalable and highly customizable platform. You can use Docker to containerize your Spring Boot application and define a task definition and ECS service for running containers. Configure your pipeline to build and push the Docker image to Amazon ECR (Elastic Container Registry) and update the ECS service with the latest image.
+
+   - **AWS Fargate**: AWS Fargate is a serverless compute engine for containers that allows you to run containers without managing the underlying infrastructure. You can define a Fargate task definition for your Spring Boot application and configure your pipeline to deploy it to Fargate.
+
+4. **Approval Stage (Optional)**: Optionally, you can add a manual approval stage to the pipeline to review and approve changes before deploying them to production.
+
+By setting up a CI/CD pipeline with **AWS CodePipeline**, you can automate the deployment process of your Spring Boot project, ensuring faster delivery of features and improvements to your application while maintaining reliability and consistency.
+
+
+
+# Step-by-step
+
+##  Deploy SpringBoot Application in AWS || CodeCommit overview and Repository Making
+
+{{< video https://youtu.be/Oaf8Xb7zHAI?feature=shared >}}
+
+## Deploy SpringBoot on AWS || Creating Credential For CodeCommit
+
+{{< video https://youtu.be/QkIWHJumATM?feature=shared >}}
+
+## Deploy SpringBoot on AWS || Uploading Code in AWS CodeCommit
+
+{{< video https://youtu.be/ZnN8xpH0xjw?feature=shared >}}
+
+## Deploy SpringBoot on AWS || Changing Build Spec yml and Appspec yml and Creating load balancer
+
+{{< video https://youtu.be/I8uChn9g5Zk?feature=shared >}}
+
+## Deploy SpringBoot on AWS | | Creating the Pipeline
+
+{{< video https://youtu.be/O2HCBtJYucU?feature=shared >}}
+
+## Deploy SpringBoot on AWS | | Finishing the Deployment and Test the Api
+
+{{< video https://youtu.be/F2OJslRdGZs?feature=shared >}}
+
+# Resources
+
+
+

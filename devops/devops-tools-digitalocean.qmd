@@ -1,0 +1,63 @@
+---
+title: "Digital Ocean"
+subtitle: Digital Ocean
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Digital Ocean
+categories: [devops, digital-ocean]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **What is Digital Ocean**
+
+A simple and scalable cloud platform for all developer needs:
+
+- ``Host`` websites with the simplest cloud hosting platform
+- ``Build`` web apps or API backends on robust infrastructure
+- ``Deploy`` container based apps with managed Kubernetes
+- Speed up development with intuitive API, developer tools and ``CI/CD add-ons``
+- **learn** the basics of cloud computing
+
+:::
+
+# Overview
+
+
+**DigitalOcean** is a popular choice among **DevOps professionals** due to several factors.
+
+Firstly, it offers an intuitive user interface and straightforward setup process, making it accessible even to those with limited infrastructure knowledge.
+
+Secondly, its scalability allows developers to easily adjust resources to meet their application's demands without cumbersome hardware management. Additionally, ``DigitalOcean``'s **competitive pricing and transparent billing make it appealing to startups and small businesses**.
+
+The platform also provides a plethora of developer-centric features such as [pre-configured droplets](https://www.digitalocean.com/products/droplets), [managed databases](https://www.digitalocean.com/products/databases), [Kubernetes clusters](https://www.digitalocean.com/products/kubernetes), and [object storage](https://www.digitalocean.com/products/spaces). Its active [community](https://www.digitalocean.com/community) and extensive [documentation](https://www.digitalocean.com/docs) further support developers in troubleshooting and learning.
+
+Moreover, ``DigitalOcean``'s infrastructure is renowned for its performance and reliability, with strategically located data centers ensuring low latency and high availability.
+
+Lastly, its integration with popular **DevOps** tools and provision of APIs facilitate automation and seamless integration into existing workflows. Overall, ``DigitalOcean``'s combination of simplicity, scalability, affordability, and developer-centric features contributes to its popularity among **DevOps** professionals.
+
+
+# Digital Ocean k8s
+
+![](/images/devops/digitalocean-1.png)
+
+[DigitalOcean Kubernetes (DOKS)](https://www.digitalocean.com/community/tech-talks/getting-started-with-kubernetes-on-digitalocean){.external target='_blank'} is a managed ``Kubernetes`` service that lets you deploy ``Kubernetes`` clusters without the complexities of handling the control plane and containerized infrastructure.
+
+**Clusters** are compatible with standard ``Kubernetes`` **toolchains** and integrate natively with ``DigitalOcean`` **Load Balancers and block storage volumes.**
+
+# References
+
+
+- [Digital Ocean k8s](https://sites.google.com/view/devopscifo/devops-tools/digital-ocean){.external target='_blank'}
+- [Dream it. Build it. Grow it.](https://www.digitalocean.com/){.external target='_blank'}
+
+
+

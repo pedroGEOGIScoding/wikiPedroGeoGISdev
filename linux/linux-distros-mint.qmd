@@ -1,0 +1,323 @@
+---
+title: "Linux Distros: Mint"
+subtitle: Mint
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Mint
+categories: [linux, mint, distro]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Linux Mint 21](/images/linux/mint.png){width=40%}
+
+# What is Linux Mint?
+
+[Linux Mint](https://linuxmint.com/) is an operating system for desktop and laptop computers. It is designed to work 'out of the box' and comes fully equipped with the apps most people need.
+
+## Installation
+
+- [Download ISO Linux Mint 21](https://linuxmint.com/edition.php?id=299){.external}
+- [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/){.external}
+- [Linux Mint Installation Guide: step-by-step](https://linuxmint-installation-guide.readthedocs.io/en/latest/install.html){.external}
+
+## Post-installation
+
+- [Hardware drivers](https://linuxmint-installation-guide.readthedocs.io/en/latest/drivers.html){.external}
+- [Multimedia codecs](https://linuxmint-installation-guide.readthedocs.io/en/latest/codecs.html){.external}
+- [Language support](https://linuxmint-installation-guide.readthedocs.io/en/latest/locales.html){.external}
+- [System snapshots](https://linuxmint-installation-guide.readthedocs.io/en/latest/timeshift.html){.external}
+
+## Linux Mint System Applications Overview
+
+**System Reports**
+
+Linux Mint provides users with a powerful diagnostic tool known as "System Reports." This application assists users in identifying and troubleshooting issues on their system. Whether it's hardware-related problems, crashes, or performance issues, System Reports gathers relevant data and generates detailed reports to help users and support teams understand and resolve issues efficiently.
+
+![System Reports](https://www.linuxmint.com/pictures/screenshots/tricia/mintreport.png){width="60%"}
+
+Usage and Features:
+
+- Users can access System Reports through the application menu or search bar.
+- The tool collects information on hardware, system logs, and potential conflicts.
+- Detailed reports are available for user analysis or can be shared with the community for assistance.
+
+**System Manager**
+
+Linux Mint's "System Manager" serves as a centralized hub for managing various system settings and configurations. This application consolidates essential system management tools, providing users with a convenient interface to control various aspects of their operating system.
+
+
+Features:
+
+- System Manager includes modules for managing software, updates, and system settings.
+- Users can configure user accounts, system startup applications, and power management options.
+- The application simplifies system maintenance and customization, enhancing the user experience.
+
+**System Settings**
+
+The "System Settings" application in Linux Mint offers a comprehensive set of tools for users to customize and configure their system. From display settings to keyboard shortcuts, users can tailor the Linux Mint environment to suit their preferences.
+
+![System Settings](https://static.packt-cdn.com/products/9781782168157/graphics/8157OS_03_10.jpg){width="60%"}
+
+Highlights:
+
+- System Settings is accessible through the application menu or system tray.
+- Users can adjust display properties, set up printers, and configure network settings.
+- The intuitive interface makes it easy for both beginners and experienced users to personalize their system.
+
+**System Info**
+
+Linux Mint's "System Info" application provides users with detailed information about their system's hardware and software configuration. This tool is invaluable for users seeking to understand their system specifications or troubleshoot compatibility issues.
+
+![System Info](https://www.technipages.com/wp-content/uploads/2020/12/mint-system-info-2.png){width="60%"}
+
+Key Information:
+
+- Users can view details about the processor, memory, graphics, and storage.
+- System Info also provides information on the Linux Mint version, kernel, and desktop environment.
+- The application is a quick reference for users and support personnel dealing with technical inquiries.
+
+**System monitor**
+
+Process Viewer And System Resource Monitor For GNOME
+
+![System Monitor](https://community.linuxmint.com/img/screenshots/gnome-system-monitor.png){width="60%"}
+
+**GParted: A Powerful Disk Partitioning Tool for Linux**
+
+[GParted](https://gparted.org/) stands as a formidable disk partitioning tool in the Linux ecosystem, offering users a robust and user-friendly solution for managing disk partitions on their systems. With its open-source nature and a wide array of features, GParted has become a go-to tool for both beginners and experienced users seeking efficient disk management.
+
+![GParted](https://gparted.org/screens/gparted-main-window.png){width="60%"}
+
+Features of GParted:
+
+1. **Partition Resizing and Moving**
+   - GParted allows users to resize, move, and manipulate partitions effortlessly. Whether you need to expand a partition to accommodate more data or rearrange existing partitions, GParted provides a straightforward interface to carry out these tasks.
+
+2. **Filesystem Support**
+   - The tool supports a variety of filesystems, including ext2, ext3, ext4, FAT16, FAT32, NTFS, and more. This broad compatibility ensures that GParted can be used on a wide range of storage devices and systems.
+
+3. **Create and Delete Partitions**
+   - Users can create new partitions or delete existing ones as needed. This flexibility is especially valuable when setting up new drives, dual-boot systems, or reorganizing storage configurations.
+
+4. **Check and Repair Filesystems**
+   - GParted includes tools to check and repair filesystems, ensuring the integrity of data on partitions. This feature is essential for maintaining a healthy storage environment and preventing data corruption.
+
+Using GParted:
+
+1. **Installation**
+   - GParted is often available in the software repositories of major Linux distributions. Users can install it using their package manager. For Ubuntu-based systems, the command is:
+     ```
+     sudo apt-get install gparted
+     ```
+
+2. **Launching GParted**
+   - After installation, GParted can be launched from the application menu or by running the command `gparted` in the terminal.
+
+3. **GUI Interface**
+   - GParted provides a graphical user interface that displays a visual representation of the disk partitions, making it easy for users to understand and manage their storage configuration.
+
+Community and Support
+
+GParted boasts an active and supportive community, and users can find documentation, tutorials, and forums on the [official GParted website](https://gparted.org/). The website serves as a valuable resource for both new and experienced users, offering guidance on using the tool effectively and troubleshooting common issues.
+
+
+
+# Keep your Linux updated
+
+Open your terminal and execute:
+
+- ``sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove``
+
+Or you may go through GUI: **Update Manager**:
+
+![Update Manager](/images/linux/linux_updated.png){width=60%}
+
+## Install Developer Tools
+
+### Make a Bash Script Executable
+
+1. Create a **new text file** with all the software you need with a **.sh extension** and code it as ``#!/bin/bash`` (that is, copy that line to the top of it)
+
+[devtools.sh](https://gist.github.com/AlbertProfe/aa473648bf9ecd8fd106be7facfb90a1){.external}
+
+<details>
+<summary>Code</summary>
+<script src="https://gist.github.com/AlbertProfe/aa473648bf9ecd8fd106be7facfb90a1.js"></script>
+</details>
+
+2. **Make the file executable**, open the command line and run: ``chmod u+x devtools.sh``. You are giving permissions to execute this file: **it will grant only the owner of that file execution permissions.**
+
+3. Run it: ``./devtools.sh`` or double-click the icon
+
+
+4. Be careful with certain packages and tools do not work under ``apt get install``, you will need to use ``snap``
+
+
+
+``` js
+snap
+sudo mv /etc/apt/preferences.d/nosnap.pref ~/Documents/nosnap.backup
+sudo apt update
+sudo apt install snapd
+
+intellij-idea-educational
+visual code educational
+sudo snap install intellij-idea-educational --classic
+
+chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+obsidian
+wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.0.3/obsidian_1.0.3_amd64.snap
+sudo snap install --dangerous obsidian_1.0.3_amd64.snap --classic
+
+visual code educational
+wget https://az764295.vo.msecnd.net/stable/1ad8d514439d5077d2b0b7ee64d2ce82a9308e5a/code_1.74.1-1671015296_amd64.deb
+sudo apt install ./code_1.74.1-1671015296_amd64.deb
+```
+
+### Create an Installer Bash Script  
+
+``` js
+#!/bin/bash
+
+# Read the CSV file and install each app
+installed=0
+not_installed=0
+now=`date`
+sudo apt-get update
+echo -e "\nInstall execution long" >> installed_apps.log
+echo -e "$now\n" >> installed_apps.log
+while IFS=';' read -r app package_manager; do
+    if [ "$package_manager" = "apt" ]; then
+        if ! command -v "$app" &> /dev/null; then
+            sudo apt-get install -y "$app"
+            echo -e "\t$app installed/error" >> installed_apps.log
+            ((installed++))
+        else
+            echo -e "\t$app already exists" >> installed_apps.log
+            ((not_installed++))
+        fi
+    elif [ "$package_manager" = "snap" ]; then
+        if ! command -v "$app" &> /dev/null; then
+            sudo snap install "$app"
+            echo -e "\t$app installed/error" >> installed_apps.log
+            ((installed++))
+        else
+            echo -e "\t$app already exists" >> installed_apps.log
+            ((not_installed++))
+        fi
+    fi
+done < apps.csv
+
+echo "Total apps: $((installed + not_installed))"
+echo "Installed/tried apps: $installed"
+echo "Existing apps: $not_installed"
+
+echo -e "\nTotal apps: $((installed + not_installed))" >> installed_apps.log
+echo "Installed/tried apps: $installed" >> installed_apps.log
+echo "Existing apps: $not_installed" >> installed_apps.log
+```
+
+
+## Timeshift
+
+**[Timeshift](https://community.linuxmint.com/software/view/timeshift) is a system restore utility which takes snapshots of the system at regular intervals**. These snapshots can be restored at a later date to undo system changes. Creates incremental snapshots using rsync or BTRFS snapshots using BTRFS tools.
+
+![Timeshift](https://community.linuxmint.com/img/screenshots/timeshift.png){width=60%}
+
+
+## TMCBeans MOOC Helsinki Java 2023
+
+
+1. You can install OpenJDK with the following terminal command (works for Ubuntu):
+   
+  ``` js
+   sudo apt-get install openjdk-11-jdk
+
+  ```
+
+2. From Linux Mint 20 onwards, a file called nosnap.pref needs to be either moved or removed from /etc/apt/preferences.d/ before Snap can be installed.
+   
+  ``` js
+   sudo mv /etc/apt/preferences.d/nosnap.pref ~/Documents/nosnap.backup
+
+  ```
+
+3. With the file removed from its original location, the package database needs to be updated next:
+   
+  ``` js
+   sudo apt update
+
+  ``` 
+  (previous upgrade)
+  
+4. To now install snap from the Software Manager application, search for snapd and click Install. Alternatively, snapd can be installed from the command line:
+   
+  ``` js
+   sudo apt install snapd
+
+  ```
+
+5. **log out** and then **log in**
+   
+6. To test your system, **install the hello-world snap** and make sure it **runs** correctly:
+  
+  ``` js
+      snap install hello-world
+
+  ```
+  
+    hello-world 6.4 from Canonical✓ installed
+
+7.  Test if snapd is installed:
+
+  ``` js
+    hello-world
+    
+  ```
+  
+    Hello World!
+
+8.  Eventually, install TMCBeans
+   
+  ``` js
+    sudo snap install --classic tmcbeans
+
+  ```
+  
+
+## simplescreenrecorder
+
+- [simplescreenrecorder](https://community.linuxmint.com/software/view/simplescreenrecorder){.external}
+
+**Simple Screen Recorder** is, despite its name, an <mark>actually feature-rich screen recorder</mark>.
+
+The name reflects the fact that it **is simple to use unlike many other free screen recording applications available**. It can be easily configured to start recording from an intuitive wizard-like interface.
+
+It can record the entire screen or part of it directly. The recording can be paused and resumed at any time. Many different file formats and codecs are supported. To perform an X11 recording, all it takes is selecting an area on the root window with the mouse, choosing an output file and pressing record, either by using the mouse or using a hotkey.
+
+![Feature-Rich Screen Recorder For X11 And OpenGL](/images/linux/simplescreenrecorder.png)
+
+## curl
+
+- [curl](https://community.linuxmint.com/software/view/curl){.external}
+
+![Command Line Tool For Transferring Data With URL Syntax](/images/linux/curl.png)
+
+<mark>Curl is a command line tool for transferring data with URL syntax, supporting DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP</mark>.
+
+curl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP form based upload, proxies, cookies, user+password authentication (Basic, Digest, NTLM, Negotiate, kerberos...), file transfer resume, proxy tunneling and a busload of other useful tricks.
+
+## References
+
+- [Install snapd on Linux Mint 2023 ](https://snapcraft.io/docs/installing-snap-on-linux-mint){.external}
+- [TMCBeans Helsinki Linux](https://www.mooc.fi/en/installation/netbeans/){.external}
+
+

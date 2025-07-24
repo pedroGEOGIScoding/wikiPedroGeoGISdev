@@ -1,0 +1,65 @@
+---
+title: "Linux Distros: Red Hat Enterprise"
+subtitle: Red Hat Enterprise Linux
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Red Hat Enterprise Linux
+categories: [linux, red-hat-enterprise-linux, distro, rhel]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+📘 **Red Hat Enterprise Linux (RHEL)**
+
+ Red Hat Enterprise Linux (RHEL) is the most **developer friendly Linux** ever with new developer-centric features like container tools, advanced language support, and application streams.
+:::
+
+---
+
+* [Hat Enterprise Linux 8 (RHEL)](https://developers.redhat.com/rhel8){.external}
+* [Hat Enterprise Linux 8 (RHEL) Download](https://developers.redhat.com/products/rhel/download){.external}
+
+Red Hat Enterprise Linux (RHEL):
+
+  - is based on the open-source **Linux kernel**
+  - is developed **by Red Hat** for the commercial market
+  - is a **stable, secure, and high-performance platform** used by businesses, governments, and other organizations around the world.
+  - includes a wide range of software packages that are selected, tested, and supported by Red Hat.
+  - is designed to be easy to use, with a graphical user interface (GUI) and a range of tools and utilities for managing and configuring the system.
+  - also includes a range of **security features** to protect against threats and vulnerabilities.
+
+#### Languages & compilers
+
+- .NET Core 2.1
+- Clang/LLVM Toolset 6.0
+- GCC 8.2 (system compiler)
+- Go Toolset 1.11
+- Java 8 and 11
+- [Node.js](http://developers.redhat.com/rhel8/hw/nodejs) 10
+- Perl 5.26 and 5.24
+- PHP 7.2
+- [Python](http://developers.redhat.com/rhel8/hw/python) 3.6 and 2.7
+- Ruby 2.5
+- Rust Toolset 1.31
+- Scala 2.10
+
+#### Databases, web tools, etc.
+
+- MariaDB 10.3
+- MySQL 8.0
+- PostgreSQL 10.5 and 9.6
+- Redis 5.0
+- Apache httpd 2.4
+- Nginx 1.14
+- Varnish Cache 6.0
+- Git 2.17
+- Maven 3.5
+
+## Cheat-sheet
+

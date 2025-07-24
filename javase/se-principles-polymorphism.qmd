@@ -1,0 +1,62 @@
+---
+title: "Java SE: Polymorphism"
+subtitle: Java Fundamentals and Principles
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Java Polymorphism OOP paradigm
+categories: [javase, polymorphism , oop, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **Polymorphism**
+
+**Polymorphism** is a fundamental concept in object-oriented programming. It is the ability of an object to take on different forms.
+
+In other words, it is the ability of a single object **to behave differently in different contexts**.
+
+:::
+
+---
+
+``Polymorphism`` is an important concept in object-oriented programming because it allows developers to write code that is more flexible and reusable. By using ``polymorphism``, developers can write code that can operate on objects of different types, without knowing the specific type of the object in advance.
+
+![Java SE Basic Principles OOP Polymorphishm](/images/javase/oop-pol.png){width="50%"}
+
+In Java, ``polymorphism`` is achieved through the use of ``inheritance`` and ``interfaces``. A subclass can implement multiple ``interfaces``, and an ``interface`` can be implemented by multiple classes. This allows objects of different types to share a common set of methods, which can be called on the objects without knowing their specific type.
+
+Here is an example of polymorphism in Java using the `Animal`, `Dog`, and `Cat` classes from the previous examples:
+
+``` java
+public class Main {
+    public static void main(String[] args) {
+        // Create a Dog object
+        Dog dog = new Dog("Buddy", 5);
+
+        // Create a Cat object
+        Cat cat = new Cat("Whiskers", 3);
+
+        // Call the makeNoise() method on the Dog object
+        dog.makeNoise();
+
+        // Call the makeNoise() method on the Cat object
+        cat.makeNoise();
+    }
+}
+
+```
+
+In this example, the `Dog` class and the `Cat` class both implement the `Animal` class, which defines the `makeNoise()` method. This means that the `Dog` and `Cat` classes both have their own implementations of the `makeNoise()` method.
+
+When the `makeNoise()` method is called on the `dog` object, it executes the implementation in the `Dog` class, which prints the "Woof!" message to the console. When the `makeNoise()` method is called on the `cat` object, it executes the implementation in the `Cat` class, which prints the "Meow!" message to the console.
+
+## Conclusion
+

@@ -1,0 +1,21 @@
+---
+title: "Consilience"
+author: "albertprofe"
+subtitle: "Edward O. Wilson, 1999, Consilience: The Unity of Knowledge"
+date: "4/29/1999"
+date-modified: "11/5/2021"
+date-format: full
+description: "Explores the integration of knowledge from various fields, including science, philosophy, and the humanities, to develop a comprehensive understanding of the world."
+categories: [assay]
+subcategories: [interdisciplinary studies, knowledge integration]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/consilience.jpg)
+
+## More info
+
+- [Consilience: The Unity of Knowledge](https://www.amazon.com/Consilience-Knowledge-Edward-Osborne-Wilson/dp/067976867X){.external}

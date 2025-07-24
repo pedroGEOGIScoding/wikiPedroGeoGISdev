@@ -1,0 +1,32 @@
+---
+title: "Web Vocabulary"
+subtitle: Technical terms and definitions
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [vocabulary, web]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Technical terms and definitions](/images/home/frontimagealbertprofeweb-vocabulary.png){width=60%}
+
+## Vocabulary 
+
+| Term | Definition |
+|:---|:---|
+| CSS              | Cascading Style Sheets, a language used to style HTML and define the visual presentation of web pages. It includes rules for layout, colors, fonts, and responsive design. Enhances the overall user experience.|
+| Quarto           | A modern document format combining the simplicity of Markdown with the power of LaTeX. Suitable for creating reports, books, and presentations, providing a versatile and extensible markup language.|
+| Markdown         | A lightweight markup language for creating formatted text using a plain-text syntax. Widely used for documentation, README files, and blogging. Provides a simple and readable way to structure content.|
+| HTML             | HyperText Markup Language, the standard markup language for creating web pages and applications. Defines the structure and elements on a web page, facilitating content organization and presentation.|
+| SCSS            | Sassy CSS, a superset of CSS that adds features like variables, nesting, and mixins. Enhances code maintainability and reusability, providing a more efficient way to style web applications.|
+| Multipage        | A term indicating a website with multiple interconnected HTML pages. Common in traditional web development, where each page serves a distinct purpose or content section.|
+| Refresh and History | In web browsers, the refresh function reloads the current page, while the history maintains a record of visited pages. Important for navigation and maintaining a consistent user experience.|
+| Responsive      | A design approach ensuring a web application adapts and provides an optimal user experience across various devices and screen sizes. Utilizes flexible layouts and media queries to achieve adaptability.|
+: Web vocabulary {tbl-colwidths="[20,80]"}
+
+

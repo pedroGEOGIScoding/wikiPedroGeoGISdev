@@ -1,0 +1,21 @@
+---
+title: "Building a Second Brain"
+author: ""
+subtitle: "Tiago Forte, 2022, Building a Second Brain: A Proven Method to Organize Your Digital Life and Unlock Your Creative Potential"
+date: "8/27/2019"
+date-modified: "3/10/2022"
+date-format: full
+description: "Introduces the concept of a 'second brain' for organizing and managing information in the digital age, providing strategies and tools to enhance creativity and productivity."
+categories: [self-management]
+subcategories: [productivity]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/BuildingaSecondBrain.jpg)
+
+## More info
+
+- [Building a Second Brain: A Proven Method to Organize Your Digital Life and Unlock Your Creative Potential](https://www.amazon.es/Building-Second-Brain-Organize-Potential/dp/1982167386){.external}

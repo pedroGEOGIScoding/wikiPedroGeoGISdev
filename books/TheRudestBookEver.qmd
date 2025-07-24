@@ -1,0 +1,41 @@
+---
+title: "The Rudest Book Ever"
+author: "albertprofe"
+subtitle: "Shwetabh Gangwar. 2019, The Rudest Book Ever"
+date: "2/15/2021"
+date-modified: "9/1/2022"
+date-format: full
+description: "Challenges societal norms and offers unconventional advice on topics such as relationships, self-improvement, and personal growth, with a straightforward and direct approach."
+categories: [strategy]
+subcategories: [personal development, lifestyle]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/TheRudestBookEver.jpg){width="60%"}
+
+## More info
+
+Shwetabh Gangwar is a professional problem-solver—and he’s ace at it. For the past five years, people from all over the world have contacted him with their troubles and he’s worked these out for them.
+
+In the process, he has picked up on a simple pattern: people need a set of principles and perspectives to protect them from all the unnecessary bullshit they go through. Codes to live by, essentially.
+
+But be warned: Gangwar has no desire to spare your feelings. What you will find in this straight-forward, straight-talking, no-craps-given guide, is:
+
+How to deal with rejections of all kinds
+
+How to change your perceptions of people so you don’t end up screwed
+
+Why a society that sees people as ‘good and bad’ is dumb
+
+How the search for happiness screws us over
+
+How seeking approval and acceptance kills our individuality
+
+The truth about social media influencers
+
+Why we should be taught ‘how to think’, instead of ‘what to think’
+
+- [The Rudest Book Ever](hhttps://www.amazon.es/Rudest-Book-Ever-Shwetabh-Gangwar/dp/9388754433){.external}

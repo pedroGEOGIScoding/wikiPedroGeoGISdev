@@ -1,0 +1,29 @@
+---
+title: "No Rules Rules"
+author: "albertprofe"
+subtitle: " Reed Hastings, Erin Meyer, 2020, No Rules Rules"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "Hard work is irrelevant. Be radically honest. And never, ever try to please your boss. Nominated as a 2020 Financial Times Business Book of the Year and a New York Times Bestseller."
+categories: [study-case]
+subcategories: [management, people, companies]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/No-Rules-Rules.jpg){width="60%"}
+
+## More info
+
+- [No rules rules](https://www.norulesrules.com/){.external}
+
+## Netflix and the Culture of Reinvention
+
+There’s never before been a company like Netflix. Not just because of its unique position as a leader in both the worlds of entertainment and technology; or because of its growth as the world’s leading streaming entertainment service, with over 193 million members in 190 countries. Netflix is a revolutionary company because of a counter-intuitive and radical management culture, which defies tradition and expectation.
+
+When Reed Hastings founded Netflix, he developed a corporate philosophy and a set of management principles which would make Netflix one of the most inventive companies in the world. This meant rejecting the conventional wisdom under which other companies operate. At Netflix, adequate performance gets a generous severance and hard work is irrelevant. At Netflix, you don’t try to please your boss, you practice radical candour instead. At Netflix, employees never need approval, and the company always pays top of market. When Hastings first devised them, the implications of these principles were unknown, but over time they have inculcated flexibility, speed, and boldness throughout a successful and rapidly growing organisation.
+
+Drawing on hundreds of interviews with current Netflix employees and never-before-told stories from his own career, Hastings elaborates on these controversial principles at the heart of the Netflix psyche, which have generated results that are the envy of the business world. This is the full, fascinating, and untold story of a unique company taking over the world.

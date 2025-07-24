@@ -1,0 +1,176 @@
+---
+title: "SCRUM Guide"
+subtitle: SCRUM Guide
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [scrum, scrum-guide]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Scrum guide
+
+## The 2020 Scrum Guide
+
+::: {.column-page-right}
+
+<iframe 
+  width="100%"
+  height="900" 
+  src="https://scrumguides.org/scrum-guide.html"
+  title="The 2020 Scrum Guide">
+</iframe>
+
+:::
+
+</br>
+[The 2020 Scrum Guide](https://scrumguides.org/scrum-guide.html){.external}
+
+This HTML version of the Scrum Guide is a direct port of the November 2020 version available [as a PDF here](https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-US.pdf#zoom=100){.external} or [original 2013](https://scrumguides.org/docs/scrumguide/v1/Scrum-Guide-US.pdf){.external}.
+
+## Agile-essentials SCRUM overwiew
+
+- [Resource Center](https://www.scrum.org/resource-center)
+- [The Scrum Framework by Scrum Inc.](https://www.thinglink.com/scene/535528547733733377){.external}.
+- [Suggested Reading for Professional Scrum Master](https://www.scrum.org/resources/suggested-reading-professional-scrum-master){.external}
+- [Guia rápida implementar SCRUM](https://docs.google.com/presentation/d/e/2PACX-1vSRksLX681ZSipA3F7O92B0T4q7mfN9JMpNbdGKP72EkWMKWfUwPsfPNjcWTMKk2VmVjeWhr2Nv_WH1/pub?start=false&loop=false&delayms=3000&slide=id.p){.external}
+
+---
+
+## Manifesto for Agile Software Development
+
+![Agile Software Development](/images/scrum/SCRUM-1.jpg){width=80%}
+
+We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:
+
+[Through this work we have come to value](https://agilemanifesto.org/){.extarnal}
+
+### 3-Pillars
+
+<mark>Transparency, Inspection and adaptation</mark>
+
+### 4-Foundations
+
+- **Individuals and interactions over** processes and tools
+- **Working software over** comprehensive documentatio
+- **Customer collaboration over** contract negotiation
+- **Responding to change over** following a plan
+
+That is, while there is value in the items on the right, we value the items on the left more.
+
+### 12-Principles
+
+[12 principles](/scrum/scrum-what-agile-manifesto.qmd)
+
+# Artifacts
+
+In archeology, an artifact is an object of cultural significance. In medicine, artifacts are something not normally present, or unexpected. In Scrum, our use of the word “artifact” is closer to the way software developers use it: important information needed during the development of a product. 
+
+![](/images/scrum/artifacts.png)
+
+Scrum has three artifacts: 
+
+- Product Backlog
+- Sprint Backlog
+- Increment
+
+## Backlog
+
+::: {.callout-important}
+## Sprint Velocity
+Number of Story Points completed per Sprint
+:::
+
+![All actors in SCRUM](/images/scrum/SCRUM-2.jpg){width=60%}
+
+::: {.callout-important}
+## Product Backlog
+is an always changing, dynamically prioritized list of requirements ordered by Business Value. Requirements are broken down into User Stories by the Product Owner. Definition of Done (DoD) at the Backlog level.
+:::
+
+::: {.callout-important}
+## Sprint Backlog
+contains all committed User Stories for the current Sprint broken down into Tasks by the Team. All items on the Sprint Backlog should be developed, tested, documented and integrated to fulfill the Team commitment.
+:::
+
+![Burndown Chart](/images/scrum/SCRUM-3.jpg)
+
+::: {.callout-important}
+## Burndown Chart
+shows the amount of work remaining per Sprint. It shows the correlation between work remaining at any point in time and the progress of the Team.
+:::
+
+# Core concepts: invest - user story - done - poker
+
+> The acronym INVEST helps to remember a widely accepted set of criteria, or checklist, to assess the quality of a user story. If the story fails to meet one of these criteria, the team may want to reword it, or even consider a rewrite (which often translates into physically tearing up the old story card and writing a new one).
+
+::: {.callout-tip}
+## INVEST
+helps to remember a widely accepted set of criteria, or checklist, to assess the quality of a user story.
+:::
+
+A good user story should be:
+
+- “I” ndependent (of all others)
+- “N” egotiable (not a specific contract for features)
+- “V” aluable (or vertical)
+- “E” stimable (to a good approximation)
+- “S” mall (so as to fit within an iteration)
+- “T” estable (in principle, even if there isn’t a test for it yet)
+
+For a user story, the next template should be used: 
+
+``` js
+As a <type of user>, I want <some goal> so that <some reason>.
+```
+
+::: {.callout-tip}
+## Epic 
+a user story that covers large amounts of functionality. Because an epic is generally too large for an Agile team to complete in one iteration, it is split into multiple smaller user stories before it is worked on
+:::
+
+::: {.callout-tip}
+## User Story
+is a short, simple description of a feature told from the perspective of the person who desires the new capability, usually a user or customer of the system.
+:::
+
+
+::: {.callout-tip}
+## Acceptance Criteria
+list of activities that must be fulfilled in order to consider US done
+:::
+
+![Plannig poker](/images/scrum/poker.png)
+
+::: {.callout-tip}
+## Planning poker
+also called Scrum poker, is a consensus-based, gamified technique for estimating by playing numbered cards face-down to the table, instead of speaking them aloud. 
+:::
+
+# Events
+
+::: {.callout-note}
+The Scrum events are key elements of the Scrum Framework. They provide regular opportunities for enacting the Scrum pillars of Inspection, Adaptation and Transparency. In addition, they help teams keep aligned with the Sprint and Product Goals, improve Developer productivity, remove impediments and reduce the need to schedule too many additional meetings.
+:::
+
+There are five Scrum events (the Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective), each with their own purpose, time constraints and participants.
+
+![](/images/scrum/events.png)
+
+## Purpose
+
+While learning the details of each is very important for effective Scrum, at the highest level*, the purpose of each is actually quite simple:
+
+- **Sprint** - All work in Scrum is done in a series of short projects called Sprints. This enables rapid feedback loops.
+- **Sprint Planning** - The Sprint starts with a planning session in which the Developers plan the work they intend to do in the Sprint. This plan creates a shared understanding and alignment among the team.
+- **Daily Scrum** - The Developers meet daily to inspect their progress toward the Sprint Goal, discuss any challenges they’ve run into and tweak their plan for the next day as needed. 
+- **Sprint Review** - At the end of the Sprint, the Sprint Team meets with stakeholders to show what they have accomplished and get feedback.
+- **Sprint Retrospective** - Finally, the Scrum Team gets together to discuss how the Sprint went and if there are things they could do differently and improve in the next Sprint.
+
+
+

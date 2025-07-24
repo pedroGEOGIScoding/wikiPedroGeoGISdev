@@ -1,0 +1,35 @@
+---
+title: "General Vocabulary"
+subtitle: Technical terms and definitions
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [vocabulary]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Technical terms and definitions](/images/home/frontimagealbertprofeweb-vocabulary.png){width=60%}
+
+## Vocabulary 
+
+| Term            | Description                                                                                                                                                                     |
+|:----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DevOps          | Development and Operations - a set of practices that aim to automate and improve the process of software development and IT operations to deliver high-quality software more efficiently.  |
+| Scrum           | A lightweight framework that helps people, teams, and organizations generate value through adaptive solutions for complex problems, as defined in the Scrum Guide.                     |
+| Framework       | A pre-established set of rules, conventions, and practices that provides a structure for developing software applications, simplifying the development process.                    |
+| Immutable Code  | Code that, once created, cannot be changed or modified. In the context of DevOps, it often refers to version control practices to maintain consistency and traceability in code.         |
+| GitHub          | A web-based platform for version control and collaboration that allows developers to host and review code, manage projects, and build software.                                   |
+| Serverless      | An architecture approach where the cloud provider is responsible for infrastructure management, allowing developers to focus on writing code without worrying about servers.      |
+| Container       | A lightweight, portable, and self-sufficient unit that can run applications and their dependencies, ensuring consistency across different environments.                             |
+| Webhook         | A mechanism that allows one system to send real-time information to another system when a specific event or trigger occurs, enabling seamless integration between applications.      |
+| Polling         | A method of repeatedly checking or querying a server or service at regular intervals to retrieve updated information, often used in scenarios where real-time communication is not required. |
+| Parse           | To analyze and interpret data or code, often used in the context of programming languages or data formats.                                                                          |
+| Throttle        | To control or limit the rate at which a system or process operates, often used to prevent excessive use of resources or to manage API requests within certain rate limits.           |
+| DDD             | Domain-Driven Design - an approach to software development that focuses on understanding and modeling the business domain to create more effective and maintainable software solutions. |
+: General vocabulary {tbl-colwidths="[20,80]"}
+

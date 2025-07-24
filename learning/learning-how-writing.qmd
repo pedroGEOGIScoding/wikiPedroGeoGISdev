@@ -1,0 +1,147 @@
+---
+title: "Writing"
+subtitle: About how to write properly
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: About how to write properly
+categories: [about, writing]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## The Elements of Style
+
+ William Strunk and E.B. White’s short and famous book, ``The Elements of Style``.
+
+::: {.summary}
+**Rule 17**
+
+A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts.
+
+This requires not that the writer make all his sentences short, or that he avoid all details and treat his subjects only in outline, but that every word tell.
+
+:::
+
+## Making writing more varied
+
+![Making writing more varied](/images/about/Gary-Provost-Sentence-Strcture.png)
+
+- [Making writing more varied](https://pwdpr.com/making-writing-more-varied){.external}
+- [The Elements of Style](https://www.crockford.com/style.html){.external}
+
+### Composition
+
+> **Design** - choose a structure in advance, when planning what to write, and hold onto it.
+
+> **Paragraphs** - the primary compositional unit of writing. Each paragraph should be about an individual topic or speech. Begin paragraphs with a sentence that gives the topic or helps with the transition. Break paragraphs apart if it helps the reader, not just for the hell of it.
+
+'After the paragraph has been written, examine it to see whether division will improve it.' (Page 32)
+
+> **Active voice** - it's much better to use the active voice in most cases. E.g.:
+
+- 'A report was prepared,' is not as good as;
+- 'He prepared a report.'
+
+> **Not** - say what things are. Don't waste your time saying what they are not.
+
+> **Be definit**e - do not dance around the truth express it in concrete terms.
+
+> **Omit needless words** - 'this is a subject that' can better be written as 'this subject'.
+
+> **Summaries and Tenses** - in a summary, or anywhere really, pick a tense and stick to it, otherwise you'll confuse the reader.
+
+> **Emphasis** - put the word or words you want to emphasise at the end of a sentence
+
+## Making a proper CV
+
+### GitHub resources
+
+- [Quarto-cv Format](https://github.com/mps9506/quarto-cv/){.external target='_blank'}
+- [Create a CV with Quarto](http://archive.schochastics.net/post/create-a-cv-with-quarto/){.external target='_blank'}
+- [markdown-cv](https://elipapa.github.io/markdown-cv/){.external target='_blank'}
+- [markdown-cv github to fork](https://github.com/elipapa/markdown-cv?tab=readme-ov-file){.external target='_blank'}
+
+
+::: {.column-margin}
+
+[Markdown](https://daringfireball.net/projects/markdown/syntax#link){.external target='_blank'}
+
+LINKS: Markdown supports two style of links: **inline** and **reference**. In both styles, the link text is delimited by `[square brackets]`.
+
+![](/images/learning/md-insert-variable.jpg)
+
+
+:::
+
+### CV examples
+
+- [CV-examples-1](/images/learning/CV-examples/cv-example-1.jpg){.external target='_blank'}
+- [CV-examples-2](/images/learning/CV-examples/cv-example-2.jpg){.external target='_blank'}
+- [CV-examples-3](/images/learning/CV-examples/cv-example-3.jpg){.external target='_blank'}
+- [CV-examples-4](/images/learning/CV-examples/cv-example-4.jpg){.external target='_blank'}
+- [CV-examples-5](/images/learning/CV-examples/cv-example-5.jpg){.external target='_blank'}
+- [CV-examples-6](/images/learning/CV-examples/cv-example-6.jpg){.external target='_blank'}
+
+
+
+### Crafting Your CV with Authenticity, Clarity, and Value
+
+By following these principles, you can create an **authentic**, **clear**, and compelling CV that effectively communicates your **value** proposition to potential employers.
+
+**Authenticity**
+
+- Be genuine in portraying yourself: reflect **your professional path**.
+- Use language that reflects your personality and experiences truthfully.
+- Avoid overused buzzwords, **emotional lenguage or exaggerated claims**.
+- Highlight your real strengths, tasks done, and achievements.
+
+**Action Verbs**
+
+- Recommend using **action verbs** that reflect executive, planning, revisioning, etc.
+- Examples include: orchestrated, spearheaded, devised, formulated, strategized, reimagined, restructured, colaborated, created, designed.
+- It should sign to participate into Agile teams.
+
+
+**Clarity & Vocabulary**
+
+- Keep language simple and concise.
+- Use **active voice and straightforward sentences.**
+- Avoid jargon or overly technical terms **unless necessary common tech vocabulary.**
+- Clearly communicate skills, experiences, and accomplishments.
+
+**Value**
+
+- Emphasize **quantifiable** achievements.
+- **Focus on meeting targets, increasing efficiency, or solving specific problems.**
+- Use action verbs and concrete examples to demonstrate impact.
+
+**Tailoring**
+
+- Customize CV for each job application.
+- Highlight most relevant skills and experiences.
+- Align CV with company values and role requirements.
+
+**Storytelling**
+
+- Tell a compelling career journey.
+- Showcase **key moments, challenges overcome, and lessons learned.**
+- Connect with recruiters on a deeper level.
+
+**Proofreading**
+
+- Ensure CV is error-free.
+- **Double-check grammar, punctuation, and formatting.**
+- Seek feedback from trusted sources.
+
+**Honesty**
+
+- Be transparent about skills and experiences.
+- Highlight **genuine strengths**.
+- Prepare to discuss areas for growth or development.
+
+
+
+

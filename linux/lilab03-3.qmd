@@ -1,0 +1,29 @@
+---
+title: "Linux Lab#LI03-3: Manage software"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, software]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI03-3: Manage software**
+
+- Use the `rpm` command to manage software:
+  - Use the `rpm` command to inventory all installed software and redirect this inventory list into a text file.
+    - Install an RPM package by using the `rpm` command. For example, install the [`zsh` package](https://opensource.com/article/19/9/getting-started-zsh). Download the package if necessary.
+    - Use the `rpm` command to get info on the `zsh` package, and then use `rpm` to uninstall the package.
+- Use the `dnf` command to manage software:
+  - Install an RPM package with the `dnf` command. For example, install the [`ksh` package](https://www.redhat.com/sysadmin/favorite-shell#korn).
+  - Use the `dnf` command to get info on the `ksh` package, and then use `dnf` to uninstall the package.
+- Find and download software that you must compile. Go through the process of compiling the software. (GitLab, GitHub, and Sourceforge are popular development repositories.)
+- Download a piece of software that includes an MD5 checksum to verify its integrity. After the download, compare your MD5 results with the result on the website.
+  
+:::

@@ -1,0 +1,309 @@
+---
+title: "Lab#SB00-1: Library UML"
+subtitle: Spring Boot Library Management UML
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Spring Boot Lab#SB00-1: Library UML**
+We are going to evolve the [current Java SE Libraryproject](/javase/selab3-3.qmd) into a **Spring Boot Library Management System** with a ``H2 DB`` and web with ``Thymeleaf``.
+:::
+
+</br>
+
+> The resulting ``Spring Boot Project`` would be similar to the current ``Java SE LibraryProject``, with the addition of the ``Spring Boot`` **annotations** and the ``H2 database`` configuration. 
+
+> The **classes** would be annotated with the ``@Entity`` annotation to indicate that they are persistent entities, and the repositories would be annotated with the ``@Repository`` annotation. 
+
+> The *services* would be annotated with the ``@Service`` annotation, and the controllers would be annotated with the ``@Controller`` annotation.
+
+> The ``Thymeleaf`` templates** would be created in the resources/templates folder** of the project.
+
+# From LibraryProject to LibraryManagement
+
+## Create a new Spring Boot project & H2 DB
+
+- ``Create a new Spring Boot project``: The first step would be to create a new Spring Boot project in the preferred IDE or text editor.
+
+::: {.callout-note}
+The project can be created using **Spring Initializr**, which will create the necessary **file structure and dependencies**.
+:::
+
+- ``Configure the H2 database``: In the newly created project, configure the H2 database by adding:
+  - the H2 dependency in the ``pom.xml`` file,
+  - and also create a new ``application.properties`` file
+  - set the database properties such as:
+    - the database **URL**,
+    - **username**,
+    - and **password**.
+
+## Model & Entities
+
+- ``Create a Book Entity``: To represent a book in the library management system, create a Book @Entity 
+
+::: {.column-margin}
+It could include attributes such as title, author, publisher, year, ISBN, and status. The status attribute will indicate whether the book is available, borrowed or reserved.
+:::
+
+- ``Create a User Entity``: To represent a user in the system, create a User entity that includes attributes such as library card number, name, surname, nationality, birthdate, and **borrowed books.**
+
+- ``Create Author Entity``: To represent an author in the system, create an Author entity that includes attributes such as deathdate, books, name, and surname.
+
+- ``Create Staff Entity``: To represent staff members in the system, create a Staff entity that includes attributes such as staff ID, position, registered users, and library books.
+
+## Domains: @Controller, @Service and @Repository
+
+- ``Create Repositories``: To access the data stored in the database, create repositories for each entity. **The repositories will provide the methods to create, read, update, and delete the data.**
+
+- ``Create Services``: Create services that **will implement the business logic of the system by calling the repository methods.** 
+
+::: {.column-margin}
+The **services** will provide the methods to search for books, borrow a book, return a book, add a book, remove a book, update book details, register a user, remove a user, update user details, and generate reports.
+:::
+
+- ``Create Controllers``: Create controllers that **will handle the HTTP requests from the web interface by calling the service methods.** 
+
+::: {.column-margin}
+The **controllers** will provide the methods to create a user account, search for books, borrow a book, return a book, add a book, remove a book, update book details, register a user, remove a user, update user details, and generate reports.
+:::
+
+
+## HTML Thymeleaf
+
+### Modern server-side Java template engine
+- [ThymeLeaf](https://www.thymeleaf.org/){.external}
+- [Tutorial: Using Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html){.external}
+- [Tutorial: Thymeleaf + Spring](https://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html){.external}
+
+
+### Create Thymeleaf
+
+- ``Create Thymeleaf templates``: To create the web interface of the system, create Thymeleaf templates for each of the controller methods. **The templates will be used to display the data and also to handle the user input.**
+
+::: {.callout-note}
+Thymeleaf is a **modern server-side Java template engine** for both web and standalone environments.
+
+Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers and also work as static prototypes, allowing for stronger collaboration in development teams.
+:::
+
+## Test
+
+- Test the system: Test the system by running it and making sure that all the functionalities work as expected.
+
+# MockUp
+
+## Core use-case: borrowBook() and returnBook() with user and librarian
+
+
+![Mockup Web Library Management core use-case](/images/springboot/LibraryManagementMockUp.png){width="80%"}
+
+
+[Mockup Web Library Management core use-case extended](https://viewer.diagrams.net/?target=blank&highlight=0000FF&nav=1&title=LibraryManagementMockUp#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1Cqxn88pLy5DDgawKyY_amnqEiELtDcHG%26export%3Ddownload){.external}
+
+# Discussion Solving: UML
+
+::: {.column-page-right}
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+  class GeneralOperations {
+    <<interface>>
+    +createAccount(): void
+    +searchBooks(query: String): void 
+  }
+
+  class UserOperations {
+    <<interface>>
+    +borrowBook(book: Book): void
+    +returnBook(book: Book): void
+    +checkBorrowedBooks(): void
+  }
+
+  class LibraryMember {
+    <<abstract>>
+    +id: String
+    +address: String
+    +phoneNumber: String
+  }
+
+  class Member {
+    <<abstract>>
+    +name: String
+    +surname: String
+    nationality: String
+    +birthdate: Date
+  }
+
+  class StaffOperations {
+    <<interface>>
+    +addBook(book: Book): void
+    +removeBook(book: Book): void
+    +updateBookDetails(book: Book): void
+    +registerUser(user: User): void
+    +removeUser(user: User): void
+    +updateUserDetails(user: User): void
+    +generateReports(): void
+  }
+
+  class User {
+    -libraryCardNumber: String
+    -borrowedBooks: ArrayList<Book>
+    +User()
+  }
+
+  class Author {
+    -deathdate: Date
+    -books: Book
+    +author()
+  }
+  
+  class Staff {
+    -staffId: String
+    -position: String
+    -registeredUsers: ArrayList<User>
+    -libraryBooks: ArrayList<Book>
+    +Staff()
+  }
+
+  class Book {
+    -title: String
+    -author: Author
+    -publisher: String
+    -year: int
+    -isbn: String
+    -status: String
+    +Book()
+    +getStatus(): String
+  }
+
+  GeneralOperations <|.. LibraryMember
+  UserOperations <|.. User
+  LibraryMember <|.. User
+  LibraryMember <|.. Staff
+  Member <|.. Author
+  Member <|.. LibraryMember
+  StaffOperations <|.. Staff
+  Auth
+
+```
+
+</div>
+
+:::
+
+Within Spring Boot Project
+
+
+::: {.column-screen-inset-right}
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+
+class WebController {
+    -bookService: BookService
+    -userService: UserService
+    +WebController()
+    +home(model: Model): String
+    +searchBooks(model: Model, query: String): String
+    +register(model: Model): String
+    +addUser(model: Model, user: User): String
+    +borrow(model: Model, bookCopyId: String): String
+    +returnBook(model: Model, bookCopyId: String): String
+    +checkBorrowedBooks(model: Model): String
+}
+
+class BookService {
+    -bookRepository: BookRepository
+    -bookCopyRepository: BookCopyRepository
+    -borrowRecordRepository: BorrowRecordRepository
+    +BookService()
+    +addBook(book: Book): void
+    +removeBook(isbn: String): void
+    +getBook(isbn: String): Book
+    +searchBooks(query: String): List<Book>
+    +getAvailableBookCopies(isbn: String): List<BookCopy>
+    +getBorrowedBookCopies(user: User): List<BookCopy>
+    +borrowBook(user: User, bookCopyId: String): void
+    +returnBook(user: User, bookCopyId: String): void
+}
+
+class UserService {
+    -userRepository: UserRepository
+    -borrowRecordRepository: BorrowRecordRepository
+    +UserService()
+    +registerUser(user: User): void
+    +removeUser(libraryCardNumber: String): void
+    +updateUserDetails(user: User): void
+    +getUser(libraryCardNumber: String): User
+    +getBorrowedBooks(user: User): List<BookCopy>
+    +getBorrowHistory(user: User): List<BorrowRecord>
+}
+
+WebController --> BookService
+WebController --> UserService
+BookService --> BookRepository
+BookService --> BookCopyRepository
+BookService --> BorrowRecordRepository
+UserService --> UserRepository
+UserService --> BorrowRecordRepository
+
+```
+
+</div>
+
+:::
+
+Just the Controller and Service
+
+::: {.column-page-right}
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+class BookCopy {
+    -id: String
+    -status: String
+    -book: Book
+    +BookCopy(book: Book)
+    +getStatus(): String
+}
+
+class BorrowRecord {
+    -id: String
+    -user: User
+    -bookCopy: BookCopy
+    -borrowDate: LocalDateTime
+    -returnDate: LocalDateTime
+    +BorrowRecord()
+    +setReturnDate(returnDate: LocalDateTime): void
+}
+Book --> Author
+Book --> BookCopy
+BookCopy --> Book
+BookCopy --> BorrowRecord
+User --> BorrowRecord
+User --> BookCopy
+BorrowRecord --> User
+BorrowRecord --> BookCopy
+
+```
+</div>
+
+:::
+

@@ -1,0 +1,84 @@
+---
+title: "Network: graphQL"
+subtitle: Networking graphQL
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, graphQL]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview: GraphQL
+
+<mark>GraphQL is a query language and runtime for APIs that was developed by Facebook. It provides a more efficient and flexible alternative to traditional REST APIs by allowing clients to request only the data they need. GraphQL empowers clients to specify the structure of the response, reducing over-fetching and under-fetching of data.</mark>
+
+In GraphQL, clients send queries to the server, specifying the data they require, and the server responds with a JSON object that matches the structure of the query. This allows for a more efficient and precise data retrieval process.
+
+Key features of GraphQL include:
+
+- **Hierarchical Structure:** Queries in GraphQL follow a hierarchical structure, mirroring the structure of the data being requested. This makes it easy to understand and compose queries.
+
+- **Single Endpoint:** Unlike REST APIs that often have multiple endpoints for different resources, GraphQL typically has a single endpoint for all interactions. Clients can request various resources in a single query.
+
+- **Strong Typing:** GraphQL uses a type system to define the structure of data. Clients receive predictable and strongly typed responses, improving the reliability of applications.
+
+- **Real-time Data:** GraphQL supports real-time data updates through subscriptions, allowing clients to receive updates when data changes on the server.
+
+- **Introspection:** GraphQL APIs are self-documenting. Clients can query the schema to discover the types, fields, and operations available, making it easier to explore and understand the API.
+
+**Example:**
+
+A simple GraphQL query and its response:
+
+GraphQL Query:
+
+``` js
+query {
+  user(id: 1) {
+    name
+    email
+    posts {
+      title
+      content
+    }
+  }
+}
+
+```
+GraphQL Response:
+
+``` js
+
+{
+  "data": {
+    "user": {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "posts": [
+        {
+          "title": "GraphQL Basics",
+          "content": "An introduction to GraphQL."
+        },
+        {
+          "title": "GraphQL Best Practices",
+          "content": "Tips for using GraphQL effectively."
+        }
+      ]
+    }
+  }
+}
+
+
+```
+
+# Reference
+
+- [GrahhQL](https://graphql.org/){.external}
+- [Github repo](https://github.com/graphql/graphiql){.external}
+
+

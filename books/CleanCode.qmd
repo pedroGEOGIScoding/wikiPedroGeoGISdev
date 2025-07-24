@@ -1,0 +1,21 @@
+---
+title: "Clean Code"
+author: "albertprofe"
+subtitle: "Robert C. Martin, 2008, Clean Code: A Handbook of Agile Software Craftsmanship"
+date: "8/11/2008"
+date-modified: "5/20/2022"
+date-format: full
+description: "Provides principles and best practices for writing clean, maintainable, and efficient code, helping software developers improve their coding skills and deliver high-quality software."
+categories: [programming]
+subcategories: [software development, agile methodologies]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/CleanCode.jpg)
+
+## More info
+
+- [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.oreilly.com/library/view/clean-code-a/9780136083238/){.external}

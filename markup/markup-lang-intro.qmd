@@ -1,0 +1,67 @@
+---
+title: "Introduction Markup"
+subtitle: MarkUp
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Maruup
+categories: [markup, introduction]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Introduction
+::: {.summary}
+📘 **Markup language**
+
+A **markup language is a set of symbols or codes that are used to annotate or format text or other data**. Markup languages are commonly used to describe the structure and formatting of documents, such as web pages, books, or articles.
+:::
+---
+Markup languages typically use <mark>tags</mark> or elements to indicate the structure of the document, such as headings, paragraphs, or lists. They may also include formatting instructions, such as font sizes and colors, or rules for how the document should be displayed. Markup languages are often used in combination with a programming language or other technology to create <mark>dynamic and interactive documents</mark>.
+
+Examples of markup languages include:
+
+- HTML,
+- XML,
+- and Markdown
+
+Do no get confuse with a **data-oriented language structure** used as the input format like:
+
+- JSON
+- YAML
+- Applicarion.properties
+
+## HTML
+**HTML (Hypertext Markup Language) is a markup language** used to create structured documents and web pages. HTML uses a set of tags and attributes to describe the content and layout of a document, and defines how the content should be displayed by a web browser.
+
+HTML tags typically take the form of keywords enclosed in angle brackets, such as
+
+<p class="indent">`<p> for a paragraph, <h1> for a heading, and <img> for an image` </p>
+
+HTML attributes provide additional information about the elements, such as the source of an image or the target of a link.
+
+HTML also defines a set of standard styles, such as font sizes and colors, which can be used to format the content of a document. <mark>HTML is the foundation of the modern web</mark>, and is used to create the majority of web pages and web-based applications.
+
+## Markdown
+**Markdown is a lightweight markup language that is used to format text in a way that is easy to read and write**. Markdown is a plain text formatting syntax that uses a <mark>simple set of conventions to indicate how the text should be formatted</mark>.
+
+These conventions include the use of characters such as:
+
+- asterisks <mark>(*)</mark>
+- and underscores <mark>(_)</mark> to indicate bold and italic text, respectively,
+- and the use of hash symbols <mark>(#)</mark> to create headings.
+
+Markdown is designed to be <mark>simple and intuitive</mark>, and can be easily converted to other formats, such as HTML, for display on the web. Markdown is widely used in blogging, online forums, and software documentation, and is often used as an alternative to more complex formatting languages, such as HTML.
+
+##  HTML and Markdown
+
+**Markdown is not a replacement for HTML, or even close to it**. Its syntax is very small, corresponding only to a very small subset of HTML tags.
+
+The idea is not to create a syntax that makes it easier to insert HTML tags. In my opinion, HTML tags are already easy to insert.
+
+The idea for Markdown is to make it easy to read, write, and edit prose. <mark>HTML is a publishing format; Markdown is a writing format</mark>. Thus, Markdown’s formatting syntax only addresses issues that can be conveyed in plain text. [By John Gruber, Markdown](https://daringfireball.net/projects/markdown/syntax#html/)
+
+

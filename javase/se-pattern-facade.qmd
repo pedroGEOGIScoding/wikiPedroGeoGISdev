@@ -1,0 +1,101 @@
+---
+title: "Facade"
+subtitle: Java Fundamentals and Patterns
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Facade Structural Design-Pattern
+categories: [javase,facade, design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+::: {.summary}
+The facade pattern is a design pattern in computer programming and Java that is used to **provide a simple interface to access complex systems**.
+:::
+
+---
+
+The facade design pattern is like a simplified front door to a complex building. The building has many rooms, levels, and systems, but from the outside, all you see is the front door. The facade pattern provides a simple, unified interface to the complex building, so you only have to worry about interacting with the door, rather than navigating the entire building.
+
+Similarly, in software development, the facade pattern provides a simple interface to a complex system, so that client code can interact with the system without having to understand all of its complexities. The facade acts as an intermediary, handling the interaction with the underlying components, and providing a cleaner, easier-to-use interface to the client code. This can make the code easier to maintain and test, and allow developers to change the implementation of the complex system without affecting the client code.
+
+
+## Example: Building a ``Bank account``
+
+
+1. Identify the complex system:
+Let's say we have a complex system that provides functionality for making a payment, checking the balance of an account, and sending a confirmation email.
+
+2. Create the facade class:
+We create a class named "PaymentSystemFacade" that acts as the facade for the complex system. This class will have methods for making a payment, checking the balance, and sending a confirmation email.
+
+```java
+class PaymentSystemFacade {
+  private Payment payment;
+  private Account account;
+  private Email email;
+  
+  public PaymentSystemFacade() {
+    payment = new Payment();
+    account = new Account();
+    email = new Email();
+  }
+  
+  public void makePayment(double amount) {
+    if (account.checkBalance(amount)) {
+      payment.makePayment(amount);
+      email.sendConfirmation();
+    }
+  }
+  
+  public double checkBalance() {
+    return account.checkBalance();
+  }
+}
+
+```
+
+3. Implement the underlying components:
+We implement the classes "Payment", "Account", and "Email" that represent the underlying components of the complex system.
+
+```java
+class Payment {
+  public void makePayment(double amount) {
+    // Code for making a payment
+  }
+}
+
+class Account {
+  public boolean checkBalance(double amount) {
+    // Code for checking balance
+  }
+  
+  public double checkBalance() {
+    // Code for checking balance
+  }
+}
+
+class Email {
+  public void sendConfirmation() {
+    // Code for sending confirmation email
+  }
+}
+
+```
+
+4. Use the facade:
+Finally, we use the facade by creating an instance of the PaymentSystemFacade class and calling its methods.
+
+```java
+PaymentSystemFacade facade = new PaymentSystemFacade();
+facade.makePayment(100.0);
+double balance = facade.checkBalance();
+```
+
+This is a simple example of how you can use the facade pattern to simplify the interaction with a complex system in Java. The facade provides a unified interface to the complex system, making it easier to use and understand, and reducing the impact of changes to the underlying components on the client code.
+
+
+

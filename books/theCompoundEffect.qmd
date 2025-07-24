@@ -1,0 +1,57 @@
+---
+title: "The Compound Effect"
+author: "albertprofe"
+subtitle: "Darren Hardy, 2012, The Compound Effect: Jumpstart Your Income, Your Life, Your Success"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "Based on the principle that decisions shape your destiny, this book reveals how small, consistent actions can lead to significant improvements in your life over time."
+categories: [finance]
+subcategories: [strategy, self-improvement, business]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/theCompoundEffect.jpg)
+
+
+## Overview
+
+![Compound effect: +1% or -1%](/books/thecompounteffect-grapi.png){width="50%"}
+
+![Compound effect: return in 40 years](/books/thecompoundeffect-retrun.jpg){width="50%"}
+
+
+
+## Basic investment types
+
+
+1. **Stocks**: Stocks represent ownership in a company and can provide returns through capital appreciation and dividends.
+
+2. **Index Funds**: These are investment funds that aim to replicate the performance of a specific market index, such as the S&P 500.
+
+3. **Startups**: Investing in startups involves providing capital to early-stage companies in exchange for equity, with the potential for high returns if the company succeeds.
+
+4. **Bonds**: Bonds are debt securities issued by governments or corporations, offering periodic interest payments and return of principal upon maturity.
+
+5. **Real Estate**: Real estate investments involve buying and owning physical properties, such as residential or commercial real estate, to generate rental income or capital gains.
+
+6. **Cryptocurrency**: Cryptocurrencies like Bitcoin and Ethereum are digital assets that use blockchain technology for transactions and have gained popularity as speculative investments.
+
+7. **Futures**: Futures contracts allow investors to speculate on the future price of commodities, currencies (Forex, Foreign exchange market), or financial instruments, often used for hedging or trading purposes.
+
+8. **Gold**: Gold is a precious metal that investors buy as a store of value or a hedge against inflation and economic instability.
+
+## Examples
+
+![Compound effect: return by type in 200 years](/books/thecompounteffect-200year.jpg){width="50%"}
+
+![Compound effect: stocks 2023](/books/thecompouneffect-stocks.jpg){width="50%"}
+
+![Compound effect: seedrocket](/books/thecompoundeffect-seedrocket.jpg){width="50%"}
+
+## More info
+
+- [The Compound Effect: Jumpstart Your Income, Your Life, Your Success](https://www.amazon.com/Compound-Effect-Jumpstart-Income-Success/dp/159315724X){.external}

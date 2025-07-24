@@ -1,0 +1,99 @@
+---
+title: "SCRUM Lab#SC03: Books Project"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [scrum, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **SCRUM Lab#SC03: Books Project**
+
+This **Group Project Laboratory on Human Behavior applied to SCRUM** is <mark>to facilitate a comprehensive exploration and understanding of key concepts from four influential books on human behavior and psychology. </mark>
+
+- Students **will read, comprehend, and collaboratively synthesize key concepts.**
+- Each group will then present their understanding of the books, fostering a rich discussion on human behavior, intelligence, morality, and success mindset.
+
+This laboratory **aims to enhance critical thinking, communication skills, and a deeper understanding of the intricacies of human behavior.**
+
+:::
+
+# Introduction
+
+The <mark>goal of the Group Project Laboratory is to facilitate a comprehensive exploration and understanding of key concepts from four influential books on human behavior and psychology.</mark>
+
+::: {.column-margin}
+Agile students **must grasp human behavior intricacies as it directly impacts collaborative work.**
+:::
+
+::: {.column-margin}
+**Understanding why individuals act as they do and the dynamics influencing their decisions is pivotal for effective teamwork, communication, and adaptability—core tenets of Agile methodologies**.
+:::
+
+::: {.column-margin}
+Insight into psychological aspects fosters empathy, facilitating better collaboration and conflict resolution. Agile success hinges on recognizing and responding to the diverse motivations, perspectives, and behaviors within a team, enabling an environment that thrives on continuous improvement and iterative progress.
+
+In essence, comprehending human dynamics empowers Agile practitioners to navigate challenges, enhance team cohesion, and optimize project outcomes.
+:::
+
+Through collaborative reading, analysis, and presentation, students are expected to:
+
+- **Comprehend Core Ideas**: Develop a deep understanding of the central themes presented in each book, focusing on societal status dynamics, cognitive biases, moral and political differences, and the psychology of success.
+- **Effective Communication**: Enhance communication skills by articulating and presenting the core concepts of the assigned book to the group and, subsequently, to the class. Emphasize clarity, coherence, and engagement.
+- **Critical Thinking**: Encourage critical thinking by analyzing and synthesizing information from diverse perspectives. Explore the implications of the authors' ideas on human behavior, decision-making, and personal development.
+- **Collaboration**: Foster teamwork and collaboration within groups. Encourage an exchange of ideas, insights, and interpretations, promoting a shared understanding of the material.
+- **Application of Knowledge**: Discuss how the insights gained from these books can be applied to real-world scenarios. Encourage students to connect the theories presented in the literature to practical situations.
+
+
+# Books
+
+In this collaborative learning environment, students will delve into four impactful books, extracting and presenting core ideas.
+
+- **"The Status Game: On Social Position and How We Use It"** by Will Storr:
+Explore how societal hierarchies influence behavior.
+Analyze Storr's insights on the role of status in shaping human interactions.
+
+![The Status Game: On Social Position and How We Use It](/images/scrum/status.jpg){width="30%"}
+
+- **"The Intelligence Trap: Why Smart People Make Dumb Mistakes"** by David Robson:
+Investigate the cognitive biases and pitfalls that smart individuals may encounter.
+Present strategies to avoid common errors highlighted by Robson.
+
+![The Intelligence Trap: Why Smart People Make Dumb Mistakes](/images/scrum/trap.jpg){width="30%"}
+
+- **"The Righteous Mind: Why Good People Are Divided by Politics and Religion"** by Jonathan Haidt:
+Examine the psychological foundations of moral and political differences.
+Discuss Haidt's Moral Foundations Theory and its implications for societal harmony.
+
+![The Righteous Mind: Why Good People Are Divided by Politics and Religion](/images/scrum/rightous.jpg){width="30%"}
+
+- **"Mindset: The New Psychology of Success"** by Carol S. Dweck:
+Uncover the concept of fixed vs. growth mindsets.
+Share how mindset influences learning, effort, and achievement.
+
+![Mindset: The New Psychology of Success](/images/scrum/mindset.jpg){width="30%"}
+
+- **"Stolen Focus: Why You Can't Pay Attention"** by Johann Hari:
+  Investigate the impact of modern distractions on attention spans.
+  Examine strategies for reclaiming focus in a world full of interruptions.
+
+  ![Stolen Focus: Why You Can't Pay Attention](/books/StolenFocus.png){width="30%"}
+
+- **"The Master and His Emissary: The Divided Brain and the Making of the Western World"** by Iain McGilchrist:
+  Delve into the intricate relationship between the brain's hemispheres.
+  Explore McGilchrist's thesis on how this division shapes human culture and civilization.
+
+  ![The Master and His Emissary: The Divided Brain and the Making of the Western World](/books/themasterandhisemissary.jpg){width="30%"}
+
+
+# References
+
+- [Week1](https://sites.google.com/view/gestioprojectes/llegir/setmana1)
+

@@ -1,0 +1,209 @@
+---
+title: "Kubernetes k8s"
+subtitle: k8s
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: k8s
+categories: [devops, k8s]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+📘 **What is k8s**
+
+**Kubernetes**, also known as K8s, is an <mark>open-source system for automating deployment, scaling, and management of containerized applications</mark>.
+
+It groups containers that make up an application into logical units for easy management and discovery.
+
+**Kubernetes** builds[ upon 15 years of experience of running production workloads at Google](https://queue.acm.org/detail.cfm?id=2898444){.external target='_blank'}, combined with **best-of-breed ideas and practices** from the community. 
+
+:::
+
+
+![](/images/devops/Kubernetes-1.png)
+
+# What Kubernetes is not
+
+[Kubernetes is not a traditional, all-inclusive PaaS (Platform as a Service) system](https://kubernetes.io/docs/concepts/overview/#what-kubernetes-is-not){.external target='_blank'}.
+
+Since **Kubernetes** operates at the container level rather than at the hardware level, it provides some generally applicable features common to PaaS offerings, such as deployment, scaling, load balancing, and lets users integrate their logging, monitoring, and alerting solutions.
+
+However, **Kubernetes** is not monolithic, and these default solutions are optional and pluggable.
+
+**Kubernetes** provides the building blocks for building developer platforms, but preserves user choice and flexibility where it is important:
+
+- <mark>Does not limit the types of applications supported</mark>.
+  - Kubernetes aims to support an extremely diverse variety of workloads, including stateless, stateful, and data-processing workloads. If an application can run in a container, it should run great on Kubernetes.
+- <mark>Does not deploy source code and does not build your application</mark>.
+  - Continuous Integration, Delivery, and Deployment (CI/CD) workflows are determined by organization cultures and preferences as well as technical requirements.
+- <mark>Does not provide application-level services</mark>, such as:
+  -  **middleware** (for example, message buses),
+  -  **data-processing** frameworks (for example, Spark),
+  -  **databases** (for example, MySQL),
+  -  **caches**,
+  -  nor cluster storage systems (for example, ``Ceph``) as built-in services. 
+  -  Such components can run on Kubernetes, and/or can be accessed by applications running on Kubernetes through portable mechanisms, such as the Open Service Broker.
+- <mark>Does not dictate logging, monitoring, or alerting solutions</mark>. It provides some integrations as proof of concept, and mechanisms to collect and export metrics.
+- <mark>Does not provide nor mandate a configuration language/system</mark> (for example, ``Jsonnet``). It provides a declarative API that may be targeted by arbitrary forms of declarative specifications.
+- <mark>Does not provide nor adopt any comprehensive machine configuration</mark>, maintenance, management, or self-healing systems.
+
+::: {.callout-tip}
+Additionally, ``Kubernetes`` is not a mere orchestration system. In fact, it eliminates the need for orchestration. The technical definition of orchestration is execution of a defined workflow: first do A, then B, then C. In contrast, ``Kubernetes`` comprises a set of independent, composable control processes that continuously drive the current state towards the provided desired state. It shouldn't matter how you get from A to C.
+:::
+
+**Centralized control is also not required**. This results in a system that is easier to use and more powerful, robust, resilient, and extensible.
+
+# Why is so popular
+
+**Kubernetes** is a popular choice among **DevOps professionals** due to several factors
+
+Firstly, it offers an intuitive user interface and straightforward setup process, making it accessible even to those with limited infrastructure knowledge.
+
+Secondly, its scalability allows developers to easily manage containerized applications across clusters of machines.
+
+Additionally, ``Kubernetes``' declarative configuration and automation capabilities streamline the deployment, scaling, and management of applications.
+
+The platform also provides a rich set of features such as [container orchestration](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/), [service discovery and load balancing](https://kubernetes.io/docs/concepts/services-networking/service/), [automatic scaling](https://kubernetes.io/docs/concepts/cluster-administration/pod-autoscaling/), and [rolling updates](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/).
+
+Its active [community](https://kubernetes.io/community/) and extensive [documentation](https://kubernetes.io/docs/) further support developers in troubleshooting and learning. Moreover, Kubernetes' architecture is designed for high availability, fault tolerance, and scalability, making it suitable for production environments. Lastly, its ecosystem of tools, plugins, and integrations enhance its capabilities and enable seamless integration into existing workflows.
+
+Overall, ``Kubernetes``' combination of flexibility, scalability, automation, and robust features contributes to its popularity among DevOps professionals.
+
+
+
+# Overview
+
+Let's take a look at why Kubernetes is so useful by going back in time.
+
+![](/images/devops/kubernetes-3.svg)
+
+- **Traditional deployment era**: Early on, organizations ran applications on physical servers. There was no way to define resource boundaries for applications in a physical server, and this caused resource allocation issues. For example, if multiple applications run on a physical server, there can be instances where one application would take up most of the resources, and as a result, the other applications would underperform. A solution for this would be to run each application on a different physical server. But this did not scale as resources were underutilized, and it was expensive for organizations to maintain many physical servers.
+- **Virtualized deployment era**: As a solution, virtualization was introduced. It allows you to run multiple Virtual Machines (VMs) on a single physical server's CPU. Virtualization allows applications to be isolated between VMs and provides a level of security as the information of one application cannot be freely accessed by another application.
+- **Container deployment era**: Containers are similar to VMs, but they have relaxed isolation properties to share the Operating System (OS) among the applications. Therefore, containers are considered lightweight. Similar to a VM, a container has its own filesystem, share of CPU, memory, process space, and more. As they are decoupled from the underlying infrastructure, they are portable across clouds and OS distributions.
+
+# k8s components
+
+![](/images/devops/Kubernetes-2.png)
+
+**Pods**
+
+Pods are the smallest deployable units of computing that you can create and manage in Kubernetes.
+
+A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+
+**Nodes**
+
+Kubernetes runs your workload by placing containers into Pods to run on Nodes. A node may be a virtual or physical machine, depending on the cluster. Each node is managed by the control plane and contains the services necessary to run Pods.
+
+Typically you have several nodes in a cluster; in a learning or resource-limited environment, you might have only one node.
+
+**Deployments**
+
+A [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/){.external target='_blank'} provides declarative updates for ``Pods`` and ``ReplicaSets``.
+
+![A deployment provides declarative updates for pods](/images/devops/k8s-deployments.png)
+
+
+**Service**
+
+In Kubernetes, a [Service](https://kubernetes.io/docs/concepts/services-networking/service/){.external target='_blank'} is a method for exposing a network application that is running as one or more Pods in your cluster.
+
+![Expose an application in your cluster behind a single endpoint](/images/devops/k8s-service.png)
+
+**Ingress**
+
+[Ingress](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#ingress-v1-networking-k8s-io){.external target='_blank'} exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource.
+
+Here is a simple example where an Ingress sends all its traffic to one Service:
+
+``` {mermaid}
+
+graph LR;
+  client([client])-. Ingress-managed <br> load balancer .->ingress[Ingress];
+  ingress-->|routing rule|service[Service];
+  subgraph cluster
+  ingress;
+  service-->pod1[Pod];
+  service-->pod2[Pod];
+  end
+  classDef plain fill:#ddd,stroke:#fff,stroke-width:4px,color:#000;
+  classDef k8s fill:#326ce5,stroke:#fff,stroke-width:4px,color:#fff;
+  classDef cluster fill:#fff,stroke:#bbb,stroke-width:2px,color:#326ce5;
+  class ingress,service,pod1,pod2 k8s;
+  class client plain;
+  class cluster cluster;
+```
+
+![Make your HTTP network service available](/images/devops/k8s-ingress.png)
+
+
+# Kubernetes Networking
+
+In **Kubernetes**, a Pod is the most basic deployable unit within a **Kubernetes** cluster.
+
+A Pod runs one or more containers. Zero or more Pods run on a node. Each node in the cluster is part of a node pool. Pods can also attach to external storage volumes and other custom resources. 
+
+This diagram shows a single node running two Pods, each attached to two volumes.
+
+![When Kubernetes schedules a Pod to run on a node,[ it creates a network](https://cloud.google.com/kubernetes-engine/docs/concepts/network-overview#pods){.external target='_blank'} namespace for the Pod in the node's Linux kernel](/images/devops/networking-overview_single-node.png)
+
+::: {.column-margin}
+When you use **Kubernetes** to orchestrate your applications, it's important to change how you think about **the network design of your applications and their host**s. With Kubernetes, you think about how Pods, Services, and external clients communicate, rather than thinking about how your hosts or virtual machines (VMs) are connected.
+:::
+
+## Terminology related to IP addresses in Kubernetes
+
+The **Kubernetes** networking model <mark>relies heavily on IP addresses</mark>.
+
+``Services``, ``Pods``, ``containers``, and nodes communicate using IP addresses and ports. Kubernetes provides different types of load balancing to direct traffic to the correct Pods.
+
+Keep the following terms in mind because the are key when we talk about k8s networking:
+
+- **ClusterIP**: The IP address assigned to a Service. In other documents, it might be called the "Cluster IP". This address is stable for the lifetime of the Service, as discussed in Services.
+- **Pod IP address**: The IP address assigned to a given Pod. This is ephemeral, as discussed in Pods.
+- **Node IP address**: The IP address assigned to a given node.
+
+# Command line tool (kubectl)
+
+![kubectl](/images/devops/kubectl.png)
+
+<mark>Kubernetes provides a [command line tool](https://kubernetes.io/docs/reference/kubectl/){.external target='_blank'} for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.</mark>
+
+This tool is named `kubectl`.
+
+For configuration, `kubectl` looks for a file named `config` in the `$HOME/.kube` directory.
+You can specify other [kubeconfig](/docs/concepts/configuration/organize-cluster-access-kubeconfig/) files by setting the `KUBECONFIG` environment variable or by setting the [`--kubeconfig`](/docs/concepts/configuration/organize-cluster-access-kubeconfig/) flag.
+
+This overview covers `kubectl` syntax, describes the command operations, and provides common examples.
+For details about each command, including all the supported flags and subcommands, see the [kubectl](/docs/reference/kubectl/generated/kubectl/) reference documentation.
+
+For installation instructions, see [Installing kubectl](/docs/tasks/tools/#kubectl);
+for a quick guide, see the [cheat sheet](/docs/reference/kubectl/quick-reference/).
+If you're used to using the `docker` command-line tool, [`kubectl` for Docker Users](/docs/reference/kubectl/docker-cli-to-kubectl/) explains some equivalent commands for Kubernetes.
+
+# Sandbox
+
+![kubectl sanbox](/images/devops/k8s-sandbox.png)
+
+- [Getting started with kubectl](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-){.external target='_blank'}
+- [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com/){.external target='_blank'}
+- 
+# References
+
+- [k8s](https://sites.google.com/view/devopscifo/devops-tools/k8s){.external target='_blank'}
+- [Overview](https://kubernetes.io/docs/concepts/overview/#what-kubernetes-is-not){.external target='_blank'}
+- [Production-Grade Container Orchestration](https://kubernetes.io/){.external target='_blank'}
+- [The #1 containerization software for developers and teams](https://www.docker.com/products/docker-desktop/){.external target='_blank'}
+- [minikube start](https://minikube.sigs.k8s.io/docs/start/){.external target='_blank'}
+
+
+

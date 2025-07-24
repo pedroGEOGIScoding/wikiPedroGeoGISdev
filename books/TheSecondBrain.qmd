@@ -1,0 +1,23 @@
+---
+title: "The Second Brain"
+author: "albertprofe"
+subtitle: "Michael Gershon, 2020, The Second Brain: A Groundbreaking New Understanding Of Nervous Disorders Of The Stomach And Intestine"
+date: "1/2/1999"
+date-modified: "11/14/2022"
+date-format: full
+description: "Explores the complex relationship between the brain and the gut, shedding light on the connection between the nervous system and digestive disorders."
+categories: [neuroscience]
+subcategories: [medicine, gastroenterology]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/TheSecondBrain.jpg)
+
+## More info
+
+Dr. Michael Gershon has devoted his career to understanding the human bowel (the stomach, esophagus, small intestine, and colon). His thirty years of research have led to an extraordinary rediscovery: nerve cells in the gut that act as a brain. This "second brain" can control our gut all by itself. Our two brains the one in our head and the one in our bowel must cooperate. If they do not, then there is chaos in the gut and misery in the head everything from "butterflies" to cramps, from diarrhea to constipation. Dr. Gershon's work has led to radical new understandings about a wide range of gastrointestinal problems including gastroenteritis, nervous stomach, and irritable bowel syndrome.
+
+- [The Second Brain: A Groundbreaking New Understanding Of Nervous Disorders Of The Stomach And Intestine](https://www.amazon.es/Second-Brain-Scientific-Groundbreaking-Understanding/dp/0060930721){.external}

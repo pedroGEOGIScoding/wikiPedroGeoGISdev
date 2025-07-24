@@ -1,0 +1,424 @@
+---
+title: "Java SE: Class and Objects"
+subtitle: Java Fundamentals
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is a Class and a Object in Java
+categories: [javase, class, objects, concepts, oop, paradigm, casting]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+📘 **What is a Java Class**
+
+A Java class is a **template for creating objects, defining object data types and methods**. A class is a blueprint for objects, and an object is an instance of a class. 
+
+In other words, a class def>ines the properties and behaviors that objects created from the class will have. 
+
+<mark>For example, if you have a class called "Dog," objects created from that class might have properties like "breed" and "age," as well as behaviors like "bark" and "fetch."</mark> Classes are an important concept in object-oriented programming, and are a fundamental building block of Java programs
+
+:::
+
+---
+
+::: {.summary}
+📘 **What is a Java Object**
+
+An object in Java is a **container that holds both data and behavior**. The data is represented by the object's attributes, and the behavior is represented by the methods that operate on those attributes.
+
+When you create an object, you are creating an **instance of a class**, which is a blueprint or template for the object.
+:::
+---
+
+## Class
+
+Let’s create a ``class`` called ``Person``. 
+
+What would we want to know about a person? What we want to know depends on what problem we are trying to solve. In one situation, perhaps when creating an address book, we might want to know the person’s name and phone number and email.
+
+Here’s a possible ``Person`` class with:
+
+  - `fields` or `attributes` (instance variables),
+  - `constructor`,
+  - and `methods.`
+
+![Person java class](/images/javase/personClassDefn.png){width="60%"}
+
+::: {.callout-note collapse="true"}
+
+## Person class
+
+``` {.java .code-overflow-wrap filename="Person.java"}
+
+public class Person {
+  //fields  
+  private int age;
+  private String name;
+  private String address;
+  private double salary;
+  private String phoneNumber;
+  private String email; 
+  
+  //constructor
+  public Person(int age, String name, String address, double salary) {
+    this.age = age;
+    this.name = name;
+    this.address = address;
+    this.salary = salary;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+  }
+
+    //constructor
+  public Person(int age, String name, String email, String phoneNumber) {
+    this.age = age;
+    this.name = name;
+    this.address = address;
+    this.salary = salary;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+  }
+  
+  //methods
+  public int getAge() {
+    return age;
+  }
+  
+  public void setAge(int age) {
+    this.age = age;
+  }
+  
+  public String getName() {
+    return name;
+  }
+  
+  public void setName(String name) {
+    this.name = name;
+  }
+  
+  public String getAddress() {
+    return address;
+  }
+  
+  public void setAddress(String address) {
+    this.address = address;
+  }
+  
+  public double getSalary() {
+    return salary;
+  }
+  
+  public void setSalary(double salary) {
+    this.salary = salary;
+  }
+  
+  public void study() {
+    // Do some work here
+  }
+  
+  public void receivePaycheck() {
+    // Process salary and distribute paychecks
+  }
+
+  public void getOlder() {
+    this.age++;
+  }
+}
+
+```
+:::
+
+## Objects
+
+<mark>Each object has its own unique identity, and it maintains its own state by storing the values of its attributes. The object's behavior is defined by the methods that operate on its attributes, and these methods can be invoked by other code to ask the object to perform a specific action<mark>.
+
+
+![Java SE Basic Principles OOP Class and Object](/images/javase/oop-classobject.png){width="50%"}
+
+::: {.column-margin}
+Objects are an essential concept in object-oriented programming, and they are used to model real-world entities in a program. For example, you could create an object to represent a particular person, with attributes such as name, age, and address, and methods that operate on these attributes, such as a method to calculate their age in a particular year.
+:::
+
+In Java, you can create objects by using the `new` keyword and the class constructor to allocate memory for the object, and then you can access the object's attributes and methods by using the `.` (dot) operator. For example, if you have a class called `Person`, you could create an object of that class like this:
+
+``` java
+Person carla = new Person();
+```
+
+And then you could access the object's attributes and methods like this:
+
+``` java
+carla.name = "Carla Whitesand";
+carla.setAddress("123 Main Street");
+int age = carla.calc>ulateAge(2022);
+```
+::: {.column-margin}
+In this example, `name` and `setAddress()` are attributes and methods of the `Person` class, and `person` is an object of that class. You can use this object to store and manipulate data according to the rules defined by the class.
+:::
+
+## Creating Objects
+
+[from The Java™ Tutorials](https://docs.oracle.com/javase/tutorial/java/javaOO/objectcreation.html)
+
+As you know, a class provides the blueprint for objects; you create an object from a class. Each of the following statements taken from the [``CreateObjectDemo``](https://docs.oracle.com/javase/tutorial/java/javaOO/examples/CreateObjectDemo.java) program creates an object and assigns it to a variable:
+
+``` java
+Point originOne = new Point(23, 94);
+Rectangle rectOne = new Rectangle(originOne, 100, 200);
+Rectangle rectTwo = new Rectangle(50, 100);
+```
+
+The first line creates an object of the ``Point`` class, and the second and third lines each create an object of the ``Rectangle`` class.
+
+Each of these statements has three parts (discussed in detail below):
+
+- **Declaration**: The code set in bold are all variable declarations that associate a variable name with an object type.
+- **Instantiation**: The new keyword is a Java operator that creates the object.
+- **Initialization**: The new operator is followed by a call to a constructor, which initializes the new object.
+
+### Declaring a Variable to Refer to an Object
+
+Previously, you learned that to declare a variable, you write:
+
+``type name;``
+
+This notifies the compiler that you will use name to refer to data whose type is type. With a primitive variable, this declaration also reserves the proper amount of memory for the variable.
+
+You can also declare a reference variable on its own line. For example:
+
+``` java
+Point originOne;
+```
+
+::: {.callout-important}
+## Just a reference variable: is empty
+
+If you declare ``originOne`` like this, its value will be undetermined until an object is actually created and assigned to it. Simply declaring a reference variable does not create an object.
+:::
+
+For that, you need to use the ``new`` operator, as described in the next section. **You must assign an object to ``originOne`` before you use it in your code. Otherwise, you will get a compiler error**.
+
+A variable in this state, which currently references no object, can be illustrated as follows (the variable name, originOne, plus a reference pointing to nothing):
+
+``originOne`` --> **null**
+
+!["originOne --> null" figure part 1](/images/javase/pointToObject-1.png)
+
+## Instantiating a Class
+
+::: {.summary}
+
+📘 **Instantiating a Class**
+
+The ``new`` **operator instantiates a class by allocating memory for a new object and returning a reference to that memory**. The new operator also invokes the object constructor.
+:::
+
+::: {.callout-important}
+
+## Instantiating a class
+
+The phrase "**instantiating a class**" means the same thing as "**creating an object.**" When you create an object, you are creating an "**instance**" of a class, therefore "**instantiating**" a class.
+
+The ``new`` operator requires a single, postfix argument: a call to a constructor. The name of the constructor provides the name of the class to instantiate.
+:::
+
+The ``new`` operator returns a reference to the object it created. This reference is usually assigned to a variable of the appropriate type, like:
+
+``` java
+Point originOne = new Point(23, 94);
+```
+
+``originOne`` --> **Point object**
+
+!["originOne --> Point object" figure part 2](/images/javase/pointToObject-2.png)
+
+The reference returned by the new operator does not have to be assigned to a variable. It can also be used directly in an expression. For example:
+
+``` java
+int height = new Rectangle().height;
+```
+
+This statement will be discussed in the next section or you can go [here](/javase/resources.qmd#IsJavaReference).
+
+### Initializing an Object
+
+Here's the code for the Point class:
+
+``` java
+public class Point {
+    public int x = 0;
+    public int y = 0;
+    //constructor
+    public Point(int a, int b) {
+        x = a;
+        y = b;
+    }
+}
+```
+
+This class contains a single **constructor**. You can recognize a **constructor** because its declaration uses the s*ame name as the class and it has no return type*.
+
+The **constructor** in the ``Point`` class takes two integer arguments, as declared by the code ``(int a, int b)``. The following statement provides ``23`` and ``94`` as values for those arguments:
+Linux Lab#LI01-1: Export env user with grep and pipe
+``` java
+Point originOne = new Point(23, 94);
+```
+
+### Example UML: class and object
+
+![The class body may contain member variables, constructors, public methods, private helper methods and others.](/images/javase/UML_ClassInstance.png)
+
+## Ways to create an object
+
+
+There are several ways to **create** objects in Java:
+
+1. Using the `new` operator: this is the most common way to create an object in Java. It involves using the new operator followed by the class name and constructor arguments. For example:Implicit casting
+
+```java
+Person carla = new Person("Carla", 30, "123 Main St.");
+```
+2. Using the `clone()` method: if you want to create a copy of an existing object, you can use the clone() method.
+
+::: {.callout-note collapse="true"}
+This method is defined in the `java.lang.Object class`, which is the superclass of all Java classes. To use the `clone()` method, you'll need to implement the Cloneable interface in your class and override the `clone()` method.
+:::
+
+3. Using `factory` methods: A factory method is a `static` method that returns an instance of a class. **Factory methods are often used to create objects** when you need more flexibility or control over the object creation process.
+
+4. Using `reflection`: Reflection is a feature of the Java language that allows you to **inspect and manipulate the structure of a class at runtime**. 
+
+::: {.callout-note collapse="true"}
+You can use reflection to create objects by invoking the `newInstance()` method on the Constructor object for a particular class.
+:::
+
+5. Using object `deserialization`: You can use object deserialization to create an object from its serialized form, which is a stream of bytes that represents the object's state. 
+
+::: {.callout-note collapse="true"}
+To do this, you'll need to implement the `Serializable interface` in your class and use the `ObjectInputStream` and `ObjectOutputStream` classes to serialize and deserialize the object.
+:::
+
+## Casting (typecasting)
+
+`Casting` **is the process of converting one type of data to another type**. There are two types of casting: **explicit** and **implicit**.
+
+### Explicit casting
+
+**Explicit casting** is when you specify the type you want the data to be converted to. An example of explicit casting is:
+
+```java
+int x = (int) 3.14;
+```
+
+In this case, the double value of `3.14` is being explicitly cast to an int.
+
+### Implicit casting
+
+**Implicit casting**, also known as **widening**, is when the conversion happens automatically without the need for a specific type to be specified. An example of implicit casting is:
+
+```java
+double x = 3;
+```
+::: {.column-margin}
+It's important to note that casting can cause data loss if the type being converted to cannot hold the value of the original type. For example, casting a large double value to an int would result in the decimal places being truncated and lost.
+:::
+
+In this case, the int value of `3` is being implicitly cast to a double.
+
+### Casting in compilation/execution time
+
+::: {.callout-note}
+It is important t**o consider the class of the object and the type of its reference variable when casting**, as it can affect both the **compilation time** and **execution time** of a program.
+:::
+
+> **During compilation**, the compiler checks the source code for any type errors and other issues related to casting, such as trying to cast an object to a class that it is not compatible with. If any errors are found, the compiler will display them and the program will not be able to run until they are fixed. This means that understanding the class of an object and the type of its reference variable is crucial for avoiding casting errors during compilation.
+
+::: {.column-margin}
+Compilation time refers to **the period of time during which the source code of a program is translated into machine code by a compiler**. This is the initial phase of program execution.
+:::
+
+> **At execution time**, casting can also have an impact on the performance and behavior of a program. For example, if a program tries to cast an object to a type that is not compatible with its class, a runtime exception will be thrown, causing the program to crash.
+
+::: {.column-margin}
+Execution time refers to t**he period of time during which the compiled program runs and performs its intended operations**. This is the phase of the program when it's executed by the `CPU` and its instructions are executed.
+:::
+
+On the other hand, if the casting is done properly and the object is compatible with the target type, it can improve the performance and efficiency of the program.
+
+::: {.callout-important}
+Knowing the class of an object and the type of its reference variable is also important for making sure the program is using the right methods and properties of the object, and for avoiding unexpected behavior.
+:::
+
+### Upcasting and downcasting
+
+Before reading this section you **must** read and **understand** [how does inherence work](/javase/se-principles-inheritance.qmd)
+
+![A process of converting one data type to another is known as Casting (typecasting) and Upcasting and Downcasting defines weather it is up or down in a inherence relationship](/images/javase/UpcastingVsDowncasting.jpg)
+
+### Upcasting
+
+``Upcasting`` is casting a subtype to a ``supertype``, upward to the ``inheritance`` tree. ``Upcasting`` happens **automatically and we don’t have to explicitly do anything.**
+
+``` {.java .code-overflow-wrap filename="TypeCasrting.java"}
+// Base Class
+public class Animal
+{
+    public void talk() { System.out.println("I am talking"); }
+}
+// Inherited class
+class Cat extends Animal
+{
+    // This method overrides show() of Parent
+    @Override
+    public void talk() { System.out.println("Miauuu, miauuuu, miauuu!!!"); }
+}
+ 
+public class Test
+{
+    public void testUpCasting(){
+    
+        Animal cat = new Cat();
+        cat.talk();
+        // output: Miauuu, miauuuu, miauuu!!!)
+    }
+}
+```
+### Downcasting
+
+When Subclass type refers to the object of Parent class, it is known as downcasting. If we perform it directly, compiler gives Compilation error. If you perform it by typecasting, ``ClassCastException`` is thrown at ``runtime`` (sometimes we may use ``instanceof`` operator, then downcasting is possible)
+
+``` {.java .code-overflow-wrap filename="TypeCasrting.java"}
+// Base Class
+public class Animal
+{
+    public void talk() { System.out.println("I am talking"); }
+}
+// Inherited class
+class Cat extends Animal
+{
+    // This method overrides show() of Parent
+    @Override
+    public void talk() { System.out.println("Miauuu, miauuuu, miauuu!!!"); }
+}
+ 
+public class Test
+{
+    public void testDownCasting(){
+
+        Cat cat = new Animal();
+        // compiling time error, try to cast but it can not
+        Animal animal = new Animal();
+        // creatng an object of the superclass is ok
+        Cat cat = (Cat) animal;
+        // downcasting
+        cat.talk();
+        // output: Miauuu, miauuuu, miauuu!!!)
+    }
+}
+``` 
+

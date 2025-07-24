@@ -1,0 +1,2018 @@
+---
+title: "Lab#SB08-4: JPA"
+subtitle: Spring Boot Restaurant Management JPA, Queries, Mappings and Relationships
+author: albertprofe
+date: "01/010/2024"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+    html
+filters:
+    - lightbox
+lightbox: true
+---
+
+:::: {.labs}
+📘 Spring Boot Lab#SB00-4: `RestaurantManager` JPA, Queries, Mappings and Relationships
+## Summary
+
+The Spring Boot `RestaurantManagement` System utilizes `JPA` to efficiently manage restaurant operations:
+
+- Key entities include `Menu`, `MenuItem`, `Table`, `Order`, and `Customer`, with defined relationships such as one-to-many and many-to-many.
+- The system employs repositories for database H2 access and services for business logic.
+- Custom `queries` enhance data retrieval, enabling functionalities like fetching recent orders or customer-specific orders.
+
+This architecture not only facilitates effective data management but also provides a robust foundation for building scalable restaurant applications, leveraging the power of Spring Boot and JPA for seamless integration and performance.
+:::
+
+</br>
+
+All [Commits](https://github.com/AlbertProfe/restaurantManager/commits/master/){.external target='_blank'} from `master branch`, repo `AlbertProfe / restaurantManager` (Public) table:
+
+::: {.column-page-right}
+
+<details>
+<summary>Commits master branch table </summary>
+
+{{< include labsb08-4-commits/commits-table-restaurantManager.qmd >}}
+: `AlbertProfe / restaurantManager` (Public) commits table {tbl-colwidths="[10,20,55,5]"}
+
+</details>
+
+:::
+
+All commits from `feature-order-abstract` [branch](https://github.com/AlbertProfe/restaurantManager/tree/feature-order-abstract){.external target='_blank'}
+
+::: {.column-page-right}
+
+<details>
+<summary>Commits `feature-order-abstract` branch table </summary>
+
+| Hash | Date | Message | Project |
+|-------------|------|---------|-----------------|
+| [e283c08](https://github.com/AlbertProfe/restaurantManager/commit/e283c08ddc92fd05493c8745a8c501fbe66d0f49) | 2024-11-05 11:17 Tuesday | OrderTest: TotalPayment, Dates and SpecificProperties  | [<>](https://github.com/AlbertProfe/restaurantManager/tree/ca402fdfd3f82b64850905eaaa08881821bc6a90) |
+| [b1bdddc](https://github.com/AlbertProfe/restaurantManager/commit/b1bdddcf75c6772d4fd89d71d8370d778511abfe) | 2024-11-05 08:32 Tuesday | DataLoader and DataPopulate update to Order Abstract class  | [<>](https://github.com/AlbertProfe/restaurantManager/tree/b1bdddcf75c6772d4fd89d71d8370d778511abfe) |
+| [ca402fd](https://github.com/AlbertProfe/restaurantManager/commit/ca402fdfd3f82b64850905eaaa08881821bc6a90) | 2024-10-31 13:22 Thursday | OrderRestaurant refactor to abstract class and test createOrdersTest() | [<>](https://github.com/AlbertProfe/restaurantManager/tree/e283c08ddc92fd05493c8745a8c501fbe66d0f49) |
+: `AlbertProfe / restaurantManager` (Public) `feature-order-abstract` commits table {tbl-colwidths="[10,20,55,5]"}
+
+</details>
+
+:::
+
+# RestaurantManager Project Summary
+
+> Here's an introduction to Spring Boot Restaurant Management focusing on JPA, queries, mappings and relationships. This project demonstrates how to build a restaurant management system using Spring Boot and JPA. It covers key concepts like entity relationships, JPA mappings, and database queries.
+
+**Key Components**
+
+- **Entities**: Menu, MenuItem, Order, Customer
+- **Repositories**: JpaRepository interfaces for database access
+- **Services**: Business logic and database operations
+- **Controllers**: REST API endpoints
+- **Tests**: JUnit unitary tests for queries
+
+**JPA Mappings**
+
+The system uses the following JPA entity relationships:
+
+- One-to-Many: Menu to MenuItems
+- Many-to-One: Order to Customer
+- Many-to-Many: Order to MenuItems
+
+
+<details>
+<summary>Example Menu entity:</summary>
+
+```{.java .code-overflow-wrap filename="Menu.java"}
+
+@Entity
+public class Menu {
+
+    @Id
+    //@GeneratedValue
+    private String id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
+    private List<MenuItem> items;
+
+}
+```
+</details>
+
+**Sample Queries**
+
+
+<details>
+<summary>Example Sample OrderRepository:</summary>
+
+```{.java .code-overflow-wrap filename="Menu.java"}
+
+@Repository
+public interface OrderRepository extends JpaRepository<Order, Long> {
+
+    List<Order> findByCustomer(Customer customer);
+
+    @Query("SELECT o FROM Order o WHERE o.orderDate > :date")
+    List<Order> findRecentOrders(@Param("date") LocalDate date);
+
+}
+```
+</details>
+
+
+**Key Relationships**
+
+- Menu contains many MenuItems
+- Order is placed by one Customer
+- Order contains multiple MenuItems
+- Customer can have multiple Orders
+
+This structure allows for efficient querying and management of restaurant data using Spring Data JPA.
+
+
+# UML
+
+
+<mark>The **work-in-progress** laboratory gaol is transform all model classes to **entities** and relate them by JPA.</mark>
+
+## `RestaurantManager` relationships goal
+
+
+1. **Inheritance:**
+    - `TakeAwayOrder`, `ShippingOrderRestaurant`, and `EatInOrderRestaurant` all <mark>inherit</mark> from `OrderRestaurant`.
+
+2. **One-to-Many/Many-to-One associations:**
+    - One-to-Many
+        - A `Customer` can have multiple `TakeAwayOrder`.
+        - A `TableRestaurant` can be associated with multiple `EatInOrderRestaurant`, <mark>we do not allow to group tables</mark> .
+        - A `Booking` can be associated with multiple `TableRestaurant`.
+    - Many-to-One
+        - Multiple `TakeAwayOrders` can be associated with a single `Customer`.
+
+3. **Many-to-Many associations:**
+    - Many-to-Many
+        - `OrderRestaurant` and `MenuRestaurant` have a many-to-many relationship.
+          - To **refactor** with Join Table @Entity: `Order_Menu_Qty`
+        - `MenuRestaurant` and `MenuItemRestaurant` have a many-to-many relationship.
+    - Many-to-Many with join table as entity
+        - The relationship between `Customer` and `TableRestaurant` is effectively a many-to-many relationship, with `Booking` <mark>serving as a join table entity</mark>.
+        - This is implemented as two one-to-many relationships:
+            a. One `Customer` can have many `Bookings` (one-to-many)
+            b. One `Booking` can have many `TableRestaurants` (one-to-many)
+        - This structure allows for additional attributes on the `Booking` entity (such as date, time, etc.) while maintaining the many-to-many relationship between `Customer` and `TableRestaurant`.
+
+
+
+::: {.column-margin}
+This Lab#SB08-4 will implement this entities relationships:
+
+![RestaurantManager UML](/images/springboot/labsb08/lab08-4-uml-2.png){.lightbox}
+
+:::
+
+Many-to-Many with join table as entity `Customer 1-n Booking n-1 TableRestaurant` relationship:
+
+```{mermaid}
+classDiagram
+direction LR
+    class TableRestaurant {
+        <<Entity>>
+        -String name
+        -String description
+        -int qty
+        -boolean busy
+        -ArrayList<Booking> Bookings
+        +toString()
+    }
+    
+    class Customer {
+        <<Entity>>
+        -String id
+        -String name
+        -String email
+        -String phoneNumber
+        -int age
+        -boolean vipCustomer
+        -boolean deleted
+        -ArrayList<Booking> Bookings
+        +toString()
+    }
+
+    class Booking {
+        <<Entity>>
+        -String name
+        -String phoneNumber
+        -int peopleQty
+        -LocalDateTime date
+        -LocalDateTime SlotDate
+        -String service
+        -boolean confirmed
+        -TableRestaurant tableRestaurant
+        -Customer customer
+        +toString()
+    }
+
+    Booking "n" *-- "1" TableRestaurant
+    Customer  "1" --* "n" Booking
+
+```
+
+
+
+
+## Updated UML
+
+This is the updated UML from [Lab#SB08-1 UML and DDD](/springboot/sblab8-1.qmd#discussion-solving-uml){.external target='_blank'} correspond to this <mark>commit</mark>: [TestCreateOrder() with JPA, Customer 1:n TakeAwayOrder unidirectional relationship](https://github.com/AlbertProfe/restaurantManager/tree/51b172d69b9f04196dbd52d3abdf9c50a05a3ff9){.external target='_blank'}
+
+
+::: {.column-page-right}
+
+<details>
+<summary>Updated UML from Lab#SB08-1 UML and DDD</summary>
+
+```{mermaid}
+classDiagram
+    class OrderRestaurant {
+        <<Entity>>
+        -String id
+        -Date date
+        -String waiter
+        -int peopleQty
+        -double totalPayment
+        -boolean paid
+        -ArrayList<Menu> menus
+        +toString()
+    }
+    class TakeAwayOrder {
+        <<Entity>>
+        -Customer customerTakeAway
+        +toString()
+    }
+    class TableRestaurant {
+        -String name
+        -String description
+        -int qty
+        -boolean busy
+        +toString()
+    }
+    class ShippingOrderRestaurant {
+        -String address
+        -String city
+        -String riderName
+        +toString()
+    }
+    class Customer {
+        <<Entity>>
+        -String id
+        -String name
+        -String email
+        -String phoneNumber
+        -int age
+        -boolean vipCustomer
+        -boolean deleted
+    }
+    class EatInOrderRestaurant {
+        -ArrayList<TableRestaurant> tableRestaurants
+        +toString()
+    }
+    class Menu {
+        <<Serializable>>
+        -String name
+        -Double price
+        -String content
+        -boolean active
+        -boolean water
+    }
+    class Booking {
+        -String name
+        -String phoneNumber
+        -int peopleQty
+        -LocalDateTime date
+        -TableRestaurant tableRestaurant
+        -boolean confirmed
+        +toString()
+    }
+
+    OrderRestaurant <|-- TakeAwayOrder
+    OrderRestaurant <|-- ShippingOrderRestaurant
+    OrderRestaurant <|-- EatInOrderRestaurant
+    OrderRestaurant "1" *-- "*" Menu
+    TakeAwayOrder "*" -- "1" Customer
+    EatInOrderRestaurant "1" *-- "*" TableRestaurant
+    Booking "1" -- "1" TableRestaurant
+
+```
+
+</details>
+
+:::
+
+## UML with `MenuItemsRestaurant`
+
+> All model classes now are `@Entity.`
+
+This UML would fit *almost* the final version (with `MenuItemsRestaurant`) of our project (without the @ManyToMany `Customer 1-n Booking n-1 TableRestaurant` relationship:
+
+
+::: {.column-page-right}
+
+<details>
+<summary>UML without the Many-To-Many `Customer 1-n Booking n-1 TableRestaurant` relationship:
+</summary>
+
+```{mermaid}
+classDiagram
+    class OrderRestaurant {
+        <<Entity>>
+        -String id
+        -Date date
+        -String waiter
+        -int peopleQty
+        -double totalPayment
+        -boolean paid
+        -ArrayList<MenuRestaurant> menusRestaurant
+        +toString()
+    }
+    class TakeAwayOrder {
+        <<Entity>>
+        -Customer customerTakeAway
+        +toString()
+    }
+    class TableRestaurant {
+        <<Entity>>
+        -String name
+        -String description
+        -int qty
+        -boolean busy
+        -ArrayList<Booking> Bookings
+        +toString()
+    }
+    class ShippingOrderRestaurant {
+        <<Entity>>
+        -String address
+        -String city
+        -String riderName
+        +toString()
+    }
+    class Customer {
+        <<Entity>>
+        -String id
+        -String name
+        -String email
+        -String phoneNumber
+        -int age
+        -boolean vipCustomer
+        -boolean deleted
+    }
+    class EatInOrderRestaurant {
+        <<Entity>>
+        -ArrayList<TableRestaurant> tablesRestaurant
+        +toString()
+    }
+    class MenuRestaurant {
+        <<Entity>>
+        -String name
+        -Double price
+        -String content
+        -boolean active
+        -boolean water
+        -ArrayList<OrderRestaurant> ordersRestaurant
+        -ArrayList<MenuItemRestaurant> MenusItemsRestaurant
+    }
+    class MenuItemRestaurant {
+        <<Entity>>
+        -String name
+        -String content
+        -boolean active
+        -ArrayList<MenuRestaurant> MenusRestaurant
+    }
+    class Booking {
+        <<Entity>>
+        -String name
+        -String phoneNumber
+        -int peopleQty
+        -LocalDateTime date
+        -TableRestaurant tableRestaurant
+        -boolean confirmed
+        +toString()
+    }
+
+    OrderRestaurant <|-- TakeAwayOrder
+    OrderRestaurant <|-- ShippingOrderRestaurant
+    OrderRestaurant <|-- EatInOrderRestaurant
+    OrderRestaurant "n" *--* "m" MenuRestaurant
+    MenuRestaurant "n" *--* "m" MenuItemRestaurant
+    TakeAwayOrder "n" *-- "1" Customer
+    EatInOrderRestaurant "1" *-- "n" TableRestaurant
+    Booking "1" *-- "n" TableRestaurant
+
+
+```
+
+
+</details>
+
+:::
+
+## UML with `ManyToMany` join table entity
+
+With the Many-To-Many relationship:
+
+   - `Customer 1-n Booking n-1 TableRestaurant`
+   - `OrderRestaurant 1-n OrderMenuQty n-1 MenuRestaurant`
+
+::: {.column-page-right}
+
+<details>
+<summary>UML with Many-To-Many relationships:
+</summary>
+
+
+```{mermaid}
+classDiagram
+direction LR
+    class OrderRestaurant {
+        <<Entity>>
+        -String id
+        -Date date
+        -String waiter
+        -int peopleQty
+        -double totalPayment
+        -boolean paid
+        -ArrayList<OrderMenuQty> OrderMenuQtys
+        +toString()
+    }
+
+class OrderMenuQty {
+        <<Entity>>
+        -OrderRestaurant orderRestaurant
+        -MenuRestaurant menuRestaurant
+        +toString()
+    }
+
+    class TakeAwayOrder {
+        <<Entity>>
+        -Customer customerTakeAway
+        +toString()
+    }
+
+    class ShippingOrderRestaurant {
+        <<Entity>>
+        -String address
+        -String city
+        -String riderName
+        +toString()
+    }
+    
+    class EatInOrderRestaurant {
+        <<Entity>>
+        -ArrayList<TableRestaurant> tablesRestaurant
+        +toString()
+    }
+    class MenuRestaurant {
+        <<Entity>>
+        -String name
+        -Double price
+        -String content
+        -boolean active
+        -boolean water
+        -ArrayList<OrderMenuQty> OrderMenuQtys
+        -ArrayList<MenuItemRestaurant> MenusItemsRestaurant
+    }
+    class MenuItemRestaurant {
+        <<Entity>>
+        -String name
+        -String content
+        -boolean active
+        -ArrayList<MenuRestaurant> MenusRestaurant
+    }
+    
+    class Booking {
+        <<Entity>>
+        -String name
+        -String phoneNumber
+        -int peopleQty
+        -LocalDateTime date
+        -LocalDateTime BookingDate
+        -String service
+        -TableRestaurant tableRestaurant
+        -boolean confirmed
+        -Customer customer
+        +toString()
+    }
+
+    class Customer {
+        <<Entity>>
+        -String id
+        -String name
+        -String email
+        -String phoneNumber
+        -int age
+        -boolean vipCustomer
+        -boolean deleted
+        
+    }
+
+    class TableRestaurant {
+        <<Entity>>
+        -String name
+        -String description
+        -int qty
+        -boolean busy
+        -ArrayList<Booking> Bookings
+        +toString()
+    }
+
+    OrderRestaurant <|-- TakeAwayOrder
+    OrderRestaurant <|-- ShippingOrderRestaurant
+    OrderRestaurant <|-- EatInOrderRestaurant
+    OrderRestaurant "1" *--* "m" OrderMenuQty
+    OrderMenuQty "n" *--* "1" MenuRestaurant
+    MenuRestaurant "n" *--* "m" MenuItemRestaurant
+    TakeAwayOrder "n" *-- "1" Customer
+    EatInOrderRestaurant "n" *-- "1" TableRestaurant
+    Booking "n" *-- "1" TableRestaurant
+    Customer  "1" --* "n" Booking
+
+```
+
+</details>
+
+:::
+
+
+# JPA Relationships
+
+
+`JPA (Java Persistence API)` provides several types of relationships to <mark>model associations between entities </mark>:
+
+1. **OneToOne**: Represents a single-valued association where an instance of one entity is related to a single instance of another entity.
+
+2. **OneToMany**: Represents a multi-valued association where an instance of one entity can be related to multiple instances of another entity.
+
+3. **ManyToOne**: The inverse of `OneToMany`, where multiple instances of an entity can be related to a single instance of another entity.
+
+4. **ManyToMany**: Represents a multi-valued association where multiple instances of one entity can be related to multiple instances of another entity.
+
+These relationships can be either `unidirectional` or `bidirectional`:
+
+- **Unidirectional**: Only one entity has a reference to the other.
+- **Bidirectional**: Both entities have references to each other.
+
+> Relationships are typically annotated in entity classes using `@OneToOne`, `@OneToMany`, `@ManyToOne`, or `@ManyToMany`. Additional annotations like `@JoinColumn` and `mappedBy` are used to specify the joining strategy and the owning side of the relationship.
+
+
+
+## OneToMany and ManyToOne
+
+
+![Entity @oneToMany](/images/springboot/labsb08/labsb08-4-onetomay.png)
+
+**`OneToMany` Unidirectional**
+
+- One entity has a collection of another entity
+- Only the *owning* side (the "One" side) has a reference to the other entity
+- Example: One Department has many Employees
+
+```java
+@Entity
+public class Department {
+    @OneToMany
+    private List<Employee> employees;
+}
+
+@Entity
+public class Employee {
+    // No reference to Department
+}
+```
+
+### @OneToMany attributes
+
+::: {.column-margin}
+**Eager** loading fetches all required data upfront when an object is first loaded. It immediately initializes and loads related entities or resources, ensuring everything is readily available.
+
+<mark>This approach can improve performance for frequently accessed data but may increase initial load times and memory usage.</mark>
+
+:::
+
+::: {.column-margin}
+**Lazy** loading, conversely, defers data loading until it's explicitly requested. It retrieves only the essential data initially, loading related entities or resources on-demand when accessed.
+
+This method can <mark>enhance initial performance and reduce memory consumption, particularly for large datasets or infrequently used resources.</mark>
+
+However, it may introduce slight delays when accessing lazy-loaded data for the first time
+
+:::
+
+
+- **fetch**: Specifies whether to lazily or eagerly load the related entities. Default is FetchType.`LAZY`.
+- **cascade**: Specifies which operations should cascade to child entities. Options include `ALL`, `PERSIST`, `MERGE`, `REMOVE`, etc.
+- **orphanRemoval**: If true, removes child entities when they are removed from the collection. Default is `false`.
+- **mappedBy**: Specifies the field that **owns** the relationship in the child entity.
+- **optional**:  If `false`, a non-null relationship must always exist.
+
+::: {.callout-note}
+# Eager vs Lazy
+
+**Eager** loading fetches all related data immediately, making everything available upfront. It can be faster for frequent access but may use more memory.
+
+**Lazy** loading, on the other hand, loads related data only when requested, initializing it on-demand. This approach saves memory but might cause slight delays on first access.
+:::
+
+
+**Key Points**
+
+- For @OneToMany and @ManyToMany, the default fetch type is `LAZY`.
+- For @ManyToOne and @OneToOne, the default fetch type is `EAGER5`.
+- Using FetchType.`LAZY` is generally recommended to avoid performance issues, especially for collections.
+- The `cascade` attribute determines which operations should be cascaded from parent to child entities.
+- The `orphanRemoval` attribute is useful for <mark>automatically removing child entities when they are no longer referenced by the parent</mark>.
+
+
+**ManyToOne Unidirectional**
+
+
+::: {.column-margin}
+ManyToOne Unidirectional example:  [Order and Customer](https://github.com/AlbertProfe/restaurantManager/blob/51b172d69b9f04196dbd52d3abdf9c50a05a3ff9/src/test/java/dev/example/restaurantManager/TestsRelationshipsOrderRestaurant.java){.external target='_blank'}
+:::
+
+
+- Many entities are associated with one entity
+- Only the **owning** side (the "Many" side) has a reference to the other entity
+- Example: Many Employees belong to one Department
+
+```java
+@Entity
+public class Employee {
+    @ManyToOne
+    private Department department;
+}
+
+@Entity
+public class Department {
+    // No reference to Employee
+}
+```
+
+
+**Bidirectional Relationships**
+
+
+::: {.column-margin}
+Bidirectional Relationships example:
+
+- [Library2: API Rest Author Book @OneToMany CRUD with Swagger](https://github.com/AlbertProfe/cifojava2022-3/wiki/Library2:-API-Rest-Author-Book-@OneToMany-CRUD-with-Swagger){.external target='_blank'}
+- [TestCreateBookingTable() with JPA, TableRestaurant 1:n Booking bidirectional relationship](https://github.com/AlbertProfe/restaurantManager/tree/c562d8da650da2f758754312c0e1ecea2d8909af){.external target='_blank'}
+:::
+
+- Both entities have references to each other
+- The "Many" side is usually the owning side
+- Example: One Department has many Employees, and each Employee belongs to one Department
+
+```java
+@Entity
+public class Department {
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees;
+}
+
+@Entity
+public class Employee {
+    @ManyToOne
+    private Department department;
+}
+```
+
+> In bidirectional relationships, use `mappedBy` on the <mark>non-owning side to indicate the owning side's field name</mark>.
+
+
+::: {.callout-note}
+# Why Serialization is Needed?
+
+**Serialization** is <mark>the process of converting an object or class into a byte stream</mark>. This byte stream can then be easily saved to a file, sent over a network, or stored in a database.
+
+`Hibernate` uses serialization to <mark>create deep copies of entity objects</mark> for various purposes, such as **detached** entities, Session Management or **caching**.
+
+For example: Collections within entities (like an `ArrayList<Menu> menus` within a `Order` entity ) are often **serialized** to store them efficiently in the database or to manage state changes.
+
+Implementing `Serializable` is **not always the best solution**. In some cases, it might be better to adjust your entity relationships (`@OneToMany`) or use different mapping strategies (`@ElementCollection` for simple collections).
+
+:::
+
+### Casting
+
+The [original](https://github.com/AlbertProfe/restaurantManager/blob/c562d8da650da2f758754312c0e1ecea2d8909af/src/test/java/dev/example/restaurantManager/RelationshipsOrderRestaurantTest.java#L80){.external target='_blank'} code avoids these issues by declaring orderToSave directly as TakeAwayOrder, eliminating the need for casting. This approach is generally preferred when possible, as it's safer and more straightforward.
+
+::: {.column-page-right}
+
+``` java
+// Assume OrderRestaurant is a superclass of TakeAwayOrder
+OrderRestaurant orderToSave = new TakeAwayOrder(
+    "T11", new Date(), "Alice", 1, 10.99,
+    true, new ArrayList<>(Arrays.asList(menu1)), null );
+
+// We need to cast here
+((TakeAwayOrder) orderToSave).setCustomerTakeAway(customer1);
+
+// We might need to cast here too, depending on the repository's type parameter
+takeAwayOrderRepository.save((TakeAwayOrder) orderToSave);
+```
+:::
+
+
+- **Upcasting**: When we assigned a TakeAwayOrder object to an OrderRestaurant variable, we performed an implicit upcast. This is always safe because a TakeAwayOrder is an OrderRestaurant.
+- **Downcasting**: When we cast orderToSave back to TakeAwayOrder, we're performing a downcast. This is potentially risky because not all OrderRestaurant objects are TakeAwayOrder objects.
+
+::: {.callout-note}
+# Why casting can be problematic?
+
+- Type safety: Downcasting can lead to runtime errors if the object isn't actually of the type you're casting to.
+- Code readability: Excessive casting can make code harder to read and understand.
+- Performance: While minor, casting does involve a runtime check.
+
+
+:::
+
+## ManyToMany
+
+
+**ManyToMany Unidirectional**
+
+- Multiple entities are associated with multiple entities of another type
+- Only one side has a reference to the other entity
+- Example: Many Students can enroll in many Courses
+
+::: {.column-margin}
+
+- [@ManyToMany RestaurantManger: ORDER](https://github.com/AlbertProfe/restaurantManager/blob/f4d3326cb7938abed678f3831289d4be4c8c069a/src/main/java/dev/example/restaurantManager/model/OrderRestaurant.java#L27){.external target='_blank'}
+- [@ManyToMany RestaurantManger: MENU](https://github.com/AlbertProfe/restaurantManager/blob/f4d3326cb7938abed678f3831289d4be4c8c069a/src/main/java/dev/example/restaurantManager/model/MenuRestaurant.java#L27){.external target='_blank'}
+:::
+
+```java
+@Entity
+public class Student {
+    @ManyToMany
+    @JoinTable(name = "STUDENT_COURSE",
+        joinColumns = @JoinColumn(name = "STUDENT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+    private Set<Course> courses;
+}
+
+@Entity
+public class Course {
+    // No reference to Student
+}
+```
+
+**ManyToMany Bidirectional**
+
+- Both entities have references to each other
+- One side is designated as the <mark>owning side, the other the inverse side</mark>
+  - **Example**: Many Students can enroll in many Courses, and each Course can have many Students
+
+```java
+@Entity
+public class Student {
+    @ManyToMany
+    @JoinTable(name = "STUDENT_COURSE",
+        joinColumns = @JoinColumn(name = "STUDENT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+    private Set<Course> courses;
+}
+
+@Entity
+public class Course {
+    @ManyToMany(mappedBy = "COURSES")
+    private Set<Student> students;
+}
+```
+
+> In bidirectional ManyToMany relationships, use `mappedBy` on the non-owning side to indicate the owning side's field name. The `@JoinTable` annotation is used to specify the join table details.
+
+::: {.callout-note}
+# ManyToMany Considerations
+
+- `ManyToMany` relationships often require a <mark>join table in the database</mark>
+- Consider using an <mark>intermediate entity for complex relationships</mark> or when additional attributes are needed for the relationship
+- Be cautious of **performance** implications with large datasets
+:::
+
+### OrphanRemoval and Cascade
+
+> `Cascade` **propagates operations from parent to child** entities, while `orphanRemoval` **automatically deletes child entities** no longer associated with a parent.
+
+`Cascade` affects specified actions (e.g., `PERSIST`, `REMOVE`), whereas `orphanRemoval` only deals with removing disassociated children.
+
+
+::: {.callout-tip .column-page-right}
+# Cascade vs OrphanRemoval
+
+The main differences between `cascade` and `orphanRemoval` in JPA are:
+
+1. **Scope** of operation:
+
+   - <mark>`Cascade` applies to all operations specified (e.g. `PERSIST`, `MERGE`, RE`MOVE, etc.) and propagates them from parent to child entities<</mark>.
+   - `OrphanRemoval` only deals with <mark>removing child entities that are no longer associated with the parent </mark>.
+
+2. **When** they take effect:
+
+   - `Cascade` operations occur when the specified action is performed on <mark>the parent entity </mark>.
+   - `OrphanRemoval` occurs when a child entity <mark>is disassociated from its parent</mark>, even without explicitly calling remove.
+
+3. Use cases:
+
+   - `Cascade` is useful for propagating operations like persist or remove from parent to children.
+   - `OrphanRemoval` is useful for <mark>automatically deleting child entities that are no longer referenced by a parent.</mark>
+
+4. **Behavior**:
+
+   - `CascadeType.REMOVE` will only delete child entities when the parent is explicitly removed.
+   - `OrphanRemoval` will <mark>delete child entities as soon as they are disassociated from the parent, even if the parent is not removed</mark>
+
+5. Combining them:
+
+   - They can be used together. `CascadeType.ALL` with `orphanRemoval=true` provides the most comprehensive cascading behavior.
+
+:::
+
+
+#### Example: `Student` and `Course` Entities
+
+```{mermaid}
+classDiagram
+direction RL
+    class Student {
+        -Long id
+        -String name
+        -Set<Course> courses
+        +enrollInCourse(Course course)
+        +dropCourse(Course course)
+    }
+    class Course {
+        -Long id
+        -String title
+        -Set<Student> students
+    }
+    class SchoolService {
+        -StudentRepository studentRepository
+        -CourseRepository courseRepository
+        +manageEnrollment()
+    }
+
+    Student "*" -- "*" Course : enrolls in
+    SchoolService --> Student : uses
+    SchoolService --> Course : uses
+    SchoolService <-- StudentRepository : uses
+    SchoolService <-- CourseRepository : uses
+
+    
+    
+
+```
+
+Let's see an example involving `Student` and `Course` entities in a school system, where **orphan removal** is meaningful.
+
+`Student @Entity` **owner-side**
+
+```java
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, 
+    orphanRemoval = true)
+    @JoinTable(
+        name = "student_course",
+        joinColumns = @JoinColumn(name = "STUDENT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "COURSE_ID")
+    )
+    private Set<Course> courses = new HashSet<>();
+
+    // Constructors, getters, setters, and utility methods
+
+    public void enrollInCourse(Course course) {
+        courses.add(course);
+        course.getStudents().add(this); 
+        // Maintain bidirectional relationship
+    }
+
+    public void dropCourse(Course course) {
+        courses.remove(course);
+        course.getStudents().remove(this); 
+        // Maintain bidirectional relationship
+    }
+}
+```
+
+`Course @Entity`  **inverse-side**
+
+```java
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String title;
+
+    @ManyToMany(mappedBy = "COURSES")
+    private Set<Student> students = new HashSet<>();
+
+    // Constructors, getters, setters, and utility methods
+}
+```
+
+
+Here's how we use these `entities` in a service or test:
+
+```java
+public class SchoolService {
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+    public void manageEnrollment() {
+        // Create some courses
+        Course math = new Course("Mathematics");
+        Course science = new Course("Science");
+
+        // Save courses
+        courseRepository.save(math);
+        courseRepository.save(science);
+
+        // Create a student and enroll in courses
+        Student issac = new Student("Isaac Boncodi");
+        issac.enrollInCourse(math);
+        issac.enrollInCourse(science);
+
+        // Save the student (this will also
+        // save the relationships)
+        studentRepository.save(issac);
+
+        // Drop the Science course
+        issac.dropCourse(science);
+
+        // Now if we save issac again, the Science course
+        // will be removed from the database
+        // if no other students are enrolled in it.
+        studentRepository.save(issac);
+        
+        // The Science course will be removed
+        // if it's no longer associated with any students.
+    }
+}
+```
+
+
+1. **Entities**: `Student` and `Course` are related through a many-to-many relationship with a join table (`student_course`).
+
+2. **Orphan Removal**: The `orphanRemoval = true` attribute in the `Student` class means that if a `Student` drops a `Course`, and no other students are enrolled in that course, it will be removed from the database.
+
+3. **Methods**: 
+   - `enrollInCourse`: Adds a course to a student's list and maintains the bidirectional relationship.
+   - `dropCourse`: Removes a course from a student's list and maintains the bidirectional relationship.
+
+4. **Usage**: When you drop a course and save the `Student`, if that course is no longer associated with any other students, it will be deleted from the database.
+
+
+
+
+### ManyToMany with Join Table @Entity
+
+> @Entity @ManyToMany with Join Table: in this particular case we will use two @OneToMany relationships to create a many-to-many, centered and owned by the join table.
+
+
+- Represents a `many-to-many` relationship <mark>using an intermediate entity</mark>
+- The `join table` becomes an **entity itself**, with two `one-to-many` relationships
+- Provides more flexibility and allows additional attributes on the relationship
+- **Example**: Students enrolled in Courses, with additional enrollment information
+
+```java
+@Entity
+public class Student {
+    @OneToMany(mappedBy = "student")
+    private List<Enrollment> enrollments;
+}
+
+@Entity
+public class Course {
+    @OneToMany(mappedBy = "course")
+    private List<Enrollment> enrollments;
+}
+
+@Entity
+public class Enrollment {
+    @ManyToOne
+    private Student student;
+
+    @ManyToOne
+    private Course course;
+
+    private LocalDate enrollmentDate;
+    private String grade;
+}
+```
+
+In this approach:
+
+- The `Enrollment` entity serves as the join table
+- It has two `@ManyToOne` relationships: one to `Student` and one to `Course`
+- Additional fields like `enrollmentDate` and `grade` can be added to the `Enrollment` entity
+- Both `Student` and `Course` have `@OneToMany` relationships to `Enrollment`
+- The mappedBy attribute in @OneToMany indicates the owning side of the relationship
+
+> This structure allows for more detailed modeling of the relationship between students and courses, enabling the storage of relationship-specific data and easier querying of the association.
+
+**Key Points**
+
+This structure allows you to:
+
+- Add additional fields to the relationship (e.g., enrollmentDate)
+- Easily `query` the relationship from both sides
+- Maintain better control over the `lifecycle` of the relationship
+
+### When two objects are equal? **Object Identity**
+
+> The difference between comparing objects based on object identity and comparing them based on field values lies in how equality is determined:
+>
+>  - by identity, that is, <mark>by using their memory addresses</mark>
+>  - by their field values
+
+**Object Identity**
+
+- **Object Identity** refers to comparing objects using their memory addresses (i.e., whether they are the same instance in memory).
+- In Java, this is done using the `==` operator.
+- Two objects are considered equal based on object identity if they refer to the same memory location.
+
+**Field Values**
+
+- **Field Values** refer to comparing objects based on the values of their fields.
+- In Java, this is typically done using the `equals` method.
+- Two objects are considered equal based on field values if their corresponding fields have the same values, even if they are different instances in memory.
+
+Example:
+
+Consider the following `MenuRestaurant` class:
+
+::: {.column-page-right}
+```java
+public class MenuRestaurant {
+    private int id;
+    private String name;
+
+    // Constructors, getters, and setters
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuRestaurant that = (MenuRestaurant) o;
+        return id == that.id && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+}
+```
+:::
+
+**Comparing Based on Object Identity**
+
+```java
+MenuRestaurant menu1 = 
+    new MenuRestaurant(1, "Pizza");
+MenuRestaurant menu2 = 
+    new MenuRestaurant(1, "Pizza");
+
+System.out.println(menu1 == menu2);
+// false, because they are different instances
+```
+
+**Comparing Based on Field Values**
+
+```java
+MenuRestaurant menu1 =
+    new MenuRestaurant(1, "Pizza");
+MenuRestaurant menu2 =
+    new MenuRestaurant(1, "Pizza");
+
+System.out.println(menu1.equals(menu2));
+// true, because their fields are equal
+```
+
+### Using AssertJ with Comparator
+
+- [public void testAddingMenusToOrder() ](https://github.com/AlbertProfe/restaurantManager/blob/bc75ce39d75158ee0e30f287e3d5b030fb8d9591/src/test/java/dev/example/restaurantManager/RelationshipsOrderRestaurantTest.java#L222){.external target='_blank'}
+- [Heap and Stack](https://nus-cs2030s.github.io/2223-s2/10-heap-stack.html){.external target='_blank'}
+
+::: {.column-page-right}
+`usingElementComparator(Comparator.comparing(MenuRestaurant::getId))`
+:::
+When you use the above expression, you are specifying that the comparison should be based on the `id` field of the `MenuRestaurant` objects:
+
+::: {.column-page-right}
+```java
+import static org.assertj.core.api.Assertions.assertThat;
+
+List<MenuRestaurant> menuList = Arrays.asList(menu1, menu2, menu3);
+
+assertThat(menuList)
+    .usingElementComparator(Comparator.comparing(MenuRestaurant::getId))
+    .containsExactlyInAnyOrder(menu1, menu2, menu3);
+```
+:::
+
+In this case, the comparison is based on the `id` field, not the object identity or the default `equals` method. This allows you to verify that the collection contains the expected elements based on their IDs, regardless of their memory addresses.
+
+
+# API Rest: DATA structure
+
+- [JSON crack](https://jsoncrack.com/){.external target='_blank'}
+- [Guide to API-first](https://www.postman.com/api-first/){.external target='_blank'}
+
+> The **API-first approach** emphasizes <mark>designing APIs before coding</mark>, ensuring they serve as the foundation of software development. This paradigm promotes contract-first development, enhancing consistency and reusability across projects.
+>
+> <mark>By prioritizing API design, teams improve collaboration and developer experience, facilitating faster integration and automation</mark>.
+>
+> This approach is particularly beneficial in **microservices architectures**, where well-defined APIs enable seamless communication between services.
+
+
+
+Defining a `Spring Boot Controller` based on the API REST URL and JSON data structure is key for several reasons:
+
+**Mapping Requests to Endpoints**: The controller acts as a bridge between the client requests and the application's business logic. By defining endpoints that correspond to specific URLs, you ensure that incoming HTTP requests are properly routed to the appropriate handler methods.
+
+**Data Handling**: The JSON data structure dictates how the controller should process and respond to requests. For instance, in the given examples, the order structure varies:
+
+- With full `menu` details
+- With `menu` IDs and quantities
+- With ordered items including `menu` details and quantities
+
+Each structure requires different **request/response** handling in the controller.
+
+**Request Validation**: `Controllers` can validate incoming `JSON` payloads against expected structures. This ensures data integrity and prevents processing of malformed requests.
+
+**Response Formatting**: The `controller` determines how data is sent back to the client. It can shape the response to match the expected JSON structure, ensuring consistency in `API` communication.
+
+**Business Logic Integration**: By understanding the data structure, `controllers` can efficiently delegate tasks to appropriate service layers, facilitating separation of concerns and maintainable code architecture.
+
+**Versioning and Flexibility**: Different `JSON` structures might represent different versions of the `API`. `Controllers` can be designed to handle multiple versions, ensuring backward compatibility while allowing for future enhancements.
+
+
+## `Order` with `Menus`, no qty
+
+```json
+{
+  "id": "ORD123456",
+  "date": "2024-10-29T12:30:00Z",
+  "waiter": "John Doe",
+  "peopleQty": 4,
+  "totalPayment": 120.50,
+  "paid": false,
+  "menus": [
+    {
+      "id": "MENU001",
+      "name": "Lunch Special",
+      "description": "Includes main course,
+       side dish, and drink",
+      "price": 25.99,
+      "category": "LUNCH"
+    },
+    {
+      "id": "MENU002",
+      "name": "Dinner Deluxe",
+      "description": "Three-course meal with appetizer,
+       main course, and dessert",
+      "price": 39.99,
+      "category": "DINNER"
+    },
+    {
+      "id": "MENU003",
+      "name": "Kids Meal",
+      "description": "Child-friendly portion
+       with fun sides",
+      "price": 12.99,
+      "category": "KIDS"
+    }
+  ]
+}
+```
+
+## `Order` with `Menus` and qty
+
+```json
+{
+  "id": "ORD123456",
+  "date": "2024-10-29T12:30:00Z",
+  "waiter": "John Doe",
+  "peopleQty": 4,
+  "totalPayment": 120.50,
+  "paid": false,
+  "menus" : {
+    "M01": 0,
+    "M02": 3,
+    "M03": 5,
+    "M04": 0,
+    "M05": 9,
+    "M06": 0
+
+  }
+
+}
+```
+
+```json
+{
+  "id": "ORD123456",
+  "date": "2024-10-29T12:30:00Z",
+  "waiter": "John Doe",
+  "peopleQty": 4,
+  "totalPayment": 120.50,
+  "paid": false,
+  "menus" : [
+    {"M01": 1},
+    {"M02": 2},
+    {"M08": 1}
+  ]
+
+}
+```
+
+```json
+{
+  "id": "ORD123456",
+  "date": "2024-10-29T12:30:00Z",
+  "waiter": "John Doe",
+  "peopleQty": 4,
+  "totalPayment": 120.50,
+  "paid": false,
+  "orderedItems": [
+    {
+      "menu": {
+        "id": "MENU001",
+        "name": "Lunch Special",
+        "description": "Includes main course,
+         side dish, and drink",
+        "price": 25.99,
+        "category": "LUNCH"
+      },
+      "quantity": 2
+    },
+    {
+      "menu": {
+        "id": "MENU002",
+        "name": "Dinner Deluxe",
+        "description": "Three-course meal with
+         appetizer, main course, and dessert",
+        "price": 39.99,
+        "category": "DINNER"
+      },
+      "quantity": 1
+    },
+    {
+      "menu": {
+        "id": "MENU003",
+        "name": "Kids Meal",
+        "description": "Child-friendly portion
+         with fun sides",
+        "price": 12.99,
+        "category": "KIDS"
+      },
+      "quantity": 1
+    }
+  ]
+}
+```
+
+
+
+# Inherence and JPA
+
+![Entity Inheritance](/images/springboot/labsb04-1-entity-inherence-.png)
+
+
+**Inheritance** is a fundamental concept of `POO`, but <mark>Relational databases have no concept of inheritance</mark> neither `NoSQL` (MongoDB, DymamoDB), so persisting [inheritance](https://en.wikibooks.org/wiki/Java_Persistence/Inheritance) in a `SQL` and `NoSQL` database has its own particular way.
+
+> Because `relational databases` have no concept of `inheritance`, there is no standard way of implementing `inheritance` in database, so the hardest part of persisting `inheritance` is choosing **how** to represent the inheritance in the database.
+
+`JPA` defines several `inheritance` mechanisms, mainly defined though the [@Inheritance](https://docs.oracle.com/javaee/7/api/javax/persistence/Inheritance.html) annotation or the `<inheritance>` element.
+
+There are **three inheritance strategies** defined from the [InheritanceType](https://docs.oracle.com/javaee/7/api/javax/persistence/InheritanceType.html) `enum`:
+
+1. `SINGLE_TABLE`: [`SINGLE_TABLE`](/images/springboot/inherence-jpa-onetable.png){.external target='_blank'}
+1. `TABLE_PER_CLASS`: [TABLE_PER_CLASS](/images/springboot/inherence-jpa-onetalbe-per-class.png){.external target='_blank'}
+1. `JOINED`: [`JOINED`](/images/springboot/inherence-jpa-join.png){.external target='_blank'}
+
+* **Single table** inheritance is the default with discriminator values,
+* and **table per class** is an optional feature of the JPA spec, <mark>so not all providers may support it</mark>.
+* in **joined** strategy each class in the hierarchy is mapped to its table.
+
+**MAPPED SUPERCLASS**
+
+JPA also defines a `mapped superclass` concept defined through the [@MappedSuperclass](https://docs.oracle.com/javaee/7/api/javax/persistence/MappedSuperclass.html) annotation or the `<mapped-superclass>` element.
+
+A `mapped superclass` **is not a persistent class**, but allows common mappings to be defined for its subclasses.
+
+1. `MAPPED SUPERCLASS`: [@MappedSuperClass](/images/springboot/inherence-jpa-mapped-superclass.png){.external target='_blank'}
+
+
+Links:
+
+- [orientdb](https://orientdb.com/docs/2.2.x/Teleporter-Table-Per-Concrete-Class-Inheritance.html)
+- [logicbig](https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/mapped-super-class.html)
+- [Java Persistence/Inheritance wikibooks](https://en.wikibooks.org/wiki/Java_Persistence/Inheritance)
+- [apache](https://openjpa.apache.org/builds/2.2.0/apache-openjpa/docs/jpa_overview_mapping_inher.html)
+- [Lab#SB04-1](/springboot/sblab4.qmd){.external target='_blank'}
+
+## `OrderRestaurant` to `Abstract` class
+
+- [OrderRestaurant refactor to abstract class and test createOrdersTest()](https://github.com/AlbertProfe/restaurantManager/tree/ca402fdfd3f82b64850905eaaa08881821bc6a90){.external target='_blank'}
+
+**Key Points**
+
+- **Abstract Class**: The `OrderRestaurant` class is declared as `abstract`, meaning it cannot be instantiated directly.
+- **Abstract Method**: The `calculateTotalPayment` method is declared as `abstract`, requiring any concrete subclasses to implement this method.
+- **Non-Abstract Methods**: Methods like `addMenu` and `removeMenu` are implemented in the abstract class and can be used by all subclasses.
+- **Constructor**: A constructor is provided to initialize the object without the `orderMenuQties` list.
+- **List Initialization**: In the `addMenu` method, the `orderMenuQties` list is initialized if it is null to avoid `NullPointerException`.
+
+<details>
+<summary>`OrderRestaurant` to `Abstract` class</summary>
+
+```java
+package dev.example.restaurantManager.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "ORDER_RESTAURANT")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class OrderRestaurant {
+
+    @Id
+    private String id;
+    private Date date;
+    private String waiter;
+    private int peopleQty;
+    private double totalPayment;
+    private boolean paid;
+
+
+    @OneToMany(mappedBy = "order", 
+        cascade = CascadeType.ALL,
+        orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<OrderMenuQty> orderMenuQties;
+
+
+    // Constructor without orderMenuQties
+    public OrderRestaurant(String id, Date date, 
+            String waiter, int peopleQty,
+            double totalPayment, boolean paid) {
+        this.id = id;
+        this.date = date;
+        this.waiter = waiter;
+        this.peopleQty = peopleQty;
+        this.totalPayment = totalPayment;
+        this.paid = paid;
+    }
+
+    public abstract double calculateTotalPayment();
+
+    // Method to add a menu to the order
+    public void addMenu(MenuRestaurant menu, int quantity) {
+        OrderMenuQty orderMenuQty = new OrderMenuQty();
+        orderMenuQty.setOrder(this);
+        orderMenuQty.setMenu(menu);
+        orderMenuQty.setQuantity(quantity);
+        this.orderMenuQties.add(orderMenuQty);
+    }
+
+    // Method to remove a menu from the order
+    public void removeMenu(MenuRestaurant menu) {
+        this.orderMenuQties
+            .removeIf(omq -> omq.getMenu().equals(menu));
+    }
+
+
+    @Override
+    public String toString() {
+        return "OrderRestaurant{" +
+                "id='" + id + '\'' +
+                ", date=" + date +
+                ", waiter='" + waiter + '\'' +
+                ", peopleQty=" + peopleQty +
+                ", totalPayment=" + totalPayment +
+                ", paid=" + paid +
+
+                '}';
+    }
+
+}
+
+```
+</details>
+
+Declare the **Class as Abstract**: to make a superclass an `abstract` class, you need to add the `abstract` **keyword** before the `class` **keyword** in its declaration.
+
+``` java
+public abstract class OrderRestaurant {
+    // class members and methods
+}
+```
+
+**Abstract Methods**
+
+
+If the class contains methods that should be implemented by its subclasses, declare these methods as abstract by adding the `abstract` keyword before the method declaration. Abstract methods do not have an implementation.
+
+```java
+public abstract class OrderRestaurant {
+    public abstract void prepareOrder();
+    public abstract void serveOrder();
+}
+```
+
+**Non-Abstract Methods**
+
+
+An abstract class can also contain non-abstract methods, which have implementations and can be used directly by subclasses.
+
+```java
+public abstract class OrderRestaurant {
+    public void printReceipt() {
+        // implementation
+    }
+}
+```
+
+**Subclass Implementation**
+
+Subclasses of the abstract class must implement all abstract methods declared in the superclass. If a subclass itself is abstract, it does not need to implement these methods but must be declared as abstract as well.
+
+```java
+public class FastFoodRestaurant 
+            extends OrderRestaurant {
+    @Override
+    public void prepareOrder() {
+        // implementation
+    }
+
+    @Override
+    public void serveOrder() {
+        // implementation
+    }
+}
+```
+
+**Avoid Instantiation**
+
+Abstract classes cannot be instantiated directly. Any attempt to instantiate an abstract class will result in an `InstantiationException`. Ensure that any code that previously instantiated the superclass now instantiates one of its concrete subclasses.
+
+**Refactoring Tools**
+
+Using an IDE like IntelliJ IDEA, you can use the "Extract Superclass" refactoring to help create an abstract superclass from an existing class. This tool allows you to move members to the new superclass and declare methods as abstract if necessary.
+
+
+
+# Populate DB
+
+![UML](/images/springboot/labsb08/labsb08-4-uml.png)
+
+- [DataLoader](https://github.com/AlbertProfe/restaurantManager/blob/6a5958b74c16a495ac4452b0320756b8a3598e4e/src/main/java/dev/example/restaurantManager/utilities/DataLoader.java){.external target='_blank'}
+- [restaurantManagerDB](/images/springboot/labsb08/restaurantManagerDB.mv.db){.external target='_blank'}
+
+::: {.callout-note}
+# How to import H2-DB
+
+Using the command line, navigate to the directory containing the **H2 jar file**.
+Run the following command:
+
+``` java
+java -cp h2-*.jar org.h2.tools.RunScript -url jdbc:h2:~/restaurantManagerDB -user <username> -password <password> -script path/to/your/restaurantManagerDB_script.sql
+```
+
+Replace `<username>` and `<password>` with your chosen credentials, and provide the correct path to your SQL script.
+
+:::
+
+## DataLoader Class
+
+The `DataLoader` class is the Spring `component` designed to populate an **H2 database** with fake data for a `RestaurantManagement` project. Key features include:
+
+- Uses `@Autowired` repositories for database interactions
+- Employs the **JavaFaker library** to generate realistic mock data
+- Main method `loadAllData()` <mark>orchestrates</mark> the data creation process
+
+**Data Creation Methods**
+
+1. `createCustomers()`: Generates 25 `customer` records
+2. `createTables()`: Creates 10 `restaurant table` entries
+3. `createMenuItems()`: Produces 25 `menu item` records
+4. `createMenusAndAssignMenuItems()`: Establishes 15 menus, each with 5-10 menu items
+5. `createBookingsAndAssignTablesAndCustomers()`: Generates 25 `bookings`, linking `customers` and `tables`
+6. `createOrdersAndAssignMenus()`: Creates 45 `orders` with associated `menu` quantities
+
+**Key Aspects**
+
+- Utilizes `UUID` for unique identifiers
+- Establishes `relationships` between entities (e.g., many-to-many between menus and menu items)
+- Simulates realistic data ranges (e.g., customer ages, table capacities)
+- Implements date handling for `bookings` and `orders`
+
+
+
+## @Component
+
+The `@Component` annotation is used <mark>to mark a class as a Spring-managed component</mark>.
+
+- **Automatic** `Bean` Creation: `@Component` tells Spring to automatically create and manage an instance of the annotated class as a bean in the application context.
+- **Dependency Injection**: It enables the class to be a candidate for dependency injection, allowing Spring to automatically <mark>wire its dependencies</mark>.
+- **Component Scanning**: `@Component` works with Spring's component scanning feature to detect and register beans without explicit configuration.
+
+How @Component Works:
+
+1. Class-Level Annotation: `@Component` is applied at the class level.
+2. `Bean` Creation: When Spring scans the classpath, it detects classes annotated with `@Component` and creates beans for them[1][2].
+3. Default Naming: By default, the bean name is the class name with the first letter in lowercase.
+4. Customizable: You can specify a custom name for the bean using `@Component`("customName").
+5. Specialized Annotations: `@Service`, `@Repository`, and `@Controller` are specialized forms of `@Component` for specific use cases.
+
+## Usage Example
+
+```java
+@Component
+public class MathComponent {
+    public int add(int x, int y) {
+        return x + y;
+    }
+}
+```
+
+In this example, Spring will automatically create a `bean` of `MathComponent`, which can then be autowired or retrieved from the application context.
+
+**Benefits**
+
+> By using @Component, we can leverage Spring's dependency injection and inversion of control features with minimal configuration, leading to more maintainable and modular code.
+
+1. **Simplifies Configuration**: Reduces the need for XML-based bean definitions.
+2. Promotes **Loose Coupling**: Facilitates dependency injection and easier unit testing.
+3. Improves Code Organization: Helps in categorizing classes based on their roles in the application.
+
+
+# Test JUnit
+
+![](/images/springboot/labsb08/lab08-4-test-order.png)
+
+- [Commit a274a39 code](https://github.com/AlbertProfe/restaurantManager/tree/a274a39371aaf0d553754eeeaad75aad101eff2a){.external target='_blank'}
+- [Commit a274a39](https://github.com/AlbertProfe/restaurantManager/commit/a274a39371aaf0d553754eeeaad75aad101eff2a){.external target='_blank'}
+
+
+::: {.column-page-right}
+
+<details>
+<summary>Code Test `OrderRepositoryTest`</summary>
+
+``` java
+package dev.example.restaurantManager.order;
+
+import dev.example.restaurantManager.repository.MenuRestaurantRepository;
+import dev.example.restaurantManager.repository.OrderMenuQtyRepository;
+import dev.example.restaurantManager.repository.OrderRestaurantRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import dev.example.restaurantManager.model.OrderMenuQty;
+import dev.example.restaurantManager.model.OrderRestaurant;
+import dev.example.restaurantManager.model.MenuRestaurant;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SpringBootTest
+public class OrderRepositoryTest {
+
+    @Autowired
+    private OrderMenuQtyRepository orderMenuQtyRepository;
+    @Autowired
+    private OrderRestaurantRepository orderRestaurantRepository;
+    @Autowired
+    private MenuRestaurantRepository menuRestaurantRepository;
+    @Autowired
+    private EntityManager entityManager;
+
+    @Test
+    public void testDeleteOrderMenuQty() {
+        // Get the first OrderMenuQty from the repository
+        OrderMenuQty orderMenuQty = orderMenuQtyRepository.findAll(PageRequest.of(0, 1)).getContent().get(0);
+        assertThat(orderMenuQty).isNotNull();
+
+        // Store the IDs of associated Order and Menu
+        String orderId = orderMenuQty.getOrder().getId();
+        String menuId = orderMenuQty.getMenu().getId();
+
+        // Delete the OrderMenuQty
+        orderMenuQtyRepository.deleteById(orderMenuQty.getId());
+
+        // Verify the OrderMenuQty has been deleted
+        OrderMenuQty deletedOrderMenuQty = orderMenuQtyRepository.findById(orderMenuQty.getId()).orElse(null);
+        assertThat(deletedOrderMenuQty).isNull();
+
+        // Verify that the associated Order and Menu still exist
+        OrderRestaurant existingOrder = orderRestaurantRepository.findById(orderId).orElse(null);
+        MenuRestaurant existingMenu = menuRestaurantRepository.findById(menuId).orElse(null);
+        assertThat(existingOrder).isNotNull();
+        assertThat(existingMenu).isNotNull();
+        assertThat(existingOrder.getId()).isEqualTo(orderId);
+        assertThat(existingMenu.getId()).isEqualTo(menuId);
+    }
+
+    @Test
+    public void testUpdateOrderMenuQty() {
+        // Get the first OrderMenuQty from the repository
+        OrderMenuQty orderMenuQty = orderMenuQtyRepository.findAll(PageRequest.of(0, 1)).getContent().get(0);
+        assertThat(orderMenuQty).isNotNull();
+
+        // Store the original quantity and IDs
+        int originalQuantity = orderMenuQty.getQuantity();
+        String orderId = orderMenuQty.getOrder().getId();
+        String menuId = orderMenuQty.getMenu().getId();
+
+        // Update the quantity
+        int newQuantity = originalQuantity + 1;
+        orderMenuQty.setQuantity(newQuantity);
+        orderMenuQtyRepository.save(orderMenuQty);
+
+        // Retrieve the updated OrderMenuQty
+        OrderMenuQty updatedOrderMenuQty = orderMenuQtyRepository.findById(orderMenuQty.getId()).orElse(null);
+        assertThat(updatedOrderMenuQty).isNotNull();
+        assertThat(updatedOrderMenuQty.getQuantity()).isEqualTo(newQuantity);
+
+        // Verify that the associated Order and Menu still exist and haven't changed
+        OrderRestaurant existingOrder = orderRestaurantRepository.findById(orderId).orElse(null);
+        MenuRestaurant existingMenu = menuRestaurantRepository.findById(menuId).orElse(null);
+        assertThat(existingOrder).isNotNull();
+        assertThat(existingMenu).isNotNull();
+        assertThat(existingOrder.getId()).isEqualTo(orderId);
+        assertThat(existingMenu.getId()).isEqualTo(menuId);
+
+        // Verify that the updated OrderMenuQty still references the same Order and Menu
+        assertThat(updatedOrderMenuQty.getOrder().getId()).isEqualTo(orderId);
+        assertThat(updatedOrderMenuQty.getMenu().getId()).isEqualTo(menuId);
+    }
+
+    @Test
+    public void testDeleteOrderMenuQtyFromOrderRestaurant() {
+        // Get the first OrderRestaurant from the repository
+        OrderRestaurant orderRestaurant = orderRestaurantRepository.findAll(PageRequest.of(0, 1)).getContent().get(0);
+        assertThat(orderRestaurant).isNotNull();
+
+        // Store the original number of OrderMenuQty objects
+        int originalOrderMenuQtyCount = orderRestaurant.getOrderMenuQties().size();
+        assertThat(originalOrderMenuQtyCount).isGreaterThan(0);
+
+        // Store the IDs of the OrderMenuQty objects
+        List<String> orderMenuQtyIds = orderRestaurant.getOrderMenuQties().stream()
+                .map(OrderMenuQty::getId)
+                .toList();
+
+        // Delete all OrderMenuQty objects
+        orderMenuQtyRepository.deleteAllById(orderMenuQtyIds);
+
+        // Clear the list in the OrderRestaurant object
+        orderRestaurant.getOrderMenuQties().clear();
+
+        // Save the updated OrderRestaurant
+        orderRestaurantRepository.save(orderRestaurant);
+
+        // Retrieve the updated OrderRestaurant
+        OrderRestaurant updatedOrderRestaurant = orderRestaurantRepository.findById(orderRestaurant.getId()).orElse(null);
+        assertThat(updatedOrderRestaurant).isNotNull();
+
+        // Verify that the OrderMenuQty list is empty
+        assertThat(updatedOrderRestaurant.getOrderMenuQties()).isEmpty();
+
+        // Verify that the OrderMenuQty objects have been deleted from the database
+        for (String id : orderMenuQtyIds) {
+            assertThat(orderMenuQtyRepository.findById(id)).isEmpty();
+        }
+    }
+
+    @Test
+    @Transactional
+    public void testDeleteOrderMenuQtyFromOrderRestaurant_Solved_1() {
+        // Create a MenuRestaurant
+        MenuRestaurant menu = new MenuRestaurant();
+        menu.setId(UUID.randomUUID().toString());
+        menu.setName("Test Menu");
+        menu.setContent("Test Description");
+        menuRestaurantRepository.save(menu);
+
+        // Create an OrderRestaurant with associated OrderMenuQty objects
+        OrderRestaurant orderRestaurant = new OrderRestaurant();
+        orderRestaurant.setId(UUID.randomUUID().toString());
+        orderRestaurant.setDate(new Date());
+        orderRestaurant.setWaiter("Test Waiter");
+        orderRestaurant.setPeopleQty(2);
+        orderRestaurant.setTotalPayment(50.0);
+        orderRestaurant.setPaid(true);
+        orderRestaurant.setOrderMenuQties(new ArrayList<>());
+
+        // Add OrderMenuQty objects
+        for (int i = 0; i < 3; i++) {
+            OrderMenuQty orderMenuQty = new OrderMenuQty();
+            orderMenuQty.setId(UUID.randomUUID().toString());
+            orderMenuQty.setOrder(orderRestaurant);
+            orderMenuQty.setMenu(menu);
+            orderMenuQty.setQuantity(i + 1);
+            orderRestaurant.getOrderMenuQties().add(orderMenuQty);
+        }
+
+        orderRestaurantRepository.save(orderRestaurant);
+
+        // Clear the persistence context
+        entityManager.flush();
+        entityManager.clear();
+
+        // Retrieve the saved OrderRestaurant
+        OrderRestaurant savedOrderRestaurant = orderRestaurantRepository.findById(orderRestaurant.getId()).orElseThrow();
+        // Print the saved OrderRestaurant
+        System.out.println("savedOrderRestaurant: "+ savedOrderRestaurant);
+        System.out.println("Qty OrderMenuQties: " + savedOrderRestaurant.getOrderMenuQties().size());
+        savedOrderRestaurant.getOrderMenuQties().forEach(System.out::println);
+
+
+        // Assert that the OrderRestaurant has OrderMenuQty objects
+        assertThat(savedOrderRestaurant.getOrderMenuQties()).isNotEmpty();
+        int originalOrderMenuQtyCount = savedOrderRestaurant.getOrderMenuQties().size();
+        assertThat(originalOrderMenuQtyCount).isGreaterThan(0);
+
+        // Store the IDs of the OrderMenuQty objects
+        List<String> orderMenuQtyIds = savedOrderRestaurant.getOrderMenuQties().stream()
+                .map(OrderMenuQty::getId)
+                .toList();
+
+        // Delete all OrderMenuQty objects
+        orderMenuQtyRepository.deleteAllById(orderMenuQtyIds);
+
+        // Clear the OrderMenuQties list in the OrderRestaurant object
+        savedOrderRestaurant.getOrderMenuQties().clear();
+
+        // Save the updated OrderRestaurant
+        orderRestaurantRepository.save(savedOrderRestaurant);
+
+        // Clear the persistence context
+        entityManager.flush();
+        entityManager.clear();
+
+        // Retrieve the updated OrderRestaurant
+        OrderRestaurant updatedOrderRestaurant =
+                orderRestaurantRepository.findById(savedOrderRestaurant.getId()).orElseThrow();
+
+        // Verify that the OrderMenuQty list is empty
+        assertThat(updatedOrderRestaurant.getOrderMenuQties()).isEmpty();
+
+        // Verify that the OrderMenuQty objects have been deleted from the database
+        for (String id : orderMenuQtyIds) {
+            assertThat(orderMenuQtyRepository.findById(id)).isEmpty();
+        }
+    }
+
+    @Test
+    @Transactional
+    public void testDeleteOrderMenuQtyFromOrderRestaurant_Solved_2() {
+        // Get the first OrderRestaurant from the repository
+        OrderRestaurant orderRestaurant = orderRestaurantRepository.findAll(PageRequest.of(15, 1)).getContent().get(0);
+        assertThat(orderRestaurant).isNotNull();
+
+        // Clear the persistence context
+        entityManager.clear();
+
+        // Create a list and load it with OrderMenuQty data from the database for this OrderRestaurant
+        List<OrderMenuQty> orderMenuQties = orderMenuQtyRepository.findAll().stream()
+                .filter(omq -> omq.getOrder().getId().equals(orderRestaurant.getId()))
+                .collect(Collectors.toList());
+
+        // Set the OrderMenuQties for the OrderRestaurant
+        orderRestaurant.setOrderMenuQties(orderMenuQties);
+
+        // Print the OrderRestaurant and its OrderMenuQties
+        System.out.println("OrderRestaurant: " + orderRestaurant);
+        System.out.println("Qty OrderMenuQties: " + orderRestaurant.getOrderMenuQties().size());
+        orderRestaurant.getOrderMenuQties().forEach(System.out::println);
+
+        // Assert that the OrderRestaurant has OrderMenuQty objects
+        assertThat(orderRestaurant.getOrderMenuQties()).isNotEmpty();
+        int originalOrderMenuQtyCount = orderRestaurant.getOrderMenuQties().size();
+        assertThat(originalOrderMenuQtyCount).isGreaterThan(0);
+
+        // Store the IDs of the OrderMenuQty objects
+        List<String> orderMenuQtyIds = orderRestaurant.getOrderMenuQties().stream()
+                .map(OrderMenuQty::getId)
+                .toList();
+
+        // Delete all OrderMenuQty objects
+        orderMenuQtyRepository.deleteAllById(orderMenuQtyIds);
+
+        // Clear the OrderMenuQties list in the OrderRestaurant object
+        orderRestaurant.getOrderMenuQties().clear();
+
+        // Save the updated OrderRestaurant
+        orderRestaurantRepository.save(orderRestaurant);
+
+        // Clear the persistence context
+        entityManager.flush();
+        entityManager.clear();
+
+        // Retrieve the updated OrderRestaurant
+        OrderRestaurant updatedOrderRestaurant = orderRestaurantRepository.findById(orderRestaurant.getId()).orElseThrow();
+
+        // Verify that the OrderMenuQty list is empty
+        assertThat(updatedOrderRestaurant.getOrderMenuQties()).isEmpty();
+
+        // Verify that the OrderMenuQty objects have been deleted from the database
+        for (String id : orderMenuQtyIds) {
+            assertThat(orderMenuQtyRepository.findById(id)).isEmpty();
+        }
+    }
+    @Test
+    @Transactional
+    public void testDeleteOrderMenuQtyFromOrderRestaurant_Solved_3() {
+        // Get the 15th OrderRestaurant from the repository with its OrderMenuQty objects
+        OrderRestaurant orderRestaurant = entityManager.createQuery(
+                        "SELECT o FROM OrderRestaurant o LEFT JOIN FETCH o.orderMenuQties WHERE o.id IN :ids",
+                        OrderRestaurant.class)
+                .setParameter("ids", orderRestaurantRepository.findAll(PageRequest.of(14, 1))
+                        .getContent()
+                        .stream()
+                        .map(OrderRestaurant::getId)
+                        .toList())
+                .getSingleResult();
+
+        assertThat(orderRestaurant).isNotNull();
+
+        // Print the OrderRestaurant and its OrderMenuQties
+        System.out.println("OrderRestaurant: " + orderRestaurant);
+        System.out.println("Qty OrderMenuQties: " + orderRestaurant.getOrderMenuQties().size());
+        orderRestaurant.getOrderMenuQties().forEach(System.out::println);
+
+        // Assert that the OrderRestaurant has OrderMenuQty objects
+        assertThat(orderRestaurant.getOrderMenuQties()).isNotEmpty();
+        int originalOrderMenuQtyCount = orderRestaurant.getOrderMenuQties().size();
+        assertThat(originalOrderMenuQtyCount).isGreaterThan(0);
+
+        // Store the IDs of the OrderMenuQty objects
+        List<String> orderMenuQtyIds = orderRestaurant.getOrderMenuQties().stream()
+                .map(OrderMenuQty::getId)
+                .toList();
+
+        // Delete all OrderMenuQty objects
+        orderMenuQtyRepository.deleteAllById(orderMenuQtyIds);
+
+        // Clear the OrderMenuQties list in the OrderRestaurant object
+        orderRestaurant.getOrderMenuQties().clear();
+
+        // Save the updated OrderRestaurant
+        orderRestaurantRepository.save(orderRestaurant);
+
+        // Clear the persistence context
+        entityManager.flush();
+        entityManager.clear();
+
+        // Retrieve the updated OrderRestaurant
+        OrderRestaurant updatedOrderRestaurant = entityManager.createQuery(
+                        "SELECT o FROM OrderRestaurant o LEFT JOIN FETCH o.orderMenuQties WHERE o.id = :id",
+                        OrderRestaurant.class)
+                .setParameter("id", orderRestaurant.getId())
+                .getSingleResult();
+
+        assertThat(updatedOrderRestaurant).isNotNull();
+
+        // Verify that the OrderMenuQty list is empty
+        assertThat(updatedOrderRestaurant.getOrderMenuQties()).isEmpty();
+
+        // Verify that the OrderMenuQty objects have been deleted from the database
+        for (String id : orderMenuQtyIds) {
+            assertThat(orderMenuQtyRepository.findById(id)).isEmpty();
+        }
+    }
+}
+
+
+```
+
+</details>
+
+:::
+
+
+
+`testDeleteOrderMenuQtyFromOrderRestaurant_Solved_3()` test does the following:
+
+1. Uses the provided SQL query to fetch the 15th `OrderRestaurant` (using `PageRequest.of(14, 1)`) along with its associated `OrderMenuQty` objects.
+
+2. Prints the `OrderRestaurant` and its `OrderMenuQties` for debugging purposes.
+
+3. Asserts that the `OrderRestaurant` has `OrderMenuQty` objects.
+
+4. Deletes all `OrderMenuQty` objects associated with the `OrderRestaurant`.
+
+5. Clears the `OrderMenuQties` list in the `OrderRestaurant` object.
+
+6. Saves the updated `OrderRestaurant`.
+
+7. Uses another SQL query to retrieve the updated `OrderRestaurant`.
+
+8. Verifies that the `OrderMenuQty` list is empty and that the objects have been deleted from the database.
+
+
+
+# Code
+
+## Commits
+
+
+All [Commits](https://github.com/AlbertProfe/restaurantManager/commits/master/){.external target='_blank'} master branch
+`AlbertProfe / restaurantManager` (Public) table:
+
+::: {.column-page-right}
+
+{{< include labsb08-4-commits/commits-table-restaurantManager.qmd >}}
+: `AlbertProfe / restaurantManager` (Public) commits table {tbl-colwidths="[10,20,55,5]"}
+
+:::
+
+- [Commits](https://github.com/AlbertProfe/restaurantManager/commits/master/){.external target='_blank'}
+
+All commits from `feature-order-abstract` [branch](https://github.com/AlbertProfe/restaurantManager/tree/feature-order-abstract){.external target='_blank'}
+
+## commit `85a23ab`
+
+- [manytomany menu n:m order](https://github.com/AlbertProfe/restaurantManager/tree/85a23abcf1d3e7a4818d7e374f2cbb1f81709371){.external target='_blank'}
+
+![](/images/springboot/labsb08/85a23ab-1.png){.lightbox}
+
+![](/images/springboot/labsb08/85a23ab-2.png){.lightbox}
+
+
+> <mark>When iterating on a project and introducing new relationships</mark>, such as a **many-to-many** relationship between **orders** and **menus**, existing tests m**ay fail due to outdated assumptions and data setup**. In this case, the test `TestCreateOrder` needs to be updated to reflect the new relationship structure.
+
+The main issue is that the test is creating `MenuRestaurant` objects in memory but not persisting them to the database. With a **many-to-many** relationship, both entities (**Order** and **Menu**) need to exist in the database before they can be associated.
+
+To fix this, the test should be refactored to:
+
+1. Save `MenuRestaurant` entities to the database using a repository before creating `orders`.
+2. Fetch the saved `menus` from the database when creating `orders`.
+3. Update the `order` creation process to use the new relationship structure.
+4. Adjust `assertions` to verify the new relationship.
+
+This **refactoring** ensures that the test <mark>accurately reflects the new data model and relationships</mark>.
+
+It also helps maintain the integrity of the test suite as the project evolves, ensuring that tests remain valid and useful for catching potential issues in the updated codebase.
+
+## commit `d65b4a9`
+
+In this commit we update `TestCreateOrder()` to reflect the new relationship structure and create a new test.
+
+- [TestCreateOrderMenu() and update TestCreateOrder()](https://github.com/AlbertProfe/restaurantManager/tree/d65b4a959ffe9b8d489e7ad0ef322b707482bb0c){.external target='_blank'}
+

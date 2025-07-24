@@ -1,0 +1,74 @@
+---
+title: "Linux: basic concepts"
+subtitle: Linux
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is Linux, free and  Unix-like open-source operating system based on the Linux kernel
+categories: [linux, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Linux**
+
+Linux is a **free and open-source operating system**. It is a **Unix-like operating system that is based on the Linux kernel**, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is commonly used in web servers, smartphones, and other devices where reliability, security, and performance are important.
+:::
+
+---
+
+## Bash 
+
+Bash is a **Unix shell and command language written by Brian Fox for the GNU Project as a free software** replacement for the Bourne shell. First released in 1989, it has been used as the **default login shell for most Linux distributions**.
+
+[More on Bass, next article](/linux/linux-what-bash.qmd)
+
+## Basic commands
+
+Here are some basic terminal commands that can be used in Linux Mint:
+
+- `pwd`: Print the name of the current working directory (i.e., show the full path to the current directory)
+- `ls`: List the contents of the current directory
+- `cd`: Change the current working directory
+- `mkdir`: Create a new directory
+- `rmdir`: Remove an empty directory
+- `touch`: Create a new file or update the timestamp of an existing file
+- `cp`: Copy a file or directory
+- `mv`: Move or rename a file or directory
+- `rm`: Remove a file
+- `man`: Display the manual page for a command
+- `sudo`: Run a command with superuser privileges
+- `apt-get` is a command-line utility for managing packages in the Linux operating system. It is used to **install, update, and remove packages from the system**. apt-get is part of the Advanced Packaging Tool (APT) system, which is used to manage software packages in the Debian and Ubuntu Linux distributions.
+
+These are just a few examples of the many commands that are available in Linux. To learn more about a specific command, you can use the `man` command to view its manual page.
+
+For example, to learn more about the `ls` command, you could type `man ls` in the terminal.
+
+## Getting software: wget, apt-get, etc
+
+- In Linux, `wget` is a command-line utility that allows you to download files from the internet. It can be used to download files from HTTP, HTTPS, and FTP servers.
+- `apt-get` is a package manager for the Debian and Ubuntu Linux distributions. It allows you to install, update, and remove software packages from your system.
+- `snap` is a package manager developed by Canonical, the company behind the Ubuntu Linux distribution. It allows you to install and manage software packages in a consistent and secure way, and is designed to work across a wide range of Linux distributions.
+- There are other similar package managers in Linux, such as `yum` for Red Hat and CentOS, and `dnf` for Fedora. These package managers allow you to easily install, update, and remove software packages on your system.
+
+## CHMOD
+
+![Linux CHMOD cheat-sheet](/images/linux/chmod-cheatsheet.png){width=90%}
+
+## Cheat-sheet Linux Commands
+
+This cheat sheet presents a list of **command-line executables that are frequently used by developers** working on a computer running the Linux operating system. The commands are organized by **category**.
+
+[Linux-Commands-cheat-sheet-Red-Hat-Developer](/images/linux/Linux-Commands-cheat-sheet-Red-Hat-Developer.pdf){.external}
+
+The ``$`` symbol that proceeds commands in the examples represents the **command line prompt**
+
+[Linux-Commands-cheat-sheet-Red-Hat-Developer](/images/linux/Bash-commands-cheat-sheet-Red-Hat-Developer.pdf){.external}
+
+
+

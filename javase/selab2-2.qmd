@@ -1,0 +1,307 @@
+---
+title: "Lab#SE02-2: Movie/Review, CRUD Operations"
+subtitle: Java SE Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 02, part 2, CRUD Operations
+categories: [javase, lab, manager, static, crud]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI02-2: Opearations**
+
+1. Create `Java Class MovieManager` to manage all movie objects created.
+
+2. `Java Class MovieManager` could work like this:
+
+    - Every time a movie object is created, it could be saved within a data structure:
+      - ``ArrayList`` or ``List``
+      - ``Set`` or similar
+      - ``HashMap`` or ``Map``
+    - The `Java Class MovieManager` could perfom all CRUD operations.
+    - Besides, it colud save data as String to JSON or CSV as local file.
+:::
+
+## Core classes
+
+You could then use these:
+
+```{.java .code-overflow-wrap filename="Movie.java"}
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths; classes as follows:
+
+public class Movie{
+    private String title;
+    private String director;
+    private String genre;
+    private double size// movie size
+
+    //constructor , getters and setters
+    //lombok
+    @Override
+    public double getSize(){
+        return this.size;
+    }
+}
+``` 
+
+```{.java .code-overflow-wrap filename="MovieManager.java"}
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.HashMap;
+import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class MovieManager {
+    private int qty;
+    private double size;
+    private HashMap<String, Movie> movies;
+    private Date lastModified;
+
+    public MovieManager() {
+        this.qty = 0;
+        this.size = 0;
+        this.movies = new HashMap<>();
+        this.lastModified = new Date();
+    }
+
+    public void addMovie(Movie movie) {
+        this.movies.put(movie.getTitle(), movie);
+        this.qty++;
+        this.size += movie.getSize();
+        this.lastModified = new Date();
+    }
+
+    public void updateMovie(String title, Movie movie) {
+        this.movies.replace(title, movie);
+        this.lastModified = new Date();
+    }
+
+    public void deleteMovie(String title) {
+        Movie movie = this.movies.get(title);
+        this.movies.remove(title);
+        this.qty--;
+        this.size -= movie.getSize();
+        this.lastModified = new Date();
+    }
+
+    public Movie getMovie(String title) {
+        return this.movies.get(title);
+    }
+}
+```
+
+## Solving discussion
+
+### MovieManager uses Movie
+
+Let's grow  our code of the ``MovieManager`` class by adding two methods: ``saveToCSV()`` and ``deleteCSV()``.
+
+
+The ``saveToCSV()`` method is used to save the movie data stored in the movies ``HashMap`` field of the ``MovieManager`` class to a ``CSV`` (Comma Separated Values) file named **movies.csv** located **in the same directory as the running program**. It uses a ``FileWriter`` object to write the data to the file.
+
+
+The ``deleteCSV()`` method is used to delete a ``CSV`` file named **movies.csv** located in the directory **``/home/devops/MyProjects/JavaSEProjects/MovieManager/resources/``**. It uses a File object to represent the file, and the ``delete()`` method of the File class to delete the file.
+
+If the file is deleted **successfully**, it prints "File deleted successfully" message, otherwise it prints "Failed to delete the file" message.
+
+
+```{.java .code-overflow-wrap filename="MovieManager.java"}
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.HashMap;
+import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class MovieManager {
+    private int qty;
+    private double size;
+    private HashMap<String, Movie> movies;
+    private Date lastModified;
+
+    public MovieManager() {
+       // ...
+    }
+
+    public void addMovie(Movie movie) {
+        // ...
+    }
+
+      public Movie getMovie(String title) {
+        // ...
+    }
+
+    // this is a mere idea, just a proposal to understand
+    // how it colud be done
+    // iterate the hashMap movies to get each movies
+    // to save file in Linxu
+    //  try (FileWriter writer = 
+    // new FileWriter("/home/~/movies.csv")
+    // )
+    public void saveToCSV() {
+        try (FileWriter writer = new FileWriter("movies.csv")) {
+            for (Movie movie : this.movies.values()) {
+                writer.append(movie.getTitle());
+                writer.append(",");
+                writer.append(movie.getDirector());
+                writer.append(",");
+                writer.append(movie.getGenre());
+                writer.append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCSV() {
+    File file = new File("/home/~/movies.csv");
+      if(file.delete()){
+          System.out.println("File deleted successfully");
+      }else{
+          System.out.println("Failed to delete the file");
+      }
+    }
+}
+
+```
+::: {.column-margin}
+**It starts by creating a try-with-resources block**, which automatically closes the **FileWriter** object when the block finishes executing. Then it loops through the ``values()`` of the movies ``HashMap``, which gives an iterable collection of ``Movie`` objects.
+:::
+
+::: {.column-margin}
+For each ``Movie`` object, it appends the title, director and genre information separated *by commas*, and then a *newline character*. This creates a ``CSV`` file with each line representing a movie, in the format of: **title,director,genre.**
+:::
+
+::: {.column-margin}
+It's worth noting that this code is just an example, and it will work correctly if the file exists at the specified location. **If the file doesn't exist, the delete method will return false** and the message *"Failed to delete the file"* will be printed.
+:::
+
+::: {.column-margin}
+Also the path of csv file is **hardcoded** and it may change on different systems so **it's better to make it dynamic or keep it in configuration file.**
+:::
+
+This diagram shows that the `MovieManager` class uses the `Movie` class, and the arrow points **from MovieManager to Movie**.
+
+This indicates that **MovieManager class is dependent on Movie class** and it uses it as a **data structure.**
+
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+ class MovieManager {
+    -int qty
+    -double size
+    -HashMap<String, Movie> movies
+    -Date lastModified
+    +addMovie(Movie movie)
+    +updateMovie(String title, Movie movie)
+    +deleteMovie(String title)
+    +getMovie(String title)
+    +saveToCSV()
+    }
+    class Movie{
+    +String title
+    +String director
+    +String genre
+    +double size
+    +getSize()
+    }
+
+    MovieManager --> Movie
+
+```
+
+</div>
+
+
+
+### MovieManager `static` methods
+
+**In Java SE, methods can be either static or non-static.**
+
+Making a method ``static`` or ``non-static`` affects the way it can be called and how it accesses the fields and methods of a class. 
+
+```{.java .code-overflow-wrap filename="MovieManager.java"}
+import java.util.HashMap;
+import java.util.Date;
+
+public class MovieManager {
+    private static HashMap<String, Movie> movies = new HashMap<>();
+    private static int qty = 0;
+    private static double size = 0;
+    private static Date lastModified = new Date();
+
+    public static void addMovie(String title, 
+                                String director, String genre, double size) {
+        Movie movie = new Movie(title, director, genre, size);
+        movies.put(title, movie);
+        qty++;
+        size += movie.getSize();
+        lastModified = new Date();
+    }
+
+    public static void updateMovie(String title, 
+                                   String director, String genre, double size) {
+        Movie movie = movies.get(title);
+        if (movie != null) {
+            movie.setDirector(director);
+            movie.setGenre(genre);
+            movie.setSize(size);
+            lastModified = new Date();
+        }
+    }
+
+    public static void deleteMovie(String title) {
+        if (movies.containsKey(title)) {
+            size -= movies.get(title).getSize();
+            movies.remove(title);
+            qty--;
+            lastModified = new Date();
+        }
+    }
+ 
+}
+``` 
+##  `static` vs. `non-static`
+
+### Pros & cons usage `static` methods
+
+| Pros of making a method static  | Cons of making a method static |
+|-------------------------------|-------------------------------|
+| Can be called directly on the class, without needing to create an instance | Cannot access non-static fields and methods of the class |
+| Can be used as utility methods that don't depend on the state of an object | Can only work with the parameters passed to it and not use information unique to each object or instance |
+| Can be used to access only static variables and methods, making it more efficient | Can be challenging to make sure all instances of a class are modified consistently when using static methods |
+
+### Pros & cons usage `non-static` methods
+
+| Pros of making a method non-static  | Cons of making a method non-static |
+|-------------------------------|-------------------------------|
+| Can access both static and non-static fields and methods of the class, allowing it to use the state of an object to determine its behavior | Can only be called on an instance of the class, so you need to create an object of a class before using the method |
+| Are associated with an instance of the class, so they can use the information that is unique to each object | Can cause confusion when working with non-static methods because it could be called on different instances, which could cause unexpected behavior |
+| Object-oriented design principles promote the use of non-static methods because they can be overridden by subclasses to change their behavior |  |
+
+

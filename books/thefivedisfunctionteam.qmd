@@ -1,0 +1,24 @@
+---
+title: "The five disfunctions of a team"
+subtitle: "Patrick Lencioni, 2002, The five disfunctions of a team"
+author: "Patrick Lencioni"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "In this leadership fable, Lencioni reveals the five dysfunctions which go to the very heart of why teams even the best ones-often struggle. He outlines a powerful model and actionable steps that can be used to overcome these common hurdles and build a cohesive, effective team."
+categories: [strategy]
+subcategories: [team management, team building, organizational development, leadership]
+isbn13: 9788126522743
+format:
+  html
+---
+
+  
+## Book Image
+
+![](/books/thefivedisfunctionteam.jpg)
+
+## More info
+
+
+- [The five disfunctions of a team](https://www.amazon.com/Five-Dysfunctions-Team-Leadership-Fable/dp/0787960756){.external}

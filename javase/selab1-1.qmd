@@ -1,0 +1,518 @@
+---
+title: "Lab#SE01-1: Maven/Gradle Person and Account"
+subtitle: Java SE Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 01
+categories: [javase, lab , composition, singleton]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+Create a Maven/Gradle Java SE Project with three classes and Junit to test objects and operations.
+
+---
+
+<div class="labs">
+<h5>💻 Lab#SE01-1: Maven/Gradle Person and Account tested by JUnit</h5>
+<hr>
+<!-- Tab links -->
+<div class="tabw3">
+  <button class="tablinks" onclick="openLab(event, 'Context')">Context</button>
+  <button class="tablinks" onclick="openLab(event, 'Goal')">Goal</button>
+  <button class="tablinks" onclick="openLab(event, 'Tasks')">Tasks</button>
+  <button class="tablinks" onclick="openLab(event, 'Optional')">Optional</button>
+</div>
+<hr>
+
+<!-- Tab content: CONTEXT -->
+<div id="Context" class="tabcontentw3">
+  <h3>Context</h3><p class="indent">
+  In order to complete this project, you will need to have a **basic understanding of the Java programming language**, as well as some familiarity with **Maven or Gradle for managing dependencies** and building the project.</p><p class="indent">
+  Overall, this project will provide an opportunity for you **to learn and apply the basics of Java programming**, as well as gain experience with Maven or Gradle, JUnit, user input via the console and **some discussion about composition and how classes work**.</p><p class="indent">
+  Additionally, you will need to have in mind that this project **would center around a banking point of view**.</p><p class="indent">
+  By completing this project, you will have a starting foundation in these technologies and be able to build more complex and sophisticated Java applications in the future. You may go to Lab 2 (<mark>[go Lab#SE01-2](/javase/selab1-2.qmd)</mark>)</p>
+</div>
+
+<!-- Tab content: GOAL -->
+<div id="Goal" class="tabcontentw3">
+  <h3>Goal</h3>
+  <p class="indent">The goal of this project is to **create three classes in Java** (`Person`, `Account` and `Manager`) that implement different algorithms or data structures, and to test them using JUnit.
+  </br></br>
+  These classes could include, for example, creating new objects, a data structure for storing and manipulating data (``List``), or a utility class for performing common operations (``static``).
+  </p>
+</div>
+
+<!-- Tab content: TASKS -->
+<div id="Tasks" class="tabcontentw3">
+  <h3>Tasks</h3>
+  <p class="indent">The tasks involved in this project include:
+  </br>
+  <ol type="1" class="indent">
+  <li>Decide where your project will weight: ``Person`` or ``Account``.</li>
+  <li>Creating a **new Maven or Gradle project** and setting up the project structure.</li>
+  <li>Modifying the project's `pom.xml` or `build.gradle` file to import the necessary dependencies, including **JUnit** for testing.</li>
+  <li>Implementing the three required classes in Java, using appropriate algorithms and data structures.</li>
+  <li>Implementing as well two basic pattern-designs: **singleton and composition**.</li>
+  <li>Writing **JUnit tests** to verify that the classes work as expected.</li>
+  </ol>
+  <p class="indent">You may attach the **JUnit Test HTML** results to documentation.</p>
+  </div>
+
+<!-- Tab content: OPTIONAL -->
+<div id="Optional" class="tabcontentw3">
+  <h3>Optional</h3>
+  <p class="indent">1. As an optional task, you could also consider **allowing the user to input data via the console**, rather than using `hard-coded test data` in your JUnit tests.
+  </br></br>
+  This would allow you to test the classes with a variety of different input data, and to <mark>interact</mark> with the classes in a more dynamic way.</p>
+  <li>After mplementing two basic pattern-designs: **singleton, composition** your may think about factory.</li>
+</div>
+</div>
+
+<script>
+function openLab(evt, labStep) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontentw3");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(labStep).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+## Solving discussion
+
+### Base Classes
+
+Here, the `Person` class represents a **person** with a name, address and others. In the same way, `Account` class is a **bank account**. The `AccountManager` class contains `static` methods to perform `withdrawal`, `transfer`, and `change pin` operations on a `Person` and `Account` object.
+
+```java
+public class Person {
+  private String name;
+  private String address;
+  // Other properties for a Person...
+
+  public Person(String name, String address) {
+    this.name = name;
+    this.address = address;
+  }
+
+  // Getters and setters for Person properties...
+}
+```
+
+---
+
+```java
+
+public class Account {
+  private String accountNumber;
+  private String pin;
+  private double balance;
+  // Other properties for an Account...
+
+  public Account(String accountNumber, String pin, double balance) {
+    this.accountNumber = accountNumber;
+    this.pin = pin;
+    this.balance = balance;
+  }
+
+  // Getters and setters for Account properties...
+}
+```
+
+---
+
+```java
+public class AccountManager {
+    public static boolean withdrawal(Person person, double amount) {
+        if (amount > 0 && amount <= person.getBalance()) {
+            person.setBalance(person.getBalance() - amount);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean transfer(Person sender, Person receiver, double amount) {
+        if (amount > 0 && amount <= sender.getBalance()) {
+            sender.setBalance(sender.getBalance() - amount);
+            receiver.setBalance(receiver.getBalance() + amount);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean changePin(Person person, String oldPin, String newPin) {
+        if (person.getPin().equals(oldPin)) {
+            person.setPin(newPin);
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+### Person has Account
+
+```java
+public class Person {
+  private String name;
+  private String surname;
+  private int age;
+  private Account account;
+
+  public Person(String name, String surname, int age, Account account) {
+    this.name = name;
+    this.surname = surname;
+    this.age = age;
+    this.account = account;
+  }
+
+  public Account getAccount() {
+    return this.account;
+  }
+
+  public void setAccount(Account account) {
+    this.account = account;
+  }
+   // Getters and setters for Account properties...
+}
+
+```
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class Person {
+  -name: String
+  -surname: String
+  -age: int
+  -account: Account
+}
+
+class Account {
+  -accountNumber: String
+  -pin: int
+  -balance: double
+}
+
+Person *-- Account
+
+```
+
+</div>
+
+<div class="mermaidContent">
+
+```{mermaid}
+sequenceDiagram
+
+participant AccountManager as AccountManager
+participant Account as Account
+participant Person as Person
+
+AccountManager->>Person: transfer(amount, sender, receiver)
+Person->>Account: updateBalance(-amount, sender)
+Person->>Account: updateBalance(-amount, receiver)
+Account-->>Person: transferDone(receipt)
+Person-->>AccountManager: transferDone(receipt)
+```
+
+</div>
+
+<script>
+  mermaid.initialize({ sequence: { showSequenceNumbers: true } });
+</script>
+
+### Approach #1: Singleton
+
+To use the Singleton design pattern with a Person and Account class, you could create a **singleton** `AccountManager class` that manages the creation and operations of the `Person` and `Account` **objects**.
+
+The `AccountManager class` would have a `private constructor`, to **prevent multiple instances from being created**, and a `static getInstance` method that returns the singleton instance of the class.
+
+The `AccountManager class` would then have methods for performing various operations on the `Person` and `Account` objects, such as transferring money between accounts, withdrawing money from an account, or changing the PIN for an account.
+
+These methods would be implemented using the `Person` and `Account` classes, and would be accessible to other classes through the singleton `AccountManager` instance.
+
+For example, you could define the AccountManager, Person, and Account classes as follows:
+
+```java
+public class AccountManager {
+  private static AccountManager instance;
+  private Person person;
+  private Account account;
+
+  private AccountManager() {
+    // Private constructor to prevent multiple instances
+  }
+
+  public static AccountManager getInstance() {
+    if (instance == null) {
+      instance = new AccountManager();
+    }
+    return instance;
+  }
+
+  public void transfer(Account from, Account to, double amount) {
+    // Transfer money from one account to another
+  }
+
+  public void withdraw(Account account, double amount) {
+    // Withdraw money from an account
+  }
+
+  public void changePin(Account account, String newPin) {
+    // Change the PIN for an account
+  }
+
+  // Other methods for managing Person and Account objects...
+}
+```
+
+To use the `AccountManager` class, other classes would simply need to call the `getInstance` method to obtain the singleton instance of the class, and then use the instance's methods to perform operations on the `Person` and `Account` objects. For example:
+
+```java
+// Create a new Person and Account
+// be careful: where will these four Person objects go? 
+AccountManager manager = AccountManager.getInstance();
+manager.person = new Person("John Doe", "123 Main St.");
+manager.person = new Person("Carla Jameson", "323 Main St.");
+manager.person = new Person("Rafael Martin", "3 Glorious St.");
+manager.person = new Person("Pau Vila", "63 Sesamo St.");
+```
+But maybe, this is not the best approach for several reasons ...
+
+### Approach #2: all static-methods AccountManager
+
+It may work as follows. In fact, if we want to manage accounts (**as a banking-centered problem, not a person-centered one**), it could be better that `Account` has ``Person``:
+
+<div class="mermaidContent">
+
+```{mermaid}
+classDiagram
+
+class Person {
+  -name: String
+  -surname: String
+  -age: int
+}
+
+class Account {
+  -accountNumber: String
+  -pin: int
+  -balance: double
+  -person: Person
+}
+
+Account *-- Person
+
+```
+
+</div>
+
+
+``` java
+public class Account {
+  private Person person;
+  //other fields
+
+  public Account(Person person) {
+    this.person = person;
+  }
+
+  public Person getPerson() {
+    return this.person;
+  }
+
+  public void setPerson(Person person) {
+    this.person = person;
+    
+    //constructor, getters, setters and methods
+  }
+}
+
+```
+
+So, in this case, we could use a `List` object to save all the `Account` objects with the list:
+
+``` java
+import java.util.List;
+import java.util.ArrayList;
+
+public class AccountManager {
+  private List<Account> accounts;
+
+  private AccountManager() {
+    this.accounts = new ArrayList<>();
+  }
+
+  public List<Account> getAccounts() {
+    return this.accounts;
+  }
+
+  // we should manage how to add/remove accounts to/from accounts list
+
+  public static void deposit(Account account, double amount) {
+    // Code to deposit the specified amount to the account
+  }
+
+  public static void changePin(Account account, int newPin) {
+    // Code to change the PIN of the specified account
+  }
+
+  public static void transfer(Account fromAccount, Account toAccount, double amount) {
+    // Code to transfer the specified amount from the fromAccount to the toAccount
+  }
+  
+  public static void withdrawal(Account account, double amount) {
+    // Code to withdraw the specified amount from the given account
+  }
+}
+```
+
+### Approach 3: Singleton, any static-method
+
+In this approach:
+
+- ``Account`` has ``Person``
+- `AccountManager` is ``Singleton`` and there is no static-methods anywhere
+- and we create just **one** object form ``AccountManager`` to manage ``accounts``
+
+
+``` java
+import java.util.List;
+import java.util.ArrayList;
+
+public class AccountManager {
+  private static AccountManager manager = new AccountManager();
+  private List<Account> accounts;
+
+  // we should manage how to add/remove accounts to/from accounts list
+
+  private AccountManager() {
+    this.accounts = new ArrayList<>();
+  }
+
+  public static AccountManager getInstance() {
+    return manager;
+  }
+
+  public List<Account> getAccounts() {
+    return this.accounts;
+  }
+
+  public  void deposit(Account account, double amount) {
+    // Code to deposit the specified amount to the account
+  }
+
+  public  void changePin(Account account, int newPin) {
+    // Code to change the PIN of the specified account
+  }
+
+  public  void transfer(Account fromAccount, Account toAccount, double amount) {
+    // Code to transfer the specified amount from the fromAccount to the toAccount
+  }
+  
+  public  void withdrawal(Account account, double amount) {
+    // Code to withdraw the specified amount from the given account
+  }
+}
+```
+
+
+### Test: `AccountManagerTest`
+
+`AccountManagerTest` could be like this:
+
+- with `AccountManager` all static-methods no-singleton
+- ``Account`` has ``Person``
+
+``` java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AccountManagerTest {
+  @Test
+  public void testDeposit() {
+    Account account = new Account(new Person("John Doe"));
+    double initialBalance = account.getBalance();
+    double depositAmount = 100.00;
+
+    AccountManager.deposit(account, depositAmount);
+    double finalBalance = account.getBalance();
+
+    assertEquals(initialBalance + depositAmount, finalBalance);
+  }
+
+  @Test
+  public void testChangePin() {
+    Account account = new Account(new Person("John Doe"));
+    int initialPin = account.getPin();
+    int newPin = 1234;
+
+    AccountManager.changePin(account, newPin);
+    int finalPin = account.getPin();
+
+    assertEquals(newPin, finalPin);
+  }
+
+  @Test
+  public void testTransfer() {
+    Account fromAccount = new Account(new Person("John Doe"));
+    Account toAccount = new Account(new Person("Jane Doe"));
+    double initialFromAccountBalance = fromAccount.getBalance();
+    double initialToAccountBalance = toAccount.getBalance();
+    double transferAmount = 100.00;
+
+    AccountManager.transfer(fromAccount, toAccount, transferAmount);
+    double finalFromAccountBalance = fromAccount.getBalance();
+    double finalToAccountBalance = toAccount.getBalance();
+
+    assertEquals(initialFromAccountBalance - transferAmount, finalFromAccountBalance);
+    assertEquals(initialToAccountBalance + transferAmount, finalToAccountBalance);
+  }
+  
+  @Test
+  public void testWithdrawal() {
+    Account fromAccount = new Account(new Person("John Doe"));
+    Account toAccount = new Account(new Person("Jane Doe"));
+    double initialFromAccountBalance = fromAccount.getBalance();
+    double withdrawalAmount = 100.00;
+
+    AccountManager.withdrawal(fromAccount, withdrawalAmount);
+    double finalFromAccountBalance = fromAccount.getBalance();
+
+    assertEquals(initialFromAccountBalance - withdrawalAmount, finalFromAccountBalance);
+  }
+}
+
+```
+
+  
+
+## Step-by-step
+
+1. Create ``Maven`` Project with **JUnit**
+2. Create ``Person`` class
+3. Create ``Account`` class
+4. Test ``Person`` and ``Account`` objects
+5. Write operations (``withdrawal``, ``transfer``,`` change pin``) as a ``static`` methods in ``AccountManager``
+6. Test ``Person`` and ``Account`` objects and **features**
+7. Add ``singleton`` pattern to ``AccountManager`` class
+8. Test ``AccountManager`` class
+
+
+

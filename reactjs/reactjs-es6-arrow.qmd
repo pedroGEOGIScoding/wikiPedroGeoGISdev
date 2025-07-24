@@ -1,0 +1,74 @@
+---
+title: "React JS ES6: arrow functions"
+subtitle: ReactJS ES6
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [reactjs, es6, arrow]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **Arrow function**
+
+An arrow function is a type of **anonymous function expression in JavaScript**, with a syntax that is **shorter** and **more concise** than a regular function expression.
+
+Arrow functions are also known as ``fat arrow`` functions, due to the use of the ``fat arrow operator (=>)`` to define the function.
+
+:::
+
+---
+
+Here is the basic syntax for defining an arrow function:
+
+``` {.bash .code-overflow-wrap filename="profile.js"}
+(parameters) => { statements }
+```
+
+The parameters are the input values that are passed to the function, and the statements are the code that the function executes. For example, here is a simple arrow function that takes a single number parameter and returns the square of that number:
+
+``` {.bash .code-overflow-wrap filename="profile.js"}
+const square = (x) => {
+  return x * x;
+};
+```
+
+If the function has only one parameter, you can omit the parentheses around the parameter:
+
+``` {.bash .code-overflow-wrap filename="profile.js"}
+const square = x => {
+  return x * x;
+};
+```
+
+If the function has no parameters, you can use an empty pair of parentheses:
+
+``` {.bash .code-overflow-wrap filename="profile.js"}
+const greet = () => {
+  console.log('Hello, World!');
+};
+```
+
+If the function consists of a single statement that returns a value, you can omit the curly braces and the "return" keyword:
+
+``` bash
+const square = (x) => x * x;
+```
+::: {.column-margin}
+Arrow functions are often used in modern JavaScript as a concise alternative to regular function expressions, especially when defining callback functions or working with higher-order functions.
+:::
+
+::: {.callout-important}
+They do not have their own ``this`` value, and they cannot be used as constructors.
+:::
+
+
+

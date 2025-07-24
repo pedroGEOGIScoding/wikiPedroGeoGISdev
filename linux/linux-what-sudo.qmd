@@ -1,0 +1,66 @@
+---
+title: "Linux: su and sudo"
+subtitle: Bash su and sudo
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: su and sudo are two different commands in Linux that are used to execute commands with the privileges of another user
+categories: [linux, bash, su, sudo]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Linux**
+
+`su` and `sudo` are two different commands in Linux that are used to execute commands with the privileges of another user.
+
+:::
+
+---
+
+## Introduction
+
+Both `su` and `sudo` are useful tools for managing and interacting with a **Linux system**, but they have different uses and implications. `su` allows you to **switch** to another user account and operate as that user, while `sudo` allows you to execute a single command with the **privileges of another user** without switching to that user's account.
+
+- `su` stands for **switch user**, and it allows you to switch to another user account and execute commands with that user's privileges. For example, if you are currently logged in as a normal user and you want to run a command as the root user, you can use the `su` command to switch to the root user and then run the command.
+- `sudo` stands for **superuser do**, and it allows you to execute a single command with the privileges of another user, usually the **root user**. It is often used to execute commands that require administrative privileges, <mark>such as installing software or making system-wide configuration changes.</mark>
+
+But in Linux Mint `sudo` is [often considered to be a better](https://forums.linuxmint.com/viewtopic.php?t=378039){.external} alternative to `su` for several reasons, it allows you to execute a **single command with administrative privileges**, logs all command executions, allows for a more fine-grained control over who can execute which commands, prompts for the user's password before execution, and is more widely used and supported in the Linux community.
+
+## `sudo -i`
+
+The `sudo -i`, The `-i` flag stands for **initialize**. command is used to **execute a command or start a shell session as another user**, usually the root user, with **that user's environment and privileges**.
+
+:::{.callout.note collapse=false}
+`sudo -i` causes the command or shell session to be executed as if the target user had logged in directly. This means that the target user's environment variables, shell settings, and other configuration options will be applied to the command or shell session.
+:::
+
+![sudo -i](/images/linux/linux-mint-sudo-01.png)
+
+## ``sudo apt-get update``
+
+``apt-get`` is a command line interface for **retrieval of packages and information about them from authenticated sources** and for installation, upgrade and removal of packages together with their dependencies.
+
+![sudo apt-get update](/images/linux/linux-mint-sudo-02.png)
+
+
+## ``adduser``
+
+`adduser`: This command is used to add a **new user** to the system.
+
+- For example, to **add a new user** with the username **alex**, you can use the command `sudo adduser alex`.
+- ``sudo userdel alex``, the `userdel` command is used to **delete** a user account and the user's home directory from the system.
+- ``sudo adduser alex --shell /bin/bash --gid 0``, to add a new user named **alex** with **root privileges** using `sudo adduser`.
+- **To list all users on a Linux system**, you can use the `cat` command to display the contents of the `/etc/passwd` file. The `/etc/passwd` file contains information about all the users on the system, including their username, user ID (UID), and home directory: ``cat /etc/passwd``
+- Alternatively, you can use the `cut` command **to extract the username from each line** of the `/etc/passwd` file: ``cut -d: -f1 /etc/passwd``.
+
+![sudo adduser newuser && deluser 1/3](/images/linux/linux-mint-sudo-03.png)
+
+![sudo adduser newuser && deluser 2/3](/images/linux/linux-mint-sudo-04.png)
+
+![sudo adduser newuser && deluser 3/3](/images/linux/linux-mint-sudo-05.png)

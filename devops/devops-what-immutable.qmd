@@ -1,0 +1,53 @@
+---
+title: "Immutable Infrastructure"
+subtitle: Designing code
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Software and code components are replaced rather than changed
+categories: [devops, immutable]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+
+---
+
+## Introduction
+
+[Immutable infrastructure](https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure) is an approach to managing services and software deployments on IT resources wherein components are  replaced rather than changed. An application or service is effectively redeployed each time any change occurs.
+
+### Pros of immutable infrastructure
+
+![](/images/devops/devos-immutalbe-pros.png){fig-align="center" width="70%"}
+
+1. There are no server updates which can be problematic at times. That means lower IT complexity and failures.
+2. Reduces support calls: it resolves the issues by deleting the instance that causes the problem.
+3. Improves security and incident resolution: incident becomes an exception. The exception problem is solved by machine learning (Weka)from manual rules to automatic.
+4. Cost savings by encouraging reduced hardware usage.
+5. Configuration management can run faster than manual system.
+6. Less dependency on third party resources at deployment.
+7. Requires a learning curve due to new tools.
+
+### Examples of Immutable Infrastructure Tools
+
+[Below](https://cloudinfrastructureservices.co.uk/what-is-immutable-infrastructure-best-practices/) are some examples of using the tools and services for accomplishing immutable infrastructure. However, the list only includes a few. There are many more.
+
+- Git commits
+- [Puppet](https://cloudinfrastructureservices.co.uk/ansible-vs-puppet/)
+- [Docker](https://cloudinfrastructureservices.co.uk/how-to-setup-docker-compose-on-windows-server-in-azure-aws-gcp/)
+- [Ansible](https://cloudinfrastructureservices.co.uk/how-to-setup-ansible-control-node-on-azure-aws-gcp/)
+- [Jenkins](https://cloudinfrastructureservices.co.uk/how-to-setup-jenkins-ci-cd-server-on-azureawsgcp/)
+- [Terraform server](https://cloudinfrastructureservices.co.uk/how-to-setup-terraform-on-linux-in-azure-aws-gcp/)
+
+### Immutable infrastructure is a DevOps key-concept
+
+DevOps adopt this infrastructure concept as it makes creating new servers affordable and accessible. If there is a requirement for improvements or updates, you have to replace the entire server and not change a part of it.
+
+Immutable infrastructure is very much in tune with the idea of infrastructure as a code. You can do all the planning of components like networking, instances, and security with infrastructure as a code. Once done, you can push it into your dev ecosystem. It becomes easy to test and prod as you promote them in the dev environment and consistently repeat these steps.
+
+DevOps tools and culture are to work together to achieve supply development with continuous delivery. And you know continuous delivery drives immutable infrastructure.
+
+[more info on](https://sites.google.com/view/devopscifo/git)

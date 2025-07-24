@@ -1,0 +1,33 @@
+---
+title: "ReactJS Vocabulary"
+subtitle: Technical terms and definitions
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [vocabulary, reactjs]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Technical terms and definitions](/images/home/frontimagealbertprofeweb-vocabulary.png){width=60%}
+
+## Vocabulary 
+
+| Term | Definition |
+|:---|:---|
+| Component-Oriented Programming (COP) | A paradigm organizing code into reusable and independent components, promoting modularity and maintainability in web development. Enhances code readability and scalability.|
+| JSX                   | A syntax extension for JavaScript used with React to write UI components. It allows embedding HTML-like code within JavaScript, making UI development more declarative and readable.|
+| Props and States      | In React, props are data passed from parent to child components, while states manage a component's internal data and trigger UI updates. Fundamental concepts for managing data flow and rendering.|
+| Hooks                 | Functions in React enabling the use of state and lifecycle features in functional components. Streamlines component logic and enhances code reusability, reducing reliance on class components.|
+| Single Page Application (SPA) | A web application that dynamically updates content without reloading the entire page. Enhances user experience by providing a smoother and more responsive interface.|
+| Virtual DOM           | An in-memory representation of the actual DOM in React. Improves rendering efficiency by minimizing direct manipulation of the DOM, resulting in faster updates and improved performance.|
+| Arrow Function        | A concise syntax in JavaScript for writing functions. Especially useful in React for defining inline functions, simplifying code and maintaining the lexical scope of 'this'.|
+| Spread Operator       | An operator in JavaScript used for expanding elements in arrays or properties in objects. Enhances code conciseness and flexibility, facilitating the manipulation and creation of data structures.|
+| Destructuring         | A JavaScript feature allowing the extraction of values from arrays or properties from objects into distinct variables. Promotes cleaner and more readable code when dealing with complex data structures.|
+| lodash | [Lodash](https://lodash.com/){.external}, A modern JavaScript utility library delivering modularity, performance & extras. |
+: React JS vocabulary {tbl-colwidths="[20,80]"}
+

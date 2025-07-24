@@ -1,0 +1,34 @@
+---
+title: "About me"
+categories: [about]
+---
+
+![About](/images/home/frontimagealbertprofeweb-about.png){width=50%}
+
+## Introduction
+Hi, this is **alberprofe** speaking! My fields of expertise are:
+
+> A **software architect** is a person who is responsible for the overall design and architecture of a software system.
+
+> A **team leader** is a person who is responsible for leading and managing a team of individuals.
+
+> A **professor** is an individual who teaches at a college or university.
+
+> An **entrepreneur** is a person who starts and runs their own business. They are responsible for identifying a business opportunity, developing a business plan, and managing the day-to-day operations of the business.
+
+> These **four roles are all different and may be held by different individuals**.
+> 
+> A software architect is focused on the technical design and implementation of a software system, a team leader is focused on managing and coordinating the work of a team, a professor is focused on teaching and research in a particular field of study, and an entrepreneur is focused on starting and running a business.
+
+
+#### Contact 
+
+- **professor:** [professor](mailto:albertprofe@gmail.com)
+- **professional:** [professional](mailto:ayarza@inspiratgames.com)
+
+#### Linkedin
+  
+[linkedin.com/in/albert-yarza-demur/](https://www.linkedin.com/in/albert-yarza-demur/)
+
+
+

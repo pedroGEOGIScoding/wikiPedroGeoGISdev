@@ -1,0 +1,239 @@
+---
+title: "Spring Boot: create a Project"
+subtitle: Spring Boot
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, project, maven]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **Create a Spring Boot Project**
+
+1. Go to ``start.spring.io`` to create a **new project with desired settings** (Maven, Java, Spring Boot version, etc.).
+
+2. Add required ``dependencies`` such as Spring Web.
+
+3. **Download** the generated ``ZIP file`` and **import** it into ``IntelliJ IDEA.``
+
+4. Create web and REST controllers by creating new Java classes and defining **the desired endpoint methods.**
+
+5. **Run** the application and test the web and REST controllers.
+
+6. **Commit and push** the code to ``GitHub.com`` (using the built-in Git support in IntelliJ IDEA).
+
+
+
+:::
+
+---
+
+## Create Maven Project: step-by-step
+
+Here are the steps to create a **Spring Boot Maven project**, generate it, download it, import it into ``IntelliJ IDEA``, create a web and REST controller ``(@Controller`` and ``@RestController``), execute it, and then commit and push it to ``GitHub.com``:
+
+### Open a web browser
+
+And go to the **Spring Initializer** website at:
+
+- [Spring Initializer IO: start.spring.io](https://start.spring.io/){.external}
+
+![](/images/springboot/createProject1.png){width="80%"}
+
+### Select the desired project settings
+
+Such as project type (``Maven``), language (``Java``), and Spring Boot version.
+
+### Add dependencies
+
+Select the required ``dependencies``, such as:
+
+  - Spring Web,
+  - Spring Data JPA,
+  - Spring Boot DevTools,
+  - Lombok
+  - Thyemleaf
+  - H2 Database
+
+### Generate
+
+**Generate** the project by clicking the ``Generate`` button.
+
+![](/images/springboot/createProject13.png){width="80%"}
+
+1. URL where you may create a `Spring Boot` project. 
+2. Define `Maven` as Dependencies Mananger and `Java`.
+3. Name your project.
+4. Choose your version and packaging: `jar`.
+5. Add `dependencies`
+6. `Generate` & `Download`
+
+### Download
+
+**Download** the generated project as a ``ZIP file``.
+
+### Unzip
+
+**Unzip** the file to a desired location and **import** the project into IntelliJ IDEA.
+
+![Local git repository](/images/springboot/createProject14.png){width="80%"}
+
+![Unzipped project](/images/springboot/createProject2.png){width="80%"}
+
+### Build
+
+**Build** the project and check ``folder tree structure`` and ``POM.xml``
+
+- Execute/refresh Maven if necessary
+- [POM.xml](https://github.com/AlbertProfe/CifoJava2023/blob/c8b04b02e4d3c9407a92fa3211ee34a6eb56e935/myFirstSpring/pom.xml){.external}
+
+```html
+<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+		</groupId>springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+```
+
+###  Create a web controller
+
+**Create a web controller** by right-clicking on the project and selecting ``"New" -> "Java Class".``
+
+    - In the newly created class, add the following code to define a simple **web controller**:
+
+```java
+package com.example.myFirstSpring;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HelloWebController {
+
+    @RequestMapping("/helloweb")
+    public String helloHandler(){
+
+        return "hello.html";
+    }
+}
+```
+
+- [Web Controller](https://github.com/AlbertProfe/CifoJava2023/blob/c8b04b02e4d3c9407a92fa3211ee34a6eb56e935/myFirstSpring/src/main/java/com/example/myFirstSpring/HelloWebController.java){.external}
+
+### Create a HTML web page
+
+**Create a HTML web page** by right-clicking on the project and selecting ``"New" -> "HTML page".``
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Spring WebApp cifo</title>
+</head>
+<body>
+hey .... this is amazing ... a- ma - zing
+</body>
+</html>
+```
+
+- [HTML page: hello.html](https://github.com/AlbertProfe/CifoJava2023/blob/c8b04b02e4d3c9407a92fa3211ee34a6eb56e935/myFirstSpring/src/main/resources/templates/hello.html){.external}
+
+### Create a REST controller
+
+ **Create a REST controller** by following the same steps as in step 8 and adding the following code to define a simple REST endpoint:
+
+```java
+package com.example.myFirstSpring;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloRestController {
+
+    @GetMapping("/hellorest")
+    public String helloWorld(){
+
+        return "Hello Worlds and class!!!!";
+    }
+}
+```
+
+- [Rest Controller](https://github.com/AlbertProfe/CifoJava2023/blob/c8b04b02e4d3c9407a92fa3211ee34a6eb56e935/myFirstSpring/src/main/java/com/example/myFirstSpring/HelloRestController.java){.external}
+
+![Folder tree and Java classes](/images/springboot/createProject5.png){width="40%"}
+
+### Run
+
+**Run** the application by clicking the "Run" button or by using the keyboard shortcut "Ctrl + Shift + F10".
+
+![](/images/springboot/createProject3.png){width="80%"}
+
+### Check the endpoints
+/home/devops/MyProjects/JavaSEProjects/CifoJava2023/myFirstSpring
+Once the **application** is **running**, you can test it by accessing:
+
+  - the **web controller** in a web browser by going to
+    - ``http://localhost:8080/helloweb``
+  - and the **REST controller** by going to
+    - ``http://localhost:8080/hellorest``
+
+![](/images/springboot/createProject4.png){width="80%"}
+
+
+### Commit & Push
+
+Finally, you can **commit and push the code to Git by using the built-in Git support in IntelliJ IDEA.** Simply right-click on the project and select "Git" -> "Commit Directory" and then "Git" -> "Push".
+
+
+![Just select the files to add to git](/images/springboot/createProject6.png){width="50%"}
+
+![Writting the commit](/images/springboot/createProject7.png){width="50%"}
+
+![Be careful! It is mono-repo, we are pushhing two projects](/images/springboot/createProject8.png){width="80%"}
+
+::: {.column-margin}
+A monorepo is a version control strategy where a single repository contains all of the source code, resources, and assets required to build and run an application or a suite of applications. Monorepos are used to manage projects that have multiple, interdependent components that are frequently developed and deployed together.
+:::
+
+![Pushed properly](/images/springboot/createProject9.png){width="80%"}
+
+![We have done two commits, just to test the process](/images/springboot/createProject10.png){width="80%"}
+
+![It is a mono-repo, that is, this project shrare repository with other projects](/images/springboot/createProject11.png){width="80%"}
+
+![The folder tree structure is right and there are just the desired files](/images/springboot/createProject12.png){width="80%"}
+

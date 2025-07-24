@@ -1,0 +1,708 @@
+---
+title: "Lab#RE02-1: Router & Hooks"
+subtitle: ReactJS labs, Router & Hooks
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: React JS Labs
+categories: [reactjs, lab, LAB#RE02]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.labs}
+📘 **React JS Lab#RE02-1: Router & Hooks**
+
+In this lab, we will be using:
+
+- the ``react-router-dom``, which is a package with bindings for using React Router in web applications.
+- We will use the ``Axios`` library to make HTTP requests to the API and retrieve the data in JSON format.
+- hooks: `useState`, `useEffect`, `useReducer`.
+
+
+The lab will demonstrate **how to use a ``react-router-dom`` with React to build a functional web application**.
+:::
+
+</br>
+
+Reference: [codesandbox React Project to-do-11](https://codesandbox.io/s/to-do-11-hh9efc?file=/src/index.js){.external}
+
+## Install `react-router-dom`
+
+From: [npm pacakge](https://www.npmjs.com/package/react-router-dom){.external} and [react router](/reactjs/reactjs-app-router.qmd)
+
+```js
+npm i react-router-dom
+```
+
+> React Router enables "client side routing".
+
+In traditional websites, the browser requests a document from a web server, downloads and evaluates CSS and JavaScript assets, and renders the HTML sent from the server. When the user clicks a link, it starts the process all over again for a new page.
+
+[Client side routing allows](https://reactrouter.com/en/main/start/overview){.external} your app to **update the URL from a link click without making another request for another document from the server.**
+
+Instead, your app can immediately render some new UI and make data requests with fetch to update the page with new information.
+
+[Main Concepts](https://reactrouter.com/en/main/start/concepts){.external}
+
+::: {.callout-note}
+## SPA vs MultiPage
+A **Single Page Application (SPA)** is a web application that loads a single HTML page and dynamically updates the content as the user interacts with the application. The user interface is designed to provide a seamless experience, without the need for page refreshes.
+
+In contrast, a **Multi-Page Application (MPA)** consists of multiple pages, each with its own HTML file, that are loaded separately when the user navigates to a different page. Each page typically has its own styles and scripts, which can result in longer load times and a less seamless user experience compared to SPAs.
+:::
+
+## Tree-folder & routes
+
+![](/images/reactjs/lab-re-2-1.png){}
+
+We use `React Router DOM` library to create a web application with multiple pages.
+
+The import statement at the top imports several components from the `React Router DOM `library, including `BrowserRouter`, `Routes`, `Route`, and `Link`. 
+
+> These components are used **to define the routes and navigation** for the application.
+
+> The `Layout`, `Home`, `People`, `Contact`, and `NoPage` components are defined in separate files and imported at the top of the code.
+
+::: {.column-margin}
+The App component is the main component of the application and is exported as the default component. This component returns JSX, which is a syntax extension to JavaScript used to describe how the user interface should look like.
+:::
+
+
+The `<BrowserRouter>` component wraps the `<Routes>` component, indicating that this is the root of the application's routing system.
+
+Within the `<Routes>` component, there is a single `<Route>` component that has a path attribute set to "/". This means that any URL that matches the root of the application will render this component.
+
+The `<Route>` component with the path attribute set to "/" has four nested `<Route>` components inside it, each with a different path attribute and element attribute that points to the component that should be rendered when the corresponding URL is accessed.
+
+- The first nested `<Route>` component has an index attribute, which means it will be rendered when the root URL is accessed. This component renders the Home component.
+- The second nested `<Route>` component has a path attribute set to "/people", which means it will be rendered when the URL ends with "/people". This component renders the People component.
+- The third nested `<Route>` component has a path attribute set to "/contact", which means it will be rendered when the URL ends with "/contact". This component renders the Contact component.
+- The fourth and final nested `<Route>` component has a path attribute set to "*" which means it will be rendered when none of the other routes are matched. This component renders the NoPage component, indicating that the page the user is looking for cannot be found.
+
+
+`Route`:
+
+```js
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./route/Layout.jsx";
+import Home from "./pages/home/Home.jsx";
+import People from "./pages/people/People.jsx";
+import Contact from "./pages/contact/Contact.jsx";
+import NoPage from "./route/NoPage";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="people" element={<People />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+`Layout`, in this particular case we **stack** all components:
+
+```js
+import { Outlet, Link } from "react-router-dom";
+import React from "react";
+import Footer from "./Footer";
+
+export default function Layout() {
+  return (
+    <>
+      <nav>
+        <Link to="/">Home</Link>
+        <span>|</span>
+        <Link to="/people">People</Link>
+        <span>|</span>
+        <Link to="/contact">Contact</Link>
+        <span>|</span>
+      </nav>
+      <Outlet />
+      <Footer />
+    </>
+  );
+}
+
+```
+
+::: {.column-margin}
+![](/images/reactjs/lab-re-2-2.png){}
+:::
+
+## `useReducer` person profile form
+
+Reference:
+
+- [codesandbox with handlers functions](https://codesandbox.io/s/usereducer-example-form-nuyyyi?file=/App.js){.external}
+- [codesandbox dispatcher onChange, onClick](https://codesandbox.io/s/usereducer-example-form-v2-pbj3kh?file=/App.js){.external}
+- [React reference manual: useReducer](https://react.dev/reference/react/useReducer#usage){.external}
+
+### Create `route`
+
+To add a `PersonForm` or `Form` component to a new route:
+
+- first import the `PersonForm` **component**.
+- Then, add a new **Route** element under the Layout Route element with a path of "person-form" and an element prop with the `PersonForm` component.
+- Finally, update the `Layout` component to render a **Link** component to the new route.
+
+
+### `reducer`
+
+This new feature on Hola5 defines a **React component called "Form"** that allows users to modify and display a person's profile information. It uses the `useReducer` hook **to manage the component's state, which is initialized with an object** that contains the person's name, surname, and age.
+
+```js
+{   
+  name: "Taylor",
+  surname: "Feels",
+  age: 42
+}
+```
+
+> The **"reducer"** function defines **how state should be updated based on different types of actions dispatched by the component.** The actions include **incrementing** or **decrementing** the person's age and **changing** their name or surname.
+
+![Basic structure component](/images/reactjs/lab-re-2-4.png){width="80%"}
+
+The component's state is initialized with an object **(1)**
+
+The component renders a form with input fields for the person's name and surname and buttons to increment or decrement their age. It also displays the current values of the person's name, surname, and age.
+
+When the user interacts with the form elements **(5)**, the component dispatches **(3)** the appropriate action to the reducer function **(4)**, which updates the state and causes the component to re-render with the updated values **(5)**.
+
+
+Reducer:
+
+```js
+function reducer(state, action) {
+
+  switch (action.type) {
+
+    case "incremented_age": {
+      return {
+        name: state.name,
+        surname: state.surname,
+        age: state.age + 1
+      };
+    }
+    case "decremented_age": {
+      return {
+        name: state.name,
+        surname: state.initialsurname,
+        age: state.age - 1
+      };
+    }
+    case "changed_name": {
+      return {
+        name: action.nextName,
+        surname: state.surname,
+        age: state.age
+      };
+    }
+    case "changed_surname": {
+      return {
+        name: state.name,
+        surname: action.nextSurName,
+        age: state.age
+      };
+    }
+
+    default: {
+      throw Error("Unknown action: " + action.type);
+    }
+  }
+}
+
+```
+::: {.column-margin}
+![render reducer](/images/reactjs/lab-re-2-3.png){width="80%"}
+:::
+
+With or without handlers functions? Best without extra-functions **but be careful with recursion, use arrow functions:**
+
+
+
+```js
+<button onClick={() => dispatch({ type: "incremented_age" })}>
+```
+
+::: {.column-margin}
+[Why does onClick={x()} causes "too many re-renders" error in React?](https://alexsidorenko.com/blog/onclick-too-many-re-renders/){.external}
+
+![recursion](https://alexsidorenko.com/static/376998171a95346fce4bec68c1d39cee/29114/initial-3.png){width="80%"}
+:::
+
+
+```js
+export default function Form() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <>
+      <h1> Person Profile form</h1>
+      <hr /><br />
+      <h3> Modify data</h3>
+
+      <label>Name</label>
+      <input
+        value={state.name}
+        onChange={(e) =>
+          dispatch({
+            type: "changed_name",
+            nextName: e.target.value
+          })
+        }
+      />
+
+      <label>Surame</label>
+      <input
+        value={state.surname}
+        onChange={(e) =>
+          dispatch({
+            type: "changed_surname",
+            nextSurName: e.target.value
+          })
+        }
+      />
+
+      <button onClick={() => dispatch({ type: "incremented_age" })}>
+        Increment age
+      </button>
+
+      <button onClick={() => dispatch({ type: "decremented_age" })}>
+        Decrement age
+      </button>
+      <br /> <br /> <br />
+
+      <h3>Person Profile</h3>
+      <p><strong>Name:</strong> {state.name}</p>
+      <p><strong>Surname:</strong> {state.surname}</p>
+      <p><strong>Age:</strong> {state.age}</p>
+    </>
+  );
+}
+```
+With handlers, perhaps a more verboise option:
+
+```js
+export default function Form() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  function handleButtonClickIncrement() {
+    dispatch({ type: "incremented_age" });
+  }
+
+  function handleButtonClickDecrement() {
+    dispatch({ type: "decremented_age" });
+  }
+
+  function handleInputChangeName(e) {
+    dispatch({
+      type: "changed_name",
+      nextName: e.target.value
+    });
+  }
+
+  function handleInputChangeSurName(e) {
+    dispatch({
+      type: "changed_surname",
+      nextSurName: e.target.value
+    });
+  }
+
+  return (
+    <>
+      <h1> Person Profile form</h1>
+      <hr />
+      <br />
+      <h3> Modify data</h3>
+
+      <label>Name</label>{" "}
+      <input value={state.name} 
+      onChange={handleInputChangeName} />
+
+      <label> Surame </label>
+      <input value={state.surname} 
+      onChange={handleInputChangeSurName} />
+
+      <button onClick={handleButtonClickIncrement}>
+      Increment age</button>
+
+      <button onClick={handleButtonClickDecrement}>
+      Decrement age</button>
+      
+      <br /> <br /> <br />
+      <h3>Person Profile</h3>
+      <p>
+        <strong>Name:</strong> {state.name}
+      </p>
+      <p>
+        <strong>Surname:</strong> {state.surname}
+      </p>
+      <p>
+        <strong>Age:</strong> {state.age}
+      </p>
+    </>
+  );
+}
+```
+
+## `useReducer`, `useEffect`, `useRef` clock
+
+Reference: 
+
+- [codesandbox](https://codesandbox.io/s/usereducer-example-clock-11y79d?file=/App.js){.external}
+- [React reference manual: useEffect](https://react.dev/reference/react/useEffect){.external}
+- [React reference manual: useRef](https://react.dev/reference/react/useRef){.external}
+
+
+This component creates a simple stopwatch with three buttons: `Start`, `Stop`, and `Reset`.
+
+![render clock](/images/reactjs/lab-re-2-7.png){width="80%"}
+
+The state of the stopwatch is managed using the `useReducer` hook, which takes in a reducer function and an initial state.
+
+The `reducer` function is responsible for updating the state based on actions dispatched by the buttons.
+
+```js
+function reducer(state, action) {
+  switch (action.type) {
+    case "start":
+      return { ...state, isRunning: true };
+    case "stop":
+      return { ...state, isRunning: false };
+    case "reset":
+      return { isRunning: false, time: 0 };
+    case "tick":
+      return { ...state, time: state.time + 1 };
+    default:
+      throw new Error();
+  }
+}
+```
+:::{.column-margin}
+The `spread` operator `...` allows you to **expand an iterable object** (like an array or an object) into individual elements or properties: here is used **to copy all the properties of the state object and then override the `isRunning` property** with the value true. 
+:::
+
+
+The initial state includes two properties, `isRunning` and ``time``:
+
+```js
+const initialState = {
+  isRunning: false,
+  time: 0
+};
+```
+
+
+The `useEffect` hook is used to start and stop the stopwatch. When the `isRunning` state is true, a timer is started using setInterval that dispatches a tick action every second. When `isRunning` state is false, the timer is cleared using `clearInterval`.
+
+```js
+useEffect(() => {
+
+    if (!state.isRunning) {
+      return;
+    }
+
+    idRef.current = setInterval(
+      () => dispatch({ type: "tick" }), 1000);
+    
+    return () => {
+      clearInterval(idRef.current);
+      idRef.current = 0;
+    };
+
+  }, [state.isRunning]);
+```
+
+::: {.column-margin}
+[setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval){.external}: `setInterval(code, delay)`
+:::
+
+::: {.column-margin}
+[clearInterval](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval){.external}: `clearInterval(intervalID)`
+:::
+
+
+> The **core business-logic** of this code is the combination of:
+> 
+>  1. the `useEffect` **hook** (which synchronizes execution with two different sources) and
+> 
+>  2. the render cycle `trigger-render-paint` (due the change of state of `state.time` by `setInterval` and `tick`).
+
+The key-idea of the `useEffect` in this particular use (related to a timer problem) is <mark>the synchronization of the execution with two different triggers</mark>:
+
+::: {.column-margin}
+**timer**: `setInterval`and `clearInterval`with `idRef`
+:::
+
+- `useEffect`, **first render**: when the component is loaded.
+- `useEffect`, with its **dependencies**: `state.isRunning`, when user clicks button `start`, `stop` or `reset`.
+
+The <mark>core business-logic</mark> is completed with the `render-cycle`. The key-idea here is **when and who call the render-cycle**:
+
+- with the change of the **state** the component triggers the **render cycle**: every time clock is ticking, that is, every one second: `state.time` by `setInterval` and `tick`.
+
+The return statement returns a `JSX` template that displays the stopwatch: there are three buttons: "`Start`", "`Stop`", and "`Reset`" that dispatch start, stop, and reset actions respectively.
+
+![core business-logic Time Manager code](/images/reactjs/lab-re-2-12.png){width="80%"}
+
+The `idRef` is a reference to the timer, and it is updated every time the `useEffect` hook is called.
+
+```js
+  const idRef = useRef(0);
+```
+
+The returned value of `setInterval`, which represents the `ID` of the interval, is stored in `idRef.current`.
+
+![Cleanup return](/images/reactjs/lab-re-2-13.png){width="80%"}
+
+The `cleanup function` of the `useEffect` hook allows us to stop side effects that no longer need to be executed before our component is unmounted.
+
+```js
+useEffect(() => {
+  // Core business-logic
+  return () => {
+    // Cleanup
+  }
+}, [dependencies])
+```
+
+When to [use](https://hackernoon.com/cleanup-functions-in-reacts-useeffect-hook-explained){.external} a `cleanup function`:
+
+- Canceling a fetch request
+- Cleaning up Timeouts
+- Cleaning up Intervals
+- Cleaning up Event Listeners
+- Closing up Web Sockets
+
+```js
+useEffect(() => {
+
+    // ...
+
+    return () => {
+      clearInterval(idRef.current);
+      idRef.current = 0;
+    };
+
+  }, [state.isRunning]);
+```
+
+This `cleanup` function will be executed before the next effect execution or when the component unloads (unmounts). Inside the cleanup function:
+
+- The `clearInterval` function is called with the `idRef.current` value to **clear** the interval and **stop** the <mark>associated callback function from executing.</mark>
+- `idRef.current` is set to 0 to indicate that the interval **has been cleared.**
+
+
+The cleanup return function ensures that any resources or side effects created by the effect <mark>are properly cleaned up and disposed of, preventing memory leaks or unintended behavior.</mark> 
+
+In this case, it ensures that <mark>the interval is cleared and any associated callbacks are stopped when the component unmounts or when the `isRunning` value changes to false.</mark>
+
+
+
+## api Rest
+
+### Axios
+
+Install `axios` using `npm`:
+
+```js
+$ npm install axios
+```
+
+> `Axios` is a **promise-based HTTP Client for node.js and the browser**.
+> 
+> It is `isomorphic`
+> 
+> On the server-side it uses the native `node.js` http module
+> 
+> On the client (browser) it uses `XMLHttpRequests`.
+
+::: {.column-margin}
+`isomorphic`: it can run in the browser and nodejs with the same codebase.
+:::
+
+We use the [Axios](https://axios-http.com/docs/intro){.external} library **to fetch data from the [JSONPlaceholder](https://jsonplaceholder.typicode.com/){.external} API**, which provides a fake REST API for testing and prototyping. 
+
+### Component
+
+The component initializes a state variable called data using the `useState` hook, and sets **its initial value to an empty array.**
+
+```js
+ const [data, setData] = useState([]);
+```
+
+The `useEffect` hook is used **to fetch the data from the API** and update the data state variable when:
+
+- the **component mounts** or
+- when **the `setData` function is called**.
+  
+The `axios.get()` method is called with **the URL of the API endpoint**:
+
+```js
+const url = "https://jsonplaceholder.typicode.com/todos";
+```
+
+The response is handled with a `then` block that sets the data state variable to the `response` data. If there is an error, it is logged to the console with a `catch` block.
+
+In the component's `return` statement, the fetched data **is rendered using the `.map()` method to loop through each item** in the data array.
+
+The `key` prop is added to each item to help React identify the items and improve performance.
+
+
+```js
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+export default function AxiosApiRest() {
+  const url = "https://jsonplaceholder.typicode.com/todos";
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [setData]);
+
+  return (
+    <>
+      <h1> My data todos from axios</h1>
+      {data &&
+        data.map((item) => {
+          return (
+            <spam key={item.id}>
+              id: {item.id}
+              <spam>userId: {item.userId} </spam>
+              <spam>title: {item.title} </spam>
+              <spam>completed: {item.completed} </spam>
+              <br />
+            </spam>
+          );
+        })}
+    </>
+  );
+}
+```
+## `useContext` login
+
+Reference: [useContext hook: Example #1](/reactjs/reactjs-hook-context.qmd#example-1)
+
+![useContext: create, provide, consume](/images/reactjs/lab-re-2-14.png){width="80%"}
+
+![useContext: consume in components-tree](/images/reactjs/lab-re-2-15.png){width="80%"}
+
+> **createContext, useContext, useState** working together
+
+In this example, there is a ``currentUser`` state variable which holds an object.
+
+We combine ``{ currentUser, setCurrentUser }`` into a single object and pass it down through the ``context`` inside the ``value={}``.
+
+This lets any component below, such as ``LoginButton``, read both ``currentUser`` and ``setCurrentUser``, and then call ``setCurrentUser`` when needed.
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+import { createContext, useContext, useState } from 'react';
+
+const CurrentUserContext = createContext(null);
+
+export default function MyApp() {
+  const [currentUser, setCurrentUser] = useState(null);
+  return (
+    <CurrentUserContext.Provider
+      value={{
+        currentUser,
+        setCurrentUser
+      }}
+    >
+      <Form />
+    </CurrentUserContext.Provider>
+  );
+}
+
+function Form({ children }) {
+  return (
+    <Panel title="Welcome">
+      <LoginButton />
+    </Panel>
+  );
+}
+
+function LoginButton() {
+  const {
+    currentUser,
+    setCurrentUser
+  } = useContext(CurrentUserContext);
+
+  if (currentUser !== null) {
+    return <p>You logged in as {currentUser.name}.</p>;
+  }
+
+  return (
+    <Button onClick={() => {
+      setCurrentUser({ name: 'Advika' })
+    }}>Log in as Advika</Button>
+  );
+}
+
+function Panel({ title, children }) {
+  return (
+    <section className="panel">
+      <h1>{title}</h1>
+      {children}
+    </section>
+  )
+}
+
+function Button({ children, onClick }) {
+  return (
+    <button className="button" onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
+```
+
+::: {.column-margin}
+![Initial render](/images/reactjs/ex31.png){width=100%}
+:::
+
+::: {.column-margin}
+![Initial render](/images/reactjs/ex32.png){width=100%}
+:::
+
+
+[Examples of updating context](https://beta.reactjs.org/reference/react/useContext#examples-basic){.external}
+
+
+## Versions
+
+ Code Version | Commit | Folder-Tree | Screeshoots |
+| -- | -- | -- | -- |
+| Hola5 0.0 | create project with route: [hola5 0.0](https://github.com/AlbertProfe/CifoJava2023-2/tree/2404dbaad80566fe038a01e14e910a125089dc08/hola5){.external} | [initial tree-folder](/images/reactjs/lab-re-2-1.png){width="60%"} | [render home](/images/reactjs/lab-re-2-2.png){width="80%"} |
+| Hola5 0.1 | useReducer: user Profile [hola5 0.1](https://github.com/AlbertProfe/CifoJava2023-2/tree/aa824232395113d08efd6a86af38ebbc2a1e1e14/hola5){.external} </br> compoonent useReducer on [codesandbox with handlers functions](https://codesandbox.io/s/usereducer-example-form-nuyyyi?file=/App.js){.external} </br> or [codesandbox dispatcher onChange, onClick](https://codesandbox.io/s/usereducer-example-form-v2-pbj3kh?file=/App.js){.external} | [userReducer tree-folder](/images/reactjs/lab-re-2-6.png){width="60%"} | [render user profile](/images/reactjs/lab-re-2-5.png){width="80%"} |
+| Hola5 0.2 | useReducer, userRef, useEffect: clock [hola5 0.2](https://github.com/AlbertProfe/CifoJava2023-2/tree/127c8b46a2de29de5f21c2a8216e5c465a746933/hola5){.external} </br> component clock on [codesandbox](https://codesandbox.io/s/usereducer-example-clock-11y79d?file=/App.js){.external} </br>  | [clock tree-folder](/images/reactjs/lab-re-2-8.png){width="60%"} | [render clock](/images/reactjs/lab-re-2-10.png){width="80%"} |
+| Hola5 0.3 | api Rest [hola5 0.3](https://github.com/AlbertProfe/CifoJava2023-2/tree/9fccb4721f3c37e17a68927e60812c43c31cf03c/hola5){.external} </br> component api Rest [codesandbox](https://codesandbox.io/s/to-do-11-hh9efc?file=/src/AxiosApiRest.jsx){.external} </br>  | [api Rest tree-folder](/images/reactjs/lab-re-2-9.png){width="60%"} | [render api Rest](/images/reactjs/lab-re-2-11.png){width="80%"} |
+| Hola5 0.4 | useContext: fake login [hola5 0.4](https://github.com/AlbertProfe/CifoJava2023-2/tree/78f96c91662ba285880d2cb259b277d76329fd0c/hola5){.external} | [useContxt login tree-folder](/images/reactjs/lab-re-2-16.png){width="60%"} | [render useContext login](/images/reactjs/lab-re-2-17.png){width="80%"} - [render useContext loged](/images/reactjs/lab-re-2-18.png){width="80%"}  |
+
+
+
+
+
+
+

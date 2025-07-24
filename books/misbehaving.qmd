@@ -1,0 +1,36 @@
+---
+title: "Misbehaving"
+author: "albertprofe"
+subtitle: "Misbehaving: The Making of Behavioral Economics, 2016,  Richard H. Thaler"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "When economics meets psychology, the implications for individuals, managers, and policy makers are both profound and entertaining."
+categories: [finance]
+subcategories: [psychology, decision-making, bias]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/misbehaving.jpg){width="60%"}
+
+## About the book
+
+
+Nobel laureate **Richard H. Thaler** has spent his career studying the <mark>radical notion that the central agents in the economy are humans—predictable, error-prone individuals</mark>.
+
+Misbehaving is his arresting, frequently hilarious account of the struggle to bring an academic discipline back down to earth—and change the way we think about economics, ourselves, and our world.
+
+**Traditional economics assumes rational actors**. Early in his research, Thaler realized these Spock-like automatons were nothing like real people. Whether buying a clock radio, selling basketball tickets, or applying for a mortgage, we all succumb to biases and make decisions that deviate from the standards of rationality assumed by economists. In other words, we misbehave. More importantly, our misbehavior has serious consequences. Dismissed at first by economists as an amusing sideshow, the study of human miscalculations and their effects on markets now drives efforts to make better decisions in our lives, our businesses, and our governments.
+
+Coupling recent discoveries in **human psychology with a practical understanding of incentives and market behavior**, Thaler enlightens readers about how to make smarter decisions in an increasingly mystifying world. He reveals how behavioral economic analysis opens up new ways to look at everything from household finance to assigning faculty offices in a new building, to TV game shows, the NFL draft, and businesses like Uber.
+
+Laced with antic stories of Thaler’s spirited battles with the bastions of traditional economic thinking, Misbehaving is a singular look into profound human foibles. When economics meets psychology, the implications for individuals, managers, and policy makers are both profound and entertaining.
+
+{{< video https://www.youtube.com/watch?v=EAjDFPi_rDQ >}}
+
+## More info
+
+- [Misbehaving: The Making of Behavioral Economics](https://www.goodreads.com/en/book/show/26530355){.external}

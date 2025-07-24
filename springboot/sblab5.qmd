@@ -1,0 +1,23 @@
+---
+title: "Lab#SB05-1: API Rest"
+subtitle: Spring Boot
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## API rest
+
+### GitHub Repositories 
+
+Spring Boot Backend Api REST H2 MongoDB: [link](https://sites.google.com/view/githubrepositories/p%C3%A0gina-principal){.external}
+
+
+

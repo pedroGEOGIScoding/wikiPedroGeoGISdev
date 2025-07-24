@@ -1,0 +1,44 @@
+---
+title: "Servant Leader"
+author: "albertprofe"
+subtitle: "Servant Leadership: A Journey Into the Nature of Legitimate Power and Greatness, 1977, Robert K. Greenleaf"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "Robert K. Greenleaf was the creator of the modern trend to empower employees; he also coined the term servant-leadership."
+categories: [agile]
+subcategories: [leadership, team, scrum]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/servantleader.png){width="40%"}
+
+## About the book
+
+With the publication of Servant Leadership in 1977, <mark>a new paradigm of management entered the boardrooms and corporate offices of America. **Robert K. Greenleaf**, a retired AT & T executive, proposed that service ought to be the distinguishing characteristic of leadership. Not only would it create better, stronger companies, he said, but business leaders themselves "would find greater joy in their lives if they raised the servant aspect of their leadership and built more serving institutions."</mark>
+
+In the quarter century since these ideas were first articulated, the notion of servant leadership has gained ever more disciples in business schools, among executives, in government and in public and private institutions. **Greenleaf** was among the first to analyze the qualities of leaders and followers--and the necessity for leaders to be attentive to the needs of others.
+
+*In this respect the leader becomes a follower*.
+
+Such a leader, said **Greenleaf**, constantly inquires whether "other people's highest priority needs are being served.
+
+*Do those served grow as persons?
+Do they, while being served, become healthier, wiser, freer, more autonomous, more likely themselves to become servants?*
+
+<mark>The true leader is also a **seeker**--alert to new possibilities, open, listening and ready for whatever develops.</mark>
+
+True leadership, then, is an inner quality as much as an exercise of authority. The present volume originated as essays and talks treating servant leadership as a general principle and the way it has been lived by particular people. Sections of the book deal with leadership in education, in foundations, in churches, in bureaucracies, and with the role of the United States as a world leader.
+
+It closes with a spiritual reflection on **Robert Frost's poem "Directive"**.
+
+The [reflection](https://allpoetry.com/poem/13753187-Directive-by-Robert-Frost){.external}, in **Greenland**'s words, is "partly an acknowledgment of [Frost's] influence on me and partly a sharing with those who are the search for what I have now come to see as servant leadership, and who, sooner or later and in their own way, come to grips with who they are and where they are on the journey."
+
+(--From dustjacket)
+
+## More info
+
+- [Servant Leadership: A Journey Into the Nature of Legitimate Power and Greatness](https://books.google.es/books/about/Servant_Leadership.html?id=gOexpCA5JqIC){.external}

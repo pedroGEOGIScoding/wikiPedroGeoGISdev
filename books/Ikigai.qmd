@@ -1,0 +1,23 @@
+---
+title: "Ikigai"
+author: "albertprofe"
+subtitle: "Héctor García and Francesc Miralles, 2017, Ikigai: The Japanese Secret to a Long and Happy Life"
+date: "8/29/2017"
+date-modified: "6/6/2022"
+date-format: full
+description: "Explores the concept of ikigai, which translates to 'reason for being' in Japanese, and offers insights on how to find purpose, joy, and fulfillment in life."
+categories: [self-management]
+subcategories: [happiness, mindfulness]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/Ikigai.jpg)
+
+## More info
+
+The people of Japan believe that everyone has an ikigai – a reason to jump out of bed each morning. And according to the residents of the Japanese island of Okinawa – the world’s longest-living people – finding it is the key to a longer and more fulfilled life. Inspiring and comforting, this book will give you the life-changing tools to uncover your personal ikigai. It will show you how to leave urgency behind, find your purpose, nurture friendships and throw yourself into your passions.
+
+- [Ikigai: The Japanese Secret to a Long and Happy Life](https://www.goodreads.com/en/book/show/40534545){.external}

@@ -1,0 +1,21 @@
+---
+title: "Your Next Five Moves"
+author: "albertprofe"
+subtitle: "Patrick Bet-David, 2020, Your Next Five Moves: Master the Art of Business Strategy"
+date: "9/1/2020"
+date-modified: "6/22/2022"
+date-format: full
+description: "Offers strategies and insights to develop effective business strategies, make calculated decisions, and achieve long-term success in the competitive world of business."
+categories: [strategy]
+subcategories: [strategy, entrepreneurship, business]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/YourNextFiveMoves.jpg)
+
+## More info
+
+- [Your Next Five Moves: Master the Art of Business Strategy](https://www.amazon.es/Your-Next-Five-Moves-Business-ebook/dp/B08428LMQT){.external}

@@ -1,0 +1,77 @@
+---
+title: "Taking Notes"
+subtitle: About how to take notes properly
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: About how to take notes properly
+categories: [about, writing]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Cornell Way
+
+![Cornell Note Taking — The Best Way To Take Notes Explained](/images/learning/cornell%20notes%20note%20taking%20method.jpeg)
+
+- [Cornell way](https://medium.goodnotes.com/study-with-ease-the-best-way-to-take-notes-2749a3e8297b){.external}
+
+
+## What are Cornell Notes
+
+Cornell note-taking is a popular note-taking method for taking, organizing, and summarizing notes. This method typically results in better overall comprehension.
+
+This note-taking method was invented by Professor Walter Paul of Cornell University in the 1950s.
+
+## How to Take Cornell Notes
+
+It requires very little preparation which makes it ideal for note-taking in class. The page is divided into 4 — or sometimes only 3 — different sections:
+
+- One block at the top of the page
+- Two columns
+- One block at the bottom of the page
+
+# Effective Note-Taking Tips for Class
+
+> Optimize your note-taking with key strategies:
+> 
+> 1. Establish structural organization for clarity.
+> 2. Actively engage by fostering connections between new and core knowledge, condensing information effectively.
+> 3. Enhance retention using visual aids, self-quizzing, and color-coded highlighting.
+> 4. Emphasize networking core knowledge, ensuring new information integrates seamlessly with existing concepts for a comprehensive and interconnected understanding.
+
+## Structural Organization
+
+   - Choose a **dedicated notebook** or digital tool for each class.
+   - Use headers, subheadings, and **consistent formatting** for a clear and organized structure.
+   - **Date each entry to maintain a chronological** record and ease future reference.
+
+## Active Engagement
+
+   - **Listen actively** during lectures, focusing on understanding concepts rather than transcribing verbatim.
+   - Condense information into **keywords** and brief phrases to capture essential points.
+   - Utilize **abbreviations intelligently** to streamline note-taking without sacrificing clarity.
+
+## Enhanced Retention Techniques
+
+   - Incorporate visual aids like diagrams and charts to complement textual information.
+   - Regularly review and reinforce your notes, converting headings into questions for effective self-quizzing.
+   - Experiment with color-coded highlighting to emphasize key points and facilitate quicker review.
+
+## Networked Core Knowledge
+
+  - Ensure that new knowledge forms **cnonections with existing core concepts.**
+  - Cultivate a **well-networked core knowledge base** to enhance overall understanding.
+  - Emphasize **relationships** between topics to create a more interconnected and comprehensive learning experience.
+
+
+
+
+
+
+
+
+
+

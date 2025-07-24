@@ -1,0 +1,23 @@
+---
+title: "Lab 5: k8s on Digital Ocean"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Lab
+categories: [devops, lab]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![](/images/devops/springboot-digitalocean-k8s.png)
+
+# References
+
+- [Spring boot on digital ocean](https://sites.google.com/view/devopscifo/labs/5-k8s-docean){.external target='_blank'}
+
+

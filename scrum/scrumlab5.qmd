@@ -1,0 +1,54 @@
+---
+title: "SCRUM Lab#SC05: SCRUM Tests"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [scrum, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **SCRUM Lab#SC05: Tests**
+
+
+
+Scrum.org Open Assessments have no fee and do not include certification, but they allow you to gauge your basic knowledge of Scrum, the structure of a Scrum Team, Scrum accountabilities, the fundamentals of scaling Scrum and more.  As these are free study tools, please note that the questions on the Open Assessments do not have the same level of difficulty as the certification assessments. They do, however, provide practice for the Professional Scrum certification assessments.
+
+Passing the Open assessments, training, working experience, knowledge and interpretation of the Scrum Guide, Nexus Guide and Kanban Guide for Scrum Teams along with many of the Scrum.org resources will help prepare you for our challenging professional level assessment and certifications.
+
+
+:::
+
+</br></br>
+
+![Agile SCRUM Tests](/images/scrum/testing_agile.png){width="30%"}
+
+
+# Class Assestments
+
+- [Test #1](https://docs.google.com/forms/d/e/1FAIpQLScc60jqGAbbnjRa4iLgvjtKqjwL5HF1xDYzjMex8CIODSTYgg/viewform){.external}
+- [Test #2](https://docs.google.com/forms/d/e/1FAIpQLSdKgTl4tqa4w4ldj_32KbV5F1rGlLkDpElLtM86cwOIqDMK2g/viewform){.external}
+- [Test #3](https://docs.google.com/forms/d/e/1FAIpQLSfpik1IW3FcT76YHg6nUZtpq4gwHqWzVaS1UkIefoHsTZEOrQ/viewform){.external}
+- [Test #4](https://docs.google.com/forms/d/e/1FAIpQLSdRxUnJG8Bt2BEX3h8iWbeTeAw6LnokZXIq0B6C00VhRElWPQ/viewform){.external}
+- [Test #5](https://docs.google.com/forms/d/e/1FAIpQLSeKGPNYSFnAztxOja3hO2Xd3OH5OD_0lZLMZBpk3IFOzqfXeg/viewform){.external}
+
+# Open Assesments
+
+- [Open Assessments](https://www.scrum.org/open-assessments){.external}
+
+
+# References
+
+- [Scrum Testing: A Detailed Guide to Testing on an Agile Team](https://www.testim.io/blog/scrum-testing-guide/){.external}
+
+
+
+
+
+

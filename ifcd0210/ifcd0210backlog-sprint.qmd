@@ -1,0 +1,32 @@
+---
+title: "IFCD0210 Sprint Backlog"
+categories: [ifcd0210, backlog]
+---
+
+<style>
+tr:nth-child(1) {
+  background-color: #b2b2b2!important;
+  color: #f4f4f4!important;
+}
+</style>
+
+
+![Sprint Backlog](/images/home/backlog.jpg){width="30%"}
+
+## ``Sprint#Party`` (June)
+
+::: {.column-page-right}
+| Sprint | Day | Date | Topics |  Details Topics |
+| -- | -- | -- | -- | -- |
+|  | 117 | 13/06 | - The end | [Party Gràcia-Arrosseria](https://t.me/c/1865744761/663){.external} |
+: Backlog Sprint#Party June 2023 {tbl-colwidths="[2,2,2,55,39]"}
+:::
+
+::: {.callout-note}
+- `-` topic planned or pending
+- `+` topic done in class
+- `++` new topic not planned
+:::
+
+
+

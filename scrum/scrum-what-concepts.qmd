@@ -1,0 +1,154 @@
+---
+title: "SCRUM Agile Methodology"
+subtitle: SCRUM
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [scrum, concepts, spacex]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# SCRUM
+
+:::{.summary}
+📘 **SCRUM definition**
+
+Scrum is a framework for project management that is based on teamwork, accountability, transparency and short time-boxed **iterative** progress toward a **well-defined goal**.
+
+The framework begins with a simple premise: **start with what can be seen or known**. After that, track the progress and **adapt**, whenever it is necessary.
+
+At the end of each iteration, the team holds two meetings: **one review** to show the work done for clients and to get feedback, and **one retrospective** to enable the team to reflect and improve.
+
+:::
+
+---
+
+## Introduction
+
+``Scrum`` is a framework within which people can address complex adaptive problems, while productively and creatively delivering products of the highest possible value.
+
+``Scrum`` itself is a simple framework **for effective team collaboration on complex products.**
+
+::: {.column-margin}
+Scrum co-creators **Ken Schwaber** and **Jeff Sutherland** have written **The ``Scrum`` Guide** to explain ``Scrum`` clearly and succinctly.
+:::
+
+This section contains the definition of ``Scrum``. This definition consists of:
+
+- pillars
+- ``Scrum``’s roles,
+- events,
+- artifacts,
+- and the rules that bind them together.
+
+> Scrum is: Lightweight, Simple to understand and Difficult to master.
+
+## The Three Pillars of Empiricism (Scrum)
+
+
+<mark>Empiricism means working in a fact-based, experience-based, and evidence-based manner. Scrum implements an empirical process where progress is based on observations of reality, **not fictitious plans**</mark>.
+
+Scrum also **places great emphasis on mind-set and cultural shift to achieve business and organizational Agility.**
+
+
+- **Transparency**: This means presenting the facts as is. 
+
+::: {.column-margin}
+All people involved—the customer, the CEO, individual contributors—are transparent in their day-to-day dealings with others. **They all trust each other, and they have the courage to keep each other abreast of good news as well as bad news**. Everyone strives and collectively collaborates for the common organizational objective, **and no one has any hidden agenda.**
+:::
+- **Inspection**: Inspection in this context is not an inspection by an inspector or an auditor but an inspection by every- one on the Scrum Team.
+
+
+::: {.column-margin}
+The **inspection** can be done for the product, processes, people aspects, practices, and continuous improvements.
+:::
+- **Adaptation**: Adaptation in this context is about continuous improvement, the ability to adapt based on the results of the inspection. 
+
+
+::: {.column-margin}
+Everyone in the organization must ask this question regularly: **Are we better off than yesterday?** For profit-based organizations, the value is represented in terms of profit. 
+:::
+
+
+![3 pillars [The Three Pillars of Empiricism (Scrum)](https://www.scrum.org/resources/blog/three-pillars-empiricism-scrum)](/images/scrum/3pillarsofempiricism.png){width="60%"}
+
+
+## ``SCRUM`` roles
+
+### The Scrum Team
+
+The ``Scrum`` Team is made up of the people who actually work on Product Backlog Items during a Sprint. In a software context, this group is most often called the Development Team. 
+
+::: {.column-margin}
+In other contexts, the **simple term Team** is often used.
+:::
+
+The ``Scrum`` Master and the Product Owner, while part of the overall ``Scrum`` Team, may or may not be members of the Team working on PBIs. There is **no Project Manager or Team Lead** in ``Scrum``.
+
+> Everyone is simply an equal member of the Team. 
+
+The ``Scrum`` team is:
+
+1. Transcendent 
+2. Autonomous 
+3. Cross-Functional
+
+### ``Scrum`` Master
+
+The ``Scrum`` Master is tasked with making ``Scrum`` work. They work intimately with the Team, sometimes as a member. Their primary task is to remove Impediments and guide the team in ``Scrum`` practices.
+
+::: {.column-margin}
+The **``Scrum`` Master** does whatever it takes to help the team succeed.
+:::
+
+**``Scrum`` Masters** are servant-leaders, not managers. They play the pivotal role of making sure ``Scrum`` is practiced well. The **``Scrum`` Master** is accountable for the Velocity and the Continuous Improvement of the Team.
+
+### Product Owner
+
+The **Product Owner** is the Team member who knows what the customer wants and the relative business value of those wants. He or she can then translate the customer's wants and values back to the ``Scrum`` team.
+
+::: {.column-margin}
+The **Product Owner** must know the business case for the product and what features the customers wants. 
+:::
+
+He must be available to consult with the team to make sure they are correctly implementing the product vision. Most importantly, he must have the authority to make all decisions necessary to complete the project.
+
+## Agile Manifesto Four Foundations
+
+Through this work we have come to value:
+
+1. 
+> **Individuals and interactions** over processes and tools
+2. 
+> **Working software** over comprehensive documentation
+3. 
+> **Customer collaboration** over contract negotiation
+4. 
+> **Responding to change** over following a plan
+
+That is, while there is value in the items on the right, **we value the items on the left more.**
+
+# SCRUM: the book
+
+- [Scrum: The Art of Doing Twice the Work in Half the Time](/books/scrum.qmd)
+
+
+<mark>The definitive book on the Scrum methodology from its co-creator and the CEO of Scrum, Inc., Jeff Sutherland.<mark>
+
+> Scrum is the revolutionary approach to project management and team building that has helped to transform everything from software companies to the US military to healthcare in major American hospitals. In this major new book its originator, Jeff Sutherland, explains precisely and step by step how it operates - and how it can be made to work for anyone, anywhere,
+> 
+> Take the **FBI attempt to digitize its records, for example**. As with so many software projects the first attempt failed, having taken four years and cost over $400 million.
+> 
+> Then the FBI turned to Scrum, and just over a year later unveiled a functioning system that cost less than a tenth of the first project and employed a tenth of the staff. And it’s not just grand projects that Scrum can help with.
+
+
+- [Agile Project Success and Failure (The Story of the FBI Sentinel Program)](https://insights.sei.cmu.edu/documents/4082/2017_017_001_495733.pdf)
+
+![](/images/scrum/sentinel.pdf){height="550px" width="100%"}
+
+

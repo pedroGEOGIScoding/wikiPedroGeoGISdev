@@ -1,0 +1,158 @@
+---
+title: "Lab#SB03-1: APIs & cloud"
+subtitle: Spring Boot API Rest
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+Welcome to the cifojava20Basics22-5 wiki!
+
+- [Postman guide to APIs](https://blog.postman.com/guide-to-apis-rest-soap-graphql-grpc-websockets/){.external}
+
+# Spring Boot Projects
+
+### Communication and data-connection APIs projects
+
+| Name | Type | Description | Link |
+| ------------- | ------------- | ------------- | -------------
+|  Library6s  | Server-Rest |Spring Boot Data `API Rest H2` | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library6server)** |
+|  Library6c  | Client-Web | ThymeLeaf Web Project `RestTemplate` (data from API Rest) | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library6client)** |
+|  Library8  | Server-Web | `Websockets` Spring Boot Project with JS Web-Client SockJS & Stomp | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/e3b3dc74bf7368c4228bcee4f9e706ac11a30fd1/library8)** |
+|  Library9  | Server-GraphQL | `GraphQL` Spring Boot Project with PlayGround | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library9)** |
+|  Library10  | Server-Web-Axios | `Axios` JS SPA Web Spring Boot Project | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/5f9f34909c26c6b5c5b4866ee59c3a450a3d9895/library10)** |
+
+### Cloud-database projects
+
+| Name | Type | Description | Link |
+| ------------- | ------------- | ------------- | -------------
+|  Library7  | Server-Rest | Web Spring Boot Project with `MongoDB`  | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library7)** |
+|  Library12  | Server-Web | Web Spring Boot Projec with `DynamodDB AWS` | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/7934e2e8e9de9250c17cbb38d5911e37e8ce5eca/library12)** |
+|  Library13  | Server-Web | Web Spring Boot Project `WebFlux` | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library13)** |
+|  Library14  | Server-Web | Web Spring Boot Project `WebFlux` with `Local-Reactive-MongoDB` | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library14)** |
+
+### Security and video projects
+
+| Name | Type | Description | Link |
+| ------------- | ------------- | ------------- | -------------
+|  Library11  | Server-Web-Security | Web Spring Boot Project `Thyemleaf-Security` | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library11)** |
+|  Library15  | WebFlux Video | WebFlux Project `Video Streaming` | **[Done](https://github.com/AlbertProfe/cifojava2022-5/tree/main/library15)** |
+
+# Spring Boot Projects Details
+  
+## (6S-6C) ThymeLeaf Web Project `RestTemplate` (data from API Rest)
+
+<details>
+<summary>Library6</summary>
+
+- Base project:
+  - Library1 > Library6server
+  - library5 > library6server
+  - Templates html Thymeleaf
+  - @Controller and @RestController
+  - @Service: RestTemplate
+
+</details>  
+
+## (8) `Websockets` Spring Boot Project with JS Web-Client SockJS & Stomp
+
+<details>
+<summary>Library8</summary>
+
+- Base project:
+  - Library3
+  - WebSocket
+  - STOMP Web-Client JS
+
+</details>
+
+## (9) `GraphQL` Spring Boot Project with PlayGround
+
+<details>
+<summary>Library9</summary>
+
+- Base project:
+  - Library3
+  - GraphQL
+
+</details>
+
+## (10) `Axios` JS SPA Web Spring Boot Project
+
+<details>
+<summary>Library10</summary>
+
+- Base project:
+  - Library5
+  - Axios JS
+  - SPA
+
+</details>
+
+***
+
+## (7) Spring Boot Project with API Rest `MongoDB`
+
+<details>
+<summary>Library7</summary>
+
+- Base project:
+  - Library3
+  - MongoCrud
+  - @RestController
+
+</details>
+
+## (12) Spring Boot Server `DynamoDB AWS`
+
+<details>
+<summary>Library12</summary>
+
+- Base project:
+  - Library5
+  - Cloud DynamoDB AWS
+
+</details>
+
+## (13-14) Web Spring Boot Project `WebFlux`
+
+<details>
+<summary>Library13-14</summary>
+
+- Base project:
+  - Library5
+  - WebFlux
+
+</details>
+
+***
+
+## (11) Web Spring Boot Project `Thyemleaf-Security`
+
+<details>
+<summary>Library11</summary>
+
+- Base project:
+  - Library5
+  - Security
+
+</details>
+
+## (15) WebFlux Project `Video Streaming`
+
+<details>
+<summary>Library15</summary>
+
+- Base project:
+  - Library5
+  - Video Streaming
+
+</details>

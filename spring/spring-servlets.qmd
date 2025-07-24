@@ -1,0 +1,207 @@
+---
+title: "Springs Servlets"
+subtitle: Spring MVC
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Spring MVC
+categories: [spring, MVC]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+📘 **Servlet**
+
+A ``servlet`` in Java is a **server-side technology** that enables the **handling of requests and responses between a client and a server**.
+
+``Servlets`` are **Java classes** that extend the functionality of web servers and allow developers to dynamically generate web pages and other resources based on user requests.
+:::
+
+# Overview: JSP, Servlets and DAOs
+
+- [Servlet Container and Spring Framework](https://mossgreen.github.io/Servlet-Containers-and-Spring-Framework/){.external}
+- [Servelets examples](https://drive.google.com/drive/folders/1CEhyfjf1VhEOlZUuewzWu-zxwqzpBVD6?usp=sharing){.external}
+- [Web on Servlet Stack](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html){.external}
+
+JSP (``JavaServer Pages``) and servlets are **server-side Java technologies that work together to build dynamic web applications.**
+
+JSPs provide a way to generate HTML pages dynamically using Java code, while servlets handle incoming HTTP requests and provide responses back to the client.
+
+::: {.column-margin}
+JSP, servlets, and DAOs are technologies that have been around for many years and **are still in use today**.
+:::
+
+When combined with a ``DAO`` (Data Access Object) layer, JSPs and servlets can interact with a **SQL database to store and retrieve data**.
+
+The DAO layer acts as an **intermediary between the application and the database**, handling the low-level details of data access and providing a consistent interface for the rest of the application to use.
+
+::: {.column-margin}
+JSP and servlets were introduced **in the late 1990s as part of the Java EE (Enterprise Edition)** specification, which aimed to provide a platform for building scalable and robust enterprise applications. These technologies are still commonly used today.
+:::
+
+![ [Database Connectivity and Operations Comparison : Java and Force.com](http://clouddatafacts.com/force.com/java-to-force/db-connectivity.html){.external}  ](/images/springmvc/java-servlet-flow.png){width="80%"}
+
+Using this **combination of JSPs, servlets, and DAOs,** developers can build powerful, scalable, and maintainable web applications that can handle complex data and business logic. 
+
+::: {.column-margin}
+The use of DAOs in conjunction with JSPs and servlets to access SQL databases has also been a common practice for many years. DAOs were first introduced **as a design pattern in the early 2000s,** and since then, they have been widely adopted as a best practice.
+:::
+
+![Servlet life cycle](/images/springmvc/servlet_life_cycle.png){width="80%"}
+
+The end result is a web application that can provide rich functionality to users while remaining easy to maintain and extend over time.
+
+
+
+
+# JSP: JavaServer Page
+
+- [Java Server-side Programming, Getting started with JSP by Examples](https://www3.ntu.edu.sg/home/ehchua/programming/java/JSPByExample.html){.external}
+
+JavaServer Page (JSP) provides a simplified and fast mean to generate dynamic web contents. 
+
+It allows you to mix static HTML with dynamically generated HTML - in the way that the business logic and the presentation are well separated.
+
+
+![Request-Response cycle with servlets and .xml: Spring 2.x](//images/springmvc/Servlet_HelloServletURL.png){width="80%"}
+
+
+- [Book servlet](/images/springmvc/servlet.book.pdf){.external}
+
+## JSPs are Internally Compiled into Java Servlets
+
+That is to say, anything that can be done using JSPs can also be accomplished using Java servlets.
+
+However, it is important to note that servlets and JSPs are **complementary technologies, NOT replacement of each other.** 
+
+- Servlet can be viewed as *HTML inside Java*, which is better for implementing business logic - as it is Java dominant.
+- JSP, on the other hand, is *Java inside HTML*, which is superior for creating presentation - as it is HTML dominant.
+
+In a typical **Model-View-Control (MVC) application**:
+
+- servlets are often used for the **Controller (C)**, which involves complex programming logic.
+- JSPs are often used for the **View (V)**, which mainly deals with presentation.
+- The Model (M) is usually implemented using **JavaBean or EJB**.
+
+![Servlet life cycle](/images/springmvc/servlet_lifecycle_webserver.png){width="80%"}
+
+## Apache Tomcat Server
+
+JSPs, like servlets, are **server-side programs run inside a HTTP server.**
+
+::: {.callout-note}
+## Tomcat
+To support JSP/servlet, a Java-capable HTTP server is required.
+
+[Tomcat Server](http://tomcat.apache.org){.external} is the official reference implementation (RI) for Java servlet and JSP, provided free by [Apache](http://www.apache.org){.external}.
+:::
+
+## Example: Java inside HTML
+
+![Request-Response cycle with URL and Java Methods: Spring 2.x](/images/springmvc/path.png){width="80%"}
+
+
+### Code example
+
+This JSP code generates a random number and displays a message to the user based on the value of the number.
+
+If the number is greater than 0.95, the user is told they will have a lucky day, and if the number is less than or equal to 0.95, the user is told that life goes on.
+
+
+
+
+::: {.column-page-right}
+
+``` {.java .code-overflow-wrap filename="DemoApplication.java"}
+<html>
+<head><title>First JSP</title></head>
+<body>
+  <%
+    double num = Math.random();
+    if (num > 0.95) {
+  %>
+      <h2>You'll have a luck day!</h2><p>(<%= num %>)</p>
+  <%
+    } else {
+  %>
+      <h2>Well, life goes on ... </h2><p>(<%= num %>)</p>
+  <%
+    }
+  %>
+  <a href="<%= request.getRequestURI() %>"><h3>Try Again</h3></a>
+</body>
+</html>
+```
+:::
+
+The random number is displayed along with the message, and the user is given the option to try again by clicking on a link that reloads the page.
+
+# EJB: Enterprise JavaBeans
+
+![EJB Architecture](/images/springmvc/ejb.bmp)
+
+`Enterprise JavaBeans` (*Enterprise JavaBeans*) is one of several Java APIs for modular construction of enterprise software.
+
+<mark>EJB is a server-side software component that encapsulates business logic of an application. An EJB web container provides a runtime environment for web related software components, including computer security, Java servlet lifecycle management, transaction processing, and other web services.</mark> 
+
+The EJB specification is a subset of the Java EE specification.
+
+> The EJB specification provides a standard way to implement the server-side (also called "back-end") 'business' software typically found in enterprise applications (as opposed to 'front-end' user interface software). Such software addresses the same types of problem, and solutions to these problems are often repeatedly re-implemented by programmers.
+
+
+`Jakarta Enterprise Beans` is intended to handle such common concerns as persistence, transactional integrity and security in a standard way, leaving programmers free to concentrate on the particular parts of the enterprise software at hand.
+
+The following shows a basic example of what an EJB looks like in code: 
+
+``` {.java .code-overflow-wrap filename="CustomerService.java"}
+@Stateless 
+public class CustomerService { 
+  
+
+  private EntityManager entityManager; 
+   
+  public void addCustomer(Customer customer) { 
+    entityManager.persist(customer); 
+  } 
+}
+```
+
+
+## EJB vs Spring 
+
+**EJB** (Enterprise JavaBeans) and **Spring** are frameworks for developing enterprise applications in Java.
+
+::: {.column-margin}
+![EJB vs Spring](/images/springmvc/EJB-vs-Spring-info-1.jpg.webp){width="40%"}
+:::
+
+Both offer solutions for managing application components and facilitating enterprise-level features like transaction management and security. However, they differ in several *key* aspects. 
+
+**EJB** is part of the Java EE platform, providing a standardized approach to building enterprise applications, while Spring is a lightweight and modular framework offering comprehensive support for dependency injection, aspect-oriented programming, and MVC architecture. 
+
+Spring promotes **loosely coupled components** and easier **unit testing** compared to **EJB**, which traditionally requires a full-fledged Java EE container for deployment.
+
+
+
+
+![EJB vs Spring](/images/springmvc/EJBvsSPRING.png)
+
+
+# In 2023, is this tech obsolete? Yes and Not
+
+![ [Servlet and JSP Tutorial- How to Build Web Applications in Java?](https://www.edureka.co/blog/servlet-and-jsp-tutorial/){.external} ](/images/springmvc/jsp_tech.png){width="40%"}
+
+
+![[Does assignment to the legacy project with pure Java EE/EJB for 2 years will make me make a worse software engineer even if I was a senior and lead people, but now just code old EJB stuff deployed on JBoss?](https://www.quora.com/Does-assignment-to-the-legacy-project-with-pure-Java-EE-EJB-for-2-years-will-make-me-make-a-worse-software-engineer-even-if-I-was-a-senior-and-lead-people-but-now-just-code-old-EJB-stuff-deployed-on-JBoss){.external target='_blank'}](/images/springmvc/Quora-ejb.png){width="40%"}
+
+# References
+
+
+- [EJB vs Spring](https://www.educba.com/ejb-vs-spring/){.external target='_blank'}
+- [A Guide to Migrating Enterprise Applications to Spring](https://assets.spring.io/drupal/files/MigratingAppsToSpring.pdf){.external target='_blank'}
+- [A Detailed Guide to Enterprise Java Beans w/Code Examples](https://stackify.com/enterprise-java-beans/){.external target='_blank'}
+

@@ -1,0 +1,21 @@
+---
+title: "Antifragile"
+author: "albertprofe"
+subtitle: "Nassim Nicholas Taleb, 2012, Antifragile: Things That Gain from Disorder (Incerto)"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "This book explores how systems can benefit from shocks and uncertainty, and provides insights into how we can design more robust systems and institutions."
+categories: [assay]
+subcategories: [complexity, resilience]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/antifragile.jpg){width="60%"}
+
+## More info
+
+- [Antifragile: Things That Gain from Disorder (Incerto)](https://www.amazon.com/Antifragile-Things-That-Disorder-Incerto/dp/1400067820){.external}

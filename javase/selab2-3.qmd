@@ -1,0 +1,156 @@
+---
+title: "Lab#SE02-3: Movie/Review, factory "
+subtitle: Java SE Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 02 part 3
+categories: [javase, lab, singleton, factory]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI02-3: singleton and factory**
+
+A singleton is a design pattern that ensures a class has only one instance and provides a global point of access to that instance.
+
+1. We could modify the `MovieManager` class to implement the singleton pattern.
+
+A **factory pattern** is a design pattern that provides an `interface` for creating objects in a **super class**, but allows subclasses to alter the type of objects that will be created.
+
+2. We could modify the `MovieManager` class to implement the factory pattern.
+
+:::
+
+## Singleton
+
+You could then use these:
+
+```{.java .code-overflow-wrap filename="MovieManager.java"}
+import java.util.HashMap;
+import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class MovieManager {
+    private static MovieManager instance = null;
+    private int qty;
+    private double size;
+    private HashMap<String, Movie> movies;
+    private Date lastModified;
+    
+    private MovieManager() {
+        this.qty = 0;
+        this.size = 0;
+        this.movies = new HashMap<>();
+        this.lastModified = new Date();
+    }
+
+    public static MovieManager getInstance() {
+        if (instance == null) {
+            instance = new MovieManager();
+        }
+        return instance;
+    }
+    //other class methods
+}
+```
+In this version of the class, the **constructor** is private, so it can only be called by the class itself.
+
+The class also contains a **static instance variable that holds the unique instance of the class**, and a `static` `getInstance()` method that returns the instance.
+
+If the instance doesn't exist yet, it will be created, otherwise it will return **the existing one.**
+
+```{.java .code-overflow-wrap filename="test.java"}
+ MovieManager manager = MovieManager.getInstance();
+
+ manager.addMovie(new Movie("The Shawshank Redemption","Frank Darabont","Crime"));
+ manager.addMovie(new Movie("The Godfather","Francis Ford Coppola","Crime"));
+ manager.saveToCSV();
+```
+
+::: {.callout-note}
+Keep in mind that the Singleton pattern is useful when exactly one instance of a class is needed to control the action throughout the execution. However, it's important to use singletons judiciously, as they can make your code more difficult to reason about and test if overused.
+:::
+
+## Factory
+
+```{.java .code-overflow-wrap filename="MovieManager.java"}
+import java.util.HashMap;
+import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class MovieManager {
+    private static MovieManager instance = null;
+    private int qty;
+    private double size;
+    private HashMap<String, Movie> movies;
+    private Date lastModified;
+    private MovieFactory movieFactory;
+    
+    private MovieManager() {
+        this.qty = 0;
+        this.size = 0;
+        this.movies = new HashMap<>();
+        this.lastModified = new Date();
+        this.movieFactory = new MovieFactory();
+    }
+
+    public static MovieManager getInstance() {
+        if (instance == null) {
+            instance = new MovieManager();
+        }
+        return instance;
+    }
+    public void addMovie(String title,
+                         String director, String genre, double size) {
+        Movie movie = movieFactory.createMovie(title, director, genre, size);
+        this.movies.put(title, movie);
+        this.qty++;
+        this.size += movie.getSize();
+        this.lastModified = new Date();
+    }
+    // other class methods
+}
+```
+
+```{.java .code-overflow-wrap filename="MovieFactory.java"}
+interface MovieFactory {
+    Movie createMovie(String title,
+                      String director, String genre, double size);
+}
+```
+
+```{.java .code-overflow-wrap filename="DefaultMovieFactory.java"}
+class DefaultMovieFactory implements MovieFactory {
+
+    @Override
+    public Movie createMovie(String title,
+                             String director, String genre, double size) {
+        return new Movie(title, director, genre, size);
+                             }
+}
+```
+
+In this version of the ``MovieManager`` class, a movieFactory field is added to the class, **it is an instance of the MovieFactory interface**. The ``MovieManager`` class has a new ``addMovie(String title, String director, String genre, double size)`` method that takes 4 parameters and it uses the ``movieFactory`` object to create a new ``Movie`` object with the provided parameters.
+
+The ``MovieFactory`` ``interface`` defines a single method ``createMovie(String title, String director, String genre, double size)`` that creates a ``Movie`` object. The ``DefaultMovieFactory`` class **is an implementation of this ``interface``** that creates the ``Movie`` objects by calling its constructor.
+
+::: {.callout-important}
+The ``MovieManager`` uses the factory method ``createMovie()`` to create the movie objects rather than calling the constructor directly. 
+:::
+
+This way, if the implementation of how Movie objects are created needs to change in the future, only the DefaultMovieFactory class needs to be modified. The rest of the MovieManager class remains unchanged, so it provides flexibility to change the implementation in future.
+
+::: {.callout-tip}
+You can also have other implementation of MovieFactory, say like a SecureMovieFactory to create secure movies or any other such implementation. This way you can change the way movie object is created in future without modifying the code of MovieManager
+
+It is worth noting that this is a simple example of the factory pattern and it can be applied in many ways based on the requirements and use cases.
+:::
+
+

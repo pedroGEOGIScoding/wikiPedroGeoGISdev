@@ -1,0 +1,21 @@
+---
+title: "Maps of Meaning"
+author: "albertprofe"
+subtitle: "Jordan B. Peterson, 1999, Maps of Meaning: The Architecture of Belief"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "Why have people from different cultures and eras formulated myths and stories with similar structures? What does this similarity tell us about the mind, morality, and structure of the world itself? Jordan Peterson offers a provocative new hypothesis that explores the connection between what modern neuropsychology tells us about the brain and what rituals, myths, and religious stories have long narrated. A cutting-edge work that brings together neuropsychology, cognitive science, and Freudian and Jungian approaches to mythology and narrative, Maps of Meaning presents a rich theory that makes the wisdom and meaning of myth accessible to the critical modern mind."
+categories: [neuropsychology]
+subcategories: [psychology, mind]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/MapsOfMeaning.jpg){width="60%"}
+
+## More info
+
+- [Maps of Meaning: The Architecture of Belief](https://www.jordanbpeterson.com/maps-of-meaning/){.external}

@@ -1,0 +1,345 @@
+---
+title: "Lab#SB00-6: Rest & MongoDB"
+subtitle: Spring Boot Library Management API Rest and NoSQL-MongoDB
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Spring Boot
+categories: [Spring-Boot, lab, rest]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+
+📘 **Spring Boot Lab#SB00-6: API Rest and NoSQL-MongoDB**
+
+Connecting Spring Boot `entity` book to `MongoDB Atlas` can be completed in a few steps. 
+
+To connect Spring Boot entity book to ``MongoDB Atlas``, create an account, cluster and database user on `MongoDB Atlas`. Add `MongoDB dependency`, configure application.properties and create a Book entity and repository.
+
+Finally, use the repository to perform CRUD operations on your books `collection`.
+:::
+
+</br>
+
+![Basic architecture MongoDB Spring Boot Rest](/images/springboot/mongodb-springboot-rest.png){width="40%"}
+
+## References
+
+- [Spring Boot Data](/springboot/boot-concepts-data.qmd)
+- [Accessing Data with MongoDB](https://spring.io/guides/gs/accessing-data-mongodb/){.external}
+- [Spring Boot Integration with MongoDB Tutorial](https://www.mongodb.com/compatibility/spring-boot){.external}
+- [Java - Mapping POJOs](https://www.mongodb.com/developer/languages/java/java-mapping-pojos/){.external}
+- [MongoDB Atlas](https://cloud.mongodb.com/){.external}
+- [Library7](https://github.com/AlbertProfe/cifojava2022-5/wiki/Library7-:-MongoDB-Spring-Boot-Project-with-API-Rest){.external}
+
+## Example: `Book`
+
+**To connect your Spring Boot entity book to MongoDB Atlas**, you can follow these steps:
+
+1. **Create** a `MongoDB Atlas account`: First, you need to create an account on `MongoDB Atlas`. You can sign up for a free account with a limit of **512 MB storage**.
+
+2. **Create a new project**: After logging in, create a new project and give it a name.
+
+3. **Create a new cluster**: In the project dashboard, click on the "Build a New Cluster" button. Choose a provider, region, and the cluster tier that suits your requirements. Configure your cluster and click "Create Cluster" to start building your cluster.
+
+4. **Create a database user and IP permission**: Once the cluster is ready, create a database user with appropriate permissions and give network access (add your IP to `IP Access List`).
+
+5. **Get connection string**: After creating a database user, you will get a connection string that you can use **to connect to your MongoDB Atlas cluster**. Copy the connection string to use it later.
+
+6. Add **MongoDB** `dependency`: In your Spring Boot project, add the MongoDB `dependency` in the `pom.xml` file:
+
+``` java
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-data-mongodb</artifactId>
+</dependency>
+```
+
+
+
+7. **Configure** `application.properties`: In the `application.properties` file, add the following properties:
+
+
+``` java
+spring.data.mongodb.uri=mongodb+srv://<username>:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority
+spring.data.mongodb.database=<dbname>
+```
+
+Replace `<username>`, ``<password>``, `<clustername>`, and `<dbname>` with your own values.
+
+8. **Create** `Book` `Document`: Create a `Book` `Document` class with annotations.
+
+``` java
+@Document(collection = "books")
+public class Book {
+    @Id
+    private String id;
+    private String title;
+    private String author;
+    // getters and setters
+}
+```
+
+9. **Create** a `Book` `repository`: Create a repository interface that extends `MongoRepository<Book, String>`:
+
+
+``` java
+public interface BookRepository extends MongoRepository<Book, String> {
+}
+
+```
+
+
+10.  **Use** the `Book` `repository`: You can use the `Book` `repository` to perform CRUD operations on your books collection.
+
+``` java
+@Service
+public class BookService {
+    @Autowired
+    private BookRepository bookRepository;
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    public void addBook(Book book) {
+        bookRepository.save(book);
+    }
+
+    public void deleteBook(String id) {
+        bookRepository.deleteById(id);
+    }
+}
+```
+## LibraryManagementRest: mongoDB
+
+### folder-tree
+
+![Folder-tree `bookImage`](/images/springboot/LibraryManagementRest-vmongodb-0.png){width="60%"}
+
+### mongoDB: `string connection`
+
+![Create account and cluster](/images/springboot/LibraryManagementRest-vmongodb-1.png){width="60%"}
+
+
+![ClusterTest where we will create our db](/images/springboot/LibraryManagementRest-vmongodb-2.png){width="60%"}
+
+
+![Create DB](/images/springboot/LibraryManagementRest-vmongodb-3.png){width="60%"}
+
+
+![DB and Collection name](/images/springboot/LibraryManagementRest-vmongodb-4.png){width="60%"}
+
+
+![Just created LibraryManagmentRest DB](/images/springboot/LibraryManagementRest-vmongodb-5.png){width="60%"}
+
+
+![Creating user to access DB](/images/springboot/LibraryManagementRest-vmongodb-6.png){width="60%"}
+
+
+![Add new user to db](/images/springboot/LibraryManagementRest-vmongodb-7.png){width="60%"}
+
+
+![Network access](/images/springboot/LibraryManagementRest-vmongodb-8.png){width="60%"}
+
+
+![Connect mongoDB to app: string connection](/images/springboot/LibraryManagementRest-vmongodb-9.png){width="60%"}
+
+
+![Connect to Clustertest: connect your application](/images/springboot/LibraryManagementRest-vmongodb-10.png){width="60%"}
+
+![Connect to Clustertest: string connection](/images/springboot/LibraryManagementRest-vmongodb-11.png){width="60%"}
+
+### `application.properties`
+
+To connect a Spring Boot application to MongoDB, you can use the spring.data.mongodb.uri property in the `application.properties` file to specify the `connection string`.
+
+The `connection string` typically consists of the username, password, host, port, and database name. 
+
+```java
+spring.data.mongodb.uri=mongodb+srv://cifo:1234@clustertest.0h8fd.mongodb.net/LibraryManagementRest
+spring.data.mongodb.database=LibraryManagementRest
+```
+::: {.column-margin}
+You can also use a `connection string` with additional options like SSL, authentication mechanisms, and connection pooling. By placing the connection string in the `application.properties` file, you can easily configure the connection and change it without modifying the source code.
+:::
+
+The Spring Boot MongoDB starter will automatically use the `connection string` to create a `MongoDB` client and configure the data source.
+
+### `@Document`
+
+```java
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Document(collection = "bookImage")
+public class BookImage {
+
+    @Id
+    private String id;
+    private String name;
+    private Binary image;
+}
+```
+
+### `@RestController`
+
+```java
+@RestController
+@RequestMapping("api/image")
+public class BookImageRestController {
+
+    @Autowired
+    BookImageRepository bookImageRepository;
+
+    @PostMapping("upload")
+    public BookImage saveBookImage( @RequestParam String name, @RequestParam MultipartFile file) throws IOException {
+        BookImage bookImage  = new BookImage();
+        //bookImage.setId(Utils.createUUID());
+        bookImage.setName(name);
+        bookImage.setImage( new Binary(file.getBytes() ));
+
+        bookImageRepository.save(bookImage);
+
+        return bookImage;
+
+    }
+
+    @GetMapping("/getData")
+    public String getDataBookImage(@RequestParam  String id){
+
+        Optional<BookImage> bookImage = bookImageRepository.findById(id);
+        Encoder encoder = Base64.getEncoder();
+
+        return encoder.encodeToString( bookImage.get().getImage().getData() );
+
+    }
+
+    @GetMapping("/getImage")
+    public ResponseEntity<byte[]> getBookImage(@RequestParam String id){
+
+        Optional<BookImage> bookImage = bookImageRepository.findById(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>( bookImage.get().getImage().getData(), headers, HttpStatus.OK );
+
+    }
+}
+```
+
+### `@Repository`
+
+
+```java
+@Repository
+public interface BookImageRepository extends MongoRepository<BookImage, String> {}
+```
+
+## API Rest: postman
+
+### `upload`
+
+- Open Postman and **create a new request.**
+- Set the HTTP method to `"POST"` and set the request URL to `"http://localhost:8090/api/image/upload".`
+- Click on the "Body" tab and select the "form-data" radio button. Set the request body to the following key-value:
+
+![key-value to send an Image](/images/springboot/LibraryManagementRest-vmongodb-14.png){width="60%"}
+
+and the name of the image:
+
+![Image name as a query param](/images/springboot/LibraryManagementRest-vmongodb-16.png){width="60%"}
+
+- This will create a **new bookImage document**, so click on the "Send" button to send the `request`.
+- If the `request` is successful, you should receive a response with a status code of 201 Created and the bookImage document in the response body.
+
+![Request Post create bookImage](/images/springboot/LibraryManagementRest-vmongodb-12.png){width="60%"}
+
+![MongoDB collection document created](/images/springboot/LibraryManagementRest-vmongodb-13.png){width="60%"}
+
+### `getImage`
+
+- Open Postman and **create a new request.**
+- Set the HTTP method to `"GET"` and set the request URL to `"http://localhost:8090/api/image/getImage".`
+- Click on the "Params" tab and select the "key-value" data: `id: 64367eb2a302f620eea0f1f7` 
+- The response from the server:
+
+
+![Request Get read bookImage](/images/springboot/LibraryManagementRest-vmongodb-15.png){width="60%"}
+
+### `upload` one-to-many `Book`-`BookImage`
+
+![Spring Boot using two very diferent data-soruces](/images/springboot/mongodb-h2.png){width="60%"}
+
+We are going to update `upload` method: both classes, `Book` and `BookImage` **will share ids in a one-to-many relationship.**
+
+- `Book` will be stored at **local H2 SQL DB**.
+- `BookImage` will be stores at **MongoDB Cloud noSQL DB.**
+  
+The below code is designed to:
+
+- retrieve a book by its ID from a book repository.
+- It then checks if the book exists and sets the book ID for a book image.
+- If the book exists, it saves the book image to the book image repository and adds the book image ID to the book's list of image IDs,
+- and then saves the updated book.
+
+::: {.callout-note}
+## upload image updated
+method Create CRUD API Rest `public BookImage saveBookImage()` on @RestController `public class BookImageRestController{}`:
+
+[upload updated](https://github.com/AlbertProfe/CifoJava2023/blob/44b54624a5a156edabe8095d0a9dc6bf28329591/LibraryManagementRest/src/main/java/com/example/myFirstSpring/restcontroller/BookImageRestController.java#L37){.external}
+:::
+
+```java
+  // Finds a book in the book repository by its ID, if present.
+  Optional<Book> book = bookRepository.findById(bookId);
+  // Checks if the book exists and sets the book ID for the book image.
+  if (book.isPresent()) bookImage.setBookId(book.get().getBookId());
+  // If the book doesn't exist, return null.
+  else return null;
+  // Saves the book image to the book image repository.
+  BookImage bookImageSaved = bookImageRepository.save(bookImage);
+  // Adds the book image ID to the book's list of image IDs and saves the updated book.
+  Book bookUpdated = book.get().addBookImageId(bookImageSaved.getId());
+  bookRepository.save(bookUpdated);
+```
+
+- Open Postman and **create a new request.**
+- Set the HTTP method to `"POST"` and set the request URL to `"http://localhost:8090/api/image/upload".`
+- Click on the "Body" tab and select the "form-data" radio button. Set the request body to the following key-value for both, `name` and `bookId`:
+
+![upload image with bookId @RequestParam](/images/springboot/LibraryManagementRest-vmongodb-17.png){width="60%"} 
+
+
+![getAll bookImages and find out the previous bookId with the bookImageId related](/images/springboot/LibraryManagementRest-vmongodb-18.png){width="60%"}
+
+
+## Versions
+
+
+**endpoint** example: `http://localhost:8090/api/image/upload`
+
+| Code Version | Commit | Folder-Tree | Screeshoots |
+| -- | -- | -- | -- |
+| [Library Management Rest MongoDB 0.0](https://github.com/AlbertProfe/CifoJava2023/tree/d56d89b50179209547097c36a2da977a22d33875/LibraryManagementRest){.external}  | add MongoDB to project: application.properties, @Document, @Repository, POM </br> BookImageRestController: `upload`, `getImage`, `getDataImage`  | [Folder-tree `bookImage`](/images/springboot/LibraryManagementRest-vmongodb-0.png){width="60%"} | - |
+| [Library Management Rest MongoDB 0.1](https://github.com/AlbertProfe/CifoJava2023/tree/ffe874191e40e9f54f81a6e5c883edc581f96f5f/LibraryManagementRest){.external}  | all CRUD operations with `bookImage` document  | - | - |
+| [Library Management Rest MongoDB 0.2](https://github.com/AlbertProfe/CifoJava2023/tree/1ae3bdbc654df8f25658acf177e8d6b65e6c6c55/LibraryManagementRest){.external}  | add ImageBook Id to books List `book` **entity** </br> and bookId to `imageBook` **document** | - | [1](/images/springboot/LibraryManagementRest-vmongodb-17.png) - [2](/images/springboot/LibraryManagementRest-vmongodb-18.png) |
+| <s>[Library Management Rest MongoDB 0.3](){.external}</s>  | add data encryptation | - | - |
+
+
+### Postman apis
+
+| Domain | Link | Objects |
+| -- | -- | -- |
+| books | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-c1620d8c-c576-4e34-8af4-0c9f990b6dfa?action=share&creator=7473960){.external} | `book` | 
+| borrow | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-b26c4d68-8937-49c1-97d1-fc4919283023?action=share&creator=7473960){.external} |  `borrow` | 
+| user | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-ccbd64c8-014d-4c44-9707-619aee02eeb3?action=share&creator=7473960){.external} | `user` |
+| bookImage | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-83279a3e-c512-494c-b04f-b40fdbd9c918?action=share&creator=7473960){.external} | `bookImage` |
+
+
+

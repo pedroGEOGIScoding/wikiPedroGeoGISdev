@@ -1,0 +1,113 @@
+---
+title: "Lab#SB07-1: `monitor Book`"
+subtitle: Spring Boot
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+## `monitor Book` overview
+
+<mark>The project involves creating a Spring Boot application with a primary domain focused on "books" and the implementation of a user activity monitoring system through RESTful APIs. The core objective is to develop a platform for managing and tracking user interactions with book-related content.</mark>
+
+The **"book"** domain will encompass features for **storing, retrieving, and managing book-related data (all basic CRUD operations)**, including attributes such as title, author, publication date, and genre. This domain will serve as the backbone of the application, facilitating CRUD operations on book records.
+
+To monitor user activity, the project will include an activity tracking system that logs and analyzes user interactions with the book domain. This will involve creating **RESTful APIs for actions like book views, ratings, reviews**, and other user-related activities. These API endpoints will collect and store user activity data, enabling administrators to gain insights into user engagement and behavior.
+
+
+
+##  `monitor Book` (java-EE spring boot) core documentation
+
+### github repo
+
+[AlbertProfe/monitorBook](https://github.com/AlbertProfe/monitorBook){.external}
+
+### Project Tree
+
+![monitorBook tree](/images/springboot/monitorBook-0.png){width="50%"}
+
+### API Rest Postman
+
+- [monitorBook Api](https://documenter.getpostman.com/view/7473960/2s9YXb8559){.external}
+
+### Model
+
+#### book
+
+```
+    private String id; 
+    private String title; 
+    private int pages; 
+    private String language; 
+    private String author; 
+```
+
+[book java class](https://github.com/AlbertProfe/monitorBook/blob/master/demoJavaBoot1/src/main/java/com/example/demo/model/book.java)
+
+#### activityLog
+
+```
+    private String id;
+    private String ip;
+    private String operationMethod;
+    private String user;
+    private Timestamp time; // Assuming time is represented as a Unix timestamp (long)
+    private String status;
+    private String endpoint;
+    private String domain;
+    private String version;
+```
+
+[activityLog java class](https://github.com/AlbertProfe/monitorBook/blob/master/demoJavaBoot1/src/main/java/com/example/demo/model/ActivityLog.java)
+
+## Domains
+
+- **RestController**: In a Spring Boot application, the **RestController** acts as the presentation layer responsible for handling incoming **HTTP requests**.
+  - It receives requests from clients, processes them, and returns responses as RESTful web services. This component typically maps HTTP methods (GET, POST, PUT, DELETE) to specific methods and serves as a bridge between the client and the application's core logic.
+
+- **Controller**: The Controller in Spring Boot serves as the intermediary between the user interface (e.g., a web page) and the application's backend.
+  - It processes user input, triggers corresponding actions, and orchestrates the flow of data. Controllers often contain business logic and route requests to the appropriate services for further processing.
+
+- **Service**:The Service layer encapsulates the application's core business logic and domain-specific operations. 
+  - It serves as the intermediary between controllers and repositories, handling the application's high-level functionality. Services are responsible for implementing and managing the business rules and application-specific operations, ensuring separation of concerns within the application.
+
+- **Repository**: The Repository layer in Spring Boot is responsible for data access and database interactions. It abstracts the underlying data source (e.g., a database) and provides methods for CRUD operations.
+  - It typically uses technologies like JPA, Hibernate, or Spring Data to simplify data access and management, promoting database abstraction and data integrity.
+
+- **Model**: The Model represents the data structure of the application, defining the object's attributes and relationships. It often corresponds to database entities and is used for data storage and retrieval.
+  - In Spring Boot, Models are often annotated with JPA or Hibernate annotations to facilitate database mapping and object-relational mapping (ORM).
+
+
+
+## Versions management by iteration
+
+::: {.column-page-right}
+
+| Version  | What  | How  | Much  | When  |  Project  |
+|--------- |-------|------|-------|-------|-------|
+| Version0 | sandbox  | Just a project to play with the new tools and **really** understand the project's goal | Spring Boot, TH, API rest, postman, wiki, github, idea |   <s>27/10/2023</s> 25/10/2023    |   |
+| Version1 | book/activity   |  implement book and activity domains with List(Book, Activity)   |  TH and API rest     |   <s>31/11/2023</s> 26/10/2023    | [Project structure](https://raw.githubusercontent.com/AlbertProfe/monitorBook/master/images/projectStructure.png), [POM](https://github.com/AlbertProfe/monitorBook/blob/master/demoJavaBoot1/pom.xml)  |
+|  |  |  |CRUD: read, implement log   | 27/10/2023 |  [monitorBook v1.1 code](https://github.com/AlbertProfe/monitorBook/tree/e045eaca7d14149ecec8b0a1088a2f0804758fab/demoJavaBoot1)  |
+|  |  |  |CRUD: create, implement log & **Utilities** domain   | 30/10/2023 |  [monitorBook v1.2 code](https://github.com/AlbertProfe/monitorBook/tree/0c04d895fd69024c7f7eedc438db8c13f521c4cc/demoJavaBoot1)  |
+|  |  |  |CRUD: delete and update, implement log   | 31/10/2023 |  [monitorBook v1.3 code](https://github.com/AlbertProfe/monitorBook/tree/5b73905f73347877d879834e91a7062d25634f25/demoJavaBoot1) / [monitorBook v1.31 code](https://github.com/AlbertProfe/monitorBook/tree/840f3e6b7ead87b4345ae76425b75b13a7fed624/demoJavaBoot1) |
+| Version2 | database, JPA-H2      |   implement repository and JPA, install H2, create service and queries   |   JPA, H2 just get all books    |   02/11/2023    | [monitorBook v2.0 code](https://github.com/AlbertProfe/monitorBook/tree/602bee90ec8bf68cfb6619a5065f4ea545c85328/demoJavaBoot2) |
+|  |  |  |  JPA, H2 all CRUD  | 03/11/2023 |  [monitorBook v2.1 code](https://github.com/AlbertProfe/monitorBook/tree/209a70d9d868683505f4e12983f056b27f8d5689/demoJavaBoot2) |
+|  |  |  |  JPA, H2 all CRUD minor error checked UPDATE  | 03/11/2023 |  [monitorBook v2.11 code](https://github.com/AlbertProfe/monitorBook/tree/3c46ee723955516dfd4595282ea2349aab160373/demoJavaBoot2) |
+|  |  |  |  JPA, H2 all CRUD lombok book  | 03/11/2023 |  [monitorBook v2.12 code](https://github.com/AlbertProfe/monitorBook/tree/c439e5026abf96dfe5d8f146e32edb2c127369dc/demoJavaBoot2) |
+| Version3 | author, composition      |   domain author   |   composition, author-book @oneToMany, @manyToOne (**without** @Controller and @Service )  |  06/11/2023     | [monitorBook v3.0 code -just created, build and structure-](https://github.com/AlbertProfe/monitorBook/tree/fa6e155fa84585a089e27ece907dfd21063c3d9b/demoJavaBoot3) |
+|  |  |  |  JPA, H2   | 07/11/2023 | [monitorBook 3.1 code -temptative-](https://github.com/AlbertProfe/monitorBook/tree/fa2fc02671351953fe4da4c275d8f31f2ecb5de1/demoJavaBoot3)  |
+|  |  |  |  JPA, H2 author-book @oneToMany JPA **unable to find AUTHOR** | 08/11/2023 | [monitorBook 3.2](https://github.com/AlbertProfe/monitorBook/tree/4633c9a41b53ea7b0dac9d8f3c708042e86f20ce/demoJavaBoot3)   |
+|  |  |  |  JPA, H2 author-book @oneToMany JPA, **authorService**  | 09/11/2023 | [monitorBook 3.3](https://github.com/AlbertProfe/monitorBook/tree/16cdf09cc07da185848f05621f8594010ec527f8/demoJavaBoot3)   |
+|  |  |  |  JPA, H2 **author-book-comment** @oneToMany JPA  | 10/11/2023 | [monitorBook 3.4](https://github.com/AlbertProfe/monitorBook/tree/9d6aa037c58d7bc1bd34542748fbfff1c9889393/demoJavaBoot3) / [@ManyToOne decommented](https://github.com/AlbertProfe/monitorBook/tree/68fcda6a30ede4d9bd358bde622a0c9c702d35fa/demoJavaBoot3)   |
+
+:::
+

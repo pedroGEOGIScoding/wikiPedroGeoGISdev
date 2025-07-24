@@ -1,0 +1,37 @@
+---
+title: "Articles table"
+categories: [listing, table]
+listing:
+    id: articles-table-listing
+    contents:
+        - "../*.qmd"
+        - "../javase/*.qmd"
+        -  "../linux/*.qmd"
+        - "../markup/*.qmd"
+        - "../vocabulary/*.qmd"
+        - "../scrum/*.qmd"
+        - "../spring/*.qmd"
+        - "../springboot*.qmd"
+        - "../devops/*.qmd"
+        - "../reactjs/*.qmd"
+        - "../about/*.qmd"
+        - "../ifcd0210/*qmd"
+    sort:
+        - "file-modified desc"
+        - "categories"
+    type: table
+    image-align: left
+    fields: [image, categories, title, reading-time, file-modified]
+    table-hover: true
+    date-format: full
+    categories: cloud 
+    image-height: 160px 
+---
+
+You can look up the following table listing for additional information:
+
+
+::: {#articles-table-listing}
+:::
+
+

@@ -1,0 +1,34 @@
+---
+title: "About images credit"
+categories: [about, images-credit]
+---
+
+![About images credit](/images/home/frontimagealbertprofeweb-about.png){width=50%}
+
+### Images list
+
+- OOP principles: [www.nerd.vision](https://www.nerd.vision/post/polymorphism-encapsulation-data-abstraction-and-inheritance-in-object-oriented-programming){.external}[^1]
+- Java Programming Tutorial Object-oriented Programming (OOP) Basics: [www3.ntu.edu.sg](https://www3.ntu.edu.sg/home/ehchua/programming/java/J3a_OOPBasics.html){.external}[^2]
+- Singleton Design Pattern: [Singleton Design Pattern](https://springhow.com/singleton-pattern/){.external}[^1]
+- Get Java for desktop applications: [Java](https://www.java.com/en/) / [Download Java](https://www.java.com/en/download/) / [What is Java technology and why do I need it?](https://www.java.com/en/download/help/whatis_java.html){.external}[^3]
+- Driving Augmented Intelligence [Test Driven Development (TDD) Tools and Agile Process](https://www.xenonstack.com/blog/test-driven-development-java){.external}[^3]
+- Bash Logo Media Assets: [Bash logo](https://bashlogo.com/){.external}[^1]
+- One of the most important reasons for holding a meeting is to make decisions. [How to Prevent the Opinion Wars That Derail Decision Making](https://blog.lucidmeetings.com/blog/how-to-prevent-the-opinion-wars-that-derail-decision-making){.external}[^1]
+- resellerclub [What is server virtualization?](https://blog.resellerclub.com/what-is-a-hypervisor-and-how-does-it-work/){.external}[^1]
+- Yet Another Software Engineer [Maven — Lifecycle, Phases, Plugins and Goals](https://medium.com/@yetanothersoftwareengineer/maven-lifecycle-phases-plugins-and-goals-25d8e33fa22){.external}[^1]
+- Chiradeep BasuMallick Technical Writer, from spiceworks [What Is OOP (Object Oriented Programming)? Meaning, Concepts, and Benefits](https://www.spiceworks.com/tech/devops/articles/object-oriented-programming/){.external}[^3]
+- Emmanuel Morales, Medium [React flow data to components child by props](https://medium.embengineering.com/in-react-js-data-flows-in-one-direction-from-parent-to-child-841103ed3aed){.external}[^3]
+- Gethyl George Kurian, [How Virtual-DOM and diffing works in React](https://medium.com/@gethylgeorge/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e){.external}[^2]
+- Futures and Promises, BY KISALAYA PRASAD, AVANTI PATIL, AND HEATHER MILLER [Futures and Promises](https://web.archive.org/web/20201117004053/https://dist-prog-book.com/chapter/2/futures.html){.external}[^3]
+- Uday Yadav [React Hooks for Beginners](https://dev.to/dev117uday/react-hooks-0-to-hero-4b7o){.external}[^3]
+- Dreams the art through programming, Programming Artist, DeKu [React Context API](https://dev-yakuza.posstree.com/en/react/context-api/){.external}[^3]
+- Welcome to CS Awesome! It’s time to start your journey to learn how to program with Java: [AP CS A Java Course](https://runestone.academy/ns/books/published/csawesome/index.html){.external}[^2]
+- Fasrin Aleem [Let’s Understand Java](https://medium.com/nerd-for-tech/lets-understand-java-261b2e6bcf2e){.external}[^1]
+- We (https://introcs.cs.princeton.edu/) summarize the most commonly used Java language features and APIs in the textbook. [Java Programming Cheatsheet](https://introcs.cs.princeton.edu/java/11cheatsheet/){.external}[^1]
+
+
+[^1]: random web, *just crediting the image*
+[^2]: very useful and **recommended resource**
+[^3]: interesting web
+
+[How to write notes with .qmd Quarto Markdown](https://quarto.org/docs/authoring/footnotes-and-citations.html#footnotes)

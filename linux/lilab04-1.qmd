@@ -1,0 +1,154 @@
+---
+title: "Linux Lab#LI04-1: Bash scripting, qtool"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, qtool, bash]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI04: Bash**
+
+To create a terminal app using bash scripts, you will need to:
+
+1.  Define the functionality of the app, including the commands and options it should support. ([Lab#LI04-1](lilab04-1.qmd))
+2.  Write the bash scripts that implement this functionality. This may involve writing functions to perform specific tasks, as well as handling input and output from the terminal. ([Lab#LI04-1](lilab04-1.qmd))
+3.  Test the scripts to ensure they are working as intended.  ([Lab#LI04-1](lilab04-1.qmd))
+4.  Package the scripts into a single executable file that can be easily run from the terminal. This may involve creating a wrapper script that calls the other scripts in the correct order.  ([Lab#LI04-2](lilab04-2.qmd))
+5.  Make the app available for others to use, either by distributing it as a package (such as a .deb or .rpm file) or by hosting it on a website or repository. ([Lab#LI04-3](lilab04-3.qmd))
+6.  Provide documentation and usage instructions for the app, so that users know how to use it effectively.  ([Lab#LI04-3](lilab04-3.qmd))
+:::
+
+---
+
+::: {.labs}
+📘 **Linux Lab#LI04-1: Bash scripting, template**
+
+1. Work on bash script:
+
+- First, create a function within your bash script called "template" that will handle the tasks for creating and using templates for .`qmd` files.
+- Within the function, create a case statement that will allow the user to choose between creating a new template or using an existing one.
+- For the option to create a new template, prompt the user for input on the various elements they would like to include in the template (e.g. title, author, date, etc.) and use this input to create a new `.qmd` file with the desired template structure.
+- For the option to use an existing template, prompt the user for the path to the template file and use this to create a new `.qmd` file based on the structure of the existing template.
+
+2. Create local files:
+
+- Within the template function, include the necessary code to create any local files that may be needed for the script to function properly (e.g. log files, data files, etc.)
+- Use the touch command to create empty files, and the echo command to write content to the files as needed.
+
+1. Call to other scripts or utilities:
+
+- Depending on the needs of the template function, it may be necessary to call to other scripts or utilities in order to complete certain tasks.
+- Use the source command to execute other bash scripts, and the appropriate command line utilities (e.g. sed, awk, etc.) to perform specific tasks.
+
+4. Write the `.qmd` files:
+
+- Once the necessary information has been gathered and any necessary local files or utilities have been called, use the echo command to write the desired content to the `.qmd` file.
+- Use appropriate formatting and structure to ensure that the `.qmd` file is properly formatted and easy to read.
+  
+:::
+
+---
+
+## Solving discussion: Qtool example
+
+::: {.summary}
+📘 **QTool: Quarto tool**
+
+**Qtool is a bash-terminal tool specifically designed for users of the Quarto documentation platform.** It offers a number of features that can help users manage large numbers of Quarto files more efficiently.
+
+[Repository on GitHub](https://github.com/AlbertProfe/qtool)
+:::
+
+---
+
+
+**Qtool is a command-line tool** that helps users manage and manipulate their Quarto (`.qmd`) files. It has the following five operations:
+
+- `debug`: scans the directories and files in a specified directory, and checks for any discrepancies between the .yaml and `.qmd` files. It reports any errors or inconsistencies it finds.
+- `dirtable`: generates a CSV file containing information about the directories in the specified directory. It includes the directory name, the number of files in the directory, and the total number of lines in all of the files in the directory.
+- `yamltable`: generates a CSV file containing information about the .yaml files in the specified directory. It includes the file name, the number of lines in the file, and the number of sections in the file.
+- `writenavigation`: adds callouts to the `.qmd` files in the specified directory, to make it easier for users to navigate through the content. It adds a callout at the beginning of each section, with a link to the next and previous sections.
+
+![_qtool folder on quarto project directory](/images/linux/qtool-000006.png)
+
+![yamltable executing: there are 3 discrepancies on yaml configuration file](/images/linux/qtool-000001.png)
+
+![yamltable: missing .qmd file](/images/linux/qtool-000004.png)
+
+![dirtable executing: all files in our directory](/images/linux/qtool-000002.png)
+
+![dirtable: all data from files](/images/linux/qtool-000005.png)
+
+![debug executing: summary](/images/linux/qtool-000003.png)
+
+![writenavigation is will create navigation links and write the .qmd file](/images/linux/qtool-000007.png)
+
+![writenavigation executinng](/images/linux/qtool-000009.png)
+
+![after execution writenavigation](/images/linux/qtool-000008.png)
+
+---
+
+<details>
+<summary>Code: `writenavigation.sh`</summary>
+
+- [updated code on GitHub.com](https://github.com/AlbertProfe/qtool/blob/main/_qtool/writenavigation.sh)
+
+``` {.bash .code-overflow-wrap filename="writenavigation.sh"  }
+#!/bin/bash
+
+# Initialize an empty array
+files=()
+titles=()
+# Initialize a counter variable
+counter=0
+op_counter=0
+# Generate the log file name using the current date and time
+log_file="$(date +"%Y%m%d-%H%M%S")-log-write-navLinks.txt"
+# Initialize a string variable
+path_qmd=''
+title=''
+title_line=''
+
+# Open the log file for writing
+exec 3> "_logs/${log_file}"
+
+echo "***************** Extracting **********************" >&3
+
+# Read the input code line by line
+while IFS= read -r line; do
+  # If the line ends with ".qmd", add it to the array
+  if [[ $line == *".qmd" ]]; then
+    let counter++
+    # Extract path qmd file and add to array files
+    path_qmd="$(echo "$line" | tr -d ':' | sed 's/- //g' | tr -d ' ' | sed 's/file//g')"
+    files+=("$path_qmd")
+    # Extract title from qmd file and add to array titles
+    title_line=$(awk 'NR==2 {print}' "../${path_qmd}")
+    title=$(sed 's/.*"\(.*\)".*/\1/' <<< "$title_line")
+    titles+=("$title")
+    # Write a message to the log file indicating that .qmd path has been extracted
+    echo "$(date +"%Y-%m-%d %H:%M:%S") - extracting from _quarto.yml and .qmd file' $counter: $path_qmd > $title" >&3
+    echo " _quarto.yml/.qmd file' $counter: $path_qmd > $title" >&3
+  fi
+done < "../_quarto.yml"
+
+echo "***************** Writing  ************************" >&3
+
+# Loop through the array of .qmd files
+for ((i=0; i<${#files[@]}; i++)); do
+  # Open the .qmd file
+  file="${files[i]}"
+  let op_counter++
+  echo "$(date +"%Y-%m-%d %H:%M:%S") - Operation #($op_counter): **${file}**" >&3
+  echo 'operartion:' $op_counter' > writing to: '$file
+  
+  # Delete qmd rows navLinks

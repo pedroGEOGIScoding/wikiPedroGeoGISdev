@@ -1,0 +1,386 @@
+---
+title: "Lab#SE03-2: Library/Book, Sprint Zero"
+subtitle: "Java SE Lab 03 part 2"
+author: [albertprofe, Marc P.]
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: "Java SE Lab 03, part 2 Sprint Zero, plan"
+categories: [javase, lab, composition, plan]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#SE03-2: Library/Book Sprint Zero**
+
+Before define what a [Sprint Zero really is](https://www.bmc.com/blogs/sprint-zero/){.external}, let’s see what it isn’t.
+
+- A **Sprint Zero is not** the phase in which:
+
+    - the team is put together: a team must already be in place.
+    - for setting up infrastructure which should already be implemented or easily implemented on demand.
+    - should not involve adding products to a backlog or consider planning as classical project management.
+
+The main goal of a Sprint Zero is **to deliver some usable value that can be built upon by the next team**. Sprint Zeros are required to:
+
+- Create the project’s `skeleton`, including research spikes.
+- `Keep design minimal`.
+- Develop a small number of `stories` to completion.
+- Be low velocity and lightweight.
+
+More specifically, the deliverables of a Sprint Zero should be as follows:
+
+- A `usable` piece of code, however small.
+- A `minimal` environment for writing code.
+- A `prioritization` of features or a list of stories.
+- A `release plan` assigning each story to a Sprint.
+- A plan for the most **likely** implementation of `features`.
+
+:::
+
+---
+
+# Sprint Zero hats&jobs
+
+## Architecture and first draft
+
+### Tasks/Requirements list
+
+Let's take the example of the **Library** [Lab#SE03-1](/javase/selab3-1.qmd) to define a `graph` with the requirements/tasks for the Sprint Zero deriverables:
+
+
+::: {.column-page-right}
+
+
+<div class="mermaidContent">
+
+    ```{dot}
+        graph sprintZero {
+        graph [
+            layout = twopi
+            #layout = neato
+            ranksep = 2.7
+            label = "Sprint Zero"
+            labelloc = b
+            fontname = "Helvetica,Arial,sans-serif"
+            start = regular
+            normalize = false
+            overlap="compress"
+        ]
+        node [
+            shape = circle
+            style = filled
+            color = "#00000088"
+            width = 1.2
+            fontname = "Helvetica,Arial,sans-serif"
+        ]
+        edge [
+            len = 2
+            color = "#00000088"
+            fontname = "Helvetica,Arial,sans-serif"
+        ]
+
+        subgraph Stages {
+            node [fontcolor = white width = 1.4]
+            "Sprint Zero" [fillcolor = olive]
+            "Sprint Zero" -- {
+                "1 - Project" [fillcolor = orange fontcolor = black]
+                "2 - DDD" [fillcolor = black]
+                "3 - UML" [fillcolor = green]
+                "4 - Code" [fillcolor = blue]
+            }
+        }
+        subgraph Project {
+            node [fillcolor = gold fontcolor = black]
+            "1 - Project" -- {
+                "Use Case"
+                "Documentation"
+                "Mock-up"
+                "Open\nProject?"
+            }
+        }
+        subgraph ProjectSubItems {
+            node [fillcolor = peachpuff]
+            "Use Case" -- "User Stories"
+            "Documentation" -- "Quarto"
+            "Documentation" -- "Obsidian"
+            "Mock-up" -- "New Feature"
+        }
+
+        subgraph DDD {
+            node [fontcolor = white]
+            "2 - DDD" -- {
+                "Vocabulary"
+                "Packages"
+                "Model"
+                "Controller"
+                "Refactor\nDomain"
+            }
+            "Vocabulary" -- "Common\nLanguage"
+            "Refactor\nDomain" -- "If there is\nLegacy Code"
+        }
+        subgraph UML {
+            node [fillcolor = yellowgreen fontcolor = black]
+            "3 - UML" -- {
+                "Relationships"
+            }
+        }
+        subgraph UMLActions {
+            node [fillcolor = "0.250 .2 1"]
+            "Relationships" -- {
+                "Composition"
+                "Inheritance"
+                "Multiplicity"
+            }
+            
+        }
+
+        subgraph Code {
+            node [fillcolor = deepskyblue fontcolor = white]
+            "4 - Code" -- {
+                "Utilities"
+                "Core model"
+                "Managers"
+                "Dependencies"
+                "Maven"
+                "Refactor\nCode"
+                "Test"
+                "Git"
+            }
+        }
+        subgraph CodeActions {
+            node [fillcolor = cornflowerblue fontcolor = white]
+            "Core model" -- {
+                "Book"
+                "Borrow"
+                "User"
+            }
+            "Test" -- "Make Borrow"
+            "Git" -- "GitHub"
+        }
+        subgraph Dependencies {
+            node [fillcolor = cornflowerblue fontcolor = white]
+            "Dependencies" -- {
+                "lombok"
+                "JUnit"
+                "Jupiter"
+                "faker"
+            }
+        }
+        subgraph FakerActions {
+            node [fillcolor = lightskyblue]
+            "faker" -- "Create"
+            "Create" -- {
+                "100 books"
+                "100 users"
+            }
+        }
+        subgraph Interdependencies {
+            edge [style=dotted]
+            "Controller" -- "Managers"
+            "Refactor\nDomain" -- "Refactor\nCode"
+        }
+        }
+    ```
+
+</div>
+
+:::
+
+
+### Onion Architecture
+
+![Onion Architecture](/images/javase/onion_architecture.jpg){width="40%"}
+
+
+The layers are of [Onion Architecture](){.external} and sublayers are:
+
+- `Infrastructure`, where our database, file system, or any external web service we depend on live.
+- `Tests`: unit, integration, end-to-end. How we validate our business cases. 
+- `User Interface`, how our users interact with the code we have built. - Application Services layer (sometimes known as the Transport/Access Layer). 
+- `Domain Services` layer. In this layer is where the majority of our business logic lives, it carries out the operations to turn A into B, input into output, egg into chicken. 
+- The core layer, the `Domain Model` layer which is the representation of the high level data objects we use.
+
+---
+
+![Library Project key-words sprint zero](/images/javase/libraryproject_board.jpg){ width="70%"}
+
+[Sprint#6, dia 01/02 image Library Project](/ifcd0210/ifcd0210backlog-sprint.qmd#)
+
+## Features: core use-case: ``user``-borrows-a-``book``
+
+### Use-Story
+
+- [User story template and examples](https://www.atlassian.com/agile/project-management/user-stories){.external}
+
+
+> As a **user**, I want to **borrow** a **book** with my ``documentId``, so that I may read and return it at due date that the system says. 
+
+### Mock-up
+
+```js
+Options:
+1- Make a Borrow
+2- User Management
+3- Book Management
+4- Quit
+Option?
+'Borrow'
+User?
+'159742OPI'
+Book?
+'Anna Karenina'
+Proceed, are your sure?
+'Yes'
+Borrow made, borrowId: RER7567, dueDate: 15/02/2023 
+Options:
+1- Make a Borrow
+2- User Management
+3- Book Management
+4- Quit
+Option?
+'Quit'
+```
+### Menus
+
+
+
+```js
+
+Main Menu
+1- Make a Borrow
+2- User Management
+3- Book Management
+4- Borrow Management
+4- Quit
+
+User Menu
+1- Create
+2- Update
+3- Delete
+4- List
+5- Get one
+6- Quit
+
+Book Menu
+1- Create
+2- Update
+3- Delete
+4- List
+5- Get one
+6- Quit
+
+Borrow Menu
+1- Create (make a borrow)
+2- Update
+3- Delete
+4- List
+5- List Active Borrows 
+6- Get one
+7- Quit
+
+```
+
+## Pieces of code
+
+### UUID
+
+The full form of ``UUID`` is ``Universally Unique Identifier``. A UUID represents a **128-bit value that is unique**. The standard representation of UUID uses hex digits.
+
+For example:
+
+```
+3c0969ac-c6e3-40f2-9fc8-2a59b8987918
+cb7125cc-d78a-4442-b21b-96ce9227ef51
+```
+- [Class UUID](https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html){.external}
+
+``` java
+import java.util.UUID;
+
+    public static String createId() {Limit Your Availability
+
+        UUID uuid = UUID.randomUUID();
+        System.out.println("UUID generated - " + uuid);
+        System.out.println("UUID Version - " + uuid.version());
+        String id = uuid.toString();
+
+        return id;
+
+    }
+```
+### ``BorrowManager`` class
+
+```java
+public class BorrowManager {
+
+   public static HashMap< String , Borrow> borrows = new HashMap<>();
+}
+
+```
+
+### faker ``Users`` and ``Books``
+
+```java
+public static void createBooks(int number) {
+// create faker object to use as
+// builder for book
+Faker faker = new Faker();
+Book newbook;
+
+for (int i = 0; i < number; i++) {
+    // create newbook without args
+    newbook = new Book();
+    // some people get nervous with this
+    // be careful ...
+    String bookId = InterfaceUtils.createUUID();
+    newbook.setISBN(bookId);
+    // title's book
+    String bookTitle = faker.book().title();
+    newbook.setTitle(bookTitle);
+    // year's book
+    int bookYear = faker.number().numberBetween(1000, 2023);
+    newbook.setYear(bookYear);
+    // borrows' book
+    List<Borrow> borrows = new ArrayList();
+    newbook.setBorrows(borrows);
+    // author's book
+    Author newauthor = new Author();
+    newbook.setAuthor(newauthor);
+    // add to hashmap
+    books.put( bookId, newbook);
+    // kill object
+    newbook = null;
+    }
+}
+```
+
+
+## Tests
+
+### `borrow` object test
+
+[Test to create `Borrow` object](https://github.com/AlbertProfe/CifoJava2023/blob/12a97938cc4a0718ae66f08075a402af13354dce/LibraryProject/src/test/java/org/example/createObjectsTest.java#L73){.external}
+
+### make-a-borrow test
+
+[Test to make-a-borrow operation by simulate-console](https://github.com/AlbertProfe/CifoJava2023/blob/12a97938cc4a0718ae66f08075a402af13354dce/LibraryProject/src/test/java/org/example/makeBorrowByConsoleTest.java#L20){.external}
+
+
+::: {.callout-important}
+We decide to discuss this test in the near future, not now. It is more diffucult and **complex** than we thought.
+:::
+
+
+## UML
+
+[LAB#03-1 UML](/javase/selab3-1.qmd)
+
+## Domains & Tree
+
+![Folder tree LibraryProject](/images/javase/libraryProjectTree.png){width="40%"}
+
+

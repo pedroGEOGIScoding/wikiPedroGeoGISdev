@@ -1,0 +1,40 @@
+---
+title: "The Art of Agile Development"
+subtitle: "James Shore, 2007, The Art of Agile Development: Pragmatic guide to agile software development"
+author: "albertprofe"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "The Art of Agile Development contains practical guidance for anyone considering or applying agile development for building valuable software. It discusses the various methods of agile development, including Scrum, Extreme Programming (XP), Lean, and Kanban, providing readers with an overview of each and advice on how to choose the method that best fits their needs."
+categories: [strategy]
+subcategories: [agile, software engineering, software quality]
+isbn13: 9781492080695
+format:
+  html
+---
+
+  
+## Book Image
+
+![](/books/theartofagiledevelopment.jpg)
+
+## More info
+
+The Art of Agile Development contains practical guidance for anyone considering or applying agile development for building valuable software. Plenty of books describe what agile development is or why it helps software projects succeed, but very few combine information for developers, managers, testers, and customers into a single package that they can apply directly. This book provides no-nonsense advice on agile planning, development, delivery, and management taken from the authors' many years of experience with Extreme Programming (Xp).
+
+You get a gestalt view of the agile development process, including comprehensive guidance for non-technical readers and hands-on technical practices for developers and testers. The Art of Agile Development gives you clear answers to questions such as: 
+
+How can we adopt agile development?
+Do we really need to pair program?
+What metrics should we report?
+What if I can't get my customer to participate?
+How much documentation should we write? When do we design and architect?
+As a non-developer, how should I work with my agile team? Where is my product roadmap?
+How does Qa fit in?
+
+The book teaches you how to adopt Xp practices, describes each practice in detail, then discusses principles that will allow you to modify Xp and create your own agile method.
+
+In particular, this book tackles the difficult aspects of agile development: the need for cooperation and trust among team members. Whether you're currently part of an agile team, working with an agile team, or interested in agile development, this book provides the practical tips you need to start practicing agile development. As your experience grows, the book will grow with you, providing exercises and information that will teach you first to understand the rules of agile development, break them, and ultimately abandon rules altogether as you master the art of agile development. "Jim Shore and Shane Warden expertly explain the pract
+
+
+- [The Art of Agile Development ](https://www.amazon.com/Art-Agile-Development-Pragmatic-Software/dp/0596527675){.external}

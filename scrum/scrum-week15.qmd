@@ -1,0 +1,145 @@
+---
+title: "Week 15: Balances, atmosphere and tools"
+subtitle: SCRUM Week 15
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Clients often struggle to articulate their needs precisely, but that's not a hitch. The key is, they can pinpoint what resonates with their vision.
+categories: [scrum, scrum-week15, balances]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 15 - Balances, atmosphere and tools**
+
+Clients may struggle to express needs precisely, but **their ability to recognize alignment with their vision is pivotal**.
+
+*Payment is the acknowledgment of unspoken needs being met, forging a collaborative agreement.*
+
+In client interactions, **impediments** are viewed as feedback, guiding decision-making towards optimal solutions. Good decisions yield positive feedback or client endorsement through payment, affirming optimal solutions. Agile teams require an atmosphere conducive to open communication, balanced dynamics, and effective tools for informed decision-making.
+
+:::
+
+
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 15 - Balances, atmosphere and tools**
+
+Clients, Articulation of Needs, Payment as Approval, Collaboration, Feedback as Impediments, Decision-Making, Agile Teams, Atmosphere, Balances, Tools, Optimal Solutions, Creative Thinking, Innovation, Productivity
+
+:::
+
+</br> </br>
+
+
+# Clients
+
+![What do clients want?](/images/scrum/client.png){width="60%"}
+
+
+Clients often struggle to articulate their needs precisely, but that's not a hitch. The key is, they can pinpoint what resonates with their vision.
+
+
+
+::: {.column-margin}
+
+[Copywriting Secrets](copywritingsecrets.com/order-form-1860195732552197){.external} is a book about how everyone can use the power of words to get more clicks, make more sales, and get more subscribers... no matter what you sell or who you sell it to!
+:::
+
+
+**It's not about what they say; it's about what they recognize.**
+
+<mark>Payment is the stamp of approval—they pay when they see that alignment. It's a dance of understanding, where their vague ideas meet tangible solutions</mark>.
+
+In this **collaboration**, the transaction isn't just for a product or service; it's the acknowledgment of their **unspoken needs being met**. It's like nodding to an unspoken agreement—you get what they want, even if they can't put it into words.
+
+
+# How to collaborate with clients?
+
+
+In client interactions, **we recognize impediments not as roadblocks but as invaluable feedback.**
+
+::: {.callout-note}
+
+Deciphering this feedback is key, as it serves as a **compass** for steering our decision-making toward optimal solutions.
+
+The essence lies in a symbiotic relationship—good decisions yield positive feedback or, more directly, client endorsement through payment, the ultimate affirmation of an **optimum solution.**
+:::
+
+
+Understanding that bad decisions translate to adverse feedback, and the worst decisions often result in **silence**, underscores the critical importance of honing our decision-making prowess.
+
+Agile teams need three crucial elements at the forefront: **atmosphere, balances, and tools**, to excel in this endeavor.
+
+## Atmosphere
+
+**Firstly, fostering an atmosphere** conducive to open communication and idea exchange is paramount. An [environment](/scrum/scrum-week1.qmd) where team members feel free to voice concerns and suggestions ensures that feedback is constructive rather than stifled. To achieve this:
+
+  - establishing clear boundaries,
+  - implementing simple rules,
+  - and selecting the right profiles are essential.
+
+## Balances
+
+**Secondly, striking the right balances is foundational**. Whether it's the delicate equilibrium:
+
+  - between [fixed](/scrum/scrum-week5.qmd#fixed-vs-growth-mindset), growth, and [survival](/scrum/scrum-week5.qmd#survival-mindset) mindsets,
+  - of [anti-fragility](/scrum/scrum-week5.qmd#antifragile) and [lateralization](/scrum/scrum-week5.qmd#the-divided-mind),
+  - of addressing the intricate dynamics of [identity, change, moral emotions](/scrum/scrum-week12.qmd#moral-emotions), [emotions](/scrum/scrum-week12.qmd) and [status games](/scrum/scrum-week11.qmd#the-status-game).
+  - of the nuanced interplay of <mark>productivity versus creativity</mark>, achieving equilibrium is the linchpin of informed [decision-making.](/scrum/scrum-week13.qmd)
+
+
+### Creativity vs. Productivity
+
+We live in a world that’s obsessed with **‘getting stuff done.’** Everyone wants to know how to be more **productive**, and yes, productivity at work is important. 
+
+*But does this emphasis on becoming better, faster, and stronger leave any room for creative thinking at work?*
+
+> Being creative is often associated with the arts, while innovation is a buzzword of the tech world. However, fostering a culture of creativity and innovation can benefit companies of all shapes, sizes, and areas of expertise. Developing new processes, improving workflows, and solving problems are all forms of creativity.
+
+## Tools
+
+**Thirdly, providing teams with the right tools** amplifies their capacity to dissect complexities and make well-informed decisions. These tools encompass:
+
+- frameworks like SCRUM,
+- [time-boxing](/scrum/scrum-week1.qmd#meetings),
+- planning poker,
+- iterations,
+- goals and a long etcetera.
+
+In essence, our journey **toward optimal decision-making** entails recognizing impediments as integral feedback loops, refining our understanding through a dance of balances, and equipping agile teams with the right atmosphere and tools.
+
+<mark>This holistic approach ensures that our decisions resonate positively with clients, translating challenges into opportunities for growth and innovation.</mark>
+
+
+# Agile Holistic Approach
+
+::: {.column-page-right}
+| Stage | Core | Description | Content | Challenges | Tools |
+| -- | -- | -- | -- | -- | -- |
+| #0 | <mark>Networked Knowledge</mark> | Knowledge creation and acquisition  | [How to Learn](/learning/learning-how-tips.qmd), how to recognize core knowledge and connect it | The knowledge illusion, burnt out, no being pareto: lost energy/time | Lateralization, time-boxing, learning atmosphere, the a-ha moment |
+| #1 | <mark>Productivity & Execution</mark> | 4-events SCRUM iteration | [Meetings, Impediments, Iterations](/scrum/scrum-week1.qmd), (1) planning, (2) execution, (3) review, (4) retrospective | Boycotts, hidden agendas, bad meetings, bad time-boxing, not applying SCRUM | [Scrum Glossary](https://www.scrum.org/resources/scrum-glossary){.external}, [Team Dynamics](/scrum/scrum-week11.qmd), stories, tasks, team atmosphere |
+| #2 | <mark>Creativity & DecisionMaking</mark> | Make the rights steps towards client's unspoken desires | [Decision Making](/scrum/scrum-week13.qmd) & [Strategic thinking](/scrum/scrum-week13.qmd#strategic-thinking) | Find out the right decision at the right moment. It is key when it is done in real-time, incomplete info and unknown consequences at long term | Intuition, Creativity, Divagation, Mindset |
+: Agile Holistic Approach {tbl-colwidths="[2,10,15,21,34,20]"}
+:::
+
+
+
+# References
+
+- [Creativity vs. Productivity](https://medium.com/@GavCos10/creativity-vs-productivity-27d3a88ac5c8){.external}
+- [Is the Quest for Peak Productivity Killing Creativity?](https://www.wrike.com/blog/is-productivity-killing-creativity/){.external}
+
+
+
+

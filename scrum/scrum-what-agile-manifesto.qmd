@@ -1,0 +1,79 @@
+---
+title: "Agile Manifesto & Values"
+subtitle: 12 Principles Agile Manifesto
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [scrum, concepts, agile-manifesto]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# 12 Principles Agile Manifesto
+
+[Through this work we have come to value](https://agilemanifesto.org/){.external}  
+[Principles behind the Agile Manifesto](https://agilemanifesto.org/principles.html){.external}
+
+![Agile Software Development](/images/scrum/agile-maifesto.jpg){width="60%"}
+
+1. 
+> Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+2.
+> Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.
+3. 
+> Deliver working software frequently, from a couple of weeks to a couple of months,  with a preference to the shorter timescale.
+4. 
+> Business people and developers must work together daily throughout the project.
+5. 
+> Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+6. 
+> The most efficient and effective method of conveying information to and within a  development team is face-to-face conversation.
+7. 
+> Working software is the primary measure of progress.
+8. 
+> Agile processes promote sustainable development. The sponsors, developers, and  users should be able to maintain a constant pace indefinitely.
+9. 
+> Continuous attention to technical excellence and good design enhances agility.
+10. 
+> Simplicity--the art of maximizing the amount of work not done--is essential.
+11. 
+> The best architectures, requirements, and designs emerge from self-organizing teams.
+12. 
+> At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.
+
+
+# Values and the Scrum Values
+
+![](/images/scrum/scrum-values-picture.png)
+
+## Values
+
+::: {.callout-note}
+Values are the principles we view as important in the way we live and work. They are the core beliefs that guide our actions, behavior and decisions. Examples of personal core values may include: family-first, honesty, kindness, patience, authenticity and many others. Understanding our personal values helps us understand what’s important to us. Using our values to guide our behavior, actions and decision-making provides us a sense of direction and purpose.
+:::
+
+The Scrum Framework articulates a set of Scrum Values to help guide the work, actions and behavior of Scrum Team members.
+
+## The Scrum Values
+
+The Scrum Values are:
+
+- **Courage** - Scrum Team members need courage to do the right thing and face tough problems. For example, they should exhibit courage to explore the unknown, to change direction, to share information and to engage in courteous disagreements.
+- **Focus** - The Scrum Team focuses on the work of the Sprint and its goals. Examples of this include focusing on: creating value, what’s currently most important and getting to Done.
+- **Commitment** - Each Scrum Team member commits to achieving the team’s goals and to support each other. This involves commitment or dedication to:
+  - Delivering value; 
+  - Quality; 
+  - Working toward the Sprint and Product Goals; 
+  - Using empiricism.
+- **Respect** - It’s necessary for Scrum Team members to respect each other as skilled professionals. Scrum Team members should respect each other's differing expertise and perspectives and be respectful when they disagree.
+- **Openness** - The Scrum Team and its stakeholders agree to be open about all of the work and the challenges with performing the work. Scrum Team members should be open about the struggles they face. They should share feedback and learn from each other and from their stakeholders.
+
+
+Each of the Scrum Values may be interpreted by each team member differently. Language and cultural differences may contribute to this. Gunther Verheyen, a Professional Scrum Trainer created a well-regarded description of the Scrum Values. On thescrumvalues.org  you’ll find this description and its translation into over two dozen different languages. 
+
+
+

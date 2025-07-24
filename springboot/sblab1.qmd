@@ -1,0 +1,72 @@
+---
+title: "Lab#SB01-1: DataBase"
+subtitle: Spring Boot and DataBse JDBC, JPA
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+Welcome to the cifojava2022-4 wiki!
+
+# How to connect Java Project with JDBC to H2 SQL Database
+
+## What is H2 Database
+
+H2 is **pure Java SQL database**, which means you can embed H2 directly in your Java applications **without any database installation.**
+
+- Very **fast, open source, JDBC** API compatible.
+- You can use H2 in different modes, depending on your need:**in-memory, embedded or client/server.**
+- H2 provides a **browser-based console** application which you can use to access SQL database.
+- **Lightweight**: about 2.5MB jar file size.
+With such features, H2 can be used for rapid prototype development,**testing purpose or embedded in Java applications**.
+
+[H2 Java DataBase](http://www.h2database.com/html/build.html)
+
+## Java JDBC
+
+### demoMavenH2
+
+Java™ database connectivity (JDBC) is the JavaSoft specification of a standard application programming interface (API) that allows Java programs to access database management systems. The JDBC API consists of a set of interfaces and classes written in the Java programming language.
+
+Using these standard interfaces and classes, programmers can write applications that connect to databases, send queries written in structured query language (SQL), and process the results.
+
+Since [JDBC](https://www.ibm.com/docs/en/informix-servers/12.10?topic=started-what-is-jdbc) is a standard specification, one Java program that uses the JDBC API can connect to any database management system (DBMS), as long as a driver exists for that particular DBMS.
+
+- Project Code GitHub [repo](https://github.com/AlbertProfe/cifojava2022-4/tree/master/demoMavenH2){.external}
+- [Project Documentation](https://github.com/AlbertProfe/cifojava2022-4/wiki/Java-JDBC){.external}
+
+## Entity Manager API
+
+### test-hibernate-jpa
+
+Java Persistence API is a Java Specification and Standard for Object Relational Mapping (ORM). In Object Relational Mapping we create Java Objects which represents the database entities. ORM also provides an EntityManager which provides methods to create, delete, update and find the objects from database.
+
+We don’t need to write low level queries, we just need to use entity manager and access the entities through java objects.
+
+- Project Code GitHub [repo](https://github.com/AlbertProfe/cifojava2022-4/tree/master/test-hibernate-jpa){.external}
+- [Project Documentation](https://github.com/AlbertProfe/cifojava2022-4/wiki/Entity-Manager-API){.external}
+
+## JPA Data Spring Boot
+
+### libraryH2Command
+
+Project [repo](https://github.com/AlbertProfe/cifojava2022-4/tree/master/libraryH2Command)
+
+Base project:
+
+- POM
+- DataBase H2
+- Application.Properties
+- Command Line [Runner](https://github.com/AlbertProfe/cifojava2022-4/blob/master/libraryH2Command/src/main/java/com/example/myfirstprojectspring/ApplicationCommandRunner.java) with methods to test
+- @Entity [Book](https://github.com/AlbertProfe/cifojava2022-4/blob/master/libraryH2Command/src/main/java/com/example/myfirstprojectspring/Book.java)
+- @BookService Read and [Create operations](https://github.com/AlbertProfe/cifojava2022-4/blob/master/libraryH2Command/src/main/java/com/example/myfirstprojectspring/BookService.java)
+- @BookRepository JPA [2.0](https://github.com/AlbertProfe/cifojava2022-4/blob/e5f515ff93a99cc270bcfca47f3b4f0aef63d4b3/libraryH2Command/pom.xml#L23)
+
+

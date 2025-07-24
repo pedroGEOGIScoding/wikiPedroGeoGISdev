@@ -1,0 +1,24 @@
+---
+title: "The Changing World Order"
+author: "Ray Dalio"
+subtitle: "Ray Dalio, 2021, The Changing World Order: Why Nations Succeed and Fail"
+date: "10/19/2021"
+date-modified: "1/8/2023"
+date-format: full
+description: "Explores the rise and fall of empires and civilizations throughout history, providing insights into the factors that contribute to the success and failure of nations."
+categories: [finance]
+subcategories: [international-relations, assay]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/TheChangingWorldOrder.png)
+
+## More info
+
+A few years ago, Ray Dalio noticed a confluence of political and economic conditions he hadn’t encountered before. They included huge debts and zero or near-zero interest rates that led to massive printing of money in the world’s three major reserve currencies; big political and social conflicts within countries, especially the US, due to the largest wealth, political, and values disparities in more than 100 years; and the rising of a world power (China) to challenge the existing world power (US) and the existing world order. The last time that this confluence occurred was between 1930 and 1945. This realization sent Dalio on a search for the repeating patterns and cause/effect relationships underlying all major changes in wealth and power over the last 500 years.
+
+- [The Changing World Order: Why Nations Succeed and Fail](https://www.amazon.com/Changing-World-Order-Nations-Succeed/dp/1982160276){.external}
+- [PRINCIPLES: YOUR GUIDED JOURNAL CREATE YOUR OWN PRINCIPLES TO GET THE WORK AND LIFE YOU WANT](https://www.principles.com/)

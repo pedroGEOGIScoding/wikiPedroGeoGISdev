@@ -1,0 +1,92 @@
+---
+title: "Linux Lab#LI04-2: Bash scripts as terminal tool"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, bash]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI04-2: Bash scripts as terminal tool**
+
+To create a terminal app using bash scripts, you will need to (from [Lab#LI04-1](lilab04-1.qmd)):
+
+1. Package the scripts into a single executable file that can be easily run from the terminal. This may involve creating a wrapper script that calls the other scripts in the correct order.
+
+:::
+
+## Solving discussion
+
+To create a **terminal app for Linux**, you can use a bash script. Here are the steps to create the app **with the three basic (help, update, show) options**:
+
+1. Create a bash script file with the name ``qtool`` (without any extension).
+
+2. Add the following lines at the beginning of the script to make it executable:
+
+``` bash
+#!/bin/bash
+````
+
+3. Add the following lines to create the "help" option:
+
+
+``` bash
+if [ "$1" == "help" ]
+then
+    echo "qmdtool is a tool for managing Quarto markdown files (qmd)."
+    echo "Available options:"
+    echo "  help    Display this help message"
+    echo "  update  Update the qmd files in the current directory"
+    echo "  show    Display the content of the qmd files in the current directory"
+    exit 0
+fi
+```
+
+4. Add the following lines to create the "update" option:
+
+``` bash
+if [ "$1" == "update" ]
+then
+    echo "Updating qmd files in the current directory..."
+    # Add code here to update the qmd files
+    exit 0
+fi
+```
+
+5. Add the following lines to create the "show" option:
+   
+``` bash
+if [ "$1" == "show" ]
+then
+    echo "Displaying content of qmd files in the current directory..."
+    # Add code here to display the content of the qmd files
+    exit 0
+fi
+```
+
+6. Save the script and make it executable with the following command:
+   
+``` bash
+chmod +x qtool
+```
+
+7. Now you can use the app by running the following command:
+   
+``` bash
+./qtool [option]
+``` 
+
+Replace [option] with one of the available options: "help", "update", or "show".
+For example, to display the help message, you can run the following command:
+
+``` bash
+./qtool help
+```
+

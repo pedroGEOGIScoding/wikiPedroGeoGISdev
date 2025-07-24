@@ -1,0 +1,52 @@
+---
+title: "Network: SMTP"
+subtitle: Networking SMTP
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, SMTP]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview
+
+<mark>**SMTP (Simple Mail Transfer Protocol)** is a standard protocol used for the transmission of email messages over the Internet. It is a text-based protocol that works between mail servers to send and receive emails. SMTP is part of the application layer of the Internet Protocol Suite.</mark>
+
+Here are some key points about SMTP:
+
+1. **Message Transmission:** SMTP is primarily used for sending emails. When you send an email, your email client (such as Outlook or Gmail) uses SMTP to communicate with the email server, which then sends the email to the recipient's email server.
+
+2. **Port Number:** SMTP typically operates over port 25. However, secure variations like SMTPS (SMTP Secure) or STARTTLS (an extension for upgrading a plaintext connection to a TLS or SSL encrypted connection) use different port numbers, such as 465 or 587.
+
+3. **Text-Based Protocol:** SMTP is a text-based protocol, meaning that commands and responses are transmitted as human-readable text. This simplicity makes it easy to implement and troubleshoot.
+
+4. **Server Roles:** SMTP involves two types of servers: the SMTP client (sender's server) and the SMTP server (receiver's server). The client initiates the communication and sends the email to the server, which then relays it to the recipient's server.
+
+5. **Relaying:** SMTP servers can be configured as "open relays" (accepting and forwarding messages from any source to any destination) or "closed relays" (restricting relaying to authorized users).
+
+6. **Authentication:** To prevent unauthorized use, SMTP servers may require authentication. Common authentication mechanisms include username/password combinations and secure methods like OAuth.
+
+7. **SMTP Commands:** SMTP uses a set of commands for communication between the client and server. Some common commands include HELO (identifying the client to the server), MAIL FROM (specifying the sender's address), RCPT TO (specifying the recipient's address), DATA (transmitting the message), and QUIT (ending the session).
+
+SMTP is a foundational protocol in email communication, working in conjunction with other protocols like IMAP (Internet Message Access Protocol) and POP3 (Post Office Protocol 3), which are used by email clients to retrieve messages from a server.
+
+# How it works
+
+![SMTP and IMAP work together to transmit an email message](/images/devops/SMTP-IMAP-1.png)
+
+
+1. After creating an email and pressing ‘send’, your email client (e.g. Gmail, Thunderbird, Outlook, etc.) will use SMTP to send your message from your email client to an email server.
+2. Next, the email server will use SMTP to transmit the message to the recipient’s receiving email server.
+3. Upon a successful receipt of the SMTP transmission (indicated by a 250 OK response code), the recipient’s email client will fetch the message using IMAP and place it in the inbox for the recipient to access.
+
+
+# Reference
+
+- [SMTP or IMAP: What’s the Difference? [Bonus: What is POP3?]](https://www.socketlabs.com/blog/smtp-or-imap/){.external}
+
+

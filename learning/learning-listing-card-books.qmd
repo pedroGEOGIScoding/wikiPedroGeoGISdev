@@ -1,0 +1,34 @@
+---
+title: "Books cards"
+subtitle: Recommended book list
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: About books
+categories: [listing, books, reading]
+format:
+  html
+listing:
+    id: books
+    contents:
+        - "../books/*.qmd"
+    sort-ui: [title, genre]
+    filter-ui: [title, genre]
+    type: default
+    image-align: left
+    fields: [image, categories, title, description, reading-time, date, author, file-modified]
+    date-format: full
+    categories: true
+---
+
+![Reading is essential for those who seek to rise above the ordinary. - Jim Rohn](/images/about/books.jpg){width="35%"}
+
+
+[Why should I read books?](/index.qmd#and-reading-books)
+---
+
+</br>
+
+::: {#books}
+:::
+

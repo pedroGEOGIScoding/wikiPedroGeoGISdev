@@ -1,0 +1,110 @@
+---
+title: "Factory"
+subtitle: Java Fundamentals and Patterns
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Factory Creational Design-Pattern
+categories: [javase, factory , design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+The **factory pattern** is a design pattern that is used to create objects in a structured and standardized way. The factory pattern defines a **factory method**, which is a method that is responsible for creating objects of a specific type.
+:::
+
+The factory pattern is useful when you want to centralize the logic for creating objects, and to provide a consistent and standard way of creating objects of different types. This can help to **reduce duplication of code**, and to make the code more **maintainable** and **extensible**.
+
+In the context of the factory pattern, <mark>decoupling</mark> refers to the idea of **separating the logic for creating objects from the code that uses those objects**. By decoupling these two aspects of the system, you can make the code that uses the objects more flexible and reusable, and you can make the logic for creating the objects more modular and maintainable.
+
+## Example ``CarFactory``
+
+Here is an example of how to implement the factory pattern in Java, using a ``CarFactory`` class to create different types of cars:
+
+``` java
+public class CarFactory {
+    // Private constructor to prevent instantiation
+    private CarFactory() { }
+
+    // Factory method for creating cars
+    public static Car createCar(String type) {
+        switch (type) {
+            case "sedan":
+                return new Sedan("Toyota", "Camry", 2019);
+            case "hatchback":
+                return new Hatchback("Honda", "Fit", 2019);
+            case "suv":
+                return new SUV("Jeep", "Grand Cherokee", 2019);
+            default:
+                throw new IllegalArgumentException("Invalid car type: " + type);
+        }
+    }
+}
+
+```
+
+In this example, the `CarFactory` class defines a `createCar()` method, which is marked as `public` and `static`. This method is the factory method, which is responsible for creating objects of the `Car` type.
+
+The `createCar()` method takes a `type` parameter, which specifies the type of car to create. Depending on the value of the `type` parameter, the `createCar()` method creates and returns an instance of the `Sedan`, `Hatchback`, or `SUV` class.
+
+To use the `CarFactory` class, you would call the `createCar()` method, passing in the type of car.
+
+Using the `@Data` annotation from the Lombok library to automatically generate getters, setters, and constructors for the `Sedan`, `Hatchback`, and `SUV` classes:
+
+``` java
+ // Sedan class
+    @Data
+    public static class Sedan implements Car {
+        private String make;
+        private String model;
+        private int year;
+    }
+```
+
+``` java
+// Hatchback class
+    @Data
+    public static class Hatchback implements Car {
+        private String make;
+        private String model;
+        private int year;
+    }
+```
+
+
+``` java
+// SUV class
+    @Data
+    public static class SUV implements Car {
+        private String make;
+        private String model;
+        private int year;
+    }
+```
+
+In this example, the `CarFactory` class defines a `createCar()` method, which is marked as `public` and `static`. This method is the factory method, which is responsible for creating objects of the `Car` type.
+
+The `createCar()` method takes a `type` parameter, which specifies the type of car to create. Depending on the value of the `type` parameter, the `createCar()` method creates and returns an instance of the `Sedan`, `Hatchback`, or `SUV` class.
+
+The `Sedan`, `Hatchback`, and `SUV` classes are nested classes inside the `CarFactory` class. Each of these classes is marked with the `@Data` annotation from the Lombok library, which generates the appropriate getters, setters, and constructors for the class. This means that you don't have to write these methods manually, which can save a lot of time and effort.
+
+To use the `CarFactory` class, you would call the `createCar()` method, passing in the type of car you want to create. For example:
+
+``` java
+Car sedan = CarFactory.createCar("sedan");
+
+```
+
+This code would create and return an instance of the `Sedan` class, with the specified make, model, and year.
+
+## ``CarFactory`` decoupling
+
+The **factory** pattern is <mark>often used in conjunction with the concept of decoupling, which is the idea of separating different components or aspects of a system in order to make the system more modular, flexible, and maintainable.</mark>
+
+By decoupling the `CarFactory` class from the code that uses the cars, you can make the code that uses the cars more flexible and reusable. For example, you could define a `CarDriver` class that takes a `Car` object as a parameter, and uses the `

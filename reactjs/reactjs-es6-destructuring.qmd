@@ -1,0 +1,173 @@
+---
+title: "React JS ES6: destructuring"
+subtitle: ReactJS destructuring
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [reactjs, es6, destructuring]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **Destructuring arrays**
+
+Array ``destructuring`` is a way to extract values from an array and assign them to separate variables.
+
+It allows you to **unpack** the values of an array into separate variables.
+
+:::
+
+---
+
+## Why do we need it
+
+> Array destructuring can be a useful tool for extracting values from arrays and assigning them to separate variables. It can make your code more concise and easier to read, especially when working with large or complex arrays.
+
+Here is the **old way of assigning array items** to a variable:
+
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const vehicles = ['mustang', 'f-150', 'expedition'];
+
+// old way
+const car = vehicles[0];
+const truck = vehicles[1];
+const suv = vehicles[2];
+```
+
+Here is the new way of assigning array items to a variable **With destructuring**:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const vehicles = ['mustang', 'f-150', 'expedition'];
+
+const [car, truck, suv] = vehicles;
+```
+
+
+## How to use ``destructuring``
+
+Here's an example of array destructuring:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const arr = [1, 2, 3];
+const [a, b, c] = arr;
+
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+```
+
+You can also use destructuring to skip elements or assign default values:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const arr = [1, 2, 3];
+const [a, , c] = arr;
+
+console.log(a); // 1
+console.log(c); // 3
+
+const arr2 = [1];
+const [a2, b2 = 2, c2 = 3] = arr2;
+
+console.log(a2); // 1
+console.log(b2); // 2
+console.log(c2); // 3
+```
+
+In the first example, the second element of the arr array is skipped, and in the second example, default values are assigned to the b2 and c2 variables if the corresponding elements of the arr2 array are not present.
+
+::: {.column-margin}
+Array destructuring can be a convenient way to extract values from arrays and assign them to separate variables. It can make your code more concise and easier to read.
+:::
+
+You can also use destructuring to skip elements or assign default values:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const arr = [1, 2, 3, 4];
+const [a, , c, d] = arr;
+
+console.log(a); // 1
+console.log(c); // 3
+console.log(d); // 4
+
+const arr2 = [1];
+const [a2, b2 = 2, c2 = 3, d2 = 4] = arr2;
+
+console.log(a2); // 1
+console.log(b2); // 2
+console.log(c2); // 3
+console.log(d2); // 4
+```
+## More examples
+
+### Nested arrays
+You can use destructuring to extract values from nested arrays:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const arr = [[1, 2], [3, 4]];
+const [[a, b], [c, d]] = arr;
+
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+console.log(d); // 4
+```
+
+### Rest syntax
+The rest syntax allows you to capture the remaining elements of an array in a separate variable:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const arr = [1, 2, 3, 4, 5];
+const [a, b, ...rest] = arr;
+
+console.log(a); // 1
+console.log(b); // 2
+console.log(rest); // [3, 4, 5]
+```
+### Swapping variables
+You can use destructuring to easily swap the values of two variables:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+let a = 1;
+let b = 2;
+
+[a, b] = [b, a];
+
+console.log(a); // 2
+console.log(b); // 1
+```
+
+### Function arguments
+You can use destructuring to specify function arguments:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+function add([a, b]) {
+  return a + b;
+}
+
+console.log(add([1, 2])); // 3
+```
+
+### Object destructuring
+You can also use destructuring with objects. Here's an example:
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+const obj = {
+  foo: 1,
+  bar: 2
+};
+
+const { foo, bar } = obj;
+
+console.log(foo); // 1
+console.log(bar); // 2
+```
+

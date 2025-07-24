@@ -1,0 +1,24 @@
+---
+title: "How to Fail at Almost Everything and Still Win Big"
+author: "albertprofe"
+subtitle: "Scott Adams, 2013, How to Fail at Almost Everything and Still Win Big: Kind of the Story of My Life"
+date: "10/22/2013"
+date-modified: "8/18/2022"
+date-format: full
+description: "Shares the author's experiences and insights on success, failure, and embracing a system-oriented approach to achieve goals and navigate life's challenges."
+categories: [strategy]
+subcategories: [success, personal development]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/HowtoFailatAlmostEverything.jpg){width="60%"}
+
+## More info
+
+
+Dilbert creator Scott Adams' funny memoir about his many failures and what they eventually taught him about success"
+
+- [How to Fail at Almost Everything and Still Win Big: Kind of the Story of My Life](https://www.amazon.es/How-Fail-Almost-Everything-Still/dp/0241003709){.external}

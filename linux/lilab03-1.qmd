@@ -1,0 +1,29 @@
+---
+title: "Linux Lab#LI03-1: Manage users and groups"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, bash, user]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI03-1: Manage users and groups**
+
+- Use the `/etc/skel` directory to define profile settings before adding any user accounts.
+- Set password and account expirations using the `/etc/login.defs` file before adding any user accounts. Use the following password requirements:
+  - Passwords should expire after 90 days, with a five-day warning period.
+- Use the command line to [create five user accounts](https://www.redhat.com/sysadmin/linux-user-group-management) to use in later activities. You will experiment with permissions and ownership by using these accounts. Give each user a unique name but set them all with the same password (for your own sanity).
+- Use the command line to create five groups based on fictitious departments: sales, marketing, human resources, IT, engineering. Place one user from above into each group.
+- Delegate the ability to reboot the system to only one user by using `sudo`.
+
+:::
+
+
+

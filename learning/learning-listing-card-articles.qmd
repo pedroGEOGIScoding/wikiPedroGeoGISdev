@@ -1,0 +1,36 @@
+---
+title: "Articles cards"
+categories: [listing, card]
+listing:
+    id: articles-card-listing
+    contents:
+        - "../*.qmd"
+        - "../javase/*.qmd"
+        -  "../linux/*.qmd"
+        - "../markup/*.qmd"
+        - "../vocabulary/*.qmd"
+        - "../scrum/*.qmd"
+        - "../spring/*.qmd"
+        - "../springboot*.qmd"
+        - "../devops/*.qmd"
+        - "../reactjs/*.qmd"
+        - "../about/*.qmd"
+        - "../ifcd0210/*qmd"
+    sort:
+        - "file-modified desc"
+        - "categories"
+    type: default
+    sort-ui: [title, categories]
+    filter-ui: [title]
+    image-align: left
+    fields: [image, categories, title, description, reading-time, date, author, file-modified]
+    date-format: full
+    categories: cloud
+    image-height: 160px
+---
+
+You can look up the following card listing for additional information:
+
+::: {#articles-card-listing}
+:::
+

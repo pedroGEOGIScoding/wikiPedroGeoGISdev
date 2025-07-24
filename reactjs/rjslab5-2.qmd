@@ -1,0 +1,94 @@
+---
+title: "Lab#RE05-2: chat: backend"
+subtitle: ReactJS labs
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: labs
+categories: [reactjs, lab, Lab#RE05]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘  **React JS Lab#RE05-2: chatchat backend AWS**
+
+In this lab, we will be using:
+
+- the ``react-router-dom``, which is a package with bindings for using React Router in web applications:
+- ``websockets``, provided by **ReactJS** framework and:
+  - useState
+  - useEffect
+  - useContext
+- ``AWS``, **Amanzon Web Services**, architecture as a server-side:
+  - Lambda
+  - DynamoDB
+  - API Gateway
+  - Cloudwatch
+
+:::
+
+</br>
+
+Reference:
+
+- [codesanbox myChat](https://codesandbox.io/s/mychat-1-ktru2t?file=/src/chat/SocketProvider.js:1278-1317){.external}
+- [myChat docs, backend & frontend](https://sites.google.com/view/devopscifo/labs/1-chat-app){.external}
+
+![General architecture](/images/reactjs/AWS-Lambda-and-DynamoDB-Architecture.png){width="60%"}
+
+
+## Backend: AWS
+
+For a chat app backend architecture using AWS Lambda, DynamoDB, and API Gateway for WebSockets, here's a high-level overview:
+
+1. ``API Gateway Configuration``:
+   - Create an API Gateway WebSocket API to handle incoming WebSocket connections.
+   - Define routes and integration with Lambda functions to handle various WebSocket events (e.g., connection, disconnection, message sending).
+
+2. ``Lambda Functions``:
+   - Implement Lambda functions to handle WebSocket events, such as connection, disconnection, and message handling.
+   - Use the AWS SDK to interact with DynamoDB for storing and retrieving chat messages and user information.
+   - Implement business logic for handling WebSocket events and updating the chat state in DynamoDB.
+
+3. ``DynamoDB``:
+   - Create a DynamoDB table to store chat messages and user information.
+   - Define appropriate table schema to support the chat app requirements.
+   - Use DynamoDB Streams to capture changes in the chat state for real-time updates.
+
+4. ``Lambda-DynamoDB Integration``:
+   - Configure Lambda functions to subscribe to the DynamoDB Streams associated with the chat table.
+   - Use the stream events to capture updates and propagate them to connected WebSocket clients.
+   - Update the chat state in DynamoDB based on WebSocket events and user interactions.
+
+5. ``Authentication and Authorization``:
+   - Implement user authentication and authorization mechanisms using AWS Cognito, IAM, or custom solutions.
+   - Ensure that WebSocket connections are authenticated and authorized to perform specific actions.
+
+6. ``Additional Services``:
+   - Utilize other AWS services as needed, such as AWS S3 for file storage, AWS CloudFront for content delivery, or AWS CloudWatch for monitoring and logging.
+
+7. ``Scalability and High Availability``:
+   - Configure auto-scaling settings for Lambda functions and DynamoDB to handle varying chat loads.
+   - Utilize AWS Elastic Load Balancer or AWS API Gateway's WebSocket APIs to distribute WebSocket connections across multiple instances.
+
+This architecture leverages AWS Lambda for serverless compute, DynamoDB for storing chat data, API Gateway for WebSocket communication, and additional services for authentication, authorization, and scalability. It provides a scalable, real-time chat backend that can handle WebSocket connections, manage chat messages, and provide a reliable experience to users.
+
+### Test backend
+
+
+- Web test websocket: [Websocket King](https://websocketking.com/){.external}
+
+![Test app with websocketking](/images/reactjs/lab-re-5-3.png){width="60%"}
+
+``Websocket King`` is a <mark>web tool used to test the functionality and performance of WebSocket connections<mark>.
+
+With ``Websocket King``, you can **simulate** ``WebSocket`` communication by connecting to the ``WebSocket`` ``endpoint`` of your AWS backend.
+
+It provides an intuitive interface to send and receive ``WebSocket`` messages, monitor the connection status, and analyze the received data. By using ``Websocket King`` to test your AWS backend, you can ensure that the ``WebSocket`` communication is working correctly, validate the message handling, and assess the overall performance and reliability of your backend implementation.
+
+
+

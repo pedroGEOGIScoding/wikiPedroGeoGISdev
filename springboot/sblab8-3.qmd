@@ -1,0 +1,1600 @@
+---
+title: "Lab#SB08-3: H2 and API Rest"
+subtitle: Spring Boot Restaurant Management H2 and API Rest
+author: albertprofe
+date: "01/010/2024"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+:::: {.labs}
+📘 Spring Boot Lab#SB00-3: RestaurantManager
+
+We are going to evolve the current **Java SE Restaurant** project into a **Spring Boot Restaurant Management System** with an `H2 DB` and `API Rest` manages by `Swagger`.
+:::
+</br>
+
+- [Commits](https://github.com/AlbertProfe/restaurantManager/commits/master/){.external target='_blank'}
+
+# RestaurantManager Project Summary
+
+`Key Components`
+
+- **Java Faker**: Library for generating fake data. [Java Faker GitHub](https://github.com/DiUS/java-faker)
+- **@Bean Annotation**: Spring annotation for declaring managed beans.
+- **H2 Database**: In-memory database for testing. [H2 Database Engine](https://www.h2database.com/)
+- **Swagger**: Tool for API documentation. [Swagger Documentation](https://swagger.io/docs/)
+- **ResponseEntity**: Spring class for HTTP response control.
+- **JUnit**: Spring Boot uitlity for testing. 
+
+`Approaches to Create Fake Customers`
+
+1. Using **@Bean** and **CommandLineRunner**
+2. Using static method (not recommended)
+3. Using **ApplicationRunner** (recommended)
+`H2 Database Configuration`
+
+- **In-memory**: Temporary database, resets on application restart
+- **Local**: Persistent storage on disk
+- **Mixed**: In-memory for development, local for production
+
+`API and Controller`
+
+- **CustomerController**: Implements CRUD operations
+- Uses **Swagger annotations** for API documentation
+- Utilizes **ResponseEntity** for flexible HTTP responses
+
+`Service, Repo and JUnit`
+
+- @Service with all business logic from app
+- JpaRepository interface
+
+`Additional Resources`
+
+- [Spring Framework Documentation](https://docs.spring.io/spring-framework/reference/)
+- [Spring Boot Guide](https://spring.io/guides/gs/spring-boot/)
+- [RESTful Web Services Guide](https://spring.io/guides/gs/rest-service/)
+
+
+
+# Project structure
+
+
+`RestaurantManager` directory structure represents a <mark>typical Java Spring Boot project for a restaurant management application</mark>.
+
+Here's a basic explanation of the **main** components:
+
+**Root Directory**
+
+- `HELP.md`: contains project general information about `RestaurantManager`.
+- `mvnw` and `mvnw.cmd`: `Maven wrapper` scripts for `Unix-like` systems and `Windows`, respectively.
+- `pom.xml`: The `Maven` project configuration file.
+
+**Source Code (`src`)**
+
+The `src` directory contains the main application code and test code.
+
+**Main Application Code (`src/main`)**
+
+- `java/dev/example/restaurantManager`: The root package for the application.
+  - `controller`: Contains controller classes for handling HTTP requests.
+  - `model`: Defines the data models (entities) for the application.
+  - `repository`: Interfaces for database operations.
+  - `service`: Service layer implementation.
+  - `utilities`: Utility classes, such as data loaders.
+  - `RestaurantManagerApplication.java`: The main class to run the Spring Boot application.
+
+**Resources (`src/main/resources`)**
+
+- Configuration files (`application*.properties`)
+- Static resources and templates (.js, .css, etc..)
+
+**Test Code (`src/test`)**
+
+Contains test classes for the application.
+
+**Build Output (`target`)**
+
+This directory contains compiled classes, JAR files, and other build artifacts.
+
+**Project Structure**
+
+The project follows a typical MVC (Model-View-Controller) structure with additional layers:
+
+1. Models (in `model` package)
+2. Views (in `resources/templates`)
+3. Controllers (in `controller` package)
+4. Services (in `service` package)
+5. Repositories (in `repository` package)
+
+This structure allows for a clean separation of concerns and promotes maintainability and scalability of the application.
+
+![](/images/springboot/labsb08/lab08-3-tree.png)
+
+![](/images/springboot/labsb08/lab08-3-tree-scr.png)
+
+![](/images/springboot/labsb08/lab08-3-tree-scr-2.png)
+
+
+
+<details>
+<summary>Code</summary>
+
+
+
+``` java
+.
+├── HELP.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── _PRA
+│   └── PRA01.md
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── dev
+│   │   │       └── example
+│   │   │           └── restaurantManager
+│   │   │               ├── controller
+│   │   │               │   ├── CustomerController.java
+│   │   │               │   └── CustomerWebController.java
+│   │   │               ├── model
+│   │   │               │   ├── Booking.java
+│   │   │               │   ├── Customer.java
+│   │   │               │   ├── Menu.java
+│   │   │               │   ├── Order.java
+│   │   │               │   └── Table.java
+│   │   │               ├── repository
+│   │   │               │   └── CustomerRepository.java
+│   │   │               ├── RestaurantManagerApplication.java
+│   │   │               ├── service
+│   │   │               │   ├── CustomerServiceImpl.java
+│   │   │               │   └── CustomerService.java
+│   │   │               └── utilities
+│   │   │                   └── CustomerDataLoader.java
+│   │   └── resources
+│   │       ├── application-local.properties
+│   │       ├── application-memory.properties
+│   │       ├── application.properties
+│   │       ├── static
+│   │       └── templates
+│   │           └── home.html
+│   └── test
+│       └── java
+│           └── dev
+│               └── example
+│                   └── restaurantManager
+│                       ├── CustomerRepositoryTest.java
+│                       └── RestaurantManagerApplicationTests.java
+└── target
+    ├── classes
+    │   ├── application-local.properties
+    │   ├── application-memory.properties
+    │   ├── application.properties
+    │   ├── dev
+    │   │   └── example
+    │   │       └── restaurantManager
+    │   │           ├── controller
+    │   │           │   ├── CustomerController.class
+    │   │           │   └── CustomerWebController.class
+    │   │           ├── model
+    │   │           │   ├── Booking.class
+    │   │           │   ├── Customer.class
+    │   │           │   ├── Menu.class
+    │   │           │   ├── Order.class
+    │   │           │   └── Table.class
+    │   │           ├── repository
+    │   │           │   └── CustomerRepository.class
+    │   │           ├── RestaurantManagerApplication.class
+    │   │           ├── service
+    │   │           │   ├── CustomerService.class
+    │   │           │   └── CustomerServiceImpl.class
+    │   │           └── utilities
+    │   │               └── CustomerDataLoader.class
+    │   └── templates
+    │       └── home.html
+    ├── generated-sources
+    │   └── annotations
+    ├── generated-test-sources
+    │   └── test-annotations
+    ├── maven-archiver
+    │   └── pom.properties
+    ├── maven-status
+    │   └── maven-compiler-plugin
+    │       ├── compile
+    │       │   └── default-compile
+    │       │       ├── createdFiles.lst
+    │       │       └── inputFiles.lst
+    │       └── testCompile
+    │           └── default-testCompile
+    │               ├── createdFiles.lst
+    │               └── inputFiles.lst
+    ├── restaurantManager-0.0.1-SNAPSHOT.jar
+    ├── restaurantManager-0.0.1-SNAPSHOT.jar.original
+    ├── surefire-reports
+    │   ├── dev.example.restaurantManager.RestaurantManagerApplicationTests.txt
+    │   └── TEST-dev.example.restaurantManager.RestaurantManagerApplicationTests.xml
+    └── test-classes
+        └── dev
+            └── example
+                └── restaurantManager
+                    ├── CustomerRepositoryTest.class
+                    └── RestaurantManagerApplicationTests.class
+
+```
+</details>
+
+# Fake customer RestaurantManager
+
+## Java Faker
+
+**Java Faker** is a library that generates fake data for various purposes such as testing, development, and demonstration.
+
+> Java Faker is a tool that <mark>creates realistic-looking fake data</mark>, including names, addresses, phone numbers, and much more.
+
+It's useful for:
+
+1. Populating databases with test data
+2. Creating mock objects for unit testing
+3. Generating sample data for applications
+4. Prototyping user interfaces
+
+The library provides a wide range of pre-defined categories (like name, address, phone number) and methods to generate fake data within those categories. It's easy to use and can generate data in multiple languages and locales.
+
+For example, you can create a Faker instance and generate fake data like this:
+
+```java
+Faker faker = new Faker();
+ // Generates a random full name
+String name = faker.name().fullName();
+// Generates a random email address
+String email = faker.internet().emailAddress(); 
+```
+
+Dependency for maven:
+
+```xml
+<dependency>
+    <groupId>com.github.javafaker</groupId>
+    <artifactId>javafaker</artifactId>
+    <version>1.0.2</version>
+</dependency>
+```
+
+## Bean
+
+`@Bean` in Spring is:
+
+1. A <mark>method-level annotation</mark>
+2. Used to declare a Spring bean typically used in `@Configuration` classes
+3. Tells Spring to:
+  1. manage the object returned by the method
+  2. and allows you to configure and customize the bean
+4. [JavaBeans - Wikipedia](https://en.wikipedia.org/wiki/JavaBeans)
+
+> `@Bean` in Spring is like telling a toy factory to make a special toy for you. When you use `@Bean`, you are saying,:
+> 
+> - "Please create this toy and keep it safe so I can play with it whenever I want."
+> 
+> Just like the factory remembers how to make your favorite toy, Spring remembers how to create and manage the special object you asked for, so you can use it in your game whenever you need it.
+
+Example:
+
+```java
+@Configuration
+public class AppConfig {
+
+@Bean
+public MyService myService() {
+return new MyService();
+}
+}
+```
+
+### Approach #1: @Bean
+
+This `CommandLineRunner`does the following:
+
+1. It checks if the database is empty by counting the number of customers in the repository.
+2. If the database is empty, it creates a `new Faker` instance with the US locale.
+3. It then generates <mark>100 fake customers using Faker to create realistic</mark> `names`, `email` addresses, and` phone numbers`.
+4. Each customer is assigned a random `UUID` as their ID`.`
+5. The fake `customers` are saved to the `CustomerRepository`.
+6. Finally, it prints a message confirming that 100 fake customers have been created and saved.
+
+
+::: {.column-page-right}
+```java
+package dev.example.restaurant;
+
+import com.github.javafaker.Faker;
+import dev.example.restaurant.model.Customer;
+import dev.example.restaurant.repository.CustomerRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.util.Locale;
+import java.util.UUID;
+
+@SpringBootApplication
+public class RestaurantVaadinApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RestaurantVaadinApplication.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner loadData(CustomerRepository customerRepository) {
+        return args -> {
+            // Check if the database is empty
+            if (customerRepository.count() == 0) {
+                Faker faker = new Faker(new Locale("en-US"));
+
+                // Create and save 100 fake customers
+                for (int i = 0; i < 100; i++) {
+                    Customer customer = new Customer(
+                            UUID.randomUUID().toString(),
+                            faker.name().fullName(),
+                            faker.internet().emailAddress(),
+                            faker.phoneNumber().cellPhone()
+                    );
+                    customerRepository.save(customer);
+                }
+
+                System.out.println("100 fake customers have been"
+                + " created and saved to the database.");
+            }
+        };
+    }
+}
+```
+:::
+
+### Approach #2 static
+
+In this approach:
+
+1. We've removed the `@Bean` annotation and the `CommandLineRunner`.
+2. We've added a static `CustomerRepository` field with `@Autowired` annotation.
+3. We've created a `static` method `createFakeCustomers()` that contains the logic for creating and saving fake customers.
+4. In the `main` method, we call `createFakeCustomers()` <mark>after the Spring application context is initialized.</mark>
+
+> There's an important <mark>caveat</mark> with this approach: using <mark>static fields</mark> with `@Autowired` is generally **not recommended in Spring** applications.
+> 
+> It can lead to issues with testing and violates the principle of dependency injection.
+> 
+> A better approach would be to use an `ApplicationRunner` or `CommandLineRunner` <mark>bean, which allows for proper dependency injection. </mark>
+
+::: {.column-page-right}
+```java
+package dev.example.restaurant;
+
+import com.github.javafaker.Faker;
+import dev.example.restaurant.model.Customer;
+import dev.example.restaurant.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Locale;
+import java.util.UUID;
+
+@SpringBootApplication
+public class RestaurantVaadinApplication {
+
+    @Autowired
+    private static CustomerRepository customerRepository;
+
+    public static void main(String[] args) {
+        SpringApplication.run(RestaurantVaadinApplication.class, args);
+        createFakeCustomers();
+    }
+
+    public static void createFakeCustomers() {
+        // Check if the database is empty
+        if (customerRepository.count() == 0) {
+            Faker faker = new Faker(new Locale("en-US"));
+
+            // Create and save 100 fake customers
+            for (int i = 0; i < 100; i++) {
+                Customer customer = new Customer(
+                        UUID.randomUUID().toString(),
+                        faker.name().fullName(),
+                        faker.internet().emailAddress(),
+                        faker.phoneNumber().cellPhone()
+                );
+                customerRepository.save(customer);
+            }
+
+            System.out.println("100 fake customers have been"
+            + " created and saved to the database.");
+        }
+    }
+}
+```
+:::
+
+### Approach #3
+
+::: {.column-page-right}
+```java
+package dev.example.restaurant;
+
+import com.github.javafaker.Faker;
+import dev.example.restaurant.model.Customer;
+import dev.example.restaurant.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.util.Locale;
+import java.util.UUID;
+
+@SpringBootApplication
+public class RestaurantVaadinApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RestaurantVaadinApplication.class, args);
+    }
+
+    @Bean
+    public ApplicationRunner dataLoader(CustomerRepository customerRepository) {
+        return args -> createFakeCustomers(customerRepository);
+    }
+
+    private void createFakeCustomers(CustomerRepository customerRepository) {
+        // Check if the database is empty
+        if (customerRepository.count() == 0) {
+            Faker faker = new Faker(new Locale("en-US"));
+
+            // Create and save 100 fake customers
+            for (int i = 0; i < 100; i++) {
+                Customer customer = new Customer(
+                        UUID.randomUUID().toString(),
+                        faker.name().fullName(),
+                        faker.internet().emailAddress(),
+                        faker.phoneNumber().cellPhone()
+                );
+                customerRepository.save(customer);
+            }
+
+            System.out.println("100 fake customers have been created"
+            + " and saved to the database.");
+        }
+    }
+}
+```
+:::
+
+
+This approach **maintains proper dependency injection** and is more in line with Spring best practices for a few key reasons:
+
+1. **Proper dependency injection**: By using an `ApplicationRunner` bean, we allow Spring to manage the lifecycle and injection of dependencies. The CustomerRepository is properly injected by Spring, rather than being accessed statically.
+2. **Separation of concerns**: The data loading logic is separated from the main application class, improving modularity and maintainability.
+3. **Testability**: This approach makes it easier to unit test the data loading logic in isolation, as dependencies can be easily mocked.
+4. **Constructor injection**: By passing the CustomerRepository as a parameter to the ApplicationRunner, we're using constructor injection, which is considered a best practice in Spring.
+5. **Avoiding static dependencies**: Static `@Autowired` fields are generally discouraged as they can lead to issues with testing and violate dependency injection principles.
+6. **Flexibility**: This approach allows for easier configuration and potential customization of when and how the data loading occurs.
+7. **Alignment with Spring lifecycle**: Using `ApplicationRunner` ensures the data loading happens at the appropriate time during application startup, after the Spring context is fully initialized.
+
+By following these practices, the code becomes more <mark>maintainable, testable, and aligned with Spring's dependency injection principles</mark>.
+
+# H2 DB
+
+## H2 in RestaurantManager in memory
+
+![](/images/springboot/labsb08/lab08-1-h2.png)
+
+## Install and create a H2 DB
+
+References:
+
+- [Spring Boot: H2 DB and Thymeleaf](/springboot/boot-what-create-th-h2.qmd)
+- [Spring Boot: Rest](/springboot/boot-concepts-rest.qmd)
+
+
+Step-by-step:
+
+- Download and install `Java JDK` from the official `Oracle` website.
+- Download and install Spring Boot from the official `Spring` website.
+- Download the `H2` database from the official `H2` website.
+- Extract the downloaded file to a location on your `Linux` machine.
+- Execute `H2` Desktop app and create a local `H2 DB`.
+
+![Create a H2 DB](/images/springboot/LibraryManagementRest-H2-1.png){width="60%"}
+
+- [Creation H2 DB step-by-step](/springboot/boot-what-create-th-h2.qmd#h2-db-creation-step-by-step)
+
+### H2 local DB creation using CLI
+
+`java -cp h2-x.x.x.jar org.h2.Shell`
+
+![](/images/springboot/labsb08/lab08-3-h2-console-2.png)
+
+Old version:
+
+`java -cp h2-x.x.x.jar org.h2.Shells.Shell`
+
+![](/images/springboot/labsb08/lab08-3-h2-console.png)
+
+
+Prerequisites:
+
+- Java Runtime Environment (JRE) installed
+- H2 database JAR file downloaded
+
+
+
+**Download H2 Database**
+
+   - Visit the official H2 database website: [https://www.h2database.com](https://www.h2database.com)
+   - Download the latest version of H2
+
+**Extract the H2 JAR File**
+
+   - Unzip the downloaded file
+   - Locate the `h2-x.x.x.jar` file (where x.x.x is the version number)
+
+**Open Command Prompt or Terminal**
+
+   - Navigate to the directory containing the H2 JAR file
+
+**Start H2 Console**
+
+   - Run the following command:
+     ```
+     java -cp h2-x.x.x.jar org.h2.tools.Console
+     ```
+   - Replace `x.x.x` with your actual H2 version number
+
+**Connect to the Database**
+
+   - In the H2 Console, use the following settings:
+     - Driver Class: `org.h2.Driver`
+     - JDBC URL: `jdbc:h2:~/test` (creates a 'test' database in your home directory)
+     - User Name: `sa` (default)
+     - Password: (leave blank for default)
+
+**Create Tables and Data**
+
+   - Use SQL commands to create tables and insert data, for example:
+  
+     ```sql
+     CREATE TABLE users (id INT PRIMARY KEY, name VARCHAR(50));
+     INSERT INTO users VALUES (1, 'John Doe');
+     ```
+
+**Accessing the Database via CLI**
+
+   - To access the database directly from the command line:
+     ```
+     java -cp h2-x.x.x.jar org.h2.tools.Shell
+     ```
+   - Follow the prompts to connect to your database
+
+**Stopping the Database**
+
+   - Close the H2 Console window
+   - Or, if running in background, find the Java process and terminate it
+
+Remember to replace `x.x.x` with the actual version number of your H2 JAR file in all commands.
+
+## Configuring H2 Database in Spring Boot with DDL Auto-generation
+
+Dependencies
+
+First, ensure you have the necessary dependencies in your `pom.xml` (for Maven) or `build.gradle` (for Gradle):
+
+::: {.column-page-right}
+``` xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+:::
+
+`application Properties`
+
+In your `application.properties` file, add the following configurations:
+
+
+::: {.column-page-right}
+``` yml
+
+# H2 Database Configuration
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# H2 Console Configuration (optional)
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# JPA and Hibernate Configuration
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+:::
+
+
+**Explanation of Properties**
+
+- `spring.datasource.url`: Specifies the JDBC URL for H2. `jdbc:h2:mem:testdb` creates an in-memory database named "testdb".
+- `spring.datasource.driverClassName`: Specifies the H2 driver class.
+- `spring.datasource.username` and `spring.datasource.password`: Set the database credentials.
+- `spring.h2.console.enabled`: Enables the H2 web console for database management.
+- `spring.h2.console.path`: Sets the path to access the H2 console.
+- `spring.jpa.database-platform`: Specifies the Hibernate dialect for H2.
+- `spring.jpa.hibernate.ddl-auto=update`: This is the key property for DDL auto-generation. It tells Hibernate to automatically create or update the database schema based on your entity classes.
+- `spring.jpa.show-sql=true`: Enables logging of SQL statements.
+
+**DDL Auto-generation Options**
+
+The `spring.jpa.hibernate.ddl-auto` property can have the following values:
+
+- `create`: Drops and creates the schema at application startup.
+- `create-drop`: Creates the schema at startup and drops it at shutdown.
+- `update`: Updates the schema if necessary (recommended for development).
+- `validate`: Validates the schema but makes no changes.
+- `none`: Disables DDL handling.
+
+`Entity` Classes
+
+Create your entity classes with JPA annotations. Hibernate will use these to generate the DDL:
+
+```java
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    
+    // getters, setters, constructors
+}
+```
+
+**Accessing the Database**
+
+- The H2 console will be available at `http://localhost:8080/h2-console` (assuming default port).
+- Use the JDBC URL, username, and password specified in your properties to connect.
+
+Remember to use `update` or `create-drop` carefully in production environments to avoid data loss.
+
+# API Rest & Swagger
+
+![](/images/springboot/labsb08/lab08-1-rest-customer.png)
+
+- [API rest](/devops/devops-network-rest.qmd){.external target='_blank'}
+
+## What is Swagger
+
+![](/images/springboot/labsb08/lab08-1-swagger.png)
+
+> Swagger is an open-source set of tools for designing, building, documenting, and consuming RESTful web services. It provides a standardized way to describe APIs using JSON or YAML, making it easier for both humans and machines to understand the capabilities of a service without accessing its source code.
+
+**Key Components**
+
+1. **Swagger Specification**: A format for describing RESTful APIs.
+2. **Swagger UI**: A web-based UI for exploring and testing APIs.
+3. **Swagger Codegen**: A tool for generating client libraries and server stubs.
+
+**Benefits**
+
+- Improves `API` **documentation**
+- Enables interactive API exploration
+- Facilitates API-first development
+- Supports automatic code generation
+- Enhances collaboration between frontend and backend teams
+
+Can be easily integrated with various frameworks, including `Spring Boot`, through libraries like `SpringFox` or `SpringDoc` `OpenAPI`.
+
+**Usage**
+
+1. Define `API` specifications
+2. Generate interactive documentation
+3. Test `API` endpoints directly from the UI
+4. Generate client SDKs or server stubs
+
+`Swagger` (now part of the `OpenAPI` Initiative) has become a de facto standard for `RESTful` API documentation and development.
+
+## Maven Dependency
+
+Add the `SpringDoc` `OpenAPI` dependency to your `pom.xml` (for `Maven`):
+
+```xml
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>
+    springdoc-openapi-starter-webmvc-ui
+    </artifactId>
+    <version>2.1.0</version>
+</dependency>
+```
+
+## Configure in Spring Boot
+
+Configure SpringDoc OpenAPI in your `application.properties` or `application.yml`:
+
+```yaml
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+```
+
+## Annotate (optional)
+
+Annotate your REST controllers and methods with OpenAPI annotations to provide more details:
+
+::: {.column-page-right}
+```java
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@RestController
+@RequestMapping("/api")
+@Tag(name = "Example API", description = "API for example operations")
+public class ExampleController {
+
+    @GetMapping("/hello")
+    @Operation(summary = "Say hello", description = "Returns a greeting message")
+    @ApiResponse(responseCode = "200", description = "Successful response")
+    public String hello(@Parameter(description = "Name to greet") 
+                        @RequestParam(required = false) String name) {
+        return "Hello, " + (name != null ? name : "World") + "!";
+    }
+}
+```
+:::
+
+## Open url browser
+
+Run your `Spring Boot` application and access the `Swagger UI` at:
+
+`http://localhost:8080/swagger-ui.html`
+
+Understanding ResponseEntity in Spring
+
+# `ResponseEntity`
+
+`ResponseEntity` is a class in `Spring Framework` that represents the entire `HTTP` response. It allows you to control the following aspects of the `HTTP` response:
+
+- Status code
+- Headers
+- Body
+
+![custom response using springboot  Medium](https://miro.medium.com/v2/resize:fit:1400/1*Z0XmoMjwiC61rdAROwZZ1A.jpeg){width=50%}
+
+## Key Features
+
+1. **Flexibility**: You can customize every part of the `HTTP` response.
+2. **Type Safety**: It uses generics to ensure type safety of the response body.
+3. **Convenience Methods**: It provides static methods for quickly creating responses.
+
+In `Java Spring Boot`, when you use `ResponseEntity<>()` with just the name of a class, it's typically referred to as a "parameterized type" or "generic type."
+
+More specifically, this syntax is using a **generic type parameter**. The class name inside the angle brackets `<>` specifies the type of data that the `ResponseEntity` will contain.
+
+For example:
+
+```java
+ResponseEntity<User>
+```
+
+This declares a `ResponseEntity` that will contain a `User` object.
+
+```java
+ResponseEntity<List<Product>>
+```
+
+This declares a `ResponseEntity` that will contain a `List` of `Product` objects.
+
+The use of these <mark>parameterized types allows for type safety and helps the compiler ensure that you're working with the correct types of objects</mark> when you're handling the response.
+
+
+## Basic Usage
+
+![ResponseEntity in Spring Framework](https://cdn.hashnode.com/res/hashnode/image/upload/v1701526522110/2c2b7ee3-2e37-4d9a-ab10-b647fc751d7b.png?auto=compress,format&format=webp){width="60%"}
+
+Here's a simple example of how to use `ResponseEntity`:
+
+
+```java
+@GetMapping("/example")
+public ResponseEntity<String> example() {
+    return ResponseEntity.ok("Hello, World!");
+}
+```
+
+## Advanced Usage
+
+You can set custom status codes, headers, and body:
+
+```java
+@GetMapping("/advanced")
+public ResponseEntity<MyObject> advanced() {
+    MyObject body = new MyObject("data");
+    return ResponseEntity
+        .status(HttpStatus.CREATED)
+        .header("Custom-Header", "value")
+        .body(body);
+}
+```
+
+## Useful Links
+
+- [Official Spring Documentation on ResponseEntity](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html)
+- [Spring.io Guide on Building REST services](https://spring.io/guides/tutorials/rest/)
+
+## When to Use ResponseEntity
+
+Use `ResponseEntity` when you need fine-grained control over the HTTP response, such as:
+
+- Setting custom status codes
+- Adding or modifying response headers
+- Conditionally returning different status codes based on some logic
+- Creating responses with no body (like for DELETE operations)
+
+By using `ResponseEntity`, you can create more flexible and powerful RESTful APIs in your Spring applications.
+
+## CustomerController
+
+::: {.column-page-right}
+```java
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.*;
+
+    @RestController
+    @RequestMapping("/api/customers")
+    @Api(value = "Customer Management System", 
+            description = "Operations pertaining to customers in the Customer Management System")
+    public class CustomerController {
+
+        private final CustomerService customerService;
+
+        public CustomerController(CustomerService customerService) {
+            this.customerService = customerService;
+        }
+
+        @ApiOperation(value = "View a list of available customers", response = List.class)
+        @ApiResponses(value = {
+                @ApiResponse(code = 200, message = "Successfully retrieved list"),
+                @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+        })
+        @GetMapping("/allCustomers")
+        public ResponseEntity<List<Customer>> getAllCustomers() {
+            List<Customer> customers = customerService.getAllCustomers();
+            return new ResponseEntity<>(customers, HttpStatus.OK);
+        }
+
+        @ApiOperation(value = "Add a new customer")
+        @PostMapping
+        public ResponseEntity<Customer> createCustomer(
+                @ApiParam(value = "Customer object store in database table", 
+                            required = true)
+                @RequestBody Customer customer) {
+            Customer createdCustomer = customerService.createCustomer(customer);
+            return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
+        }
+
+        @ApiOperation(value = "Get a customer by Id")
+        @GetMapping("/{id}")
+        public ResponseEntity<Customer> getCustomerById(
+                @ApiParam(value = "Customer id from which customer object will retrieve",
+                            required = true)
+                @PathVariable String id) {
+            Customer customer = customerService.getCustomerById(id);
+            return customer != null
+                    ? new ResponseEntity<>(customer, HttpStatus.OK)
+                    : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        @ApiOperation(value = "Update a customer")
+        @PutMapping("/{id}")
+        public ResponseEntity<Customer> updateCustomer(
+                @ApiParam(value = "ID of the customer to be updated", required = true)
+                @PathVariable String id,
+                @ApiParam(value = "Updated customer object", required = true)
+                @RequestBody Customer customerDetails) {
+            Customer updatedCustomer = customerService.updateCustomer(id, customerDetails);
+            return updatedCustomer != null
+                    ? new ResponseEntity<>(updatedCustomer, HttpStatus.OK)
+                    : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        @ApiOperation(value = "Delete a customer")
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Void> deleteCustomer(
+                @ApiParam(value = "Customer Id from which customer 
+                                    object will be deleted from database table", 
+                          required = true)
+                @PathVariable String id) {
+            customerService.deleteCustomer(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+    }
+```
+:::
+
+
+# Service and Repository
+
+- [Spring Data](/springboot/boot-concepts-data.qmd)
+- [RestaurantManager customerService](https://github.com/AlbertProfe/restaurantManager/tree/319b94239321dde826d78b7cbe00e29895065b53/src/main/java/dev/example/restaurantManager/service){.external target='_blank'}
+
+## `CustomerService` interface and implementation
+
+
+> Why Use `Interfaces` for Services in Spring Boot? Because using `interfaces` for services in Spring Boot is a best practice that offers several advantages from `Loose Coupling` to having a **clear contract**.
+
+**Loose Coupling**
+
+`Interfaces` promote `loose coupling between components`. The code that depends on the service only knows about the `interface`, not the implementation. This makes it easier to change the implementation without affecting the rest of the application.
+
+**Easier Testing**
+
+Interfaces facilitate easier unit testing through mocking. You can create mock implementations of the interface for testing purposes, allowing you to isolate the component under test.
+
+**Multiple Implementations**
+
+`Interfaces` allow for multiple implementations of the same service. This is useful when you need different implementations for different scenarios (e.g., production vs. testing, or different business logic for different clients).
+
+**Dependency Injection**
+
+`Spring's dependency injection` works well with `interfaces`. You can easily switch implementations by changing the configuration, without modifying the code that uses the service.
+
+**Clear Contract**
+
+`Interfaces` <mark>serve as a clear contract for what operations a service provides</mark>. This improves <mark>code readability and helps in understanding the system's architecture</mark>.
+
+**Aspect-Oriented Programming (AOP)**
+
+Spring's AOP features work more smoothly with interfaces, allowing you to add cross-cutting concerns like logging or transaction management more easily.
+
+**Design by Contract**
+
+`Interfaces` encourage "`design by contract`" principles, <mark>where you define what a service does rather than how it does it</mark>, leading to more robust and maintainable code.
+
+### `CustomerService`
+
+```java
+package dev.example.restaurantManager.service;
+
+import dev.example.restaurantManager.model.Customer;
+import java.util.List;
+
+public interface CustomerService {
+    List<Customer> getAllCustomers();
+    Customer createCustomer(Customer customer);
+    Customer getCustomerById(String id);
+    Customer updateCustomer(String id, Customer customerDetails);
+    boolean deleteCustomer(String id);
+    long countCustomers();
+}
+```
+
+> By using this interface, you define a clear contract for customer-related operations.
+
+## Two impplementations
+
+
+Two very different implementations of the `CustomerService` interface:
+
+- One will be a standard implementation using a database,
+- and the other will be an in-memory implementation for testing or prototyping purposes.
+
+### Implementation 1: Database-backed CustomerService
+
+::: {.column-page-right}
+```java
+package dev.example.restaurantManager.service;
+
+import dev.example.restaurantManager.model.Customer;
+import dev.example.restaurantManager.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class DatabaseCustomerService implements CustomerService {
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
+    }
+
+    @Override
+    public Customer createCustomer(Customer customer) {
+        return customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer getCustomerById(String id) {
+        Optional<Customer> customer = customerRepository.findById(id);
+        return 
+        customer.orElseThrow(() -> new RuntimeException("Customer not found"));
+    }
+
+    @Override
+    public Customer updateCustomer(String id, Customer customerDetails) {
+        Customer customer = getCustomerById(id);
+        customer.setName(customerDetails.getName());
+        customer.setEmail(customerDetails.getEmail());
+        // Update other fields as necessary
+        return customerRepository.save(customer);
+    }
+
+    @Override
+    public boolean deleteCustomer(String id) {
+        if (customerRepository.existsById(id)) {
+            customerRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+}
+```
+:::
+
+
+### Implementation 2: In-Memory CustomerService
+
+::: {.column-page-right}
+
+```java
+package dev.example.restaurantManager.service;
+
+import dev.example.restaurantManager.model.Customer;
+import org.springframework.stereotype.Service;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+
+@Service
+public class InMemoryCustomerService implements CustomerService {
+
+    private final Map<String, Customer> customerStore = new ConcurrentHashMap<>();
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return new ArrayList<>(customerStore.values());
+    }
+
+    @Override
+    public Customer createCustomer(Customer customer) {
+        String id = UUID.randomUUID().toString();
+        customer.setId(id);
+        customerStore.put(id, customer);
+        return customer;
+    }
+
+    @Override
+    public Customer getCustomerById(String id) {
+        Customer customer = customerStore.get(id);
+        if (customer == null) {
+            throw new RuntimeException("Customer not found");
+        }
+        return customer;
+    }
+
+    @Override
+    public Customer updateCustomer(String id, Customer customerDetails) {
+        if (!customerStore.containsKey(id)) {
+            throw new RuntimeException("Customer not found");
+        }
+        customerDetails.setId(id);
+        customerStore.put(id, customerDetails);
+        return customerDetails;
+    }
+
+    @Override
+    public boolean deleteCustomer(String id) {
+        return customerStore.remove(id) != null;
+    }
+
+    // Additional methods for demonstration
+    public List<Customer> searchCustomersByName(String name) {
+        return customerStore.values().stream()
+                .filter(customer -> customer.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    public void clearAllCustomers() {
+        customerStore.clear();
+    }
+}
+```
+:::
+
+
+
+These two implementations showcase different approaches:
+
+1. **DatabaseCustomerService**: This implementation uses a `CustomerRepository`, likely backed by a database. It's suitable for production environments where data persistence is required.
+
+2. **InMemoryCustomerService**: This implementation stores customers in a `ConcurrentHashMap`. It's useful for testing, prototyping, or scenarios where a lightweight, non-persistent solution is needed.
+
+Both implementations adhere to the `CustomerService` `interface`, demonstrating how the same contract can be fulfilled in very different ways. This flexibility is one of the key advantages of using `interfaces` in `Spring Boot services`.
+
+# JPA Query Methods
+
+`Spring Boot and JPA` offer several ways to create queries. Here are the <mark>four most relevant methods:</mark>
+
+1. JPA Derived Query Methods
+2. @Query Annotation
+3. EntityManager with JPQL
+4. Native SQL Queries
+
+## 1. JPA Derived Query Methods
+
+`Spring Data JPA` can automatically create queries <mark>based on method names in your repository interface.</mark>
+
+```java
+public interface UserRepository 
+        extends JpaRepository<User, Long> {
+    List<User> findByLastNameAndAge(String lastName, int age);
+}
+```
+
+## 2. @Query Annotation
+
+You can use the `@Query` annotation to define <mark>custom JPQL queries.</mark>
+
+```java
+public interface UserRepository 
+        extends JpaRepository<User, Long> {
+    @Query("SELECT u FROM User u WHERE u.emailAddress = ?1")
+    User findByEmailAddress(String emailAddress);
+}
+```
+
+## 3. EntityManager with JPQL
+
+For more complex queries, you can use the `EntityManager` directly with <mark>JPQL.</mark>
+
+::: {.column-page-right}
+```java
+@PersistenceContext
+private EntityManager entityManager;
+
+public List<User> findUsersByAgeRange(int minAge, int maxAge) {
+    String jpql = "SELECT u FROM User u WHERE u.age BETWEEN :minAge AND :maxAge";
+    return entityManager.createQuery(jpql, User.class)
+            .setParameter("minAge", minAge)
+            .setParameter("maxAge", maxAge)
+            .getResultList();
+}
+```
+:::
+
+## 4. Native SQL Queries
+
+When you need to use database-specific features, you can write <mark>native SQL queries.</mark>
+
+::: {.column-page-right}
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+    @Query(value = "SELECT * FROM users WHERE status = ?1", nativeQuery = true)
+    List<User> findUsersByStatus(int status);
+}
+```
+:::
+
+## JPQL (Java Persistence Query Language)
+
+> JPQL (Java Persistence Query Language) is an object-oriented query language used to define queries for entities and their relationships in JPA (Java Persistence API). It's similar to SQL but operates on JPA entity objects rather than database tables.
+
+**Key Characteristics of JPQL**
+
+1. **Object-Oriented**: Works with Java objects and their properties, not database tables and columns.
+2. **Database-Independen**t: Queries can work across different database systems without modification.
+3. Supports **JPA Relationships**: Can easily navigate entity relationships.
+4. **Powerful**: Supports complex operations like joins, aggregations, and subqueries.
+
+### JPQL vs SQL
+
+Here's a comparison between JPQL and SQL:
+
+| Aspect | JPQL | SQL |
+| --- | --- | --- |
+| Operates on | Entity objects | Database tables |
+| Case sensitivity | Case-sensitive | Generally case-insensitive |
+| Portability | Database-independent | May contain database-specific syntax |
+| Join syntax | Simplified using relationships | Requires explicit join conditions |
+
+**JPQL Syntax Examples**
+
+1. Basic Select Query:
+
+```jpql
+SELECT u FROM User u WHERE u.age > 18
+```
+
+2. Join Query:
+
+```jpql
+SELECT o FROM Order o JOIN o.customer c WHERE c.country = 'USA'
+```
+
+3. Aggregate Function:
+
+```jpql
+SELECT AVG(e.salary) FROM Employee e WHERE e.department.name = 'IT'
+```
+
+4. Subquery:
+
+```jpql
+SELECT e FROM Employee e WHERE e.salary > (SELECT AVG(emp.salary) FROM Employee emp)
+```
+
+**Using JPQL**
+
+1. With `@Query` annotation:
+
+::: {.column-page-right}
+```java
+@Query("SELECT u FROM User u WHERE u.email = ?1 AND u.active = true")
+User findActiveUserByEmail(String email);
+```
+:::
+
+1. With `EntityManager`:
+
+::: {.column-page-right}
+```java
+String jpql = "SELECT p FROM Product p WHERE p.category.name = :categoryName";
+List<Product> products = entityManager.createQuery(jpql, Product.class)
+    .setParameter("categoryName", "Electronics")
+    .getResultList();
+```
+:::
+
+Benefits of JPQL
+
+1. **Type-safety**: Works with Java types, reducing runtime errors.
+2. **Abstraction**: Shields developers from database-specific details.
+3. **Optimization**: JPA providers can optimize JPQL queries for better performance.
+4. **Flexibility**: Allows for complex queries while maintaining database independence.
+
+### Additional Resources
+
+**JPQL**
+
+- [JPQL - Java Persistence Query Language](https://docs.oracle.com/javaee/6/tutorial/doc/bnbtg.html){.external target='_blank'} </br>
+- [JPA Query Language](https://docs.oracle.com/javaee/7/tutorial/persistence-querylanguage.htm){.external target='_blank'} </br>
+- [JPQL Reference](https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#hql){.external target='_blank'} </br>
+- [Spring Data JPA - Query Creation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation){.external target='_blank'}
+
+**JPA Queries**
+
+For more information on Spring Boot JPA query methods, check out these resources:
+
+- [Defining Query Methods](https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html){.external target='_blank'} </br>
+- [Query by Example](https://docs.spring.io/spring-data/jpa/reference/repositories/query-by-example.html){.external target='_blank'} </br>
+- [JPA Query Methods](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html){.external target='_blank'} </br>
+- [Spring Boot: JPA & DI](/springboot/boot-concepts-jpa.qmd){.external target='_blank'}
+
+# JUnit 5 tests
+
+- [JUnit and TDD](/javase/se-concepts-tdd.qmd)
+
+
+# DevOps
+
+## Creating a executable .jar
+
+The command `mvn clean package` is a Maven command that performs two main phases of the Maven build lifecycle:
+
+1. `clean`: This phase removes the target directory and any compiled files from previous builds. It essentially "cleans" your project's working directory.
+  
+2. `package`: This phase compiles your source code, runs tests, and packages the compiled code into a distributable format, such as a JAR file.
+  
+
+When you run `mvn clean package`, Maven will:
+
+1. Delete the `target` directory (clean)
+2. Compile the source code
+3. Run unit tests
+4. Package the compiled code into a JAR/WAR file (depending on your project type)
+
+This command is commonly used to ensure a fresh build of your project, starting from a clean state. It's useful when you want to create a new package of your application, especially before deploying or sharing your code.
+
+## Working on different environments
+
+- [Profiles](https://docs.spring.io/spring-boot/reference/features/profiles.html){.external target='_blank'}
+
+> Spring Profiles provide a way to <mark>segregate parts of your application configuration and make it be available only in certain environments</mark>. Any @Component, @Configuration or @ConfigurationProperties can be marked with @Profile to limit when it is loaded, as shown in the following example:
+
+
+``` java
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Configuration(proxyBeanMethods = false)
+@Profile("production")
+public class ProductionConfiguration {
+
+	// ...
+
+}
+```
+
+### `application.properties`
+
+You can use a` spring.profiles.active` **Environment property** to specify which profiles are active, for example, you could include it in your `application.properties`, as shown in the following example:
+
+``` yml
+spring.profiles.active=prod
+#---
+spring.config.activate.on-profile=prod
+spring.profiles.active=metrics
+
+```
+
+![](/images/springboot/labsb08/lab08-3-app-properties-1.png)
+
+In RestaurantManger we have three `application.properties` docs:
+
+1. **Default profile** (`application.properties`)
+2. **In-memory profile** (`application-memory.properties`)
+3. **Local profile** (`application-local.properties`)
+
+These profiles allow you to run your application in different `environments` with specific configurations.
+
+
+
+
+**Default Profile (`application.properties`)**
+
+This is the base configuration file that sets up common properties for all profiles:
+
+- Sets the application name to "restaurantManager"
+- Activates the "local" profile by default
+- Configures H2 database and JPA settings
+- Sets up Swagger documentation paths
+- Imports environment variables from a .env file
+- Configures an endpoint URL for customers
+
+``` {.yml name="application.properties"}
+
+spring.application.name=restaurantManager
+
+# application.properties
+spring.profiles.active=local
+
+
+
+# H2 DATABASE SERVER
+spring.datasource.driverClassName=org.h2.Driver
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+
+# DDL OPTIONS: create-drop, create, update, none, validate
+#spring.jpa.hibernate.ddl-auto=create-drop
+
+
+# SWAGGER
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+
+
+# ENDPOINTS
+# Import .env file
+spring.config.import=optional:file:.env
+# import from environment variables
+endpoint.url.customers=${ENDPOINT_URL_CUSTOMERS}
+#endpoint.url.customers=/api/v1/customers/
+
+# Enable debug logging
+#logging.level.org.springframework=DEBUG
+#logging.level.dev.example.restaurantManager=DEBUG
+
+
+```
+
+ **In-Memory Profile (`application-memory.properties`)**
+
+This profile is designed for running the application with an in-memory H2 database:
+
+- Configures the H2 database to run in-memory
+- Sets database username and password
+- Uses "create-drop" as the DDL auto option, which is suitable for testing as it recreates the schema each time the application starts
+- 
+
+``` {.yml name="application-memory.properties"}
+
+# H2 IN MEMORY
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.username=sa
+spring.datasource.password=
+
+
+# DDL OPTIONS: create-drop, create, update, none, validate
+spring.jpa.hibernate.ddl-auto=create-drop
+# create ? Hibernate first drops existing tables and then creates new tables.
+# create-drop ? similar to create, with the addition that
+# Hibernate will drop the database after all operations are completed;
+# typically used for unit testing
+#https://albertprofe.dev/springboot/sblab0-5.html#ddl
+
+```
+
+**Local Profile (`application-local.properties`)**
+
+This profile is for running the application with a local H2 database file:
+
+- Configures the H2 database to use a file-based storage
+- Sets database username and password
+- Uses "update" as the DDL auto option, which updates the schema without dropping existing tables
+
+``` {.yml name="application-local.properties"}
+
+# H2 LOCAL DB SERVER
+spring.datasource.url=jdbc:h2:/home/albert/MyProjects/DataBase/customerdb
+spring.datasource.username=albert
+spring.datasource.password=1234
+
+# DDL OPTIONS: create-drop, create, update, none, validate
+spring.jpa.hibernate.ddl-auto=update
+# create ? Hibernate first drops existing tables and then creates new tables.
+# update ? The object model created based on the mappings
+# (annotations or XML) is compared with the existing schema,
+# and then Hibernate updates the schema according to the diff.
+# It never deletes the existing tables or columns
+# even if they are no longer required by the application.
+# https://albertprofe.dev/springboot/sblab0-5.html#ddl
+
+
+```
+
+#### How to Use These Profiles
+
+1. **Default Behavior**: By default, the application will use the "local" profile as specified in `application.properties`:
+
+   ```properties
+   spring.profiles.active=local
+   ```
+
+2. **Switching Profiles**: To use a different profile, you can:
+
+   a. Change the `spring.profiles.active` property in `application.properties`.
+   
+   b. Set it as a command-line argument:
+
+      ```
+      java -jar your-app.jar --spring.profiles.active=memory
+      ```
+   
+   c. Set it as an environment variable:
+
+      ```
+      export SPRING_PROFILES_ACTIVE=memory
+      ```
+
+3. **Profile-Specific Properties**: Spring Boot will load properties from `application.properties` and then override/add properties from the active profile-specific file (e.g., `application-memory.properties` or `application-local.properties`).
+
+This setup allows you to easily switch between running your application with an in-memory database (useful for testing) and a local file-based database (useful for development or production) without changing your code. It also provides a flexible way to manage different configurations for various environments.
+
+#### Precedence
+
+When a property like s`pring.jpa.hibernate.ddl-auto` is defined in both `application.properties` and a profile-specific properties file (e.g., `application-dev.properties`), the <mark>value from the active profile will override the one in application.properties</mark>.
+
+Therefore, if the profile is active and specifies `ddl-auto=create`, it will take precedence over `ddl-auto=update` in `application.properties`. 
+
+> The order of execution is determined by the active profiles and their precedence over the default properties.
+
+## `.env`
+
+![](/images/springboot/labsb08/lab08-3-env.png)
+
+
+``` yml
+
+ENDPOINT_URL_CUSTOMERS=/api/v1/customers/
+
+```
+
+The process loading `environment variables` from a `.env` file into `application.properties`, and then using those variables in your `Spring Boot` application works like this:
+
+1. Loading from `.env` file:
+   In your `application.properties`, you have the following line:
+
+   ```properties
+   spring.config.import=optional:file:.env
+   ```
+
+   This instructs `Spring Boot` to import variables from a `.env` file if it exists. The "optional:" prefix means the <mark>application won't fail if the file is missing</mark>.
+
+2. Defining the property:
+   In `application.properties`, you have:
+
+   ```properties
+   endpoint.url.customers=${ENDPOINT_URL_CUSTOMERS}
+   ```
+
+   This sets the `endpoint.url.customers` property to the value of the `ENDPOINT_URL_CUSTOMERS` environment variable.
+
+3. Using the property in the **controller**:
+   In **CustomerController**, we're injecting this property:
+
+   ```java
+   @Value("${endpoint.url.customers}")
+   private String endpointUrlCustomers;
+   ```
+
+   This injects the value of `endpoint.url.customers` into the `endpointUrlCustomers` variable.
+
+4. Accessing the property:
+   In `showEndpointCustomers()` method, we're returning the value of `endpointUrlCustomers`.
+
+Here's how it all comes together:
+
+1. When the application starts, it looks for a `.env` file and loads any variables defined there.
+2. The `ENDPOINT_URL_CUSTOMERS` variable from `.env` (or from the system environment if not in `.env`) is used to set the `endpoint.url.customers` property in application.properties.
+3. `Spring Boot` <mark>injects this property value into the controller</mark>.
+4. The `controller` can now use this value, as demonstrated in the `showEndpointCustomers()` method.
+
+This approach allows to keep **sensitive or critical environment-specific information** (like API endpoints, passwords, users names, roles, etc) out of source code, making it easier to manage different configurations for various environments (development, staging, production, etc.).
+
+
+#### IntelliJIdea IDE settings 2024
+
+![](/images/springboot/labsb08/labsb08-3-env-1.png)
+
+![](/images/springboot/labsb08/labsb08-3-env-2.png)
+
+
+![](/images/springboot/labsb08/labsb08-3-env-3.png)
+
+![](/images/springboot/labsb08/labsb08-3-env-4.png)
+
+
+Check these settings at `IntelliJIdea IDE`:
+
+- Install the correct plugins: Make sure you have both the "EnvFile" and ".env files support" plugins installed16. These plugins provide better support for .env files in IntelliJ IDEA.
+- Configure file type associations: Go to Settings | Editor | File Types and ensure that both *.env and .env patterns are assigned to the "DotEnv" file type3. This will help IntelliJ recognize the file correctly.
+- Set up run configurations: For each run configuration where you need to use the .env file:
+Open Run | Edit Configurations
+  - Select your configuration: Go to the EnvFile tab
+  - Enable EnvFile support and add your .env file to the list
+  - Select directory .env
+- Restart IntelliJ: After making these changes, restart IntelliJ IDEA to ensure all settings are applied correctly.
+- Check file location: Ensure your .env file is in the correct location, typically the root of your project.
+- Verify file content: Make sure your .env file is formatted correctly, with each variable on a new line in the format KEY=VALUE.
+- Use absolute paths: If IntelliJ still can't find your .env file, try using an absolute path in your run configuration
+
+
+# Code
+
+![](/images/springboot/labsb08/lab08-1-v0.0.png){width=50%}
+
+- [Commits](https://github.com/AlbertProfe/restaurantManager/commits/master/){.external target='_blank'}
+

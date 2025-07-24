@@ -1,0 +1,21 @@
+---
+title: "Atomic Habits"
+author: "albertprofe"
+subtitle: "James Clear, 2016, Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A supremely practical and useful book. James Clear distills the most fundamental information about habit formation, so you can accomplish more by focusing on less."
+categories: [self-management]
+subcategories: [agile, habits, psychology]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/atomicHabits.jpeg)
+
+## More info
+
+- [Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones](https://jamesclear.com/atomic-habits){.external}

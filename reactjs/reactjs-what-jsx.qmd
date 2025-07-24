@@ -1,0 +1,165 @@
+---
+title: "React JS: JSX"
+subtitle: ReactJS JSX
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [reactjs, jsx, render]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **JSX**
+JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file. Although there are other ways to write components, most React developers prefer the conciseness of JSX, and most codebases use it.
+
+:::
+
+---
+
+## The problem
+
+[JSX: Putting markup into JavaScript](https://beta.reactjs.org/learn/writing-markup-with-jsx#jsx-putting-markup-into-javascript){.external}
+
+The Web has been built on ``HTML``, ``CSS``, and ``JavaScript``. For many years, web developers kept content in ``HTML``, design in ``CSS``, and logic in ``JavaScript``—often in separate files! 
+
+Content was marked up inside HTML while the page’s logic lived separately in JavaScript.
+
+> So, we need a way to put things together.
+
+## The solution: React JSX
+
+``` {.jsx .code-overflow-wrap filename="todolist.jsx"}
+export default function TodoList() {
+  //
+  // business logic and objects: JavaScript
+  //
+  return (
+    //
+    // Render: html + css
+    //
+  )
+}
+```
+::: {.column-margin}
+![JSX: Putting markup into JavaScript](/images/reactjs/html-js-react.png){width=60%}
+:::
+
+## React JSX is a optimal solution but
+
+![React is a optimal solution but there is a lot of work to do yet](/images/reactjs/Things_React_Does.png){width=40%}
+
+from [David Ceddia](https://daveceddia.com/what-react-does/){.external}
+
+> **React cares exactly zero about styling.** Think of it as generating the barebones HTML. React will put elements on the page, but everything after that is the job of CSS: how they appear, what they look like, how they’re positioned, and how centered or uncentered they are.
+>
+> **“How to center a div in React” is… not a React problem.** It’s a CSS problem. You don’t need “react” in your Google query. Once you figure it out, use React to apply the right CSS class name to your components.
+
+## The Rules of JSX
+
+::: {.callout-tip}
+## Return a single root element
+To return multiple elements from a component, wrap them with a single parent tag.
+:::
+
+::: {.callout-tip}
+## Close all the tags
+JSX requires tags to be explicitly closed: self-closing tags like ```<img> must become <img />```, and wrapping tags like ```<li>oranges must be written as <li>oranges</li>```.
+:::
+
+::: {.callout-tip}
+## camelCase all most of the things!
+JSX turns into JavaScript and attributes written in JSX become keys of JavaScript objects. In your own components, you will often want to read those attributes into variables. But JavaScript has limitations on variable names. For example, their names can’t contain dashes or be reserved words like class. 
+:::
+
+## The trick: JS in JSX with Curly Braces
+
+[JSX lets you write HTML-like markup inside a JavaScript file](https://beta.reactjs.org/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world){.external}, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to open a window to JavaScript.
+
+
+::: {.callout-tip}
+## JSX is a special way of writing JavaScript.
+
+That means it’s possible to use JavaScript inside it—with curly braces ``{ }``.
+:::
+
+
+``` {.jsx .code-overflow-wrap filename="todolist.jsx"}
+export default function TodoList() {
+  const name = 'Gregorio Y. Zara';
+  return (
+    <h1>{name}'s To Do List</h1>
+  );
+}
+
+```
+::: {.column-margin}
+![The example below first declares a name for the scientist, name, then embeds it with curly braces inside the <h1>](/images/reactjs/ex3.png){width=100%}
+:::
+
+---
+
+``` {.jsx .code-overflow-wrap filename="todolist.jsx"}
+export default function TodoList() {
+  return (
+    <ul style={{
+      backgroundColor: 'black',
+      color: 'pink'
+    }}>
+      <li>Improve the videophone</li>
+      <li>Prepare aeronautics lectures</li>
+      <li>Work on the alcohol-fuelled engine</li>
+    </ul>
+  );
+}
+
+```
+::: {.column-margin}
+![You may see this with inline CSS styles in JSX. React does not require you to use inline styles (CSS classes work great for most cases).](/images/reactjs/ex2.png){width=100%}
+:::
+
+---
+
+
+``` {.jsx .code-overflow-wrap filename="todolist.jsx"}
+const person = {
+  name: 'Gregorio Y. Zara',
+  theme: {
+    backgroundColor: 'black',
+    color: 'pink'
+  }
+};
+
+export default function TodoList() {
+  return (
+    <div style={person.theme}>
+      <h1>{person.name}'s Todos</h1>
+      <img
+        className="avatar"
+        src="https://i.imgur.com/7vQD0fPs.jpg"
+        alt="Gregorio Y. Zara"
+      />
+      <ul>
+        <li>Improve the videophone</li>
+        <li>Prepare aeronautics lectures</li>
+        <li>Work on the alcohol-fuelled engine</li>
+      </ul>
+    </div>
+  );
+}
+
+```
+
+::: {.column-margin}
+![You can move several expressions into one object, and reference them in your JSX inside curly braces](/images/reactjs/ex1.png){width=100%}
+:::
+
+
+

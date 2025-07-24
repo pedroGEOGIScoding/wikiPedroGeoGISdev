@@ -1,0 +1,67 @@
+---
+title: "Lab#SE00-4: Abstract/Interface Human"
+subtitle: Java SE Lab 00
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Java SE Lab 00, Part 4
+categories: [javase, lab, model, interface, inherence]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#SE00-4: Abstract/Interface Human**
+
+1. Implement this UML and its classes.
+
+2. Create a @Test and a method for each class:
+    - ``Person``
+    - ``Animal``
+    - ``Teacher``
+    - ``Student``
+    - ``Dog``
+    - ``Cat``
+
+:::
+
+---
+
+## Basic UML
+
+The interfaces ``HumanAction`` and ``Action`` define a **set of methods or properties that classes must implement.**
+
+The class ``Person`` implements both interfaces and provides implementation for the methods defined in both ``HumanAction`` and ``Action``.
+
+``Animal`` class implements ``Action`` interface and provides its own implementation for the methods defined in the interface.
+
+
+![UML to code](/images/javase/Interface.jpg)
+
+
+::: {.column-margin}
+Here is an example of a UML diagram that shows the relationship between the interfaces ``HumanAction`` and ``Action`` and the classes ``Person``, ``Teacher``, ``Student``, ``Animal``, ``Dog`` and ``Cat``.
+:::
+
+::: {.column-margin}
+This **UML diagram illustrates that the classes Person, Teacher, Student, Animals, Dog, Cat all implement the methods defined** in ``HumanAction`` and ``Action``
+:::
+
+::: {.column-margin}
+It also show the **Inheritance** relationship between classes and implementation relationship between classes and ``interfaces``.
+:::
+
+
+``Teacher`` and ``Student`` classes **inherit** from ``Person`` class and add their own specific behavior/ methods.
+
+``Dog`` and ``Cat`` classes **inherit** from ``Animal`` class and add their own specific behavior/ methods.
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+---
+title: "Linux Resources"
+subtitle: Readings
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Linux Resources and Readings
+categories: [linux, resources, readings]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Linux Resources](/images/home/frontimagealbertprofeweb-readings.png){width=50%}
+
+## Linux webs
+
+| Link | Description |
+|---------|:-----|
+| [ Advanced Linux Commands Cheat Sheet](https://developers.redhat.com/cheat-sheets/intermediate-linux-cheat-sheet){.external} |This cheat sheet presents a collection of Linux commands and executables for developers who are using the Linux operating system in advanced programming scenarios. Commands are organized by category and each one is presented with syntax, an explanation of what it is used for, and an example. |
+| [Bash scripting cheatsheet](https://devhints.io/bash){.external} | Bash scripting cheatsheet |
+| [Learn X in Y minutes Where X=bash](https://learnxinyminutes.com/docs/bash/){.external} | Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as the default shell on most Linux distros. Nearly all examples below can be a part of a shell script or executed directly in the shell. |
+
+: Linux and bash resources  {tbl-colwidths="[40,60]"}
+
+
+## Bash
+
+## Bash scripting 
+- The Bash Guide, A quality-driven guide through the shell's many features. [The Bash Guide](https://guide.bash.academy/)
+- Greg's Wiki: [Bash Guide](https://mywiki.wooledge.org/BashGuide)
+- Bash Guide for Beginners, Machtelt Garrels: [Bash Guide for Beginners](https://tldp.org/LDP/Bash-Beginners-Guide/html/)
+- GNU Bash Reference Manual: [Bash Features](https://www.gnu.org/software/bash/manual/bash.html)
+
+
+## Bash scripting cheatsheet
+    
+```{=html}
+<iframe width="780" height="500" src="https://devhints.io/bash" title="Bash scripting cheatsheet"></iframe>
+```
+
+
+

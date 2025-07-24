@@ -1,0 +1,404 @@
+---
+title: "Quarto Markdown: cheat-sheet"
+subtitle: Code CheatSheet (7/7)
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Cheat-sheet Quarto web
+categories: [markup, qmd, quarto, cheat-sheet]
+toc: true
+number-sections: true
+format:
+  html
+highlight-style: github
+---
+
+::: {.summary}
+📘 **Cheat-sheet**
+
+- Summary
+- Links and figures
+- Tabset
+- Callouts
+- Tablas
+- Two columns
+- Wrap code
+- Code blocks
+- Mermaid
+- Include
+- Presentations
+- Accordion
+- Icons
+- Others
+
+:::
+
+---
+
+[Markup and Quarto Resources](/markup/resources.qmd)
+
+## Summary
+
+``` bash
+::: {.summary}
+📘 **Design-patterns**
+:::
+
+/* summary card */
+.summary{
+    padding: 16px 16px 16px 16px;
+    background: #a2f868;
+    border: #ffffff6b;
+    color: #117441;
+    border-radius: 10px 10px 10px 10px;
+}
+```
+
+## Links and images
+
+``` {.bash .code-overflow-wrap} 
+![Singleton Pattern](../images/javase/singleton-pattern-edited.png){width=60%}
+{fig-width=10}
+{fig-width=50%}
+{height=2in}
+{height=100px}
+https://quarto.org/docs/reference/formats/pdf.html#figures
+https://pandoc.org/MANUAL.html#extension-link_attributes
+{.external}
+{#tagthis .preview-image}
+
+```
+
+- [basics](https://quarto.org/docs/authoring/markdown-basics.html){.external}
+- [figures](https://quarto.org/docs/authoring/figures.html){.external}
+- [videos](https://quarto.org/docs/authoring/videos.html){.external}
+
+## Tabset
+
+``` bash
+::: {.panel-tabset}
+### Tab A
+Content for `Tab A`
+
+### Tab B
+Content for `Tab B`
+:::
+```
+
+- [reveal.js tabset](https://quarto.org/docs/presentations/revealjs/#tabsets){.external}
+
+## Code blocks
+
+``` bash
+```{.python filename="matplotlib.py"}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| echo: true
+#| code-overflow: wrap
+import matplotlib.pyplot as plt
+plt.plot([1,23,2,4])
+plt.show()```
+```
+
+[HTML Code Blocks](https://quarto.org/docs/output-formats/html-code.html){.external}
+
+## Code wrap and filename
+
+``` bash
+```{.js .code-overflow-wrap filename="profile.jsx"}
+export default function Profile() {
+  return (
+    <Avatar
+      person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }}
+      size={100}
+    />
+  );
+}```
+```
+
+
+```{.js .code-overflow-wrap filename="profile.jsx"}
+export default function Profile() {
+  return (
+    <Avatar
+      person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }}
+      size={100}
+    />
+  );
+}
+```
+
+
+``` bash
+::: {.column-margin}
+![Using React component wiht markup image and some text](/images/reactjs/ex5.png){widht=80%}
+:::
+
+```
+
+
+## Callouts
+
+``` {.bash .code-overflow-wrap}
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-tip}
+## Tip With Caption
+
+This is an example of a callout with a caption.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+This is an example of a 'folded' caution callout that can be expanded by the user.
+You can use `collapse="true"` to collapse it by default or `collapse="false"` to make 
+a collapsible callout that is expanded by default.
+:::
+```
+
+[callouts](https://quarto.org/docs/authoring/callouts.html){.external}
+
+## Minimal callout
+
+``` bash
+::: {.callout-note appearance="simple" icon=false}
+
+## Pay Attention
+
+Using callouts is an effective way to highlight content that your reader
+ give special consideration or attention.
+
+:::
+
+```
+
+Callouts have 3 different looks you can use.
+
+| `tag` | Description |
+| --- |  --- |
+| `default` | with colored header and an icon. |
+| `simple` | that doesn't include a colored header background. |
+| `minimal` | borders to the callout, but doesn't include a header background color or icon |
+: Callouts looks {tbl-colwidths="[20,85]"}
+
+
+
+## Tables
+
+- [tables](https://quarto.org/docs/authoring/tables.html){.external}
+- [tablesgenerator](https://tablesgenerator.com/markdown_tables){.external}
+
+``` bash
+#| tables
+| Default | Left | Right | Center |
+|---------|:-----|------:|:------:|
+| 12      | 12   |    12 |   12   |
+| 123     | 123  |   123 |  123   |
+| 1       | 1    |     1 |   1    |
+
+: Demonstration of pipe table syntax
+: Callouts looks {tbl-colwidths="[20,85]"}
+
+```
+
+### Two columns
+
+``` bash
+:::: {.columns}
+
+::: {.column width="50%"}
+- Highly customizable
+- Less work than using `<div>` tags
+:::
+
+::: {.column width="50%"}
+- Customizable in terms of layouts
+
+:::
+::::
+```
+
+## Column Margin
+
+``` bash
+::: {.column-margin}
+[{{< fa solid arrow-up >}} top](#top)
+:::
+```
+
+## iframe
+
+``` html
+{=html}
+<iframe 
+  width="780"
+  height="500" 
+  src="https://devhints.io/bash"
+  title="Bash scripting cheatsheet">
+</iframe>
+```
+
+## Mermaid
+
+``` bash
+
+```{mermaid}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+
+
+{mermaid}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]```
+
+```
+
+## Presentations
+
+```  {.bash .code-overflow-wrap .code-fold-true}
+#| link to presentation, link to .qmd
+[Log in to GitHub and Quarto Creation: Sync GUI](/images/markup/quarto-github/markup-quarto-github.qmd)
+```
+
+``` {.bash .code-overflow-wrap}
+#| presentation
+title: "Create Project"
+author: "Maven IntellJ Idea"
+format: revealjs
+
+## {background-color="grey"}
+![](createprojectMavenIntellJI_0.png)
+```
+
+- [Revealjs Quarto Presentations](https://quarto.org/docs/presentations/revealjs/){.external}
+
+## Include
+
+``{{< include _content.qmd >}}``
+
+``` bash
+
+{{< include _content.qmd >}}
+
+```
+
+
+- [inlcude](https://quarto.org/docs/authoring/includes.html){.external}
+
+## Accordion
+
+``` bash
+
+<details>
+<summary>Code</summary>
+```{.js .code-overflow-wrap filename="profile.jsx"}
+    ```
+</details>
+
+```
+
+---
+
+``` bash
+<details>
+<summary>Code</summary>
+
+``` {.java}
+public class Account {
+  private Person person;
+  //other fields
+
+  public Account(Person person) {
+    this.person = person;
+  }
+
+  public Person getPerson() {
+    return this.person;
+  }
+
+  public void setPerson(Person person) {
+    this.person = person;
+    
+    //constructor, getters, setters and methods
+  }
+}```
+
+</details>
+
+```
+
+Example:
+
+<details>
+<summary>Java Person Class</summary>
+``` {.java filename="person"}
+public class Account {
+        private Person person;
+        //other fields
+
+        public Account(Person person) {
+          this.person = person;
+        }
+
+        public Person getPerson() {
+          return this.person;
+        }
+
+        public void setPerson(Person person) {
+          this.person = person;
+          
+          //constructor, getters, setters and methods
+        }
+}
+```
+
+</details>
+
+## Top, next and back
+
+``` bash
+:::: {.columns}
+
+::: {.column width="45%"}
+[{{< fa solid arrow-left >}} back](#top)
+:::
+
+::: {.column width="40%"}
+[{{< fa solid arrow-up >}} top](#top)
+:::
+
+::: {.column width="15%"}
+[next {{< fa solid arrow-right >}}](#top)
+:::
+
+::::
+```
+
+## Icons
+
+![Icons](/images/markup/icons.png)
+
+* glasses: {{< fa solid glasses >}}
+* arrow-up: {{< fa solid arrow-up >}}
+* arrow-right: {{< fa solid arrow-right >}}
+* solid book: {{< fa solid book >}}
+* java: {{< fa brands java >}}
+
+
+- [Font Awesome Search](https://fontawesome.com/search){.external}
+
+## Others
+
+- [layout](https://quarto.org/docs/authoring/article-layout.html#margin-captions){.external}
+

@@ -1,0 +1,21 @@
+---
+title: "The Black Swan"
+author: "albertprofe"
+subtitle: "Nassim Nicholas Taleb, 2007, The Black Swan: The Impact of the Highly Improbable (Incerto)"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A groundbreaking investigation into the role of rare and unpredictable events in shaping history, culture, and individual lives."
+categories: [assay]
+subcategories: [probability, risk management, uncertainty]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/theBlackSwan.jpg)
+
+## More info
+
+- [The Black Swan: The Impact of the Highly Improbable (Incerto)](https://www.goodreads.com/book/show/242472.The_Black_Swan){.external}

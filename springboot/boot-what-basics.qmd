@@ -1,0 +1,89 @@
+---
+title: "Spring Boot: fundamentals"
+subtitle: Spring Boot
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **Spring Boot**
+
+**What?**
+
+[Java Spring Framework (Spring Framework)](https://www.ibm.com/topics/java-spring-boot){.external} is a popular, open source, enterprise-level framework for creating **standalone**, **production-grade applications** that run on the Java Virtual Machine (JVM).
+
+**Why?**
+
+Spring makes programming Java **quicker**, **easier**, and **safer** for everybody.
+
+Spring’s focus on **speed**, **simplicity**, and **productivity** has made it the world's most popular Java framework.
+
+Spring Boot provides **a set of pre-configured options and defaults, as well as a set of tools for quickly creating and running an application .**
+
+:::
+
+---
+
+[Spring Boot](https://spring.io/) makes it easy to create stand-alone, production-grade Spring based Applications that you can *just run*.
+
+We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need minimal Spring configuration.
+
+If you’re looking for information about a specific version, or instructions about how to upgrade from an earlier release, check out [the project release notes section](https://github.com/spring-projects/spring-boot/wiki#release-notes){.external} on the [wiki](https://github.com/spring-projects/spring-boot/wiki){.external}.
+
+``` {.java .code-overflow-wrap filename="DemoApplication.java"}
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+@GetMapping("/helloworld")
+    public String hello() {
+        return "Hello World!";
+    }
+}
+```
+
+## Basic Concepts
+
+Spring Boot is a framework for building applications based on the Spring Framework. It aims to simplify the development process by providing a set of pre-configured options and defaults, as well as a set of tools for quickly creating and running an application. Some key concepts of Spring Boot include:
+
+- **Auto-configuration**: Spring Boot automatically configures your application based on the dependencies that you have added, eliminating the need for manual configuration.
+- **Starters**: Spring Boot provides a set of "starters" that are pre-configured dependencies for common functionality, such as web development, data access, and security.
+- **Actuator**: Spring Boot includes an "Actuator" that provides endpoints for monitoring and managing your application, such as health checks, metrics, and trace information.
+- **Command Line Interface**: Spring Boot provides a command line interface (CLI) for quickly creating and running applications.
+- **Spring Initializer**: Spring Initializer is a web service that provides a simple way to generate a basic structure for a Spring Boot application.
+
+All of these concepts are designed to make it easy to build and run a Spring-based application, with minimal configuration and setup required.
+
+
+## Fundamentals
+
+![Spring Boot](/images/springboot/springboot.png){width="50%"}
+
+Spring Boot is built on top of the Spring Framework, which is a Java-based framework for building enterprise applications. Some of the key concepts of Spring Boot and how it functions include:
+
+- **Beans**: In Spring, a bean is a Java object that is managed by the Spring container. Beans are typically defined in configuration files, and the Spring container is responsible for instantiating, configuring, and managing the lifecycle of these beans.
+- **Dependency Injection**: Spring uses dependency injection to manage the dependencies between beans. This means that instead of instantiating and configuring dependencies manually, you can use annotations or configuration files to tell the Spring container which dependencies a bean has and how they should be instantiated.
+- **Object-Oriented Programming**: Spring is based on object-oriented programming principles, and it uses interfaces and inheritance to create a modular and reusable codebase.
+- **Aspect-Oriented Programming**: Spring also provides support for Aspect-Oriented Programming (AOP), which allows you to separate cross-cutting concerns such as logging, security, and transaction management from the core business logic of your application.
+- **Data Access**: Spring Boot provides a set of starters and libraries for connecting to databases and performing data access operations. It also provides support for Object-Relational Mapping (ORM) frameworks such as Hibernate and JPA.
+- **Web Developmen**t: Spring Boot provides a set of starters and libraries for building web applications and RESTful web services. It also provides support for web technologies such as Spring MVC and Thymeleaf.
+- **Annotations**: Spring Boot uses annotations extensively to configure beans and manage dependencies. Understanding the different annotations available in Spring, such as `@Bean`, `@Autowired`, and `@Component`, can help you effectively use the framework.
+- **MVC (Model-View-Controller)**: Spring Boot provides support for the MVC architectural pattern, which separates the application into three layers: the model (data), the view (presentation), and the controller (logic). Understanding how MVC works in Spring Boot can help you structure your application effectively.
+- **REST (Representational State Transfer)**: Spring Boot provides support for building RESTful web services. Understanding the principles of REST and how to create RESTful web services using Spring Boot can help you effectively use the framework. 
+
+Overall, Spring Boot functions by providing **a set of pre-configured options and defaults, as well as a set of tools for quickly creating and running an application using the Spring Framework.**
+
+It uses concepts such as beans, dependency injection, and OOP to make it easy to build and run a Spring-based application, with minimal configuration and setup required.
+
+
+

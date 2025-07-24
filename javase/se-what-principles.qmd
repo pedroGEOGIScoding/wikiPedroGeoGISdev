@@ -1,0 +1,70 @@
+---
+title: "Java Standard Edition: Principles"
+subtitle: Java Principles
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Java SE Principles
+categories: [javase, concepts, oop, paradigm]
+toc: true
+number-sections: true
+format:
+  html
+---
+## Java OOP
+
+**Object-oriented programming (OOP)** is a programming paradigm that is based on the concepts of `objects` and `classes`, which can contain data and code that manipulates that data. OOP is based on several key principles, including the following:
+
+::: {.column-margin}
+![Java SE Basic Principles OOP](/images/javase/javaseprinciples.png){.preview-image #java-oop}
+:::
+
+- **Encapsulation**: [Encapsulation](/javase/se-principles-encapsulation.qmd) refers to the idea of combining data and the code that manipulates that data into a single unit, or object. This allows for better organization and modularity of code, and helps to hide the internal details of an object from other parts of the program.
+
+- **Abstraction**: [Abstraction](/javase/se-principles-abstraction.qmd) is the process of representing essential features without including the details. In OOP, abstraction is often achieved through the use of interfaces or abstract classes, which define a set of common methods that can be implemented by different classes in different ways. This allows for greater flexibility and reusability of code.
+
+- **Inheritance**: [Inheritance](/javase/se-principles-inheritance.qmd) is the ability of a class to inherit the attributes and behaviors of another class. In OOP, a class can inherit from a parent class, also known as a superclass, and can override or extend the methods of the parent class to add new functionality. This allows for code reuse and makes it easier to create hierarchies of classes.
+
+- **Polymorphism**: [Polymorphism](/javase/se-principles-polymorphism.qmd) is the ability of an object to take on multiple forms. In OOP, polymorphism allows for the use of a single interface to refer to objects of different types. This allows for greater flexibility and code reuse, as the same method can be used on objects of different types and the appropriate implementation will be called based on the type of the object.
+
+Overall, <mark>the principles of **encapsulation, abstraction, inheritance, and polymorphism** are fundamental to OOP</mark> and form the basis for many of its benefits, such as modularity, flexibility, code reuse, and ease of maintenance.
+
+### What is an object in Java OOP
+
+Objects can <mark>interact</mark> with each other by sending and receiving messages, or method calls, to access and modify their data.
+
+<mark>Objects are created from classes</mark>, which are **templates** that define the structure and behavior of objects.
+
+![Example object in Java](/images/javase/OOP_Circle.png){.image-preview width="50%"}
+
+::: {.summary}
+
+📘 **Object-oriented programming (OOP)**
+
+In object-oriented programming (OOP), an object is a **self-contained unit that combines data and the code that manipulates that data**.
+
+An object is a data structure that contains:
+
+- **attributes**, or properties, <mark>that describe the object</mark>, defines the <mark>state's object</mark>
+- and **methods**, or functions, that define the <mark>behavior of the object</mark>.
+
+:::
+
+---
+
+In Java, objects are <mark>created</mark> using the `new` keyword, and their attributes and methods can be accessed using the <mark>dot `(.)` operator</mark>. Objects are an important concept in OOP and are central to many of its benefits, such as modularity, code reuse, and flexibility.
+
+<p class="indent">`Person carla = new Person("Carla", 21, "red hair", 45.000);`</p>
+
+#### Attributes, Contructor and Methods
+In object-oriented programming (OOP):
+
+- The **constructor** is a special <mark>type of method that is used to create and initialize an object</mark>. In Java, a constructor is a method that has the same name as the class and is used to create an instance of the class. A constructor can take arguments, which are used to initialize the object's attributes, or properties.
+- The <mark>state of an object</mark> refers to the values of its **attributes** at a given moment in time. 
+- The <mark>behavior of an object refers to the actions or operations</mark> that it can perform. In Java, the behavior of an object is defined by its **methods**, which are functions that are associated with the object and can be called to perform actions on the object.
+
+Overall, a **constructor, state, and behavior** are important concepts in OOP and are closely related. 
+
+A constructor is used to <mark>create and initialize</mark> an object, and its <mark>state and behavior are defined by its attributes and methods</mark>, respectively. In Java SE, these concepts are central to the creation and use of objects, and are fundamental to the flexibility and power of the Java language.
+

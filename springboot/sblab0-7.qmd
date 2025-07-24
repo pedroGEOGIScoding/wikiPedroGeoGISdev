@@ -1,0 +1,121 @@
+---
+title: "Lab#SB00-7: Styling"
+subtitle: Spring Boot Library Management API Rest and NoSQL-MongoDB refartor
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Spring Boot
+categories: [Spring-Boot, lab, rest]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+
+📘 **Spring Boot Lab#SB00-7: API Rest and NoSQL-MongoDB: refactor**
+
+
+:::
+
+</br>
+
+
+
+## Overview
+
+### Clean and Improve Code for Book Image REST Controller in Spring Boot
+
+Here are some suggestions for cleaning up and improving the code:
+
+- Use descriptive and meaningful variable names:
+  - Change `bookImageRepository` to `repository` or `imageRepo`.
+  - Change `bookImage` to `image`.
+  - Change `optionalBookImage` to `optionalImage`.
+- Use constructor injection instead of field injection for better testability and maintainability.
+  - Remove the `@Autowired` annotation and add a constructor that takes `BookImageRepository` as a parameter.
+  - Initialize the `bookImageRepository` field with the constructor parameter.
+- Use try-with-resources for handling resources that need to be closed, such as the `MultipartFile`.
+- Extract common code into private methods to reduce duplication.
+- Add validation to ensure that required parameters are not null or empty.
+- Use Java 8 `Optional` methods instead of calling `.get()` and checking for null.
+- Add error handling and return appropriate error responses.
+- Use HTTP verbs consistently and according to their intended purpose.
+- Use `ResponseEntity<T>` to return responses with the appropriate HTTP status codes and headers.
+
+Here's an updated version of the code:
+
+```java
+@RestController
+@RequestMapping("api/image")
+public class BookImageRestController {
+
+    private final BookImageRepository imageRepo;
+
+    public BookImageRestController(BookImageRepository imageRepo) {
+        this.imageRepo = imageRepo;
+    }
+
+    @PostMapping("upload")
+    public ResponseEntity<BookImage> saveBookImage(@RequestParam String name, @RequestParam MultipartFile file) throws IOException {
+        if (name == null || name.trim().isEmpty() || file == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        try (InputStream inputStream = file.getInputStream()) {
+            BookImage image = new BookImage();
+            image.setName(name);
+            image.setImage(new Binary(inputStream.readAllBytes()));
+            BookImage savedImage = imageRepo.save(image);
+            return ResponseEntity.ok(savedImage);
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<byte[]> getBookImage(@PathVariable String id) {
+        Optional<BookImage> optionalImage = imageRepo.findById(id);
+        if (optionalImage.isPresent()) {
+            BookImage image = optionalImage.get();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);
+            return ResponseEntity.ok().headers(headers).body(image.getImage().getData());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BookImage> updateBookImage(@PathVariable String id, @RequestParam String name, @RequestParam MultipartFile file) throws IOException {
+        if (name == null || name.trim().isEmpty() || file == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        Optional<BookImage> optionalImage = imageRepo.findById(id);
+        if (optionalImage.isPresent()) {
+            try (InputStream inputStream = file.getInputStream()) {
+                BookImage image = optionalImage.get();
+                image.setName(name);
+                image.setImage(new Binary(inputStream.readAllBytes()));
+                BookImage updatedImage = imageRepo.save(image);
+                return ResponseEntity.ok(updatedImage);
+            }
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBookImage(@PathVariable String id) {
+        Optional<BookImage> optionalImage = imageRepo.findById(id);
+        if (optionalImage.isPresent()) {
+            imageRepo.delete(optionalImage.get());
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
+
+```
+
+

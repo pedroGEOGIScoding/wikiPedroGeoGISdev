@@ -1,0 +1,34 @@
+---
+title: "Lab 4: Spring Boot Docker/Jenkins"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Lab
+categories: [devops, lab]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![](/images/devops/springboot-docker.png)
+
+Spring Boot app  build with Jenkins via Github and deployed to dockerHub:
+
+1. ``create`` Spring Boots projects
+2. commit && push to ``GitHub``
+3. create ``.jar executable`` from Github with ``Jenkins pipeline``
+4. create ``docker`` executable from Github with Jenkins pipeline
+5. ``run`` (local) and monitor
+6. ``push`` to ``dockerhub``
+
+# References
+
+- [Spring boot on docker and jenkins](https://sites.google.com/view/devopscifo/labs/4-springb-books-docker){.external target='_blank'}
+- [build error](https://sites.google.com/view/devopscifo/labs/4-springb-books-docker/test3_build20_error){.external target='_blank'}
+- [build23](https://sites.google.com/view/devopscifo/labs/4-springb-books-docker/test3_build23){.external target='_blank'}
+
+

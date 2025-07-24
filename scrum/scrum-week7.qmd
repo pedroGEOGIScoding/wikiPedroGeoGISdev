@@ -1,0 +1,117 @@
+---
+title: "Week 7: Managing Time & Mind"
+subtitle: SCRUM Week 7
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: In "Managing Time and Mind" the narrative challenges the conventional emphasis on time management alone
+categories: [scrum, scrum-week7, mindset, time-management]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+📘 **Summary: SCRUM Week 7 - Managing Time and Mind**
+
+In "Managing Time and Mind" **the narrative challenges the conventional emphasis on time management alone, proposing that true productivity stems from effective mind management**.
+
+The article introduces the myth of time management, arguing that success is not solely contingent **on judicious allocation of minutes but relies on cultivating a well-managed mind**.
+
+Drawing from **Dr. Stephen R. Covey's concept of "sharpening the saw"**, it highlights the foundational role of mental well-being in effective time management.
+
+Supported by **neuroscience**, the piece underscores that a cluttered mind impedes productivity and advocates for practices like meditation and mindfulness to enhance cognitive abilities. The practical shift involves aligning tasks with mental rhythms, emphasizing breaks, and incorporating mindfulness exercises. Ultimately, the article contends that mindful time management, integrating both time and mind, fosters true efficiency, balance, and well-being in navigating the complexities of modern life.
+
+:::
+
+</br>
+
+::: {.keywords}
+
+**Keywords: SCRUM Week 7 - Managing Time and Mind**
+
+Managing Time and Mind, Sharpening the Saw, Neuroscience, Productivity, Mindfulness, Meditation, Emotional Intelligence, Present Moment Awareness, Cognitive Functions, Mindful Time Management, Symbiotic, Well-being.
+
+:::
+
+</br></br>
+
+![[A Time for Everything](https://www.biblegateway.com/passage/?search=Ecclesiastes%203&version=ESV){.external}: For everything there is a season, and a time for every matter under heaven](/images/scrum/eclesiastes3.png)
+
+# What is Time Management?
+
+![Time Management Mind Map: Improve Productivity Effectively](/images/scrum/time-management.png){width="50%"}
+
+Time management is an essential life skill to learn for boosting efficiency, effectiveness, and productivity. It is about doing everything you want in a finite time. Giving equal time to family responsibilities, office work, and hobbies is difficult when a person lacks this time management skills. It is more than organizing, planning, and allocating time for the most crucial task. It plays a vital role in our lives and helps in achieving success. 
+
+# Getting things done
+
+
+"Getting Things Done" (GTD) is a time management and productivity methodology created by David Allen. The approach is outlined in his bestselling book, "Getting Things Done: The Art of Stress-Free Productivity." GTD provides a systematic and holistic method for organizing tasks, managing time, and reducing stress
+
+::: {.column-margin}
+
+![](/books/gettingthingsdone.jpg){width="60%"}
+
+[ Getting things done](/books/gettingthingsdone.qmd)
+:::
+
+
+# Managing Mind not Time
+
+::: {.column-margin}
+![](/books/MindManagementNotTimeManagement.jpg){width="60%"}
+
+[Managing Mind not Time](/books/MindManagementNotTimeManagement.qmd)
+:::
+
+- Unleashing Productivity: **Managing the Mind, Not Just Time**
+  - The pursuit of productivity often centers around managing time effectively. Countless books and productivity gurus offer tips and techniques on time management, promising increased efficiency and success. However, <mark>there's a paradigm shift emerging—one that suggests the true key to productivity lies not in the ticking clock but in the recesses of the mind</mark>.
+
+- **The Time Management Myth**
+  - The conventional wisdom surrounding time management has ingrained in us the belief that success is rooted in our ability to allocate every minute judiciously. Yet, countless individuals find themselves diligently following time management strategies only to feel perpetually overwhelmed and unsatisfied.
+  - <mark>This is where the often overlooked factor of "mind management" comes into play</mark>.
+
+- **Harnessing the Power of the Mind**
+  - Managing the mind involves understanding how our <mark>thoughts, emotions, and mental state impact our productivity</mark>.
+  - It's about cultivating mindfulness, emotional intelligence, and a keen awareness of the present moment.
+  - When the mind is cluttered with <mark>distractions, stress, or a lack of focus, time management techniques alone prove insufficient.</mark>
+  - Author and motivational speaker, **Dr. Stephen R. Covey**, introduced the concept of **"sharpening the saw"** in his book "*The 7 Habits of Highly Effective People."* 
+    - This habit underscores the importance of t<mark>aking care of oneself mentally, emotionally, and physically.</mark>
+    - It implies that a sharp mind is the foundation upon which effective time management is built.
+
+- **The Neuroscience of Productivity**
+  - Neuroscience supports the idea that a well-managed mind enhances productivity.
+  - When we're stressed or mentally fatigued, cognitive functions decline, making it challenging to make sound decisions or complete tasks efficiently.
+  - Techniques such as meditation, mindfulness practices, and adequate sleep have been proven to enhance cognitive abilities, contributing to better time management.
+
+- **Embracing Mindful Time Management**
+  - <mark>Rather than viewing time and mind management as mutually exclusive, they should be seen as symbiotic</mark>.
+  - Mindful time management involves not just scheduling tasks but also <mark>understanding the rhythms of your mind</mark>:
+    - It's about aligning your most demanding tasks with your periods of peak cognitive function and incorporating breaks to recharge the mind.
+
+- **The Practical Shift**
+  - To put this philosophy into practice, start by incorporating short mindfulness exercises into your routine.
+    - This could be as simple as deep breathing, a b**rief meditation session**, or a **mindful walk**.
+  - Additionally, be aware of your mental state when planning tasks—tackling complex problems during your mental peak and more routine tasks during lower-energy periods.
+
+- **Conclusion**
+  - As we navigate the complexities of programming and decision making, the realization dawns that time management alone is an incomplete strategy. To unlock true productivity:
+    -  we must recognize the profound impact of managing our minds.
+    -  By cultivating a mindful approach to time management, we not only enhance our efficiency but also foster a sense of balance and well-being.
+    -  After all, a mind in harmony is the true orchestrator of a productive life.
+
+# References
+
+- [Time Management Mind Map: Improve Productivity Effectively](https://www.edrawmind.com/article/time-management-mind-map.html)
+- [Mind Management not Time managemnet](/books/MindManagementNotTimeManagement.qmd)
+
+
+
+
+

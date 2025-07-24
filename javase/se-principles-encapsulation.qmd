@@ -1,0 +1,64 @@
+---
+title: "Java SE: Encapsulation"
+subtitle: Java Fundamentals and Principles
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Java encapsulation OOP paradigm
+categories: [javase, encapsulation , oop, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **Encapsulation**
+
+**Encapsulation** is the process of wrapping data and methods that operate on that data into a single unit. In other words, it is the process of hiding the implementation details of an object from the outside world.
+
+In Java, **encapsulation** is achieved through the use of access modifiers like private, public, and protected.
+
+:::
+
+---
+
+**Encapsulation** is the **process of grouping functions and data into a single entity**. To access these data members, the member function’s scope must be set to ``public``, while the data members’ scope must be set to ``private``.
+
+According to this theory, an item contains all important information; only a small subset is made available to the outside world. Each object has a ``private class`` that contains its ``implementation and state``.
+
+
+![Java SE Basic Principles OOP Encapsulation](/images/javase/oop-enc.png){width="50%"}
+
+Here is an example of encapsulation in Java:
+
+``` java
+public class Account {
+    // Private instance variables
+    private double balance;
+
+    // Public methods
+    public void deposit(double amount) {
+        // Code for depositing money
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        // Code for withdrawing money
+        balance -= amount;
+    }
+
+    public void checkBalance() {
+        // Code for checking account balance
+        System.out.println("Current balance: " + balance);
+    }
+}
+
+
+```
+
+In this example, the `Account` class has private instance variables and public methods. The `balance` variable is private, which means that it can only be accessed within the `Account` class. The `deposit()`, `withdraw()`, and `checkBalance()` methods are public, which means that they can be called from outside the `Account` class. This ensures that the implementation details of the `Account` class are hidden from the outside world.

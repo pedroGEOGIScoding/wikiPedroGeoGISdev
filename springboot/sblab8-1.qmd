@@ -1,0 +1,178 @@
+---
+title: "Lab#SB08-1: Restaurant UML"
+subtitle: Spring Boot Restaurant Management DDD and UML
+author: albertprofe
+date: "01/010/2024"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+:::: {.labs}
+📘 Spring Boot Lab#SB00-1: Restaurant UML
+We are going to evolve the current Java SE Restaurant project into a Spring Boot `RestaurantManagement` System with an `H2 DB` and web interface using `Thymeleaf/Vaadin.`
+:::
+</br>
+
+> The resulting `Spring Boot Project` would be similar to the current `Java SE Restaurant Project`, with the addition of the Spring Boot `annotations` and the `H2 database` configuration.
+
+
+> The classes (such as `Booking`, `Menu`, `Table`, `Customer`, and the various `Order` classes) would be annotated with the @Entity annotation to indicate that they are persistent **entities**, and the repositories would be annotated with the @Repository annotation.
+
+
+> The services would be annotated with the @Service `annotation`, and the controllers would be annotated with the @Controller annotation.
+
+
+> The `Thymeleaf` templates would be created in the `resources/templates` folder of the project. These templates would include views for managing bookings, menus, tables, customers, and different types of orders (TakeAway, Shipping, and EatIn).
+
+
+This Spring Boot version of the `RestaurantManagement` System would provide a robust, database-backed web application for managing all aspects of a restaurant's operations, from bookings and menu management to order processing and customer interactions.
+
+# From RestaurantProject to RestaurantManagement
+
+- [Restuarant Java SE Lab](/javase/selab4-1.qmd)
+- [Restaurant Java SE Code](https://github.com/AlbertProfe/restaurant){.external target='_blank'}
+- [Restaurant Java SE Wiki](https://github.com/AlbertProfe/restaurant/wiki){.external target='_blank'}
+- [Spring Boot H2 and TH](/springboot/boot-what-create-th-h2.qmd){.external target='_blank'}
+
+## Create a new Spring Boot project & H2 DB
+
+- ``Create a new Spring Boot project``: The first step would be to create a new Spring Boot project in the preferred IDE or text editor.
+
+::: {.callout-note}
+The project can be created using **Spring Initializr**, which will create the necessary **file structure and dependencies**.
+:::
+
+![](/images/springboot/labsb08/lab08-1-boot-init.png){width="80%"}
+
+## Model & Entities
+
+- `Create a Menu Entity`: To represent a menu item in the restaurant management system, create a Menu @Entity 
+
+::: {.column-margin}
+It could include attributes such as name, price, description, category (appetizer, main course, dessert, etc.), and availability status.
+:::
+
+- `Create a Customer Entity`: To represent a customer in the system, create a Customer entity that includes attributes such as customer ID, name, phone number, email, and **reservation history.**
+
+- `Create Booking Entity`: To represent a booking in the system, create a Booking entity that includes attributes such as booking date, time, number of people, tables, and associated customer.
+
+- `Create Staff Entity`: To represent staff members in the system, create a Staff entity that includes attributes such as staff ID, name, position, shift schedules, and assigned tables.
+
+## Domains: @Controller, @Service and @Repository
+
+- `Create Repositories`: To access the data stored in the database, create repositories for each entity. **The repositories will provide the methods to create, read, update, and delete the data.**
+
+- `Create Services`: Create services that **will implement the business logic of the system by calling the repository methods.** 
+
+::: {.column-margin}
+The **services** will provide the methods to search for available tables, make a reservation, update menu items, process orders, manage staff schedules, handle customer feedback, and generate reports on restaurant performance.
+:::
+
+- `Create Controllers`: Create controllers that **will handle the HTTP requests from the web interface by calling the service methods.** 
+
+::: {.column-margin}
+The **controllers** will provide the methods to create a customer account, search for available tables, make a reservation, view and update menu items, place an order, manage staff schedules, submit customer feedback, and generate various reports.
+:::
+
+
+
+
+# MockUp
+
+- [Restuarant Java SE](/javase/selab4-1.qmd)
+
+
+```bash
+Welcome to healtyFood Mananger v0.0
+Table number?
+2
+People?
+6
+Menu qty?
+3
+Menu #1?
+5
+Menu #2?
+3
+Menu #3?
+5
+Total to pay: 80€ (3 items)
+Paid?
+true
+```
+
+# Fake DataBase: HashMaps
+
+To start and test our UML we are goint to use HashMaps as a fake database.
+
+![](/images/javase/hashmap-orders.jpg)
+
+``` java
+HashMap<String, Order> orders
+ = new HashMap<String, Order>();
+
+```
+::: {.column-margin}
+Keep in mind that in more recent versions of Java, you can use the diamond operator (<>) to infer the generic types, making the declaration more concise:
+
+`HashMap<String, Order> orders = new HashMap<>();`
+
+:::
+
+Here's what each part of the code means:
+
+- `HashMap<String, Order>`: This declares a new `HashMap` with keys of type `String` and values of type `Order`. In other words, it's a mapping from strings to `Order` objects.
+
+- `orders`: This is the name of the variable that will reference the `HashMap`. You can choose any valid identifier as the variable name.
+
+- `= new HashMap<String, Order>();`: This part of the code creates a new instance of `HashMap` and assigns it to the variable `orders`. The `new` keyword is used to allocate memory for the `HashMap`, and the `<>` syntax specifies the types of keys and values for the `HashMap`. In this case, keys are of type `String`, and values are of type `Order`.
+
+## Entities Manager
+
+**MenuManager**
+
+::: {.column-margin}
+![menuManger object](/images/javase/menuManager-object.png)
+:::
+
+```{mermaid}
+classDiagram
+
+class MenuManager {
+  - menus: HashMap<String, Menu>
+  - qty: int
+  - size: double
+  - lastModified: Date
+  + addMenu(menu: Menu, data: String): void
+  + updateMenu(): void
+  + deleteMenu(title: String): void
+  + getMenu(title: String): Menu
+  + getMenus(): List<>
+  + rateMenu(rate: int, menu: Menu): void
+  + saveToCSV(): void
+  + deleteCSV(): void
+}
+```
+
+
+The **MenuManager** acts as a central hub for menu-related operations, promoting efficient management and systematic handling of menu entities in Java applications.
+
+
+
+# Discussion Solving: UML
+
+**Basic UML Java SE with restaurantDB Hashmap**
+
+![](/images/springboot/labsb08/lab08-1-uml.png){width="80%"}
+
+**Inhrence Order Spring Boot implementation**
+
+![](/images/springboot/labsb08/mermaid-diagram-2024-09-30-133021.png){width="100%"}
+
+

@@ -1,0 +1,137 @@
+---
+title: "Quarto Markdown: OJS Cells"
+subtitle: Code (6/7)
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Code on your Quarto web
+categories: [markup, qmd, quarto, ojs]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+**OJS code cells** `{ojs}` behave a bit differently than cells in traditional notebooks, and have many options available to control their display and layout.
+
+**Observable** is a platform for `publishing` and sharing interactive `data-driven` documents, an online editor for composing, `cells` are executed in a sequence, with outputs being generated and displayed as part of the notebook, changes made to cells can be `re-executed`, updated in `real-time`.
+:::
+
+---
+
+
+- [OJS Cells Quarto](https://quarto.org/docs/interactive/ojs/ojs-cells.html){.external}
+- [Introduction to Views](https://observablehq.com/@observablehq/views){.external}
+- [Five-Minute Introduction](https://observablehq.com/@observablehq/five-minute-introduction){.external}
+- [A Taste of Observable](https://observablehq.com/@observablehq/a-taste-of-observable?collection=@observablehq/overview){.external}
+
+## Observable JS Cells
+
+### Cell Execution
+
+A critical difference between OJS cell execution and traditional notebooks is that in OJS cells do **not need to be defined in any particular order.**
+
+Because execution** is fully reactive**, the runtime will automatically execute cells in the correct order based on how they reference each other. This is different than a traditional notebook with linear cell execution.
+
+## Examples
+
+### Example 1: viewof
+
+- [link](https://observablehq.com/@observablehq/views)
+
+```{ojs}
+"choose one color"
+
+viewof color = Inputs.select(["red", "orange", "yellow", "green", "blue", "violet"], {value: "green"})
+
+color
+```
+
+
+### Example 2: Histiogram
+
+- [link](https://observablehq.com/@observablehq/observable-javascript)
+
+```{ojs}
+height = 250
+numbers = Float64Array.from({length: 1000}, d3.randomNormal())
+import {chart as histogram} with {numbers as data, height} from "@d3/histogram@261"
+
+histogram
+```
+
+### Example 3: Cars data
+
+- [link](https://observablehq.com/@observablehq/five-minute-introduction)
+
+```{ojs}
+import {viewof selection as cars} from "@d3/brushable-scatterplot"
+viewof cars
+
+```
+
+### Example 6: mortgage
+
+- [mortgage](https://observablehq.com/@observablehq/learning-observable-cell-modes-reactive-markdown-and-html?collection=@observablehq/intro-to-observable#cell-59){.example}
+
+
+```{ojs}
+viewof amount = Inputs.range([100000, 1500000], {label: "Mortgage amount", step: 100000})
+
+viewof interest = Inputs.range([2, 8], {label: "Interest rate (%)", step: .1})
+
+viewof duration = Inputs.range([10, 30], {label: "Duration", step: 5})
+
+"Values:"
+
+amount
+interest
+duration
+
+```
+
+A mortgage for a house purchased for ${(amount)} at an interest rate of ${(interest)}% over 
+${(duration)} years.
+
+It costs a total of ${(amount * (1+interest/100) * duration)} dolars.
+
+
+
+
+### Example 5: Fetch with loading...
+
+- [Observable JS](https://observablehq.com/@observablehq/input-button){.external}
+
+
+```{ojs}
+d3 = require("d3");
+
+
+viewof fetchButton = Inputs.button("fetch", {async function() {
+
+    loadingMessage.value = "Loading...";
+    let contributors = {};
+    contributors.value = await d3.json("https://api.github.com/repos/albertprofe/wiki/stats/contributors");
+    
+
+    let commits = contributors.value.map(contributor => {
+      loadingMessage.value = "done";
+      let author = contributor.author;
+      return {
+        name: author.login,
+        title: author.login,
+        group: author.type,
+        value: contributor.total
+      }
+    });
+
+    Inputs.table(commits, { sort: "value", reverse: true })
+}});
+
+viewof loadingMessage = Inputs.button("...");
+```
+
+

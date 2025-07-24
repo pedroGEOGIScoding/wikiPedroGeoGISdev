@@ -1,0 +1,49 @@
+---
+title: "Network: UDP"
+subtitle: Networking UDP
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, UDP]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview: UDP in HTTP
+
+<mark>**UDP (User Datagram Protocol)** is a transport layer protocol that operates without establishing a connection before sending data. Unlike TCP (Transmission Control Protocol), UDP is connectionless and does not guarantee delivery or order of packets. This makes it faster but less reliable than TCP.</mark>
+
+In the context of HTTP (Hypertext Transfer Protocol), UDP is not commonly used as the primary transport protocol. HTTP traditionally relies on TCP for its connection-oriented and reliable communication. However, there are emerging technologies, such as HTTP/3, that explore the use of UDP as the transport layer instead of TCP.
+
+**Example:**
+
+One notable example of using UDP in HTTP is the QUIC protocol. QUIC is a transport layer protocol developed by Google that runs over UDP. It aims to provide a secure and low-latency communication channel for web applications. HTTP/3, the latest version of the HTTP protocol, is built on top of QUIC.
+
+Here's a simplified example of an HTTP/3 request using QUIC over UDP:
+
+```http
+QUIC/1.0
+GET /example HTTP/1.1
+Host: example.com
+```
+
+In this example, the HTTP/3 request is encapsulated within the QUIC protocol, which, in turn, operates over UDP. This combination offers improved performance and better handling of packet loss compared to traditional TCP-based HTTP connections.
+
+# UPD vs TCP
+
+![](/images/devops/udp-vs-tcp--1-.png)
+
+The **UDP** protocol does this much simpler than other protocols; <mark>it sends packets to a target computer directly, without first establishing a connection, without checking whether the packets arrived properly or showing their order. It is called a 'datagram' when referring to UDP packets.</mark>
+
+TCP is another common transport protocol, **but UDP is faster**. A 'handshake' automated process establishes a connection between two computers in a **TCP** communication.
+
+The data packets will only be transferred once the handshake has been completed. This process does not apply to UDP communications instead data can be sent from one computer to another.
+
+# Reference
+
+- [What is User Datagram Protocol (UDP)?](https://www.atatus.com/blog/what-is-udp/){.extenal}
+

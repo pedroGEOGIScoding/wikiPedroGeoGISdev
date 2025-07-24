@@ -1,0 +1,21 @@
+---
+title: "C"
+author: "albertprofe"
+subtitle: "Dennis Ritchie, 1978, C: A Programming Language"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A seminal work in the world of computer programming. Dennis Ritchie introduces the C programming language, which has since become a staple of software development and remains widely used to this day."
+categories: [programming]
+subcategories:  [programming, c]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/c.jpeg)
+
+## More info
+
+

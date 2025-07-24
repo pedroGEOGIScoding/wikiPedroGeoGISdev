@@ -1,0 +1,60 @@
+---
+title: "Spring Boot Resources"
+subtitle: Readings
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Java Spring Resources and Readings
+categories: [spring, boot, resources, readings]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![MarkUp Resources](/images/home/frontimagealbertprofeweb-readings.png){width=50%}
+
+## Webs
+
+### The PetClinic example
+
+- [The Spring PetClinic Community](https://spring-petclinic.github.io/){.external}
+- [The Spring PetClinic Demo](https://spring-framework-petclinic-qctjpkmzuq-od.a.run.app/){.external}
+- [SpringBoot github](https://github.com/spring-projects/spring-petclinic){.external}
+
+### employeeCourse
+
+- [employeeCourse github code](https://github.com/AlbertProfe/employeecourse){.external}
+- [employeeCourse wiki](https://github.com/AlbertProfe/employeecourse/wiki){.external}
+
+## Books
+
+- [Microservices for Java Developers](/books/microservices-for-java-developers.qmd)
+
+### Stratospheric
+
+![Stratospheric](/images/springboot/stratospheric-technical-architecture-transparent.png){width="80%"}
+
+- [From Zero to Production with Spring Boot and AWS](https://stratospheric.dev/){.external}
+
+
+### Quarkus for Spring Developers
+
+- [Quarkus for Spring Developers](https://quarkus.io/blog/quarkus-for-spring-developers/){.external}
+- [Quarkus for Spring Developers GitHub](https://github.com/quarkus-for-spring-developers){.external}
+- [Quarkus for Spring Developers Book](https://developers.redhat.com/e-books/quarkus-spring-developers){.external}
+
+### Microservices Patterns
+
+![Microservices Example ftgo](/images/springboot/Ftgo.png){width="80%"}
+
+- [Microservices Patterns](https://microservices.io/book){.external}
+- [Microservices Patterns GitHub](https://github.com/microservices-patterns/ftgo-application){.external}
+- [Microservices Patterns e-book](https://livebook.manning.com/book/microservices-patterns/chapter-1){.external}
+
+### Introduction to Quarkus, MicroProfile, and Kubernetes
+
+- [Introduction to Quarkus, MicroProfile, and Kubernetes](https://livebook.manning.com/book/kubernetes-native-microservices/meap-version-5/){.external}
+
+

@@ -1,0 +1,328 @@
+---
+title: "Java SE: Java 8"
+subtitle: Java Fundamentals
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is Java 8
+categories: [javase,lambda, stream, optional, ]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+📘 **Java 8**
+
+[Java 8 is a revolutionary release](){.external} of the development platform.
+
+It includes a huge upgrade to the Java programming model and a coordinated evolution of the JVM, Java language, and libraries.
+
+``Java 8`` includes features for productivity, ease of use, improved programming technique in java, security and improved performance.
+:::
+
+
+## Overview
+
+``Java 8`` includes the following:
+
+- Lambda expressions
+- Method references
+- Default Methods (Defender methods)
+- A new Stream API.
+- Optional
+- A new Date/Time API.
+- Nashorn, the new JavaScript engine
+- Removal of the Permanent Generation
+
+
+## Main features
+
+Java 8 introduced several new features to the language, including Streams, Optional, Lambda expressions, and Method references. Here's a brief definition of each of these features:
+
+> ``Streams``</br>
+**Streams provide a way to process collections of data in a declarative and functional way**. Streams allow you to express complex data manipulations in a simple, concise way. 
+
+::: {.column-margin}
+With streams, you can filter, map, reduce, and collect data in a highly readable and maintainable way.
+:::
+
+> ``Optional``</br>
+**Optional is a container object that may or may not contain a non-null value.** It is designed to reduce the number of null checks in your code and to provide a more elegant way of handling null values. 
+
+::: {.column-margin}
+Optional can be used to wrap any object, and it provides methods for safely accessing the wrapped object or handling the case when the object is null.
+:::
+
+> ``Lambda expressions``</br>
+**Lambda expressions provide a way to write code in a functional style. **They allow you to pass behavior as an argument to a method, which is a powerful technique for writing more modular and reusable code. 
+
+::: {.column-margin}
+Lambda expressions can be used in place of anonymous inner classes and are highly concise and readable.
+:::
+
+> ``Method references``</br>
+**Method references provide a way to pass a method as an argument to another method**. They provide a concise and expressive way to write code, and can be used in place of lambda expressions in certain situations.
+
+::: {.column-margin}
+Method references are highly readable and can make code more modular and reusable.
+:::
+
+## Example of ``functional-style`` in ``Java 8``
+
+Suppose you have a **list of integers and you want to filter out the even numbers and then calculate the sum of the remaining odd numbers**.
+
+In Java 8 and later, you can use a combination of ``lambda`` expressions and the ``Stream API`` to express this computation in a ``functional-style``:
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+int sum = numbers.stream()               // create a stream of the list of numbers
+                .filter(n -> n % 2 != 0) // filter out the even numbers
+                .mapToInt(Integer::intValue) // convert the stream to an IntStream
+                .sum();                 // calculate the sum of the remaining odd numbers
+
+System.out.println("Sum of odd numbers: " + sum);
+
+```
+::: {.column-margin}
+The lambda expression ``n -> n % 2 != 0`` passed to the ``filter()`` method tests each number to see if it is odd by checking if the remainder *after division by 2 is not equal to 0*.
+:::
+
+In this code, we first create a **stream of the list of numbers using the ``stream()`` method**.
+
+We then use the ``filter()`` method to remove all the even numbers from the stream, and the ``mapToInt()`` method to convert the stream to an ``IntStream``, which has a ``sum()`` method that we can use to calculate the sum of the remaining odd numbers.
+
+This example demonstrates how **functional-style** programming in Java can be used to express computations in a more concise and readable way by using higher-order functions, ``lambda`` expressions, and the **Stream API**.
+
+Instead, using imperative and modern ``Java 8``:
+
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+int sum = 0;
+for (int number : numbers) {
+    if (number % 2 != 0) {  // filter out even numbers
+        sum += number;      // accumulate odd numbers
+    }
+}
+
+System.out.println("Sum of odd numbers: " + sum);
+
+```
+::: {.column-margin}
+In this code, we iterate over the list of numbers using a ``for-each`` loop, and filter out even numbers using an ``if-statement.`` We then accumulate the **odd** numbers in the **sum** variable using the ``+=`` **operator**. Finally, we print the result using ``System.out.println()``.
+:::
+
+
+
+## Streams
+
+::: {.summary}
+First of all, Java 8 Streams should **not be confused with** ``Java I/O streams`` (ex: ``FileInputStream`` etc).
+
+Simply put, **streams are wrappers around a data source**, allowing us to operate with that data source and making bulk processing convenient and fast by lazy and terminal operations.
+
+A stream **does not store data and, in that sense, is not a data structure**. It also never modifies the underlying data source.
+
+This functionality ``java.util.stream`` supports **functional-style operations on streams of elements**.
+:::
+</br>
+
+![Streams allow you to express complex data manipulations in a simple, concise way. With streams, you can filter, map, reduce, and collect data in a highly readable and maintainable way.](/images/javase/stream.png){width="65%"}
+
+### Example
+
+
+Here's an example of how **lazy evaluation, wrapping the data and intermediate/terminal operations** work in Java streams:
+
+```java
+List<String> words = Arrays.asList("hello", "world", "how", "are", "you");
+
+// create a stream and apply intermediate operations to filter and map the data
+Stream<String> stream = words.stream()
+    .filter(w -> w.length() > 3)
+    .map(String::toUpperCase);
+
+// call a terminal operation to evaluate the stream and produce a result
+String result = stream.findFirst().orElse("");
+
+System.out.println(result);
+
+```
+::: {.column-margin}
+In this example, we start by creating a list of strings and then create a stream from the list using the stream() method and wrapping them around.
+:::
+
+
+We then apply two intermediate operations, ``filter()`` and ``map()``, to filter the words that have a length greater than 3 and convert them to uppercase, respectively.
+
+At this point, **no computation has been performed on the data**. Instead, the operations on the stream have created a new stream with the modified data.
+
+Next, we call a **terminal** operation, ``findFirst()``, to find the first element in the stream that matches the specified condition. 
+
+This operation **triggers the computation of the stream and produces a result**, which in this case is the first word in the stream that has a length greater than 3 and is in uppercase.
+
+Because of lazy evaluation, only the elements that are necessary to produce the result are processed. In this example, only the first element that matches the condition is processed, and the remaining elements are not processed.
+
+Finally, **we print the result to the console**, which is the first word in the stream that matches the condition. In this case, the result is the string "WORLD".
+
+
+## Optional
+
+
+::: {.summary}
+``Optional`` is a **container object that may or may not contain a non-null value.** It is a way to represent a value that may or may not be present, without using null references.
+:::
+</br>
+
+An ``Optional`` object can either contain a non-null value, or be empty. When an ``Optional`` object contains a value, it provides a way to safely access that value without risking a NullPointerException. On the other hand, when an ``Optional`` object is empty, it indicates that there is no value present.
+
+
+To create an ``Optional`` object, you can call the static`` of()`` method and pass in a non-null value, or you can call the static ``empty()`` method to create an empty ``Optional`` object.
+
+![Optional](/images/javase/optional.png){width="80%"}
+
+To access the value of an ``Optional`` object, you can call the get() method, but it is recommended to first check if the value is present using the isPresent() method. If the value is not present, you can provide a default value using the ``orElse()`` or ``orElseGet()`` methods.
+
+::: {.callout-note}
+``Optional`` is often used as a **return type for methods that may or may not return a value**, as a way to indicate that the method **may return no value**, and to avoid returning null references. It is also used in the ``Stream API`` to represent the possibility **of an empty result set**.
+:::
+
+### Example
+
+```java
+import java.util.Optional;
+
+public class OptionalExample {
+    public static void main(String[] args) {
+        String name = "John Doe";
+        Optional<String> optionalName = Optional.of(name); // Create an Optional object with a non-null value
+        System.out.println(optionalName.isPresent()); // true
+        System.out.println(optionalName.get()); // "John Doe"
+
+        String nullName = null;
+        Optional<String> optionalNullName = Optional.ofNullable(nullName); // Create an Optional object with a null value
+        System.out.println(optionalNullName.isPresent()); // false
+
+        String defaultName = "Jane Doe";
+        String finalName = optionalNullName.orElse(defaultName); // Use the default value when the Optional is empty
+        System.out.println(finalName); // "Jane Doe"
+    }
+}
+
+
+```
+::: {.column-margin}
+In this example, we create **two Optional objects**: ``optionalName``, which contains a non-null value, and ``optionalNullName``, which contains a null value.
+:::
+
+We use the ``isPresent()`` method to check if the Optional objects contain a value, and the ``get()`` method to access the values. When ``optionalNullName`` is empty, we use the ``orElse()`` method to provide a default value.
+
+## Lambda
+::: {.summary}
+``Lambda expressions`` support ``functional`` programming style, which emphasizes **writing code in terms of functions that take inputs and produce outputs, without relying on mutable state or side effects**.
+
+They allow to express a behavior as a function object, which can be passed around and executed later.
+:::
+</br>
+
+A ``lambda expression`` is composed of three parts:
+
+- the argument list,
+- the arrow token (->),
+- and the body. 
+
+The ``argument`` list specifies **the inputs to the function**, and can be empty or have one or more parameters. The ``arrow token`` separates the argument list from the body. The ``body`` contains the **code that implements the behavior of the lambda expression.**
+
+![Lambda](/images/javase/lambdsa.png){width="50%"}
+
+### Example
+
+Here's an example of a lambda expression that adds two numbers:
+
+```java
+(int a, int b) -> a + b
+
+
+```
+
+::: {.column-margin}
+This lambda expression takes** two int arguments and returns their sum**. The argument ``list (int a, int b)`` specifies the **inputs** to the function, and the **body** a + b contains the code that implements the behavior.
+:::
+
+
+Lambda expressions can be used in many places in ``Java``, such as the ``Stream API``, the ``Comparator`` ``interface``, and the ``Runnable`` and ``Callable`` ``interfaces``. They are a powerful tool for writing concise, expressive code that is easy to read and maintain.
+
+
+## Method references
+
+::: {.summary}
+
+``Method reference``s are **special types of lambda expressions** that execute only one method.
+
+``Method reference`` is a **shorthand syntax for referring to an existing method or constructor**, without having to provide a **full method implementation**.
+ 
+It is a way to pass a method as a parameter to another method or to create a functional interface instance.
+:::
+</br>
+
+- [A comprehensive guide to Java 8 method reference](https://medium.com/javarevisited/a-comprehensive-guide-to-java-8-method-reference-f0bf5457b72d){.external}
+- [Quickly writing Java lambdas and method references](https://codeburst.io/quick-java-lambdas-and-method-references-3279b7690c07){.external}
+
+
+They allow you to refer to a method by its name and optionally specify the object on which the method is invoked.
+
+![Method references](/images/javase/referenceMethod.png){width="50%"}
+
+There are **four types of method references**:
+
+- Reference to a ``static method``
+- Reference to an instance method of an object of a ``particular type``
+- Reference to an instance method of an ``existing object``
+- Reference to a ``constructor``
+
+### Example ``names`` print
+
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+// Using lambda expression
+names.forEach(name -> System.out.println(name));
+
+// Using method reference
+names.forEach(System.out::println);
+
+```
+In this example, we have a list of names and we want to print them to the console. We can achieve this using a forEach method that accepts a Consumer interface implementation. The Consumer interface has a single abstract method accept that takes an input and performs an operation on it.
+
+We can pass a lambda expression or a method reference to the forEach method to define the Consumer implementation. In the lambda expression version, we define an anonymous function that takes a name parameter and prints it to the console using System.out.println(name).
+
+In the method reference version, we refer to the println method of the System.out object using the syntax System.out::println. This is equivalent to passing a lambda expression that calls System.out.println(name) with the name parameter.
+
+Both versions of the code produce the same output, but the method reference version is more concise and easier to read.
+
+### Example ``names`` compareTo
+
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+// Using lambda expression
+Collections.sort(names, (name1, name2) -> name1.compareTo(name2));
+
+// Using method reference
+Collections.sort(names, String::compareTo);
+```
+
+In this example, we have a list of names and we want to sort them in ascending order. We can achieve this using the sort method of the Collections class, which accepts a list and a Comparator implementation to define the sort order.
+
+We can pass a lambda expression or a method reference to the sort method to define the Comparator implementation. In the lambda expression version, we define an anonymous function that takes two String parameters name1 and name2, and compares them using the compareTo method of String class.
+
+In the method reference version, we refer to the compareTo method of the String class using the syntax String::compareTo. This is equivalent to passing a lambda expression that calls name1.compareTo(name2).
+
+Both versions of the code produce the same output, but the method reference version is more concise and easier to read.
+
+

@@ -1,0 +1,77 @@
+---
+title: "Network: DNS"
+subtitle: Networking DNS
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, DNS]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Domain Name System (DNS) in Networking
+
+The **Domain Name System (DNS)** is a fundamental protocol in computer networking that translates human-readable domain names into IP addresses. It acts as a distributed and hierarchical database, providing a crucial service for navigating the vast landscape of the internet. DNS plays a pivotal role in making internet resources accessible by allowing users to use domain names like www.example.com instead of remembering numeric IP addresses like 192.168.1.1.
+
+## Structure and Hierarchy
+
+DNS operates in a hierarchical structure, organized into zones. The highest level is the root domain, represented by a dot ('.'). Beneath the root, there are top-level domains (TLDs), such as .com, .org, and .net. Further down, domain names become more specific, leading to fully qualified domain names (FQDNs) like www.example.com.
+
+Each domain level is separated by a dot, forming a tree-like structure. For instance, the FQDN www.example.com can be broken down into labels: "www" is a subdomain of "example," which is under the top-level domain "com."
+
+## DNS Resolution Process
+
+When a user enters a domain name in a web browser, the DNS resolution process begins. The following steps illustrate this process:
+
+1. **Local DNS Cache Check:** The user's device checks its local DNS cache to see if it already knows the corresponding IP address for the requested domain. If found, the process concludes.
+
+2. **Recursive DNS Server:** If the IP address is not in the local cache, the device queries a recursive DNS server. This server is responsible for obtaining the information on behalf of the user.
+
+3. **Root DNS Server:** If the recursive DNS server doesn't have the information, it queries the root DNS server. The root server directs the request to the appropriate TLD server based on the top-level domain of the requested domain name.
+
+4. **TLD DNS Server:** The TLD server, responsible for the specific top-level domain of the requested domain, directs the recursive server to the authoritative DNS server of the next domain level.
+
+5. **Authoritative DNS Server:** The authoritative DNS server holds the specific IP address associated with the requested domain and provides this information to the recursive server.
+
+6. **Recursive DNS Server Response:** The recursive server caches the obtained IP address and responds to the user's device.
+
+7. **Local DNS Cache Update:** The user's device updates its local DNS cache with the resolved IP address for future use.
+
+## DNS Record Types
+
+DNS uses various record types to store different types of information. The most common ones include:
+
+- **A (Address) Record:** Maps a domain to an IPv4 address.
+  
+  Example: `www.example.com. IN A 192.168.1.1`
+
+- **AAAA (IPv6 Address) Record:** Maps a domain to an IPv6 address.
+
+  Example: `www.example.com. IN AAAA 2001:0db8:85a3:0000:0000:8a2e:0370:7334`
+
+- **CNAME (Canonical Name) Record:** Alias of one domain to another.
+
+  Example: `www.example.com. IN CNAME example.com`
+
+- **MX (Mail Exchange) Record:** Specifies mail servers responsible for receiving emails.
+
+  Example: `example.com. IN MX 10 mail.example.com`
+
+- **NS (Name Server) Record:** Indicates authoritative DNS servers for a domain.
+
+  Example: `example.com. IN NS ns1.example.com`
+
+## Conclusion
+
+In conclusion, DNS is a critical protocol that simplifies internet navigation by translating human-readable domain names into machine-readable IP addresses. Understanding its hierarchical structure, resolution process, and various record types is essential for anyone working with computer networks. DNS plays a foundational role in making the internet accessible and user-friendly.
+
+
+
+
+
+
+

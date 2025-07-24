@@ -1,0 +1,26 @@
+---
+title: "Linux Lab#LI01-3: Adjust user permissions"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, bash, user]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI01-3: Adjust user permissions**
+
+-   Log in using the user account you created during installation. Use the `sudo` command to gain root privileges when you need to perform systemwide administrative tasks. This is an important best practice in Linux administration.
+-   Adjust the privileges assigned to your user account by using the `sudo` command. You need to edit the `/etc/sudoers` file by using the `visudo` command.
+
+:::
+
+
+
+

@@ -1,0 +1,23 @@
+---
+title: "The Communication Book"
+subtitle: "Mikal Nielsen, 2018, The Communication Book: 44 Ideas for Better Conversations Every Day"
+author: "Mikal Nielsen"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "The Communication Book provides 44 communication techniques that can be used in everyday situations to improve communication skills. It covers a wide range of topics such as listening, speaking, and body language, and provides practical advice and exercises to help readers improve their communication skills."
+categories: [communication]
+subcategories: [conversation skills, interpersonal communication, nonverbal communication]
+isbn13: 9781324001980
+format:
+  html
+---
+
+## Book Image
+
+![](/books/communicationbook44.jpg)
+
+## More info
+
+- [The Communication Book: 44 Ideas for Better Conversations Every Day](https://www.amazon.es/Communication-Book-Ideas-Better-Conversations-ebook/dp/B0762DB43J){.external}
+

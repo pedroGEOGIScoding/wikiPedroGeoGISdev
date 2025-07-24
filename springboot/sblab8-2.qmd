@@ -1,0 +1,739 @@
+---
+title: "Lab#SB08-2: Vaadin"
+subtitle: Spring Boot Restaurant Management Vaadin
+author: albertprofe
+date: "01/010/2024"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html:
+    code-overflow: wrap
+---
+
+:::: {.labs}
+📘 Spring Boot Lab#SB00-2: RestaurantManager Vaadin
+We are going to evolve the current Java SE Restaurant project into a `Spring Boot Restaurant Management System` with an `H2 DB` and web interface using `Vaadin`.
+:::
+</br>
+
+- [Commits RestaurantVaadin](https://github.com/AlbertProfe/restaurantVaadin){.external target='_blank'}
+
+# Create a new Spring Boot project & H2 DB
+
+From RestaurantProject to RestaurantManagement, reference code where to start:
+
+- [Restaurant Java SE Lab](/javase/selab4-1.qmd)
+- [Restaurant Java SE Code](https://github.com/AlbertProfe/restaurant){.external target='_blank'}
+- [Restaurant Java SE Wiki](https://github.com/AlbertProfe/restaurant/wiki){.external target='_blank'}
+- [Spring Boot H2 and TH](/springboot/boot-what-create-th-h2.qmd){.external target='_blank'}
+
+![](/images/springboot/labsb08/lab08-1-vaadin-view-restaurantVaadin2.png)
+
+
+- **Create a new Spring Boot project**: The first step would be to create a new Spring Boot project in the preferred IDE or text editor.
+
+> The project can be created using **Spring Initializr**, which will create the necessary **file structure and dependencies**.
+
+- **Configure the H2 database**: In the newly created project, configure the H2 database by adding:
+  - the H2 dependency in the `pom.xml` file,
+  - and also create a new `application.properties` file
+  - set the database properties such as:
+    - the database **URL**,
+    - **username**,
+    - and **password**.
+
+
+## Model & Entities
+
+
+![](/images/springboot/labsb08/lab08-2-model-entity.png){fig-align="center" width="60%"}
+
+- **Create a Menu Entity**: To represent a menu item in the restaurant management system, create a Menu `@Entity`
+
+> It could include attributes such as name, price, description, category (appetizer, main course, dessert, etc.), and availability status.
+
+- **Create a Customer Entity**: To represent a customer in the system, create a Customer entity that includes attributes such as customer ID, name, phone number, email, and **reservation history.**
+
+- **Create Booking Entity**: To represent a booking in the system, create a Booking entity that includes attributes such as booking date, time, number of people, tables, and associated customer.
+
+- **Create Staff Entity**: To represent staff members in the system, create a Staff entity that includes attributes such as staff ID, name, position, shift schedules, and assigned tables.
+
+![](/images/springboot/labsb08/lab08-2-model-design.png){fig-align="center" width="60%"}
+
+
+Domains: `@Controller`, `@Service` and `@Repository`
+
+- **Create Repositories**: To access the data stored in the database, create repositories for each entity. **The repositories will provide the methods to create, read, update, and delete the data.**
+
+- **Create Services**: Create services that **will implement the business logic of the system by calling the repository methods.** 
+
+> The **services** will provide the methods to search for available tables, make a reservation, update menu items, process orders, manage staff schedules, handle customer feedback, and generate reports on restaurant performance.
+
+- **Create Controllers**: Create controllers that **will handle the requests from the Vaadin UI by calling the service methods.** 
+
+> The **controllers** will provide the methods to create a customer account, search for available tables, make a reservation, view and update menu items, place an order, manage staff schedules, submit customer feedback, and generate various reports.
+
+# Vaadin
+
+Modern Java framework for building web applications
+
+> `Vaadin` is a web application framework for Java that allows developers to build modern, interactive web applications using Java without having to write `HTML`, `CSS`, or `JavaScript`.
+
+Here are some key points about `Vaadin`:
+
+- [Vaadin Official Website](https://vaadin.com/){.external target='_blank'}
+- [Vaadin Documentation](https://vaadin.com/docs/latest/){.external target='_blank'}
+- [Vaadin Spring Boot Integration](https://vaadin.com/docs/latest/flow/integrations/spring/){.external target='_blank'}
+- [Vaadin Flow](https://vaadin.com/docs/latest/flow){.external target='_blank'}
+- [GitHub Tutorial Vaadin 24](https://github.com/vaadin/tutorial/){.external target='_blank'}
+- [Vaadin Maven CLI create a project](https://vaadin.com/docs/latest/getting-started/project/maven-archetype){.external target='_blank'}
+
+
+
+`Vaadin` Flow lets a <mark>server-side Java application build a user interface from components in Java. These Java components are connected to web components running in the browser</mark>. Flow manages the relaying of user [interaction back to the server-side application](https://vaadin.com/docs/latest/flow/application){.external target='_blank'}, which can handle it with event listeners.
+
+> Application views and their components are typically used to display and accept input of application data. This data is often stored in a backend service, such as a database. Application logic is often created using application frameworks, such as Spring.
+
+
+![](https://vaadin.com/docs/latest/_astro/application-architecture.BkkGoEuL_1Qhbrj.webp){fig-align="center" width="70%"}
+
+
+::: {.callout-note}
+# `Vaadin` offers two main flavors for web application development:
+
+1. **Hilla**: A full-stack framework combining a Spring Boot backend with a React or Lit frontend. It provides type-safe communication between client and server, auto-generated TypeScript interfaces, and built-in security features.
+
+
+2. **Flow**: A server-side Java framework for building web applications. It allows developers to create UIs using a component-based approach, with automatic server-client communication and state management.
+
+
+Both flavors leverage Vaadin's extensive set of UI components and themes. `Hilla` is ideal for developers comfortable with modern `JavaScript` frameworks, while `Flow` suits those preferring a Java-centric approach.
+
+Both can be used to create responsive, feature-rich web applications with excellent performance and maintainability.
+
+
+[Hilla](https://vaadin.com/docs/latest/hilla){.external target='_blank'} / [Flow](https://vaadin.com/docs/latest/flow){.external target='_blank'}
+
+:::
+
+
+## `atmosphere`
+
+**Vaadin** uses the [Atmosphere framework](https://github.com/Atmosphere/atmosphere) to facilitate robust <mark>client-server communication, particularly for real-time and push-based features. </mark>
+
+`Atmosphere` is an open-source project that provides a powerful abstraction layer for various **asynchronous communication protocols**, including `WebSockets`, `Server-Sent Events`, and `long-polling`.
+
+`Vaadin` integrates `Atmosphere` to handle its server **push** functionality, allowing servers to send updates to clients without the need for **client-side polling**. This integration enables `Vaadin` applications to create responsive, **real-time user interfaces** with minimal developer effort.
+
+![](/images/springboot/labsb08/lab08-2-atmosphere.png){fig-align="center" width="60%"}
+
+
+`Atmosphere`'s key features utilized by Vaadin include:
+
+1. **Protocol negotiation** and fallback mechanisms
+2. **Automatic selection** of the best available transport method
+3. **Handling of connection management** and reconnection scenarios
+4. **Cross-browser compatibility**
+
+> By building on Atmosphere, Vaadin abstracts away the complexities of low-level communication protocols, allowing developers to focus on application logic while still benefiting from efficient, real-time communication between client and server.
+
+## Binding
+
+- [Data Binding](https://vaadin.com/docs/latest/flow/binding-data){.external target='_blank'}
+- [Loading & Saving Business Objects](https://vaadin.com/docs/latest/flow/binding-data/components-binder-load){.external target='_blank'}
+- [Binding Data to Forms](https://vaadin.com/docs/latest/flow/binding-data/components-binder){.external target='_blank'}
+
+
+In `Vaadin`, the <mark>**Binder** is a data binding class used to **connect UI components to Java beans**. It is not a container but rather a **utility** that facilitates the transfer and validation of data between the user interface and backend objects.</mark>
+
+**Binder** reads values from business objects, converts them to the format required by UI fields, and vice versa, supporting validation to ensure <mark>data integrity</mark>. This makes it essential for creating dynamic and interactive forms in Vaadin applications.
+
+::: {.callout-note}
+# There can be only one Binder
+
+There can be only one **Binder** instance for each form.
+
+You should use this instance for all the fields in the form.
+:::
+
+**Client To Server: How to Bind Form Data**
+
+The following steps include everything needed to load, edit, and save values for a form. `Java 8 method references` are used.
+
+
+
+``` java
+
+// Create a Binder instance for the Person class
+Binder<Person> binder = new Binder<>(Person.class); // <1>
+
+// Create a TextField for the title
+TextField titleField = new TextField(); // <2>
+
+// Bind the titleField to the Person class
+binder.forField(titleField)
+    .bind(
+        // Callback that loads the title from a person instance
+        Person::getTitle, // <3>
+        // Callback that saves the title in a person instance
+        Person::setTitle); // <3>
+
+// Create a TextField for the name
+TextField nameField = new TextField(); // <4>
+
+// Shorthand for cases without extra configuration
+binder.bind(nameField, Person::getName, // <5>
+        Person::setName); // <5>
+
+```
+
+
+1. Create a Binder instance for the Person class.
+2. Create a TextField for the title.
+3. Bind the titleField to the Person class using method references.
+4. Create a TextField for the name.
+5. Bind the nameField to the Person class using method references.
+
+<Details>
+<Summary>`Method references` are one-linners to simplify code </Summary>
+</br>
+`Method references` are [used](/javase/se-concepts-java8.qmd#method-references) to **simplify the code and make it more readable**. Here are the key points:
+
+*Reference to an Instance Method of a Particular Object*
+
+- The method reference `binder.forField(titleField).bind(Person::getTitle, Person::setTitle)` is used. Here, `Person::getTitle` and `Person::setTitle` refer to the instance methods `getTitle` and `setTitle` of the `Person` class. This is equivalent to a lambda expression that calls these methods on a `Person` object.
+
+*Reference to an Instance Method of a Particular Object (Shorthand)*
+
+- The shorthand `binder.bind(nameField, Person::getName, Person::setName)` is used, which is another example of referencing instance methods `getName` and `setName` of the `Person` class.
+
+*Example Breakdown*
+
+```java
+binder.forField(titleField)
+      .bind(Person::getTitle, Person::setTitle);
+```
+
+This is equivalent to:
+
+```java
+binder.forField(titleField)
+      .bind(person -> person.getTitle(), (person, title) -> person.setTitle(title));
+```
+
+Similarly,
+
+```java
+binder.bind(nameField, Person::getName, Person::setName);
+```
+
+is equivalent to:
+
+```java
+binder.bind(nameField, person -> person.getName(), (person, name) -> person.setName(name));
+```
+
+`Method references` here replace the need for explicit `lambda` expressions, making the code more concise and easier to read.
+
+
+</Details>
+
+
+**Server to Client: Reading & Writing Automatically**
+
+Writing automatically to business objects when the user makes changes in the UI is usually the most convenient option. You can bind the values directly to an instance by allowing Binder to save automatically values from the fields.
+
+In the example here, field values are saved automatically:
+
+
+``` java
+Binder<Person> binder = new Binder<>();
+
+// Field binding configuration omitted.
+// It should be done here.
+
+Person person = new Person("John Doe", 1957);
+
+// Loads the values from the person instance.
+// Sets person to be updated when any bound field
+// is updated.
+binder.setBean(person);
+
+Button saveButton = new Button("Save", event -> {
+    if (binder.validate().isOk()) {
+        // Person is always up-to-date as long as
+        // there are no validation errors.
+
+        MyBackend.updatePersonInDatabase(person);
+    }
+});
+
+```
+
+
+## Create Vaadin Views
+
+To create the web interface of the system, create `Vaadin` views for each of the main functionalities. **The views will be used to display the data and handle user interactions.**
+
+> `Vaadin` allows you to create rich, interactive UIs using `Java` code. It provides a wide range of UI components and layouts that you can use to build your application's interface.
+
+Example of a simple `Vaadin` view:
+
+::: {.column-page-right}
+```java
+@Route("menu")
+public class MenuView extends VerticalLayout {
+    private final MenuService menuService;
+
+    public MenuView(MenuService menuService) {
+        this.menuService = menuService;
+        
+        H1 title = new H1("Restaurant Menu");
+        Grid<Menu> grid = new Grid<>(Menu.class);
+        grid.setItems(menuService.getAllMenuItems());
+        
+        add(title, grid);
+    }
+}
+```
+:::
+
+This view creates a page with a title and a grid showing all menu items.
+
+Key Vaadin Concepts:
+
+1. **Server-side Architecture**: Vaadin primarily runs on the server, which means your business logic stays secure and you can leverage the full power of Java.
+
+2. **Component-based UI**: Build UIs by combining and customizing existing components or creating your own.
+
+3. **Data Binding**: Easily bind UI components to data sources, including JPA entities.
+
+4. **Themes and Styling**: Customize the look and feel of your application using CSS and Vaadin's theming capabilities.
+
+5. **Integration with Spring Boot**: Vaadin integrates seamlessly with Spring Boot, allowing you to use Spring's dependency injection and other features.
+
+
+# Code: `CustomerView`
+
+
+The `CustomerView` class is a Vaadin-based web application view for managing customer information in a restaurant.
+
+![](/images/springboot/labsb08/lab08-2-ui.png){fig-align="center" width="80%"}
+
+
+
+Key Components:
+
+- **Route**: Default view of the application (`@Route("")`).
+- **Layout**: Extends `VerticalLayout` for vertical arrangement.
+- **Grid**: Displays customer data in a table format.
+- **Form Fields**: Text fields for name, email, and phone number.
+- **Buttons**: Save and Delete buttons for managing customers.
+- **Binder**: For data binding between form fields and the `Customer` object.
+
+Main Features:
+
+1. **Layout Structure**
+   - 3-column layout for responsive design.
+   - Center column contains interactive components.
+
+2. **Customer Data Display**
+   - Grid shows customer details (ID, name, email, phone number).
+   - Allows selection of customers from the grid.
+
+3. **Form for Customer Management**
+   - Input fields for customer information.
+   - Save button to add/update customers.
+   - Delete button to remove selected customers.
+
+4. **Data Binding**
+   - Uses Binder for two-way data binding.
+   - Updates form fields when a customer is selected.
+
+5. **Event Handling**
+   - Save button saves/updates customer data.
+   - Delete button removes the selected customer.
+   - Grid selection updates form with selected customer's data.
+
+6. **Repository Integration**
+   - Uses `CustomerRepository` for CRUD operations.
+
+`CustomerView` public class methods:
+
+
+![](/images/springboot/labsb08/lab08-2-vaadin-class-methods.png){fig-align="center" width="50%"}
+
+
+Key Methods:
+
+- `createMainLayout()`: Sets up UI components and layout.
+- `setupEventListeners()`: Configures event handlers.
+- `saveCustomer()`: Saves/updates customer records.
+- `deleteCustomer()`: Deletes selected customer records.
+- `clearForm()`: Resets form fields.
+- `refreshGrid()`: Updates grid with latest customer data.
+
+This view provides an easy-to-use interface for managing `customer` information in a restaurant domain.
+
+
+- [src/main/java/dev/example/restaurant/view/CustomerView.java](https://github.com/AlbertProfe/restaurantVaadin/blob/master/src/main/java/dev/example/restaurant/view/CustomerView.java){.external target='_blank'}
+
+
+::: {.column-page-right}
+
+<details>
+<summary>Code `CustomerView.java`</summary>
+
+```{.java .code-overflow-wrap filename="CustomerView.java"}
+package dev.example.restaurant.view;
+
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.Route;
+import dev.example.restaurant.model.Customer;
+import dev.example.restaurant.repository.CustomerRepository;
+import java.util.UUID;
+
+@Route("")
+public class CustomerView extends VerticalLayout {
+
+    private final CustomerRepository customerRepository;
+    private final Grid<Customer> grid = new Grid<>(Customer.class);
+    private final TextField name = new TextField("Name");
+    private final TextField email = new TextField("Email");
+    private final TextField phoneNumber = new TextField("Phone Number");
+    private final Button save = new Button("Save");
+    private final Button delete = new Button("Delete");
+    private final Binder<Customer> binder = new Binder<>(Customer.class);
+
+    public CustomerView(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+
+        // Set up the main view properties
+        setSizeFull();
+        setPadding(false);
+        setSpacing(false);
+
+        // Create and add the main layout
+        add(createMainLayout());
+
+        // Set up data binding
+        binder.bindInstanceFields(this);
+
+        // Set up event listeners
+        setupEventListeners();
+
+        // Initialize the view
+        clearForm();
+        refreshGrid();
+    }
+
+    // Method to create the main layout
+    private Component createMainLayout() {
+        // Create the 3-column layout
+        HorizontalLayout mainLayout = new HorizontalLayout();
+        mainLayout.setSizeFull();
+        mainLayout.setPadding(false);
+        mainLayout.setSpacing(false);
+
+        // Left column (empty for spacing)
+        VerticalLayout leftColumn = new VerticalLayout();
+        leftColumn.setWidth("20%");
+
+        // Center column (contains all the components)
+        VerticalLayout centerColumn = new VerticalLayout();
+        centerColumn.setWidth("60%");
+        centerColumn.setAlignItems(Alignment.CENTER);
+
+        // Right column (empty for spacing)
+        VerticalLayout rightColumn = new VerticalLayout();
+        rightColumn.setWidth("20%");
+
+        // Set up the grid
+        grid.setColumns("id", "name", "email", "phoneNumber");
+        grid.setSizeFull();
+
+        // Create a form layout
+        HorizontalLayout formLayout = 
+            new HorizontalLayout(name, email, phoneNumber);
+        formLayout.setWidth("100%");
+        formLayout.setJustifyContentMode(JustifyContentMode.CENTER);
+
+        // Create a button layout
+        HorizontalLayout buttonLayout = 
+            new HorizontalLayout(save, delete);
+        buttonLayout.setJustifyContentMode(JustifyContentMode.CENTER);
+
+        // Add components to the center column
+        centerColumn.add(
+                new H2("Customer Management"),
+                grid,
+                formLayout,
+                buttonLayout
+        );
+
+        // Add all columns to the main layout
+        mainLayout.add(leftColumn, centerColumn, rightColumn);
+
+        return mainLayout;
+    }
+
+    // Method to set up event listeners
+    private void setupEventListeners() {
+        save.addClickListener(e -> saveCustomer());
+        delete.addClickListener(e -> deleteCustomer());
+
+        grid.asSingleSelect().addValueChangeListener(event -> {
+            if (event.getValue() != null) {
+                binder.setBean(event.getValue());
+            } else {
+                clearForm();
+            }
+        });
+    }
+
+    // Methods to save, delete, and clear the form
+    private void saveCustomer() {
+        Customer customer = binder.getBean();
+        if (customer == null) {
+            customer = new Customer();
+        }
+        if (customer.getId() == null || customer.getId().isEmpty()) {
+            customer.setId(UUID.randomUUID().toString());
+        }
+        binder.writeBeanIfValid(customer);
+        customerRepository.save(customer);
+        clearForm();
+        refreshGrid();
+    }
+
+    // Method to delete a customer
+    private void deleteCustomer() {
+        Customer customer = binder.getBean();
+        if (customer != null) {
+            customerRepository.delete(customer);
+            clearForm();
+            refreshGrid();
+        }
+    }
+
+    // Method to clear the form
+    private void clearForm() {
+        binder.setBean(new Customer());
+    }
+
+    // Method to refresh the grid
+    private void refreshGrid() {
+        grid.setItems(customerRepository.findAll());
+    }
+}
+
+```
+</details>
+
+:::
+
+# Security
+
+**Necessary Dependencies**
+
+The chat application is a Spring Boot application. Therefore, use Spring Security to secure it. Start by adding this dependency to your pom.xml file:
+
+``` xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+![](/images/springboot/labsb08/lab08-2-security-steps.png){fig-align="center" width="80%"}
+
+Key points about <mark>securing a `Vaadin Flow` application with `Spring Security`</mark>:
+
+
+1. Add the **Spring Boot Security starter** `dependency`.
+2. Create a `login view` using Vaadin's `LoginForm` component.
+3. Define user roles (e.g. USER and ADMIN).
+4. Configure `Spring Security` by extending `VaadinWebSecurity`. Set up the login view and define users/roles.
+5. Grant access to views using annotations like `@PermitAll` or `@RolesAllowed`.
+6. Secure the application layer (services) with `@RolesAllowed` annotations.
+7. Add a `logout` button to the main layout.
+8. Hide UI elements (button `LogOut`) based on user roles using `AuthenticationContext`.
+9. Use the authenticated `authenticationContext.getPrincipalName()` as the value `LogOut` button.
+
+> This setup restricts access to authenticated users, allows only admins to create channels, and personalizes the user experience. It integrates Vaadin's built-in security features with Spring Security for a comprehensive security solution.
+
+
+
+# Test
+
+**Test the system**
+
+Test the system by running it and making sure that all the functionalities work as expected. This includes testing reservation creation, menu management, order processing, staff scheduling, and report generation.
+
+# Code and output
+
+- [GitHub code](https://github.com/AlbertProfe/restaurantVaadin){.external target='_blank'}
+- [GitHub commits](https://github.com/AlbertProfe/restaurantVaadin/commits/master/){.external target='_blank'}
+
+## Commit `6a3c9f1`
+
+Commits on Oct 2, 2024:
+
+- create project customer entity
+- adding layout
+- decoupling layout
+- minor changes
+
+![](/images/springboot/labsb08/lab08-2-vaadin-view.png)
+
+
+
+## Commit `3333400`
+
+
+Commit on Nov 12, 2024: **add UI components: data picker, dialog, combo, accordion**
+
+- [Code](https://github.com/AlbertProfe/restaurantVaadin/tree/33334005faf1e28d6ae953d6dff56f68990abd83){.external target='_blank'}
+- [Code: /view/CustomerView.java](https://github.com/AlbertProfe/restaurantVaadin/blob/33334005faf1e28d6ae953d6dff56f68990abd83/src/main/java/dev/example/restaurant/view/CustomerView.java){.external target='_blank'}
+
+**H2 LOCAL server**
+
+![](/images/springboot/labsb08/lab08-2-vaadin-h2.png)
+
+
+**View**
+
+The new view `Vaadin` code defines a `CustomerView` class facilitates <mark>CRUD operations on customer data</mark> through a user interface that includes form fields for customer details (`name`, `email`, `phonenumber`), buttons for saving and deleting records, and a `grid` for displaying customer information.
+
+The layout is structured into **three columns**, with a progress bar and additional components like a `ComboBox` for customer types and a `DatePicker` for selecting start dates.
+
+Event listeners handle user interactions, ensuring data is saved or deleted as needed while maintaining synchronization with the underlying database via the `CustomerRepository`.
+
+
+
+![](/images/springboot/labsb08/lab08-2-vaadin-components.png)
+
+
+## Commit `33b1284`
+
+Commits on Nov 12, 2024: **MainLayout, BookingView, RouterLink and drawer**
+
+- [Code](https://github.com/AlbertProfe/restaurantVaadin/tree/33b12844f8d20c52d08de41c8e3eb3c5f58751a9){.external target='_blank'}
+
+This setup accomplishes the following:
+
+- The `CustomerView` and `BookingView` classes are annotated with @Route, specifying their respective URL paths ("customer" and "booking") and setting `MainLayout` as their parent layout14.
+- The `MainLayout` class extends `AppLayout`, which provides a header and a responsive drawers.
+- In the `MainLayout`, we create a `header` with a logo and a drawer `toggle button`.
+- The `drawer` is populated with `RouterLink` components for both the `Customer` and `Booking` views, allowing for navigation between them.
+- The `setHighlightCondition` method is used to highlight the current active link in the drawer.
+
+
+![](/images/springboot/labsb08/lab08-2-vaadin-mainlayout.png)
+
+With this setup, users can navigate to `/customer` to see the `Customer` view and `/booking` to see the `Booking` view. The main layout provides a consistent structure across both views, with a header and a navigation drawer that can be toggled on smaller screens
+
+![](/images/springboot/labsb08/lab08-2-vaadin-mainlayout-2.png)
+
+![](/images/springboot/labsb08/lab08-2-vaadin-mainlayout-3.png)
+
+## Commit `b67d768`
+
+
+Commits on Nov 13, 2024: **Login, LoginView and Configuration**
+
+- [Security Vaadin v24.4](https://vaadin.com/docs/latest/getting-started/tutorial/flow/security){.external target='_blank'}
+
+`/home` is public:
+
+![](/images/springboot/labsb08/lab08-2-login-home-public.png)
+
+Any other view/page needs `auth`:
+
+![](/images/springboot/labsb08/lab08-2-login-public.png)
+
+Bob may navigate with (`USER_ROLE`):
+
+![](/images/springboot/labsb08/lab08-2-login-customer.png)
+
+Once, `Bob` is logged (`USER_ROLE`), there are some view/page (`/booking`) with `ADMIN_ROLE`
+
+![](/images/springboot/labsb08/lab08-2-login-nopermit.png)
+
+`ADMIN_ROLE` & `/booking`:
+
+![](/images/springboot/labsb08/lab08-2-login-admin.png)
+
+
+# Commit `c0c2192`
+
+Commits on Nov 14, 2024: **Icon, Drawer with Login button and fake user isaac-1234**
+
+We create a new user: `isaac` and encrypt the password with [bcrypt](https://bcrypt.online/){.external target='_blank'}:
+
+
+::: {.column-page-right}
+
+``` java
+@Bean
+    public UserDetailsService users() {
+        var alice = User.builder()
+                .username("alice")
+                // password = password with this hash, don't tell anybody :-)
+                .password("{bcrypt}$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW")
+                .roles(Roles.USER)
+                .build();
+        var bob = User.builder()
+                .username("bob")
+                // password = password with this hash, don't tell anybody :-)
+                .password("{bcrypt}$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW")
+                .roles(Roles.USER)
+                .build();
+        var isaac = User.builder()
+                .username("isaac")
+                // password = password with this hash, don't tell anybody :-)
+                .password("{bcrypt}$2y$10$jaoj0Q2GRSxqwXaVB4yzSugTJJM8zuQf0NmLZU.iPhoC2CJBA.hsi")
+                .roles(Roles.ADMIN, Roles.USER)
+                .build();
+
+        var admin = User.builder()
+                .username("admin")
+                // password = password with this hash, don't tell anybody :-)
+                .password("{bcrypt}$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW")
+                .roles(Roles.ADMIN, Roles.USER)
+                .build();
+        return new InMemoryUserDetailsManager(alice, bob, admin, isaac);
+    }
+
+```
+:::
+
+`Drawer` with icons and login view in `MainLayout`:
+
+![](/images/springboot/labsb08/lab08-2-login-icon-view.png)
+
+`LogOut` button hidden
+
+![](/images/springboot/labsb08/lab08-2-login-icon-drawer.png)
+
+New User **isaac-1234**
+
+![](/images/springboot/labsb08/lab08-2-login-icon-isaac.png)
+
+**isaac** logged in:
+
+![](/images/springboot/labsb08/lab08-2-login-icon-isaac-2.png)
+
+
+

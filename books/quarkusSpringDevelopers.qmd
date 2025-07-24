@@ -1,0 +1,30 @@
+---
+title: "Quarkus for Spring Developers"
+author: "albertprofe"
+subtitle: "Eric Deandrea, August 31, 2021, Quarkus for Spring Developers"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "An essential guide for Spring developers who want to embrace cloud-native development with Java. Eric Deandrea provides a clear and practical approach to building cloud-native applications with Quarkus, a modern, fast, and efficient Java framework."
+categories: [java]
+subcategories: [programming, java, springboot, devops, Quarkus, microservices]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/quarkusSpringDevelopers.png)
+
+## More info
+
+
+- [Quarkus for Spring Developers](https://quarkus.io/blog/quarkus-for-spring-developers/){.external}
+- [Quarkus for Spring Developers GitHub](https://github.com/quarkus-for-spring-developers){.external}
+- [Quarkus for Spring Developers Book](https://developers.redhat.com/e-books/quarkus-spring-developers){.external}
+
+> For me, the paradigm that Quarkus brings is a major one for Java. This is one of these moments in your career when you should take stock and explore a new technology in-depth! This book makes it easy to do that, providing like-for-like examples of your favorite Spring development patterns mapped to their Quarkus equivalents (don’t panic, there are many similarities) and giving you an understanding of the fundamentals at play under the hood.
+
+—Martijn Verburg (aka “The Diabolical Developer”)
+Principal Group Manager (Java), Microsoft
+Eclipse Adoptium Steering Committee member

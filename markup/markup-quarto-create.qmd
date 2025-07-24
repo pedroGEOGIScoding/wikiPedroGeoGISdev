@@ -1,0 +1,100 @@
+---
+title: "Quarto Markdown: creating"
+subtitle: Create (2/7)
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Create your Quarto web
+categories: [markup, qmd, quarto]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+# Overview
+[Follow the Quick Start](https://quarto.org/docs/websites/) with Visual Code Extension Quarto to get a simple website up and running. After covering the basics, read on to learn about website navigation and other more advanced website features.
+
+::: {.callout-tip collapse="true" icon=false}
+## (1) Install Quarto Extension for Visual Code
+VS Code extension for the Quarto scientific and technical publishing system. This extension provides language support **for Quarto .qmd files**. Extension Resources:
+- [Marketplace](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+- [Repository](https://github.com/quarto-dev/quarto-vscode)
+- [License](https://quarto.gallerycdn.vsassets.io/extensions/quarto/quarto/1.57.0/1670089936546/Microsoft.VisualStudio.Services.Content.License)
+- [Quarto](https://marketplace.visualstudio.com/publishers/quarto)
+
+![Quarto extension for Visual Code](/images/markup/quartoextension.png){.image-preview #quarto-extension-vscode}
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (2) Quarto: Create Project
+To create a new website project within VS Code, **execute the** `Quarto: Create Project` command from the command-palette <mark>(CTRL + SHRIFT + P)</mark>
+
+![Quarto Visual Code palette create Project](https://quarto.org/docs/websites/images/vscode-create-project-command.png){.image-preview #quarto-create-vscode}
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (3) Quarto: Select Website and Directory Name
+Then, select Website Project.
+
+You’ll be prompted to select a parent directory to create the project within. Then, you’ll be asked to name the directory for your website project.
+
+![Quarto Visual Code palette create Project and then select website](https://quarto.org/docs/websites/images/vscode-create-project-website.png){.image-preview #quarto-website-vscode}
+
+![Quarto Visual Code palette create Project and then select website and directory Name](https://quarto.org/docs/websites/images/vscode-create-project-directory.png){.image-preview #quarto-directory-name-vscode}
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## (4) Quarto: Project Created
+The new website project will be created and opened within <mark>VS Code</mark>. Click the <mark>Render button</mark> to preview the website and code the `_quarto.yml`.
+
+![Quarto Visual Code Project Created](https://quarto.org/docs/websites/images/vscode-create-project-render.png){.image-preview #quarto-project-created}
+
+:::
+
+# Config File
+
+Every website has a `_quarto.yml` **config file** that provides website options as well as defaults for HTML documents created within the site.
+
+For example, here is the default config file for the simple site created above:
+
+
+
+``` {.js filename="_quarto.yml"}
+project:
+  type: website
+
+website:
+  title: "My New Quarto web about Dev"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+```
+
+**YAML**
+
+> YAML (YAML Ain't Markup Language) is a **human-readable data serialization format that stands out for its simplicity and readability**.
+> It uses **indentation to represent data structures**, making it easy to write and understand.
+> YAML is often used for **configuration files and data exchange between languages with different data structures**. It's not a programming language but rather a configuration language.
+
+::: {.column-margin}
+The popularity of YAML stems from its clarity and conciseness. Its syntax is clean and doesn't rely on complex symbols, making it accessible to both developers and non-developers. 
+:::
+
+YAML files are commonly used in various contexts, including configuration files for applications, Continuous Integration/Continuous Deployment (CI/CD) pipelines, and infrastructure as code tools.
+
+YAML's readability makes it suitable for expressing configurations in a natural and easily comprehensible way.
+
+It has become a **standard for configuration in many software projects due to its simplicity and broad adoption**. Tools like Ansible, Kubernetes, Docker Compose, and configuration files for languages like Python and JavaScript commonly use YAML. Its human-friendly syntax and widespread support contribute to its prevalence in modern software development.
+
+

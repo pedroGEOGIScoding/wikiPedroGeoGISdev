@@ -1,0 +1,62 @@
+---
+title: "Ansible"
+subtitle: Ansible
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Maven
+categories: [devops, ansible]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **What is Ansible**
+
+One of **devOps** most popular tools is Ansible. 
+
+<mark>It allows managers to solve similar problems without going through them again and again.</mark>
+
+It automates the entire process, by providing repetitive solutions to repetitive problems and conserving both time and energy. It is an **open-source tool that targets to increase productivity.**
+
+:::
+
+# Overview
+
+<mark>Automation for everyone.</mark>
+
+No matter your role, or what your automation goals are, **Ansible** can help you demonstrate value, connect teams, and deliver efficiencies for your organization.
+
+Built on open source, **Red Hat Ansible Automation Platform** is a hardened, tested subscription product that offers full life cycle support for organizations.
+
+# Why Ansible is so popular
+
+**Ansible** is a popular choice among **DevOps professionals** due to several factors.
+
+**Firstly**, it offers an intuitive and agentless approach to configuration management, making it easy to automate tasks across servers.
+
+::: {.column-margin}
+Ansible's combination of simplicity, flexibility, automation, and robust features contributes to its popularity among DevOps professionals.
+:::
+
+**Secondly**, Ansible's <mark>simple YAML-based syntax allows for easy understanding and maintenance of playbooks, making it accessible to both beginners and experienced users.</mark>
+
+Additionally, Ansible's idempotent nature ensures that running the same playbook multiple times produces the same result, reducing the risk of configuration drift. The platform also provides a wide range of modules for managing various aspects of IT infrastructure, including [package management](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html), [file manipulation](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html), [service management](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html), and [cloud provisioning](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html). Its active [community](https://community.ansible.com/) and extensive [documentation](https://docs.ansible.com/ansible/latest/index.html) further support developers in troubleshooting and learning.
+
+Moreover, **Ansible**'s agentless architecture eliminates the need for installing and managing software on managed nodes, simplifying deployment and reducing overhead.
+
+Lastly, its ability to integrate with existing tools and infrastructure, along with its support for role-based organization, enhances its flexibility and scalability.
+
+
+
+# References
+
+- [Ansible Certification Training](https://www.knowledgehut.com/devops/ansible-training){.external target='_blank'}
+- [Automation for everyone](https://www.ansible.com/){.external target='_blank'}
+
+

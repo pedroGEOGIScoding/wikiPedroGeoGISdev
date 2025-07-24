@@ -1,0 +1,249 @@
+---
+title: "Docker"
+subtitle: Docker
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Maven
+categories: [devops, Docker]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **What is a container**
+
+A ``container`` is a lightweight, standalone, and executable software package that includes everything needed to run a piece of software.
+
+And one of the most popular tools for working with containers is **Docker**.
+
+**Docker** is both the name of the company ([Docker Inc](https://en.wikipedia.org/wiki/Docker,_Inc.){.external target='_blank'}) and the software they have created which packages software into containers. 
+:::
+
+# Overview
+
+``Containers`` are designed to isolate applications and their dependencies, ensuring that they can run consistently across different environments. Whether the application is running from your computer or in the cloud, the application behavior remains the same.
+
+::: {.column-margin}
+**Virtual machines (VMs)** are created through a process called virtualization. 
+
+Virtualization is a technology that allows you to create multiple simulated environments or virtual versions of something, such as an operating system, a server, storage, or a network, on a single physical machine.
+
+These virtual environments behave as if they are independent, separate entities, even though they share the resources of the underlying physical system.
+:::
+
+Unlike **VMs** which virtualize the hardware, containers virtualize the operating system. This simply means that a container uses a single OS to create a virtual application and its libraries. Containers run on top of a shared OS provided by the host system.
+
+![](/images/devops/containers.png)
+
+Containers have several benefits:
+
+- **Portability**: Containers are designed to be platform-independent. They can run on any system that supports the container runtime, such as Docker, regardless of the underlying operating system. This makes it easier to move applications between different environments, including local development machines, testing servers, and different cloud platforms.
+- **Efficiency**: Containers share the host system's operating system, which reduces the overhead of running a virtual machine with multiple operating systems. This leads to more efficient resource utilization and allows for a higher density of applications that can run on a single host.
+- **Consistency**: Containers package all the necessary components, including the application code, runtime, libraries, and dependencies, into a single unit. This eliminates the "it works on my machine" problem and ensures that the application runs consistently across different environments, from development to production.
+- **Isolation**: Containers provide a lightweight and isolated environment for running applications. Each container encapsulates the application and its dependencies, ensuring that they do not interfere with each other. This isolation helps prevent conflicts and ensures consistent behavior across different environments.
+- **Fast Deployment**: Containers can be created and started quickly, often in a matter of seconds. This rapid deployment speed is particularly beneficial for applications that need to rapidly scale up or down based on demand.
+
+# What is Docker?
+
+Now that we have covered **VMs and containers**, what exactly is Docker? <mark>Docker is simply a tool for creating and managing containers.</mark>
+
+At its core, ``Docker`` has two concepts that are useful to understand: `
+
+- the ``Dockerfile`` and
+- ``Docker`` Images.
+
+A ``Dockerfile`` contains the set of instructions for building a ``Docker`` Image.
+
+A ``Docker`` Image serves as a template for creating ``Docker`` containers. It contains all the necessary code, runtime, system tools, libraries, and settings required to run a software application.
+
+![](/images/devops/docker-creation.png)
+
+So, a Dockerfile is used to build a Docker Image which is then used as the template for creating one or more Docker containers. This is illustrated below.
+
+# Example
+
+Spring Boot is great for running inside a Docker container. Spring Boot applications ‘just run’.  For running it in a Docker container, you only require a base OS and a JDK and then build into a Docker container.
+
+``` {.dockerfile .code-overflow-wrap filename="App.dockerfile"}
+FROM adoptopenjdk/openjdk11:alpine-jre
+MAINTAINER albertprofe
+COPY springbootClient-0.0.1-SNAPSHOT.jar example1.jar
+ENTRYPOINT ["java","-jar","example1.jar"]
+```
+
+Images (like Docker images) are read-only templates containing instructions for creating a container. A Docker image creates containers to run on the Docker platform.
+
+![](/images/devops/docker-creation-albertprofe.png)
+
+Then
+
+``` {.terminal .code-overflow-wrap}
+> docker build
+> docker run
+```
+
+
+# Example #2
+
+```dockerfile
+# Use a Java 17 base image
+FROM openjdk:17-jdk-slim
+
+# Maintainer information
+MAINTAINER albertprofe
+
+# Copy the application JAR file to the container
+COPY restaurant-0.0.1-SNAPSHOT.jar restVaadin.jar
+
+# Set the entry point to run the JAR file
+ENTRYPOINT ["java", "-jar", "restVaadin.jar"]
+```
+
+```bash
+docker login
+docker build -t restvaadinapp .
+docker run -p 8080:8080 restvaadinapp
+```
+
+# Example #3
+
+- **app.dockerfile**
+- [Java jar booksPageable](https://cloud.albertprofe.dev/s/47P7c2ro5DHxw2e){.external target='_blank'}
+
+```dockerfile
+# Use a Java 21 base image
+FROM openjdk:21-jdk-slim
+
+# Maintainer information
+MAINTAINER albertprofe
+
+# Copy the application JAR file to the container
+COPY BooksPageable-0.0.1-SNAPSHOT.jar books.jar
+
+# Set the entry point to run the JAR file
+ENTRYPOINT ["java", "-jar", "books.jar"]
+```
+
+```bash
+docker login
+docker build -t books .
+docker run -p 8080:8080 books
+```
+
+# Docker commands
+
+::: {.column-page-right}
+| Command | Flag | Description |
+| --- | --- | --- |
+| `docker build` | `-t, --tag` | Assigns a name and optionally a tag (e.g., `name:tag`) to the image. |
+| `docker build` | `-f, --file` | Specifies the Dockerfile to use if it's not named `Dockerfile`. |
+| `docker build` | `--build-arg` | Passes build-time variables to the Dockerfile. |
+| `docker build` | `--no-cache` | Ignores cached layers and forces a fresh build. |
+| `docker build` | `--target` | Builds a specific stage in a multi-stage Dockerfile. |
+| `docker build` | `-q, --quiet` | Suppresses output, showing only the final image ID. |
+| `docker run` | `-d, --detach` | Runs the container in detached mode (in the background). |
+| `docker run` | `-p, --publish` | Maps container ports to host ports (e.g., `8080:80`). |
+| `docker run` | `--name` | Assigns a name to the container for easier reference. |
+| `docker run` | `-e, --env` | Sets environment variables inside the container. |
+| `docker run` | `--rm` | Automatically removes the container when it exits. |
+| `docker run` | `-v, --volume` | Mounts host directories or volumes into the container. |
+| `docker run` | `--network` | Connects the container to a specified network. |
+| `docker run` | `--cpus` | Limits the number of CPUs available to the container. |
+| `docker run` | `--memory` | Sets a memory limit for the container. |
+
+
+
+```bash
+# Build a Docker image from the current directory's Dockerfile
+# -t: Tag the image with the name 'myapp' and version '1.0'
+docker build -t myapp:1.0 .
+
+# Run a new container from the 'myapp' image
+# -d: Run the container in detached mode (in the background)
+# --name: Assign the name 'myapp_container' to the container
+# -p: Map port 8080 on the host to port 80 in the container
+docker run -d --name myapp_container -p 8080:80 myapp:1.0
+
+# List all running containers
+docker ps
+
+# Show logs from 'myapp_container'
+# -f: Follow log output in real-time
+docker logs -f myapp_container
+
+# Display real-time statistics for all running containers
+docker stats
+
+# Stop the 'myapp_container'
+docker stop myapp_container
+
+# Remove the stopped 'myapp_container'
+docker rm myapp_container
+
+# Remove the 'myapp' image
+docker rmi myapp:1.0
+
+# Clean up unused Docker resources (containers, networks, images)
+docker system prune -f
+```
+
+:::
+
+
+
+## Mapping Multiple Ports
+
+When you want to map multiple ports, you simply specify the `-p` option multiple times in your `docker run` command. Here is an example:
+
+```bash
+`docker run -d --name my_container -p 8080:80 -p 8443:443 nginx`
+```
+
+## Explanation
+
+- **`-d`**: Runs the container in detached mode (in the background).
+- **`--name my_container`**: Assigns the name `my_container` to the running container.
+- **`-p 8080:80`**: Maps port 80 in the container to port 8080 on the host. This is typically used for HTTP traffic.
+- **`-p 8443:443`**: Maps port 443 in the container to port 8443 on the host. This is commonly used for HTTPS traffic
+
+## Steps to Add a User to the Docker Group
+
+1. **Create the Docker Group (if it doesn't exist)**:- Run the following command to create the `docker` group if it hasn't been created already:bash
+  
+  `sudo groupadd docker`
+  
+2. **Add Your User to the Docker Group**:- Add your user to the `docker` group using the following command. Replace `${USER}` with your username if you're not using an environment variable:bash
+  
+  `sudo usermod -aG docker ${USER}`
+  
+3. **Apply Changes**:- Log out and log back in so that your group membership is re-evaluated.
+  
+  - Alternatively, you can use the following command to apply the changes without logging out:bash
+    
+    `newgrp docker`
+    
+4. **Verify Docker Access**:
+  
+  - Test your Docker setup by running a simple command like `docker ps` without `sudo`:bash
+    
+    `docker ps`
+    
+  - If this command runs successfully without errors, your setup is complete.
+
+# References
+
+- [docker](https://sites.google.com/view/devopscifo/devops-tools/docker){.external target='_blank'}
+- [How Docker Containers Work – Explained for Beginners](https://www.freecodecamp.org/news/how-docker-containers-work/){.external target='_blank'}
+- [Install Docker Desktop on Ubuntu](https://docs.docker.com/desktop/setup/install/linux/ubuntu/){.external target='_blank'}
+- [CLI Cheat Sheet](https://www.docker.com/resources/cli-cheat-sheet/){.external target='_blank'}
+
+
+
+

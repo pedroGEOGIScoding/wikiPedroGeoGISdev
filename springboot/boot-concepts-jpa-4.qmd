@@ -1,0 +1,294 @@
+---
+title: "Spring Boot: JPA Queries"
+subtitle: Spring Boot JPA Queries
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot JPA
+categories: [Spring-Boot, JPA]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+::: {.summary}
+
+📘 **JPA Queries**
+
+Spring Boot provides an implementation of the Java Persistence ``API`` (``JPA``) to simplify database access: ORM (``Object-Relational Mapping``)
+
+In JPA, entity classes represent tables in the database, and relationships between entities are mapped using annotations.
+
+`JPA (Java Persistence API)` enables efficient data retrieval through various **querying** methods.
+
+It supports `JPQL (Java Persistence Query Language)` for object-oriented queries.
+
+
+:::
+
+</br>
+
+
+
+## JPQL (Java Persistence Query Language)
+
+`JPQL (Java Persistence Query Language)` is an <mark>object-oriented query language used to define queries for entities and their relationships in `JPA (Java Persistence API)`</mark>. It's similar to `SQL` but operates on `JPA entity objects` rather than database tables.
+
+Criteria API for type-safe programmatic queries, and native SQL for database-specific operations. JPA also allows named queries, parameterized queries, and various operations like filtering, sorting, and joining entities.
+
+### Key Characteristics of JPQL
+
+1. **Object-Oriented**: Works with Java objects and their properties, not database tables and columns.
+2. **Database-Independent**: Queries can work across different database systems without modification.
+3. **Supports JPA Relationships**: Can easily navigate entity relationships.
+4. **Powerful**: Supports complex operations like joins, aggregations, and subqueries.
+
+### JPQL vs SQL
+
+Here's a comparison between JPQL and SQL:
+
+| Aspect | JPQL | SQL |
+| --- | --- | --- |
+| Operates on | Entity objects | Database tables |
+| Case sensitivity | Case-sensitive | Generally case-insensitive |
+| Portability | Database-independent | May contain database-specific syntax |
+| Join syntax | Simplified using relationships | Requires explicit join conditions |
+
+### JPQL Syntax Examples
+
+1. Basic Select Query:
+
+```jpql
+SELECT u FROM User u WHERE u.age > 18
+```
+
+2. Join Query:
+
+```jpql
+SELECT o FROM Order o JOIN o.customer c WHERE c.country = 'USA'
+```
+
+3. Aggregate Function:
+
+```jpql
+SELECT AVG(e.salary) FROM Employee e WHERE e.department.name = 'IT'
+```
+
+4. Subquery:
+
+```jpql
+SELECT e FROM Employee e WHERE e.salary > (SELECT AVG(emp.salary) FROM Employee emp)
+```
+
+### Using JPQL in Spring Data JPA
+
+1. With `@Query` annotation:
+
+::: {.column-page-right}
+```java
+@Query("SELECT u FROM User u WHERE u.email = ?1 AND u.active = true")
+User findActiveUserByEmail(String email);
+```
+:::
+
+1. With `EntityManager`:
+
+::: {.column-page-right}
+```java
+String jpql = "SELECT p FROM Product p WHERE p.category.name = :categoryName";
+List<Product> products = entityManager.createQuery(jpql, Product.class)
+    .setParameter("categoryName", "Electronics")
+    .getResultList();
+```
+:::
+
+### Benefits of JPQL
+
+1. Type-safety: Works with Java types, reducing runtime errors.
+2. Abstraction: Shields developers from database-specific details.
+3. Optimization: JPA providers can optimize JPQL queries for better performance.
+4. Flexibility: Allows for complex queries while maintaining database independence.
+
+## Relevant ways to Query
+
+Spring Boot offers several ways to create queries when working with JPA repositories.
+
+::: {.column-page-right}
+
+
+| Method | Description | Pros | Cons |
+|--------|-------------|------|------|
+| Derived Query Methods | Create queries by method names in repository interfaces | - Easy to use for simple queries- No need to write SQL/JPQL- Automatic query generation | - Limited to simple queries- Can lead to long method names for complex queries |
+| @Query Annotation | Write custom JPQL or native SQL queries in repository interfaces | - Allows complex queries- Supports both JPQL and native SQL- Can be more readable than derived queries | - Queries are strings, so no compile-time checking- Can mix persistence logic with repository interface |
+| Specification API | Build dynamic queries programmatically | - Flexible for complex, dynamic queries- Type-safe- Reusable query parts | - More verbose for simple queries- Requires more setup |
+| Query by Example (QBE) | Create queries using domain object instances as examples | - Intuitive for simple queries- No need for query language- Works well with dynamic queries | - Limited to equality and 'like' comparisons- Not suitable for complex conditions |
+| @NamedQueries | Define queries at the entity level | - Separates query logic from repository- Reusable across multiple repositories- Potentially better performance | - Queries are strings, so no compile-time checking- Can clutter entity classes with query definitions |
+
+:::
+
+Here are the **five most relevant methods**, along with examples for the [userBorrowBook](https://github.com/AlbertProfe/userBorrowBook){.external target='_blank'} entities:
+
+### 1. Derived Query Methods
+
+`Derived query methods` allow you to create queries by simply declaring method names in your repository interface. `Spring Data JPA` automatically generates the query based on the method name.
+
+::: {.column-page-right}
+```java
+public interface BookRepository extends JpaRepository {
+    List findByAuthorAndAvailableTrue(String author);
+    Optional findByIsbn(String isbn);
+    List findByPublicationDateAfter(LocalDate date);
+}
+
+public interface BorrowRepository extends JpaRepository {
+    List findByUserAndIsReturnedFalse(UserApp user);
+    List findByBookAndReturnDateBefore(Book book, LocalDate date);
+}
+
+public interface UserAppRepository extends JpaRepository {
+    List findByAgeGreaterThanAndIsArchivedFalse(int age);
+    Optional findByEmail(String email);
+}
+```
+:::
+
+## 2. @Query Annotation
+
+The @Query annotation allows you to write custom `JPQL` or native `SQL` queries directly in your repository interface.
+
+::: {.column-page-right}
+```java
+public interface BookRepository extends JpaRepository {
+    @Query("SELECT b FROM Book b WHERE b.pagesQty > :minPages AND b.available = true")
+    List findAvailableBooksWithMoreThanPages(@Param("minPages") int minPages);
+}
+
+public interface BorrowRepository extends JpaRepository {
+    @Query("SELECT b FROM Borrow b WHERE b.user.id = :userId AND b.isReturned = false")
+    List findActiveUserBorrows(@Param("userId") String userId);
+}
+
+public interface UserAppRepository extends JpaRepository {
+    @Query(value = "SELECT * FROM user_app WHERE EXTRACT(YEAR FROM AGE(dob)) > :age", nativeQuery = true)
+    List findUsersOlderThan(@Param("age") int age);
+}
+```
+:::
+
+## 3. Specification API: filters
+
+The `Specification API` allows you to build **dynamic queries programmatically**. This is useful when you need to create complex queries based on multiple conditions.
+
+::: {.column-page-right}
+```java
+public interface BookRepository extends JpaRepository, JpaSpecificationExecutor {
+}
+
+public class BookSpecifications {
+    public static Specification isAvailable() {
+        return (root, query, cb) -> cb.isTrue(root.get("available"));
+    }
+
+    public static Specification hasAuthor(String author) {
+        return (root, query, cb) -> cb.equal(root.get("author"), author);
+    }
+}
+
+// Usage
+List availableBooksByAuthor = bookRepository.findAll(where(isAvailable()).and(hasAuthor("J.K. Rowling")));
+```
+:::
+
+## 4. Query by Example (QBE)
+
+`Query by Example` allows you to create queries using domain object instances as examples.
+
+::: {.column-page-right}
+```java
+public interface BookRepository extends JpaRepository, QueryByExampleExecutor {
+}
+
+// Usage
+Book exampleBook = new Book();
+exampleBook.setAuthor("George Orwell");
+exampleBook.setAvailable(true);
+
+Example example = Example.of(exampleBook);
+List books = bookRepository.findAll(example);
+```
+:::
+
+## 5. @NamedQueries annotation
+
+`@NamedQueries` is another powerful way to create queries in `Spring Boot JPA`. This method allows you to define queries at the entity level, separating the query definition from the repository interface.
+
+Here's how you can use `@NamedQueries` with our entities:
+
+::: {.column-page-right}
+```java
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "Book.findAvailableByAuthor",
+        query = "SELECT b FROM Book b WHERE b.author = :author AND b.available = true"),
+    @NamedQuery(name = "Book.countByPublicationYear",
+        query = "SELECT COUNT(b) FROM Book b WHERE FUNCTION('YEAR', b.publicationDate) = :year")
+})
+public class Book {
+    // ... existing fields and methods
+}
+
+@Entity
+@NamedQueries({
+    @NamedQuery(name = "Borrow.findOverdueBorrows",
+        query = "SELECT b FROM Borrow b WHERE b.returnDate  {
+    List findAvailableByAuthor(@Param("author") String author);
+    long countByPublicationYear(@Param("year") int year);
+}
+
+public interface BorrowRepository extends JpaRepository {
+    List findOverdueBorrows();
+    int sumPointsByUser(@Param("userId") String userId);
+}
+
+public interface UserAppRepository extends JpaRepository {
+    List findActiveUsersByAgeRange(@Param("minAge") int minAge, @Param("maxAge") int maxAge);
+    @Modifying
+    @Query(name = "UserApp.updateUserAddress")
+    int updateUserAddress(@Param("newAddress") String newAddress, @Param("userId") String userId);
+}
+```
+:::
+
+Using @NamedQueries offers several advantages:
+
+1. It separates query logic from the repository interface, improving code organization.
+2. It allows for easy reuse of complex queries across multiple repositories.
+3. It provides better performance as named queries are parsed and prepared when the persistence unit is created[1].
+
+Remember to follow the naming convention `.` for Spring Data JPA to automatically resolve and use the named queries.
+
+
+
+## Additional Resources
+
+### JPQL
+
+- [JPQL - Java Persistence Query Language](https://docs.oracle.com/javaee/6/tutorial/doc/bnbtg.html){.external target='_blank'} </br>
+- [JPA Query Language](https://docs.oracle.com/javaee/7/tutorial/persistence-querylanguage.htm){.external target='_blank'} </br>
+- [JPQL Reference](https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#hql){.external target='_blank'} </br>
+- [Spring Data JPA - Query Creation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation){.external target='_blank'}
+
+### JPA Queries
+
+For more information on Spring Boot JPA query methods, check out these resources:
+
+- [Defining Query Methods](https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html){.external target='_blank'} </br>
+- [Query by Example](https://docs.spring.io/spring-data/jpa/reference/repositories/query-by-example.html){.external target='_blank'} </br>
+- [JPA Query Methods](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html){.external target='_blank'} </br>
+- [Spring Boot: JPA & DI](/springboot/boot-concepts-jpa.qmd){.external target='_blank'}
+
+
+

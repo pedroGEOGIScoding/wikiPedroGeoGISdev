@@ -1,0 +1,36 @@
+---
+title: "DevOps Vocabulary"
+subtitle: Technical terms and definitions
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [vocabulary, devops]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+![Technical terms and definitions](/images/home/frontimagealbertprofeweb-vocabulary.png){width=60%}
+
+## Vocabulary 
+
+| Term | Definition |
+|:---|:---|
+| cd/ci | Continuous Deployment/Continuous Integration, automating software delivery |
+| pipeline | A series of automated steps for software delivery |
+| docker image | A lightweight, portable software package that runs in a container |
+| docker container | An executable instance of a Docker Image, isolated environment |
+| script/declarative | Script-based vs. desired state-based configuration management |
+| configuration file  | A file containing settings and parameters for a system |
+| jenkins | An open-source automation server for software development and testing |
+| k8s | Kubernetes, an open-source container orchestration system for managing clusters |
+| deploy | To release and make live a software application |
+| devops | A methodology for development and operations teams to work together, improve collaboration |
+| software life cycle | A series of stages that a software product goes through from its initial conception to retirement. This includes stages such as planning, development, testing, deployment, and maintenance |
+
+: DevOps vocabulary {tbl-colwidths="[20,80]"}
+
+

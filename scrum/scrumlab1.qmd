@@ -1,0 +1,72 @@
+---
+title: "SCRUM Lab#SC01: Paper Airplanes"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [scrum, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **SCRUM Lab#SC01: Paper Airplanes**
+
+The <mark>Agile Paper Plane Game is a dynamic and interactive workshop designed to illustrate the principles of Agile project management in a fun and engaging way.</mark>
+
+- Participants form teams and are tasked with building and continuously improving a paper airplane within time-boxed iterations.
+- Each iteration represents a development cycle, emphasizing Agile concepts like collaboration, adaptability, and incremental progress.
+- Teams gather feedback, make swift adjustments, and strive for optimal performance in a simulated project environment.
+ 
+This hands-on lab **promotes a deeper understanding of Agile methodologies, fostering teamwork, communication, and agility in responding to evolving requirements** – all essential elements of successful project management.
+
+:::
+
+# Agile Paper Plane Game
+
+![](/images/scrum/airplane.png){width="50%"}
+
+## Introduction
+
+First of all, you need to create as many 2-4 people teams as possible. Teams don’t have to be equally sized (life is not fair). 
+
+The goal for every team will be to build paper (logo, name and adhesive tape) planes while consuming resources and provide profit for a company.
+
+## Rules
+
+You should start the game with the introduction of rules.
+
+- The plane is counted as finished (accepted/done) and valid (approved ) only when you throw it and it crosses a distance (3-5 meters? )mark before touchdown.
+- Every team starts with €30 in their pockets.
+- The maximum profit from one plane is *to-calculate* and a maximum loss per lack of plane is *to-calculate*.
+- Your balance is changing:
+  - +€3 per committed and finished plane
+  - +€2 per valid plane above commitment limit (crosses distance mark).
+  - -€3 per committed and unfinished plane
+  - -€1 per plane given for a failed test
+  - -€1 per used piece of paper.
+
+## Game process
+
+The game will be held in 3 sprints. Each sprint will be combined from:
+
+- **Planning (5min)** – each team will be provided with one A4 piece of paper for checking and figuring out a number of planes that they will commit to, in this sprint. Each team gets the number of papers to what they commit to deliver.
+- **Sprinting (5 min)** – actual building.
+- **Review** – all participants together gather to check their planes (you are making test flights). Ask users to mark their planes before the review, so you will make blind tests (you will not know whose planes you are throwing). The plane is accepted when it flies for more than 3 meters?.
+- **Retro (5 min)** – teams use this time to find out what they should improve in the next sprint.
+
+During the Agile Paper Planes Game, you should update board with every group’s current account.
+
+ 
+
+
+# Reference
+
+- [Agile-SCRUM Paper Planes Game](https://sites.google.com/view/gestioprojectes/llegir/setmana1/paper-games)
+- [Paper airplane game](https://www.slideshare.net/pmboos/paper-airplane-game?ref=)
+
+

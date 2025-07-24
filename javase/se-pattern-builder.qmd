@@ -1,0 +1,109 @@
+---
+title: "Builder"
+subtitle: Java Fundamentals and Patterns
+author: Carla Velasco
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the Builder Creational Design-Pattern
+categories: [javase, builder , design-patterns, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+## Definition
+
+::: {.summary}
+The builder pattern is a design pattern in computer programming and Java that is used to **separate complex object construction from its representation.**.
+:::
+
+---
+
+The Builder design pattern is a software design pattern in which the construction of a complex object is separated from its representation, so that the same construction process can create different representations.
+
+The Builder design pattern is used in cases where a class has several attributes and the creation of an instance of that class can be complex. By using the Builder pattern, the construction process of the complex class is separated into several steps, each of which is performed by a specific method of the Builder object. This allows the construction process to be more flexible and easier to understand, as each step is performed independently.
+
+This pattern is very useful in cases where the class has many configuration options and you want to avoid using a constructor with many parameters or when you want the construction process to be independent of the built object.
+
+
+## Example: Building a ``House``
+
+Here's an example of building a house using the Builder pattern in Java step by step:
+
+1. Create a `House` class with various fields such as walls, roof, doors, etc.:
+
+``` java 
+public class House {
+    private String walls;
+    private String roof;
+    private String doors;
+    // getters and setters for each field
+}
+
+```
+
+2. Create a `ConcreteHouseBuilder` class that builds each part of the house:
+
+``` java 
+public class ConcreteHouseBuilder {
+    private House house;
+
+    public ConcreteHouseBuilder() {
+        this.house = new House();
+    }
+
+    public void buildWalls() {
+        house.setWalls("concrete walls");
+    }
+
+    public void buildRoof() {
+        house.setRoof("concrete roof");
+    }
+
+    public void buildDoors() {
+        house.setDoors("wooden doors");
+    }
+
+    public House getHouse() {
+        return this.house;
+    }
+}
+```
+
+3. Create a `HouseDirector` class that controls the building process using the `ConcreteHouseBuilder` class:
+
+``` java 
+public class HouseDirector {
+    private ConcreteHouseBuilder builder;
+
+    public HouseDirector() {
+        this.builder = new ConcreteHouseBuilder();
+    }
+
+    public void buildHouse() {
+        builder.buildWalls();
+        builder.buildRoof();
+        builder.buildDoors();
+    }
+    public House getHouse(){
+        return builder.getHouse();
+    }
+}
+
+```
+
+4. In the main method, we can create an instance of the `HouseDirector`, and use the `Director` to build the house:
+
+``` java 
+    public static void main(String[] args) {
+        HouseDirector director = new HouseDirector();
+        director.buildHouse();
+        House house = director.getHouse();
+    }
+
+```
+
+In this example, the House class represents the complex object that we want to build, the `ConcreteHouseBuilder` class implements the steps for building the house and the `HouseDirector` class controls the building process using the `ConcreteHouseBuilder` class.
+
+

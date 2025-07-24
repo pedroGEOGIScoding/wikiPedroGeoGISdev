@@ -1,0 +1,23 @@
+---
+title: "Awekenings"
+author: "albertprofe"
+subtitle: "Oliver Sacks, 1973, Awekenings"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "The classic account of survivors of the encephalitic lethargica and their return to the world after decades of “sleep.” This book was the inspiration for the 1990 film starring Robert De Niro and Robin Williams."
+categories: [neuropsychology]
+subcategories: [brain, mind]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/awekenings.png)
+
+## More info
+
+Awakenings--which inspired the major motion picture--is the remarkable story of a group of patients who contracted sleeping-sickness during the great epidemic just after World War I. Frozen for decades in a trance-like state, these men and women were given up as hopeless until 1969, when Dr. Oliver Sacks gave them the then-new drug L-DOPA, which had an astonishing, explosive, "awakening" effect. Dr. Sacks recounts the moving case histories of his patients, their lives, and the extraordinary transformations which went with their reintroduction to a changed world.
+
+- [Awakenings](https://www.oliversacks.com/oliver-sacks-books/awakenings/){.external}

@@ -1,0 +1,165 @@
+---
+title: "Lab#RE03-2: HighCharts"
+subtitle: ReactJS labs
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: labs
+categories: [reactjs, lab, Lab#RE03]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **React JS Lab#RE03-2: ``Highcharts``**
+
+In this lab, we will be using [``Highcharts``](https://www.highcharts.com/){.external} React.
+
+It is a library that allows you to integrate ``Highcharts``, **a popular JavaScript charting library**, into your React applications.
+
+It provides a React component that acts as a **wrapper** around the ``Highcharts`` library, enabling you to create interactive and visually appealing charts.
+
+By utilizing the ``Highcharts`` React library, you can easily incorporate <mark>interactive charts into your React application, making the data visually accessible and enhancing the user experience.</mark>
+:::
+
+
+</br>
+
+## Overview
+
+Here's a high-level overview of how ``Highcharts`` React works to make data visible in a React app:
+
+- `Installation`: First, you need to install the ``Highcharts`` React library along with the ``Highcharts`` library itself. You can do this using package managers like **npm** or yarn.
+- `Importing` the Components: Once installed, you can import the necessary components from the ``Highcharts`` React library into your React application. The main component you'll use is typically called ``Highcharts``React.
+- `Configuration`: ``Highcharts`` charts require **configuration options to define the type of chart, data sources, styling, and various other settings.**
+  - In your React component, you'll create a configuration object that specifies these options.
+  - You can define the configuration object directly in your component or import it from an external file.
+- `Rendering` the Chart: Within your React component's render method, you'll use the ``Highcharts`` React component, **passing in the configuration object as a prop**.
+  - This component acts as a **container** for the ``Highcharts`` chart and **handles the integration with React.**
+- `Updating` the Data: To make the chart data visible and dynamic, you'll typically store the data in the component's state or props. Whenever the data changes, you can update the state or props accordingly, triggering a re-render of the chart component with the new data.
+- `Interactivity and Events`: ``Highcharts`` provides various interactive features like tooltips, legends, zooming, and selection.
+  - You can configure these features through the chart's configuration object and handle events triggered by user interactions, such as clicking on a data point.
+- `Styling and Customization`: ``Highcharts`` offers extensive customization options to control the appearance of your charts. You can modify colors, fonts, labels, axes, and other visual elements using the configuration object.
+  - Additionally, you can apply CSS styles to the chart container or
+  - use ``Highcharts-specific`` APIs to further customize the chart's appearance.
+- `Additional Features`: ``Highcharts`` supports a wide range of chart types, including:
+  -  line charts,
+  -  bar charts,
+  -  pie charts,
+  -  area charts,
+  -  radar charts,
+  -  windrose charts,
+  -  stock charts and more.
+-  You can explore the `[``Highcharts``](https://www.highcharts.com/){.external} **documentation** to learn about additional features, such as exporting charts, adding annotations, or integrating with external data sources.
+
+
+### References
+
+- [Codesanbox example: highcharts](https://codesandbox.io/s/highcharts-example-r52m80){.external}
+- [Codesanbox example: live random data](https://codesandbox.io/s/react-highcharts-forked-iszykt){.external}
+- [Codesanbox example: bitcoin reatime data stock](https://codesandbox.io/s/jolly-pasteur-99bldy){.external}
+- [HighCharts Demo](https://www.highcharts.com/demo){.external}
+
+#### Todo
+
+- [Codesanbox example highcharts: todo-app-3 ](https://codesandbox.io/s/todo-app-3-v08qbi){.external}
+
+## Pie Chart
+
+### Importing Dependencies
+
+```js
+import React from "react";
+import Highcharts from "highcharts/highstock";
+import PieChart from "highcharts-react-official";
+```
+
+The code imports the necessary `dependencies`: React from the "react" package, Highcharts from the "highcharts/highstock" package, and PieChart from the "highcharts-react-official" package. These dependencies are required for using Highcharts with React.
+
+
+### Defining Data
+
+```js
+const grades = [
+  {
+    name: "Carla",
+    y: 135
+  },
+  {
+    name: "Marc",
+    y: 89
+  },
+  {
+    name: "Victor",
+    y: 44
+  },
+  {
+    name: "Rafa",
+    y: 32
+  },
+  {
+    name: "Fabrizio",
+    y: 12
+  }
+];
+```
+
+An array called `grades` representing data points for the pie chart. Each object in the array contains a name and a y value. This data will be used in the chart's series.
+
+### Chart Configuration
+
+The options object defines the configuration for the pie chart. It includes a title specifying the chart's title, a chart object specifying the type of chart (in this case, "pie"), and a series array containing the data for the chart. The grades array is assigned to the data property of the series.
+
+```js
+const options = {
+  title: {
+    text: "Students"
+  },
+  chart: {
+    type: "pie"
+  },
+  series: [
+    {
+      data: grades
+    }
+  ]
+};
+```
+
+### Creating the React Component
+
+A functional component called App is defined. Inside the component's JSX, a `<PieChart>` component is rendered, passing in the Highcharts dependency and the options object as props. The component is wrapped in a `<div>` element with some inline styling to provide a margin.
+
+
+```js
+
+const App = () => {
+  return (
+    <div style={{ margin: "40px" }}>
+      <PieChart highcharts={Highcharts} options={options} />
+    </div>
+  );
+};
+
+export default App;
+
+```
+### Exporting the Component
+
+
+```js
+export default App;
+```
+
+The App component is exported as the default export, allowing it to be imported and used in other parts of the application.
+
+### Rendering the chart
+
+Overall, this code sets up a React application with a pie chart using Highcharts React. The data for the chart is defined in the grades array, and the chart's configuration is specified in the options object. The chart is then rendered within the App component using the `<PieChart>` component provided by the Highcharts React library.
+
+
+![Highchart Pie example](/images/reactjs/lab-re-3-6.png)
+

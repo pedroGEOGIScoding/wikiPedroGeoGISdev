@@ -1,0 +1,30 @@
+---
+title: "DevOps Resources"
+subtitle: Readings
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: DevOps Resources and Readings
+categories: [devops, resources, readings]
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html
+---
+
+![DevOps Resources](/images/home/frontimagealbertprofeweb-readings.png){width=50%}
+
+# Resources
+
+- [devopscifo](https://sites.google.com/view/devopscifo/read-docs/sources)
+- [ntu.edu](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Git_HowTo.html)
+- [getting-gitops-practical-platform-openshift-argo-cd-and-tekton](https://developers.redhat.com/e-books/getting-gitops-practical-platform-openshift-argo-cd-and-tekton)
+
+
+[Git-cheat-sheet-Red-Hat-Developer](/images/devops/SGit-cheat-sheet-Red-Hat-Developer.pdf)
+
+
+
+

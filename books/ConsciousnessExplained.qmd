@@ -1,0 +1,22 @@
+---
+title: "Consciousness Explained"
+author: "albertprofe"
+subtitle: "Daniel C. Dennett, 1991, Consciousness Explained"
+date: 5/1/2023
+date-modified: last-modified
+date-format: full
+description: "Daniel Dennett's brilliant exploration of human consciousness — named one of the ten best books of the year by the New York Times — is a masterpiece beloved by both scientific experts and general readers (New York Times Book Review). "
+categories: [neuroscience]
+subcategories: [neuroscience]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/ConsciousnessExplained.jpg)
+
+## More info
+
+- [Consciousness Explained](https://www.amazon.com/dp/0316180661){.external}
+- [Consciousness Explained](https://en.wikipedia.org/wiki/Consciousness_Explained){.external}

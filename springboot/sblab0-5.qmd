@@ -1,0 +1,282 @@
+---
+title: "Lab#SB00-5: Rest & JPA-H2"
+subtitle: Spring Boot Library Management API Rest and JPA H2
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Spring Boot
+categories: [Spring-Boot, lab, rest]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+
+📘 **Spring Boot Lab#SB00-5: API Rest and JPA H2**
+
+`H2 database` is a **lightweight, open-source, and fast in-memory database that can be easily integrated with Spring Boot applications.** 
+
+Spring Boot is a popular framework for building enterprise-grade applications quickly and easily. 
+
+We will walk through the steps to set up a `H2 database` in Linux Spring Boot, create a local server, define a User entity, and expose RESTful APIs to perform CRUD operations on the User entity using Postman. 
+
+:::
+
+</br>
+
+## Install and create a H2 DB
+
+References:
+
+- [Spring Boot: H2 DB and Thymeleaf](/springboot/boot-what-create-th-h2.qmd)
+- [Spring Boot: Rest](/springboot/boot-concepts-rest.qmd)
+- [Library5](https://github.com/AlbertProfe/cifojava2022-3/tree/master/library5){.external}
+
+Install Java and Spring Boot on your Linux machine or [start from previous project](/springboot/sblab0-4.qmd):
+
+- Download and install Java JDK from the official Oracle website.
+- Download and install Spring Boot from the official Spring website.
+- Download the H2 database from the official H2 website.
+- Extract the downloaded file to a location on your Linux machine.
+- Execute H2 Desktop app and create a local H2 DB.
+
+![Create a H2 DB](/images/springboot/LibraryManagementRest-H2-1.png){width="60%"}
+
+- [Creation H2 DB step-by-step](/springboot/boot-what-create-th-h2.qmd#h2-db-creation-step-by-step)
+
+## LibraryManagmentRest using H2
+
+![Tree-folder project with UserRepository](/images/springboot/LibraryManagementRest-H2-3.png){width="60%"}
+
+### Configure H2 DB
+
+- `pom.xml`: dependencies H2 and JPA
+- `UserRepository` interface
+- `User` class @Entity
+- `application.properties`
+- modify `service` to create a user object from API Rest and save it to H2 DB
+
+
+```java
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>runtime</scope>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+
+### `application.properties`
+
+![application properties file](/images/springboot/application-properties.png){width="60%"}
+
+- Open the `application.properties` file located in the `sc/main/resources` directory of your Spring Boot project.
+- Add the following configuration to use the `H2 database`:
+
+```java
+server.port=8090
+
+spring.h2.console.enabled=true
+
+#H2 DATASOURCE
+spring.datasource.url=jdbc:h2:/home/albert/MyProjects/MyDBs/h2DBs/libraryManagementRest
+#spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.username=albert
+spring.datasource.password=1234
+spring.datasource.driver-class-name=org.h2.Driver
+
+#JPA
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+spring.jpa.defer-datasource-initialization=true
+
+#Remove banner
+spring.main.banner-mode=off
+
+#DDL
+#example: create table book_table (book_id bigint not null, author varchar(255), isbn varchar(255), pages integer not null, published_year integer, book_title varchar(255), primary key (book_id))
+spring.jpa.hibernate.ddl-auto=update
+```
+
+This is a configuration file in the `application.properties` format for a Spring Boot application. It specifies various settings related to the H2 database, JPA, and the application's server port.
+
+- The `server.port` setting sets the port number for the application's server to `8090.`
+- `spring.h2.console.enabled=true` enables the H2 database console, which allows you to interact with the database from a web interface.
+- The `spring.datasource` settings specify the URL, username, password, and driver class name for the H2 database.
+- The `spring.jpa` settings specify the Hibernate dialect to be used for the database, and set defer-datasource-initialization to true to delay database connection until necessary.
+- `spring.main.banner-mode=off` disables the Spring Boot banner during application startup.
+- `spring.jpa.hibernate.ddl-auto=update` instructs Hibernate to automatically update the database schema based on changes to JPA entity classes. In this case, it specifies a single table named book_table with columns for book_id, author, isbn, pages, published_year, and book_title.
+
+### DDL
+
+DDL stands for `Data Definition Language`. **It is a subset of SQL (Structured Query Language) used to define, modify and delete the structure of database objects** like tables, indexes, views, and procedures.
+
+::: {.column-margin}
+DDL commands are used to create or alter the schema of a database, which defines the layout of the data and the relationships between the tables. Some examples of DDL statements include CREATE TABLE, ALTER TABLE, DROP TABLE, CREATE INDEX, and CREATE PROCEDURE.
+:::
+
+::: {.callout-note}
+## `spring.jpa.hibernate.ddl-auto`
+Specifically, the `spring.jpa.hibernate.ddl-auto` **property** is used to control how **Hibernate generates or updates the database schema.** 
+
+The available options are `create`, `create-drop`, `update`, `validate`, and `none`.
+:::
+
+The available options are:
+
+- If set to `create`, Hibernate will create the database schema on application startup.
+- If set to c`reate-drop`, Hibernate will create the schema on startup and drop it on shutdown.
+- If set to `update`", Hibernate will update the schema to match the entity mappings. 
+- If set to `validate`", Hibernate will only validate the schema but not update it. 
+- And if set to `none`, Hibernate will not perform any schema management operations.
+
+It's important to choose the appropriate value for this property based on your specific needs and deployment environment.
+
+
+### Create a User repository and User entity
+
+- Create a new package and a new interface named `UserRepository` in the  package with the following code:
+
+
+```java
+import com.example.myFirstSpring.model.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User, String> {}
+
+```
+- Create a User entity: create a new package and a new class named User in the package with the following code:
+
+
+```java
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data // generates getters, setters, equals, hashCode, and toString methods
+@NoArgsConstructor // generates a no-args constructor
+@AllArgsConstructor // generates a constructor with all arguments
+@Entity(name="User")
+@Table(name="USER_TABLE")
+public class User {
+    @Id
+    private String userId;
+    private String name;
+    private String address;
+    private int age;
+}
+```
+
+
+- Add `userRepository.save(user);` in `createUser`, `userService`:
+
+```java
+  public User createUser(User user) {
+
+        String newUserId = Utils.createUUID();
+        user.setUserId(newUserId);
+
+        userRepository.save(user);
+
+        return users.put(newUserId, user);
+
+    }
+```
+
+
+### Execute project
+
+When the application starts, Spring Boot w**ill automatically execute the DDL scripts** specified in the schema.sql or data.sql files located in the src/main/resources directory.
+
+If these files are not present, Spring Boot **will create an empty H2 database using the default settings specified in the `application.properties` file.**
+
+
+::: {.column-margin}
+Once the database is created and configured, Spring Boot will use JPA to manage the database schema and entities, allowing you to easily perform CRUD operations and other database operations in your application.
+:::
+
+![Spring Boot Execution and DDL creating a empty H2 DB](/images/springboot/LibraryManagementRest-H2-2.png){width="60%"}
+
+::: {.column-margin}
+Once the database is created and configured, Spring Boot will use JPA to manage the database schema and entities, allowing you to easily perform CRUD operations and other database operations in your application.
+:::
+
+## API Rest
+
+
+- Open Postman and **create a new request.**
+- Set the HTTP method to `"POST"` and set the request URL to `"http://localhost:8090/api/user/createUser".`
+- Click on the "Body" tab and select the "raw" radio button. Set the request body to the following JSON object:
+
+```json
+{
+    "name": "I AI",
+    "address": "Isaac Asimov",
+    "age": 566
+}
+```
+
+- This will create a **new User entity**, so click on the "Send" button to send the `request`.
+- If the `request` is successful, you should receive a response with a status code of 201 Created and the User entity in the response body.
+
+
+![Postman sends a request and shows the response of the created User object](/images/springboot/LibraryManagementRest-H2-4.png){width="60%"}
+
+
+- To check if the User entity has been created in the H2 database, **you should use the H2 console**:
+Open a web browser and navigate to `"http://localhost:8090/h2-console".`
+
+> Driver Class:	org.h2.Driver  
+> JDBC URL:	jdbc:h2:/home/albert/MyProjects/MyDBs/h2DBs/libraryManagementRest  
+> User Name: albert  
+> Password:	1234  
+
+![H2 console URL and data to enter](/images/springboot/LibraryManagementRest-H2-6.png){width="60%"}
+
+
+Enter the following SQL query:
+
+```sql
+SELECT * FROM USER_TABLE;
+```
+
+This should return a result set containing the User entity you just created.
+
+
+![SELECT * FROM USER_TABLE;](/images/springboot/LibraryManagementRest-H2-5.png){width="60%"}
+
+
+
+## Versions
+
+**endpoint** example: `http://localhost:8090/api/book/books`
+
+| Code Version | Commit | Folder-Tree | Screeshoots |
+| -- | -- | -- | -- |
+| [Library Management Rest H2 0.0](https://github.com/AlbertProfe/CifoJava2023/tree/4b1fd3c8f9be159c7b0f3f9f400ac3de737ac8e2/LibraryManagementRest){.external}  | add H2 to project: application.properties, @Entity, @UserRepository, POM </br> userRestController: `createUser`, `getAllusers` | [Basic Structure](/images/springboot/LibraryManagementRest-H2-3.png){width="80%"} | [localhost:8090/api/user/createUser](/images/springboot/LibraryManagementRest-H2-4.png){width="80%"} |
+| [Library Management Rest H2 0.1](https://github.com/AlbertProfe/CifoJava2023/tree/fe772fd6b4a506e8dc78b68f76aec78abdfcd74f/LibraryManagementRest){.external}  | refactor `user` to H2, remove HashMap users and add ResponseEntity | - | - |
+| [Library Management Rest H2 0.2](https://github.com/AlbertProfe/CifoJava2023/tree/6584393853ee83a567d6f50e9da1d24cab30e67d/LibraryManagementRest){.external}  | refactor `book` to H2, remove HashMap books and add ResponseEntity | - | - |
+| [Library Management Rest H2 0.3](https://github.com/AlbertProfe/CifoJava2023/tree/dc5e356288df97e515652eed95f30dbee6e37cc9/LibraryManagementRest){.external}  | refactor borrow to H2, remove HashMap borrows and add ResponseEntity </br> `getAllBorrows`, `populate` , `createBorrow`| - | - |
+| [Library Management Rest H2 0.4](https://github.com/AlbertProfe/CifoJava2023/tree/8a8ed4da847d476ed7fc6c9613314f5e0d34f734/LibraryManagementRest){.external}  | refactor borrow to H2, remove HashMap borrows and add ResponseEntity </br> `returnBook`| - | - |
+| [Library Management Rest H2 0.5](https://github.com/AlbertProfe/CifoJava2023/tree/50633e8524313a189d234805beb9234effb65d17/LibraryManagementRest){.external}  | `user` new field: `borrowIds` </br> | - | - |
+
+
+
+
+### Postman apis
+
+| Domain | Link | Objects |
+| -- | -- | -- |
+| books | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-c1620d8c-c576-4e34-8af4-0c9f990b6dfa?action=share&creator=7473960){.external} | `book` | 
+| borrow | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-b26c4d68-8937-49c1-97d1-fc4919283023?action=share&creator=7473960){.external} |  `borrow` | 
+| user | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-ccbd64c8-014d-4c44-9707-619aee02eeb3?action=share&creator=7473960){.external} | `user` |
+

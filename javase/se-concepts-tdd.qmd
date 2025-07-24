@@ -1,0 +1,228 @@
+---
+title: "Java SE: JUnit and TDD"
+subtitle: Java Fundamentals
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: What is the TDD and JUnit in Java
+categories: [javase, TDD, JUnit]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **JUnit**
+
+**JUnit is a unit testing framework for the Java programming language**. It is used to write and run repeatable tests for Java code. JUnit provides a set of **annotations** and **assertions** that make it easy to write and run tests, as well as a simple framework for organizing and running tests.
+:::
+
+---
+
+::: {.summary}
+
+📘 **TDD: Test Driven Domain**
+
+**Test-driven development (TDD)** is a software development process in which **tests are written for a piece of code before the code itself is written**.
+
+This approach to development is designed to ensure that the code meets the requirements and works as intended. TDD involves writing a test for a feature, running the test to see if it fails, writing the code to implement the feature, and then running the test again to ensure that it passes. This process is then repeated for each feature until the code is complete.
+
+TDD is often used in **agile software development**, as it allows for the rapid development of **high-quality code***.
+:::
+
+---
+
+## JUnit: unit test
+
+
+![JUnit 5](/images/javase/junit5.jpeg){width=30%}
+
+Unit tests are the smallest elements in the test automation process. With the help of unit tests, the developer can check the business logic of any class. So JUnit plays a vital role in the development of a test-driven development framework.
+
+::: {.column-margin}
+Link: [Junit](https://junit.org/junit5/) and [User guide](https://junit.org/junit5/docs/current/user-guide/)
+:::
+
+``` {.java .code-overflow-wrap filename="MyFirstJUnitJupiterTests.java"}
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import example.util.Calculator;
+import org.junit.jupiter.api.Test;
+
+class MyFirstJUnitJupiterTests {
+
+    private final Calculator calculator = new Calculator();
+
+    @Test
+    void addition() {
+        assertEquals(2, calculator.add(1, 1));
+    }
+
+}
+
+```
+::: {.column-margin}
+The following example provides a glimpse at the minimum requirements for writing a test in JUnit Jupiter. Subsequent sections of this chapter will provide further details on all available features.
+:::
+
+## TDD
+
+<mark>Test-driven development is a development technique where the developer must first write a test that fails before writing a new functional code<</mark>. It ensures a proven way to ensure effective unit testing; however, it does not replace traditional testing. We believe that TDD is an excellent practice that all software developers should consider during the development process.
+
+Steps for the same are given below:
+
+1. Firstly, add a test.
+2. Run all the tests and see if any new test fails.
+3. Update the code to make it pass the new tests.
+4. Rerun the test and if they fail, then debug the code again and fix any related error. Rinse and repeat.
+
+##  `static` vs. `non-static`
+
+### Pros & cons usage `static` methods
+
+| Pros of making a method static  | Cons of making a method static |
+|-------------------------------|-------------------------------|
+| Can be called directly on the class, without needing to create an instance | Cannot access non-static fields and methods of the class |
+| Can be used as utility methods that don't depend on the state of an object | Can only work with the parameters passed to it and not use information unique to each object or instance |
+| Can be used to access only static variables and methods, making it more efficient | Can be challenging to make sure all instances of a class are modified consistently when using static methods |
+
+### Pros & cons usage `non-static` methods
+
+| Pros of making a method non-static  | Cons of making a method non-static |
+|-------------------------------|-------------------------------|
+| Can access both static and non-static fields and methods of the class, allowing it to use the state of an object to determine its behavior | Can only be called on an instance of the class, so you need to create an object of a class before using the method |
+| Are associated with an instance of the class, so they can use the information that is unique to each object | Can cause confusion when working with non-static methods because it could be called on different instances, which could cause unexpected behavior |
+| Object-oriented design principles promote the use of non-static methods because they can be overridden by subclasses to change their behavior |  |factor again and repeat.
+
+
+## Example: ``@Test``
+
+First, to configure support for **JUnit Jupiter based tests**, configure test scoped ``dependencies`` on the[ JUnit Jupiter API and the JUnit Jupiter TestEngine](https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven-engines-configure){.external} implementation similar to the following.
+
+```{.java .code-overflow-wrap filename="pom.xml"}
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.9.1</version>
+      <scope>test</scope>
+    </dependency>
+```
+::: {.column-margin}
+Unlike previous versions of JUnit, JUnit 5 is composed of several different modules from three different sub-projects.
+
+**JUnit 5 = JUnit Platform + JUnit Jupiter + JUnit Vintage**
+:::
+
+::: {.column-margin}
+JUnit 5 requires **Java 8 (or higher) at runtime**. However, you can still test code that has been compiled with previous versions of the JDK.
+:::
+
+
+Second, we would write a test for the add method, which should take two numbers as arguments and return their sum. Here is an example of how this test might look using JUnit:
+
+``` {.java .code-overflow-wrap filename="MyFirstJUnitJupiterTests.java"}
+import org.junit.jupiter.api.Test;
+public class CalculatorTest {
+
+  @Test
+  public void testAdd() {
+    Calculator calc = new Calculator();
+    double result = calc.add(2, 3);
+    assertEquals(5, result, 0);
+  }
+
+}
+
+```
+::: {.column-margin}
+Here is an example of how **TDD could be applied in a Java project using JUnit**. Let's say we are building a class that represents a simple calculator.
+:::
+
+
+
+Next, we would run the test to see if it fails. Since we have not yet implemented the add method, the test should fail with a message indicating that the add method is not yet implemented.
+
+Next, we would write the code for the add method. Here is an example of how this method might look:
+
+``` {.java .code-overflow-wrap filename="MyFirstJUnitJupiterTests.java"}
+public class Calculator {
+
+  public double add(double a, double b) {
+    return a + b;
+  }
+
+}
+
+```
+
+::: {.column-margin}
+We want the calculator to have methods for adding, subtracting, multiplying, and dividing two numbers.
+:::
+
+Finally, we would run the test again to ensure that it passes. If the test passes, we know that the add method is working correctly and we can move on to the next feature. We would repeat this process for each of the calculator's methods, writing a test for each one, implementing the code, and then running the test to ensure it passes.
+
+This is just one example of how TDD can be applied in a Java project using JUnit. There are many other ways to approach TDD, and the specific steps and details will vary depending on the project and the requirements.
+
+
+## Most popular ``asserts``
+
+``Assertions`` is a **collection** of utility methods that support asserting conditions in tests.
+
+::: {.column-margin}
+Unless otherwise noted, a failed assertion will throw an AssertionFailedError or a subclass thereof.
+:::
+
+``` {.java .code-overflow-wrap filename="MyFirstJUnitJupiterTests.java"}
+@API(status=STABLE, since="5.0")
+public final class Assertions
+extends Object
+```
+
+[Assertions 5.8.2](https://junit.org/junit5/docs/5.8.2/api/org.junit.jupiter.api/org/junit/jupiter/api/Assertions.html){.external}
+
+| Number | Assert | Description |
+| --- | --- | --- |
+| 1 | `assertEquals(expected, actual)` | Tests that two values are equal. |
+| 2 | `assertTrue(condition)` | Tests that a condition is true. |
+| 3 | `assertFalse(condition)` | Tests that a condition is false. |
+| 4 | `assertNotNull(object)` | Tests that an object is not null. |
+| 5 | `assertNull(object)` | Tests that an object is null. |
+| 6 | `assertArrayEquals(expected, actual)` | Tests that two arrays are equal. |
+| 7 | `assertSame(expected, actual)` | Tests that two references refer to the same object. |
+| 8 | `assertNotSame(expected, actual)` | Tests that two references don’t refer to the same object. |
+| 9 | `assertAll(executables)` | Allows to group several assertions and execute them all. |
+| 10 | `assertThrows(exceptionType, executable)` | Tests that a specific exception is thrown. |
+: Most Pouplar Asserts: description {tbl-colwidths="[5,40,55]"}
+
+::: {.column-body-outset-right}
+| Number | Example Code |
+| --- | --- |
+| 1 | `assertEquals(5, add(2,3));` |
+| 2 | `assertTrue(checkRole("admin"));` |
+| 3 | `assertFalse(checkRole("user"));` |
+| 4 | `assertNotNull(new Object());` |
+| 5 | `assertNull(null);` |
+| 6 | `assertArrayEquals(new int[]{1,2,3}, new int[]{1,2,3});` |
+| 7 | `Object obj = new Object(); assertSame(obj, obj);` |
+| 8 | `Object obj1 = new Object(); Object obj2 = new Object(); assertNotSame(obj1, obj2);` |
+| 9 | `assertAll("Person properties", () -> assertEquals("John", person.getFirstName()), () -> assertEquals("Doe", person.getLastName()));` |
+| 10 | `assertThrows(IllegalArgumentException.class, () -> { Integer.parseInt("Not a number"); });` |
+: Most Pouplar Asserts: code {tbl-colwidths="[5,95]"}
+:::
+
+
+
+## Naming the test class
+We use common conventions in naming the test class. Let’s start with the name of the class which is being tested and assume the name of that class is `Student`. In that case, the name of the test class should be `StudentTest`. We have to append `Test` to it. The same naming convention is used in the case of methods. If there is a method `DisplayStudentAddress()`, then the name of the method in testing should be `testDisplayStudentAddress()`.
+
+
+
+| Naming in Production | Naming in Testing |
+| --- | --- | 
+| Student | StudentTest |
+| DisplayStudentAddress() | testDisplayStudentAddress() |
+
+

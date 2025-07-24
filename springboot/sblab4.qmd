@@ -1,0 +1,346 @@
+---
+title: "Lab#SB04-1: `JPA` Inherence"
+subtitle: Spring Boot JPA Inherence strategies
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description:  Spring Boot
+categories: [Spring-Boot, lab]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+Welcome to the cifojava2022-6 wiki!
+
+# Spring Boot Projects `JPA Inherence` strategies
+
+::: {.column-page-right}
+
+| Name | Type | Description | Link |
+| ------------- | ------------- | ------------- | -------------
+|  universalPlanes| Server | Basic Spring Boot Project | [Done](https://github.com/AlbertProfe/cifojava2022-6/tree/main/universalplanes) |
+|  JpaInherenceLibrary | Server-Inherence | Inhrence with `JPA` and `UML` @Entity | [Done](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary) |
+|  JpaInherenceLibrary1 | Server-Inherence | Inhrence with `JPA` and `UML` **MappedSuperClass** | [Done](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary1) |
+|  JpaInherenceLibrary2 | Server-Inherence | Inhrence with `JPA` and `UML` **Single Table with Discriminator** | [Done](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary2) |
+|  JpaInherenceLibrary3 | Server-Inherence | Inhrence with `JPA` and `UML` **Joined Table** | [Done](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary3) |
+|  JpaInherenceLibrary4 | Server-Inherence | Inhrence with `JPA` and `UML` **Table per class** | [Done](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary4) |
+:::
+
+* there is no `@Service` neither `@Controller`
+* so, they are basically back-end projects
+* all work with `@CrudRepository`
+
+***
+
+# Inhrence with `JPA` and `UML`
+
+**Inheritance** is a fundamental concept of POO, <mark>but `Relational databases` **have no concept of inheritance** neither NoSQL (MongoDB, DymamoDB), so persisting [inheritance](https://en.wikibooks.org/wiki/Java_Persistence/Inheritance) in a SQL and NoSQL database _has its own particular way</mark>.
+
+> Because relational databases have no concept of inheritance, there is no standard way of implementing inheritance in database, so the hardest part of persisting inheritance is choosing how to represent the inheritance in the database.
+
+JPA defines several inheritance mechanisms, mainly defined though the [@Inheritance](https://docs.oracle.com/javaee/7/api/javax/persistence/Inheritance.html) annotation or the `<inheritance>` element.
+
+There are **three inheritance strategies** defined from the [InheritanceType](https://docs.oracle.com/javaee/7/api/javax/persistence/InheritanceType.html) `enum`:
+
+1. SINGLE_TABLE
+1. TABLE_PER_CLASS
+1. JOINED
+
+* Single table inheritance is the default with discriminator values,
+* and table per class is an optional feature of the JPA spec, **so not all providers may support it**.
+* in joined strategy each class in the hierarchy is mapped to its table.
+
+MAPPED SUPERCLASS
+
+* JPA also defines a mapped superclass concept defined through the [@MappedSuperclass](https://docs.oracle.com/javaee/7/api/javax/persistence/MappedSuperclass.html) annotation or the `<mapped-superclass>` element.
+* A mapped superclass **is not a persistent class**, but allows common mappings to be defined for its subclasses.
+
+![Entity Inheritance](/images/springboot/labsb04-1-entity-inherence-.png){width="60%"}
+
+Links: [orientdb](https://orientdb.com/docs/2.2.x/Teleporter-Table-Per-Concrete-Class-Inheritance.html), [logicbig](https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/mapped-super-class.html), [Java Persistence/Inheritance wikibooks](https://en.wikibooks.org/wiki/Java_Persistence/Inheritance) and
+[apache](https://openjpa.apache.org/builds/2.2.0/apache-openjpa/docs/jpa_overview_mapping_inher.html)
+
+## (0) `@Entity` Inhrence JPA
+
+<details>
+<summary>JpaInherenceLibrary0</summary>
+
+* Base project:
+  * POM
+  * @Entity: `Book` (SuperClass), `ItemBook`, `RareBook` and `Auhtor`
+  * `n:m` :  `Book`<> `Auhtor`
+  * DataBase H2: application.properties
+  * Command Line Runner with methods to test
+  * @CrudRepository JPA 2.0, @Component (`CommandLineRunner`) and @Test (`Jupiter`)
+
+* New Topics
+  * How to code `inherence` and JPA uses **SINGLE_TABLE strategy by default**
+
+``` java
+          @Entity
+          public class Book {}
+
+
+          @Entity(name="BookItem")
+          public class ItemBook extends Book {
+          
+             @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+             @JoinTable(name = "AUTHOR_BOOK_JOIN_TABLE",
+                       joinColumns = { @JoinColumn(name = "AUTHOR_FK" )},
+                       inverseJoinColumns = { @JoinColumn(name = "BOOK_FK" )})
+             private Set<Author>authors = new HashSet<Author>();
+          }
+
+ 
+          @Entity(name="RareItem")
+          public class RareItem extends Book {}
+
+
+          @Entity(name="Author")
+          @Table(name="AUTHOR_TABLE")
+          public class Author {}
+```
+
+* Versions
+  * [JpaInherenceLibrary v 1.1](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary) : without @MappedSuperClass and @Entity superclass, **Single Table strategy is applied BY DEFAULT**
+
+</details>
+
+## (1) `MappedSuperclass` Inhrence JPA
+
+<details>
+<summary>JpaInherenceLibrary1</summary>
+
+* Base project:
+  * POM
+  * @Entity: `ItemBook`, `RareBook` and `Auhtor`
+  * Non-@Entity: `Book`
+  * DataBase H2: application.properties
+  * Command Line Runner with methods to test
+  * @CrudRepository JPA 2.0, @Component (`CommandLineRunner`) and @Test (`Jupiter`)
+
+* New Topics
+  * How **can not** we code `@MappedSuperclass` and `@ManyToMany` **author**
+
+``` java
+          @MappedSuperclass
+          public abstract class Book {}
+
+
+          @Entity(name="BookItem")
+          @Table(name="ITEM_BOOK_TABLE")
+          public class ItemBook extends Book {
+          
+             @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+             @JoinTable(name = "AUTHOR_BOOK_JOIN_TABLE",
+                         joinColumns = { @JoinColumn(name = "AUTHOR_FK" )},
+                         inverseJoinColumns = { @JoinColumn(name = "BOOK_FK" )})
+             private Set<Author>authors = new HashSet<Author>();
+          }
+
+ 
+          @Entity(name="RareItem")
+          @Table(name="RARE_ITEM_TABLE")
+          public class RareItem extends Book {}
+
+
+          @Entity(name="Author")
+          @Table(name="AUTHOR_TABLE")
+          public class Author {}
+```
+
+  * With @MappedSuperclass **any relationship can't be done**
+
+      ![With @MappedSuperclass]( https://drive.google.com/uc?id=1r5X1ZnGXb_e-nobKxviNFDpA2eNW_D-2)
+  
+  * With @MappedSuperclass, one SuperClass and two SubClasses:
+
+      ![With @MappedSuperclass]( https://drive.google.com/uc?id=1t3Z1Xx1nH2v2FkSMaG_J8cIij4RV_3gd)
+
+* Versions
+  * [JpaInherenceLibrary1 v 1.0](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary1) : not using `author` just inherence without relatonship @ManyToMany
+
+</details>
+
+## (2) `Single Table with Discriminator` Inhrence JPA
+
+<details>
+<summary>JpaInherenceLibrary2</summary>
+
+* Base project:
+  * POM
+  * @Entity: `Book` (SuperClass), `ItemBook`, `RareBook` and `Auhtor`
+  * `n:m` :  `Book`<> `Auhtor`
+  * DataBase H2 : application.properties
+  * Command Line Runner with methods to test
+  * @CrudRepository JPA 2.0, @Component (`CommandLineRunner`) and @Test (`Jupiter`)
+
+* New Topics
+  * How to code `@Inheritance(strategy = InheritanceType.SINGLE_TABLE)`
+
+``` java
+           @Entity
+           @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+           @DiscriminatorColumn(name="BOOK_TYPE", 
+                 discriminatorType = DiscriminatorType.STRING)
+           public class Book {}
+
+
+          @Entity(name="BookItem")
+          @Table(name="BOOK_ITEM_TABLE")
+          @DiscriminatorValue(value= "ITEMBOOK")
+          public class BookItem extends Book {
+          
+          @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+          @JoinTable(name = "AUTHOR_BOOK_JOIN_TABLE",
+                 joinColumns = { @JoinColumn(name = "AUTHOR_FK" )},
+                 inverseJoinColumns = { @JoinColumn(name = "BOOK_FK" )})
+          private Set<Author>authors = new HashSet<Author>();}
+ 
+
+          @Entity(name="RareItem")
+          @Table(name="RARE_ITEM_TABLE")
+          @DiscriminatorValue(value= "REAREBOOK")
+          public class RareItem extends Book {}
+
+
+          @Entity(name="Author")
+          @Table(name="AUTHOR_TABLE")
+          public class Author {}
+```
+
+* With @Inheritance and **SINGLE_TABLE**
+
+      ![@Inheritance ]( https://drive.google.com/uc?id=18nfiKnQaim4-lTD21iBwy313Daxtv73H)
+
+[version 1.1](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary2) : JpaInherenceLibrary2, SINGLE_TABLE strategy
+
+</details>
+
+## (3) `Joined Table` Inhrence JPA
+
+<details>
+<summary>JpaInherenceLibrary3</summary>
+
+* Base project:
+  * POM
+  * @Entity: `Book` (SuperClass), `ItemBook`, `RareBook` and `Auhtor`
+  * `n:m` :  `Book`<> `Auhtor`
+  * DataBase H2 : application.properties
+  * Command Line Runner with methods to test
+  * @CrudRepository JPA 2.0, @Component (`CommandLineRunner`) and @Test (`Jupiter`)
+
+* New Topics
+  * How to code `@Inheritance(strategy = InheritanceType.JOINED)`
+
+``` java
+          @Entity
+          @Table(name="BOOK_TABLE")
+          @Inheritance(strategy = InheritanceType.JOINED)
+          @DiscriminatorColumn(name="BOOK_TYPE",
+                 discriminatorType = DiscriminatorType.STRING)
+          public class Book {}
+
+
+          @Entity(name="BookItem")
+          @Table(name="BOOK_ITEM_TABLE")
+          @PrimaryKeyJoinColumn(name = "bookItemId")
+          @DiscriminatorValue(value= "ITEMBOOK")
+          public class BookItem extends Book {
+          
+          @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+          @JoinTable(name = "AUTHOR_BOOK_JOIN_TABLE",
+                 joinColumns = { @JoinColumn(name = "AUTHOR_FK" )},
+                 inverseJoinColumns = { @JoinColumn(name = "BOOK_FK" )})
+          private Set<Author>authors = new HashSet<Author>();}
+ 
+
+          @Entity(name="RareItem")
+          @Table(name="RARE_ITEM_TABLE")
+          @PrimaryKeyJoinColumn(name = "rareItemId")
+          @DiscriminatorValue(value= "RAREBOOK")
+          public class RareItem extends Book {}
+
+
+          @Entity(name="Author")
+          @Table(name="AUTHOR_TABLE")
+          public class Author {}
+```
+
+* With @Inheritance and **JOINED**
+
+      ![@Inheritance JOINED](https://drive.google.com/uc?id=1BpxaW7fV_kh4PyFWn3i49nG4SqnKYpAE)
+
+[verison 1.1](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary3) : JpaInherenceLibrary3
+</details>
+
+## (4) `Table per class` Inhrence JPA
+
+<details>
+<summary>JpaInherenceLibrary4</summary>
+
+* Base project:
+  * POM
+  * @Entity: `Book` (SuperClass), `ItemBook`, `RareBook` and `Auhtor`
+  * `n:m` :  `Book`<> `Auhtor`
+  * DataBase H2 : application.properties
+  * Command Line Runner with methods to test
+  * @CrudRepository JPA 2.0, @Component (`CommandLineRunner`) and @Test (`Jupiter`)
+
+* New Topics
+  * How to code `@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)`
+
+``` java
+
+          @Entity
+          @Table(name="BOOK_TABLE")
+          @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+          public class Book {}
+
+
+          @Entity(name="BookItem")
+          @Table(name="BOOK_ITEM_TABLE")
+          public class BookItem extends Book {
+          
+          @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+          @JoinTable(name = "AUTHOR_BOOK_JOIN_TABLE",
+               joinColumns = { @JoinColumn(name = "AUTHOR_FK" )},
+               inverseJoinColumns = { @JoinColumn(name = "BOOK_FK" )})
+          private Set<Author>authors = new HashSet<Author>();}
+ 
+
+          @Entity(name="RareItem")
+          @Table(name="RARE_ITEM_TABLE")
+          public class RareItem extends Book {}
+
+
+          @Entity(name="Author")
+          @Table(name="AUTHOR_TABLE")
+          public class Author {}
+
+```
+
+* With @Inheritance and **TABLE_PER_CLASS**
+
+![@Inheritance TABLE PER CLASS](https://drive.google.com/uc?id=1ixCe2sRmIsS_9w7bPkmcdyBZmhKa3GtX)
+
+[version 1.1](https://github.com/AlbertProfe/cifojava2022-6/tree/main/jpainherencelibrary4) : JpaInherenceLibrary4
+</details>
+
+***
+
+## (0) Basic Spring Boot project
+
+<details>
+<summary>Universal Planes</summary>
+
+* Preliminary works:
+  * Create project on [Spring Init](https://start.spring.io/)
+  
+* [version 1.0](https://github.com/AlbertProfe/cifojava2022-6/tree/main/universalplanes) : spring boot executions
+
+</details>

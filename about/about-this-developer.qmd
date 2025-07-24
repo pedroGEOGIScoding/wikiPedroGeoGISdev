@@ -1,0 +1,85 @@
+---
+title: "About a developer"
+categories: [about]
+---
+
+![About](/images/home/frontimagealbertprofeweb-about.png){width=50%}
+
+
+# Skills needed as a developer (2022)
+
+::: {.summary}
+📘 **Developer skills summary**
+
+- Algorithmic, OOP, COP
+- Architecture in mind - Systems Design
+- Control Version Systems
+- DevOps
+- SCRUM
+:::
+
+---
+
+Nowadays a developer (not a coder) must have this skills set:
+
+- **Algorithmic**, (let's say micro-development vs. architecture and macro-development skills). That is, for example the current most used and modern paradigms:
+  - Scripting: BASH
+  - Structured and Procedural: C
+  - OOP (Object-Oriented Programming): [Java SE](https://java-programming.mooc.fi/)
+  - COP (Components-Oriented Programming): [React JS](https://reactjs.org/) and [React TS](https://www.typescriptlang.org/docs/handbook/react.html)
+- **Architecture in mind**: that it, System Design and Design-Patterns
+  - DDD: Domain-driven design and [microservices](https://dotnet.microsoft.com/download/e-book/microservices-architecture/pdf)
+  - [Spring Boot](https://spring.io/)
+  - Cloud: [AWS](https://aws.amazon.com/)
+- Project Management and Team Work:
+  - **SCRUM** and beyond SCRUM
+- **Control Version Systems**:
+  - [Git](https://git-scm.com/) / [GitHub](https://github.com/) / GitLab
+  - Subversion
+- **DevOps**, from Test to Deploy, through Documentation
+  - [about this site](/about/about-this-site.qmd), for documentation example.
+  - [JUnit for Spring Boot](https://junit.org/junit5/)
+  - [Jest for JS React](https://jestjs.io/)
+  - Deploy on Heroku, Netlify, AWS Amplify
+  - [Jenkins](https://www.jenkins.io/), [Docker](https://www.docker.com/) and [k8s](https://kubernetes.io/)
+
+
+## What is a developer (2022)
+
+
+A developer, also known as a software programmer, needs a wide range of skills in order to be successful in their role. Some of the most important skills for a programmer include:
+
+- **Strong problem-solving skills**: A programmer needs to be able to ``analyze complex problems and develop`` effective solutions using code.
+Logical thinking: Programming involves creating logical structures and processes that a computer can follow, so a programmer needs to have strong logical and analytical skills.
+- **Knowledge of programming languages and technologies**: A programmer needs to have a deep understanding of the programming languages and technologies that they use, as well as the ability to learn new languages and technologies as needed.
+- **Attention to detail**: Programming involves ``working with complex systems and large amounts of data``, so a programmer needs to have a keen eye for detail and the ability to spot errors and inconsistencies.
+- **Communication skills**: A programmer ``often works as part of a team``, so they need to be able to communicate effectively with other developers and stakeholders.
+- **Time management and organizational skills**: A programmer typically has ``multiple tasks and deadlines to manage``, so they need to be able to prioritize their work and stay organized.
+
+In addition to these core skills, a programmer may also benefit from having knowledge of software development methodologies, such as Agile or Waterfall, as well as experience with version control systems and other tools commonly used in software development.
+
+## How can we get it?
+
+To be a good programmer, you need to have a strong foundation in computer science and software development principles, as well as the ability to learn and adapt to new technologies and languages. Some specific ways that you can improve your skills as a programmer include:
+
+- **Practice regularly**: The best way to improve your programming skills is to write code regularly and work on a variety of projects. This will help you develop your problem-solving skills and build your knowledge of different languages and technologies.
+- **Learn from others**: There are many resources available online, such as tutorials, blogs, and forums, where you can learn from experienced programmers and ask questions. You can also learn by working on open-source projects and collaborating with other developers.
+- **Stay up-to-date**: The field of software development is constantly evolving, so it is important to stay up-to-date with the latest technologies and best practices. This can help you stay ahead of the curve and keep your skills relevant.
+- **Take on new challenges**: To continue growing as a programmer, you should strive to take on new and challenging projects that push you to learn and improve. This can help you develop new skills and broaden your expertise.
+- **Seek feedback**: It can be helpful to seek feedback from experienced programmers, mentors, or peers on your work. This can help you identify areas for improvement and learn from others who have more experience.
+
+In general, being a good programmer requires a combination of technical skills, problem-solving abilities, and a willingness to learn and grow. By focusing on these areas and continually striving to improve, you can become a successful and effective programmer.
+
+## And reading books?
+
+Reading books can help improve your skills as a programmer in several ways. Some specific benefits of reading books for programmers include:
+
+- **Expanding your knowledge**: Books can provide a wealth of information on a wide range of topics related to programming. By reading books, you can learn about new technologies, programming languages, and best practices that you may not have been aware of before.
+- **Improving your problem-solving skills**: Many books on programming include examples and exercises that you can use to practice your problem-solving skills. By working through these exercises, you can improve your ability to analyze complex problems and develop effective solutions using code.
+- **Broadening your perspective**: Reading books written by other programmers can provide valuable insights into how they approach problems and solve them. This can help you learn new techniques and strategies that you can apply to your own work.
+- **Building your vocabulary**: Many technical books on programming include specialized terminology and concepts that you may not be familiar with. By reading these books, you can expand your vocabulary and become more fluent in the language of programming.
+- **Staying up-to-date**: Reading books can help you keep up with the latest trends and developments in the field of software development. This can help you stay ahead of the curve and ensure that your skills remain relevant and in-demand.
+
+Overall, reading books can be a valuable way to improve your skills as a programmer. By reading books written by experienced programmers, you can learn new techniques and strategies, expand your knowledge, and stay up-to-date with the latest developments in the field.
+
+

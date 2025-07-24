@@ -1,0 +1,278 @@
+---
+title: "Lab#SB00-4: API Rest"
+subtitle: Spring Boot Library Management API Rest
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: Spring Boot
+categories: [Spring-Boot, lab, rest]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Spring Boot Lab#SB00-4: API Rest**
+
+After [Lab#SB00-3](/springboot/sblab0-3.qmd) we are going to creata an `API Rest` just for `book` domain.
+
+You may also check [this](/markup/markup-quarto-api-rest.qmd) introduction to API Rest.
+:::
+
+</br>
+
+## Overview
+
+An `API` is a **set of definitions and protocols for building and integrating application software**.
+
+> It’s sometimes referred to as a contract between an information provider and an information user—establishing the content required from the consumer (the `call`) and the content required by the producer (the `response`).
+
+::: {.column-margin}
+For example, the API design for a `weather service` could specify that the user supply a `zip code` and that the producer reply with a 2-part answer, the first being the `high temperature`, and the second being the `low temperature`.
+:::
+
+::: {.callout-note}
+## Rest
+REST is a set of architectural constraints, not a protocol or a standard. *API developers can implement REST in a variety of ways.*
+:::
+
+When a client request is made via a RESTful API, it transfers a representation of the state of the resource to the requester or endpoint.
+
+This information, or representation, is delivered in one of several formats via `HTTP`: `JSON` (Javascript Object Notation), `HTML`, `XLT`, `Python`, `PHP`, or `plain text`. 
+
+::: {.callout-note}
+## JSON
+JSON is the most generally popular file format to use because, despite its name, it’s language-agnostic, as well as readable by both humans and machines.
+:::
+
+## HTTP messages
+
+`HTTP messages` are **how data is exchanged between a server and a client.**
+
+There are two types of messages:
+
+- `requests` sent by the client to trigger an action on the server,
+- and `responses`, the answer from the server.
+
+[HTTP messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages){.external} are composed of **textual information encoded in ASCII**, and span over multiple lines. 
+
+::: {.column-margin}
+In HTTP/1.1, and earlier versions of the protocol, these messages were openly sent across the connection. In HTTP/2, the once human-readable message is now divided up into `HTTP frames`, providing **optimization and performance improvements.**
+:::
+
+![HTTP message](/images/springboot/httpmsg2.png){width="80%"}
+
+HTTP `requests`, and `responses`, share similar structure and are composed of:
+
+1. **A start-line describing the requests to be implemented,** or its status of whether successful or a failure. This start-line is always a single line.
+2. **An optional set of HTTP headers specifying the request,** or describing the body included in the message.
+3. A blank line indicating all meta-information for the request has been sent.
+4. **An optional body containing data associated with the request** (like content of an HTML form), or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.
+
+## HTTP status messages
+
+- [HTTP status messages](https://www.w3schools.com/tags/ref_httpmessages.asp){.external}
+
+![HTTP status messages poster](/images/springboot/httpstatus.png){width="40%"}
+
+[Source-status-code-poster by Steve Schoger](https://www.steveschoger.com/status-code-poster/){.external}
+
+## Library Management base project
+
+
+- [Library Management 0.7](https://github.com/AlbertProfe/CifoJava2023/tree/4a2599405941d32bdf5431cde70a8052c845588e/LibraryManagement){.external}
+
+## Folder-tree project
+
+![Library Management](/images/springboot/LibraryManagement-apirest.png){width="40%"}
+
+
+## API Rest `book`
+
+Reference: 
+
+- [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/){.external}
+- [What is JSON](https://www.w3schools.com/whatis/whatis_json.asp){.external}
+- [Library1 Rest Controller Book](https://github.com/AlbertProfe/cifojava2022-3/blob/master/library1/src/main/java/io/company/library/LibraryRestController.java){.external}
+- [What is a REST API?](https://www.redhat.com/en/topics/api/what-is-a-rest-api){.external}
+
+::: {.callout-note}
+## @RestController Annotation
+This **annotation** is used at the class level and allows the class to handle the requests made by the client. The RestController allows to handle all REST APIs such as GET, POST, Delete, and PUT requests. 
+:::
+
+We define a REST controller using the `@RestController` and @`RequestMapping `annotations. The controller handles requests related to books under the base path `"/api/book"`.
+
+The `BookRestController` class has a dependency on the `BookService` class, which is automatically injected using the `@Autowired` annotation.
+
+The controller has a `GET` method mapped to the `"/books"` path, which retrieves all the books using the `bookService.getAllBooks()` method and returns them as a `HashMap` with String keys and `Book` values.
+
+::: {.column-margin}
+This method can be accessed through a web browser or another client, and it will return the response in a format such as JSON or XML.
+:::
+
+```java
+package com.example.myFirstSpring.restcontroller;
+
+import com.example.myFirstSpring.model.Book;
+import com.example.myFirstSpring.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.HashMap;
+
+@RestController
+@RequestMapping("/api/book")
+public class BookRestController {
+
+    @Autowired
+    BookService bookService;
+
+    @GetMapping ("/books")
+    public HashMap<String, Book> getAllBooks(){
+
+      return bookService.getAllBooks();
+
+
+    }
+}
+```
+
+## Postman
+
+![Postman](/images/springboot/postman-1.png){width="50%"}
+
+[Postman](https://www.postman.com/){.external} is a **popular API development tool used by developers to test, design, and document APIs**.
+
+With `Postman`, developers **can send requests to APIs and receive responses**, allowing them to check the functionality of the API and identify any issues that need to be fixed.
+
+Postman also allows developers to create collections of requests and to collaborate with other developers by sharing these collections.
+
+### Install Postman in Linux Mint
+
+``` terminal
+
+$ sudo rm /etc/apt/preferences.d/nosnap.pref
+$ sudo apt update
+$ sudo apt install snapd
+$ sudo snap install postman
+
+
+```
+
+**endpoint**: `http://localhost:8086/api/book/books`
+
+![Postman](/images/springboot/postman.png){width="40%"}
+
+### Using variables
+
+[Variables enable you to store and reuse values in Postman](https://learning.postman.com/docs/sending-requests/variables/){.external}.
+
+By storing a value as a variable, you can reference it throughout your collections, environments, requests, and test scripts. Variables help you work efficiently, collaborate with teammates, and set up dynamic workflows.
+
+
+
+## Swagger
+
+[Swagger](https://swagger.io/){.external}, on the other hand, **is an open-source framework for designing and documenting APIs.**
+
+With `Swagger`, developers **can create an API specification that defines the endpoints, parameters, and responses of an API.** 
+
+This specification **can then be used to generate documentation, client libraries, and server stubs in multiple programming languages.**
+
+`Swagger` also includes a user interface called Swagger UI, which allows developers to interact with an API and explore its endpoints and responses.
+
+### Add `Swagger` to Spring
+
+Add `Swagger` to project, [swagger web](https://swagger.io/tools/swaggerhub/) and **refactor**:
+
+1. [URL swagger](http://localhost:8080/swagger-ui.html) : 
+   
+> `http://localhost:8080/swagger-ui.html`
+   
+2. Java Version and dependencies 
+
+``` c
+  <properties>
+              <java.version>11</java.version>
+  </properties>
+```
+Dependencies:
+
+``` c
+  <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+    <dependency>
+          <groupId>io.springfox</groupId>
+          <artifactId>springfox-swagger2</artifactId>
+          <version>2.9.2</version>
+  </dependency>
+
+  <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+  <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>2.9.2</version>
+  </dependency>
+```
+
+3. Annotation:
+   
+> @EnableSwagger2 in Main
+
+4. application.properties:
+
+> spring.mvc.pathmatch.matching-strategy=ant-path-matcher
+
+5. java class config:
+   
+``` java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@EnableSwagger2
+@Configuration
+public class SpringFoxConfig {
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors
+                .any())
+                .paths(PathSelectors
+                .any())
+                .build();
+    }
+}
+```
+
+
+## Versions
+
+**endpoint**: `http://localhost:8090/api/book/books`
+
+| Code Version | Commit | Folder-Tree | Screeshoots |
+| -- | -- | -- | -- |
+| [Library Management Rest 0.0](https://github.com/AlbertProfe/CifoJava2023/tree/de0b6481a5440b6f0b61b36801676bf02409a402/LibraryManagementRest){.external}  | create project pom and refactoring, CRUD: [read](https://github.com/AlbertProfe/CifoJava2023/blob/de0b6481a5440b6f0b61b36801676bf02409a402/LibraryManagementRest/src/main/java/com/example/myFirstSpring/restcontroller/BookRestController.java#L18){.external} all books | [Basic Structure](/images/springboot/LibraryManagementRest-v0.0-project.png){width="60%"} | [localhost:8090/api/book/books](/images/springboot/LibraryManagementRest-v0.0-1.png){width="80%"} |
+| [Library Management Rest 0.1](https://github.com/AlbertProfe/CifoJava2023/tree/cdee65c2c0afa44adb8c0a967de22c9a57a993a1/LibraryManagementRest){.external}  | CRUD: delete book | - | [localhost:8090/api/book/deleteBook](/images/springboot/LibraryManagementRest-v0.1-1.png){width="80%"} |
+| [Library Management Rest 0.2](https://github.com/AlbertProfe/CifoJava2023/tree/b5fcf2a90186f66a58f119dfaf17ee0be0ddb47c/LibraryManagementRest){.external}  | CRUD: create book & [create borrow by ids](https://github.com/AlbertProfe/CifoJava2023/blob/b5fcf2a90186f66a58f119dfaf17ee0be0ddb47c/LibraryManagementRest/src/main/java/com/example/myFirstSpring/restcontroller/BorrowController.java#L24){.external}   | - | [localhost:8090/api/book/books](/images/springboot/LibraryManagementRest-v0.2-1.png){width="80%"} - [localhost:8090/api/user/users](/images/springboot/LibraryManagementRest-v0.2-3.png){width="80%"} - [localhost:8090/api/borrow/createBorrow](/images/springboot/LibraryManagementRest-v0.2-2.png){width="80%"}|
+| [Library Management Rest 0.3](https://github.com/AlbertProfe/CifoJava2023/tree/700854752bbc5d420e968744f2a0a3bfe7db1e47/LibraryManagementRest){.external}  | CRUD: update book and [update method in book model](https://github.com/AlbertProfe/CifoJava2023/blob/700854752bbc5d420e968744f2a0a3bfe7db1e47/LibraryManagementRest/src/main/java/com/example/myFirstSpring/model/Book.java#L31){.external} | [Final structure](/images/springboot/LibraryManagementRest-v0.2-project.png){} | [localhost:8090/api/book/updateBook](/images/springboot/LibraryManagementRest-v0.3-1.png){width="80%"} |
+| [Library Management Rest 0.4](https://github.com/AlbertProfe/CifoJava2023/tree/b5fcf2a90186f66a58f119dfaf17ee0be0ddb47c/LibraryManagementRest){.external}  | user CRUD |  | |
+
+### Postman apis
+
+| Domain | Link | Objects |
+| -- | -- | -- |
+| books | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-c1620d8c-c576-4e34-8af4-0c9f990b6dfa?action=share&creator=7473960){.external} | `book` | 
+| borrow | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-b26c4d68-8937-49c1-97d1-fc4919283023?action=share&creator=7473960){.external} | `book` `user` `borrow` | 
+| user | [postman link](https://restless-comet-543993.postman.co/workspace/CifoJava2023~7b247b84-dbad-483c-be9a-c0fe5d691413/collection/7473960-ccbd64c8-014d-4c44-9707-619aee02eeb3?action=share&creator=7473960){.external} | `user` |
+
+

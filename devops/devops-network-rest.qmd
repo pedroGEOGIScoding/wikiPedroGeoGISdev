@@ -1,0 +1,329 @@
+---
+title: "Network: API Rest"
+subtitle: Networking API Rest
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, API-Rest]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+
+
+::: {.summary}
+
+**REST (Representational State Transfer)** 
+
+``Rest`` is an architectural style for building web services.
+
+It is based on a **client-server** model, where a client sends a ``request`` to a server and the server sends a ``response``.
+
+RESTful APIs use HTTP requests to POST (create), PUT (update), GET (read), and DELETE (delete) data.
+
+A RESTful API is a simple, consistent, and easy-to-use way for applications to communicate with each other over the internet.
+
+:::
+
+
+# What is API Rest
+
+![](/images/javase/apirest.png){width="80%"}
+
+::: {.column-margin}
+In other words, if you want to interact with a computer or system to retrieve information or perform a function, an API helps you communicate what you want to that system so it can understand and fulfill the request.
+:::
+
+::: {.column-margin}
+Image from: [Why is RESTful API so popular?](https://blog.bytebytego.com/p/why-is-restful-api-so-popular){.external}
+:::
+
+
+[An API is a set of definitions and protocols](https://www.redhat.com/en/topics/api/what-is-a-rest-api){.external} for building and integrating application software.
+
+It’s sometimes referred to as a **contract** between an **information provider** and an **information user**.
+
+This contract (API Rest *style*) establishing the content required from the consumer (the call) and the content required by the producer (the response).
+
+::: {.callout-note}
+For example, the API design for a weather service could specify that the user supply a zip code and that the producer reply with a 2-part answer, the first being the high temperature, and the second being the low.  
+:::
+
+## API Rest examples
+
+<details>
+<summary>API Rest Big Tech</summary>
+
+There are many examples of APIs, but here are a few common ones:
+
+- **Google Maps API**: allows developers to integrate Google Maps functionality into their own applications, such as displaying maps, getting directions, and searching for places.
+
+- **Twitter API**: allows developers to access and interact with tweets, as well as post new tweets, through their own applications.
+
+- **Facebook API**: allows developers to access and interact with user data, such as posts, photos, and friends, as well as post new content, through their own applications.
+
+- **Stripe API**: allows developers to integrate Stripe's payment functionality into their own applications, such as processing payments and managing subscriptions.
+
+- **OpenWeather API**: allows developers to access current weather data, as well as forecast, historical data and more for any location on Earth.
+
+- **NASA API**: allows developers to access and interact with various datasets from NASA, such as images, videos, and information about space missions and celestial bodies.
+
+</details>
+
+
+
+<details>
+<summary>Example: open weather map London</summary>
+
+
+One example of a public API with a URL that can be used to access data is the **OpenWeather API.**
+
+You can access current weather data for a specific location by making a GET request to the following URL:
+
+``` html
+http://api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
+
+```
+
+
+You need to replace ``{city name}`` with the name of the city you want to get weather data for and ``{your api key}`` with **your own API key**, which you **can get by signing up for a free account on the OpenWeather website.**
+
+For example, if you want to get the current weather data for **London**, you would make a ``GET`` ``request`` to the following URL:
+
+``` html
+http://api.openweathermap.org/data/2.5/weather?q=London&appid={your api key}
+
+```
+
+It will return a ``JSON`` object with various information such as temperature, humidity, wind, etc.
+
+</details>
+
+
+<details>
+<summary>Example: Nasa Mars</summary>
+
+**NASA** has several APIs available for developers to access and interact with various datasets, such as images, videos, and information about space missions and celestial bodies.
+
+> One example of a NASA API is the NASA Image and Video Library API, which allows you to access NASA's media assets, including images, videos, and audio files.
+
+
+``` html
+https://images-api.nasa.gov/search?q={your search term}
+
+```
+
+::: {.callout-note}
+You can access the NASA Image and Video Library API by making a GET request to the following URL:
+:::
+
+For example, if you want to search for **images of the planet Mars**, you would make a GET request to the following URL:
+
+[Nasa API for Mars](https://images-api.nasa.gov/search?q=mars){.external}
+
+
+This will return a ``JSON`` object with a list of assets, including links to the images and other information such as title and description.
+</details>
+
+
+
+<details>
+<summary>Free Open APIs</summary>
+
+
+- [Big List of Free Open APIs](https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/){.external}
+- To create integrations, retpythoncom/collection/list-of-free-apis){.external}
+- This is a collection of different REST APIs that are completley public and do not require any authentication, making it easier for consumers to play with and understand what APIs are all about by seeing the many different ways in which APIs can be used: [Public REST APIs](https://documenter.getpostman.com/view/8854915/Szf7znEe){.external}
+- Get a list of universities in a specified country: [Universities List](http://universities.hipolabs.com/search?country=United+States){.external}
+- Free API – Huge List of Public APIs For Testing [No Key]: [Free APIs You Can Use for Testing](https://apipheny.io/free-api/){.external}
+
+</details>
+
+# REST API Basics
+
+<mark>A REST API, or Representational State Transfer Application Programming Interface, is a set of rules and conventions for building and interacting with web services</mark>. It follows a stateless client-server architecture, where the client and server communicate over HTTP (Hypertext Transfer Protocol). Let's break down the key concepts of REST API.
+
+1. **Resources:**
+   At the core of REST API design are resources, which represent entities or objects in the system. These resources are identified by URIs (Uniform Resource Identifiers). For example, consider a simple blogging platform. Each blog post, user, or comment could be a resource with a unique URI like `/posts`, `/users`, and `/comments`.
+
+2. **HTTP Methods:**
+   RESTful APIs use standard HTTP methods to perform operations on resources. The most common methods are:
+   - **GET:** Retrieve a resource's representation.
+   - **POST:** Create a new resource.
+   - **PUT:** Update an existing resource.
+   - **DELETE:** Remove a resource.
+
+   In our blogging platform example, a `GET` request to `/posts` might retrieve all blog posts, while a `POST` request to `/posts` would create a new post.
+
+3. **Representations:**
+   Resources are [represented in different formats, such as JSON](https://jsoncrack.com/editor){.external} or XML. This allows clients and servers to exchange data in a standardized way. For instance, when retrieving a blog post, the server might respond with a JSON representation containing the post's title, content, and author.
+
+   ![JSON structure](/images/devops/json-structure.png){width="60%"}
+
+- [JSON crack](https://jsoncrack.com/editor){.external}
+
+# Building a RESTful API
+
+Now that we understand the basics, let's explore how to create a simple RESTful API. We'll use a hypothetical task management system as an example.
+
+1. **Define Resources:**
+   Identify the main resources in your system. In our case, it could be tasks. Each task might have attributes like `id`, `title`, `description`, `status`, and `due_date`.
+
+2. **Create Endpoints:**
+   Design URIs for each resource and associate them with specific HTTP methods. For tasks, we could have:
+   - `GET /tasks`: Retrieve all tasks.
+   - `GET /tasks/{id}`: Retrieve a specific task.
+   - `POST /tasks`: Create a new task.
+   - `PUT /tasks/{id}`: Update a task.
+   - `DELETE /tasks/{id}`: Delete a task.
+
+![What is an URL/URI](/images/devops/what-is-uri.png){width="60%"}
+
+3. **Implement CRUD Operations:**
+   Write the server-side logic to handle CRUD operations. Using a programming language and a framework (like Flask for Python or Express for Node.js), you can define functions for each endpoint to perform actions such as querying the database, creating, updating, or deleting tasks.
+
+# Consuming a RESTful API
+
+With our RESTful API in place, let's see how a client can interact with it.
+
+1. **Make HTTP Requests:**
+   Clients, which can be web applications, mobile apps, or other servers, interact with the API by making HTTP requests. For instance, a `GET` request to `/tasks` would retrieve a list of tasks.
+
+2. **Handling Responses:**
+   Clients receive responses in the form of representations, typically in JSON. They parse these representations to extract relevant data. If a client requests a task, it might receive a JSON object with details like title, description, and status.
+
+3. **Authentication and Authorization:**
+   Secure your API by implementing authentication and authorization mechanisms. This ensures that only authorized users can access certain resources or perform specific operations. Common authentication methods include API keys, OAuth, or token-based authentication.
+
+# JSON: JavaScript Object Notation
+
+JSON, or JavaScript Object Notation, is a lightweight data interchange format. It is easy for humans to read and write, and easy for machines to parse and generate. JSON is often used for data exchange between a server and a web application, as well as for configuration files.
+
+## Key Characteristics
+
+**Data Structure:**
+   JSON represents data as key-value pairs, similar to objects in programming languages. For example:
+
+   ```json
+   {
+     "name": "John Doe",
+     "age": 30,
+     "city": "New York"
+   }
+   ```
+**Syntax**
+
+- Uses curly braces {} to define objects.
+- Key and value pairs are separated by a colon :.
+- Items in an object are separated by commas.
+  
+**Data Types**
+
+Supports basic data types like strings, numbers, booleans, arrays, objects, and null.
+
+Example Array:
+
+  ```json
+ {
+  "fruits": ["apple", "banana", "orange"]
+}
+   ```
+
+
+# HTTP status messages
+
+- [HTTP status messages](https://www.w3schools.com/tags/ref_httpmessages.asp){.external}
+
+![HTTP status messages poster](/images/springboot/httpstatus.png){width="40%"}
+
+[Source-status-code-poster by Steve Schoger](https://www.steveschoger.com/status-code-poster/){.external}
+
+
+# Improving REST API Performance and Efficiency
+
+When building and optimizing a REST API, several strategies can enhance its performance, scalability, and user experience. Here are key considerations implemented in modern APIs:
+
+![How to improve API performance?](/images/devops/apir-rest-improving.png){width="60%"}
+
+**Pagination**
+
+Pagination is crucial for managing large datasets efficiently. By limiting the number of results in each API response and providing links or metadata for navigating to the next set of results, pagination improves response times and reduces the load on both the server and client.
+
+
+Example Pagination Response:
+```json
+{
+  "data": [...], // Current set of results
+  "next_page": "/api/posts?page=2",
+  "total_pages": 5
+}
+```
+
+**Asynchronous Logging**
+
+To avoid performance bottlenecks caused by synchronous logging, implementing asynchronous logging allows the API to log events without waiting for a response. This ensures that log entries do not impact the API's response time, providing a more responsive experience.
+
+Example Asynchronous Logging:
+
+```python
+import logging
+from concurrent.futures import ThreadPoolExecutor
+
+logger = logging.getLogger(__name__)
+
+def log_event_async(event):
+    with ThreadPoolExecutor() as executor:
+        executor.submit(logger.info, event)
+
+
+```
+
+**Caching**
+
+Caching frequently requested data can significantly reduce response times. By storing and serving previously generated responses, caching minimizes redundant computations, enhancing the API's overall efficiency.
+
+Example Caching Header:
+
+```http
+Cache-Control: max-age=3600, public
+```
+**Payload Compression**
+
+Compressing API payloads before transmission reduces bandwidth usage and speeds up data transfer. Popular compression algorithms like GZIP or Brotli can be utilized to minimize the size of JSON responses.
+
+Example Payload Compression Header:
+```http
+Content-Encoding: gzip
+```
+
+**Connection Pooling**
+
+
+Managing database connections efficiently is critical for API performance. Connection pooling allows the API to reuse existing database connections, minimizing the overhead of opening and closing connections for each request.
+
+Example Connection Pooling (Python with SQLAlchemy):
+```python
+from sqlalchemy import create_engine, pool
+
+engine = create_engine('database://', pool_size=20, max_overflow=10)
+```
+
+
+
+# MindMap
+
+![Rest API Mindmap](/images/devops/REST-API-Mindmap.png)
+
+# Resources
+
+- [Quarto Markdown: api rest call](/markup/markup-quarto-api-rest.qmd)
+- [Quarto Markdown: OJS Cells](/markup/markup-quarto-api-rest-v2.qmd)
+- [Spring Boot: Rest](/springboot/boot-concepts-rest.qmd)
+- [Lab#RE01-1: API Rest Axios](/reactjs/rjslab1.qmd)
+- [An architect's guide to APIs: SOAP, REST, GraphQL, and gRPC](https://www.redhat.com/architect/apis-soap-rest-graphql-grpc){.external}
+- [A guide to the different types of APIs](https://blog.postman.com/different-types-of-apis/){.external}
+

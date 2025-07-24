@@ -1,0 +1,129 @@
+---
+title: "Linux: pipes"
+subtitle: Programming pipes
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: A pipe is a command that allows you to redirect the output of one command as the input to another command
+categories: [linux, bash, pipe]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **Linux**
+
+A **pipe** is a command that allows you to **redirect the output of one command as the input to another command**. 
+
+It is represented by the vertical bar symbol ``|``.
+
+:::
+
+---
+
+## Introduction
+
+For example, you can use the **pipe command to list all the files in a directory**, and then use the ``grep`` command to search for a **specific string in those files**:
+
+``` bash
+ls | grep "devtools"
+```
+
+This will list all the files in the current directory and then search for the string **"devtools"** in the output of the `ls` command.
+
+You can also use multiple pipes to chain together multiple commands. For example:
+
+``` bash
+ls | grep "devtools" | sort
+```
+
+This will list **all the files in the current directory, search for the string "devtools"** in the output of the `ls` command, and then **sort the output alphabetically**.
+
+
+![pipe linux ls-grep-sort](/images/linux/linux-mint-pipe-01.png)
+
+### ``grep``
+
+ ``grep`` searches for patterns in text. It stands for **global regular expression print**, and it allows you to **search for specific patterns of characters in one or more files.**
+
+You can use `grep` to search for a specific word or phrase in a file, or you can use it to search for more complex patterns using **regular expressions.**
+
+<details>
+<summary>Here are a few examples of how `grep` can be used:</summary>
+<br>
+To search for a **specific word in a file**:
+
+``` bash
+grep "word" file.txt
+```
+
+To search for a **specific word in multiple files**:
+
+``` bash
+grep "word" file1.txt file2.txt file3.txt
+```
+
+To search for a **word that starts with a specific letter**:
+
+``` bash
+grep "^w" file.txt
+```
+
+To search for a **word that ends with a specific letter**:
+
+``` bash
+grep "w$" file.txt
+```
+</details>
+
+## Using a pipe
+
+Exmaple from: [Combining multiple commands](https://swcarpentry.github.io/shell-novice/04-pipefilter/index.html#combining-multiple-commands)
+
+As we know, we may chaining pipes consecutively. We can for example send the output of ``wc`` directly to ``sort``, and then the resulting output to ``head``. This removes the need for any intermediate files.
+
+We’ll start by using a pipe to send the output of ``wc`` to ``sort``:
+
+``` {.bash filename="wc and sort"}
+$ wc -l *.pdb | sort -n
+```
+
+``` {.bash filename="output"}
+   9 methane.pdb
+  12 ethane.pdb
+  15 propane.pdb
+  20 cubane.pdb
+  21 pentane.pdb
+  30 octane.pdb
+ 107 total
+```
+We can then send that output through another pipe, to ``head``, so that the full ``pipeline`` becomes:
+
+``` {.bash filename="wc and sort and head"}
+$ wc -l *.pdb | sort -n | head -n 1
+```
+``` {.bash filename="output"}
+ methane.pdb
+```
+
+
+The calculation is **head of sort of line count of ``.pdb``**. The redirection and pipes used in the last few commands are illustrated below:
+
+![$ wc -l *.pdb | sort -n | head -n 1](/images/linux/pipe.png)
+
+### ``wc``, ``cat``, ``head`` and ``sort``
+
+- ``wc`` counts lines, words, and characters in its inputs.
+- ``cat`` displays the contents of its inputs.
+- ``sort`` sorts its inputs.
+- ``head`` displays the first 10 lines of its input.
+- ``tail`` displays the last 10 lines of its input.
+- ``command > [file]`` redirects a command’s output to a file (overwriting any existing content).
+- ``command >> [file]`` appends a command’s output to a file.
+- ``[first] | [second]`` is a pipeline: the output of the first command is used as the input to the second.
+- The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).
+

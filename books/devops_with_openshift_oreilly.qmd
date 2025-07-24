@@ -1,0 +1,35 @@
+---
+title: "DevOps with OpenShift"
+author: "albertprofe"
+subtitle: "Stefano Picozzi, Mike Hepburn & Noel O'Connor, 2017, DevOps with OpenShift: Cloud Deployments Made Easy"
+date: 1/20/2023
+date-modified: last-modified
+date-format: full
+description: "A comprehensive guide to DevOps with OpenShift, the powerful platform for container-based applications. The authors explain how to implement a continuous delivery pipeline and how to manage containers in a DevOps environment."
+categories: [devops]
+subcategories: [programming, devops, openshift]
+format:
+    html
+---
+
+## Book Image
+
+![](/books/devops_with_openshift_oreilly.png)
+
+## More info
+
+- [DevOps with OpenShift RedHat pdf](https://cloud.redhat.com/hubfs/pdfs/DevOps_with_OpenShift.pdf){.external}
+- [DevOps with OpenShift pdf](/books/DevOps_with_OpenShift.pdf)
+
+
+## What is OpenShift?
+
+``OpenShift`` is a family of containerization software offerings created by open-source software provider Red Hat. **According to the company, Kubernetes is the kernel of distributed systems, while ``OpenShift`` is the distribution.**
+
+> At its core, ``OpenShift`` is a cloud-based **Kubernetes** container platform that's considered both containerization software and a platform-as-a-service (PaaS).
+
+> It’s also partly built on **Docker**, another popular containerization platform. 
+
+``OpenShift`` offers consistent security, built-in monitoring, centralized policy management, and compatibility with Kubernetes container workloads. It’s fast, enables self-service provisioning, and integrates with a variety of tools. In other words, there’s no vendor lock-in.
+
+Previously known as Origin, the open-source platform, ``OpenShift`` OKD lets developers create, test, and deploy applications on the cloud. It also supports several programming languages, including Go, Node.js, Ruby, Python, PHP, Perl, and Java.

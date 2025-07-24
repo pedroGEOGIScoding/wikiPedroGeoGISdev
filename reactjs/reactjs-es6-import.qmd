@@ -1,0 +1,82 @@
+---
+title: "React JS ES6: import modules"
+subtitle: ReactJS import modules
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [reactjs, es6, import-modules]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+## Overview
+
+::: {.summary}
+
+📘 **import modules*
+
+The magic of components lies in their ``reusability``: you can create components that are composed of other components.
+
+But as you nest more and more components, **it often makes sense to start splitting them into different files**. This lets you keep your files easy to scan and reuse components in more places.
+
+:::
+
+---
+
+## Exporting and importing a component 
+
+
+[What if you want to change the landing screen](https://beta.reactjs.org/learn/importing-and-exporting-components){.external} in the future and put a list of science books there? Or place all the profiles somewhere else? It makes sense to move ``Gallery`` and ``Profile`` out of the root component file.
+
+This will make them more **modular and reusable** in other files. You can move a component in three steps:
+
+1. Make a new ``JS file`` to put the components in.
+2. ``Export`` your function component from that file (using either ``default`` or named ``exports``).
+3. ``Import`` it in the file where you’ll use the component (using the corresponding technique for ``importing`` default or ``named exports``).
+
+
+Here both ``Profile`` and ``Gallery`` have been moved out of ``App.js`` into a new file called ``Gallery.js``.
+Now you can change ``App.js`` to import ``Gallery`` from ``Gallery.js``:
+
+``` {.jsx .code-overflow-wrap filename="Gallery.js"}
+function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+    />
+  );
+}
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+       <p>I love science!! Do you know what does STEAM mean? Come on, Albertus, answer the question! </p>
+    </section>
+  );
+}
+
+```
+
+``` {.jsx .code-overflow-wrap filename="App.js"}
+import Gallery from './Gallery.js';
+
+export default function App() {
+  return (
+    <Gallery />
+  );
+}
+```
+
+::: {.column-margin}
+![Executing App.js, calling component Gallery, importing it and using it](/images/reactjs/ex6.png){width=100%}
+:::
+

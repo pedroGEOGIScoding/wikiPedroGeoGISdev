@@ -1,0 +1,1497 @@
+---
+title: "Lab#RE07-1: traffic lights simulation"
+subtitle: ReactJS labs
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: labs
+categories: [reactjs, lab, Lab#RE07]
+toc: true
+number-sections: true
+format:
+  html
+execute:
+  echo: false
+---
+
+::: {.labs}
+📘 **React JS Lab#RE07-1: Traffic Lights Simulation**
+
+In this lab, we'll delve into building a **traffic lights simulation** using `React.js`. Here's an overview of what we'll cover:
+
+1. **Project Setup**: We'll kick off by creating a new React project using **Vite**, a modern build tool.
+   1. With Vite's fast build times, we'll set up our project environment swiftly.
+
+2. **CSS Inline Styling**: Instead of separate CSS files, we'll utilize inline styling for our components.
+   1. This approach keeps our styling concise and localized within each component.
+
+3. **JSX Components**: We'll dive into JSX, a syntax extension for JavaScript often used with React. JSX allows us to write HTML-like code within JavaScript, making it seamless to create UI components.
+
+4. **Business Logic Management with Hooks, Literal Objects & timout**: 
+   1. We'll leverage `literal objects` for organized state management.
+   2. We'll manage our <marl>form state using React hooks</mark> like (these hooks empower us to handle stateful logic effectively within functional components):
+      1.  `useState`,
+      2.  `useMemo`,
+      3.  `useContext`,
+      4.  and `useEffect`
+   
+   3. `Timeouts for Simulation Logic`: We'll incorporate **timeouts** to control the simulation flow.
+      1. Timeouts allow us to delay certain actions, such as changing traffic light colors or updating pedestrian movements, adding an interactive and dynamic element to our traffic lights simulation.
+   
+5. **Form Management**: We'll dive into forms to manage **user data**
+   1. **Axios**: we will use `axios` to persist our data at *fake-server* [mockapi](https://mockapi.io/){.external target='_blank'}
+
+
+By the end of this lab, you'll have gained hands-on experience in React.js development, mastering essential concepts like state management, JSX rendering, component styling, and integrating timeouts for simulation logic. This project serves as an engaging introduction to building dynamic web applications with React. 
+
+
+:::
+
+</br>
+
+# References
+
+## Scripts and tools
+
+**`React.dev` scripts**
+
+<details>
+<summary>Implement a traffic light</summary>
+Here is a crosswalk light component that toggles when the button is pressed:
+
+- [Implement a traffic light](https://react.dev/learn/state-as-a-snapshot#challenges){.external target='_blank'}
+- [codesandbox **walking**](https://codesandbox.io/p/sandbox/react-dev-mzqnh7?file=%2Fsrc%2FApp.js&utm_medium=sandpack){.external target='_blank'}
+</details>
+
+
+
+<details>
+<summary>Fix a request counter</summary>
+You’re working on an art marketplace app that lets the user submit multiple orders for an art item at the same time. Each time the user presses the “Buy” button, the “Pending” counter should increase by one. After three seconds, the “Pending” counter should decrease, and the “Completed” counter should increase.
+
+> However, the “Pending” counter does not behave as intended. When you press “Buy”, it decreases to -1 (which should not be possible!). And if you click fast twice, both counters seem to behave unpredictably.
+
+Why does this happen? Fix both counters.
+
+- [Implement a traffic light](https://react.dev/learn/queueing-a-series-of-state-updates#fix-a-request-counter){.external target='_blank'}
+- [codesandbox **marketplace**](https://codesandbox.io/p/sandbox/react-dev-hl8cxc?file=%2Fsrc%2FApp.js&utm_medium=sandpack){.external target='_blank'}
+</details>
+
+
+<details>
+<summary>Treat state as read-only</summary>
+In other words, you should treat any JavaScript object that you put into state as read-only.
+
+This example holds an object in state to represent the current pointer position. The red dot is supposed to move when you touch or move the cursor over the preview area. But the dot stays in the initial position:
+
+
+- [Treat state as read-only](https://react.dev/learn/updating-objects-in-state#treat-state-as-read-only){.external target='_blank'}
+- [codesandbox **red-point**](https://codesandbox.io/p/sandbox/react-dev-5tfwx3?file=%2Fsrc%2FApp.js&utm_medium=sandpack){.external target='_blank'}
+</details>
+
+
+<details>
+<summary>Copying objects with the spread syntax</summary>
+In the previous example, the position object is always created fresh from the current cursor position. But often, you will want to include existing data as a part of the new object you’re creating. For example, you may want to update only one field in a form, but keep the previous values for all other fields.
+
+These input fields don’t work because the onChange handlers mutate the state:
+
+- [Copying objects with the spread syntax](https://react.dev/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax){.external target='_blank'}
+- [codesandbox **form**](https://codesandbox.io/p/sandbox/react-dev-xjd24m?file=%2Fsrc%2FApp.js&utm_medium=sandpack){.external target='_blank'}
+
+</details>
+
+
+<details>
+<summary>Updating Arrays in State</summary>
+Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+
+- [Updating Arrays in State](https://react.dev/learn/updating-arrays-in-state){.external target='_blank'}
+- [codesandbox **sculptors**](https://codesandbox.io/p/sandbox/react-dev-yy44zn?file=%2Fsrc%2FApp.js&utm_medium=sandpack){.external target='_blank'}
+</details>
+
+
+**Initial `SPA` projects `codesandbox`**
+
+- Basic business logic: [trafficlights SPA 1.0.1](https://codesandbox.io/p/sandbox/trafficslights-v1-0-1-thjt2d){.external target='_blank'}
+- `Axios` and Api `Rest`: [trafficlights SPA 1.2.1](https://codesandbox.io/p/sandbox/trafficslights-v1-2-1-4znjj6){.external target='_blank'}
+- `useContext` to decouple `axios` from render: [trafficlights SPA 1.3.0](https://codesandbox.io/p/sandbox/trafficslights-v1-3-0-9hs8rw){.external target='_blank'}
+- implement **CRUD** delete operation with `axios` & `useContext`: [trafficlights SPA 1.4.0](https://codesandbox.io/p/sandbox/trafficslights-v1-3-0-forked-xqj779){.external target='_blank'}
+- implement **CRUD** create/update operations with `axios` & `useContext`: [trafficlights SPA 1.4.1](https://codesandbox.io/p/sandbox/trafficslights-v1-4-1-vrh9gg){.external target='_blank'}
+- implement **CRUD** close button `edit` & `API_URL`: [trafficlights SPA 1.4.2](https://codesandbox.io/p/sandbox/thirsty-gagarin-d8fhkf){.external target='_blank'}
+
+::: {.column-margin}
+ ![useContext in trafficlights SPA 1.3.0](/images/ifcd0210-24/photo_2024-03-09_06-29-18.jpg){.lightbox}
+:::
+
+# Create project
+
+## Vite
+
+> Next Generation Frontend Tooling: Get ready for a development environment that can finally catch up with you.
+
+- [Vite](https://vitejs.dev/){.external target='_blank'}
+- [Getting Started | Vite](https://vitejs.dev/guide/)
+
+```{.sh .code-overflow-wrap filename="bash.sh"}
+$ node -v
+```
+
+To create a new Vite project, open your terminal and run the following command:
+
+```{.sh .code-overflow-wrap filename="bash.sh"}
+$ npm create vite@latest <my-project>
+```
+Select `React` framework:
+
+```{.sh .code-overflow-wrap filename="bash.sh"}
+✔ Project name: … vite-project
+? Select a framework: 
+› - Use arrow-keys. Return to submit.
+    Vanilla
+    Vue
+❯   React
+    Preact
+    Lit
+    Svelte
+```
+
+And `js`:
+
+```{.sh .code-overflow-wrap filename="bash.sh"}
+? Select a variant: 
+› - Use arrow-keys. Return to submit.
+❯   JavaScript
+    TypeScript
+```
+
+Output:
+
+::: {.column-page-right}
+```{.sh .code-overflow-wrap filename="bash.sh"}
+Scaffolding project in /Users/carlosazaustre/dev/vite-project...
+
+Done. Now run:
+
+  cd vite-project
+  npm install
+  npm run dev
+```
+:::
+
+**Exposing port**
+
+[npm run dev --host network: not exposed](https://stackoverflow.com/questions/71939532/npm-run-dev-host-network-not-exposed)
+
+```{.json .code-overflow-wrap filename="package.json"}
+ "scripts": {
+    "dev": "vite --host --port 8888",
+   .....  what ever else was here.....
+  },
+```
+
+**Shortcuts**
+
+```{.json .code-overflow-wrap filename="package.json"}
+ "scripts": {
+    "dev": "vite --host --port 8888",
+   .....  what ever else was here.....
+  },
+```
+
+# Mock-up
+
+Whe should [evolve](https://www.dhiwise.com/post/single-page-application-vs-multi-page-application){.external target='_blank'} the project from a SPA to **multi-page** `react-router-dom` site.
+
+From these `basic mockup SPA` versions:
+
+- Basic business logic: [trafficlights SPA 1.0.1](https://codesandbox.io/p/sandbox/trafficslights-v1-0-1-thjt2d){.external target='_blank'}
+- `Axios` and Api `Rest`: [trafficlights SPA 1.2.1](https://codesandbox.io/p/sandbox/trafficslights-v1-2-1-4znjj6){.external target='_blank'}
+- `useContext` to decouple `axios` from render: [trafficlights SPA 1.3.0](https://codesandbox.io/p/sandbox/trafficslights-v1-3-0-9hs8rw){.external target='_blank'}
+- implement **CRUD** delete operation with `axios` & `useContext`: [trafficlights SPA 1.4.0](https://codesandbox.io/p/sandbox/trafficslights-v1-3-0-forked-xqj779){.external target='_blank'}
+- implement **CRUD** create/update operations with `axios` & `useContext`: [trafficlights SPA 1.4.1](https://codesandbox.io/p/sandbox/trafficslights-v1-4-1-vrh9gg){.external target='_blank'}
+- implement **CRUD** close button `edit` & `API_URL`: [trafficlights SPA 1.4.2](https://codesandbox.io/p/sandbox/thirsty-gagarin-d8fhkf){.external target='_blank'}
+
+To a `multi-page two domains` site:
+
+- home/**simulation**
+- and user/**mySimulations**
+
+![Mockup draft](/images/reactjs/trafficlights-mockup.drawio.png) 
+
+
+# Step-by-step code
+
+
+## React functions & components
+
+```{.js .code-overflow-wrap filename="index.js"}
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = 
+ReactDOM.createRoot(
+          document.getElementById('root'));
+root.render(<App />);
+
+```
+## Core Business logic & use case
+
+This first iteration defines a React functional component called `RequestTracker`, <mark>which simulates a traffic light and tracks pedestrian crossings</mark>.
+
+It uses the `useState` hook to manage **four state variables**:
+
+- **pending** (number of pedestrians waiting),
+- **walking** (number of pedestrians crossing),
+- **completed** (number of completed crossings),
+- and **light** (status of the traffic light).
+
+::: {.column-margin}
+
+The UI displays the current counts of pending, walking, and completed pedestrians, and the color of the text changes based on the status of the traffic light. The button's color also changes to reflect the traffic light's color.
+:::
+
+When the user clicks the "Traffic Light" `button`, the `handleTrafficLightClick` function is **triggered**. It decrements pending, increments walking, and sets the light to green. After a **delay of 5 seconds**, it decrements walking, increments completed, and sets the light to red.
+
+The code uses the `<>` (fragment) syntax to group multiple elements without introducing an additional parent node.
+
+
+
+
+::: {.column-page-right}
+```{.js .code-overflow-wrap filename="App.jsx"}
+import { useState } from "react";
+
+export default function RequestTracker() {
+  const [pending, setPending] = useState(100);
+  const [walking, setWalking] = useState(0);
+  const [completed, setCompleted] = useState(0);
+  const [light, setLight] = useState(false);
+
+  /*
+  useEffect(() => {
+    console.log("pending effect:", pending);
+  }, [pending]);
+  */
+
+  function handleTrafficLightClick() {
+    //console.log("before", pending);
+    setPending((p) => p - 10);
+    //console.log("after", pending);
+    setWalking((w) => w + 10);
+    setLight(true); // Set light to green when walking starts
+    setTimeout(() => {
+      setWalking((w) => w - 10);
+      setCompleted((c) => c + 10);
+      setLight(false); // Set light to red when walking is completed
+    }, 5000); // Delay for 3000 milliseconds (5 seconds)
+  }
+
+  return (
+    <>
+      <h3 style={{ color: light ? "grey" : "white" }}> 
+        Pending: {pending} </h3>
+      <h3 style={{ color: light ? "white" : "grey" }}>
+        Walking: {walking} {light ? " . . . . ." : ""}
+      </h3>
+      <h3 style={{ color: light ? "green" : "grey" }}>
+        Completed: {completed}
+      </h3>
+      <button
+        onClick={handleTrafficLightClick}
+        style={{
+          backgroundColor: light ? "green" : "red",
+          padding: "10px 24px",
+          borderRadius: "8px",
+          border: "none",
+          color: "white",
+          fontSize: "20px",
+        }}
+      >
+        Taffic Light
+      </button>
+    </>
+  );
+}
+
+
+```
+:::
+
+## Adding graphics & improving business logic
+
+**use case: pedestrians crossing a traffic light**
+
+> React component called **TrafficLightSimulation**: It simulates a pedestrian crossing at a traffic light.
+
+::: {.column-margin}
+The code provides an interactive simulation of a traffic light pedestrian crossing using React.
+:::
+
+The component initializes with a random number of people waiting to cross (`peopleToWalk`) and a random number of people allowed to cross in each group (`groupWalking`).
+
+When the traffic light is clicked, it turns `green`, and pedestrians start crossing in groups according to the `groupWalking` limit.
+
+The component visually represents `pending` pedestrians, `walking` pedestrians, and `completed` crossings. When all pedestrians have crossed, a "`Play Again`" <mark>button appears to refresh the page and start the simulation again./<mark>
+
+The `useMemo` hook ensures that the initial values for `peopleToWalk` and `groupWalking` **remain constant throughout the component's lifecycle.** 
+
+The `useState` hook **manages the state of the crossing simulation**.
+
+
+- [trafficlights: graphics](https://github.com/AlbertProfe/trafficlights/tree/f847634752f6109d5575417c8505634451656d6f){.external target='_blank'}
+- [App.jsx](https://github.com/AlbertProfe/trafficlights/blob/f847634752f6109d5575417c8505634451656d6f/src/App.jsx){.external target='_blank'}
+- [useMemo](/reactjs/reactjs-hook-memo.qmd)
+- [useState](/reactjs/reactjs-hook-state.qmd)
+
+
+::: {.column-page-right}
+
+<details>
+<summary>App.jsx with graphics</summary>
+
+```{.js .code-overflow-wrap filename="App.jsx"}
+
+import { useState, useMemo } from "react";
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomColor() {
+  const colors = 
+        ["red", "blue", "green", "yellow", "purple", "orange"];
+  return colors[getRandomInt(0, colors.length - 1)];
+}
+
+function refreshPage() {
+  window.location.reload(false);
+}
+
+export default function TrafficLightSimulation() {
+  
+  // total people to walk, to cross  the traffic lights
+  const initPeopleToWalk = 
+        useMemo(() => getRandomInt(10, 20), []);
+        // Initialize peopleToWalk with a 
+        //random value that remains constant
+  const peopleToWalk = 
+        useMemo(() => initPeopleToWalk, []); 
+        // peopleToWalk does not change along all the execution
+  
+  // people will cross by gropus, the value is random each time
+  // each time traffic ights are green the group
+  // will cross one by one to complete the lights cycle
+  const initGroupWalking = getRandomInt(2, 6);
+
+  const [crossing, setCrossing] = useState({
+    pending: peopleToWalk,
+    walking: 0,
+    completed: 0,
+    groupWalking: initGroupWalking,
+    light: false,
+  });
+
+  function handleTrafficLightClick() {
+    setCrossing((prevState) => ({
+      ...prevState,
+      light: true,
+    }));
+
+    let walked = 0;
+    let maxToWalk = 0;
+    const walkingInterval = setInterval(() => {
+      const { pending, groupWalking } = crossing;
+      if (groupWalking >= pending) maxToWalk = pending;
+      else maxToWalk = groupWalking;
+
+      if (walked < maxToWalk) {
+        setCrossing((prevState) => ({
+          ...prevState,
+          walking: prevState.walking + 1,
+          pending: prevState.pending - 1,
+        }));
+        walked++;
+      } else {
+        clearInterval(walkingInterval);
+        setCrossing((prevState) => ({
+          ...prevState,
+          completed: prevState.completed + walked,
+          walking: 0,
+          light: false,
+          groupWalking: initGroupWalking,
+        }));
+      }
+    }, 1000);
+  }
+
+  const { pending, walking, completed, groupWalking, light } = crossing;
+
+  return (
+    <>
+      <div style={{ textAlign: "center" }}>
+        <h1>Traffic Light Crossing Simulation</h1>
+        <h4>Help pedestrians cross the street safely!</h4>{" "}
+        <div className="chip">
+         {peopleToWalk} people want to cross the pedestrian/zebra crossing
+         </div><p></p>
+        {completed === peopleToWalk ? (
+          <button
+            onClick={refreshPage}
+            style={{
+              backgroundColor: "black",
+              padding: "10px 24px",
+              borderRadius: "8px",
+              border: "none",
+              color: "white",
+              fontSize: "20px",
+              marginBottom: "20px",
+            }}
+          >
+            Play Again (refresh page)
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={handleTrafficLightClick}
+              style={{
+                backgroundColor: light ? "green" : "red",
+                padding: "10px 24px",
+                borderRadius: "8px",
+                border: "none",
+                color: "white",
+                fontSize: "20px",
+                marginBottom: "20px",
+              }}
+            >
+              Traffic Light
+            </button>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              <h3>Group walking: {groupWalking} </h3>
+              {Array.from({ length: groupWalking }).map((_, index) => (
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: "blue",
+                    width: "10px",
+                    height: "10px",
+                    margin: "2px",
+                  }}
+                />
+              ))}
+            </div>
+          </>
+        )}
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            <h3>Pending: {pending}</h3>
+            {Array.from({ length: pending }).map((_, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: getRandomColor(),
+                  width: "10px",
+                  height: "10px",
+                  margin: "2px",
+                }}
+              />
+            ))}
+          </div>
+          <div>
+            <h3>Walking: {walking}</h3>
+            {Array.from({ length: walking }).map((_, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: "blue",
+                  width: "10px",
+                  height: "10px",
+                  margin: "2px",
+                }}
+              />
+            ))}
+          </div>
+          <div>
+            <h3>Completed: {completed}</h3>
+            {Array.from({ length: completed }).map((_, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: "green",
+                  width: "10px",
+                  height: "10px",
+                  margin: "2px",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+</details>
+
+:::
+
+**Consolidation and merge: `literal object`**
+
+![Consolidation and merge: `literal object`](/images/reactjs/traffic-literalobject-v0.1.png)
+
+
+> The operation of consolidating multiple state variables **into a single object using the useState hook and the spread operator** can be referred to as state consolidation or state merging.
+
+Here's a breakdown:
+
+- **State Consolidation**: This term emphasizes the process of bringing together multiple individual state variables into a single, cohesive object. It highlights the idea of simplifying state management by grouping related pieces of state.
+- **State Merging**: This term underscores the use of the spread operator (...) to merge the previous state with the updated state when setting the state. It emphasizes the technique used to update multiple properties of the state object simultaneously.
+
+**code: setInterval**
+
+The `handleTrafficLightClick` function sets up an [interval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval){.external target='_blank'} using `setInterval`, <mark>which repeatedly executes a specified function</mark> (`() => { ... }`) with a <mark>fixed time delay between each execution</mark>. 
+
+In this case, the function inside `setInterval` **acts as a loop with a delay**.
+
+![`setInterval` acts as a loop with a delay](/images/reactjs/traffic-setInterval-v0.1.png)
+
+
+Here's how it works:
+
+1. When `handleTrafficLightClick` is called, it sets the `light` property of the `crossing` state to `true` using `setCrossing`.
+
+2. It then initializes variables `walked` and `maxToWalk` to keep track of the number of pedestrians walking and the maximum number of pedestrians allowed to walk, respectively.
+
+3. Inside the interval function, it calculates `maxToWalk` based on the number of pending pedestrians and the maximum number of pedestrians allowed to walk simultaneously (`groupWalking`).
+
+4. If the number of `walked` pedestrians is less than `maxToWalk`, it increments the `walking` property by 1 and decrements the `pending` property by 1 in the state using `setCrossing`. It then increments the `walked` counter.
+
+5. If the maximum number of pedestrians have walked (`walked >= maxToWalk`), it clears the interval using `clearInterval(walkingInterval)` to stop the loop. It then updates the state with the number of completed pedestrians (`completed`), resets the `walking` counter to 0, sets the `light` property back to `false`, and resets the `groupWalking` property to its initial value using `setCrossing`.
+
+6. The interval function repeats this process every 1000 milliseconds (1 second) until it is stopped by calling `clearInterval`.
+
+This loop effectively controls the flow of pedestrians crossing the street, incrementally allowing them to walk within the specified time intervals until the maximum number of pedestrians have crossed, at which point it resets the state and ends the loop.
+
+
+**code: prevState**
+
+
+`prevState` is used as an argument in the functional update form of the `setCrossing` function, **which is part of React's useState hook**. 
+
+> This functional form allows you to access the previous state of the component's state variable (in this case, `crossing`) and perform updates based on that previous state.
+
+::: {.column-page-right}
+<details>
+<summary>App.jsx with graphics</summary>
+
+
+
+```{.js .code-overflow-wrap filename="App.jsx"}
+
+// functions ...
+
+export default function TrafficLightSimulation() {
+  
+// code ...
+
+  const [crossing, setCrossing] = useState({
+    pending: peopleToWalk,
+    walking: 0,
+    completed: 0,
+    groupWalking: initGroupWalking,
+    light: false,
+  });
+
+  function handleTrafficLightClick() {
+    setCrossing((prevState) => ({
+      ...prevState,
+      light: true,
+    }));
+
+    let walked = 0;
+    let maxToWalk = 0;
+    const walkingInterval = setInterval(() => {
+      const { pending, groupWalking } = crossing;
+      if (groupWalking >= pending) maxToWalk = pending;
+      else maxToWalk = groupWalking;
+
+      if (walked < maxToWalk) {
+        setCrossing((prevState) => ({
+          ...prevState,
+          walking: prevState.walking + 1,
+          pending: prevState.pending - 1,
+        }));
+        walked++;
+      } else {
+        clearInterval(walkingInterval);
+        setCrossing((prevState) => ({
+          ...prevState,
+          completed: prevState.completed + walked,
+          walking: 0,
+          light: false,
+          groupWalking: initGroupWalking,
+        }));
+      }
+    }, 1000);
+  }
+
+  return (
+    <>
+    </>
+  );
+}
+```
+
+</details>
+
+:::
+
+![`prevState` to access updated state](/images/reactjs/traffic-prevState-v0.1.png)
+
+1. When updating the state using `setCrossing`, the code utilizes the functional form `(prevState) => { ... }`.
+   - This function receives the previous state (`prevState`) as an argument and returns the new state based on that previous state.
+
+2. Inside the function, the **spread operator** (`...prevState`) is used to create a shallow copy of the previous state object.
+   1. This ensures that **you are not mutating the original state directly**, which is important for maintaining the immutability of React state.
+
+3. The properties of the state object are then modified according to the logic defined in the function.
+   - In the first part of the code block, `walking` is incremented by 1 and `pending` is decremented by 1.
+    - In the second part of the code block (the `else` block), various properties of the state object are updated based on some condition.
+  
+4. `prevState` is not a reserved word in React; rather, it's a variable name used conventionally to refer to the previous state in functional updates when using the `useState` hook.
+   1.  It's a common practice in React to use `prevState` as the parameter name in functional updates, but it's not enforced by React itself.
+   2.  You could technically use **any valid variable name in its place**, but using `prevState` makes the code more readable and understandable for other developers who are familiar with React conventions.
+
+
+::: {.callout-note}
+
+By using `prevState` in this manner, the code ensures that the state updates are based on the previous state, rather than relying on the current state directly. This is important because React's state updates may be asynchronous, and accessing the previous state via the functional form ensures that the updates are based on the most recent state at the time the update is applied.
+
+::::
+
+![render v0.1 render(1)](/images/reactjs/traffic-render-v0.1-1.png)
+
+
+## Adding domains: react-router-dom
+
+- [react-router-dom](/reactjs/reactjs-app-router.qmd)
+- [DDD with Lab#RE06-1](/reactjs/rjslab6-1.qmd#add-json-data-as-model)
+
+Remember to install the dependency:
+
+```{.bash}
+npm instal react-router-dom
+```
+
+
+::: {.column-page-right}
+
+<details>
+<summary>App.jsx with **Routes**</summary>
+
+
+
+```{.js .code-overflow-wrap filename="App.jsx"}
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./layout/Layout";
+import MySimulations from "./mysimulatons/MySimulations";
+import Simulation from "./simulation/Simulation";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Simulation />} />
+          <Route path="simulation" element={<Simulation />} />
+          <Route path="mysimulations" element={<MySimulations />} />
+          <Route path="*" element={<Simulation />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+</details>
+
+- [Folder Layout](https://github.com/AlbertProfe/trafficlights/tree/bff9bb44cc67536ca3a1c296169c1279bd93d6b9/src/layout){.external target='_blanke'}
+
+
+<details>
+<summary>Layout.jsx with **Layout**</summary>
+
+
+
+```{.js .code-overflow-wrap filename="/layout/Layout.jsx"}
+
+import Footer from './Footer.jsx'
+import Header from "./Header.jsx";
+import { Outlet, Link } from "react-router-dom";
+
+export default function Layout () {
+
+  return (
+    <>
+      <nav>
+        <div>
+          <Header />
+        </div>
+        <div >
+          <Link to="/simulation">Simulation</Link>
+          <br/>
+          <Link to="/mysimulations">MySimulations</Link>
+          <br />
+          <br />
+        </div>
+      </nav>
+
+      <div style={{ width: "80%" }}>
+        <Outlet />
+      </div>
+
+      <div>
+        <Footer />
+      </div>
+    </>
+  );
+}
+
+```
+
+</details>
+
+:::
+
+## Data: `simulation`
+
+In React.js, unlike in Java or Spring Boot, **there isn't a built-in model framework**.
+
+However, for our purposes, we can define our model using a literal object in JavaScript. Here's an example of how we can define a model in React.js:
+
+
+
+```{.js .code-overflow-wrap filename="MyApp.jsx"}
+
+// ....
+const simulation = { 
+    id: "",
+    createdAt: new Date().toString(),
+    time: 0,
+    user: ""
+}
+// ...
+```
+
+In this code snippet, we've created a `simulation` **object which represents our model**.
+
+It has properties such as `id`, `user`, `createdAt`, and `time`. This object can serve as a model for organizing and manipulating data within our React.js application.
+
+
+![We will also need a fake-server-data to store `simulation` object](/images/reactjs/traffic-schema-v0.1-1.png)
+
+## Fetching data: fake server
+
+References:
+
+- [Lab#RE01-1](/reactjs/rjslab1.qmd)
+- [Lab#RE03-3](/reactjs/rjslab3-3.qmd)
+- [useContext](/reactjs/reactjs-hook-context.qmd)
+
+**mockapi**
+
+::: {.callout-caution}
+
+There's a vast array of free web services available that offer APIs for developers to use in their projects.
+
+These services, like [mockapi.io](https://www.mockapi.io/) or [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com/), **provide developers with simulated data or temporary endpoints to test their applications without the need to set up their own backend servers or databases.**
+
+For instance, in our lab, you're using **mockapi.io** with a <mark>real endpoint to test our applicationrk
+
+This allows to mimic real-world **scenarios** and **interactions** without having to invest **in creating a backend infrastructure from scratch**.
+
+However, it's important to note that these services typically offer temporary solutions for testing purposes. Once our testing phase is complete and our application is ready for production, relying on such external services might not be feasible or reliable in the long term. 
+
+For instance, in our lab, we're using **mockapi.io** with a <mark>real endpoint to test our application.
+
+
+<mar>Therefore, the URL provided by **mockapi.io** will be discontinued after the testing phase, and you'll need to transition to a more stable and permanent solution for your application's backend like using Spring Boot Server.
+:::
+
+> `MockAPI.io` is a web service that allows developers **to create and simulate RESTful APIs for testing and development purposes.**
+
+![mockapi creating scheme-model](/images/reactjs/lab-re-3-11.png){width="50%"}
+
+With `MockAPI.io`, developers can easily generate custom API endpoints and define the responses they want to receive when those endpoints are called. It provides a user-friendly interface to create, manage, and configure mock APIs, making it simple to simulate different scenarios and test how an application interacts with an API.
+
+`MockAPI.io` supports various HTTP methods, request headers, query parameters, and response types, allowing developers to mimic real API behavior. It's a valuable tool for rapid prototyping, integration testing, and mocking data during development.
+
+**Axios**
+
+> `Axios` is a JavaScript library used **for making HTTP requests in React applications**.
+
+It provides an **easy-to-use** and consistent API for performing **asynchronous operations**, such as fetching data from an API.
+
+![Axios example [Request Config](https://axios-http.com/docs/req_config){.external}](/images/reactjs/lab-re-3-13.png){}
+
+`Axios` supports features like interceptors, automatic request/response transformation, and error handling. It works both in the browser and Node.js environments and offers support for various request methods (`GET`, `POST`, `PUT`, `DELETE`, etc.).
+
+`Axios` simplifies the process of making HTTP requests by providing a higher-level abstraction and allowing developers to handle responses and errors more efficiently
+
+
+**useEffect**
+
+- [useEffect](/reactjs/reactjs-hook-effect.qmd)
+- [cancelCall code github](https://github.com/AlbertProfe/cancelCall){.external target='_blank'}
+
+<mark>In React, the `useEffect` hook is used to perform side effects in function components. </mark>
+
+This includes data **fetching**, subscriptions, or manually changing the DOM. When dealing with API calls using **Axios**, it's essential **to handle cleanup to prevent memory leaks and unexpected behavior**. Below is a clear function demonstrating **how to cancel an Axios API call using the `useEffect` hook**:
+
+::: {.column-page-right}
+
+<details>
+<summary>DataSimulation.jsx CRUD Axios</summary>
+
+```javascript
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const DataSimulation = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const source = axios.CancelToken.source();
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://api.example.com/data', {
+          cancelToken: source.token,
+        });
+        setData(response.data);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log('Request canceled:', error.message);
+        } else {
+          setError(error);
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      source.cancel('Component unmounted - Cancelling API request');
+    };
+  }, []); // Empty dependency array means this effect will only run once
+
+  return (
+    <div>
+      {data && <p>Data: {data}</p>}
+      {error && <p>Error: {error.message}</p>}
+    </div>
+  );
+};
+
+export default DataSimulation;
+```
+
+</details>
+
+:::
+
+**data component: axios & `useContext`**
+
+
+::: {.column-page-right}
+
+<details>
+<summary>DataSimulation.jsx CRUD Axios</summary>
+
+
+
+```{.js .code-overflow-wrap filename="DataSimulation.js"}
+
+import React, { useState, useEffect, createContext } from "react";
+import axios from "axios";
+
+const SimulationsContext = createContext();
+const API_URL = "https://65e82ef64bb72f0a9c4e7caf.mockapi.io/v1/todo";
+
+const DataSimulations = ({ children }) => {
+  const [simulations, setSimulations] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSimulations = async () => {
+      try {
+        const response = await axios.get(
+          "https://65e82ef64bb72f0a9c4e7caf.mockapi.io/v1/todo"
+        );
+        setSimulations(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchSimulations();
+  }, []);
+
+  const deleteSimulation = async (id) => {
+    try {
+      const response = await axios.delete(
+        `https://65e82ef64bb72f0a9c4e7caf.mockapi.io/v1/todo/${id}`
+      );
+      setSimulations(simulations.filter((simulation) => simulation.id !== id));
+    } catch (error) {
+      console.error("Error deleting simulation:", error);
+    }
+  };
+
+  const addSimulation = async (simulation) => {
+    try {
+      const response = await axios.post(
+        "https://65e82ef64bb72f0a9c4e7caf.mockapi.io/v1/todo",
+        simulation
+      );
+      setSimulations([...simulations, response.data]);
+    } catch (error) {
+      console.error("Error adding simulation:", error);
+    }
+  };
+
+  const updateSimulation = async (simulation) => {
+    try {
+      const response = await axios.put(
+        `https://65e82ef64bb72f0a9c4e7caf.mockapi.io/v1/todo/${simulation.id}`,
+        simulation
+      );
+      setSimulations(
+        simulations.map((s) => (s.id === simulation.id ? response.data : s))
+      );
+    } catch (error) {
+      console.error("Error updating simulation:", error);
+    }
+  };
+
+  return (
+    <SimulationsContext.Provider
+      value={{
+        simulations,
+        isLoading,
+        deleteSimulation,
+        addSimulation,
+        updateSimulation,
+      }}
+    >
+      {children}
+    </SimulationsContext.Provider>
+  );
+};
+
+export { DataSimulations, SimulationsContext };
+```
+
+</details>
+
+:::
+
+::: {.column-margin}
+This code sets up a context provider component for managing simulation data and provides functions for CRUD operations on that data. Other components in the React application can consume this context to access and manipulate simulation data.
+:::
+
+![The code DataSimulations manages simulation data](/images/reactjs/simulation-data-v0.4.png)
+
+The code `DataSimulations` manages **simulation** data.
+
+It utilizes React hooks such as `useState` and `useEffect` for state management and side effects. Additionally, it creates a context named `SimulationsContext` <mark>to provide simulation data and related functions to its child components.</mark>
+Here's a breakdown of what the code does:
+
+1. **Import Statements**:
+   - It imports necessary modules from React and Axios.
+
+2. **Context Creation**:
+   - It creates a context named `SimulationsContext` using `createContext()` from React.
+
+3. **DataSimulations Component**:
+   - This is the main component that handles simulation data.
+   - It initializes state variables using the `useState` hook: `simulations` to hold simulation data and `isLoading` to track whether data is loading.
+   - It uses the `useEffect` hook to fetch simulation data from a mock API endpoint when the component mounts.
+   - Inside `useEffect`, it defines an asynchronous function `fetchSimulations()` to make a GET request to the API endpoint and update the state accordingly.
+   - It defines functions to perform CRUD operations on simulation data:
+     - `deleteSimulation`: Deletes a simulation by its ID.
+     - `addSimulation`: Adds a new simulation.
+     - `updateSimulation`: Updates an existing simulation.
+   - It returns a JSX element wrapping its children with `SimulationsContext.Provider`, providing simulation data and related functions as context values.
+
+4. **Export**:
+   - It exports `DataSimulations` component and `SimulationsContext` context.
+   - Be careful: do not use `default`. A file **can only have one default export**, but it can have numerous named exports!
+  
+   
+
+::: {.callout-caution}
+
+**Exporting and importing multiple components from the same file**
+
+- [Exporting and importing](https://react.dev/learn/importing-and-exporting-components#exporting-and-importing-a-component){.external target='_blank'} a component.
+
+To reduce the potential confusion between `default` and `named` exports, **some teams choose to only stick to one style (`default` or `named`)**, or avoid mixing them in a single file. Do what works best for you!
+
+:::
+
+
+
+## Rendering data: `MySimulations`
+
+**totally coupled `MySimulations.jsx`**
+
+<mark>We should create a draft version to test the imported data from mockapi fake server by API Rest axios.</mark> 
+
+This draft will place all CRUD operations in just one component, **business logic and render**:
+
+- importing **Axios** functions via `useContext` from `DataSimulation`
+- importing data: `simulations`via `useContext`
+- creating the **handlers** for the CRUD operations.
+- creating the **hoooks** we wil need to manage state.
+- creating the **JSX code to render the html elements**
+
+Then, we will decouple it into several components with a better organized structure.
+
+::: {.column-page-right}
+
+<details>
+<summary>MySimulations.jsx just one component to render simulations</summary>
+
+
+
+```{.js .code-overflow-wrap filename="MySimulations.jsx"}
+import React, { useContext, useState } from "react";
+import { SimulationsContext } from "../middleware/DataSimulations";
+
+const MySimulations = () => {
+  const {
+    simulations,
+    isLoading,
+    deleteSimulation,
+    addSimulation,
+    updateSimulation,
+  } = useContext(SimulationsContext);
+
+  const [newSimulationData, setNewSimulationData] = useState({
+    user: "",
+    createdAt: new Date().toString(),
+    time: "",
+  });
+  const [editingSimulationId, setEditingSimulationId] = useState(null);
+  const [editingSimulationData, setEditingSimulationData] = useState({
+    user: "",
+    createdAt: new Date().toString(),
+    time: 0,
+  });
+
+  // ...
+  // Create simulation
+  // ...
+
+  // Add new simulation onClick with newSimulationData state
+  // using addSimulation function with axios request
+  // and reset input fields after creating the simulation
+  const handleCreate = () => {
+    // Assuming newSimulationData contains the data for the new simulation
+    addSimulation(newSimulationData);
+    // Reset input fields after creating the simulation
+    setNewSimulationData({
+      user: "",
+      createdAt: new Date().toString(),
+      time: "",
+    });
+  };
+
+  // Handle changes in input fields for adding new simulation
+  // using setNewSimulationData state
+  const handleAddChange = (e) => {
+    // Get the name and value of the input field
+    const { name, value } = e.target;
+    // Update the newSimulationData state
+    setNewSimulationData((prevData) => ({
+      // Spread the previous data
+      ...prevData,
+      // Set the value of the input field to the new value
+      [name]: value,
+    }));
+  };
+
+  // ...
+  // Edit simulation
+  // ...
+
+  // Edit simulation onClick with editingSimulationId state
+  // using updateSimulation function with axios request
+  // and reset editing state after editing the simulation
+  const handleUpdate = () => {
+    // Update the simulation with the new data
+    updateSimulation(editingSimulationData);
+    // Reset editing state
+    setEditingSimulationId(null);
+    // Reset editing data
+    setEditingSimulationData({
+      user: "",
+      createdAt: new Date().toString(),
+      time: "",
+    });
+  };
+
+  // Handle starting edit of a simulation onClick edit button
+  // with editingSimulationId state equal to the id of the simulation
+  // being edited and setEditingSimulationData state
+  // with the current data of the simulation being edited
+  const handleEditSelectId = (id) => {
+    // Find the simulation being edited
+    const simulationToEdit = simulations.find(
+      (simulation) => simulation.id === id
+    );
+    // Set the ID of the simulation being edited
+    setEditingSimulationId(id);
+    // Populate the editing data with the current data of the simulation
+    setEditingSimulationData(simulationToEdit);
+  };
+
+  // Handle changes in input fields for editing simulation
+  // using setEditingSimulationData state
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditingSimulationData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <>
+      <br />
+      <h1>Simulations</h1>
+      <hr />
+      <h2>Add Simulation</h2>
+      <div>
+        <label>User</label>
+        <br />
+        <input
+          className="simulationInput"
+          type="text"
+          name="user"
+          value={newSimulationData.user}
+          onChange={handleAddChange}
+        />
+      </div>
+      <div>
+        <label>Time</label>
+        <br />
+        <input
+          className="simulationInput"
+          type="text"
+          name="time"
+          value={newSimulationData.time}
+          onChange={handleAddChange}
+        />
+      </div>
+      <button
+        className="crudButton"
+        style={{
+          backgroundColor: "#ff5733",
+        }}
+        onClick={handleCreate}
+      >
+        Create
+      </button>
+      <br />
+      <br />
+      <hr />
+      <h2>Simulations list</h2>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <ul style={{ listStyleType: "none" }}>
+            {simulations.map((simulation) => (
+              <li key={simulation.key}>
+                <strong>User:</strong> {simulation.user} <br />
+                id: {simulation.id} <br />
+                Created: {simulation.createdAt} <br />
+                Time: {simulation.time} <br />
+                <br />
+                {editingSimulationId === simulation.id ? (
+                  <>
+                    <div>
+                      <label>User</label>
+                      <br />
+                      <input
+                        className="simulationInput"
+                        type="text"
+                        name="user"
+                        value={editingSimulationData.user}
+                        onChange={handleEditChange}
+                      />
+                    </div>
+
+                    <div>
+                      <label>Time</label>
+                      <br />
+                      <input
+                        className="simulationInput"
+                        type="text"
+                        name="time"
+                        value={editingSimulationData.time}
+                        onChange={handleEditChange}
+                      />
+                    </div>
+                    <button
+                      style={{
+                        backgroundColor: "#ff5733",
+                      }}
+                      className="crudButton"
+                      onClick={handleUpdate}
+                    >
+                      Save
+                    </button>
+                    <button
+                      style={{
+                        backgroundColor: "black",
+                      }}
+                      className="crudButton"
+                      onClick={() => setEditingSimulationId(null)}
+                    >
+                      Close
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="crudButton"
+                      style={{
+                        backgroundColor: "black",
+                      }}
+                      onClick={() => deleteSimulation(simulation.id)}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="crudButton"
+                      style={{
+                        backgroundColor: "#8A9A5B",
+                      }}
+                      onClick={() => handleEditSelectId(simulation.id)}
+                    >
+                      Edit
+                    </button>
+                  </>
+                )}
+                <br /> <br /> <br /> <br />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </>
+  );
+};
+
+export default MySimulations;
+
+```
+
+</details>
+
+:::
+
+
+**semi-coupled `MySimulations.jsx` CRUD**
+
+<mark>Breaking down the React component into smaller, focused components enhances code readability and maintainability.</mark>
+
+
+::: {.column-margin}
+Decoupling the code into smaller React components represents a **halfway point** in separating concerns, laying a foundation for a cleaner and more manageable codebase. This approach not only improves developer productivity but also enhances the overall quality and stability of the application.
+:::
+
+By creating separate components for tasks like **simulation creation and listing**, the code becomes more modular and easier to understand. This modular approach allows for better organization and reuse of code, promoting scalability and reducing duplication.
+
+Moreover, **decoupling rendering from business logic aligns with best practices**, improving code maintainability over time.
+
+Each component **can focus on a specific aspect of functionality**, making it easier to debug and update. Additionally, smaller components are more flexible and adaptable, enabling easier integration of new features or modifications.
+
+- [`mySimulations` folder](https://github.com/AlbertProfe/trafficlights/tree/20e9ee5cb695d8e10ba10c3d867081d7c6285fbc/src/mysimulatons){.external target='_blank'}
+
+::: {.column-page-right}
+
+<details>
+<summary>MySimulations.jsx rendering data. It is just the render decoupled, not the business logic</summary>
+
+
+
+```{.js .code-overflow-wrap filename="MySimulations.jsx"}
+import { useContext, useState } from "react";
+import { SimulationsContext } from "../middleware/DataSimulations";
+import ListSimulations from "./ListSimulation"
+import CreateSimulation from "./CreateSimulation"
+
+
+
+const MySimulations = () => {
+  const {
+    simulations,
+    isLoading,
+    deleteSimulation,
+    addSimulation,
+    updateSimulation,
+  } = useContext(SimulationsContext);
+
+  const [newSimulationData, setNewSimulationData] = useState({
+    user: "",
+    createdAt: new Date().toString(),
+    time: "",
+  });
+  const [editingSimulationId, setEditingSimulationId] = useState(null);
+  const [editingSimulationData, setEditingSimulationData] = useState({
+    user: "",
+    createdAt: new Date().toString(),
+    time: 0,
+  });
+
+  const handleCreate = () => {
+    addSimulation(newSimulationData);
+    setNewSimulationData({
+      user: "",
+      createdAt: new Date().toString(),
+      time: "",
+    });
+  };
+
+  const handleAddChange = (e) => {
+    const { name, value } = e.target;
+    setNewSimulationData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdate = () => {
+    updateSimulation(editingSimulationData);
+    setEditingSimulationId(null);
+    setEditingSimulationData({
+      user: "",
+      createdAt: new Date().toString(),
+      time: "",
+    });
+  };
+
+  const handleEditSelectId = (id) => {
+    const simulationToEdit = simulations.find(
+      (simulation) => simulation.id === id
+    );
+    setEditingSimulationId(id);
+    setEditingSimulationData(simulationToEdit);
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditingSimulationData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <>
+      <br />
+      <h1 style={{ textAlign: "center" }}>Simulations</h1>
+      <hr />
+      <CreateSimulation
+        newSimulationData={newSimulationData}
+        handleAddChange={handleAddChange}
+        handleCreate={handleCreate}
+      />
+      <br />
+      <hr />
+      <ListSimulations
+        simulations={simulations}
+        isLoading={isLoading}
+        handleEditSelectId={handleEditSelectId}
+        deleteSimulation={deleteSimulation}
+        handleEditChange={handleEditChange}
+        handleUpdate={handleUpdate}
+        setEditingSimulationId={setEditingSimulationId}
+        editingSimulationId={editingSimulationId}
+        editingSimulationData={editingSimulationData}
+      />
+    </>
+  );
+};
+
+export default MySimulations;
+```
+
+</details>
+
+:::
+
+**totaly decoupled `MySimulations.jsx` CRUD**
+
+- [`mySiulations` folder](https://github.com/AlbertProfe/trafficlights/tree/bff9bb44cc67536ca3a1c296169c1279bd93d6b9/src/mysimulatons){.external target='_blank'}
+
+::: {.column-margin}
+Decoupled components CRUD in React promotes modularity, reusability, maintainability, and scalability, making it a preferred choice for building robust and adaptable applications.
+:::
+
+![component tree project](/images/reactjs/traffic-tree-v0.3.png)
+
+<mark>Decoupled components CRUD in React offers significant advantages over tightly coupled implementations.</mark>
+
+By breaking down functionality into modular components, developers can achieve: greater **reusability**, **scalability**, **better maintenance** and **flexibility**.
+
+Each component focuses on a specific task, promoting **separation of concerns and simplifying maintenance**. With decoupled components, testing becomes more straightforward as each unit can be isolated and tested independently.
+
+Additionally, performance optimizations can be applied at the component level, leading to better overall application performance. This approach fosters cleaner codebases and facilitates collaboration among team members. 
+
+![component tree decoupled](/images/reactjs/traffic-tree-v0.4.png)
+
+## Backend: Spring Boot
+
+- [`simulations` Spring Boot: **wiki**](https://github.com/AlbertProfe/simulations/wiki)
+
+
+![](/images/reactjs/simulation-architecture-v0.4.png)
+
+## Adding `user`: login & fake-token
+
+to-do
+
+# Code
+
+::: {.column-page-right}
+
+| Code Version | Commit | Folder-Tree | Output |
+| -- | -- | -- | -- |
+| [GitHub code v0.0](https://github.com/AlbertProfe/trafficlights/tree/5219b5acb611bd3c7faba7b22b14e0fd49f38b45){.external target='_blank'}  | create project (React Vite) and core business logic | [Basic Structure](/images/reactjs/traffic-project-v0.0-1.png){.external target='_blank'} | [render v0.0 render(1)](/images/reactjs/traffic-render-v0.0-1.png){.external target='_blank'}, [render v0.0 render(2)](/images/reactjs/traffic-render-v0.0-2.png){.external target='_blank'}, [render v0.0 render(3)](/images/reactjs/traffic-render-v0.0-3.png){.external target='_blank'} |
+| [GitHub code v0.1](https://github.com/AlbertProfe/trafficlights/tree/f847634752f6109d5575417c8505634451656d6f){.external target='_blank'}  | adding graphics, simulation ending, refresh `button`, groups crossing and random values |  |  [render v0.1 render(1)](/images/reactjs/traffic-render-v0.1-1.png){.external target='_blank'}, [render v0.1 render(2)](/images/reactjs/traffic-render-v0.1-2.png){.external target='_blank'}, [render v0.1 render(3)](/images/reactjs/traffic-render-v0.1-3.png){.external target='_blank'}, [render v0.1 render(4)](/images/reactjs/traffic-render-v0.1-4.png){.external target='_blank'} |
+| [GitHub code v0.3 `integrationcruddata`](https://github.com/AlbertProfe/trafficlights/tree/20e9ee5cb695d8e10ba10c3d867081d7c6285fbc){.external target='_blank'}  | **integration**: adding `react-router-dom`, two routes: `simulation` and `mySimulations` and data: axios, `DataSimulation` & `useContext` | [branch `mySimulations`](/images/reactjs/traffic-branches-v0.3-4.png){.external target='_blank'}, [project structure](/images/reactjs/traffic-project-v0.3.png){.external target='_blank'} | [render v0.3 render(1)](/images/reactjs/traffic-render-v0.3-1.png){.external target='_blank'}, [render v0.3 render(2)](/images/reactjs/traffic-render-v0.3-2.png){.external target='_blank'}, [render v0.3 render(3)](/images/reactjs/traffic-render-v0.3-3.png){.external target='_blank'},|
+| [GitHub code v0.4 `integrationcruddata`](https://github.com/AlbertProfe/trafficlights/tree/bff9bb44cc67536ca3a1c296169c1279bd93d6b9){.external target='_blank'}  |  decoupling `mySimulations`  | [components tree](/images/reactjs/traffic-tree-v0.3.png){.external target='_blank'} |   |
+| [GitHub code v0.5](){.external target='_blank'}  | server: spring boot for mockapi |  |   |
+
+:::
+
+
+

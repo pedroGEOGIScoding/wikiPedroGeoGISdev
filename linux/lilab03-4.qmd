@@ -1,0 +1,25 @@
+---
+title: "Linux Lab#LI03-4: Manage hardware"
+subtitle: Lab
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: lab
+categories: [linux, lab, hardware]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.labs}
+📘 **Linux Lab#LI03-4: Manage hardware**
+
+- Use the following commands to document hardware information for your lab computers: `df`, `du`, `cat /proc/cpuinfo`, `cat /proc/meminfo`.
+- Devices: `devices`, `partitions`. `cat /etc/fstab`,
+- Networking and users: `ifconfig`, `ip addr`, `uname --a`.
+- [Direct the output](https://www.redhat.com/sysadmin/redirect-operators-bash) from these commands into text files (make as many text files as you wish to organize this documentation reasonably). Use both `>` and `>>` to organize the data.
+- Redirect the `dmesg` output to a text file, and then use the `grep` utility to display any reference to "memory" or "CPU" in the file. What else does this file tell you?
+  
+:::

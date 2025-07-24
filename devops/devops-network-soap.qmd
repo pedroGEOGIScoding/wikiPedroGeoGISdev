@@ -1,0 +1,62 @@
+---
+title: "Network: SOAP"
+subtitle: Networking SOAP
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: description
+categories: [devops, network, SOAP]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+# Overview
+
+
+**SOAP:**
+
+<mark>SOAP (Simple Object Access Protocol) is a protocol for exchanging structured information in web services. It is a messaging protocol that allows programs running on different operating systems to communicate with each other by using XML. SOAP is based on a set of standards and specifications for encoding and decoding messages, defining procedures for remote procedure calls (RPC), and providing a common format for data exchange.</mark>
+
+SOAP messages are typically transmitted over **HTTP or SMTP**. The structure of a SOAP message includes an envelope, which defines the overall structure of the message, and headers and bodies that contain application-specific data.
+
+SOAP is known for its platform independence and language neutrality, making it suitable for heterogeneous environments. It is widely used in web services to enable communication between applications, especially in enterprise-level integrations.
+
+**Example:**
+
+A simple example of a SOAP request and response:
+
+SOAP Request:
+
+```xml
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:example="http://example.com">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <example:GetStockPrice>
+         <example:StockName>ABC</example:StockName>
+      </example:GetStockPrice>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+SOAP Response:
+
+```xml
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:example="http://example.com">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <example:GetStockPriceResponse>
+         <example:Price>50.00</example:Price>
+      </example:GetStockPriceResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+In this example, a SOAP request is made to get the stock price for a given stock name ("ABC"). The response includes the corresponding stock price ("50.00").
+
+
+![](/images/devops/SOAP.png){width="40%"}
+
+

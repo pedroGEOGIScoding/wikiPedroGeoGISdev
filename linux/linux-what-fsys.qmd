@@ -1,0 +1,32 @@
+---
+title: "Linux: File System"
+subtitle: Linux File System
+author: albertprofe
+date: "06/01/2021"
+date-modified: last-modified
+date-format: full
+description: The file system is organized into a hierarchical structure, starting with the root directory
+categories: [linux, file-system]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **System**
+
+In a Linux system, **the file system is organized into a hierarchical structure, starting with the root directory** (represented by a forward slash `/`). The root directory contains several subdirectories, including `/bin`, `/etc`, `/home`, `/lib`, `/media`, `/mnt`, `/opt`, `/sbin`, `/tmp`, and `/usr`.
+:::
+
+---
+
+These [directories](https://documentation.suse.com/fr-fr/sles/15-GA/html/SLES-all/cha-filesystems.html){.external} contain system executables, configuration files, user home directories, libraries, removable media, mount points, optional software, system executables, temporary files, and shared software, respectively.
+
+Other directories, such as `/dev`, `/proc`, and `/sys`, contain special files that provide access to hardware devices and kernel information.
+
+![Linux File System](/images/linux/filesys.png){width=90%}
+
+![Linux File System, image from [Introduction to Linux, A Hands on Guide, Machtelt Garrels](https://tldp.org/LDP/intro-linux/html/index.html) and [Original webpage by Petersen Gross, modified by William Albritton](https://www2.hawaii.edu/~walbritt/ics240/materials/)](/images/linux/filesys-2.jpg){width=100%}
+
