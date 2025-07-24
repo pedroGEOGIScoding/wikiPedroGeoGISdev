@@ -24,7 +24,7 @@ execute:
   freeze: auto
 
 filters:
-  - lightbox
+  - quarto-ext/lightbox
   - fontawesome
 lightbox: auto
 
