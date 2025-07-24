@@ -17,7 +17,7 @@ format:
 
 📘 **Linux**
 
-Linux is a **free and open-source operating system**. It is a **Unix-like operating system that is based on the Linux kernel**, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is commonly used in web servers, smartphones, and other devices where reliability, security, and performance are important.
+Linux is **free and open-source operating system**. It is a **Unix-like operating system that is based on the Linux kernel**, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is commonly used in web servers, smartphones, and other devices where reliability, security, and performance are important.
 :::
 
 ---
