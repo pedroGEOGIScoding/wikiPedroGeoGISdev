@@ -74,14 +74,58 @@ repo-actions: false
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<!-- Custom CSS for layer control alignment -->
+<style>
+.leaflet-control-layers-base {
+    text-align: left !important;
+}
+
+.leaflet-control-layers-base label {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin: 2px 0 !important;
+}
+
+.leaflet-control-layers-base input[type="radio"] {
+    margin-right: 8px !important;
+    margin-left: 0 !important;
+}
+
+.leaflet-control-layers {
+    padding: 8px 10px !important;
+    min-width: 150px !important;
+}
+</style>
+
 <script>
 // Initialize the map
 let map = L.map('map').setView([41.3031, 2.0763], 10); // Default to Barcelona, Spain
 
-// Add OpenStreetMap tiles
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+// Define base layers
+const openStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 18
+});
+
+const satelliteMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '© <a href="https://www.esri.com/">Esri</a>, Maxar, Earthstar Geographics, and the GIS User Community',
+    maxZoom: 18
+});
+
+// Add default layer (OpenStreetMap)
+openStreetMap.addTo(map);
+
+// Create layer control
+const baseLayers = {
+    "🗺️ OpenStreetMap": openStreetMap,
+    "🛰️ Satellite Image": satelliteMap
+};
+
+// Add layer control to bottom-left
+L.control.layers(baseLayers, null, {
+    position: 'bottomleft',
+    collapsed: false
 }).addTo(map);
 
 // Custom icon for user location
