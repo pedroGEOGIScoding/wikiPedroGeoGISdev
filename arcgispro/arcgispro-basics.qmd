@@ -1,0 +1,185 @@
+---
+title: "ArcGIS Pro: basic concepts"
+subtitle: ArcGIS Pro
+author: pedromartinezduran
+date: "2025-07-25"
+date-modified: last-modified
+date-format: full
+description: What is ArcGIS Pro, professional desktop GIS application for mapping, analysis, and data management
+categories: [arcgis, gis, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **ArcGIS Pro**
+
+ArcGIS Pro is **Esri's professional desktop GIS application** that provides comprehensive tools for **mapping, analysis, and data management**. It is the modern, 64-bit successor to ArcMap and offers advanced capabilities for 2D and 3D mapping, spatial analysis, and integration with the broader ArcGIS ecosystem. ArcGIS Pro is widely used by GIS professionals, analysts, and organizations for complex geospatial workflows and enterprise-level projects.
+:::
+
+---
+
+## What is ArcGIS Pro?
+
+ArcGIS Pro is a **modern, ribbon-based desktop GIS application** developed by Esri that provides professional mapping, analysis, and data management capabilities in both 2D and 3D environments.
+
+### Key Features
+
+- **64-bit architecture**: Better performance and memory management
+- **Modern interface**: Ribbon-based UI similar to Microsoft Office
+- **2D and 3D capabilities**: Seamless integration of 2D maps and 3D scenes
+- **Project-based workflow**: Organized project structure with maps, layouts, and tools
+- **ArcGIS Online integration**: Direct connection to cloud-based services
+- **Advanced analysis**: Comprehensive geoprocessing and spatial analysis tools
+
+### ArcGIS Pro vs ArcMap
+
+| Feature | ArcGIS Pro | ArcMap |
+|---------|------------|--------|
+| Architecture | 64-bit | 32-bit |
+| Interface | Modern ribbon | Traditional menus |
+| 3D Support | Native 3D scenes | Limited (ArcScene) |
+| Performance | Enhanced | Limited by 32-bit |
+| Project Structure | Project-based | Document-based |
+| Development | Active | Legacy (maintenance only) |
+
+---
+
+## Core Components
+
+### 1. Project Structure
+- **Maps**: 2D cartographic displays
+- **Scenes**: 3D visualizations
+- **Layouts**: Print-ready map compositions
+- **Tasks**: Guided workflows
+- **Connections**: Data source links
+
+### 2. Ribbon Interface
+- **Map tab**: Navigation and display tools
+- **Insert tab**: Adding layers and elements
+- **Analysis tab**: Geoprocessing tools
+- **View tab**: Display options and windows
+
+### 3. Panes and Views
+- **Contents pane**: Layer management
+- **Catalog pane**: Data browsing
+- **Geoprocessing pane**: Analysis tools
+- **Python window**: Scripting interface
+
+---
+
+## Data Types and Formats
+
+### Vector Data
+- **Feature classes**: Points, lines, polygons
+- **Shapefiles**: Legacy vector format
+- **Geodatabase**: Esri's native format
+- **CAD data**: AutoCAD drawings
+
+### Raster Data
+- **Imagery**: Satellite and aerial photos
+- **Digital elevation models**: Terrain data
+- **Multidimensional data**: Time-series and scientific data
+- **Mosaic datasets**: Large raster collections
+
+### Database Connections
+- **Enterprise geodatabases**: SQL Server, Oracle, PostgreSQL
+- **File geodatabases**: Local storage
+- **Cloud databases**: ArcGIS Online, AWS, Azure
+
+---
+
+## Licensing and Versions
+
+### License Levels
+- **Basic**: Essential mapping and editing
+- **Standard**: Advanced editing and analysis
+- **Advanced**: Full analysis and 3D capabilities
+
+### Extensions
+- **Spatial Analyst**: Advanced raster analysis
+- **3D Analyst**: 3D analysis and visualization
+- **Network Analyst**: Routing and network analysis
+- **Geostatistical Analyst**: Statistical analysis
+
+---
+
+## Common Workflows
+
+### Cartographic Production
+- Professional map design
+- Layout composition
+- Symbol management
+- Label placement
+
+### Spatial Analysis
+- Overlay analysis
+- Proximity analysis
+- Statistical analysis
+- Model building
+
+### Data Management
+- Database design
+- Data conversion
+- Quality control
+- Metadata management
+
+### 3D Visualization
+- 3D scene creation
+- Terrain modeling
+- Building visualization
+- Animation creation
+
+---
+
+## Integration with ArcGIS Platform
+
+### ArcGIS Online
+- Cloud-based mapping and analysis
+- Data sharing and collaboration
+- Web map creation
+- Mobile data collection
+
+### ArcGIS Enterprise
+- On-premises GIS infrastructure
+- Portal for organization
+- Server-based analysis
+- Data management
+
+### Developer Tools
+- **ArcPy**: Python scripting
+- **Model Builder**: Visual programming
+- **ArcGIS API**: Custom applications
+- **Notebooks**: Jupyter integration
+
+---
+
+## Getting Started
+
+### System Requirements
+- Windows 10/11 (64-bit)
+- Minimum 8GB RAM (16GB recommended)
+- Graphics card with OpenGL support
+- ArcGIS Online account or license
+
+### First Steps
+1. **Create a new project**
+2. **Add data** from various sources
+3. **Create maps and scenes**
+4. **Apply symbology** and styling
+5. **Perform analysis** using geoprocessing tools
+6. **Create layouts** for printing or sharing
+
+---
+
+## Learning Resources
+
+- [ArcGIS Pro Documentation](https://pro.arcgis.com/en/pro-app/)
+- [Esri Training Catalog](https://www.esri.com/training/)
+- [ArcGIS Pro Quick Start Tutorials](https://pro.arcgis.com/en/pro-app/latest/get-started/pro-quickstart-tutorials.htm)
+- [Learn ArcGIS](https://learn.arcgis.com/)
+
+[Next: ArcGIS Pro Laboratory 1](/arcgispro/arcgispro-lab1.qmd)

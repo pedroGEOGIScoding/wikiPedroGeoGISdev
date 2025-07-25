@@ -1,0 +1,131 @@
+---
+title: "QGIS: basic concepts"
+subtitle: QGIS
+author: pedromartinezduran
+date: "2025-07-25"
+date-modified: last-modified
+date-format: full
+description: What is QGIS, free and open-source Geographic Information System for viewing, editing, and analyzing geospatial data
+categories: [qgis, gis, concepts]
+toc: true
+number-sections: true
+format:
+  html
+---
+
+::: {.summary}
+
+📘 **QGIS**
+
+QGIS is a **free and open-source Geographic Information System (GIS)** that allows users to **view, edit, and analyze geospatial data**. Originally known as Quantum GIS, it provides a user-friendly interface for working with maps, spatial databases, and geographic analysis. QGIS supports numerous vector, raster, and database formats and is widely used by professionals, researchers, and students in geography, urban planning, environmental science, and many other fields.
+:::
+
+---
+
+## What is QGIS?
+
+QGIS (originally called Quantum GIS) is a **cross-platform free and open-source desktop geographic information system** (GIS) application that supports viewing, editing, and analysis of geospatial data.
+
+### Key Features
+
+- **Multi-platform support**: Available for Windows, macOS, Linux, and mobile devices
+- **Format support**: Reads and writes numerous vector, raster, and database formats
+- **Extensible**: Plugin architecture allows for custom functionality
+- **Standards compliant**: Supports OGC standards (WMS, WFS, WCS, etc.)
+- **Professional cartography**: Advanced map composition and printing capabilities
+
+### QGIS vs Commercial GIS
+
+| Feature | QGIS | Commercial GIS |
+|---------|------|----------------|
+| Cost | Free | Expensive licensing |
+| Source Code | Open source | Proprietary |
+| Community | Large, active community | Vendor support |
+| Customization | Highly customizable | Limited customization |
+| Updates | Frequent releases | Scheduled releases |
+
+---
+
+## Core Components
+
+### 1. Map Canvas
+The central area where geographic data is displayed and visualized.
+
+### 2. Layers Panel
+Manages and organizes different data layers in your project.
+
+### 3. Browser Panel
+Provides easy access to data sources and file systems.
+
+### 4. Processing Toolbox
+Contains geoprocessing algorithms for spatial analysis.
+
+### 5. Plugin Manager
+Allows installation and management of additional functionality.
+
+---
+
+## Data Types in QGIS
+
+### Vector Data
+- **Points**: Discrete locations (cities, landmarks)
+- **Lines**: Linear features (roads, rivers)
+- **Polygons**: Area features (countries, lakes)
+
+### Raster Data
+- **Satellite imagery**: Earth observation data
+- **Digital elevation models**: Terrain data
+- **Scanned maps**: Historical or paper maps
+
+### Database Connections
+- **PostGIS**: PostgreSQL spatial extension
+- **SpatiaLite**: SQLite spatial extension
+- **Web services**: WMS, WFS, WCS
+
+---
+
+## Getting Started
+
+### Installation
+QGIS can be downloaded from the official website: [qgis.org](https://qgis.org)
+
+### First Steps
+1. **Create a new project**
+2. **Add data layers** (vector, raster, or web services)
+3. **Style your layers** using symbology
+4. **Explore the data** using selection and identification tools
+5. **Create maps** using the print layout composer
+
+---
+
+## Common Use Cases
+
+### Urban Planning
+- Land use analysis
+- Zoning maps
+- Infrastructure planning
+
+### Environmental Science
+- Habitat mapping
+- Climate data analysis
+- Environmental impact assessment
+
+### Agriculture
+- Crop monitoring
+- Precision farming
+- Soil analysis
+
+### Emergency Management
+- Risk assessment
+- Evacuation planning
+- Disaster response mapping
+
+---
+
+## Learning Resources
+
+- [QGIS Official Documentation](https://docs.qgis.org/)
+- [QGIS Training Manual](https://docs.qgis.org/latest/en/docs/training_manual/)
+- [QGIS Tutorials](https://www.qgistutorials.com/)
+
+[Next: QGIS Laboratory 1](/qgis/qgis-lab1.qmd)

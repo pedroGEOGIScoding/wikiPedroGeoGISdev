@@ -65,7 +65,8 @@ website:
       - sidebar:reactjs
       - sidebar:scrum
       - sidebar:learning
-      - sidebar:training
+      - sidebar:qgis
+      - sidebar:arcgispro
       - sidebar:about
       - icon: envelope
         href: mailto:pedromartinezduran@gmail.com
@@ -526,66 +527,30 @@ website:
             - learning/learning-listing-card-books.qmd
             - learning/learning-listing-table-articles.qmd
             - learning/learning-listing-card-articles.qmd
-            
-    - id: "training"
-      title: "Training"
+    - id: "qgis"
+      title: "QGIS"
       contents:
-        - text: "Training Courses"
+        - text: "QGIS"
         - text: "---"
-        - section: "IFCD0210-25 Docs"
+        - section: "QGIS basics"
           contents:
-            - ifcd0210-25/ifcd0210-25.qmd
-            - ifcd0210-25/ifcd0210-deliveries-25.qmd
-            - ifcd0210-25/ifcd0210-backlog-sprint-25.qmd
-            - ifcd0210-25/ifcd0210-backlog-product-25.qmd
+            - qgis/qgis-basics.qmd
         - text: "---"
-        - section: "Archived"
+        - section: "QGIS laboratories"
           contents:
-          - text: "---"
-          - section: "IFCT116-24 Docs"
-            contents:
-              - ifct116-24/ifct116-24.qmd
-              - ifct116-24/ifct116-deliveries-24.qmd
-              - ifct116-24/ifct116-backlog-sprint-24.qmd
-              - ifct116-24/ifct116-backlog-product-24.qmd
-          - text: "---"
-          - section: "IFCD0021-24 Docs"
-            contents:
-              - ifcd0021-24/ifcd0021-24.qmd
-              - ifcd0021-24/ifcd0021deliveries-24.qmd
-              - ifcd0021-24/ifcd0021backlog-sprint-24.qmd
-              - ifcd0021-24/ifcd0021backlog-product-24.qmd
-          - text: "---"
-          - section: "IFCD0210-24 Docs"
-            contents:
-              - ifcd0210-24/ifcd0210-24.qmd
-              - ifcd0210-24/ifcd0210deliveries-24.qmd
-              - ifcd0210-24/ifcd0210backlog-sprint-24.qmd
-              - ifcd0210-24/ifcd0210backlog-product-24.qmd
-          - text: "---"
-          - section: "IFCD044 Docs"
-            contents:
-              - ifcd044/ifcd044.qmd
-              - ifcd044/ifcd044backlog-sprint.qmd
-              - ifcd044/ifcd044backlog-product.qmd
-          - text: "---"
-          - section: "IFCT034PO Docs"
-            contents:
-              - ifct034po/ifct034po.qmd
-              - ifct034po/ifct034pobacklog-sprint.qmd
-              - ifct034po/ifct034pobacklog-product.qmd
-          - text: "---"
-          - section: "IFCD0210 Docs"
-            contents:
-              - ifcd0210/ifcd0210.qmd
-              - ifcd0210/ifcd0210initemail.qmd
-              - ifcd0210/ifcd0210deliveries.qmd
-              - ifcd0210/ifcd0210calendar.qmd
-              - ifcd0210/ifcd0210backlog-sprint.qmd
-              - ifcd0210/ifcd0210backlog-product.qmd
-              - ifcd0210/ifcd0210backlog-projects.qmd
-  
-
+            - qgis/qgis-lab1.qmd
+    - id: "arcgispro"
+      title: "ArcGIS Pro"
+      contents:
+        - text: "ArcGIS Pro"
+        - text: "---"
+        - section: "ArcGIS Pro basics"
+          contents:
+            - arcgispro/arcgispro-basics.qmd
+        - text: "---"
+        - section: "ArcGIS Pro laboratories"
+          contents:
+            - arcgispro/arcgispro-lab1.qmd
     - id: "about"
       title: "About"
       contents:
