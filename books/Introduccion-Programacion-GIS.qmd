@@ -1,0 +1,29 @@
+---
+title: "Introducción a la Programación GIS"
+author: "pedromartinezduran"
+subtitle: "Qiusheng Wu, 2025, Introducción a la Programación GIS"
+date: 5/1/2025
+date-modified: last-modified
+date-format: full
+description: "Introducción a la Programación GIS"
+categories: [gis]
+subcategories: [programming]
+format:
+  html
+---
+
+## Book Image
+
+![](/books/Introduccion-Programacion-GIS.png){width="60%"}
+
+## More info
+
+- [leanpub.com](https://leanpub.com/gispro-es){.external}
+
+Unlock the power of geospatial data with Python! This hands-on guide is designed for beginners and intermediate users eager to explore spatial analysis and interactive mapping using open-source tools. You'll learn how to work with real-world data through practical examples and build skills in Python programming, vector and raster analysis, web mapping, and cloud computing. Whether you're a student, researcher, GIS professional, or data scientist, this book will equip you with the tools to tackle geospatial challenges with confidence.
+  
+
+## Book
+
+
+- [Book .pdf](/books/Introduccion-Programacion-GIS.pdf){width="60%"}
