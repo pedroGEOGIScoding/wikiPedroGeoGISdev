@@ -192,6 +192,18 @@ if (navigator.geolocation) {
 </script>
 
 :::{.column-page}
+## 🌤️ Weather Map
+
+Explore real-time weather conditions with this interactive Windy map:
+
+<div style="text-align: center; margin: 20px 0;">
+<iframe width="100%" height="800" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=km/h&zoom=5&overlay=wind&product=ecmwf&level=surface&lat=38.273&lon=2.021&detailLat=41.304&detailLon=2.006&detail=true&pressure=true&message=true" frameborder="0" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></iframe>
+</div>
+:::
+
+## 📚 Latest Learning Resources
+
+:::{.column-page}
 
 | Date | Type | Article | Content |
 | -- | -- | :-- | :-- |
